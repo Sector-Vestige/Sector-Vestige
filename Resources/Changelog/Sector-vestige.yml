@@ -751,3 +751,23 @@ Entries:
       message: the crewmon now matches the GPS coords.
   id: 99
   time: '2025-10-11T10:42:12.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Add
+      message: Added, Bronze, Amber, and Omega alerts from CD
+  id: 100
+  time: '2025-10-11T12:47:53.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Add
+      message: Added Medical Sunglasses.
+    - type: Add
+      message: Added Engineering Sunglasses.
+  id: 101
+  time: '2025-10-11T12:57:39.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Add
+      message: Senior Couriers have come!.
+  id: 102
+  time: '2025-10-11T18:04:34.0000000+00:00'

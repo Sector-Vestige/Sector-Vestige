@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  parent: [ClothingEyesBase, BaseEngineeringContraband]
+  id: ClothingEyesSunglassesEngineering
+  name: engineering glasses
+  description: Upgraded sunglasses that provide flash immunity and a diagnostic HUD.
+  components:
+  - type: Sprite
+    sprite: _Vestige/Clothing/Eyes/Glasses/engiglasses.rsi
+  - type: Clothing
+    sprite: _Vestige/Clothing/Eyes/Glasses/engiglasses.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - PetWearable
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+
+- type: entity
+  parent: [ClothingEyesBase, ShowMedicalIcons]
+  id: ClothingEyesSunglassesMedical
+  name: medical glasses
+  description: Upgraded sunglasses that provide flash immunity while displaying a humanoid's health status.
+  components:
+  - type: Sprite
+    sprite: _Vestige/Clothing/Eyes/Glasses/medglasses.rsi
+  - type: Clothing
+    sprite: _Vestige/Clothing/Eyes/Glasses/medglasses.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Tag
+    tags:
+    - HudMedical
+    - HamsterWearable
+    - PetWearable
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES

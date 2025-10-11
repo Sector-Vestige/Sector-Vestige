@@ -1,4 +1,5 @@
 # SPDX-FileCopyrightText: 2025 Wizards Den contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2022 Cheackraze <71046427+Cheackraze@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
 # SPDX-FileCopyrightText: 2022 LordEclipse <106132477+LordEclipse@users.noreply.github.com>
@@ -38,6 +39,7 @@
   - CargoTechnician
   - Quartermaster
   - SalvageSpecialist
+  - SeniorCourier
 
 - type: department
   id: Civilian

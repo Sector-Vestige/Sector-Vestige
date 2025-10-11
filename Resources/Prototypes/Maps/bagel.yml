@@ -1,4 +1,5 @@
 # SPDX-FileCopyrightText: 2025 Wizards Den contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2021 Timrod <timrod@gmail.com>
 # SPDX-FileCopyrightText: 2022 Cheackraze <71046427+Cheackraze@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
@@ -77,6 +78,7 @@
             Lawyer: [ 2, 2 ]
             #supply
             Quartermaster: [ 1, 1 ]
+            SeniorCourier: [ 1, 1 ]
             SalvageSpecialist: [ 3, 3 ]
             CargoTechnician: [ 3, 3 ]
             #civilian

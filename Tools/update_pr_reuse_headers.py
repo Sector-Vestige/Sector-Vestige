@@ -164,6 +164,7 @@ def _parse_dep5_file(dep5_path: str = ".reuse/dep5") -> list[dict]:
 
     entries = []
     current_entry = None
+    in_copyright_section = False
 
     try:
         with open(dep5_path, 'r', encoding='utf-8') as f:
@@ -183,35 +184,40 @@ def _parse_dep5_file(dep5_path: str = ".reuse/dep5") -> list[dict]:
                         'copyrights': [],
                         'license': None
                     }
+                    in_copyright_section = False
                     # Extract patterns from the same line
                     patterns_str = line[6:].strip()
                     if patterns_str:
                         current_entry['patterns'].extend([p.strip() for p in patterns_str.split() if p.strip()])
 
-                # Continuation of Files: (patterns on next lines, indented)
-                elif current_entry and line.startswith((' ', '\t')) and not line.strip().startswith('Copyright:') and not line.strip().startswith('License:'):
-                    patterns = [p.strip() for p in line.split() if p.strip()]
-                    current_entry['patterns'].extend(patterns)
-
-                # Copyright line
+                # Copyright line starts copyright section
                 elif line.startswith('Copyright:'):
                     if current_entry:
                         copyright_text = line[10:].strip()
                         if copyright_text:
                             current_entry['copyrights'].append(copyright_text)
+                        in_copyright_section = True
 
-                # Continuation of Copyright: (multiple copyright lines, indented)
-                elif current_entry and line.startswith(' ') and current_entry.get('copyrights') is not None:
-                    # Check if this is a copyright continuation (not License: line)
-                    if not line.strip().startswith('License:'):
-                        copyright_text = line.strip()
-                        if copyright_text and not copyright_text.startswith('License:'):
-                            current_entry['copyrights'].append(copyright_text)
-
-                # License line
+                # License line ends copyright section
                 elif line.startswith('License:'):
                     if current_entry:
                         current_entry['license'] = line[8:].strip()
+                    in_copyright_section = False
+
+                # Indented lines - could be pattern or copyright continuation
+                elif current_entry and line.startswith((' ', '\t')):
+                    stripped = line.strip()
+                    if stripped.startswith('License:'):
+                        current_entry['license'] = stripped[8:].strip()
+                        in_copyright_section = False
+                    elif in_copyright_section:
+                        # This is a copyright continuation
+                        if stripped:
+                            current_entry['copyrights'].append(stripped)
+                    else:
+                        # This is a pattern continuation
+                        patterns = [p.strip() for p in line.split() if p.strip()]
+                        current_entry['patterns'].extend(patterns)
 
         # Add the last entry
         if current_entry:
@@ -223,14 +229,15 @@ def _parse_dep5_file(dep5_path: str = ".reuse/dep5") -> list[dict]:
 
     return entries
 
-def _get_upstream_copyright_from_dep5(file_path: str) -> str | None:
+def _get_upstream_copyright_from_dep5(file_path: str) -> list[str]:
     """
     Get the upstream copyright holder(s) from dep5 file for a given file path.
-    Returns the first/primary copyright line (usually the upstream), or None.
+    Returns a list of copyright holders (extracted from copyright lines), or empty list.
+    Prefers the most specific pattern match.
     """
     dep5_entries = _parse_dep5_file()
     if not dep5_entries:
-        return None
+        return []
 
     # Normalize the file path
     normalized_path = file_path.replace('\\', '/').lstrip('./')
@@ -242,28 +249,34 @@ def _get_upstream_copyright_from_dep5(file_path: str) -> str | None:
             # Convert dep5 glob pattern to fnmatch pattern
             pattern = pattern.replace('\\', '/')
             if fnmatch.fnmatch(normalized_path, pattern):
-                matches.append((len(pattern), entry))
+                # Use pattern specificity: longer pattern = more specific
+                # Also count directory depth (more slashes = more specific)
+                specificity = len(pattern) + pattern.count('/') * 10
+                matches.append((specificity, entry))
                 break
 
     if not matches:
-        return None
+        return []
 
-    # Get the most specific match (longest pattern)
+    # Get the most specific match (highest specificity score)
     _, best_entry = max(matches, key=lambda x: x[0])
 
-    # Return the first copyright line (usually the primary/upstream)
+    # Extract all copyright holders from the copyright lines
+    copyright_holders = []
     if best_entry['copyrights']:
-        first_copyright = best_entry['copyrights'][0]
-        # Extract just the copyright holder part (after the year range)
-        # Format is typically: "2020-2025 Upstream Name contributors"
-        # We want to extract "Upstream Name contributors"
-        import re
-        match = re.search(r'\d{4}(?:-\d{4})?\s+(.+)$', first_copyright)
-        if match:
-            return match.group(1).strip()
-        return first_copyright
+        for copyright_line in best_entry['copyrights']:
+            # Extract just the copyright holder part (after the year range)
+            # Format is typically: "2020-2025 Upstream Name contributors"
+            # We want to extract "Upstream Name contributors"
+            import re
+            match = re.search(r'\d{4}(?:-\d{4})?\s+(.+)$', copyright_line)
+            if match:
+                holder = match.group(1).strip()
+                # Only add unique copyright holders
+                if holder not in copyright_holders:
+                    copyright_holders.append(holder)
 
-    return None
+    return copyright_holders
 
 # Project name used in fallback copyright text
 DEFAULT_PROJECT_NAME = (
@@ -623,21 +636,39 @@ def create_header(authors, license_id, comment_style, last_author: str | None = 
     # Get current year for the broader copyright line
     current_year = datetime.now(timezone.utc).year
 
-    # Get upstream copyright from dep5 file
-    upstream_copyright = _get_upstream_copyright_from_dep5(file_path) if file_path else None
-    broader_copyright = upstream_copyright if upstream_copyright else f"{DEFAULT_PROJECT_NAME} contributors"
+    # Get upstream copyright holders from dep5 file
+    upstream_copyrights = _get_upstream_copyright_from_dep5(file_path) if file_path else []
+    if not upstream_copyrights:
+        upstream_copyrights = [f"{DEFAULT_PROJECT_NAME} contributors"]
+
+    # Track copyright holders we've already added to avoid duplicates
+    added_copyrights = set()
 
     if suffix is None:
         # Single-line comment style (e.g., //, #)
-        # Add broader copyright line first
-        lines.append(f"{prefix} SPDX-FileCopyrightText: {current_year} {broader_copyright}")
+        # Add broader copyright lines first (from dep5)
+        for copyright_holder in upstream_copyrights:
+            normalized = copyright_holder.lower().strip()
+            if normalized not in added_copyrights:
+                lines.append(f"{prefix} SPDX-FileCopyrightText: {current_year} {copyright_holder}")
+                added_copyrights.add(normalized)
 
         # Build ordered list of authors
         ordered = []
         if authors:
             for author, (_, year) in sorted(authors.items(), key=lambda x: (x[1][1], x[0])):
                 if author and not is_token(author) and not author.lower().startswith("unknown"):
-                    ordered.append((author, year))
+                    # Check if this author is already covered by broader copyright
+                    author_normalized = author.lower().strip()
+                    # Skip if it's a duplicate of a broader copyright
+                    is_duplicate = False
+                    for added in added_copyrights:
+                        if author_normalized in added or added in author_normalized:
+                            is_duplicate = True
+                            break
+                    if not is_duplicate:
+                        ordered.append((author, year))
+
         # Move last_author to the end if present
         if last_author:
             ordered = [(a, y) for (a, y) in ordered if a != last_author]
@@ -645,6 +676,7 @@ def create_header(authors, license_id, comment_style, last_author: str | None = 
                 ordered.append((last_author, authors[last_author][1]))
             else:
                 ordered.append((last_author, last_year or datetime.now(timezone.utc).year))
+
         # Write individual authors
         if ordered:
             for a, y in ordered:
@@ -662,21 +694,36 @@ def create_header(authors, license_id, comment_style, last_author: str | None = 
         # Start comment
         lines.append(f"{prefix}")
 
-        # Add broader copyright line first
-        lines.append(f"SPDX-FileCopyrightText: {current_year} {broader_copyright}")
+        # Add broader copyright lines first (from dep5)
+        for copyright_holder in upstream_copyrights:
+            normalized = copyright_holder.lower().strip()
+            if normalized not in added_copyrights:
+                lines.append(f"SPDX-FileCopyrightText: {current_year} {copyright_holder}")
+                added_copyrights.add(normalized)
 
         # Add copyright lines
         ordered = []
         if authors:
             for author, (_, year) in sorted(authors.items(), key=lambda x: (x[1][1], x[0])):
                 if author and not is_token(author) and not author.lower().startswith("unknown"):
-                    ordered.append((author, year))
+                    # Check if this author is already covered by broader copyright
+                    author_normalized = author.lower().strip()
+                    # Skip if it's a duplicate of a broader copyright
+                    is_duplicate = False
+                    for added in added_copyrights:
+                        if author_normalized in added or added in author_normalized:
+                            is_duplicate = True
+                            break
+                    if not is_duplicate:
+                        ordered.append((author, year))
+
         if last_author:
             ordered = [(a, y) for (a, y) in ordered if a != last_author]
             if last_author in authors:
                 ordered.append((last_author, authors[last_author][1]))
             else:
                 ordered.append((last_author, last_year or datetime.now(timezone.utc).year))
+
         if ordered:
             for a, y in ordered:
                 lines.append(f"SPDX-FileCopyrightText: {y} {a}")
@@ -784,8 +831,16 @@ def process_file(file_path, default_license_id, pr_base_sha=None, pr_head_sha=No
         # Optionally override existing license with the provided default_license_id
         force_license = os.environ.get("REUSE_FORCE_LICENSE", "").lower() in ("1", "true", "yes")
 
-    # Combine existing and git authors
-        combined_authors = existing_authors.copy()
+    # Combine existing and git authors, but filter out old upstream/fork attributions
+        # These end with "contributors" and will be replaced by dep5 data
+        combined_authors = {}
+        for author, years in existing_authors.items():
+            # Skip old upstream/fork attributions (e.g., "Wizards Den contributors")
+            # These will be replaced by the dep5 file data
+            if author.lower().endswith("contributors") or author.lower().endswith("contributors (modifications)"):
+                continue
+            combined_authors[author] = years
+
         for author, (git_min, git_max) in git_authors.items():
             has_token = is_token(author)
             if author.lower().startswith("unknown") or has_token:

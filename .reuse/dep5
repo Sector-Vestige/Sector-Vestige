@@ -51,6 +51,9 @@ Files: Content.Server/_AXOLOTL/**
         Content.Shared/_AXOLOTL/**
         Resources/_AXOLOTL/**
         Resources/Prototypes/_AXOLOTL/**
+        Resources/Audio/_AXOLOTL/**
+        Resources/Textures/_AXOLOTL/**
+        Resources/Locale/_AXOLOTL/**
 Copyright: 2020-2025 AXOLOTL contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: MIT
@@ -61,6 +64,9 @@ Files: Content.Server/_CD/**
         Content.Shared/_CD/**
         Resources/_CD/**
         Resources/Prototypes/_CD/**
+        Resources/Audio/_CD/**
+        Resources/Textures/_CD/**
+        Resources/Locale/_CD/**
 Copyright: 2020-2025 Cosmatic Drift contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: MIT
@@ -71,6 +77,9 @@ Files: Content.Server/_DV/**
         Content.Shared/_DV/**
         Resources/_DV/**
         Resources/Prototypes/_DV/**
+        Resources/Audio/_DV/**
+        Resources/Textures/_DV/**
+        Resources/Locale/_DV/**
 Copyright: 2020-2025 Delta-V contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: AGPL-3.0-or-later
@@ -81,6 +90,9 @@ Files: Content.Server/_NF/**
         Content.Shared/_NF/**
         Resources/_NF/**
         Resources/Prototypes/_NF/**
+        Resources/Audio/_NF/**
+        Resources/Textures/_NF/**
+        Resources/Locale/_NF/**
 Copyright: 2020-2025 New Frontiers contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: AGPL-3.0-or-later
@@ -91,6 +103,9 @@ Files: Content.Server/_Harmony/**
         Content.Shared/_Harmony/**
         Resources/_Harmony/**
         Resources/Prototypes/_Harmony/**
+        Resources/Audio/_Harmony/**
+        Resources/Textures/_Harmony/**
+        Resources/Locale/_Harmony/**
 Copyright: 2020-2025 Harmony contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: AGPL-3.0-or-later
@@ -101,6 +116,9 @@ Files: Content.Server/_Umbra/**
         Content.Shared/_Umbra/**
         Resources/_Umbra/**
         Resources/Prototypes/_Umbra/**
+        Resources/Audio/_Umbra/**
+        Resources/Textures/_Umbra/**
+        Resources/Locale/_Umbra/**
 Copyright: 2020-2025 Umbra contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: MIT
@@ -111,6 +129,9 @@ Files: Content.Server/_Floofstation/**
         Content.Shared/_Floofstation/**
         Resources/_Floofstation/**
         Resources/Prototypes/_Floofstation/**
+        Resources/Audio/_Floofstation/**
+        Resources/Textures/_Floofstation/**
+        Resources/Locale/_Floofstation/**
 Copyright: 2020-2025 FloofStation contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: AGPL-3.0-or-later
@@ -121,6 +142,9 @@ Files: Content.Server/_Impstation/**
         Content.Shared/_Impstation/**
         Resources/_Impstation/**
         Resources/Prototypes/_Impstation/**
+        Resources/Audio/_Impstation/**
+        Resources/Textures/_Impstation/**
+        Resources/Locale/_Impstation/**
 Copyright: 2020-2025 Impstation contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: AGPL-3.0-or-later
@@ -131,6 +155,9 @@ Files: Content.Server/_EE/**
         Content.Shared/_EE/**
         Resources/_EE/**
         Resources/Prototypes/_EE/**
+        Resources/Audio/_EE/**
+        Resources/Textures/_EE/**
+        Resources/Locale/_EE/**
 Copyright: 2020-2025 EinsteinEngines contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: AGPL-3.0-or-later
@@ -141,6 +168,9 @@ Files: Content.Server/_Funkystation/**
         Content.Shared/_Funkystation/**
         Resources/_Funkystation/**
         Resources/Prototypes/_Funkystation/**
+        Resources/Audio/_Funkystation/**
+        Resources/Textures/_Funkystation/**
+        Resources/Locale/_Funkystation/**
 Copyright: 2020-2025 Funkystation contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: AGPL-3.0-or-later
@@ -151,6 +181,9 @@ Files: Content.Server/_SV/**
         Content.Shared/_SV/**
         Resources/_SV/**
         Resources/Prototypes/_SV/**
+        Resources/Audio/_SV/**
+        Resources/Textures/_SV/**
+        Resources/Locale/_SV/**
 Copyright: 2020-2025 Sector-Vestige contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: AGPL-3.0-or-later
@@ -161,6 +194,9 @@ Files: Content.Server/_Moffstation/**
         Content.Shared/_Moffstation/**
         Resources/_Moffstation/**
         Resources/Prototypes/_Moffstation/**
+        Resources/Audio/_Moffstation/**
+        Resources/Textures/_Moffstation/**
+        Resources/Locale/_Moffstation/**
 Copyright: 2020-2025 Moffstation contributors
  2020-2025 Sector Vestige contributors (modifications)
 License: MIT

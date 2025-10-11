@@ -1,3 +1,22 @@
+# SPDX-FileCopyrightText: 2025 Wizards Den contributors
+# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Júlio César Ueti <52474532+Mirino97@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2022 Morbo <14136326+Morb0@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
+# SPDX-FileCopyrightText: 2023 Flareguy <78941145+Flareguy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 BuildTools <unconfigured@null.spigotmc.org>
+# SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
+# SPDX-FileCopyrightText: 2024 superjj18 <gagnonjake@gmail.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2025 Wizards Den contributors
+#
+# SPDX-License-Identifier: MIT
+
 - type: alertLevels
   id: stationAlerts
   defaultLevel: green
@@ -48,16 +67,16 @@
       forceEnableEmergencyLights: true
     delta:
       announcement: alert-level-delta-announcement
-      selectable: false
+      #selectable: false | CD commented out
       sound:
-        path: /Audio/Misc/delta.ogg
+        path: /Audio/Misc/delta_alt.ogg #CD change from delta to delta_alt
         params:
-          volume: -3
-      disableSelection: true
+          volume: -1
+      #disableSelection: true | CD commented out
       color: DarkRed
       emergencyLightColor: Orange
       forceEnableEmergencyLights: true
-      shuttleTime: 1200
+      shuttleTime: 600 #CD change from 1200 to 600
     epsilon:
       announcement: alert-level-epsilon-announcement
       selectable: false
@@ -70,3 +89,28 @@
       emergencyLightColor: DarkViolet
       forceEnableEmergencyLights: true
       shuttleTime: 1200
+#CD additions
+    amber:
+      announcement: alert-level-amber-announcement
+      sound: /Audio/_CD/Misc/amber.ogg
+      color: "#ffbf00"
+      forceEnableEmergencyLights: true
+      emergencyLightColor: "#ffbf00"
+      shuttleTime: 600
+    bronze:
+      announcement: alert-level-bronze-announcement
+      sound:
+        path: /Audio/_CD/Misc/bronze.ogg
+        params:
+          volume: -2
+      color: "#cd7f32"
+      forceEnableEmergencyLights: true
+      emergencyLightColor: "#cd7f32"
+      shuttleTime: 600
+    omega:
+      announcement: alert-level-omega-announcement
+      sound: /Audio/_CD/Misc/omega.ogg
+      color: "#bf002c"
+      emergencyLightColor: "#bf002c"
+      forceEnableEmergencyLights: true
+      shuttleTime: 600
