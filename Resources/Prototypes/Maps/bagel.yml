@@ -67,5 +67,5 @@
             #silicon
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]
-            # #misc
-            # Prisoner: [ 1, 1 ] #CD Role
+            #misc (2)
+            Prisoner: [ 1, 2 ] #Sector Vestige: Enable Prisoners

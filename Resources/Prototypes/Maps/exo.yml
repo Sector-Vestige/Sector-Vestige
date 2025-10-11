@@ -64,3 +64,5 @@
             #silicon
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]
+            #misc (2)
+            Prisoner: [ 1, 2 ] #Sector Vestige: Enable Prisoners
