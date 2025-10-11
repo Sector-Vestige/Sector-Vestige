@@ -1,0 +1,66 @@
+# SPDX-FileCopyrightText: 2025 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Head
+- type: loadout
+  id: SeniorCourierHead
+  equipment:
+    head: ClothingHeadHatCargosoft
+
+# Jumpsuit
+- type: loadout
+  id: SeniorCourierJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCargo
+
+- type: loadout
+  id: SeniorCourierJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCargo
+
+# Back
+- type: loadout
+  id: SeniorCourierBackpack
+  equipment:
+    back: ClothingBackpackCargo
+
+- type: loadout
+  id: SeniorCourierSatchel
+  equipment:
+    back: ClothingBackpackSatchelCargo
+
+- type: loadout
+  id: SeniorCourierDuffel
+  equipment:
+    back: ClothingBackpackDuffelCargo
+
+# OuterClothing
+- type: loadout
+  id: SeniorCourierWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterCargo
+
+# Shoes
+- type: loadout
+  id: SeniorCourierBootsSteel
+  equipment:
+    shoes: ClothingShoesBootsWork
+
+- type: loadout
+  id: SeniorCourierBootsBlack
+  equipment:
+    shoes: ClothingShoesBootsWork
+
+- type: loadout
+  id: SeniorCourierWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterCargo
+
+# ID
+- type: loadout
+  id: SeniorCourierPDALoadout
+  equipment:
+    id: SeniorCourierPDA

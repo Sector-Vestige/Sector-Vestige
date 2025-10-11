@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2025 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Senior Courier
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconSeniorCourier
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: SeniorCourier
+  jobName: job-name-senior-courier
