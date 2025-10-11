@@ -1,5 +1,4 @@
 - type: playTimeTracker
   id: JobBrigMedicHarmony
 
-- type: playTimeTracker
-  id: JobPermaPrisoner
+# Vestige : Removed Harmony's Prisoner in favor of CD's

@@ -7,12 +7,7 @@
   - HoPLeatherShoesHarmony
 
 # Security
-- type: loadoutGroup
-  id: PermaPrisonerJumpsuit
-  name: loadout-group-perma-prisoner-jumpsuit
-  loadouts:
-  - PermaPrisonerJumpsuit
-  - PermaPrisonerJumpskirt
+# Vestige : Removed Harmony's Prisoner in favor of CD's
 
 # Medical
 - type: loadoutGroup
