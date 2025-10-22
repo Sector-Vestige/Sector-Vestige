@@ -1,0 +1,10 @@
+<Document>
+  # Felinid
+
+  <Box>
+    <GuideEntityEmbed Entity="MobFelinidDummy" Caption=""/>
+  </Box>
+
+  Felinids are a feline humanoid species with cat-like ears and tails.
+
+</Document>

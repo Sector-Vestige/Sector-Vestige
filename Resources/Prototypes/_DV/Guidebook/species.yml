@@ -1,0 +1,9 @@
+- type: guideEntry
+  id: Felinid
+  name: species-name-felinid
+  text: "/ServerInfo/Guidebook/_DV/Mobs/Felinid.xml"
+
+- type: guideEntry
+  id: Harpy
+  name: species-name-harpy
+  text: "/ServerInfo/Guidebook/_DV/Mobs/Harpy.xml"

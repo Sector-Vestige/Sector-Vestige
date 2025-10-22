@@ -31,12 +31,12 @@
     - Moth
     - Reptilian
     - Vulpkanin
-    - Avali #CD additions start
-    - Foxfolk
-    #- Rodentia #CD additions end
-    - Felinid
-    - Harpy #Sector Vestige
-    - Resomi #Sector Vestige
+    - Avali #CD Species
+    - Foxfolk #CD Species
+    - Rodentia #CD Species
+    - Felinid #DV
+    - Harpy #DV
+    - Resomi #Floof
 
 - type: loadoutEffectGroup
   id: EffectSpeciesVox

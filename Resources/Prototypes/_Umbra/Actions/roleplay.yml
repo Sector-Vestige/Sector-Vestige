@@ -2,8 +2,8 @@
 - type: entity
   parent: BaseMentalAction
   id: ActionSetExtraExamine
-  name: SetExamineTitle
-  description: SetExamineDialog
+  name: set-examine-title
+  description: set-examine-dialog
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
