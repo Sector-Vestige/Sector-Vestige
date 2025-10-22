@@ -13,7 +13,7 @@
   id: Foxfolk
   name: species-name-foxfolk
   text: "/ServerInfo/Guidebook/_CD/Mobs/Foxfolk.xml"
-  
+
 - type: guideEntry
   id: Rodentia
   name: species-name-rodentia
