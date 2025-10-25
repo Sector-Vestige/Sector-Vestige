@@ -99,7 +99,7 @@
   components:
   - type: GameRule
   - type: StationEvent
-    reoccurrenceDelay: 1
+    reoccurrenceDelay: 2 #Sector Vestige: increase delay between meteor storms
     earliestStart: 12
     minimumPlayers: 25
   - type: MeteorSwarm
@@ -109,7 +109,7 @@
   id: GameRuleSpaceDustMinor
   components:
   - type: StationEvent
-    weight: 44
+    weight: 22 #Sector Vestige: Half meteor probability
     earliestStart: 2
     minimumPlayers: 0
   - type: MeteorSwarm
@@ -119,8 +119,8 @@
     meteors:
       MeteorSpaceDust: 1
     waves:
-      min: 2
-      max: 3
+      min: 1 #Sector Vestige: Reduce meteor amount
+      max: 2 #Sector Vestige: Reduce meteor amount
     meteorsPerWave:
       min: 3
       max: 5
@@ -130,7 +130,7 @@
   id: GameRuleSpaceDustMajor
   components:
   - type: StationEvent
-    weight: 22
+    weight: 11 #Sector Vestige: Half meteor probability
     minimumPlayers: 0
   - type: MeteorSwarm
     announcement: station-event-space-dust-start-announcement
@@ -139,8 +139,8 @@
     meteors:
       MeteorSpaceDust: 1
     waves:
-      min: 2
-      max: 3
+      min: 1 #Sector Vestige: Reduce meteor amount
+      max: 2 #Sector Vestige: Reduce meteor amount
     meteorsPerWave:
       min: 8
       max: 12
@@ -150,11 +150,11 @@
   id: GameRuleMeteorSwarmSmall
   components:
   - type: StationEvent
-    weight: 18
+    weight: 9 #Sector Vestige: Half meteor probability
     minimumPlayers: 15
   - type: MeteorSwarm
     meteors:
-      MeteorSmall: 7
+      MeteorSmall: 5 #Sector Vestige: Reduce meteor amount
       MeteorMedium: 3
 
 - type: entity
@@ -162,11 +162,11 @@
   id: GameRuleMeteorSwarmMedium
   components:
   - type: StationEvent
-    weight: 10
+    weight: 5 #Sector Vestige: Half meteor probability
   - type: MeteorSwarm
     meteors:
       MeteorSmall: 3
-      MeteorMedium: 6
+      MeteorMedium: 4 #Sector Vestige: Reduce meteor amount
       MeteorLarge: 1
 
 - type: entity
@@ -174,11 +174,11 @@
   id: GameRuleMeteorSwarmLarge
   components:
   - type: StationEvent
-    weight: 5
+    weight: 2.5 #Sector Vestige: Half meteor probability
   - type: MeteorSwarm
     meteors:
       MeteorSmall: 2
-      MeteorMedium: 4
+      MeteorMedium: 2 #Sector Vestige: Reduce meteor amount
       MeteorLarge: 4
 
 - type: entity
