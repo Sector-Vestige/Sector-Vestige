@@ -1,1 +1,6 @@
-﻿
+﻿[game]
+hostname = "Vestige Testing Server"
+
+[ic]
+flavor_text = true
+random_characters = false
