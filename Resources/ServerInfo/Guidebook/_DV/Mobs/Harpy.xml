@@ -1,0 +1,10 @@
+<Document>
+  # Harpy
+
+  <Box>
+    <GuideEntityEmbed Entity="MobHarpyDummy" Caption=""/>
+  </Box>
+
+  Harpies are a species of avian humanoids with colorful wings and feathers.
+
+</Document>

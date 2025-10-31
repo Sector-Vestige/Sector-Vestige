@@ -7,8 +7,8 @@
 /Content.*/                                         @ReboundQ3
 
 # YML files
-/Resources/*.yml                                    @ReboundQ3
-/Resources/**/*.yml                                 @ReboundQ3
+/Resources/*.yml                                    @ReboundQ3 @qu4drivium @OnyxTheBrave
+/Resources/**/*.yml                                 @ReboundQ3 @qu4drivium @OnyxTheBrave
 
 # Sprites
 /Resources/Textures/                                @ReboundQ3 @JuneSzalkowska

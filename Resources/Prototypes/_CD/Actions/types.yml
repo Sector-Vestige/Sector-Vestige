@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2025 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 # Foxfolk Tail Wagging
 - type: entity
   id: ActionToggleFoxfolkakinWagging
@@ -12,3 +18,17 @@
       useDelay: 1 # Prevents Emote Spam
     - type: InstantAction
       event: !type:ToggleActionEvent
+
+# Rodentia Mouth Storage
+- type: entity
+  id: ActionOpenMouthStorage
+  name: Open cheek storage
+  description: Allows you to store items in your cheeks.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    priority: -10
+    icon: _CD/Interface/Actions/mouthStorageOpen.png
+  - type: InstantAction
+    event: !type:OpenStorageImplantEvent

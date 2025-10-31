@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2025 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 MoonlightHollow <muszynskinicholas8@gmail.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 # Avali Sounds
 - type: emoteSounds
   id: MaleAvali
@@ -75,3 +82,55 @@
       collection: FoxfolkWhines
     Howl:
       collection: FoxfolkHowls
+
+- type: emoteSounds
+  id: MaleRodentia
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      path: /Audio/Animals/mouse_squeak.ogg
+    Laugh:
+      collection: MaleLaugh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Yawn:
+      collection: MaleYawn
+    Snore:
+      collection: Snores
+    Sigh:
+      collection: MaleSigh
+    Crying:
+      collection: MaleCry
+    Whistle:
+      collection: Whistles
+    Squeak:
+      path: /Audio/Animals/mouse_squeak.ogg
+
+- type: emoteSounds
+  id: FemaleRodentia
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      path: /Audio/Animals/mouse_squeak.ogg
+    Laugh:
+      collection: FemaleLaugh
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    Yawn:
+      collection: FemaleYawn
+    Snore:
+      collection: Snores
+    Sigh:
+      collection: FemaleSigh
+    Crying:
+      collection: FemaleCry
+    Whistle:
+      collection: Whistles
+    Squeak:
+      path: /Audio/Animals/mouse_squeak.ogg

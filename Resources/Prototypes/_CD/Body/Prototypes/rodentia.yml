@@ -1,0 +1,59 @@
+# SPDX-FileCopyrightText: 2025 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
+# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Preston Smith <blackfoot03@outlook.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: body
+  id: Rodentia
+  name: species-name-rodentia
+  root: torso
+  slots:
+    head:
+      part: HeadRodentia
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoRodentia
+      connections:
+      - right arm
+      - left arm
+      - right leg
+      - left leg
+      organs:
+        heart: OrganAnimalHeart
+        lungs: OrganHumanLungs
+        stomach: OrganAnimalStomach
+        liver: OrganAnimalLiver
+        kidneys: OrganHumanKidneys
+    right arm:
+      part: RightArmRodentia
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmRodentia
+      connections:
+      - left hand
+    right hand:
+      part: RightHandRodentia
+    left hand:
+      part: LeftHandRodentia
+    right leg:
+      part: RightLegRodentia
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegRodentia
+      connections:
+      - left foot
+    right foot:
+      part: RightFootRodentia
+    left foot:
+      part: LeftFootRodentia

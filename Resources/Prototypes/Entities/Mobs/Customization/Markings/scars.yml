@@ -1,8 +1,17 @@
+# SPDX-FileCopyrightText: 2025 Wizards Den contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2023 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: marking
   id: ScarEyeRight
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf, SlimePerson]
+  speciesRestriction: [Human, Dwarf, SlimePerson, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -12,7 +21,7 @@
   id: ScarEyeLeft
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf, SlimePerson]
+  speciesRestriction: [Human, Dwarf, SlimePerson, ] # CD: Add Rodentia and Foxfolks
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -22,7 +31,7 @@
   id: ScarTopSurgeryShort
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   sexRestriction: [Male]
   followSkinColor: true
   sprites:
@@ -33,7 +42,7 @@
   id: ScarTopSurgeryLong
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   sexRestriction: [Male]
   followSkinColor: true
   sprites:
@@ -44,7 +53,7 @@
   id: ScarChest
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -54,7 +63,7 @@
   id: ScarNeck
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -64,7 +73,7 @@
   id: ScarChestBullets
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -74,7 +83,7 @@
   id: ScarStomachBullets
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -84,7 +93,7 @@
   id: ScarFace1
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -94,7 +103,7 @@
   id: ScarFace2
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -104,7 +113,7 @@
   id: ScarEyeRightSmall
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -114,7 +123,7 @@
   id: ScarEyeLeftSmall
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson]
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Rodentia, Foxfolk] # CD: Add Rodentia and Foxfolks.
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi

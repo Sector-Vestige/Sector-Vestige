@@ -873,3 +873,35 @@ Entries:
       message: Foxfolk now have Animal stomachs.
   id: 117
   time: '2025-10-18T15:24:45.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Tweak
+      message: Foxfolk can use use human hair markings.
+  id: 118
+  time: '2025-10-18T16:12:39.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Fix
+      message: Resomi now start with a survival box.
+    - type: Fix
+      message: Harpies now start with a survival box.
+  id: 119
+  time: '2025-10-20T11:03:01.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: Fixed Riv's oopsie (the Ready button works again)
+  id: 120
+  time: '2025-10-20T19:01:20.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Add
+      message: Rodentia come to the vestige sector.
+  id: 121
+  time: '2025-10-22T19:14:40.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Tweak
+      message: Reduced Meteor swarms.
+  id: 122
+  time: '2025-10-27T12:58:02.0000000+00:00'

@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2025 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: guideEntry
   id: Avali
   name: species-name-avali
@@ -8,7 +14,7 @@
   name: species-name-foxfolk
   text: "/ServerInfo/Guidebook/_CD/Mobs/Foxfolk.xml"
 
-#- type: guideEntry
-#  id: Rodentia
-#  name: species-name-rodentia
-#  text: "/ServerInfo/Guidebook/_CD/Mobs/Rodentia.xml"
+- type: guideEntry
+  id: Rodentia
+  name: species-name-rodentia
+  text: "/ServerInfo/Guidebook/_CD/Mobs/Rodentia.xml"

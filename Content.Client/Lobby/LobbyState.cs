@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
 // SPDX-FileCopyrightText: 2020 Exp <theexp111@gmail.com>
 // SPDX-FileCopyrightText: 2020 Swept <sweptwastaken@protonmail.com>
 // SPDX-FileCopyrightText: 2020 Tyler Young <tyler.young@impromptu.ninja>
@@ -31,9 +33,9 @@
 // SPDX-FileCopyrightText: 2024 SpaceManiac <tad@platymuus.com>
 // SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
 // SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
 // SPDX-FileCopyrightText: 2025 vestige-bot <vestige-bot@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
 //
 // SPDX-License-Identifier: MIT
 
@@ -72,6 +74,7 @@ namespace Content.Client.Lobby
         private ClientGameTicker _gameTicker = default!;
         private ContentAudioSystem _contentAudioSystem = default!;
         private ReadyManifestSystem _readyManifest = default!; // Moffstation - Ready manifest
+        private bool _updatingReadyButton; // Sector Vestige - Flag to prevent recursive ready button updates
 
         protected override Type? LinkedScreenType { get; } = typeof(LobbyGui);
         public LobbyGui? Lobby;
@@ -161,6 +164,13 @@ namespace Content.Client.Lobby
 
         private void OnReadyToggled(BaseButton.ButtonToggledEventArgs args)
         {
+            // Sector Vestige - Begin - Prevent recursive updates from programmatic state changes
+            if (_updatingReadyButton)
+                return;
+
+            // Sector Vestige - Update button text immediately when toggled
+            Lobby!.ReadyButton.Text = Loc.GetString(args.Pressed ? "lobby-state-player-status-ready" : "lobby-state-player-status-not-ready");
+            // Sector Vestige - End
             SetReady(args.Pressed);
         }
 
@@ -238,11 +248,16 @@ namespace Content.Client.Lobby
             else
             {
                 Lobby!.StartTime.Text = string.Empty;
-                Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
-                Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-player-status-not-ready");
+                // Sector Vestige - Begin - Fix ready button text and state order
+                Lobby!.ReadyButton.Text = Loc.GetString(_gameTicker.AreWeReady ? "lobby-state-player-status-ready" : "lobby-state-player-status-not-ready");
                 Lobby!.ReadyButton.ToggleMode = true;
                 Lobby!.ReadyButton.Disabled = false;
                 Lobby!.ManifestButton.Disabled = false; // Moffstation - Ready manifest
+                // Sector Vestige - Set flag to prevent OnReadyToggled from firing when we set Pressed programmatically
+                _updatingReadyButton = true;
+                Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
+                _updatingReadyButton = false;
+                // Sector Vestige - End
                 Lobby!.ObserveButton.Disabled = true;
             }
 

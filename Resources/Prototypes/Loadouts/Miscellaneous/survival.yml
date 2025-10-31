@@ -1,3 +1,15 @@
+# SPDX-FileCopyrightText: 2025 Wizards Den contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 DoggowithaKeyboard <gaincarlo48@gmail.com>
+# SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2025 mogaiskii <sani.mog@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 # Species
 - type: loadoutEffectGroup
   id: NitrogenBreather
@@ -19,10 +31,12 @@
     - Moth
     - Reptilian
     - Vulpkanin
-    - Avali #CD additions start
-    - Foxfolk
-    #- Rodentia #CD additions end
-    - Felinid
+    - Avali #CD Species
+    - Foxfolk #CD Species
+    - Rodentia #CD Species
+    - Felinid #DV
+    - Harpy #DV
+    - Resomi #Floof
 
 - type: loadoutEffectGroup
   id: EffectSpeciesVox

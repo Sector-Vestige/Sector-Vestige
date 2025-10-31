@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2025 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: localizedDataset
+  id: NamesRodentiaMale
+  values:
+    prefix: names-rodentia-male-
+    count: 167
+
+- type: localizedDataset
+  id: NamesRodentiaFemale
+  values:
+    prefix: names-rodentia-female-
+    count: 159
+
+- type: localizedDataset
+  id: NamesRodentiaLast
+  values:
+    prefix: names-rodentia-last-
+    count: 87

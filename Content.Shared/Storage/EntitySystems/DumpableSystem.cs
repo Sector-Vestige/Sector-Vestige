@@ -1,9 +1,25 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 LordCarve <27449516+LordCarve@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2024 BuildTools <unconfigured@null.spigotmc.org>
+// SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Storage.Components;
 using Content.Shared.Verbs;
+using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -127,13 +143,29 @@ public sealed class DumpableSystem : EntitySystem
 
     private void OnDoAfter(EntityUid uid, DumpableComponent component, DumpableDoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled || !TryComp<StorageComponent>(uid, out var storage) || storage.Container.ContainedEntities.Count == 0 || args.Args.Target is not { } target)
+        if (args.Handled || args.Cancelled)
+            return;
+
+        DumpContents(uid, args.Args.Target, args.Args.User, component);
+    }
+
+    [PublicAPI]
+    public void DumpContents(EntityUid uid, EntityUid? target, EntityUid user, DumpableComponent? component = null)
+    {
+        // CD: Split OnAfterInteract into two methods to allow dumping that doesn't require a verb, which is required
+        // for the functionality of Rodentia mouth storage being spilled when damaged.
+        if (!TryComp<StorageComponent>(uid, out var storage)
+            || !Resolve(uid, ref component))
+            return;
+
+        if (storage.Container.ContainedEntities.Count == 0)
             return;
 
         var dumpQueue = new Queue<EntityUid>(storage.Container.ContainedEntities);
 
-        var evt = new DumpEvent(dumpQueue, args.Args.User, false, false);
-        RaiseLocalEvent(target, ref evt);
+        var evt = new DumpEvent(dumpQueue, user, false, false);
+        if (target.HasValue)
+            RaiseLocalEvent(target.Value, ref evt);
 
         if (!evt.Handled)
         {
@@ -142,7 +174,10 @@ public sealed class DumpableSystem : EntitySystem
             foreach (var entity in dumpQueue)
             {
                 var transform = Transform(entity);
-                _transformSystem.SetWorldPositionRotation(entity, targetPos + _random.NextVector2Box() / 4, _random.NextAngle(), transform);
+                _transformSystem.SetWorldPositionRotation(entity,
+                    targetPos + _random.NextVector2Box() / 4,
+                    _random.NextAngle(),
+                    transform);
             }
 
             return;
@@ -150,7 +185,7 @@ public sealed class DumpableSystem : EntitySystem
 
         if (evt.PlaySound)
         {
-            _audio.PlayPredicted(component.DumpSound, uid, args.User);
+            _audio.PlayPredicted(component.DumpSound, uid, user);
         }
     }
 }

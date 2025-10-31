@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2025 Wizards Den contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: guideEntry
   id: Species
   name: guide-entry-species
@@ -12,7 +19,12 @@
   - SlimePerson
   - Vox
   - Vulpkanin
-  - Foxfolk
+  - Felinid #DV Species
+  - Harpy #DV Species
+  - Resomi #Floof Species
+  - Avali #CD Species
+  - Foxfolk #CD Species
+  - Rodentia #CD Species
 
 - type: guideEntry
   id: Arachnid

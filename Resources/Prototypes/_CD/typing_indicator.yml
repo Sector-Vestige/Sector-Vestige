@@ -1,9 +1,15 @@
-#- type: typingIndicator
-#  id: rodentia
-#  spritePath: /Textures/_CD/Effects/speech.rsi
-#  typingState: rodentia0
-#  idleState: rodentia1
-#  offset: 0, 0.2 # 0625
+# SPDX-FileCopyrightText: 2025 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: typingIndicator
+  id: rodentia
+  spritePath: /Textures/_CD/Effects/speech.rsi
+  typingState: rodentia0
+  idleState: rodentia1
+  offset: 0, 0.2 # 0625
 
 - type: typingIndicator
   id: foxfolk

@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2025 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: speechVerb
   id: Foxfolk
   name: chat-speech-verb-foxfolk
@@ -6,3 +12,12 @@
   - chat-speech-verb-foxfolk-2
   - chat-speech-verb-foxfolk-3
   - chat-speech-verb-foxfolk-4
+
+- type: speechVerb
+  id: Rodentia
+  name: chat-speech-verb-name-rodentia
+  speechVerbStrings:
+  - chat-speech-verb-rodentia-1
+  - chat-speech-verb-rodentia-2
+  - chat-speech-verb-rodentia-3
+  - chat-speech-verb-rodentia-4
