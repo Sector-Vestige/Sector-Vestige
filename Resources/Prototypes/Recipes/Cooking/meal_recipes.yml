@@ -12,7 +12,11 @@
   name: cotton bun recipe
   result: FoodCottonBun
   time: 5
+<<<<<<< HEAD
   group: Breads
+=======
+  group: Moth
+>>>>>>> upstream/master
   solids:
     FoodDoughCottonSlice: 1
 
@@ -401,7 +405,7 @@
   name: banana bread recipe
   result: FoodBreadBanana
   time: 15
-  group: LoafCakes
+  group: Breads
   solids:
     FoodDough: 1
     FoodBanana: 1
@@ -2393,6 +2397,7 @@
   name: grilled cheese sandwich recipe
   result: FoodBakedGrilledCheeseSandwich
   time: 10
+  group: Savory
   solids:
     FoodBreadPlainSlice: 2
     FoodCheeseSlice: 1
@@ -2403,6 +2408,7 @@
   name: cotton grilled cheese sandwich recipe
   result: FoodBakedGrilledCheeseSandwichCotton
   time: 10
+  group: Moth
   solids:
     FoodBreadCottonSlice: 2
     FoodCheeseSlice: 1
@@ -2453,7 +2459,11 @@
   name: cotton cake recipe
   result: FoodCakeCotton
   time: 5
+<<<<<<< HEAD
   group: Cake
+=======
+  group: Moth
+>>>>>>> upstream/master
   reagents:
     Fiber: 10
   solids:

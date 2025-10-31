@@ -60,7 +60,11 @@ namespace Content.Shared.Chemistry.Reaction
         /// <summary>
         /// Effects to be triggered when the reaction occurs.
         /// </summary>
+<<<<<<< HEAD
         [DataField("effects")] public List<EntityEffect> Effects = new();
+=======
+        [DataField("effects")] public EntityEffect[] Effects = [];
+>>>>>>> upstream/master
 
         /// <summary>
         /// How dangerous is this effect? Stuff like bicaridine should be low, while things like methamphetamine

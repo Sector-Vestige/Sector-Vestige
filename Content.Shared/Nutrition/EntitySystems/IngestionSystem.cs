@@ -118,8 +118,12 @@ public sealed partial class IngestionSystem : EntitySystem
     /// <param name="user">The entity who is trying to make this happen.</param>
     /// <param name="target">The entity who is being made to ingest something.</param>
     /// <param name="ingested">The entity that is trying to be ingested.</param>
+<<<<<<< HEAD
     /// <param name="ingest">Bool that determines whethere this is a Try or a Can effectively.
     /// When set to true, it tries to ingest, when false it checks if we can.</param>
+=======
+    /// <param name="ingest"> When set to true, it tries to ingest. When false, it only checks if we can.</param>
+>>>>>>> upstream/master
     /// <returns>Returns true if we can ingest the item.</returns>
     private bool AttemptIngest(EntityUid user, EntityUid target, EntityUid ingested, bool ingest)
     {
@@ -177,8 +181,15 @@ public sealed partial class IngestionSystem : EntitySystem
     /// </summary>
     /// <param name="food">Entity being eaten</param>
     /// <param name="stomachs">Stomachs available to digest</param>
+<<<<<<< HEAD
     public bool IsDigestibleBy(EntityUid food, List<Entity<StomachComponent, OrganComponent>> stomachs)
     {
+=======
+    /// <param name="popup">Should we also display popup text if it exists?</param>
+    public bool IsDigestibleBy(EntityUid food, List<Entity<StomachComponent, OrganComponent>> stomachs, out bool popup)
+    {
+        popup = false;
+>>>>>>> upstream/master
         var ev = new IsDigestibleEvent();
         RaiseLocalEvent(food, ref ev);
 
@@ -210,6 +221,10 @@ public sealed partial class IngestionSystem : EntitySystem
         }
 
         // If we didn't find a stomach that can digest our food then it doesn't exist.
+<<<<<<< HEAD
+=======
+        popup = true;
+>>>>>>> upstream/master
         return false;
     }
 
@@ -247,9 +262,15 @@ public sealed partial class IngestionSystem : EntitySystem
             return;
 
         // Can we digest the specific item we're trying to eat?
+<<<<<<< HEAD
         if (!IsDigestibleBy(args.Ingested, stomachs))
         {
             if (!args.Ingest)
+=======
+        if (!IsDigestibleBy(args.Ingested, stomachs, out var popup))
+        {
+            if (!args.Ingest || !popup)
+>>>>>>> upstream/master
                 return;
 
             if (forceFed)
@@ -362,6 +383,12 @@ public sealed partial class IngestionSystem : EntitySystem
 
         var split = _solutionContainer.SplitSolution(solution.Value, transfer);
 
+<<<<<<< HEAD
+=======
+        if (beforeEv.Refresh)
+            _solutionContainer.TryAddSolution(solution.Value, split);
+
+>>>>>>> upstream/master
         var ingestEv = new IngestingEvent(food, split, forceFed);
         RaiseLocalEvent(entity, ref ingestEv);
 
@@ -371,9 +398,12 @@ public sealed partial class IngestionSystem : EntitySystem
         var afterEv = new IngestedEvent(args.User, entity, split, forceFed);
         RaiseLocalEvent(food, ref afterEv);
 
+<<<<<<< HEAD
         if (afterEv.Refresh)
             _solutionContainer.TryAddSolution(solution.Value, split);
 
+=======
+>>>>>>> upstream/master
         _stomach.TryTransferSolution(stomachToUse.Value.Owner, split, stomachToUse);
 
         if (!afterEv.Destroy)

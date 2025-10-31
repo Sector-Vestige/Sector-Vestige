@@ -56,4 +56,8 @@
   product: CrateStationAiCore
   cost: 10000
   category: cargoproduct-category-name-science
+<<<<<<< HEAD
   group: market
+=======
+  group: market
+>>>>>>> upstream/master

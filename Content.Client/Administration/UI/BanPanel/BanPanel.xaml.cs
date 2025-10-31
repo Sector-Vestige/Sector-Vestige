@@ -236,7 +236,11 @@ public sealed partial class BanPanel : DefaultWindow
         var roleGroupCheckbox = new Button
         {
             Name = $"{groupName}GroupCheckbox",
+<<<<<<< HEAD
             Text = "Ban all",
+=======
+            Text = Loc.GetString("role-bans-ban-group"),
+>>>>>>> upstream/master
             Margin = new Thickness(0, 0, 5, 0),
             ToggleMode = true,
         };
@@ -304,19 +308,31 @@ public sealed partial class BanPanel : DefaultWindow
     }
 
     /// <summary>
+<<<<<<< HEAD
     /// Adds a check button specifically for one "role" in a "group"
+=======
+    /// Adds a toggle button specifically for one "role" in a "group"
+>>>>>>> upstream/master
     /// E.g. it would add the Chief Medical Officer "role" into the "Medical" group.
     /// </summary>
     private void AddRoleCheckbox(string group, string role, GridContainer roleGroupInnerContainer, Button roleGroupCheckbox)
     {
         var roleCheckboxContainer = new BoxContainer();
+<<<<<<< HEAD
         var roleCheckButton = new Button
+=======
+        var roleToggleButton = new Button
+>>>>>>> upstream/master
         {
             Name = role,
             Text = role,
             ToggleMode = true,
         };
+<<<<<<< HEAD
         roleCheckButton.OnToggled += args =>
+=======
+        roleToggleButton.OnToggled += args =>
+>>>>>>> upstream/master
         {
             // Checks the role group checkbox if all the children are pressed
             if (args.Pressed && _roleCheckboxes[group].All(e => e.Item1.Pressed))
@@ -353,12 +369,20 @@ public sealed partial class BanPanel : DefaultWindow
             roleCheckboxContainer.AddChild(jobIconTexture);
         }
 
+<<<<<<< HEAD
         roleCheckboxContainer.AddChild(roleCheckButton);
+=======
+        roleCheckboxContainer.AddChild(roleToggleButton);
+>>>>>>> upstream/master
 
         roleGroupInnerContainer.AddChild(roleCheckboxContainer);
 
         _roleCheckboxes.TryAdd(group, []);
+<<<<<<< HEAD
         _roleCheckboxes[group].Add((roleCheckButton, rolePrototype));
+=======
+        _roleCheckboxes[group].Add((roleToggleButton, rolePrototype));
+>>>>>>> upstream/master
     }
 
     public void UpdateBanFlag(bool newFlag)
@@ -401,7 +425,7 @@ public sealed partial class BanPanel : DefaultWindow
         TimeLine.Text = args.Text;
         if (!double.TryParse(args.Text, out var result))
         {
-            ExpiresLabel.Text = "err";
+            ExpiresLabel.Text = Loc.GetString("ban-panel-expiry-error");
             ErrorLevel |= ErrorLevelEnum.Minutes;
             TimeLine.ModulateSelfOverride = Color.Red;
             UpdateSubmitEnabled();

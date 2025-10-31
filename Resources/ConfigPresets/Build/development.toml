@@ -38,6 +38,10 @@ preload_grids = false
 
 [admin]
 see_own_notes = true
+<<<<<<< HEAD
+=======
+new_player_threshold = 120
+>>>>>>> upstream/master
 
 [ic]
 random_characters = true

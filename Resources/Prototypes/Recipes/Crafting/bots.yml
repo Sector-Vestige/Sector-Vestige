@@ -53,3 +53,14 @@
   targetNode: bot
   category: construction-category-utilities
   objectType: Item
+<<<<<<< HEAD
+=======
+
+- type: construction
+  id: hugbot
+  graph: HugBot
+  startNode: start
+  targetNode: bot
+  category: construction-category-utilities
+  objectType: Item
+>>>>>>> upstream/master

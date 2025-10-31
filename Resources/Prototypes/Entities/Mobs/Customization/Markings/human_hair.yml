@@ -39,7 +39,10 @@
   id: HumanHairBaby
   bodyPart: Hair
   markingCategory: Hair
+<<<<<<< HEAD
   speciesRestriction: [Human, Dwarf, SlimePerson, Moth, Felinid, Harpy, Vulpkanin, Foxfolk, Rodentia]
+=======
+>>>>>>> upstream/master
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: baby
@@ -95,7 +98,10 @@
   id: HumanHairCube
   bodyPart: Hair
   markingCategory: Hair
+<<<<<<< HEAD
   speciesRestriction: [Human, Dwarf, SlimePerson, Moth, Felinid, Harpy, Vulpkanin, Foxfolk, Rodentia]
+=======
+>>>>>>> upstream/master
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: cube
@@ -1623,8 +1629,21 @@
   id: HumanHairLongWithBangs
   bodyPart: Hair
   markingCategory: Hair
+<<<<<<< HEAD
   speciesRestriction: [Human, Dwarf, SlimePerson, Moth, Felinid, Harpy, Vulpkanin, Foxfolk, Rodentia]
   sprites:
   - sprite: Mobs/Customization/human_hair.rsi
     state: longwithbangs
 
+=======
+  sprites:
+  - sprite: Mobs/Customization/human_hair.rsi
+    state: longwithbangs
+- type: marking
+  id: HumanHairOverEyePigtail
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+  - sprite: Mobs/Customization/human_hair.rsi
+    state: overeyepigtail
+>>>>>>> upstream/master

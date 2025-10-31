@@ -128,7 +128,11 @@ namespace Content.Server.Speech.EntitySystems
                     var firstLoc = _loc.GetString(first);
                     var replaceLoc = _loc.GetString(replace);
 
+<<<<<<< HEAD
                     var regex = new Regex($@"(?<!\w){firstLoc}(?!\w)", RegexOptions.IgnoreCase);
+=======
+                    var regex = new Regex($@"(?<![\w']){firstLoc}(?![\w'])", RegexOptions.IgnoreCase);
+>>>>>>> upstream/master
 
                     return (regex, replaceLoc);
 

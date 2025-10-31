@@ -56,7 +56,11 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
             return;
 
         args.Handled = true;
+<<<<<<< HEAD
         if (TryComp(ent, out LimitedChargesComponent? charges) && charges.LastCharges < ent.Comp.DecalChargeCost)
+=======
+        if (TryComp(ent, out LimitedChargesComponent? charges) && _charges.GetCurrentCharges((ent, charges)) < ent.Comp.DecalChargeCost)
+>>>>>>> upstream/master
         {
             _popup.PopupEntity(Loc.GetString("spray-painter-interact-no-charges"), args.User, args.User);
             return;
@@ -165,7 +169,11 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
             return;
 
         if (TryComp<LimitedChargesComponent>(args.Used, out var charges)
+<<<<<<< HEAD
             && charges.LastCharges < painter.PipeChargeCost)
+=======
+            && _charges.GetCurrentCharges((args.Used, charges)) < painter.PipeChargeCost)
+>>>>>>> upstream/master
         {
             var msg = Loc.GetString("spray-painter-interact-no-charges");
             _popup.PopupEntity(msg, args.User, args.User);

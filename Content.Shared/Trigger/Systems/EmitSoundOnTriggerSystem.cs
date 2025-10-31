@@ -4,11 +4,16 @@ using Robust.Shared.Network;
 
 namespace Content.Shared.Trigger.Systems;
 
+<<<<<<< HEAD
 public sealed class EmitSoundOnTriggerSystem : EntitySystem
+=======
+public sealed class EmitSoundOnTriggerSystem : XOnTriggerSystem<EmitSoundOnTriggerComponent>
+>>>>>>> upstream/master
 {
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
+<<<<<<< HEAD
     public override void Initialize()
     {
         base.Initialize();
@@ -27,6 +32,11 @@ public sealed class EmitSoundOnTriggerSystem : EntitySystem
             return;
 
         args.Handled |= TryEmitSound(ent, target.Value, args.User);
+=======
+    protected override void OnTrigger(Entity<EmitSoundOnTriggerComponent> ent, EntityUid target, ref TriggerEvent args)
+    {
+        args.Handled |= TryEmitSound(ent, target, args.User);
+>>>>>>> upstream/master
     }
 
     private bool TryEmitSound(Entity<EmitSoundOnTriggerComponent> ent, EntityUid target, EntityUid? user = null)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
 // SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
@@ -11,6 +12,8 @@
 //
 // SPDX-License-Identifier: MIT
 
+=======
+>>>>>>> upstream/master
 using Content.Client.Administration.Managers;
 using Content.Shared.Administration;
 using Content.Shared.Chemistry.Components;

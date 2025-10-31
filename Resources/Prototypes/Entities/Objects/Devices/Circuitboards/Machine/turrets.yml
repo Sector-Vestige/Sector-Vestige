@@ -45,7 +45,11 @@
     state: security
   - type: MachineBoard
     prototype: WeaponEnergyTurretSecurity
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> upstream/master
 - type: entity
   parent: WeaponEnergyTurretStationMachineCircuitboardBase
   id: WeaponEnergyTurretCommandMachineCircuitboard

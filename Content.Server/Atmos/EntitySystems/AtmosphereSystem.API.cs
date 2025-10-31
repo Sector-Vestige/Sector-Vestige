@@ -355,10 +355,13 @@ public partial class AtmosphereSystem
         grid.Comp.DeltaPressureEntityLookup[ent.Owner] = grid.Comp.DeltaPressureEntities.Count;
         grid.Comp.DeltaPressureEntities.Add(ent);
 
+<<<<<<< HEAD
         ent.Comp.CurrentPosition = _map.CoordinatesToTile(grid,
             Comp<MapGridComponent>(grid),
             xform.Coordinates);
 
+=======
+>>>>>>> upstream/master
         ent.Comp.GridUid = grid.Owner;
         ent.Comp.InProcessingList = true;
 

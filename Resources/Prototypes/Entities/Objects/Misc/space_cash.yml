@@ -61,12 +61,15 @@
   icon: { sprite: /Textures/Objects/Economy/cash.rsi, state: cash }
   price: 1
 
+<<<<<<< HEAD
 - type: stack
   id: Credit
   name: stack-credit
   icon: { sprite: /Textures/Objects/Economy/cash.rsi, state: cash }
   spawn: SpaceCash
 
+=======
+>>>>>>> upstream/master
 - type: entity
   parent: SpaceCash
   id: SpaceCash10

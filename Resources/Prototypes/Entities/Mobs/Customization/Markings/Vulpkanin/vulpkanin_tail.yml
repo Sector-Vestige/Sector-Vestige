@@ -65,4 +65,8 @@
     - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp
     - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+<<<<<<< HEAD
       state: vulp-fade
+=======
+      state: vulp-fade
+>>>>>>> upstream/master

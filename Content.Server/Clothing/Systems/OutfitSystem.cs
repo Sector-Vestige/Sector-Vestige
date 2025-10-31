@@ -4,6 +4,10 @@ using Content.Shared.Access.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Hands.Components;
 using Content.Shared.Humanoid;
+<<<<<<< HEAD
+=======
+using Content.Shared.Interaction.Components;
+>>>>>>> upstream/master
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
@@ -23,7 +27,11 @@ public sealed class OutfitSystem : EntitySystem
     [Dependency] private readonly InventorySystem _invSystem = default!;
     [Dependency] private readonly SharedStationSpawningSystem _spawningSystem = default!;
 
+<<<<<<< HEAD
     public bool SetOutfit(EntityUid target, string gear, Action<EntityUid, EntityUid>? onEquipped = null)
+=======
+    public bool SetOutfit(EntityUid target, string gear, Action<EntityUid, EntityUid>? onEquipped = null, bool unremovable = false)
+>>>>>>> upstream/master
     {
         if (!EntityManager.TryGetComponent(target, out InventoryComponent? inventoryComponent))
             return false;
@@ -60,6 +68,11 @@ public sealed class OutfitSystem : EntitySystem
                 }
 
                 _invSystem.TryEquip(target, equipmentEntity, slot.Name, silent: true, force: true, inventory: inventoryComponent);
+<<<<<<< HEAD
+=======
+                if (unremovable)
+                    EnsureComp<UnremoveableComponent>(equipmentEntity);
+>>>>>>> upstream/master
 
                 onEquipped?.Invoke(target, equipmentEntity);
             }

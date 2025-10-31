@@ -45,11 +45,15 @@ public sealed partial class GhostGui : UIWidget
         GhostWarpButton.OnPressed += _ => RequestWarpsPressed?.Invoke();
         ReturnToBodyButton.OnPressed += _ => ReturnToBodyPressed?.Invoke();
         GhostRolesButton.OnPressed += _ => GhostRolesPressed?.Invoke();
+<<<<<<< HEAD
 
         // AXOLOTL: Ghostrespawn
         AxolotlGhostRespawnRulesWindow = new GhostRespawnRulesWindow();
         AxolotlGhostRespawnRulesWindow.RespawnButton.OnPressed += _ => AxolotlGhostRespawnPressed?.Invoke();
         AxolotlGhostRespawnButton.OnPressed += _ => AxolotlGhostRespawnRulesWindow.OpenCentered();
+=======
+        GhostRolesButton.OnPressed += _ => GhostRolesButton.StyleClasses.Remove(StyleClass.Negative);
+>>>>>>> upstream/master
     }
 
     public void Hide()
@@ -70,7 +74,7 @@ public sealed partial class GhostGui : UIWidget
             GhostRolesButton.Text = Loc.GetString("ghost-gui-ghost-roles-button", ("count", roles));
             if (roles > 0)
             {
-                GhostRolesButton.StyleClasses.Add(StyleBase.ButtonCaution);
+                GhostRolesButton.StyleClasses.Add(StyleClass.Negative);
             }
             else
             {

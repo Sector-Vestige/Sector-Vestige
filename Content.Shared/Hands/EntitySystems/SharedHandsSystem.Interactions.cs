@@ -181,7 +181,11 @@ public abstract partial class SharedHandsSystem : EntitySystem
         if (!CanDropHeld(uid, handName, checkActionBlocker))
             return false;
 
+<<<<<<< HEAD
         if (!CanPickupToHand(uid, entity.Value, handsComp.ActiveHandId, checkActionBlocker, handsComp))
+=======
+        if (!CanPickupToHand(uid, entity.Value, handsComp.ActiveHandId, checkActionBlocker: checkActionBlocker, handsComp: handsComp))
+>>>>>>> upstream/master
             return false;
 
         DoDrop(uid, handName, false, log: false);

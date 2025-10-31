@@ -278,9 +278,17 @@
   parent: Plunger
   description: A plunger with a plastic suction cup coated in a thin layer of gold given as a token of appreciation for years of service. Still used to unclog drains.
   components:
+<<<<<<< HEAD
   - type: Tag
     tags:
     - GoldenPlunger
+=======
+  - type: Tag # TODO change Plunger into a tool so we dont got to layer Tags like below.
+    tags:
+    - GoldenPlunger
+    - Plunger
+    - WhitelistChameleon
+>>>>>>> upstream/master
   - type: Sprite
     sprite: Objects/Specific/Janitorial/golden_plunger.rsi
     state: plunger
@@ -360,7 +368,6 @@
     - type: Tag
       tags:
         - Mop
-    - type: CleansForensics
     - type: Fiber
       fiberColor: fibers-white
     - type: DnaSubstanceTrace

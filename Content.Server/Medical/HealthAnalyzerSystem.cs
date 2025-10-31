@@ -1,9 +1,12 @@
 using Content.Server.Medical.Components;
 using Content.Server.PowerCell;
+<<<<<<< HEAD
 using Content.Server.Temperature.Components;
+=======
+>>>>>>> upstream/master
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -13,6 +16,10 @@ using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
+<<<<<<< HEAD
+=======
+using Content.Shared.Temperature.Components;
+>>>>>>> upstream/master
 using Content.Shared.Traits.Assorted;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;

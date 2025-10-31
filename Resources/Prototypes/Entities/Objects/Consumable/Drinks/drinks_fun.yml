@@ -8,9 +8,15 @@
       collection: packetOpenSounds
   - type: Sprite
     layers:
+<<<<<<< HEAD
     - state: icon
       map: ["enum.OpenableVisuals.Layer"]
     - state: fill6
+=======
+    - state: icon_empty
+      map: ["enum.OpenableVisuals.Layer"]
+    - state: fill-6
+>>>>>>> upstream/master
       map: [ "enum.SolutionContainerLayers.Fill" ] # already has liquid, so no visible: false
     - state: icon-front
       map: [ "enum.SolutionContainerLayers.Overlay" ]
@@ -20,6 +26,7 @@
         maxVol: 30
   - type: SolutionContainerVisuals
     maxFillLevels: 6
+<<<<<<< HEAD
     fillBaseName: fill # TODO rename to "fill-"
   - type: GenericVisualizer
     visuals:
@@ -27,6 +34,8 @@
         enum.OpenableVisuals.Layer:
           True: {state: "icon_open"}
           False: {state: "icon"}
+=======
+>>>>>>> upstream/master
   - type: TrashOnSolutionEmpty
     solution: drink
 
@@ -97,8 +106,11 @@
   components:
   - type: Sprite
     sprite: Objects/Consumable/Drinks/jar_what.rsi
+<<<<<<< HEAD
   - type: ExaminableSolution
     solution: drink
+=======
+>>>>>>> upstream/master
   - type: FitsInDispenser
     solution: drink
   - type: Tag

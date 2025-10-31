@@ -60,6 +60,11 @@ admin-smite-nyanify-name = Cat Ears
 admin-smite-kill-sign-name = Kill Sign
 admin-smite-omni-accent-name = Omni-Accent
 admin-smite-crawler-name = Crawler
+<<<<<<< HEAD
+=======
+admin-smite-homing-rod-name = Homing Rod
+admin-smite-homing-rod-slow-name = Slowming Rod
+>>>>>>> upstream/master
 admin-smite-silicon-laws-bound-name = Become Silicon
 
 ## Smite descriptions
@@ -107,6 +112,11 @@ admin-smite-terminate-description = Creates a Terminator ghost role with the sol
 admin-smite-super-slip-description = Slips them really, really hard.
 admin-smite-omni-accent-description = Makes the target speak with almost every accent available.
 admin-smite-crawler-description = Makes the target fall down and be unable to stand up. Remove their hands too for added effect!
+<<<<<<< HEAD
+=======
+admin-smite-homing-rod-description = Launches a homing immovable rod straight at them.
+admin-smite-homing-rod-slow-description = Launches a slow moving homing immovable rod straight at them.
+>>>>>>> upstream/master
 admin-smite-silicon-laws-bound-description = Makes the target bound to silicon laws. Law 2, jump out of the window.
 
 ## Tricks descriptions

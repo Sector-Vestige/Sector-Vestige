@@ -176,7 +176,10 @@
   - type: BypassInteractionChecks
   - type: ExplosionResistance
     damageCoefficient: 0
+<<<<<<< HEAD
   - type: InteractionToggleable # CD
+=======
+>>>>>>> upstream/master
 
 - type: entity
   abstract: true
@@ -220,7 +223,11 @@
   components:
   - type: Action
     icon: { sprite: Interface/Actions/actions_ai.rsi, state: mass_scanner }
+<<<<<<< HEAD
     iconOn: { sprite: Interface/Actions/actions_ai.rsi, state: mass_scanner }
+=======
+    iconOn: { sprite: Interface/Actions/actions_ai.rsi, state: comms_console }
+>>>>>>> upstream/master
     keywords: [ "AI", "console", "interface" ]
     priority: -6
   - type: InstantAction

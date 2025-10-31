@@ -25,6 +25,7 @@ electrify-door-off = Disable overcharge
 toggle-light = Toggle light
 
 ai-device-not-responding = Device is not responding
+ai-device-no-access = You have no access to this device
 
 ai-consciousness-download-warning = Your consciousness is being downloaded.
 
@@ -48,4 +49,8 @@ station-ai-hologram-female = Female appearance
 station-ai-hologram-male = Male appearance
 station-ai-hologram-face = Disembodied head
 station-ai-hologram-cat = Cat form
+<<<<<<< HEAD
 station-ai-hologram-dog = Corgi form
+=======
+station-ai-hologram-dog = Corgi form
+>>>>>>> upstream/master

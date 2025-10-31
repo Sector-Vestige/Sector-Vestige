@@ -19,6 +19,10 @@ namespace Content.Shared.Movement.Systems;
 /// </remarks>
 public sealed class MovementModStatusSystem : EntitySystem
 {
+<<<<<<< HEAD
+=======
+    public static readonly EntProtoId ReagentSpeed = "ReagentSpeedStatusEffect";
+>>>>>>> upstream/master
     public static readonly EntProtoId VomitingSlowdown = "VomitingSlowdownStatusEffect";
     public static readonly EntProtoId TaserSlowdown = "TaserSlowdownStatusEffect";
     public static readonly EntProtoId FlashSlowdown = "FlashSlowdownStatusEffect";

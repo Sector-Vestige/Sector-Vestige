@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SPDX-FileCopyrightText: 2025 Sector-Vestige contributors
 # SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
 # SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
@@ -6,9 +7,9 @@
 #
 # SPDX-License-Identifier: MIT
 
+=======
+blank_issues_enabled: true
+>>>>>>> upstream/master
 contact_links:
-  - name: Report a Security Vulnerability
-    url: https://github.com/space-wizards/space-station-14/blob/master/SECURITY.md
-    about: Please report security vulnerabilities privately so we can fix them before they are publicly disclosed.
   - name: Request a Feature
     about: Submit feature request/idea and spar about it with our maintainer team.

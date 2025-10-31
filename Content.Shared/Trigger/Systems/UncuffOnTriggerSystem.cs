@@ -4,6 +4,7 @@ using Content.Shared.Trigger.Components.Effects;
 
 namespace Content.Shared.Trigger.Systems;
 
+<<<<<<< HEAD
 public sealed class UncuffOnTriggerSystem : EntitySystem
 {
     [Dependency] private readonly SharedCuffableSystem _cuffable = default!;
@@ -29,6 +30,18 @@ public sealed class UncuffOnTriggerSystem : EntitySystem
             return;
 
         _cuffable.Uncuff(target.Value, args.User, cuffs.LastAddedCuffs);
+=======
+public sealed class UncuffOnTriggerSystem : XOnTriggerSystem<UncuffOnTriggerComponent>
+{
+    [Dependency] private readonly SharedCuffableSystem _cuffable = default!;
+
+    protected override void OnTrigger(Entity<UncuffOnTriggerComponent> ent, EntityUid target, ref TriggerEvent args)
+    {
+        if (!TryComp<CuffableComponent>(target, out var cuffs) || cuffs.Container.ContainedEntities.Count < 1)
+            return;
+
+        _cuffable.Uncuff(target, args.User, cuffs.LastAddedCuffs);
+>>>>>>> upstream/master
         args.Handled = true;
     }
 }

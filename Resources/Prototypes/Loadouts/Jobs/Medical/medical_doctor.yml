@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # # Senior Time (CD: Disabled timers)
 # - type: loadoutEffectGroup
 #   id: SeniorPhysician
@@ -17,6 +18,27 @@
 #       !type:DepartmentTimeRequirement
 #       department: Medical
 #       time: 216000 # 60 hrs
+=======
+# Senior Time
+- type: loadoutEffectGroup
+  id: SeniorPhysician
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChemist
+      time: 6h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMedicalDoctor
+      time: 6h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 60h
+>>>>>>> upstream/master
 
 # Other Timers
 
@@ -27,7 +49,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobMedicalDoctor
-      time: 108000 #30 hrs
+      time: 30h
 
 # Head
 

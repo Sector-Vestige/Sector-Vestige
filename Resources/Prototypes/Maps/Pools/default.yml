@@ -39,6 +39,7 @@
   maps:
   - Amber
   - Bagel
+<<<<<<< HEAD
   # - Box # Vestige: Derotated Map
   - Elkridge
   # - Fland # Vestige: Derotated Map
@@ -48,3 +49,14 @@
   - Plasma
   # - Reach # Vestige: Derotated Map
   # - Exo # Vestige: Derotated Map
+=======
+  - Box
+  - Elkridge
+  - Fland
+  - Marathon
+  - Oasis
+  - Packed
+  - Plasma
+  - Reach
+  - Exo
+>>>>>>> upstream/master

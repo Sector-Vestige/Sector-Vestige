@@ -14,6 +14,10 @@ changelog-button-new-entries = Changelog (new!)
 changelog-tab-title-Changelog = Changelog
 changelog-tab-title-Admin = Admin
 changelog-tab-title-Maps = Maps
+<<<<<<< HEAD
+=======
+changelog-tab-title-Rules = Rules
+>>>>>>> upstream/master
 
 cmd-changelog-desc = Opens the changelog.
 cmd-changelog-help = Usage: changelog

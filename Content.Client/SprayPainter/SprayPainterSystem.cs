@@ -97,7 +97,11 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
         public StatusControl(Entity<SprayPainterComponent> ent)
         {
             _entity = ent;
+<<<<<<< HEAD
             _label = new RichTextLabel { StyleClasses = { StyleNano.StyleClassItemStatus } };
+=======
+            _label = new RichTextLabel { StyleClasses = { StyleClass.ItemStatus } };
+>>>>>>> upstream/master
             AddChild(_label);
         }
 

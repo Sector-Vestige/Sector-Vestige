@@ -1,6 +1,10 @@
 ﻿using Content.Server.Damage.Components;
 using Content.Server.Destructible;
+<<<<<<< HEAD
 using Content.Shared.Damage;
+=======
+using Content.Shared.Damage.Components;
+>>>>>>> upstream/master
 using Content.Shared.Examine;
 using Content.Shared.Rounding;
 using Robust.Shared.Prototypes;

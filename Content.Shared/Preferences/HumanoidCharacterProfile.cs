@@ -31,10 +31,13 @@ namespace Content.Shared.Preferences
         private static readonly Regex RestrictedNameRegex = new(@"[^A-Za-z0-9 '\-]");
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
+<<<<<<< HEAD
         public const int MaxNameLength = 32;
         public const int MaxLoadoutNameLength = 32;
         public const int MaxDescLength = 1024; // CosmaticDrift-LargerCharacterDescriptions // Was 512
 
+=======
+>>>>>>> upstream/master
         /// <summary>
         /// Job preferences for initial spawn.
         /// </summary>
@@ -224,6 +227,7 @@ namespace Content.Shared.Preferences
             return new()
             {
                 Species = species,
+                Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species),
             };
         }
 

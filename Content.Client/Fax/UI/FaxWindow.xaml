@@ -56,7 +56,11 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Scale="0.9 0.9"
+<<<<<<< HEAD
                                 StyleClasses="Refresh" />
+=======
+                                StyleClasses="RefreshButton" />
+>>>>>>> upstream/master
                          </Button>
                    </BoxContainer>
                 </BoxContainer>

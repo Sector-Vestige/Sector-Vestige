@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Content.Client.Stylesheets;
+=======
+using Content.Client.Stylesheets.Palette;
+>>>>>>> upstream/master
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Changeling.Components;
 using Content.Shared.Changeling.Systems;
@@ -11,8 +15,13 @@ namespace Content.Client.Changeling.UI;
 public sealed partial class ChangelingTransformBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
     private SimpleRadialMenu? _menu;
+<<<<<<< HEAD
     private static readonly Color SelectedOptionBackground = StyleNano.ButtonColorGoodDefault.WithAlpha(128);
     private static readonly Color SelectedOptionHoverBackground = StyleNano.ButtonColorGoodHovered.WithAlpha(128);
+=======
+    private static readonly Color SelectedOptionBackground = Palettes.Green.Element.WithAlpha(128);
+    private static readonly Color SelectedOptionHoverBackground = Palettes.Green.HoveredElement.WithAlpha(128);
+>>>>>>> upstream/master
 
     protected override void Open()
     {

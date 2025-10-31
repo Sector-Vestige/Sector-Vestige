@@ -9,6 +9,11 @@ using Content.Shared.Turrets;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using System.Linq;
+<<<<<<< HEAD
+=======
+using Content.Server.Administration.Logs;
+using Content.Shared.Database;
+>>>>>>> upstream/master
 
 namespace Content.Server.TurretController;
 
@@ -17,6 +22,10 @@ public sealed partial class DeployableTurretControllerSystem : SharedDeployableT
 {
     [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
     [Dependency] private readonly DeviceNetworkSystem _deviceNetwork = default!;
+<<<<<<< HEAD
+=======
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+>>>>>>> upstream/master
 
     /// Keys for the device network. See <see cref="DeviceNetworkConstants"/> for further examples.
     public const string CmdSetArmamemtState = "set_armament_state";
@@ -109,6 +118,11 @@ public sealed partial class DeployableTurretControllerSystem : SharedDeployableT
             [CmdSetArmamemtState] = armamentState,
         };
 
+<<<<<<< HEAD
+=======
+        _adminLogger.Add(LogType.ItemConfigure, LogImpact.Medium, $"{ToPrettyString(user)} set {ToPrettyString(ent)} to {armamentState}");
+
+>>>>>>> upstream/master
         _deviceNetwork.QueuePacket(ent, null, payload, device: device);
     }
 
@@ -132,6 +146,14 @@ public sealed partial class DeployableTurretControllerSystem : SharedDeployableT
             [CmdSetAccessExemptions] = turretTargetingSettings.ExemptAccessLevels,
         };
 
+<<<<<<< HEAD
+=======
+        foreach (var exemption in exemptions)
+        {
+            _adminLogger.Add(LogType.ItemConfigure, LogImpact.Medium, $"{ToPrettyString(user)} set {ToPrettyString(ent)} authorization of {exemption} to {enabled}");
+        }
+
+>>>>>>> upstream/master
         _deviceNetwork.QueuePacket(ent, null, payload, device: device);
     }
 

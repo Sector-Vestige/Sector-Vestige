@@ -91,7 +91,11 @@
 #      map: ["enum.OpenableVisuals.Layer"]
 
 ## Bases for visuals
+<<<<<<< HEAD
 # TODO standardize state names for fill levels and openable visuals
+=======
+# New drinks should mirror these state names to reduce clutter when creating new prototypes
+>>>>>>> upstream/master
 
 # Basic visualizer for an openable entity. Requires DrinkBaseOpenable
 - type: entity
@@ -103,13 +107,22 @@
     visuals:
       enum.OpenableVisuals.Opened:
         enum.OpenableVisuals.Layer:
+<<<<<<< HEAD
           True: {state: "icon_open"}
           False: {state: "icon"}
+=======
+          True: {state: "icon_open"} # lid off
+          False: {state: "icon"} # lid on
+>>>>>>> upstream/master
   - type: Sprite
     layers:
     - state: icon
       map: ["enum.OpenableVisuals.Layer"]
   - type: ExaminableSolution
+<<<<<<< HEAD
+=======
+    solution: *sol
+>>>>>>> upstream/master
     examinableWhileClosed: false # If you can't see the fill levels on the sprite, we can assume it's opaque
     heldOnly: true # If it's opaque, you probably can't see through the open lid from a distance
 
@@ -121,11 +134,19 @@
   - type: Appearance
   - type: Sprite
     layers:
+<<<<<<< HEAD
     - state: icon_empty
+=======
+    - state: icon
+>>>>>>> upstream/master
     - state: fill-1
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
   - type: SolutionContainerVisuals
+<<<<<<< HEAD
+=======
+    solutionName: *sol
+>>>>>>> upstream/master
     maxFillLevels: 5
     fillBaseName: fill-
     inHandsMaxFillLevels: 3
@@ -139,7 +160,11 @@
   components:
   - type: Sprite
     layers:
+<<<<<<< HEAD
     - state: icon_empty
+=======
+    - state: icon
+>>>>>>> upstream/master
       map: [ "enum.SolutionContainerLayers.Base" ]
     - state: fill-1
       map: [ "enum.SolutionContainerLayers.Fill" ]
@@ -169,8 +194,13 @@
     visuals:
       enum.OpenableVisuals.Opened:
         enum.OpenableVisuals.Layer:
+<<<<<<< HEAD
           True: {state: "icon_open"}
           False: {state: "icon_empty"}
+=======
+          True: {state: "icon_open"} # lid off
+          False: {state: "icon_empty"} # lid on
+>>>>>>> upstream/master
   - type: Sprite
     layers:
     - state: icon_empty

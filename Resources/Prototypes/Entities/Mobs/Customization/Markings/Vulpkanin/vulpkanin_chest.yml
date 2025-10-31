@@ -24,4 +24,8 @@
   speciesRestriction: [ Vulpkanin ]
   sprites:
     - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+<<<<<<< HEAD
       state: belly_fox
+=======
+      state: belly_fox
+>>>>>>> upstream/master

@@ -9,8 +9,8 @@
   - type: Instrument
     allowPercussion: false
     handheld: false
-    bank: 1
     program: 2
+    bank: 100 # Defined in space-station-14.sf2
   - type: UserInterface
     interfaces:
       enum.StoreUiKey.Key:
@@ -58,6 +58,9 @@
     - Common
   - type: DoAfter
   - type: Actions
+  - type: ActionGrant
+    actions:
+    - ActionPAIOpenShop
   - type: Store
     categories:
     - PAIAbilities
@@ -188,6 +191,7 @@
     node: potatoai
 
 - type: entity
+<<<<<<< HEAD
   parent: BaseMentalAction
   id: ActionPAIOpenShop
   name: Software Catalog
@@ -197,6 +201,12 @@
     icon: Interface/Actions/shop.png
   - type: InstantAction
     event: !type:PAIShopActionEvent
+=======
+  parent: ActionIntrinsicStore
+  id: ActionPAIOpenShop
+  name: Software Catalog
+  description: Install new software to assist your owner.
+>>>>>>> upstream/master
 
 - type: entity
   parent: BaseMentalAction

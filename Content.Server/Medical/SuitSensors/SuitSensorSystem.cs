@@ -1,8 +1,10 @@
 using Content.Server.DeviceNetwork.Systems;
-using Content.Server.Emp;
 using Content.Server.Medical.CrewMonitoring;
 using Content.Shared.DeviceNetwork.Components;
+<<<<<<< HEAD
 using Content.Shared.Medical.SuitSensor;
+=======
+>>>>>>> upstream/master
 using Content.Shared.Medical.SuitSensors;
 using Robust.Shared.Timing;
 
@@ -13,6 +15,7 @@ public sealed class SuitSensorSystem : SharedSuitSensorSystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly DeviceNetworkSystem _deviceNetworkSystem = default!;
     [Dependency] private readonly SingletonDeviceNetServerSystem _singletonServerSystem = default!;
+<<<<<<< HEAD
 
     public override void Initialize()
     {
@@ -21,6 +24,8 @@ public sealed class SuitSensorSystem : SharedSuitSensorSystem
         SubscribeLocalEvent<SuitSensorComponent, EmpPulseEvent>(OnEmpPulse);
         SubscribeLocalEvent<SuitSensorComponent, EmpDisabledRemoved>(OnEmpFinished);
     }
+=======
+>>>>>>> upstream/master
 
     public override void Update(float frameTime)
     {
@@ -70,6 +75,7 @@ public sealed class SuitSensorSystem : SharedSuitSensorSystem
             _deviceNetworkSystem.QueuePacket(uid, sensor.ConnectedServer, payload, device: device);
         }
     }
+<<<<<<< HEAD
 
     private void OnEmpPulse(Entity<SuitSensorComponent> ent, ref EmpPulseEvent args)
     {
@@ -88,4 +94,6 @@ public sealed class SuitSensorSystem : SharedSuitSensorSystem
         SetSensor(ent.AsNullable(), ent.Comp.PreviousMode, null);
         ent.Comp.ControlsLocked = ent.Comp.PreviousControlsLocked;
     }
+=======
+>>>>>>> upstream/master
 }

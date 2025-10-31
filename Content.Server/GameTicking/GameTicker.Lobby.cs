@@ -213,6 +213,7 @@ namespace Content.Server.GameTicking
                 return;
             }
 
+<<<<<<< HEAD
             _playerGameStatuses[player.UserId] = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             // Moffstation - Ready manifest
             var status = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
@@ -223,6 +224,8 @@ namespace Content.Server.GameTicking
             }
             // Moffstatation - End
 
+=======
+>>>>>>> upstream/master
             _playerGameStatuses[player.UserId] = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             RaiseNetworkEvent(GetStatusMsg(player), player.Channel);
             // Moffstation - Start - Ready Manifest

@@ -173,7 +173,11 @@
 
 # Fade
 
+<<<<<<< HEAD
 ## Left Side
+=======
+## Left Side 
+>>>>>>> upstream/master
 
 - type: marking
   id: VulpPointsFadeLegLeft
@@ -433,4 +437,8 @@
     default:
       type:
         !type:SimpleColoring
+<<<<<<< HEAD
           color: "#e5e3d1"
+=======
+          color: "#e5e3d1"
+>>>>>>> upstream/master

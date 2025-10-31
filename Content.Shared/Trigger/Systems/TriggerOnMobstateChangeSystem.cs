@@ -6,9 +6,14 @@ using Content.Shared.Trigger.Components.Triggers;
 
 namespace Content.Shared.Trigger.Systems;
 
+<<<<<<< HEAD
 public sealed partial class TriggerOnMobstateChangeSystem : EntitySystem
 {
     [Dependency] private readonly TriggerSystem _trigger = default!;
+=======
+public sealed partial class TriggerOnMobstateChangeSystem : TriggerOnXSystem
+{
+>>>>>>> upstream/master
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     public override void Initialize()
@@ -27,7 +32,11 @@ public sealed partial class TriggerOnMobstateChangeSystem : EntitySystem
         if (!component.MobState.Contains(args.NewMobState))
             return;
 
+<<<<<<< HEAD
         _trigger.Trigger(uid, component.TargetMobstateEntity ? uid : args.Origin, component.KeyOut);
+=======
+        Trigger.Trigger(uid, component.TargetMobstateEntity ? uid : args.Origin, component.KeyOut);
+>>>>>>> upstream/master
     }
 
     private void OnMobStateRelay(EntityUid uid, TriggerOnMobstateChangeComponent component, ImplantRelayEvent<MobStateChangedEvent> args)
@@ -35,7 +44,11 @@ public sealed partial class TriggerOnMobstateChangeSystem : EntitySystem
         if (!component.MobState.Contains(args.Event.NewMobState))
             return;
 
+<<<<<<< HEAD
         _trigger.Trigger(uid, component.TargetMobstateEntity ? args.ImplantedEntity : args.Event.Origin, component.KeyOut);
+=======
+        Trigger.Trigger(uid, component.TargetMobstateEntity ? args.ImplantedEntity : args.Event.Origin, component.KeyOut);
+>>>>>>> upstream/master
     }
 
     /// <summary>

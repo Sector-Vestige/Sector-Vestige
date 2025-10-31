@@ -33,7 +33,11 @@
       Cloth: 100
   - type: StaticPrice
     price: 5
+<<<<<<< HEAD
   - type: Food
+=======
+  - type: Edible
+>>>>>>> upstream/master
     requiresSpecialDigestion: true
     useSound: *BasePlushieSound
     delay: 2
@@ -110,6 +114,10 @@
     - ForceableFollow
     - PlushieGhost
     - Payload
+<<<<<<< HEAD
+=======
+    - ClothMade
+>>>>>>> upstream/master
 
 - type: entity
   parent: PlushieGhost
@@ -178,6 +186,7 @@
     sprite: Objects/Fun/Plushies/hampter.rsi
     state: icon
   - type: EmitSoundOnUse
+<<<<<<< HEAD
     sound:
       path: /Audio/Items/Toys/mousesqueek.ogg
   - type: EmitSoundOnLand
@@ -200,6 +209,22 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Items/Toys/mousesqueek.ogg
+=======
+    sound: &PlushieHampterSound
+      path: /Audio/Items/Toys/mousesqueek.ogg
+  - type: EmitSoundOnLand
+    sound: *PlushieHampterSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieHampterSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieHampterSound
+  - type: EmitSoundOnCollide
+    sound: *PlushieHampterSound
+  - type: Edible
+    useSound: *PlushieHampterSound
+  - type: MeleeWeapon
+    soundHit: *PlushieHampterSound
+>>>>>>> upstream/master
   - type: Clothing
     quickEquip: false
     sprite: Objects/Fun/Plushies/hampter.rsi
@@ -310,6 +335,7 @@
     sprite: Objects/Fun/Plushies/arachnid.rsi
     state: icon
   - type: EmitSoundOnUse
+<<<<<<< HEAD
     sound:
       path: /Audio/Voice/Arachnid/arachnid_laugh.ogg
   - type: EmitSoundOnLand
@@ -332,6 +358,22 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Voice/Arachnid/arachnid_laugh.ogg
+=======
+    sound: &PlushieArachnidSound
+      path: /Audio/Voice/Arachnid/arachnid_laugh.ogg
+  - type: EmitSoundOnLand
+    sound: *PlushieArachnidSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieArachnidSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieArachnidSound
+  - type: EmitSoundOnCollide
+    sound: *PlushieArachnidSound
+  - type: Edible
+    useSound: *PlushieArachnidSound
+  - type: MeleeWeapon
+    soundHit: *PlushieArachnidSound
+>>>>>>> upstream/master
   - type: Clothing
     quickEquip: false
     sprite: Objects/Fun/Plushies/arachnid.rsi
@@ -365,11 +407,18 @@
     sound: *PlushieLizardSound
   - type: EmitSoundOnCollide
     sound: *PlushieLizardSound
+<<<<<<< HEAD
   - type: Food
     requiresSpecialDigestion: true
     useSound: *PlushieLizardSound
   - type: MeleeWeapon
     wideAnimationRotation: 180
+=======
+  - type: Edible
+    useSound: *PlushieLizardSound
+    transferAmount: 10
+  - type: MeleeWeapon
+>>>>>>> upstream/master
     soundHit: *PlushieLizardSound
   - type: Extractable
     juiceSolution:
@@ -405,7 +454,11 @@
   parent: BasePlushie
   id: PlushieExperiment #Arf!
   name: experiment plushie
+<<<<<<< HEAD
   description: A plushie of a canid of sorts, it yearns to be detonated on a landmine.
+=======
+  description: A plushie of a canid of sorts. It yearns to be detonated on a landmine.
+>>>>>>> upstream/master
   components:
   - type: Sprite
     sprite: Objects/Fun/Plushies/expi.rsi
@@ -432,11 +485,17 @@
     sound: *PlushieExperimentSound
   - type: EmitSoundOnCollide
     sound: *PlushieExperimentSound
+<<<<<<< HEAD
   - type: Food
     requiresSpecialDigestion: true
     useSound: *PlushieExperimentSound
   - type: MeleeWeapon
     wideAnimationRotation: 180
+=======
+  - type: Edible
+    useSound: *PlushieExperimentSound
+  - type: MeleeWeapon
+>>>>>>> upstream/master
     soundHit: *PlushieExperimentSound
   - type: Clothing
     clothingVisuals:
@@ -516,11 +575,17 @@
     sound: *PlushieSpaceLizardSound
   - type: EmitSoundOnCollide
     sound: *PlushieSpaceLizardSound
+<<<<<<< HEAD
   - type: Food
     requiresSpecialDigestion: true
     useSound: *PlushieSpaceLizardSound
   - type: MeleeWeapon
     wideAnimationRotation: 180
+=======
+  - type: Edible
+    useSound: *PlushieSpaceLizardSound
+  - type: MeleeWeapon
+>>>>>>> upstream/master
     soundHit: *PlushieSpaceLizardSound
   - type: Clothing
     sprite: Objects/Fun/Plushies/lizard.rsi
@@ -554,6 +619,7 @@
     sound: *PlushieLizardInversedSound
   - type: EmitSoundOnActivate
     sound: *PlushieLizardInversedSound
+<<<<<<< HEAD
   - type: EmitSoundOnTrigger
     sound: *PlushieLizardInversedSound
   - type: Food
@@ -561,6 +627,15 @@
     useSound: *PlushieLizardInversedSound
   - type: MeleeWeapon
     wideAnimationRotation: 180
+=======
+  - type: EmitSoundOnCollide
+    sound: *PlushieLizardInversedSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieLizardInversedSound
+  - type: Edible
+    useSound: *PlushieLizardInversedSound
+  - type: MeleeWeapon
+>>>>>>> upstream/master
     soundHit: *PlushieLizardInversedSound
   - type: Extractable
     juiceSolution:
@@ -614,6 +689,7 @@
   - type: EmitSoundOnCollide
     sound: *PlushieDionaSound
   - type: MeleeWeapon
+<<<<<<< HEAD
     wideAnimationRotation: 180
     soundHit: *PlushieDionaSound
   - type: Food
@@ -625,13 +701,28 @@
         maxVol: 1
       food:
         maxVol: 10
+=======
+    soundHit: *PlushieDionaSound
+  - type: Edible
+    useSound: *PlushieDionaSound
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 11
+>>>>>>> upstream/master
         reagents:
         - ReagentId: Fiber
           Quantity: 10
   - type: RefillableSolution
+<<<<<<< HEAD
     solution: plushie
   - type: SolutionContainerVisuals
     solutionName: plushie
+=======
+    solution: food
+  - type: SolutionContainerVisuals
+    solutionName: food
+>>>>>>> upstream/master
     maxFillLevels: 1
     fillBaseName: plushie_diona
     changeColor: false
@@ -641,7 +732,12 @@
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
+<<<<<<< HEAD
       - !type:AddToSolutionReaction
+=======
+      - !type:AddReagentToSolution
+        reagent: Water
+>>>>>>> upstream/master
         solution: plushie
   - type: Fixtures
     fixtures:
@@ -683,6 +779,7 @@
   - type: Sprite
     sprite: Objects/Fun/Plushies/shark.rsi
     state: blue
+<<<<<<< HEAD
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/Toys/rawr.ogg
@@ -703,6 +800,25 @@
     soundHit:
       path: /Audio/Items/Toys/rawr.ogg
     animation: WeaponArcBite
+=======
+  - type: EmitSoundOnUse
+    sound: &PlushieSharkSound
+      path: /Audio/Items/Toys/rawr.ogg
+  - type: EmitSoundOnLand
+    sound: *PlushieSharkSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieSharkSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieSharkSound
+  - type: EmitSoundOnCollide
+    sound: *PlushieSharkSound
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    soundHit: *PlushieSharkSound
+    animation: WeaponArcBite
+  - type: Edible
+    useSound: *PlushieSharkSound
+>>>>>>> upstream/master
   - type: Item
     heldPrefix: blue
     storedRotation: -90
@@ -813,6 +929,7 @@
     heldPrefix: carpplush
     storedRotation: -90
   - type: EmitSoundOnUse
+<<<<<<< HEAD
     sound:
       path: /Audio/Effects/bite.ogg
   - type: EmitSoundOnLand
@@ -835,6 +952,23 @@
     wideAnimationRotation: 90
     soundHit:
       path: /Audio/Effects/bite.ogg
+=======
+    sound: &PlushieCarpSound
+      path: /Audio/Effects/bite.ogg
+  - type: EmitSoundOnLand
+    sound: *PlushieCarpSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieCarpSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieCarpSound
+  - type: EmitSoundOnCollide
+    sound: *PlushieCarpSound
+  - type: Edible
+    useSound: *PlushieCarpSound
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    soundHit: *PlushieCarpSound
+>>>>>>> upstream/master
     angle: 0
     animation: WeaponArcBite # Rrrr!
   - type: FoodSequenceElement
@@ -924,6 +1058,7 @@
     sprite: Objects/Fun/Plushies/slime.rsi
     state: icon
   - type: EmitSoundOnUse
+<<<<<<< HEAD
     sound:
       path: /Audio/Voice/Slime/slime_squish.ogg
   - type: EmitSoundOnLand
@@ -939,6 +1074,22 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Voice/Slime/slime_squish.ogg
+=======
+    sound: &PlushieSlimeSound
+      path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: EmitSoundOnLand
+    sound: *PlushieSlimeSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieSlimeSound
+  - type: EmitSoundOnCollide
+    sound: *PlushieSlimeSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieSlimeSound
+  - type: MeleeWeapon
+    soundHit: *PlushieSlimeSound
+  - type: Edible
+    useSound: *PlushieSlimeSound
+>>>>>>> upstream/master
   - type: Clothing
     quickEquip: false
     sprite: Objects/Fun/Plushies/slime.rsi
@@ -960,6 +1111,7 @@
   - type: Item
     heldPrefix: plushiesnake
   - type: EmitSoundOnUse
+<<<<<<< HEAD
     sound:
       path: /Audio/Items/Toys/rattle.ogg
   - type: EmitSoundOnLand
@@ -982,6 +1134,23 @@
     wideAnimationRotation: 90
     soundHit:
       path: /Audio/Items/Toys/rattle.ogg
+=======
+    sound: &PlushieSnakeSound
+      path: /Audio/Items/Toys/rattle.ogg
+  - type: EmitSoundOnLand
+    sound: *PlushieSnakeSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieSnakeSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieSnakeSound
+  - type: EmitSoundOnCollide
+    sound: *PlushieSnakeSound
+  - type: Edible
+    useSound: *PlushieSnakeSound
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    soundHit: *PlushieSnakeSound
+>>>>>>> upstream/master
   - type: Clothing
     sprite: Objects/Fun/Plushies/snake.rsi
     quickEquip: false
@@ -1003,6 +1172,7 @@
     sprite: Objects/Fun/toy_mouse.rsi
     state: icon
   - type: EmitSoundOnUse
+<<<<<<< HEAD
     sound:
       path: /Audio/Items/Toys/mousesqueek.ogg
   - type: EmitSoundOnLand
@@ -1025,6 +1195,23 @@
     wideAnimationRotation: -90
     soundHit:
       path: /Audio/Items/Toys/mousesqueek.ogg
+=======
+    sound: &PlushieMouseSound
+      path: /Audio/Items/Toys/mousesqueek.ogg
+  - type: EmitSoundOnLand
+    sound: *PlushieMouseSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieMouseSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieMouseSound
+  - type: EmitSoundOnCollide
+    sound: *PlushieMouseSound
+  - type: Edible
+    useSound: *PlushieMouseSound
+  - type: MeleeWeapon
+    wideAnimationRotation: -90
+    soundHit: *PlushieMouseSound
+>>>>>>> upstream/master
   - type: Clothing
     quickEquip: false
     sprite: Objects/Fun/toy_mouse.rsi
@@ -1056,11 +1243,17 @@
     sound: *PlushieVoxSound
   - type: EmitSoundOnCollide
     sound: *PlushieVoxSound
+<<<<<<< HEAD
   - type: Food
     requiresSpecialDigestion: true
     useSound: *PlushieVoxSound
   - type: MeleeWeapon
     wideAnimationRotation: 180
+=======
+  - type: Edible
+    useSound: *PlushieVoxSound
+  - type: MeleeWeapon
+>>>>>>> upstream/master
     soundHit: *PlushieVoxSound
   - type: Clothing
     quickEquip: false
@@ -1121,11 +1314,17 @@
     sound: *PlushieXenoSound
   - type: EmitSoundOnCollide
     sound: *PlushieXenoSound
+<<<<<<< HEAD
   - type: Food
     requiresSpecialDigestion: true
     useSound: *PlushieXenoSound
   - type: MeleeWeapon
     wideAnimationRotation: 180
+=======
+  - type: Edible
+    useSound: *PlushieXenoSound
+  - type: MeleeWeapon
+>>>>>>> upstream/master
     soundHit: *PlushieXenoSound
   - type: Clothing
     quickEquip: false
@@ -1168,7 +1367,11 @@
     sprite: Objects/Fun/Plushies/human.rsi
     state: icon
   - type: EmitSoundOnUse
+<<<<<<< HEAD
     sound: &PlushieHuman
+=======
+    sound: &PlushieHuman1
+>>>>>>> upstream/master
       path: /Audio/Voice/Human/malescream_1.ogg
       params:
         volume: -8
@@ -1183,6 +1386,7 @@
       params:
         volume: -8
   - type: EmitSoundOnCollide
+<<<<<<< HEAD
     sound:
       path: /Audio/Voice/Human/malescream_4.ogg
       params:
@@ -1198,6 +1402,16 @@
       path: /Audio/Voice/Human/malescream_4.ogg
       params:
         volume: -8
+=======
+    sound: &PlushieHuman4
+      path: /Audio/Voice/Human/malescream_4.ogg
+      params:
+        volume: -8
+  - type: Edible
+    useSound: *PlushieHuman1
+  - type: MeleeWeapon
+    soundHit: *PlushieHuman4
+>>>>>>> upstream/master
   - type: EmitSoundOnTrigger
     sound:
       path: /Audio/Voice/Human/malescream_5.ogg
@@ -1222,6 +1436,7 @@
     sprite: Objects/Fun/Plushies/moth.rsi
     state: icon
   - type: EmitSoundOnUse
+<<<<<<< HEAD
     sound:
       path: /Audio/Voice/Moth/moth_chitter.ogg
   - type: EmitSoundOnLand
@@ -1243,6 +1458,22 @@
     requiresSpecialDigestion: true
     useSound:
       path: /Audio/Voice/Moth/moth_chitter.ogg
+=======
+    sound: &PlushieMothSound
+      path: /Audio/Voice/Moth/moth_chitter.ogg
+  - type: EmitSoundOnLand
+    sound: *PlushieMothSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieMothSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieMothSound
+  - type: EmitSoundOnCollide
+    sound: *PlushieMothSound
+  - type: MeleeWeapon
+    soundHit: *PlushieMothSound
+  - type: Edible
+    useSound: *PlushieMothSound
+>>>>>>> upstream/master
   - type: Clothing
     quickEquip: false
     sprite: Objects/Fun/Plushies/moth.rsi
@@ -1251,3 +1482,47 @@
   - type: FoodSequenceElement
     entries:
       CottonBurger: MothPlushie
+<<<<<<< HEAD
+=======
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieVulp
+  name: vulpkanin plushie
+  description: An adorable stuffed toy that resembles a vulpkanin. Yip! Yap!
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Plushies/vulp.rsi
+    state: icon
+  - type: EmitSoundOnUse
+    sound: &PlushieVulpSound
+      path: /Audio/Voice/Vulpkanin/howl.ogg
+      params:
+        volume: -5
+  - type: EmitSoundOnLand
+    sound: *PlushieVulpSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieVulpSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieVulpSound
+  - type: Edible
+    requiresSpecialDigestion: true
+    useSound:
+      path: /Audio/Voice/Vulpkanin/vulp_scream4.ogg
+      params:
+        volume: -5
+  - type: MeleeWeapon
+    soundHit: *PlushieVulpSound
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/vulp.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.0625"
+  - type: FoodSequenceElement
+    entries:
+      CottonBurger: PlushieVulp
+>>>>>>> upstream/master

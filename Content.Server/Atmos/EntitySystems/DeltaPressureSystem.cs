@@ -1,6 +1,11 @@
 using Content.Server.Atmos.Components;
+<<<<<<< HEAD
 using Content.Shared.Examine;
 using Robust.Shared.Map.Components;
+=======
+using Content.Shared.Atmos.Components;
+using Content.Shared.Atmos.EntitySystems;
+>>>>>>> upstream/master
 
 namespace Content.Server.Atmos.EntitySystems;
 
@@ -14,10 +19,16 @@ namespace Content.Server.Atmos.EntitySystems;
 /// This system handles the adding and removing of entities to a processing list,
 /// as well as any field changes via the API.</para>
 /// </summary>
+<<<<<<< HEAD
 public sealed class DeltaPressureSystem : EntitySystem
 {
     [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
+=======
+public sealed partial class DeltaPressureSystem : SharedDeltaPressureSystem
+{
+    [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
+>>>>>>> upstream/master
 
     public override void Initialize()
     {
@@ -25,6 +36,7 @@ public sealed class DeltaPressureSystem : EntitySystem
 
         SubscribeLocalEvent<DeltaPressureComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<DeltaPressureComponent, ComponentShutdown>(OnComponentShutdown);
+<<<<<<< HEAD
         SubscribeLocalEvent<DeltaPressureComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<DeltaPressureComponent, MoveEvent>(OnMoveEvent);
 
@@ -43,12 +55,21 @@ public sealed class DeltaPressureSystem : EntitySystem
         ent.Comp.CurrentPosition = _map.CoordinatesToTile(xform.GridUid.Value, mapGridComponent, args.NewPosition);
     }
 
+=======
+        SubscribeLocalEvent<DeltaPressureComponent, GridUidChangedEvent>(OnGridChanged);
+    }
+
+>>>>>>> upstream/master
     private void OnComponentInit(Entity<DeltaPressureComponent> ent, ref ComponentInit args)
     {
         var xform = Transform(ent);
         if (xform.GridUid == null)
             return;
 
+<<<<<<< HEAD
+=======
+        EnsureComp<AirtightComponent>(ent);
+>>>>>>> upstream/master
         _atmosphereSystem.TryAddDeltaPressureEntity(xform.GridUid.Value, ent);
     }
 
@@ -61,12 +82,15 @@ public sealed class DeltaPressureSystem : EntitySystem
         _atmosphereSystem.TryRemoveDeltaPressureEntity(ent.Comp.GridUid.Value, ent);
     }
 
+<<<<<<< HEAD
     private void OnExamined(Entity<DeltaPressureComponent> ent, ref ExaminedEvent args)
     {
         if (ent.Comp.IsTakingDamage)
             args.PushMarkup(Loc.GetString("window-taking-damage"));
     }
 
+=======
+>>>>>>> upstream/master
     private void OnGridChanged(Entity<DeltaPressureComponent> ent, ref GridUidChangedEvent args)
     {
         if (args.OldGrid != null)

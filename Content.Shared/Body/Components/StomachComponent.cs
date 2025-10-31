@@ -8,7 +8,11 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared.Body.Components
 {
+<<<<<<< HEAD
     [RegisterComponent, NetworkedComponent, Access(typeof(StomachSystem), typeof(FoodSystem))]
+=======
+    [RegisterComponent, NetworkedComponent, Access(typeof(StomachSystem))]
+>>>>>>> upstream/master
     public sealed partial class StomachComponent : Component
     {
         /// <summary>

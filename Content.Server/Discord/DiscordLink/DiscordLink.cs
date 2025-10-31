@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 ﻿using System.Threading.Tasks;
+=======
+﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+>>>>>>> upstream/master
 using Content.Shared.CCVar;
 using NetCord;
 using NetCord.Gateway;
 using NetCord.Rest;
 using Robust.Shared.Configuration;
+<<<<<<< HEAD
+=======
+using Robust.Shared.Utility;
+>>>>>>> upstream/master
 
 namespace Content.Server.Discord.DiscordLink;
 
@@ -18,9 +27,22 @@ public sealed class CommandReceivedEventArgs
     public string Command { get; init; } = string.Empty;
 
     /// <summary>
+<<<<<<< HEAD
     /// The arguments to the command. This is everything after the command
     /// </summary>
     public string Arguments { get; init; } = string.Empty;
+=======
+    /// The raw arguments to the command. This is everything after the command
+    /// </summary>
+    public string RawArguments { get; init; } = string.Empty;
+
+    /// <summary>
+    /// A list of arguments to the command.
+    /// This uses <see cref="CommandParsing.ParseArguments"/> mostly for maintainability.
+    /// </summary>
+    public List<string> Arguments { get; init; } = [];
+
+>>>>>>> upstream/master
     /// <summary>
     /// Information about the message that the command was received from. This includes the message content, author, etc.
     /// Use this to reply to the message, delete it, etc.
@@ -66,6 +88,10 @@ public sealed class DiscordLink : IPostInjectInit
     /// </summary>
     public event Action<Message>? OnMessageReceived;
 
+<<<<<<< HEAD
+=======
+    // TODO: consider implementing this in a way where we can unregister it in a similar way
+>>>>>>> upstream/master
     public void RegisterCommandCallback(Action<CommandReceivedEventArgs> callback, string command)
     {
         OnCommandReceived += args =>
@@ -180,24 +206,46 @@ public sealed class DiscordLink : IPostInjectInit
         var trimmedInput = content[BotPrefix.Length..].Trim();
         var firstSpaceIndex = trimmedInput.IndexOf(' ');
 
+<<<<<<< HEAD
         string command, arguments;
+=======
+        string command, rawArguments;
+>>>>>>> upstream/master
 
         if (firstSpaceIndex == -1)
         {
             command = trimmedInput;
+<<<<<<< HEAD
             arguments = string.Empty;
+=======
+            rawArguments = string.Empty;
+>>>>>>> upstream/master
         }
         else
         {
             command = trimmedInput[..firstSpaceIndex];
+<<<<<<< HEAD
             arguments = trimmedInput[(firstSpaceIndex + 1)..].Trim();
         }
 
+=======
+            rawArguments = trimmedInput[(firstSpaceIndex + 1)..].Trim();
+        }
+
+        var argumentList = new List<string>();
+        CommandParsing.ParseArguments(rawArguments, argumentList);
+
+>>>>>>> upstream/master
         // Raise the event!
         OnCommandReceived?.Invoke(new CommandReceivedEventArgs
         {
             Command = command,
+<<<<<<< HEAD
             Arguments = arguments,
+=======
+            Arguments = argumentList,
+            RawArguments = rawArguments,
+>>>>>>> upstream/master
             Message = message,
         });
         return ValueTask.CompletedTask;

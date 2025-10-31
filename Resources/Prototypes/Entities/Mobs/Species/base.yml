@@ -118,7 +118,7 @@
     - reagents: [Water, SpaceCleaner]
       methods: [Touch]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
   - type: StatusEffects
     allowed:
     - Electrocution
@@ -176,6 +176,9 @@
     factions:
     - NanoTrasen
   - type: CreamPied
+  - type: ParcelWrapOverride
+    parcelPrototype: WrappedParcelHumanoid
+    wrapDelay: 5
   - type: Stripping
   - type: UserInterface
     interfaces:
@@ -275,7 +278,10 @@
         Asphyxiation: -1.0
   - type: FireVisuals
     alternateState: Standing
+<<<<<<< HEAD
   - type: SetExamine # Umbra Change, all species can set additional examine text.
+=======
+>>>>>>> upstream/master
   - type: StunVisuals
 
 - type: entity

@@ -8,7 +8,10 @@
   markingLimits: MobVulpkaninMarkingLimits
   dollPrototype: MobVulpkaninDummy
   skinColoration: VulpkaninColors
+<<<<<<< HEAD
   defaultHeight: 1.0
+=======
+>>>>>>> upstream/master
   maleFirstNames: names_vulpkanin_male
   femaleFirstNames: names_vulpkanin_female
   lastNames: names_vulpkanin_last

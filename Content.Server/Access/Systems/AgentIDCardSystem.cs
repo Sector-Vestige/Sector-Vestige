@@ -34,8 +34,13 @@ using Content.Server.Clothing.Systems;
 using Content.Server.Implants;
 using Content.Shared.Implants;
 using Content.Shared.Inventory;
+<<<<<<< HEAD
 using Content.Shared.PDA;
 using Content.Shared._CD.NanoChat; // CD
+=======
+using Content.Shared.Lock;
+using Content.Shared.PDA;
+>>>>>>> upstream/master
 
 namespace Content.Server.Access.Systems
 {
@@ -47,7 +52,11 @@ namespace Content.Server.Access.Systems
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly ChameleonClothingSystem _chameleon = default!;
         [Dependency] private readonly ChameleonControllerSystem _chamController = default!;
+<<<<<<< HEAD
         [Dependency] private readonly SharedNanoChatSystem _nanoChat = default!; // CD
+=======
+        [Dependency] private readonly LockSystem _lock = default!;
+>>>>>>> upstream/master
 
         public override void Initialize()
         {
@@ -66,7 +75,11 @@ namespace Content.Server.Access.Systems
             if (!TryComp<IdCardComponent>(ent, out var idCardComp))
                 return;
 
+<<<<<<< HEAD
             _prototypeManager.TryIndex(args.Args.ChameleonOutfit.Job, out var jobProto);
+=======
+            _prototypeManager.Resolve(args.Args.ChameleonOutfit.Job, out var jobProto);
+>>>>>>> upstream/master
 
             var jobIcon = args.Args.ChameleonOutfit.Icon ?? jobProto?.Icon;
             var jobName = args.Args.ChameleonOutfit.Name ?? jobProto?.Name ?? "";
@@ -98,6 +111,7 @@ namespace Content.Server.Access.Systems
                 return;
 
             _chameleon.SetSelectedPrototype(ent, comp.IdCard);
+<<<<<<< HEAD
             SubscribeLocalEvent<AgentIDCardComponent, AgentIDCardNumberChangedMessage>(OnNumberChanged); // CD
         }
 
@@ -109,11 +123,14 @@ namespace Content.Server.Access.Systems
 
             _nanoChat.SetNumber((ent, comp), args.Number);
             Dirty(ent, comp);
+=======
+>>>>>>> upstream/master
         }
 
         private void OnAfterInteract(EntityUid uid, AgentIDCardComponent component, AfterInteractEvent args)
         {
-            if (args.Target == null || !args.CanReach || !TryComp<AccessComponent>(args.Target, out var targetAccess) || !HasComp<IdCardComponent>(args.Target))
+            if (args.Target == null || !args.CanReach || _lock.IsLocked(uid) ||
+                !TryComp<AccessComponent>(args.Target, out var targetAccess) || !HasComp<IdCardComponent>(args.Target))
                 return;
 
             if (!TryComp<AccessComponent>(uid, out var access) || !HasComp<IdCardComponent>(uid))
@@ -213,7 +230,7 @@ namespace Content.Server.Access.Systems
             if (!TryComp<IdCardComponent>(uid, out var idCard))
                 return;
 
-            if (!_prototypeManager.TryIndex(args.JobIconId, out var jobIcon))
+            if (!_prototypeManager.Resolve(args.JobIconId, out var jobIcon))
                 return;
 
             _cardSystem.TryChangeJobIcon(uid, jobIcon, idCard);

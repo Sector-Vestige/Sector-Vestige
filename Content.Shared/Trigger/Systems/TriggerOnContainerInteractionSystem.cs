@@ -7,9 +7,14 @@ namespace Content.Shared.Trigger.Systems;
 /// <summary>
 /// System for creating triggers when entities are inserted into or removed from containers.
 /// </summary>
+<<<<<<< HEAD
 public sealed class TriggerOnContainerInteractionSystem : EntitySystem
 {
     [Dependency] private readonly TriggerSystem _trigger = default!;
+=======
+public sealed class TriggerOnContainerInteractionSystem : TriggerOnXSystem
+{
+>>>>>>> upstream/master
     [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
@@ -31,7 +36,11 @@ public sealed class TriggerOnContainerInteractionSystem : EntitySystem
         if (ent.Comp.ContainerId != null && ent.Comp.ContainerId != args.Container.ID)
             return;
 
+<<<<<<< HEAD
         _trigger.Trigger(ent.Owner, args.Entity, ent.Comp.KeyOut);
+=======
+        Trigger.Trigger(ent.Owner, args.Entity, ent.Comp.KeyOut);
+>>>>>>> upstream/master
     }
 
     private void OnRemovedFromContainer(Entity<TriggerOnRemovedFromContainerComponent> ent, ref EntRemovedFromContainerMessage args)
@@ -42,7 +51,11 @@ public sealed class TriggerOnContainerInteractionSystem : EntitySystem
         if (ent.Comp.ContainerId != null && ent.Comp.ContainerId != args.Container.ID)
             return;
 
+<<<<<<< HEAD
         _trigger.Trigger(ent.Owner, args.Entity, ent.Comp.KeyOut);
+=======
+        Trigger.Trigger(ent.Owner, args.Entity, ent.Comp.KeyOut);
+>>>>>>> upstream/master
     }
 
     // Used by entities to trigger when they are inserted into or removed from a container
@@ -54,7 +67,11 @@ public sealed class TriggerOnContainerInteractionSystem : EntitySystem
         if (ent.Comp.ContainerId != null && ent.Comp.ContainerId != args.Container.ID)
             return;
 
+<<<<<<< HEAD
         _trigger.Trigger(ent.Owner, args.Container.Owner, ent.Comp.KeyOut);
+=======
+        Trigger.Trigger(ent.Owner, args.Container.Owner, ent.Comp.KeyOut);
+>>>>>>> upstream/master
     }
 
     private void OnGotRemovedFromContainer(Entity<TriggerOnGotRemovedFromContainerComponent> ent, ref EntGotRemovedFromContainerMessage args)
@@ -65,6 +82,10 @@ public sealed class TriggerOnContainerInteractionSystem : EntitySystem
         if (ent.Comp.ContainerId != null && ent.Comp.ContainerId != args.Container.ID)
             return;
 
+<<<<<<< HEAD
         _trigger.Trigger(ent.Owner, args.Container.Owner, ent.Comp.KeyOut);
+=======
+        Trigger.Trigger(ent.Owner, args.Container.Owner, ent.Comp.KeyOut);
+>>>>>>> upstream/master
     }
 }

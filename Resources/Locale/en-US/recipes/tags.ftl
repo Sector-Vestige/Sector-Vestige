@@ -8,6 +8,10 @@ construction-graph-tag-clown-bike-horn = bike horn
 construction-graph-tag-clowne-horn = broken bike horn
 construction-graph-tag-happy-honk-meal = happy honk meal
 construction-graph-tag-woeful-cluwne-meal = woeful cluwne meal
+<<<<<<< HEAD
+=======
+construction-graph-tag-boxhug = a box of hugs
+>>>>>>> upstream/master
 
 # mime
 construction-graph-tag-suspenders = suspenders

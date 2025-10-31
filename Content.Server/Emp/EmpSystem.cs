@@ -2,16 +2,22 @@ using Content.Server.Power.EntitySystems;
 using Content.Server.Radio;
 using Content.Server.SurveillanceCamera;
 using Content.Shared.Emp;
+<<<<<<< HEAD
 using Robust.Shared.Map;
+=======
+>>>>>>> upstream/master
 
 namespace Content.Server.Emp;
 
 public sealed class EmpSystem : SharedEmpSystem
 {
+<<<<<<< HEAD
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     public const string EmpPulseEffectPrototype = "EffectEmpPulse";
 
+=======
+>>>>>>> upstream/master
     public override void Initialize()
     {
         base.Initialize();
@@ -22,6 +28,7 @@ public sealed class EmpSystem : SharedEmpSystem
         SubscribeLocalEvent<EmpDisabledComponent, SurveillanceCameraSetActiveAttemptEvent>(OnCameraSetActive);
     }
 
+<<<<<<< HEAD
     public override void EmpPulse(MapCoordinates coordinates, float range, float energyConsumption, float duration)
     {
         foreach (var uid in _lookup.GetEntitiesInRange(coordinates, range))
@@ -100,6 +107,8 @@ public sealed class EmpSystem : SharedEmpSystem
         }
     }
 
+=======
+>>>>>>> upstream/master
     private void OnRadioSendAttempt(EntityUid uid, EmpDisabledComponent component, ref RadioSendAttemptEvent args)
     {
         args.Cancelled = true;
@@ -120,6 +129,7 @@ public sealed class EmpSystem : SharedEmpSystem
         args.Cancelled = true;
     }
 }
+<<<<<<< HEAD
 
 /// <summary>
 /// Raised on an entity before <see cref="EmpPulseEvent"/>. Cancel this to prevent the emp event being raised.
@@ -131,3 +141,5 @@ public record struct EmpPulseEvent(float EnergyConsumption, bool Affected, bool 
 
 [ByRefEvent]
 public record struct EmpDisabledRemoved();
+=======
+>>>>>>> upstream/master

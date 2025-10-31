@@ -127,7 +127,11 @@
   - type: FlavorProfile
     flavors:
       - sweet
+<<<<<<< HEAD
   - type: Food
+=======
+  - type: Edible
+>>>>>>> upstream/master
     delay: 2
   - type: SolutionContainerManager
     solutions:

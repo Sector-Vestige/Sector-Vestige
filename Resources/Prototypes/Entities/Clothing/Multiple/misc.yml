@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SPDX-FileCopyrightText: 2025 Wizards Den contributors
 # SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
@@ -5,12 +6,15 @@
 #
 # SPDX-License-Identifier: MIT
 
+=======
+>>>>>>> upstream/master
 - type: entity
   parent: Clothing
   id: ClothingMultipleHeadphones
   name: headphones
   description: Quality headphones from Drunk Masters, with good sound insulation.
   components:
+<<<<<<< HEAD
   # SV Change Start
   - type: ContainerContainer
     containers:
@@ -19,6 +23,8 @@
   - type: EncryptionKeyHolder
     keySlots: 4
   # SV Change End
+=======
+>>>>>>> upstream/master
   - type: Sprite
     sprite: Clothing/Multiple/headphones.rsi
     layers:

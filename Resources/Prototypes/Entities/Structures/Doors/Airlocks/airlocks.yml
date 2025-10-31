@@ -179,6 +179,18 @@
     sprite: Structures/Doors/Airlocks/Standard/hatch_maint.rsi
   - type: Paintable
     group: null
+<<<<<<< HEAD
+=======
+
+- type: entity
+  parent: Airlock
+  id: AirlockHatchSyndicate
+  name: airtight hatch
+  suffix: Syndicate
+  components:
+  - type: Sprite
+    sprite: Structures/Doors/Airlocks/Standard/hatch_syndicate.rsi
+>>>>>>> upstream/master
 
 # Glass
 - type: entity

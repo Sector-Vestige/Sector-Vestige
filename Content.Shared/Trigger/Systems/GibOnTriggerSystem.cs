@@ -4,11 +4,16 @@ using Content.Shared.Trigger.Components.Effects;
 
 namespace Content.Shared.Trigger.Systems;
 
+<<<<<<< HEAD
 public sealed class GibOnTriggerSystem : EntitySystem
+=======
+public sealed class GibOnTriggerSystem : XOnTriggerSystem<GibOnTriggerComponent>
+>>>>>>> upstream/master
 {
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
 
+<<<<<<< HEAD
     public override void Initialize()
     {
         base.Initialize();
@@ -29,12 +34,24 @@ public sealed class GibOnTriggerSystem : EntitySystem
         if (ent.Comp.DeleteItems)
         {
             var items = _inventory.GetHandOrInventoryEntities(target.Value);
+=======
+    protected override void OnTrigger(Entity<GibOnTriggerComponent> ent, EntityUid target, ref TriggerEvent args)
+    {
+        if (ent.Comp.DeleteItems)
+        {
+            var items = _inventory.GetHandOrInventoryEntities(target);
+>>>>>>> upstream/master
             foreach (var item in items)
             {
                 PredictedQueueDel(item);
             }
         }
+<<<<<<< HEAD
         _body.GibBody(target.Value, true);
+=======
+
+        _body.GibBody(target, true);
+>>>>>>> upstream/master
         args.Handled = true;
     }
 }

@@ -97,7 +97,11 @@ public sealed partial class ClothingComponent : Component
     /// <summary>
     ///     A scale applied to all layers.
     /// </summary>
+<<<<<<< HEAD
     ///
+=======
+    /// 
+>>>>>>> upstream/master
     [DataField]
     public Vector2 Scale = Vector2.One;
 }

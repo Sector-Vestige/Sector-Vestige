@@ -1,12 +1,17 @@
+<<<<<<< HEAD
 ﻿using Content.Shared.Chat.Prototypes;
 using Content.Shared.Inventory;
 
 namespace Content.Shared.Emoting;
+=======
+﻿namespace Content.Shared.Emoting;
+>>>>>>> upstream/master
 
 public sealed class EmoteAttemptEvent(EntityUid uid) : CancellableEntityEventArgs
 {
     public EntityUid Uid { get; } = uid;
 }
+<<<<<<< HEAD
 
 /// <summary>
 /// An event raised just before an emote is performed, providing systems with an opportunity to cancel the emote's performance.
@@ -25,3 +30,5 @@ public sealed class BeforeEmoteEvent(EntityUid source, EmotePrototype emote)
 
     public SlotFlags TargetSlots => SlotFlags.WITHOUT_POCKET;
 }
+=======
+>>>>>>> upstream/master

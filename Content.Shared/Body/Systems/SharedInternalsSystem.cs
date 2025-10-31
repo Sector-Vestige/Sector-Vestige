@@ -7,6 +7,10 @@ using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Internals;
 using Content.Shared.Inventory;
+<<<<<<< HEAD
+=======
+using Content.Shared.Movement.Components;
+>>>>>>> upstream/master
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
@@ -258,11 +262,23 @@ public abstract class SharedInternalsSystem : EntitySystem
         Entity<HandsComponent?, InventoryComponent?, ContainerManagerComponent?> user)
     {
         // TODO use _respirator.CanMetabolizeGas() to prioritize metabolizable gasses
+<<<<<<< HEAD
         // Prioritise
         // 1. back equipped tanks
         // 2. exo-slot tanks
         // 3. in-hand tanks
         // 4. pocket/belt tanks
+=======
+        // Lookup order:
+        // 1. Back
+        // 2. Exo-slot
+        // 3. In-hand
+        // 4. Pocket/belt
+        // Jetpacks will only be used as a fallback if no other tank is found
+
+        // Store the first jetpack seen
+        Entity<GasTankComponent>? found = null;
+>>>>>>> upstream/master
 
         if (!Resolve(user, ref user.Comp2, ref user.Comp3))
             return null;
@@ -271,22 +287,51 @@ public abstract class SharedInternalsSystem : EntitySystem
             TryComp<GasTankComponent>(backEntity, out var backGasTank) &&
             _gasTank.CanConnectToInternals((backEntity.Value, backGasTank)))
         {
+<<<<<<< HEAD
             return (backEntity.Value, backGasTank);
+=======
+            found = (backEntity.Value, backGasTank);
+            if (!HasComp<JetpackComponent>(backEntity.Value))
+            {
+                return found;
+            }
+>>>>>>> upstream/master
         }
 
         if (_inventory.TryGetSlotEntity(user, "suitstorage", out var entity, user.Comp2, user.Comp3) &&
             TryComp<GasTankComponent>(entity, out var gasTank) &&
             _gasTank.CanConnectToInternals((entity.Value, gasTank)))
         {
+<<<<<<< HEAD
             return (entity.Value, gasTank);
+=======
+            found ??= (entity.Value, gasTank);
+            if (!HasComp<JetpackComponent>(entity.Value))
+            {
+                return (entity.Value, gasTank);
+            }
+>>>>>>> upstream/master
         }
 
         foreach (var item in _inventory.GetHandOrInventoryEntities((user.Owner, user.Comp1, user.Comp2)))
         {
             if (TryComp(item, out gasTank) && _gasTank.CanConnectToInternals((item, gasTank)))
+<<<<<<< HEAD
                 return (item, gasTank);
         }
 
         return null;
+=======
+            {
+                found ??= (item, gasTank);
+                if (!HasComp<JetpackComponent>(item))
+                {
+                    return (item, gasTank);
+                }
+            }
+        }
+
+        return found;
+>>>>>>> upstream/master
     }
 }

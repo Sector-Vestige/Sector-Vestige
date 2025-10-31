@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Content.Server.Medical;
+=======
+using Content.Shared.Medical;
+>>>>>>> upstream/master
 
 namespace Content.Server.Destructible.Thresholds.Behaviors;
 

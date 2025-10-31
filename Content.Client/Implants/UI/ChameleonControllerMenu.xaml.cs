@@ -116,7 +116,11 @@ public sealed partial class ChameleonControllerMenu : FancyWindow
         var button = new Button
         {
             HorizontalExpand = true,
+<<<<<<< HEAD
             StyleClasses = {StyleBase.ButtonSquare},
+=======
+            StyleClasses = {StyleClass.ButtonSquare},
+>>>>>>> upstream/master
             ToolTip = Loc.GetString(name),
             Text = Loc.GetString(name),
             Margin = new Thickness(0, 0, 15, 0),

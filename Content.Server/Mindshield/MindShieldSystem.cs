@@ -32,9 +32,12 @@ public sealed class MindShieldSystem : EntitySystem
 
     private void OnImplantImplanted(Entity<MindShieldImplantComponent> ent, ref ImplantImplantedEvent ev)
     {
+<<<<<<< HEAD
         if (ev.Implanted == null)
             return;
 
+=======
+>>>>>>> upstream/master
         EnsureComp<MindShieldComponent>(ev.Implanted);
         MindShieldRemovalCheck(ev.Implanted, ev.Implant);
     }

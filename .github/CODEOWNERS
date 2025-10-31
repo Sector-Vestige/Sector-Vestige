@@ -3,6 +3,7 @@
 # Everything
 *                                                   @ReboundQ3
 
+<<<<<<< HEAD
 # C# code
 /Content.*/                                         @ReboundQ3
 
@@ -12,13 +13,54 @@
 
 # Sprites
 /Resources/Textures/                                @ReboundQ3 @JuneSzalkowska
+=======
+/Resources/ConfigPresets/WizardsDen/  @crazybrain23
+/Content.*/Administration/ @DrSmugleaf @crazybrain23
+/Resources/ServerInfo/ @crazybrain23
+/Resources/ServerInfo/Guidebook/ServerRules/ @crazybrain23
+
+/Resources/Prototypes/Maps/** @Emisse @ArtisticRoomba @spanky-spanky
+/Resources/Maps/** @Emisse @ArtisticRoomba @spanky-spanky
+
+/Resources/Prototypes/Body/ @DrSmugleaf # suffering
+/Resources/Prototypes/Entities/Mobs/Player/ @DrSmugleaf
+/Resources/Prototypes/Entities/Mobs/Species/ @DrSmugleaf
+/Resources/Prototypes/Guidebook/rules.yml @crazybrain23
+/Content.*/Body/ @DrSmugleaf
+/Content.YAMLLinter @DrSmugleaf
+/Content.Shared/Damage/ @DrSmugleaf
+>>>>>>> upstream/master
 
 # Lobby art and music
 /Resources/Audio/Lobby/                             @ReboundQ3
 /Resources/Textures/LobbyScreens/                   @ReboundQ3
 
 
+<<<<<<< HEAD
 # Maps
 /Resources/Maps/                                    @ReboundQ3
 /Resources/Prototypes/Maps/                         @ReboundQ3
 /Content.IntegrationTests/Tests/PostMapInitTest.cs  @ReboundQ3
+=======
+/Content.*/Trigger/ @slarticodefast
+
+/Content.*/Stunnable/ @Princess-Cheeseballs
+/Content.*/Nutrition/ @Princess-Cheeseballs
+/Content.*/EntityEffects @Princess-Cheeseballs @sowelipililimute
+
+# SKREEEE
+/Content.*.Database/ @PJB3005 @DrSmugleaf
+/Content.Shared.Database/Log*.cs @PJB3005 @DrSmugleaf @crazybrain23
+/Pow3r/ @PJB3005
+/Content.Server/Power/Pow3r/ @PJB3005
+
+
+# Sloth
+/Content.*/Audio @metalgearsloth
+/Content.*/Movement @metalgearsloth
+/Content.*/NPC @metalgearsloth
+/Content.*/Shuttles @metalgearsloth
+/Content.*/Weapons @metalgearsloth
+
+/Content.Server/Discord/ @Simyon264
+>>>>>>> upstream/master

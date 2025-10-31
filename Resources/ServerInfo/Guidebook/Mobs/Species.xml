@@ -24,5 +24,8 @@
   <GuideEntityEmbed Entity="MobFoxfolk" Caption="Foxfolk"/>
   <GuideEntityEmbed Entity="MobRodentia" Caption="Rodentia"/>
   </Box>
+  <Box>
+    <GuideEntityEmbed Entity="MobVulpkanin" Caption="Vulpkanin"/>
+  </Box>
 
 </Document>

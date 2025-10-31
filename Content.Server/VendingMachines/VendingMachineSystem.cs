@@ -1,12 +1,15 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Cargo.Systems;
-using Content.Server.Emp;
 using Content.Server.Power.Components;
+<<<<<<< HEAD
 using Content.Server.Power.EntitySystems;
+=======
+>>>>>>> upstream/master
 using Content.Server.Vocalization.Systems;
 using Content.Shared.Cargo;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.Emp;
 using Content.Shared.Power;
@@ -35,7 +38,10 @@ namespace Content.Server.VendingMachines
             SubscribeLocalEvent<VendingMachineComponent, BreakageEventArgs>(OnBreak);
             SubscribeLocalEvent<VendingMachineComponent, DamageChangedEvent>(OnDamageChanged);
             SubscribeLocalEvent<VendingMachineComponent, PriceCalculationEvent>(OnVendingPrice);
+<<<<<<< HEAD
             SubscribeLocalEvent<VendingMachineComponent, EmpPulseEvent>(OnEmpPulse);
+=======
+>>>>>>> upstream/master
             SubscribeLocalEvent<VendingMachineComponent, TryVocalizeEvent>(OnTryVocalize);
 
             SubscribeLocalEvent<VendingMachineComponent, ActivatableUIOpenAttemptEvent>(OnActivatableUIOpenAttempt);
@@ -86,6 +92,7 @@ namespace Content.Server.VendingMachines
         private void OnBreak(EntityUid uid, VendingMachineComponent vendComponent, BreakageEventArgs eventArgs)
         {
             vendComponent.Broken = true;
+            Dirty(uid, vendComponent);
             TryUpdateVisualState((uid, vendComponent));
         }
 
@@ -94,6 +101,7 @@ namespace Content.Server.VendingMachines
             if (!args.DamageIncreased && component.Broken)
             {
                 component.Broken = false;
+                Dirty(uid, component);
                 TryUpdateVisualState((uid, component));
                 return;
             }
@@ -257,14 +265,18 @@ namespace Content.Server.VendingMachines
             args.Price += priceSets.Max();
         }
 
-        private void OnEmpPulse(EntityUid uid, VendingMachineComponent component, ref EmpPulseEvent args)
+        private void OnTryVocalize(Entity<VendingMachineComponent> ent, ref TryVocalizeEvent args)
         {
+<<<<<<< HEAD
             if (!component.Broken && this.IsPowered(uid, EntityManager))
             {
                 args.Affected = true;
                 args.Disabled = true;
                 component.NextEmpEject = Timing.CurTime;
             }
+=======
+            args.Cancelled |= ent.Comp.Broken;
+>>>>>>> upstream/master
         }
 
         private void OnTryVocalize(Entity<VendingMachineComponent> ent, ref TryVocalizeEvent args)

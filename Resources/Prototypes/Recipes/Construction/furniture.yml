@@ -341,6 +341,22 @@
     - !type:TileNotBlocked
 
 - type: construction
+<<<<<<< HEAD
+=======
+  id: TableFancySkyBlue
+  name: construction-recipe-table-fancy-sky-blue
+  graph: Table
+  startNode: start
+  targetNode: TableFancySkyBlue
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+>>>>>>> upstream/master
   id: TableFancyCyan
   name: construction-recipe-table-fancy-cyan
   graph: Table
@@ -576,6 +592,20 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: true
 
+<<<<<<< HEAD
+=======
+- type: construction
+  id: CurtainsSkyBlue
+  name: construction-recipe-curtains-sky-blue
+  graph: Curtains
+  startNode: start
+  targetNode: CurtainsSkyBlue
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+
+>>>>>>> upstream/master
 - type: construction
   id: CurtainsCyan
   name: construction-recipe-curtains-cyan

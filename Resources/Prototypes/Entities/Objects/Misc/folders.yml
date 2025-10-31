@@ -20,6 +20,9 @@
     - state: folder-base
     - state: folder-stamp-inverse
       color: "#1dff00"
+  - type: PhysicalComposition
+    materialComposition:
+      Paper: 50
   - type: SpawnItemsOnUse
     items:
     - id: NukeCodePaper
@@ -67,6 +70,11 @@
         whitelist:
           tags:
           - Document
+  - type: PhysicalComposition
+    materialComposition:
+      Paper: 50
+  - type: StaticPrice
+    price: 15 # Weirdly this is more expensive than cardboard boxes. But if I have this any lower then I get an arbitrage testfail because the raw materials are worth ~$14.
   - type: Appearance
   - type: Tag
     tags:
@@ -92,7 +100,11 @@
 
 - type: entity
   abstract: true
+<<<<<<< HEAD
   id: BoxFolderFillThreePapers # Like BoxFolderFill, but always has exactly three sheets of standard paper; use for roles' startingGear
+=======
+  id: BoxFolderFillThreePapers # Like BoxFolderFill, but always has exactly three sheets of standard paper; use for things that should always be consistent, e.g roundstart items
+>>>>>>> upstream/master
   suffix: 3 papers
   components:
   - type: StorageFill
@@ -105,6 +117,13 @@
   id: BoxFolderBase
 
 - type: entity
+<<<<<<< HEAD
+=======
+  parent: [BoxFolderBaseEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderBaseThreePapers
+
+- type: entity
+>>>>>>> upstream/master
   parent: BoxFolderBaseEmpty
   id: BoxFolderRedEmpty
   suffix: Red
@@ -121,6 +140,14 @@
   suffix: Red, Filled
 
 - type: entity
+<<<<<<< HEAD
+=======
+  parent: [BoxFolderRedEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderRedThreePapers
+  suffix: Red, 3 papers
+
+- type: entity
+>>>>>>> upstream/master
   parent: BoxFolderBaseEmpty
   id: BoxFolderBlueEmpty
   suffix: Blue
@@ -137,6 +164,14 @@
   suffix: Blue, Filled
 
 - type: entity
+<<<<<<< HEAD
+=======
+  parent: [BoxFolderBlueEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderBlueThreePapers
+  suffix: Blue, 3 papers
+
+- type: entity
+>>>>>>> upstream/master
   parent: BoxFolderBaseEmpty
   id: BoxFolderYellowEmpty
   suffix: Yellow
@@ -153,6 +188,14 @@
   suffix: Yellow, Filled
 
 - type: entity
+<<<<<<< HEAD
+=======
+  parent: [BoxFolderYellowEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderYellowThreePapers
+  suffix: Yellow, 3 papers
+
+- type: entity
+>>>>>>> upstream/master
   parent: BoxFolderBaseEmpty
   id: BoxFolderGreyEmpty
   suffix: Grey
@@ -169,6 +212,14 @@
   suffix: Grey, Filled
 
 - type: entity
+<<<<<<< HEAD
+=======
+  parent: [BoxFolderGreyEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderGreyThreePapers
+  suffix: Grey, 3 papers
+
+- type: entity
+>>>>>>> upstream/master
   parent: BoxFolderBaseEmpty
   id: BoxFolderBlackEmpty
   suffix: Black
@@ -185,6 +236,14 @@
   suffix: Black, Filled
 
 - type: entity
+<<<<<<< HEAD
+=======
+  parent: [BoxFolderBlackEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderBlackThreePapers
+  suffix: Black, 3 papers
+
+- type: entity
+>>>>>>> upstream/master
   parent: BoxFolderBaseEmpty
   id: BoxFolderGreenEmpty
   suffix: Green
@@ -201,6 +260,14 @@
   suffix: Green, Filled
 
 - type: entity
+<<<<<<< HEAD
+=======
+  parent: [BoxFolderGreenEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderGreenThreePapers
+  suffix: Green, 3 papers
+
+- type: entity
+>>>>>>> upstream/master
   parent: BoxFolderBaseEmpty
   id: BoxFolderWhiteEmpty
   suffix: White
@@ -216,6 +283,14 @@
   suffix: White, Filled
 
 - type: entity
+<<<<<<< HEAD
+=======
+  parent: [BoxFolderWhiteEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderWhiteThreePapers
+  suffix: White, 3 papers
+
+- type: entity
+>>>>>>> upstream/master
   parent: BoxFolderBaseEmpty
   id: BoxFolderCentComEmpty
   categories: [ DoNotMap ]
@@ -230,7 +305,16 @@
 - type: entity
   parent: [BoxFolderCentComEmpty, BoxFolderFill]
   id: BoxFolderCentCom
+<<<<<<< HEAD
   suffix: DO NOT MAP, Filled
+=======
+  suffix: DO NOT MAP; Filled
+
+- type: entity
+  parent: [BoxFolderCentComEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderCentComThreePapers
+  suffix: DO NOT MAP; 3 papers
+>>>>>>> upstream/master
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -269,10 +353,14 @@
     slots: [belt]
     quickEquip: false
     sprite: Objects/Misc/clipboard.rsi
+  - type: PhysicalComposition
+    materialComposition: # half of autolathe printing cost
+      Wood: 50
+      Steel: 25
   - type: Storage
     grid:
     - 0,0,5,3
-    whitelist:
+    whitelist: # Redundant
       tags:
       - Document
   - type: ItemMapper
@@ -320,12 +408,26 @@
     sprite: Objects/Misc/plastic_clipboard.rsi
   - type: Clothing
     sprite: Objects/Misc/plastic_clipboard.rsi
+<<<<<<< HEAD
+=======
+  - type: PhysicalComposition
+    materialComposition: # half of autolathe printing cost
+      Plastic: 50
+      Steel: 25
+>>>>>>> upstream/master
 
 - type: entity
   parent: [BoxFolderPlasticClipboardEmpty, BoxFolderFill]
   id: BoxFolderPlasticClipboard
 
 - type: entity
+<<<<<<< HEAD
+=======
+  parent: [BoxFolderPlasticClipboardEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderPlasticClipboardThreePapers
+
+- type: entity
+>>>>>>> upstream/master
   parent: BoxFolderClipboardEmpty
   id: BoxFolderCentComClipboardEmpty
   name: CentComm clipboard
@@ -346,6 +448,11 @@
     sprite: Objects/Misc/cc-clipboard.rsi
   - type: Clothing
     sprite: Objects/Misc/cc-clipboard.rsi
+  - type: PhysicalComposition
+    materialComposition: # same composition as regular clipboard + bit of cloth because it's "upholstered with green velvet"
+      Wood: 50
+      Steel: 25
+      Cloth: 25
 
 - type: entity
   parent: [BoxFolderCentComClipboardEmpty, BoxFolderFill]

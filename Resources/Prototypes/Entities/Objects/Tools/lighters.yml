@@ -630,7 +630,11 @@
       - cheap
   - type: ComponentToggler
     components:
+<<<<<<< HEAD
     - type: Food
+=======
+    - type: Edible # This shouldn't be component toggler, but doesn't work when it's not
+>>>>>>> upstream/master
   - type: PointLight
     enabled: false
     netsync: false

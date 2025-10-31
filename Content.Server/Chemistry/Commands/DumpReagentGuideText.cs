@@ -39,7 +39,11 @@ public sealed class DumpReagentGuideText : LocalizedEntityCommands
         {
             foreach (var effect in entry.Effects)
             {
+<<<<<<< HEAD
                 shell.WriteLine(effect.GuidebookEffectDescription(_prototype, EntityManager.EntitySysManager) ??
+=======
+                shell.WriteLine(reagent.GuidebookReagentEffectDescription(_prototype, EntityManager.EntitySysManager, effect, entry.MetabolismRate) ??
+>>>>>>> upstream/master
                                 Loc.GetString($"cmd-dumpreagentguidetext-skipped", ("effect", effect.GetType())));
             }
         }

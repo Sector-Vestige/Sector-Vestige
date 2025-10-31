@@ -1,22 +1,25 @@
 - type: entity
+<<<<<<< HEAD
   parent: DrinkBase
+=======
+  parent: [ DrinkBaseMaterialStrongPlastic, DrinkBase, DrinkVisualsFill ]
+>>>>>>> upstream/master
   id: Bucket
   name: bucket
   description: It's a boring old bucket.
   components:
+<<<<<<< HEAD
   - type: Clickable
   - type: Edible
     edible: Drink
     solution: bucket
     destroyOnEmpty: false
+=======
+  - type: Edible
+>>>>>>> upstream/master
     utensil: Spoon
   - type: Sprite
     sprite: Objects/Tools/bucket.rsi
-    layers:
-    - state: icon
-    - map: ["enum.SolutionContainerLayers.Fill"]
-      state: fill-1
-      visible: false
   - type: Item
     size: Normal
   - type: Clothing
@@ -26,50 +29,27 @@
     quickEquip: false
   - type: SolutionContainerManager
     solutions:
-      bucket:
+      drink:
         maxVol: 250
-  - type: MixableSolution
-    solution: bucket
   - type: SolutionTransfer
     transferAmount: 100
     maxTransferAmount: 100
     minTransferAmount: 10
-    canChangeTransferAmount: true
-  - type: UserInterface
-    interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
-  - type: MeleeWeapon
-    soundNoDamage:
-      path: "/Audio/Effects/Fluids/splat.ogg"
-    damage:
-      types:
-        Blunt: 0
-  - type: Spillable
-    solution: bucket
   - type: SpillWhenWorn
-    solution: bucket
-  - type: DrawableSolution
-    solution: bucket
-  - type: RefillableSolution
-    solution: bucket
-  - type: DrainableSolution
-    solution: bucket
-  - type: SolutionItemStatus
-    solution: bucket
-  - type: Appearance
+    solution: drink
   - type: SolutionContainerVisuals
     maxFillLevels: 3
-    fillBaseName: fill-
-  - type: ExaminableSolution
-    solution: bucket
+    inHandsFillBaseName: null
   - type: Tag
     tags:
       - Bucket
   - type: PhysicalComposition
     materialComposition:
       Plastic: 50
+<<<<<<< HEAD
   - type: DnaSubstanceTrace
+=======
+>>>>>>> upstream/master
 
 - type: entity
   parent: Bucket
@@ -79,5 +59,9 @@
   components:
   - type: SolutionContainerManager
     solutions:
+<<<<<<< HEAD
       bucket:
+=======
+      drink:
+>>>>>>> upstream/master
         maxVol: 500

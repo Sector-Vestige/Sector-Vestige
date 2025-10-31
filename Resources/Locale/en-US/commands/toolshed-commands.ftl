@@ -6,6 +6,16 @@ command-description-acmd-perms =
     Returns the admin permissions of the given command, if any.
 command-description-acmd-caninvoke =
     Check if the given player can invoke the given command.
+command-description-bank-accounts = 
+    Returns all accounts on a station.
+command-description-bank-account = 
+    Returns a given bank account from a station.
+command-description-bank-adjust =
+    Adjusts the money for the given bank account.
+command-description-bank-set =
+    Sets the money for the given bank account.
+command-description-bank-amount =
+    Returns the money for the given bank account.
 command-description-jobs-jobs =
     Returns all jobs on a station.
 command-description-jobs-job =
@@ -146,5 +156,8 @@ command-description-dynamicrule-executenow =
     Executes the piped dynamic rule as if it had reached its regular update time.
 command-description-dynamicrule-rules =
     Gets a list of all the rules spawned by the piped dynamic rule.
+<<<<<<< HEAD
 command-description-pref-has =
     Check if the given session has the given antag preference.
+=======
+>>>>>>> upstream/master

@@ -120,8 +120,11 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", ["RubberStampSyndicate"]},
             {"/Maps/Shuttles/ShuttleEvent/cruiser.yml", ["ShuttleGunPerforator"]},
             {"/Maps/Shuttles/ShuttleEvent/instigator.yml", ["ShuttleGunFriendship"]},
+<<<<<<< HEAD
             {"/Maps/_LateStation/shuttles/avenger.yml", ["ShuttleGunSvalinnMachineGun", "ShuttleGunDuster"]},
             {"/Maps/_SV/cluster.yml", ["RubberStampMime"]},
+=======
+>>>>>>> upstream/master
         };
 
         /// <summary>
@@ -134,9 +137,13 @@ namespace Content.IntegrationTests.Tests
         private static readonly string[] DoNotMapWhitelist =
         {
             "/Maps/centcomm.yml",
+<<<<<<< HEAD
             "/Maps/Misc/terminal.yml", // Contains CentComm rubber stamp
             "/Maps/Shuttles/AdminSpawn/**", // admin gaming
             "/Maps/_Harmony/Nonstations/**" // custom nonstations may have various stamps and items
+=======
+            "/Maps/Shuttles/AdminSpawn/**" // admin gaming
+>>>>>>> upstream/master
         };
 
         /// <summary>
@@ -150,6 +157,7 @@ namespace Content.IntegrationTests.Tests
         {
             "Dev",
             "TestTeg",
+<<<<<<< HEAD
             // "Fland", // Vestige: Derotated Map
             "Packed",
             "Bagel",
@@ -168,6 +176,24 @@ namespace Content.IntegrationTests.Tests
             // "Exo", // Vestige: Derotated Map
             "Vanquish", // LateStation Map by Lachri
             "Cluster", // Sector Vestige, remade by Rebound
+=======
+            "Fland",
+            "Packed",
+            "Bagel",
+            "CentComm",
+            "Box",
+            "Marathon",
+            "MeteorArena",
+            "Saltern",
+            "Reach",
+            "Oasis",
+            "Amber",
+            "Plasma",
+            "Elkridge",
+            "Relic",
+            "dm01-entryway",
+            "Exo",
+>>>>>>> upstream/master
         };
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";

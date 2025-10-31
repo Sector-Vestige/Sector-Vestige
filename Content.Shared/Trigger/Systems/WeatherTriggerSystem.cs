@@ -5,12 +5,17 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Trigger.Systems;
 
+<<<<<<< HEAD
 public sealed class WeatherTriggerSystem : EntitySystem
+=======
+public sealed class WeatherTriggerSystem : XOnTriggerSystem<WeatherOnTriggerComponent>
+>>>>>>> upstream/master
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedWeatherSystem _weather = default!;
 
+<<<<<<< HEAD
     public override void Initialize()
     {
         base.Initialize();
@@ -29,6 +34,11 @@ public sealed class WeatherTriggerSystem : EntitySystem
             return;
 
         var xform = Transform(target.Value);
+=======
+    protected override void OnTrigger(Entity<WeatherOnTriggerComponent> ent, EntityUid target, ref TriggerEvent args)
+    {
+        var xform = Transform(target);
+>>>>>>> upstream/master
 
         if (ent.Comp.Weather == null) //Clear weather if nothing is set
         {

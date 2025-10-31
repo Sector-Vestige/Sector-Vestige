@@ -8,14 +8,23 @@ namespace Content.Shared.Fluids.Components;
 /// <summary>
 /// Added to puddles that contain water so it may evaporate over time.
 /// </summary>
+<<<<<<< HEAD
 [NetworkedComponent, AutoGenerateComponentPause]
+=======
+[NetworkedComponent, AutoGenerateComponentPause, AutoGenerateComponentState]
+>>>>>>> upstream/master
 [RegisterComponent, Access(typeof(SharedPuddleSystem))]
 public sealed partial class EvaporationComponent : Component
 {
     /// <summary>
     /// The next time we remove the EvaporationSystem reagent amount from this entity.
     /// </summary>
+<<<<<<< HEAD
     [AutoPausedField, DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+=======
+    [AutoNetworkedField, AutoPausedField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+>>>>>>> upstream/master
     public TimeSpan NextTick;
 
     /// <summary>

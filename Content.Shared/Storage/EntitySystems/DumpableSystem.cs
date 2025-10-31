@@ -143,6 +143,7 @@ public sealed class DumpableSystem : EntitySystem
 
     private void OnDoAfter(EntityUid uid, DumpableComponent component, DumpableDoAfterEvent args)
     {
+<<<<<<< HEAD
         if (args.Handled || args.Cancelled)
             return;
 
@@ -159,13 +160,21 @@ public sealed class DumpableSystem : EntitySystem
             return;
 
         if (storage.Container.ContainedEntities.Count == 0)
+=======
+        if (args.Handled || args.Cancelled || !TryComp<StorageComponent>(uid, out var storage) || storage.Container.ContainedEntities.Count == 0 || args.Args.Target is not { } target)
+>>>>>>> upstream/master
             return;
 
         var dumpQueue = new Queue<EntityUid>(storage.Container.ContainedEntities);
 
+<<<<<<< HEAD
         var evt = new DumpEvent(dumpQueue, user, false, false);
         if (target.HasValue)
             RaiseLocalEvent(target.Value, ref evt);
+=======
+        var evt = new DumpEvent(dumpQueue, args.Args.User, false, false);
+        RaiseLocalEvent(target, ref evt);
+>>>>>>> upstream/master
 
         if (!evt.Handled)
         {

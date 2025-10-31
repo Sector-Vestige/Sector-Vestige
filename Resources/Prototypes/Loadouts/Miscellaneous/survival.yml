@@ -31,12 +31,15 @@
     - Moth
     - Reptilian
     - Vulpkanin
+<<<<<<< HEAD
     - Avali #CD Species
     - Foxfolk #CD Species
     - Rodentia #CD Species
     - Felinid #DV
     - Harpy #DV
     - Resomi #Floof
+=======
+>>>>>>> upstream/master
 
 - type: loadoutEffectGroup
   id: EffectSpeciesVox

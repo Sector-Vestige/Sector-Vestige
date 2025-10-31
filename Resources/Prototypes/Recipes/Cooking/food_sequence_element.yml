@@ -1547,6 +1547,19 @@
   - sprite: Objects/Fun/Plushies/moth.rsi
     state: icon
 
+<<<<<<< HEAD
+=======
+#Vulp Plushie
+
+- type: foodSequenceElement
+  id: PlushieVulp
+  scale: 0.8, 0.8
+  name: food-sequence-cotton-burger-content-plushie-vulp
+  sprites:
+  - sprite: Objects/Fun/Plushies/vulp.rsi
+    state: icon
+
+>>>>>>> upstream/master
 #Ian Toy
 
 - type: foodSequenceElement

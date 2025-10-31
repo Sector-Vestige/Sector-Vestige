@@ -171,9 +171,12 @@
             "name": "pda-syndi"
         },
         {
+<<<<<<< HEAD
             "name": "pda-syndi-agent"
         },
         {
+=======
+>>>>>>> upstream/master
             "name": "pda-syndi-corpsman"
         },
         {
@@ -256,12 +259,15 @@
             ]
         },
         {
+<<<<<<< HEAD
             "name": "harmony-pda-prisoner"
         },
         {
             "name": "pda-privateinvestigator"
         },
         {
+=======
+>>>>>>> upstream/master
             "name": "equipped-IDCARD",
             "directions": 4
         }

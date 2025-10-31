@@ -7,6 +7,10 @@ using Content.Shared.DeviceLinking.Events;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.DoAfter;
+<<<<<<< HEAD
+=======
+using Content.Shared.Emp;
+>>>>>>> upstream/master
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Light.Components;
@@ -52,6 +56,10 @@ public abstract class SharedPoweredLightSystem : EntitySystem
         SubscribeLocalEvent<PoweredLightComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<PoweredLightComponent, PoweredLightDoAfterEvent>(OnDoAfter);
         SubscribeLocalEvent<PoweredLightComponent, DamageChangedEvent>(HandleLightDamaged);
+<<<<<<< HEAD
+=======
+        SubscribeLocalEvent<PoweredLightComponent, EmpPulseEvent>(OnEmpPulse);
+>>>>>>> upstream/master
     }
 
     private void OnInit(EntityUid uid, PoweredLightComponent light, ComponentInit args)
@@ -230,11 +238,16 @@ public abstract class SharedPoweredLightSystem : EntitySystem
     /// <summary>
     ///     Try to break bulb inside light fixture
     /// </summary>
+<<<<<<< HEAD
     public bool TryDestroyBulb(EntityUid uid, PoweredLightComponent? light = null)
+=======
+    public bool TryDestroyBulb(EntityUid uid, PoweredLightComponent? light = null, EntityUid? user = null)
+>>>>>>> upstream/master
     {
         if (!Resolve(uid, ref light, false))
             return false;
 
+<<<<<<< HEAD
         // if we aren't mapinited,
         // just null the spawned bulb
         if (LifeStage(uid) < EntityLifeStage.MapInitialized)
@@ -246,13 +259,22 @@ public abstract class SharedPoweredLightSystem : EntitySystem
         // check bulb state
         var bulbUid = GetBulb(uid, light);
         if (bulbUid == null || !EntityManager.TryGetComponent(bulbUid.Value, out LightBulbComponent? lightBulb))
+=======
+        // check bulb state
+        var bulbUid = GetBulb(uid, light);
+        if (bulbUid == null || !TryComp<LightBulbComponent>(bulbUid.Value, out var lightBulb))
+>>>>>>> upstream/master
             return false;
         if (lightBulb.State == LightBulbState.Broken)
             return false;
 
         // break it
         _bulbSystem.SetState(bulbUid.Value, LightBulbState.Broken, lightBulb);
+<<<<<<< HEAD
         _bulbSystem.PlayBreakSound(bulbUid.Value, lightBulb);
+=======
+        _bulbSystem.PlayBreakSound(bulbUid.Value, lightBulb, user);
+>>>>>>> upstream/master
         UpdateLight(uid, light);
         return true;
     }
@@ -327,6 +349,7 @@ public abstract class SharedPoweredLightSystem : EntitySystem
     /// <summary>
     ///     Destroy the light bulb if the light took any damage.
     /// </summary>
+<<<<<<< HEAD
     public void HandleLightDamaged(EntityUid uid, PoweredLightComponent component, DamageChangedEvent args)
     {
         // Was it being repaired, or did it take damage?
@@ -334,6 +357,20 @@ public abstract class SharedPoweredLightSystem : EntitySystem
         {
             // Eventually, this logic should all be done by this (or some other) system, not a component.
             TryDestroyBulb(uid, component);
+=======
+    /// <remarks>
+    ///     TODO: This should be an IThresholdBehaviour once DestructibleSystem is predicted.
+    /// </remarks>
+    public void HandleLightDamaged(EntityUid uid, PoweredLightComponent component, DamageChangedEvent args)
+    {
+        if (GameTiming.ApplyingState) // The destruction is already networked on its own.
+            return;
+
+        // Was it being repaired, or did it take damage?
+        if (args.DamageIncreased)
+        {
+            TryDestroyBulb(uid, component, args.Origin);
+>>>>>>> upstream/master
         }
     }
 
@@ -348,6 +385,15 @@ public abstract class SharedPoweredLightSystem : EntitySystem
         UpdateLight(uid, component);
     }
 
+<<<<<<< HEAD
+=======
+    private void OnEmpPulse(EntityUid uid, PoweredLightComponent component, ref EmpPulseEvent args)
+    {
+        if (TryDestroyBulb(uid, component))
+            args.Affected = true;
+    }
+
+>>>>>>> upstream/master
     public void ToggleBlinkingLight(EntityUid uid, PoweredLightComponent light, bool isNowBlinking)
     {
         if (light.IsBlinking == isNowBlinking)

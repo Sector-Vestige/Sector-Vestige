@@ -36,6 +36,13 @@ stack-hv-cable = {$amount ->
     [1] hv cable
     *[other] hv cables
 }
+<<<<<<< HEAD
+=======
+stack-explosive-cord = {$amount ->
+    [1] explosive cord
+    *[other] explosive cords
+}
+>>>>>>> upstream/master
 stack-wood-plank = {$amount ->
     [1] wood plank
     *[other] wood planks

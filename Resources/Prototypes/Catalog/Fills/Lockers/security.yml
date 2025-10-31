@@ -28,6 +28,10 @@
     children:
     - id: FlashlightSeclite
     - id: WeaponDisabler
+<<<<<<< HEAD
+=======
+    - id: WeaponTaser
+>>>>>>> upstream/master
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
@@ -43,7 +47,10 @@
       amount: 2
     - id: RemoteSignaller
       amount: 2
+<<<<<<< HEAD
     - id: BreachingCharge
+=======
+>>>>>>> upstream/master
     - id: NetworkConfigurator
     - id: Binoculars
 
@@ -72,6 +79,10 @@
     - id: FlashlightSeclite
       prob: 0.8
     - id: WeaponDisabler
+<<<<<<< HEAD
+=======
+    - id: WeaponTaser
+>>>>>>> upstream/master
     - id: ClothingUniformJumpsuitSecGrey
       prob: 0.3
     - id: ClothingHeadHelmetBasic
@@ -105,6 +116,10 @@
   table: !type:AllSelector
     children:
     - id: ClothingEyesGlassesSecurity
+<<<<<<< HEAD
+=======
+    - id: WeaponTaser
+>>>>>>> upstream/master
     - id: WeaponDisabler
     - id: TrackingImplanter
       amount: 2

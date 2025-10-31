@@ -3,6 +3,7 @@ using Content.Shared.Trigger.Components.Effects;
 
 namespace Content.Shared.Trigger.Systems;
 
+<<<<<<< HEAD
 public sealed class DamageOnTriggerSystem : EntitySystem
 {
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
@@ -29,6 +30,19 @@ public sealed class DamageOnTriggerSystem : EntitySystem
         RaiseLocalEvent(ent.Owner, ref ev);
 
         args.Handled |= _damageableSystem.TryChangeDamage(target, ev.Damage, ent.Comp.IgnoreResistances, origin: ent.Owner) is not null;
+=======
+public sealed class DamageOnTriggerSystem : XOnTriggerSystem<DamageOnTriggerComponent>
+{
+    [Dependency] private readonly Damage.Systems.DamageableSystem _damageableSystem = default!;
+
+    protected override void OnTrigger(Entity<DamageOnTriggerComponent> ent, EntityUid target, ref TriggerEvent args)
+    {
+        var damage = new DamageSpecifier(ent.Comp.Damage);
+        var ev = new BeforeDamageOnTriggerEvent(damage, target);
+        RaiseLocalEvent(ent.Owner, ref ev);
+
+        args.Handled |= _damageableSystem.TryChangeDamage(target, ev.Damage, ent.Comp.IgnoreResistances, origin: ent.Owner);
+>>>>>>> upstream/master
     }
 }
 

@@ -1,6 +1,10 @@
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.DeviceNetwork;
+<<<<<<< HEAD
 using Content.Shared.Damage;
+=======
+using Content.Shared.Damage.Components;
+>>>>>>> upstream/master
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;

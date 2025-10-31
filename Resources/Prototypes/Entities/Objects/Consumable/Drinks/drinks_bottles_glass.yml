@@ -106,7 +106,11 @@
   - type: Sprite
     sprite: Objects/Consumable/Drinks/alco-bottle.rsi
     layers:
+<<<<<<< HEAD
       - state: icon_blue # todo add "icon_empty" state
+=======
+      - state: icon_empty
+>>>>>>> upstream/master
         map: ["enum.OpenableVisuals.Layer"]
       - state: fill-6
         map: ["enum.SolutionContainerLayers.Fill"]
@@ -260,7 +264,11 @@
   - type: Sprite
     sprite: Objects/Consumable/Drinks/alco-bottle.rsi
     layers:
+<<<<<<< HEAD
       - state: icon_green # todo icon_empty
+=======
+      - state: icon_empty
+>>>>>>> upstream/master
         map: ["enum.OpenableVisuals.Layer"]
       - state: fill-6
         map: ["enum.SolutionContainerLayers.Fill"]

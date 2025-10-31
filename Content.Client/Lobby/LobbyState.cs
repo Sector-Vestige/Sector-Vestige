@@ -248,6 +248,7 @@ namespace Content.Client.Lobby
             else
             {
                 Lobby!.StartTime.Text = string.Empty;
+<<<<<<< HEAD
                 // Sector Vestige - Begin - Fix ready button text and state order
                 Lobby!.ReadyButton.Text = Loc.GetString(_gameTicker.AreWeReady ? "lobby-state-player-status-ready" : "lobby-state-player-status-not-ready");
                 Lobby!.ReadyButton.ToggleMode = true;
@@ -258,6 +259,12 @@ namespace Content.Client.Lobby
                 Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
                 _updatingReadyButton = false;
                 // Sector Vestige - End
+=======
+                Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
+                Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-player-status-not-ready");
+                Lobby!.ReadyButton.ToggleMode = true;
+                Lobby!.ReadyButton.Disabled = false;
+>>>>>>> upstream/master
                 Lobby!.ObserveButton.Disabled = true;
             }
 

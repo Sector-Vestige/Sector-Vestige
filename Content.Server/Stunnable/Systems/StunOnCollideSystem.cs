@@ -27,6 +27,10 @@ internal sealed class StunOnCollideSystem : EntitySystem
         if (ent.Comp.Refresh)
         {
             _stunSystem.TryUpdateStunDuration(target, ent.Comp.StunAmount);
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master
             _movementMod.TryUpdateMovementSpeedModDuration(
                 target,
                 MovementModStatusSystem.TaserSlowdown,

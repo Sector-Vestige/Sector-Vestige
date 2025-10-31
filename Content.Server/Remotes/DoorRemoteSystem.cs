@@ -1,23 +1,8 @@
-using Content.Server.Administration.Logs;
-using Content.Server.Doors.Systems;
-using Content.Server.Power.EntitySystems;
-using Content.Shared.Access.Components;
-using Content.Shared.Database;
-using Content.Shared.Doors.Components;
-using Content.Shared.Examine;
-using Content.Shared.Interaction;
-using Content.Shared.Remotes.Components;
 using Content.Shared.Remotes.EntitySystems;
 
-namespace Content.Shared.Remotes
-{
-    public sealed class DoorRemoteSystem : SharedDoorRemoteSystem
-    {
-        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly AirlockSystem _airlock = default!;
-        [Dependency] private readonly DoorSystem _doorSystem = default!;
-        [Dependency] private readonly ExamineSystemShared _examine = default!;
+namespace Content.Server.Remotes;
 
+<<<<<<< HEAD
         public override void Initialize()
         {
             base.Initialize();
@@ -106,3 +91,6 @@ namespace Content.Shared.Remotes
         }
     }
 }
+=======
+public sealed class DoorRemoteSystem : SharedDoorRemoteSystem;
+>>>>>>> upstream/master

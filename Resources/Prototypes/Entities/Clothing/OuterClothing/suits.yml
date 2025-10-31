@@ -288,6 +288,11 @@
     tags:
     - CorgiWearable
     - WhitelistChameleon
+<<<<<<< HEAD
+=======
+  - type: AddAccentClothing
+    accent: BarkAccent
+>>>>>>> upstream/master
 
 - type: entity
   parent: ClothingOuterBase

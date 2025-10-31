@@ -1,4 +1,8 @@
 using Content.Server.Chat.Systems;
+<<<<<<< HEAD
+=======
+using Content.Shared.Chat;
+>>>>>>> upstream/master
 using Content.Shared.Trigger;
 using Content.Shared.Trigger.Components.Effects;
 using Robust.Shared.Prototypes;

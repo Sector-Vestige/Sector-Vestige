@@ -1,35 +1,30 @@
 using System.Linq;
-using Content.Shared.CCVar;
 using Content.Shared.Chemistry;
-using Content.Shared.Damage.Prototypes;
-using Content.Shared.FixedPoint;
-using Content.Shared.Inventory;
-using Content.Shared.Mind.Components;
-using Content.Shared.Mobs.Components;
+using Content.Shared.Damage.Components;
+using Content.Shared.Explosion.EntitySystems;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Radiation.Events;
-using Content.Shared.Rejuvenate;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameStates;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Shared.Damage
+namespace Content.Shared.Damage.Systems;
+
+public sealed partial class DamageableSystem : EntitySystem
 {
-    public sealed class DamageableSystem : EntitySystem
-    {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-        [Dependency] private readonly INetManager _netMan = default!;
-        [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-        [Dependency] private readonly IConfigurationManager _config = default!;
-        [Dependency] private readonly SharedChemistryGuideDataSystem _chemistryGuideData = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly INetManager _netMan = default!;
+    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private readonly SharedChemistryGuideDataSystem _chemistryGuideData = default!;
+    [Dependency] private readonly SharedExplosionSystem _explosion = default!;
 
-        private EntityQuery<AppearanceComponent> _appearanceQuery;
-        private EntityQuery<DamageableComponent> _damageableQuery;
-        private EntityQuery<MindContainerComponent> _mindContainerQuery;
+    private EntityQuery<AppearanceComponent> _appearanceQuery;
+    private EntityQuery<DamageableComponent> _damageableQuery;
 
+<<<<<<< HEAD
         public float UniversalAllDamageModifier { get; private set; } = 1f;
         public float UniversalAllHealModifier { get; private set; } = 1f;
         public float UniversalMeleeDamageModifier { get; private set; } = 1f;
@@ -363,90 +358,76 @@ namespace Content.Shared.Damage
             }
         }
     }
+=======
+    public float UniversalAllDamageModifier { get; private set; } = 1f;
+    public float UniversalAllHealModifier { get; private set; } = 1f;
+    public float UniversalMeleeDamageModifier { get; private set; } = 1f;
+    public float UniversalProjectileDamageModifier { get; private set; } = 1f;
+    public float UniversalHitscanDamageModifier { get; private set; } = 1f;
+    public float UniversalReagentDamageModifier { get; private set; } = 1f;
+    public float UniversalReagentHealModifier { get; private set; } = 1f;
+    public float UniversalExplosionDamageModifier { get; private set; } = 1f;
+    public float UniversalThrownDamageModifier { get; private set; } = 1f;
+    public float UniversalTopicalsHealModifier { get; private set; } = 1f;
+    public float UniversalMobDamageModifier { get; private set; } = 1f;
+>>>>>>> upstream/master
 
     /// <summary>
-    ///     Raised before damage is done, so stuff can cancel it if necessary.
+    ///     If the damage in a DamageableComponent was changed this function should be called.
     /// </summary>
-    [ByRefEvent]
-    public record struct BeforeDamageChangedEvent(DamageSpecifier Damage, EntityUid? Origin = null, bool Cancelled = false);
-
-    /// <summary>
-    ///     Raised on an entity when damage is about to be dealt,
-    ///     in case anything else needs to modify it other than the base
-    ///     damageable component.
-    ///
-    ///     For example, armor.
-    /// </summary>
-    public sealed class DamageModifyEvent : EntityEventArgs, IInventoryRelayEvent
+    /// <remarks>
+    ///     This updates cached damage information, flags the component as dirty, and raises a damage changed event.
+    ///     The damage changed event is used by other systems, such as damage thresholds.
+    /// </remarks>
+    private void OnEntityDamageChanged(
+        Entity<DamageableComponent> ent,
+        DamageSpecifier? damageDelta = null,
+        bool interruptsDoAfters = true,
+        EntityUid? origin = null
+    )
     {
-        // Whenever locational damage is a thing, this should just check only that bit of armour.
-        public SlotFlags TargetSlots { get; } = ~SlotFlags.POCKET;
+        ent.Comp.Damage.GetDamagePerGroup(_prototypeManager, ent.Comp.DamagePerGroup);
+        ent.Comp.TotalDamage = ent.Comp.Damage.GetTotal();
+        Dirty(ent);
 
-        public readonly DamageSpecifier OriginalDamage;
-        public DamageSpecifier Damage;
-        public EntityUid? Origin;
-
-        public DamageModifyEvent(DamageSpecifier damage, EntityUid? origin = null)
+        if (damageDelta != null && _appearanceQuery.TryGetComponent(ent, out var appearance))
         {
-            OriginalDamage = damage;
-            Damage = damage;
-            Origin = origin;
+            _appearance.SetData(
+                ent,
+                DamageVisualizerKeys.DamageUpdateGroups,
+                new DamageVisualizerGroupData(ent.Comp.DamagePerGroup.Keys.ToList()),
+                appearance
+            );
         }
+
+        // TODO DAMAGE
+        // byref struct event.
+        RaiseLocalEvent(ent, new DamageChangedEvent(ent.Comp, damageDelta, interruptsDoAfters, origin));
     }
 
-    public sealed class DamageChangedEvent : EntityEventArgs
+    private void DamageableGetState(Entity<DamageableComponent> ent, ref ComponentGetState args)
     {
-        /// <summary>
-        ///     This is the component whose damage was changed.
-        /// </summary>
-        /// <remarks>
-        ///     Given that nearly every component that cares about a change in the damage, needs to know the
-        ///     current damage values, directly passing this information prevents a lot of duplicate
-        ///     Owner.TryGetComponent() calls.
-        /// </remarks>
-        public readonly DamageableComponent Damageable;
-
-        /// <summary>
-        ///     The amount by which the damage has changed. If the damage was set directly to some number, this will be
-        ///     null.
-        /// </summary>
-        public readonly DamageSpecifier? DamageDelta;
-
-        /// <summary>
-        ///     Was any of the damage change dealing damage, or was it all healing?
-        /// </summary>
-        public readonly bool DamageIncreased;
-
-        /// <summary>
-        ///     Does this event interrupt DoAfters?
-        ///     Note: As provided in the constructor, this *does not* account for DamageIncreased.
-        ///     As written into the event, this *does* account for DamageIncreased.
-        /// </summary>
-        public readonly bool InterruptsDoAfters;
-
-        /// <summary>
-        ///     Contains the entity which caused the change in damage, if any was responsible.
-        /// </summary>
-        public readonly EntityUid? Origin;
-
-        public DamageChangedEvent(DamageableComponent damageable, DamageSpecifier? damageDelta, bool interruptsDoAfters, EntityUid? origin)
+        if (_netMan.IsServer)
         {
-            Damageable = damageable;
-            DamageDelta = damageDelta;
-            Origin = origin;
+            args.State = new DamageableComponentState(
+                ent.Comp.Damage.DamageDict,
+                ent.Comp.DamageContainerID,
+                ent.Comp.DamageModifierSetId,
+                ent.Comp.HealthBarThreshold
+            );
+            // TODO BODY SYSTEM pass damage onto body system
+            // BOBBY WHEN? 😭
+            // BOBBY SOON 🫡
 
-            if (DamageDelta == null)
-                return;
-
-            foreach (var damageChange in DamageDelta.DamageDict.Values)
-            {
-                if (damageChange > 0)
-                {
-                    DamageIncreased = true;
-                    break;
-                }
-            }
-            InterruptsDoAfters = interruptsDoAfters && DamageIncreased;
+            return;
         }
+
+        // avoid mispredicting damage on newly spawned entities.
+        args.State = new DamageableComponentState(
+            ent.Comp.Damage.DamageDict.ShallowClone(),
+            ent.Comp.DamageContainerID,
+            ent.Comp.DamageModifierSetId,
+            ent.Comp.HealthBarThreshold
+        );
     }
 }

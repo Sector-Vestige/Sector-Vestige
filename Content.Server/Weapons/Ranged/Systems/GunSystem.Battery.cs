@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using Content.Server.Power.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
@@ -8,6 +9,12 @@ using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Prototypes;
+=======
+using Content.Shared.Power;
+using Content.Shared.PowerCell.Components;
+using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Events;
+>>>>>>> upstream/master
 
 namespace Content.Server.Weapons.Ranged.Systems;
 
@@ -20,13 +27,19 @@ public sealed partial class GunSystem
         // Hitscan
         SubscribeLocalEvent<HitscanBatteryAmmoProviderComponent, ComponentStartup>(OnBatteryStartup);
         SubscribeLocalEvent<HitscanBatteryAmmoProviderComponent, ChargeChangedEvent>(OnBatteryChargeChange);
+<<<<<<< HEAD
         SubscribeLocalEvent<HitscanBatteryAmmoProviderComponent, DamageExamineEvent>(OnBatteryDamageExamine);
+=======
+>>>>>>> upstream/master
         SubscribeLocalEvent<HitscanBatteryAmmoProviderComponent, PowerCellChangedEvent>(OnPowerCellChanged);
 
         // Projectile
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, ComponentStartup>(OnBatteryStartup);
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, ChargeChangedEvent>(OnBatteryChargeChange);
+<<<<<<< HEAD
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, DamageExamineEvent>(OnBatteryDamageExamine);
+=======
+>>>>>>> upstream/master
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, PowerCellChangedEvent>(OnPowerCellChanged);
     }
 
@@ -74,6 +87,7 @@ public sealed partial class GunSystem
         RaiseLocalEvent(uid, ref updateAmmoEv);
     }
 
+<<<<<<< HEAD
     private void OnBatteryDamageExamine<T>(Entity<T> entity, ref DamageExamineEvent args) where T : BatteryAmmoProviderComponent
     {
         var damageSpec = GetDamage(entity.Comp);
@@ -120,6 +134,10 @@ public sealed partial class GunSystem
 
     protected override void TakeCharge(Entity<BatteryAmmoProviderComponent> entity)
     {
+=======
+    protected override void TakeCharge(Entity<BatteryAmmoProviderComponent> entity)
+    {
+>>>>>>> upstream/master
         var ev = new ChangeChargeEvent(-entity.Comp.FireCost);
         RaiseLocalEvent(entity, ref ev);
     }

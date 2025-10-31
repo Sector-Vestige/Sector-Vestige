@@ -12,6 +12,11 @@ namespace Content.Shared.Atmos.EntitySystems
         [Dependency] private readonly SharedInternalsSystem _internals = default!;
 
         private EntityQuery<InternalsComponent> _internalsQuery;
+<<<<<<< HEAD
+=======
+
+        public string?[] GasReagents = new string[Atmospherics.TotalNumberOfGases];
+>>>>>>> upstream/master
 
         protected readonly GasPrototype[] GasPrototypes = new GasPrototype[Atmospherics.TotalNumberOfGases];
 
@@ -26,6 +31,7 @@ namespace Content.Shared.Atmos.EntitySystems
             for (var i = 0; i < Atmospherics.TotalNumberOfGases; i++)
             {
                 GasPrototypes[i] = _prototypeManager.Index<GasPrototype>(i.ToString());
+                GasReagents[i] = GasPrototypes[i].Reagent;
             }
         }
 

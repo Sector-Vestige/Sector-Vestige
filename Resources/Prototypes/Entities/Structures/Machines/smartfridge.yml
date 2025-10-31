@@ -114,6 +114,10 @@
       collection: MetalThud
   - type: ExplosionResistance
     damageCoefficient: 0.1
+<<<<<<< HEAD
+=======
+  - type: Airtight
+>>>>>>> upstream/master
 
 - type: entity
   parent: SmartFridge

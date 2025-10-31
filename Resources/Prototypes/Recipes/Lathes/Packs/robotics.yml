@@ -15,6 +15,10 @@
   - BorgModuleCable
   - BorgModuleFireExtinguisher
   - BorgModuleInflatable
+<<<<<<< HEAD
+=======
+  - BorgModuleArtistry
+>>>>>>> upstream/master
 
 - type: latheRecipePack
   id: BorgLimbsStatic

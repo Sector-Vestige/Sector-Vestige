@@ -10,7 +10,11 @@
     - Wall
   components:
   - type: Anchorable
+<<<<<<< HEAD
     flags:
+=======
+    flags: 
+>>>>>>> upstream/master
     - Anchorable
   - type: Rotatable
   - type: RangedDamageSound

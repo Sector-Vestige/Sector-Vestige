@@ -42,6 +42,14 @@
   id: BorgModuleInflatable
   result: BorgModuleInflatable
 
+<<<<<<< HEAD
+=======
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleArtistry
+  result: BorgModuleArtistry
+
+>>>>>>> upstream/master
 # Cargo Modules
 
 - type: latheRecipe

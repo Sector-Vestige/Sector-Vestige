@@ -1,5 +1,9 @@
 using System.Text.RegularExpressions;
+<<<<<<< HEAD
 using Content.Server.Chat.Systems;
+=======
+using Content.Shared.Chat;
+>>>>>>> upstream/master
 using Content.Shared.Speech;
 
 namespace Content.Server.Speech;

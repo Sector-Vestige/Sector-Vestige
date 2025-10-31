@@ -26,10 +26,18 @@
   sound: /Audio/Misc/notice2.ogg
   color: Orange
   nextDelay: 30
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> upstream/master
 - type: chatNotification
   id: AiCriticalPower
   message: station-ai-core-critical-power
   sound: /Audio/Effects/alert.ogg
   color: Red
+<<<<<<< HEAD
   nextDelay: 120
+=======
+  nextDelay: 120
+>>>>>>> upstream/master

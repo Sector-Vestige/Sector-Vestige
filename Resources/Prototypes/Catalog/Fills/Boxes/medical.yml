@@ -102,7 +102,11 @@
     layers:
       - state: box
       - state: bodybags
+<<<<<<< HEAD
   - type: Storage
+=======
+  - type: Storage # TODO cardboard boxes shouldn't have whitelisting
+>>>>>>> upstream/master
     whitelist:
       tags:
         - BodyBag

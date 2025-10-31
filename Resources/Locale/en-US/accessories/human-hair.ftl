@@ -199,3 +199,7 @@ marking-HumanHairVlongfringe = Very Long with Fringe
 marking-HumanHairVolaju = Volaju
 marking-HumanHairWisp = Wisp
 marking-HumanHairLongWithBangs = Long With Bangs
+<<<<<<< HEAD
+=======
+marking-HumanHairOverEyePigtail = Pigtail (Over Eye)
+>>>>>>> upstream/master

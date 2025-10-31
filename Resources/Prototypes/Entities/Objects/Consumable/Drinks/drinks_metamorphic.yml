@@ -4,13 +4,18 @@
 
 # Transformable container - normal glass
 - type: entity
+<<<<<<< HEAD
   parent: [DrinkBaseMaterialGlass, DrinkBaseCup] # todo parent to DrinkVisualsFillOverlay after in-hands are added
+=======
+  parent: [DrinkBaseMaterialGlass, DrinkBaseCup, DrinkVisualsFillOverlay]
+>>>>>>> upstream/master
   id: DrinkGlass
   name: metamorphic glass
   description: A metamorphic glass that automagically turns into a glass appropriate for the drink within. There's a sanded off patent number on the bottom.
   components:
   - type: Sprite
     sprite: Objects/Consumable/Drinks/glass_clear.rsi
+<<<<<<< HEAD
     layers:
       - state: icon # TODO add "icon_empty" state to match "DrinkVisualsFillOverlay"
         map: [ "enum.SolutionContainerLayers.Base" ]
@@ -20,19 +25,27 @@
       - state: icon-front
         map: [ "enum.SolutionContainerLayers.Overlay" ]
   - type: Appearance
+=======
+>>>>>>> upstream/master
   - type: SolutionContainerManager
     solutions:
       drink:
         maxVol: 30
   - type: SolutionContainerVisuals
     maxFillLevels: 9
+<<<<<<< HEAD
     fillBaseName: fill # todo rename to "fill-", add in-hands, then add parent "DrinkVisualsFillOverlay"
+=======
+>>>>>>> upstream/master
     metamorphic: true
     metamorphicDefaultSprite:
       sprite: Objects/Consumable/Drinks/glass_clear.rsi
       state: icon
+<<<<<<< HEAD
     inHandsMaxFillLevels: 3
     inHandsFillBaseName: -fill-
+=======
+>>>>>>> upstream/master
   - type: Tag
     tags:
     - DrinkCup # Do these tags
@@ -47,6 +60,7 @@
   components:
   - type: Sprite
     sprite: Objects/Consumable/Drinks/jar.rsi
+<<<<<<< HEAD
     layers:
     - state: icon
       map: [ "enum.SolutionContainerLayers.Base" ]
@@ -55,6 +69,8 @@
       visible: false
     - state: icon-front
       map: [ "enum.SolutionContainerLayers.Overlay" ]
+=======
+>>>>>>> upstream/master
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -1250,18 +1266,18 @@
 
 - type: entity
   parent: DrinkGlass
-  id: DrinkKiraSpecial
-  suffix: kira special
+  id: DrinkOrangeLimeSodaGlass
+  suffix: citrus bikeshed
   components:
   - type: SolutionContainerManager
     solutions:
       drink:
         maxVol: 30
         reagents:
-        - ReagentId: KiraSpecial
+        - ReagentId: OrangeLimeSoda
           Quantity: 30
   - type: Icon
-    sprite: Objects/Consumable/Drinks/kiraspecial.rsi
+    sprite: Objects/Consumable/Drinks/orangelime_soda.rsi
     state: icon
 
 - type: entity

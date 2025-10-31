@@ -1,20 +1,8 @@
-using Content.Server.Chemistry.Containers.EntitySystems;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Chemistry.Reaction;
-using Content.Shared.Chemistry;
-using Content.Shared.Clothing;
-using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Database;
-using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Nutrition.EntitySystems;
-using Content.Shared.Popups;
 using Content.Shared.Spillable;
 using Content.Shared.Throwing;
-using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Player;
 
 namespace Content.Server.Fluids.EntitySystems;
 
@@ -26,10 +14,8 @@ public sealed partial class PuddleSystem
 
         SubscribeLocalEvent<SpillableComponent, LandEvent>(SpillOnLand);
         // Openable handles the event if it's closed
-        SubscribeLocalEvent<SpillableComponent, MeleeHitEvent>(SplashOnMeleeHit, after: [typeof(OpenableSystem)]);
         SubscribeLocalEvent<SpillableComponent, SolutionContainerOverflowEvent>(OnOverflow);
         SubscribeLocalEvent<SpillableComponent, SpillDoAfterEvent>(OnDoAfter);
-        SubscribeLocalEvent<SpillableComponent, AttemptPacifiedThrowEvent>(OnAttemptPacifiedThrow);
     }
 
     private void OnOverflow(Entity<SpillableComponent> entity, ref SolutionContainerOverflowEvent args)
@@ -41,6 +27,7 @@ public sealed partial class PuddleSystem
         args.Handled = true;
     }
 
+<<<<<<< HEAD
     private void SplashOnMeleeHit(Entity<SpillableComponent> entity, ref MeleeHitEvent args)
     {
         if (args.Handled)
@@ -101,6 +88,8 @@ public sealed partial class PuddleSystem
         }
     }
 
+=======
+>>>>>>> upstream/master
     private void SpillOnLand(Entity<SpillableComponent> entity, ref LandEvent args)
     {
         if (!_solutionContainerSystem.TryGetSolution(entity.Owner, entity.Comp.SolutionName, out var soln, out var solution))
@@ -114,28 +103,12 @@ public sealed partial class PuddleSystem
 
         if (args.User != null)
         {
-            _adminLogger.Add(LogType.Landed,
+            AdminLogger.Add(LogType.Landed,
                 $"{ToPrettyString(entity.Owner):entity} spilled a solution {SharedSolutionContainerSystem.ToPrettyString(solution):solution} on landing");
         }
 
         var drainedSolution = _solutionContainerSystem.Drain(entity.Owner, soln.Value, solution.Volume);
         TrySplashSpillAt(entity.Owner, Transform(entity).Coordinates, drainedSolution, out _);
-    }
-
-    /// <summary>
-    /// Prevent Pacified entities from throwing items that can spill liquids.
-    /// </summary>
-    private void OnAttemptPacifiedThrow(Entity<SpillableComponent> ent, ref AttemptPacifiedThrowEvent args)
-    {
-        // Don’t care about closed containers.
-        if (Openable.IsClosed(ent))
-            return;
-
-        // Don’t care about empty containers.
-        if (!_solutionContainerSystem.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out _, out var solution) || solution.Volume <= 0)
-            return;
-
-        args.Cancel("pacified-cannot-throw-spill");
     }
 
     private void OnDoAfter(Entity<SpillableComponent> entity, ref SpillDoAfterEvent args)

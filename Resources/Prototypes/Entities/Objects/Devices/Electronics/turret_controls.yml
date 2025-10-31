@@ -1,7 +1,11 @@
 - type: entity
   abstract: true
   parent: BaseElectronics
+<<<<<<< HEAD
   id: WeaponEnergyTurretStationControlPanelElectronicsBase
+=======
+  id: WeaponEnergyTurretStationControlPanelElectronicsBase 
+>>>>>>> upstream/master
   name: sentry turret control panel electronics
   description: An electronics board used in a sentry turret control panel.
   components:
@@ -29,7 +33,11 @@
     state: science
   - type: ElectronicsBoard
     prototype: WeaponEnergyTurretAIControlPanel
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> upstream/master
 - type: entity
   parent: WeaponEnergyTurretStationControlPanelElectronicsBase
   id: WeaponEnergyTurretCommandControlPanelElectronics
@@ -40,3 +48,7 @@
     state: command
   - type: ElectronicsBoard
     prototype: WeaponEnergyTurretCommandControlPanel
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master

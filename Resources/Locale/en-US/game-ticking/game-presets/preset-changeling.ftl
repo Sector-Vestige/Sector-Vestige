@@ -1,8 +1,15 @@
 changeling-role-greeting =
+<<<<<<< HEAD
     You are a Changeling, a highly intelligent predator.
     Your primary goal is to escape the station alive via assuming the identities of the denizens of this station.
     You are hungry and will not make it long without sustenance...
     Kill, consume, hide, survive.
+=======
+    You are a changeling, a highly intelligent predator.
+    Your primary goal is to escape the station alive via assuming the identities of the denizens of this station.
+    You are hungry and will not make it long without sustenance...
+    Kill. Consume. Hide. Survive.
+>>>>>>> upstream/master
 
 changeling-briefing =
     You are a changeling.

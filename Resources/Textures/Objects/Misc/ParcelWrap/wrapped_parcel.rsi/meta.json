@@ -1,7 +1,11 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
+<<<<<<< HEAD
     "copyright": "created for ss14 by ps3moira (github) based on package sprites from vgstation at https://github.com/vgstation-coders/vgstation13/pull/36993",
+=======
+    "copyright": "created for ss14 by ps3moira (github) based on package sprites from vgstation at https://github.com/vgstation-coders/vgstation13/pull/36993 | human by Davyei (Discord)",
+>>>>>>> upstream/master
     "size": {
         "x": 32,
         "y": 32
@@ -34,6 +38,13 @@
         {
             "name": "tall-crate",
             "directions": 1
+<<<<<<< HEAD
+=======
+        },
+        {
+            "name": "human",
+            "directions": 4
+>>>>>>> upstream/master
         }
     ]
 }

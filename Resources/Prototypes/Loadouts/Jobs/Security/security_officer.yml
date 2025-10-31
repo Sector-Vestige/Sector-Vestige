@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # # Senior Time (CD: Disabled)
 # - type: loadoutEffectGroup
 #   id: SeniorOfficer
@@ -12,6 +13,22 @@
 #       !type:DepartmentTimeRequirement
 #       department: Security
 #       time: 216000 # 60 hrs
+=======
+# Senior Time
+- type: loadoutEffectGroup
+  id: SeniorOfficer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobWarden
+      time: 6h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 60h
+>>>>>>> upstream/master
 
 #Security Star
 - type: loadoutEffectGroup
@@ -21,7 +38,7 @@
       requirement:
         !type:DepartmentTimeRequirement
         department: Security
-        time: 360000 #100 hrs
+        time: 100h
 
 # Head
 - type: loadout

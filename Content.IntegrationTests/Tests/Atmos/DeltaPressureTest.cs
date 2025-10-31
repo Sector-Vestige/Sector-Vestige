@@ -4,6 +4,10 @@ using Content.Server.Atmos;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Atmos;
+<<<<<<< HEAD
+=======
+using Content.Shared.Atmos.Components;
+>>>>>>> upstream/master
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.GameObjects;
@@ -93,6 +97,15 @@ public sealed class DeltaPressureTest
 
     private readonly ResPath _testMap = new("Maps/Test/Atmospherics/DeltaPressure/deltapressuretest.yml");
 
+<<<<<<< HEAD
+=======
+    // TODO ATMOS TESTS
+    // - Check for directional windows (partial airtight ents) properly computing pressure differences
+    // - Check for multi-tick damage (window with n damage threshold should take n ticks to destroy)
+    // - Check that all maps do not explode into a million pieces on load due to dP
+    // - Ensure that all tests work for a map that has an origin at a non zero coordinate
+
+>>>>>>> upstream/master
     /// <summary>
     /// Asserts that an entity with a DeltaPressureComponent with autoJoinProcessingList
     /// set to true is automatically added to the DeltaPressure processing list

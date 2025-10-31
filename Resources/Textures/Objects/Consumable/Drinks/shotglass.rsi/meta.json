@@ -14,10 +14,14 @@
             "name": "icon-front"
         },
         {
-            "name": "fill1"
+            "name": "fill-1"
         },
         {
+<<<<<<< HEAD
             "name": "fill2"
+=======
+            "name": "fill-2"
+>>>>>>> upstream/master
         },
         {
             "name": "inhand-left",

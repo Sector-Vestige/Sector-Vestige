@@ -1,6 +1,10 @@
 ﻿using Content.Server.Chat.Managers;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
+<<<<<<< HEAD
+=======
+using NetCord;
+>>>>>>> upstream/master
 using NetCord.Gateway;
 using Robust.Shared.Asynchronous;
 using Robust.Shared.Configuration;
@@ -24,6 +28,13 @@ public sealed class DiscordChatLink : IPostInjectInit
     {
         _discordLink.OnMessageReceived += OnMessageReceived;
 
+<<<<<<< HEAD
+=======
+        #if DEBUG
+        _discordLink.RegisterCommandCallback(OnDebugCommandRun, "debug");
+        #endif
+
+>>>>>>> upstream/master
         _configurationManager.OnValueChanged(CCVars.OocDiscordChannelId, OnOocChannelIdChanged, true);
         _configurationManager.OnValueChanged(CCVars.AdminChatDiscordChannelId, OnAdminChannelIdChanged, true);
     }
@@ -36,6 +47,17 @@ public sealed class DiscordChatLink : IPostInjectInit
         _configurationManager.UnsubValueChanged(CCVars.AdminChatDiscordChannelId, OnAdminChannelIdChanged);
     }
 
+<<<<<<< HEAD
+=======
+    #if DEBUG
+    private void OnDebugCommandRun(CommandReceivedEventArgs ev)
+    {
+        var args = string.Join('\n', ev.Arguments);
+        _sawmill.Info($"Provided arguments: \n{args}");
+    }
+    #endif
+
+>>>>>>> upstream/master
     private void OnOocChannelIdChanged(string channelId)
     {
         if (string.IsNullOrEmpty(channelId))

@@ -62,6 +62,7 @@ public sealed class MaskSystem : EntitySystem
 
     private void OnGotUnequipped(EntityUid uid, MaskComponent mask, GotUnequippedEvent args)
     {
+<<<<<<< HEAD
         if (!mask.IsToggled || !mask.IsToggleable)
             return;
 
@@ -83,6 +84,9 @@ public sealed class MaskSystem : EntitySystem
 
         var wearerEv = new WearerMaskToggledEvent((uid, mask));
         RaiseLocalEvent(wearer, ref wearerEv);
+=======
+        SetToggled(uid, false);
+>>>>>>> upstream/master
     }
 
     private void OnFolded(Entity<MaskComponent> ent, ref FoldedEvent args)

@@ -9,7 +9,7 @@
       - torso
       organs:
         brain: OrganHumanBrain
-        eyes: OrganHumanEyes
+        eyes: OrganVoxEyes
     torso:
       part: TorsoVox
       connections:
@@ -22,7 +22,11 @@
         lungs: OrganVoxLungs
         stomach: OrganVoxStomach
         liver: OrganVoxLiver
+<<<<<<< HEAD
         kidneys: OrganHumanKidneys
+=======
+        kidneys: OrganVoxKidneys
+>>>>>>> upstream/master
     right arm:
       part: RightArmVox
       connections:

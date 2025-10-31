@@ -37,12 +37,21 @@ public sealed class MultiHandedItemSystem : EntitySystem
 
     private void OnAttemptPickup(Entity<MultiHandedItemComponent> ent, ref GettingPickedUpAttemptEvent args)
     {
+<<<<<<< HEAD
         if (_hands.CountFreeHands(args.User) >= ent.Comp.HandsNeeded)
+=======
+        if (args.Cancelled || _hands.CountFreeHands(args.User) >= ent.Comp.HandsNeeded)
+>>>>>>> upstream/master
             return;
 
         args.Cancel();
-        _popup.PopupPredictedCursor(Loc.GetString("multi-handed-item-pick-up-fail",
-            ("number", ent.Comp.HandsNeeded - 1), ("item", ent.Owner)), args.User);
+
+        if (args.ShowPopup)
+            _popup.PopupPredictedCursor(
+                Loc.GetString("multi-handed-item-pick-up-fail",
+                    ("number", ent.Comp.HandsNeeded - 1),
+                    ("item", ent.Owner)),
+                args.User);
     }
 
     private void OnVirtualItemDeleted(Entity<MultiHandedItemComponent> ent, ref VirtualItemDeletedEvent args)

@@ -5,6 +5,10 @@ using Content.Server.Maps;
 using Content.Server.Power.Components;
 using Content.Server.Power.NodeGroups;
 using Content.Server.Power.Pow3r;
+<<<<<<< HEAD
+=======
+using Content.Shared.Power.Components;
+>>>>>>> upstream/master
 using Content.Shared.NodeContainer;
 using Robust.Shared.EntitySerialization;
 

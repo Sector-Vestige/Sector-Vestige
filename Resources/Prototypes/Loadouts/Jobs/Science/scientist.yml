@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # # Senior Time (CD: Disabled)
 # - type: loadoutEffectGroup
 #   id: SeniorResearcher
@@ -7,6 +8,17 @@
 #       !type:DepartmentTimeRequirement
 #       department: Science
 #       time: 216000 #60 hrs
+=======
+# Senior Time
+- type: loadoutEffectGroup
+  id: SeniorResearcher
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Science
+      time: 60h
+>>>>>>> upstream/master
 
 # Head
 - type: startingGear

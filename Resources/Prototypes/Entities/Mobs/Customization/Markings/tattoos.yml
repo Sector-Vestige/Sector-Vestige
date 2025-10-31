@@ -126,7 +126,11 @@
   id: TattooEyeRight
   bodyPart: Eyes
   markingCategory: [Head]
+<<<<<<< HEAD
   speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Rodentia, Foxfolk]
+=======
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf]
+>>>>>>> upstream/master
   coloring:
     default:
       type:
@@ -229,4 +233,8 @@
   forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/tattoos.rsi
+<<<<<<< HEAD
     state: eyeshadow_lower
+=======
+    state: eyeshadow_lower
+>>>>>>> upstream/master

@@ -8,7 +8,11 @@
   completetime: 2
   materials:
     Steel: 50
+<<<<<<< HEAD
     Glass: 50
+=======
+    Glass: 200
+>>>>>>> upstream/master
 
 # Recipes
 
@@ -120,7 +124,7 @@
   result: AirTank
   completetime: 4
   materials:
-    Steel: 300
+    Steel: 400
 
 - type: latheRecipe
   id: DoubleEmergencyOxygenTank
@@ -222,7 +226,11 @@
   completetime: 2
   materials:
     Wood: 100
+<<<<<<< HEAD
     Steel: 25
+=======
+    Steel: 50
+>>>>>>> upstream/master
 
 - type: latheRecipe
   id: BoxFolderPlasticClipboardEmpty
@@ -230,4 +238,15 @@
   completetime: 2
   materials:
     Plastic: 100
+<<<<<<< HEAD
     Steel: 25
+=======
+    Steel: 50
+
+- type: latheRecipe
+  id: TowelColorWhite
+  result: TowelColorWhite
+  completetime: 2
+  materials:
+    Cloth: 300
+>>>>>>> upstream/master

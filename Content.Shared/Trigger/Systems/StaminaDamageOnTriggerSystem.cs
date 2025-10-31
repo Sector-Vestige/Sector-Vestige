@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 using Content.Shared.Damage;
+=======
+>>>>>>> upstream/master
 using Content.Shared.Damage.Systems;
 using Content.Shared.Trigger.Components.Effects;
 
 namespace Content.Shared.Trigger.Systems;
 
+<<<<<<< HEAD
 public sealed class StaminaDamageOnTriggerSystem : EntitySystem
 {
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
@@ -29,6 +33,18 @@ public sealed class StaminaDamageOnTriggerSystem : EntitySystem
         RaiseLocalEvent(ent.Owner, ref ev);
 
         _stamina.TakeStaminaDamage(target.Value, ev.Stamina, source: args.User, with: ent.Owner, ignoreResist: ent.Comp.IgnoreResistances);
+=======
+public sealed class StaminaDamageOnTriggerSystem : XOnTriggerSystem<StaminaDamageOnTriggerComponent>
+{
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
+
+    protected override void OnTrigger(Entity<StaminaDamageOnTriggerComponent> ent, EntityUid target, ref TriggerEvent args)
+    {
+        var ev = new BeforeStaminaDamageOnTriggerEvent(ent.Comp.Stamina, target);
+        RaiseLocalEvent(ent.Owner, ref ev);
+
+        _stamina.TakeStaminaDamage(target, ev.Stamina, source: args.User, with: ent.Owner, ignoreResist: ent.Comp.IgnoreResistances);
+>>>>>>> upstream/master
 
         args.Handled = true;
     }

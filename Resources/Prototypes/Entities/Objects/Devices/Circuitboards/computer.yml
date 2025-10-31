@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   parent: BaseItem
   id: BaseComputerCircuitboard
   name: computer board
@@ -564,7 +564,11 @@
 - type: entity
   parent: BaseComputerCircuitboard
   id: StationAiFixerCircuitboard
+<<<<<<< HEAD
   name: AI restoration console
+=======
+  name: AI restoration console board
+>>>>>>> upstream/master
   description: A computer printed circuit board for an AI restoration console console.
   components:
     - type: Sprite

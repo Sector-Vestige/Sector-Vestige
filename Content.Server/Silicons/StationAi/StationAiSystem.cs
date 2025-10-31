@@ -12,13 +12,22 @@ using Content.Server.Station.Systems;
 using Content.Shared.Alert;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Containers.ItemSlots;
+<<<<<<< HEAD
 using Content.Shared.Damage;
+=======
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
+>>>>>>> upstream/master
 using Content.Shared.Destructible;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+<<<<<<< HEAD
+=======
+using Content.Shared.Power;
+>>>>>>> upstream/master
 using Content.Shared.Power.Components;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Roles;
@@ -126,10 +135,14 @@ public sealed class StationAiSystem : SharedStationAiSystem
             _battery.SetCharge(ent, battery.MaxCharge);
         }
 
+<<<<<<< HEAD
         if (TryComp<DamageableComponent>(ent, out var damageable))
         {
             _damageable.SetAllDamage(ent, damageable, 0);
         }
+=======
+        _damageable.ClearAllDamage(ent.Owner);
+>>>>>>> upstream/master
     }
 
     protected override void OnAiInsert(Entity<StationAiCoreComponent> ent, ref EntInsertedIntoContainerMessage args)

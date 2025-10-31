@@ -14,7 +14,11 @@ using Robust.Shared.Map;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using System.Linq;
+<<<<<<< HEAD
 using Content.Shared.Damage;
+=======
+using Content.Shared.Damage.Systems;
+>>>>>>> upstream/master
 using Robust.Shared.Threading;
 
 namespace Content.Server.Atmos.EntitySystems;

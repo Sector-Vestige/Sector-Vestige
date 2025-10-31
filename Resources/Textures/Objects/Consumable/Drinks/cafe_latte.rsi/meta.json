@@ -13,18 +13,27 @@
             "name": "icon"
         },
         {
-            "name": "icon_empty"
-        },
-        {
             "name": "fill-1"
         },
         {
+<<<<<<< HEAD
+            "name": "fill-1"
+        },
+        {
+=======
+>>>>>>> upstream/master
             "name": "inhand-right",
             "directions": 4
         },
         {
             "name": "inhand-left",
             "directions": 4
+<<<<<<< HEAD
+=======
+        },
+		{
+            "name": "icon-vend"
+>>>>>>> upstream/master
         }
     ]
 }

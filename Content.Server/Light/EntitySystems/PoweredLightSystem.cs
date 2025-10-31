@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 using Content.Server.Emp;
+=======
+>>>>>>> upstream/master
 using Content.Server.Ghost;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
@@ -16,10 +19,15 @@ public sealed class PoweredLightSystem : SharedPoweredLightSystem
         SubscribeLocalEvent<PoweredLightComponent, MapInitEvent>(OnMapInit);
 
         SubscribeLocalEvent<PoweredLightComponent, GhostBooEvent>(OnGhostBoo);
+<<<<<<< HEAD
 
         SubscribeLocalEvent<PoweredLightComponent, EmpPulseEvent>(OnEmpPulse);
     }
 
+=======
+    }
+
+>>>>>>> upstream/master
     private void OnGhostBoo(EntityUid uid, PoweredLightComponent light, GhostBooEvent args)
     {
         if (light.IgnoreGhostsBoo)
@@ -54,11 +62,14 @@ public sealed class PoweredLightSystem : SharedPoweredLightSystem
         }
         // need this to update visualizers
         UpdateLight(uid, light);
+<<<<<<< HEAD
     }
 
     private void OnEmpPulse(EntityUid uid, PoweredLightComponent component, ref EmpPulseEvent args)
     {
         if (TryDestroyBulb(uid, component))
             args.Affected = true;
+=======
+>>>>>>> upstream/master
     }
 }

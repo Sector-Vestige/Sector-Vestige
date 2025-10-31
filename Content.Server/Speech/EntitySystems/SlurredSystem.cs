@@ -15,6 +15,19 @@ public sealed class SlurredSystem : SharedSlurredSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
+<<<<<<< HEAD
+=======
+    /// <summary>
+    /// Divisor applied to total seconds used to get the odds of slurred speech occuring.
+    /// </summary>
+    private const float SlurredModifier = 1100f;
+
+    /// <summary>
+    /// Minimum amount of time on the slurred accent for it to start taking effect.
+    /// </summary>
+    private const float SlurredThreshold = 80f;
+
+>>>>>>> upstream/master
     public override void Initialize()
     {
         SubscribeLocalEvent<SlurredAccentComponent, AccentGetEvent>(OnAccent);
@@ -23,10 +36,12 @@ public sealed class SlurredSystem : SharedSlurredSystem
     }
 
     /// <summary>
-    ///     Slur chance scales with "drunkeness", which is just measured using the time remaining on the status effect.
+    ///     Slur chance scales with the time remaining on any status effect with the SlurredAccentComponent.
+    ///     Typically, this is equivalent to "drunkenness" on the DrunkStatusEffect
     /// </summary>
     private float GetProbabilityScale(EntityUid uid)
     {
+<<<<<<< HEAD
         if (!_status.TryGetMaxTime<DrunkStatusEffectComponent>(uid, out var time))
             return 0;
 
@@ -40,6 +55,15 @@ public sealed class SlurredSystem : SharedSlurredSystem
         }
 
         return Math.Clamp(magic / SharedDrunkSystem.MagicNumber, 0f, 1f);
+=======
+        if (!_status.TryGetMaxTime<SlurredAccentComponent>(uid, out var time))
+            return 0;
+
+        // This is a magic number. Why this value? No clue it was made 3 years before I refactored this.
+        var magic = time.Item2 == null ? SlurredModifier : (float) (time.Item2 - _timing.CurTime).Value.TotalSeconds - SlurredThreshold;
+
+        return Math.Clamp(magic / SlurredModifier, 0f, 1f);
+>>>>>>> upstream/master
     }
 
     private void OnAccent(Entity<SlurredAccentComponent> entity, ref AccentGetEvent args)

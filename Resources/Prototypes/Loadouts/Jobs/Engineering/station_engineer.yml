@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # # Senior times (CD: Disabled timers)
 # - type: loadoutEffectGroup
 #   id: SeniorEngineering
@@ -17,6 +18,27 @@
 #       !type:DepartmentTimeRequirement
 #       department: Engineering
 #       time: 216000 # 60 hrs
+=======
+# Senior times
+- type: loadoutEffectGroup
+  id: SeniorEngineering
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobAtmosphericTechnician
+      time: 6h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobStationEngineer
+      time: 6h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 60h
+>>>>>>> upstream/master
 
 # Head
 - type: startingGear

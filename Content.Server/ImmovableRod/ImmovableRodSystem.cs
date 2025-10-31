@@ -1,10 +1,13 @@
 using Content.Server.Body.Systems;
 using Content.Server.Destructible;
+<<<<<<< HEAD
 using Content.Server.Examine;
+=======
+>>>>>>> upstream/master
 using Content.Server.Polymorph.Components;
 using Content.Server.Popups;
 using Content.Shared.Body.Components;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;

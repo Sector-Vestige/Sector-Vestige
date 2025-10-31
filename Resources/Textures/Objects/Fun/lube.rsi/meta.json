@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+<<<<<<<< HEAD:Resources/Textures/Objects/Specific/Chapel/codexnanotrasimus.rsi/meta.json
+  "copyright": "Originally drawn by @Trosling (Discord)",
+========
+  "copyright": "Made by brainfood1183 (github) for ss14. Edited by huaqas (github).",
+>>>>>>>> upstream/master:Resources/Textures/Objects/Fun/lube.rsi/meta.json
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "icon_open"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
+  ]
+}
+

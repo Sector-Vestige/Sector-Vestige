@@ -19,12 +19,15 @@
   - SlimePerson
   - Vox
   - Vulpkanin
+<<<<<<< HEAD
   - Felinid #DV Species
   - Harpy #DV Species
   - Resomi #Floof Species
   - Avali #CD Species
   - Foxfolk #CD Species
   - Rodentia #CD Species
+=======
+>>>>>>> upstream/master
 
 - type: guideEntry
   id: Arachnid

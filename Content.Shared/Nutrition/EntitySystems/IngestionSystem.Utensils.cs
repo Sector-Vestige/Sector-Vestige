@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using Content.Shared.Containers.ItemSlots;
+=======
+using Content.Shared.Containers.ItemSlots;
+>>>>>>> upstream/master
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition.Components;
@@ -43,7 +47,11 @@ public sealed partial class IngestionSystem
         RaiseLocalEvent(target, ref ev);
 
         //Prevents food usage with a wrong utensil
+<<<<<<< HEAD
         if ((ev.Types & utensil.Comp.Types) == 0)
+=======
+        if (ev.Types != UtensilType.None && (ev.Types & utensil.Comp.Types) == 0)
+>>>>>>> upstream/master
         {
             _popup.PopupClient(Loc.GetString("ingestion-try-use-wrong-utensil", ("verb", GetEdibleVerb(target)), ("food", target), ("utensil", utensil.Owner)), user, user);
             return true;
@@ -66,7 +74,11 @@ public sealed partial class IngestionSystem
             return;
 
         // TODO: Once we have predicted randomness delete this for something sane...
+<<<<<<< HEAD
         var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(entity).Id, GetNetEntity(userUid).Id });
+=======
+        var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(entity).Id, GetNetEntity(userUid).Id);
+>>>>>>> upstream/master
         var rand = new System.Random(seed);
 
         if (!rand.Prob(entity.Comp.BreakChance))

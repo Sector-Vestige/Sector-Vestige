@@ -31,6 +31,7 @@ namespace Content.Shared.Chemistry.Reaction
         [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
         [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+        [Dependency] private readonly SharedEntityEffectsSystem _entityEffects = default!;
 
         /// <summary>
         /// A cache of all reactions indexed by at most ONE of their required reactants.
@@ -205,18 +206,14 @@ namespace Content.Shared.Chemistry.Reaction
 
         private void OnReaction(Entity<SolutionComponent> soln, ReactionPrototype reaction, ReagentPrototype? reagent, FixedPoint2 unitReactions)
         {
-            var args = new EntityEffectReagentArgs(soln, EntityManager, null, soln.Comp.Solution, unitReactions, reagent, null, 1f);
-
             var posFound = _transformSystem.TryGetMapOrGridCoordinates(soln, out var gridPos);
 
             _adminLogger.Add(LogType.ChemicalReaction, reaction.Impact,
                 $"Chemical reaction {reaction.ID:reaction} occurred with strength {unitReactions:strength} on entity {ToPrettyString(soln):metabolizer} at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not Found]")}");
 
-            foreach (var effect in reaction.Effects)
-            {
-                if (!effect.ShouldApply(args))
-                    continue;
+            _entityEffects.ApplyEffects(soln, reaction.Effects, unitReactions.Float());
 
+<<<<<<< HEAD
                 if (effect.ShouldLog)
                 {
                     var entity = args.TargetEntity;
@@ -227,6 +224,8 @@ namespace Content.Shared.Chemistry.Reaction
                 effect.Effect(args);
             }
 
+=======
+>>>>>>> upstream/master
             // Someday, some brave soul will thread through an optional actor
             // argument in from every call of OnReaction up, all just to pass
             // it to PlayPredicted. I am not that brave soul.

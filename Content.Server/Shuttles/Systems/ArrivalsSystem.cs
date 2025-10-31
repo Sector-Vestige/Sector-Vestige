@@ -256,7 +256,11 @@ public sealed class ArrivalsSystem : EntitySystem
 
             if (component.FirstRun)
             {
+<<<<<<< HEAD
                 var station = _station.GetLargestGrid((component.Station, Comp<StationDataComponent>(component.Station)));
+=======
+                var station = _station.GetLargestGrid(component.Station);
+>>>>>>> upstream/master
                 sourceMap = station == null ? null : Transform(station.Value)?.MapUid;
                 arrivalsDelay += RoundStartFTLDuration;
                 component.FirstRun = false;
@@ -532,7 +536,7 @@ public sealed class ArrivalsSystem : EntitySystem
         {
             while (query.MoveNext(out var uid, out var comp, out var shuttle, out var xform))
             {
-                if (comp.NextTransfer > curTime || !TryComp<StationDataComponent>(comp.Station, out var data))
+                if (comp.NextTransfer > curTime)
                     continue;
 
                 var tripTime = _shuttles.DefaultTravelTime + _shuttles.DefaultStartupTime;
@@ -548,7 +552,11 @@ public sealed class ArrivalsSystem : EntitySystem
                 // Go to station
                 else
                 {
+<<<<<<< HEAD
                     var targetGrid = _station.GetLargestGrid((comp.Station, data));
+=======
+                    var targetGrid = _station.GetLargestGrid(comp.Station);
+>>>>>>> upstream/master
 
                     if (targetGrid != null)
                         _shuttles.FTLToDock(uid, shuttle, targetGrid.Value);

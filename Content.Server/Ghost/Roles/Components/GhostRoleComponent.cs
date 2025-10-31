@@ -15,6 +15,7 @@ public sealed partial class GhostRoleComponent : Component
 
     [DataField("rules")] private string _roleRules = "ghost-role-component-default-rules";
 
+<<<<<<< HEAD
     // Actually make use of / enforce this requirement?
     // Why is this even here.
     // Move to ghost role prototype & respect CCvars.GameRoleTimerOverride
@@ -22,6 +23,8 @@ public sealed partial class GhostRoleComponent : Component
     [DataField("requirements")]
     public HashSet<JobRequirement>? Requirements;
 
+=======
+>>>>>>> upstream/master
     /// <summary>
     /// Whether the <see cref="MakeSentientCommand"/> should run on the mob.
     /// </summary>

@@ -19,7 +19,11 @@
   - type: PhysicalComposition # 50% of the amount of cloth you'd obtain upon butchering
     materialComposition:
       Cloth: 100
+<<<<<<< HEAD
   - type: Food
+=======
+  - type: Edible
+>>>>>>> upstream/master
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:
