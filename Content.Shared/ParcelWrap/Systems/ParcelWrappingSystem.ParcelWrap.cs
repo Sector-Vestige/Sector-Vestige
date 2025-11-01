@@ -1,15 +1,9 @@
 using Content.Shared.DoAfter;
-<<<<<<< HEAD
-using Content.Shared.Interaction;
-using Content.Shared.Item;
-using Content.Shared.ParcelWrap.Components;
-=======
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.ParcelWrap.Components;
 using Content.Shared.Popups;
->>>>>>> upstream/master
 using Content.Shared.Verbs;
 using Robust.Shared.Utility;
 
@@ -67,11 +61,6 @@ public sealed partial class ParcelWrappingSystem
 
     private bool TryStartWrapDoAfter(EntityUid user, Entity<ParcelWrapComponent> wrapper, EntityUid target)
     {
-<<<<<<< HEAD
-        return _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager,
-            user,
-            wrapper.Comp.WrapDelay,
-=======
         var duration = wrapper.Comp.WrapDelay;
 
         if (TryComp<ParcelWrapOverrideComponent>(target, out var overrideComp) && overrideComp.WrapDelay != null)
@@ -92,7 +81,6 @@ public sealed partial class ParcelWrappingSystem
         return _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager,
             user,
             duration,
->>>>>>> upstream/master
             new ParcelWrapItemDoAfterEvent(),
             wrapper, // Raise the event on the wrapper because that's what the event handler expects.
             target,
@@ -112,11 +100,6 @@ public sealed partial class ParcelWrappingSystem
     /// <param name="target">The entity being wrapped.</param>
     private void WrapInternal(EntityUid user, Entity<ParcelWrapComponent> wrapper, EntityUid target)
     {
-<<<<<<< HEAD
-        if (_net.IsServer)
-        {
-            var spawned = Spawn(wrapper.Comp.ParcelPrototype, Transform(target).Coordinates);
-=======
         // Consume a `use` on the wrapper, and delete the wrapper if it's empty.
         _charges.TryUseCharges(wrapper.Owner, 1);
         if (_charges.IsEmpty(wrapper.Owner))
@@ -138,20 +121,12 @@ public sealed partial class ParcelWrappingSystem
         else // Create a parcel with the same size and generic sprites instead.
         {
             spawned = Spawn(wrapper.Comp.ParcelPrototype, targetTransform.Coordinates);
->>>>>>> upstream/master
-
             // If this wrap maintains the size when wrapping, set the parcel's size to the target's size. Otherwise use the
             // wrap's fallback size.
             TryComp(target, out ItemComponent? targetItemComp);
             var size = wrapper.Comp.FallbackItemSize;
             if (wrapper.Comp.WrappedItemsMaintainSize && targetItemComp is not null)
-<<<<<<< HEAD
-            {
                 size = targetItemComp.Size;
-            }
-=======
-                size = targetItemComp.Size;
->>>>>>> upstream/master
 
             // ParcelWrap's spawned entity should always have an `ItemComp`. As of writing, the only use has it hardcoded on
             // its prototype.
@@ -162,36 +137,6 @@ public sealed partial class ParcelWrappingSystem
             // If this wrap maintains the shape when wrapping and the item has a shape override, copy the shape override to
             // the parcel.
             if (wrapper.Comp.WrappedItemsMaintainShape && targetItemComp is { Shape: { } shape })
-<<<<<<< HEAD
-            {
-                _item.SetShape(spawned, shape, item);
-            }
-
-            // If the target's in a container, try to put the parcel in its place in the container.
-            if (_container.TryGetContainingContainer((target, null, null), out var containerOfTarget))
-            {
-                _container.Remove(target, containerOfTarget);
-                _container.InsertOrDrop((spawned, null, null), containerOfTarget);
-            }
-
-            // Insert the target into the parcel.
-            var parcel = EnsureComp<WrappedParcelComponent>(spawned);
-            if (!_container.Insert(target, parcel.Contents))
-            {
-                DebugTools.Assert(
-                    $"Failed to insert target entity into newly spawned parcel. target={PrettyPrint.PrintUserFacing(target)}");
-                QueueDel(spawned);
-            }
-        }
-
-        // Consume a `use` on the wrapper, and delete the wrapper if it's empty.
-        _charges.TryUseCharges(wrapper.Owner, 1);
-        if (_net.IsServer && _charges.IsEmpty(wrapper.Owner))
-            QueueDel(wrapper);
-
-        // Play a wrapping sound.
-        _audio.PlayPredicted(wrapper.Comp.WrapSound, target, user);
-=======
                 _item.SetShape(spawned, shape, item);
         }
 
@@ -215,6 +160,5 @@ public sealed partial class ParcelWrappingSystem
                 $"Failed to insert target entity into newly spawned parcel. target={PrettyPrint.PrintUserFacing(target)}");
             PredictedDel(spawned);
         }
->>>>>>> upstream/master
     }
 }

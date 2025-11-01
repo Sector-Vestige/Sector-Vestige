@@ -5,11 +5,7 @@ public abstract class SharedDestructibleSystem : EntitySystem
     /// <summary>
     /// Force entity to be destroyed and deleted.
     /// </summary>
-<<<<<<< HEAD
-    public bool DestroyEntity(EntityUid owner)
-=======
     public bool DestroyEntity(Entity<MetaDataComponent?> owner)
->>>>>>> upstream/master
     {
         var ev = new DestructionAttemptEvent();
         RaiseLocalEvent(owner, ev);
@@ -19,11 +15,7 @@ public abstract class SharedDestructibleSystem : EntitySystem
         var eventArgs = new DestructionEventArgs();
         RaiseLocalEvent(owner, eventArgs);
 
-<<<<<<< HEAD
-        QueueDel(owner);
-=======
         PredictedQueueDel(owner);
->>>>>>> upstream/master
         return true;
     }
 
@@ -38,11 +30,7 @@ public abstract class SharedDestructibleSystem : EntitySystem
 }
 
 /// <summary>
-<<<<<<< HEAD
-///     Raised before an entity is about to be destroyed and deleted
-=======
 /// Raised before an entity is about to be destroyed and deleted
->>>>>>> upstream/master
 /// </summary>
 public sealed class DestructionAttemptEvent : CancellableEntityEventArgs
 {
@@ -50,11 +38,7 @@ public sealed class DestructionAttemptEvent : CancellableEntityEventArgs
 }
 
 /// <summary>
-<<<<<<< HEAD
-///     Raised when entity is destroyed and about to be deleted.
-=======
 /// Raised when entity is destroyed and about to be deleted.
->>>>>>> upstream/master
 /// </summary>
 public sealed class DestructionEventArgs : EntityEventArgs
 {

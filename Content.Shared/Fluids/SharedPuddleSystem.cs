@@ -1,9 +1,6 @@
 using System.Linq;
-<<<<<<< HEAD
-=======
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chemistry;
->>>>>>> upstream/master
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
@@ -20,11 +17,8 @@ using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Slippery;
 using Content.Shared.StepTrigger.Components;
-<<<<<<< HEAD
-=======
 using Content.Shared.StepTrigger.Systems;
 using Robust.Shared.Audio.Systems;
->>>>>>> upstream/master
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -36,16 +30,11 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-<<<<<<< HEAD
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-=======
     [Dependency] protected readonly ISharedAdminLogManager AdminLogger = default!;
     [Dependency] protected readonly OpenableSystem Openable = default!;
     [Dependency] protected readonly ReactiveSystem Reactive = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
->>>>>>> upstream/master
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] protected readonly SharedPopupSystem Popups = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
@@ -75,25 +64,13 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-<<<<<<< HEAD
-        SubscribeLocalEvent<RefillableSolutionComponent, CanDragEvent>(OnRefillableCanDrag);
-        SubscribeLocalEvent<DumpableSolutionComponent, CanDropTargetEvent>(OnDumpCanDropTarget);
-        SubscribeLocalEvent<DrainableSolutionComponent, CanDropTargetEvent>(OnDrainCanDropTarget);
-        SubscribeLocalEvent<RefillableSolutionComponent, CanDropDraggedEvent>(OnRefillableCanDropDragged);
-
-=======
         // Shouldn't need re-anchoring.
         SubscribeLocalEvent<PuddleComponent, AnchorStateChangedEvent>(OnAnchorChanged);
->>>>>>> upstream/master
         SubscribeLocalEvent<PuddleComponent, SolutionContainerChangedEvent>(OnSolutionUpdate);
         SubscribeLocalEvent<PuddleComponent, GetFootstepSoundEvent>(OnGetFootstepSound);
         SubscribeLocalEvent<PuddleComponent, ExaminedEvent>(HandlePuddleExamined);
         SubscribeLocalEvent<PuddleComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
 
-<<<<<<< HEAD
-        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-
-=======
         SubscribeLocalEvent<EvaporationComponent, MapInitEvent>(OnEvaporationMapInit);
 
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
@@ -102,38 +79,11 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         _reactiveQuery = GetEntityQuery<ReactiveComponent>();
         _evaporationQuery = GetEntityQuery<EvaporationComponent>();
 
->>>>>>> upstream/master
         CacheStandsout();
         InitializeSpillable();
     }
 
-<<<<<<< HEAD
-    private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
-    {
-        if (ev.WasModified<ReagentPrototype>())
-            CacheStandsout();
-    }
-
-    /// <summary>
-    /// Used to cache standout reagents for future use.
-    /// </summary>
-    private void CacheStandsout()
-    {
-        _standoutReagents = [.. _prototypeManager.EnumeratePrototypes<ReagentPrototype>().Where(x => x.Standsout).Select(x => x.ID)];
-    }
-
-    protected virtual void OnSolutionUpdate(Entity<PuddleComponent> entity, ref SolutionContainerChangedEvent args)
-    {
-        if (args.SolutionId != entity.Comp.SolutionName)
-            return;
-
-        UpdateAppearance((entity, entity.Comp));
-    }
-
-    private void OnRefillableCanDrag(Entity<RefillableSolutionComponent> entity, ref CanDragEvent args)
-=======
     public override void Update(float frameTime)
->>>>>>> upstream/master
     {
         base.Update(frameTime);
 
@@ -221,15 +171,12 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         }
     }
 
-<<<<<<< HEAD
-=======
     private void OnAnchorChanged(Entity<PuddleComponent> entity, ref AnchorStateChangedEvent args)
     {
         if (!args.Anchored)
             PredictedQueueDel(entity.Owner);
     }
 
->>>>>>> upstream/master
     // Workaround for https://github.com/space-wizards/space-station-14/pull/35314
     private void OnEntRemoved(Entity<PuddleComponent> ent, ref EntRemovedFromContainerMessage args)
     {
@@ -278,8 +225,6 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         _appearance.SetData(ent, PuddleVisuals.SolutionColor, color, appearance);
     }
 
-<<<<<<< HEAD
-=======
     private void UpdateSlip(Entity<PuddleComponent> entity, Solution solution)
     {
         if (!_stepTriggerQuery.TryComp(entity, out var comp))
@@ -396,7 +341,6 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         }
     }
 
->>>>>>> upstream/master
     public void DoTileReactions(TileRef tileRef, Solution solution)
     {
         for (var i = solution.Contents.Count - 1; i >= 0; i--)

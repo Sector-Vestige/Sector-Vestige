@@ -41,10 +41,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         SubscribeLocalEvent<VendingMachineComponent, ComponentGetState>(OnVendingGetState);
         SubscribeLocalEvent<VendingMachineComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<VendingMachineComponent, GotEmaggedEvent>(OnEmagged);
-<<<<<<< HEAD
-=======
         SubscribeLocalEvent<VendingMachineComponent, EmpPulseEvent>(OnEmpPulse);
->>>>>>> upstream/master
         SubscribeLocalEvent<VendingMachineComponent, RestockDoAfterEvent>(OnRestockDoAfter);
 
         SubscribeLocalEvent<VendingMachineRestockComponent, AfterInteractEvent>(OnAfterInteract);
