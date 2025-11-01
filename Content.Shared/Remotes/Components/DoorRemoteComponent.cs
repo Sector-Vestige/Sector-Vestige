@@ -18,13 +18,6 @@ public sealed partial class DoorRemoteComponent : Component
     public OperatingMode Mode = OperatingMode.OpenClose;
 
     /// <summary>
-<<<<<<< HEAD
-    /// Does the remote allow the user to manipulate doors that they have access to, even if the remote itself does not?
-    /// </summary>
-    [AutoNetworkedField]
-    [DataField]
-    public bool IncludeUserAccess = false;
-=======
     /// Modes with metadata that could be displayed in the device mode change menu.
     /// </summary>
     [DataField]
@@ -45,7 +38,6 @@ public sealed partial class DoorRemoteComponent : Component
     /// client-side system basically controls behaviour of StatusControl updates using this field.
     /// </remarks>
     public bool IsStatusControlUpdateRequired;
->>>>>>> upstream/master
 }
 
 /// <summary>

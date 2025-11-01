@@ -15,13 +15,10 @@ public sealed partial class FlashImmunityComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Enabled = true;
-<<<<<<< HEAD
-=======
 
     /// <summary>
     /// Should the flash protection be shown when examining the entity?
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool ShowInExamine = true;
->>>>>>> upstream/master
 }

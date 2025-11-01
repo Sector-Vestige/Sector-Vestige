@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.EntityEffects.Effects;
-=======
-﻿using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects.Effects.Body;
->>>>>>> upstream/master
 using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Nutrition.Components;
@@ -236,11 +227,7 @@ public sealed partial class IngestionSystem
                     // ignores any effect conditions, just cares about how much it can hydrate
                     if (effect is SatiateHunger hunger)
                     {
-<<<<<<< HEAD
-                        total += hunger.NutritionFactor * quantity.Quantity.Float();
-=======
                         total += hunger.Factor * quantity.Quantity.Float();
->>>>>>> upstream/master
                     }
                 }
             }
@@ -291,11 +278,7 @@ public sealed partial class IngestionSystem
                     // ignores any effect conditions, just cares about how much it can hydrate
                     if (effect is SatiateThirst thirst)
                     {
-<<<<<<< HEAD
-                        total += thirst.HydrationFactor * quantity.Quantity.Float();
-=======
                         total += thirst.Factor * quantity.Quantity.Float();
->>>>>>> upstream/master
                     }
                 }
             }

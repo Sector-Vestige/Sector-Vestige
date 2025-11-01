@@ -143,38 +143,13 @@ public sealed class DumpableSystem : EntitySystem
 
     private void OnDoAfter(EntityUid uid, DumpableComponent component, DumpableDoAfterEvent args)
     {
-<<<<<<< HEAD
-        if (args.Handled || args.Cancelled)
-            return;
-
-        DumpContents(uid, args.Args.Target, args.Args.User, component);
-    }
-
-    [PublicAPI]
-    public void DumpContents(EntityUid uid, EntityUid? target, EntityUid user, DumpableComponent? component = null)
-    {
-        // CD: Split OnAfterInteract into two methods to allow dumping that doesn't require a verb, which is required
-        // for the functionality of Rodentia mouth storage being spilled when damaged.
-        if (!TryComp<StorageComponent>(uid, out var storage)
-            || !Resolve(uid, ref component))
-            return;
-
-        if (storage.Container.ContainedEntities.Count == 0)
-=======
         if (args.Handled || args.Cancelled || !TryComp<StorageComponent>(uid, out var storage) || storage.Container.ContainedEntities.Count == 0 || args.Args.Target is not { } target)
->>>>>>> upstream/master
             return;
 
         var dumpQueue = new Queue<EntityUid>(storage.Container.ContainedEntities);
 
-<<<<<<< HEAD
-        var evt = new DumpEvent(dumpQueue, user, false, false);
-        if (target.HasValue)
-            RaiseLocalEvent(target.Value, ref evt);
-=======
         var evt = new DumpEvent(dumpQueue, args.Args.User, false, false);
         RaiseLocalEvent(target, ref evt);
->>>>>>> upstream/master
 
         if (!evt.Handled)
         {

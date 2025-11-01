@@ -217,7 +217,8 @@ public abstract partial class SharedStackSystem : EntitySystem
             priority--;
 
             args.Verbs.Add(verb);
-        }
+            }
+    }
 
         private void OnBeforeEaten(Entity<StackComponent> eaten, ref BeforeIngestedEvent args)
         {
@@ -312,7 +313,6 @@ public abstract partial class SharedStackSystem : EntitySystem
         {
 
         }
-    }
 
     /// <remarks>
     ///     OnStackAlternativeInteract() was moved to shared in order to faciliate prediction of stack splitting verbs.

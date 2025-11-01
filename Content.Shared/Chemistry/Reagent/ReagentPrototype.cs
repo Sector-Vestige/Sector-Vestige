@@ -8,10 +8,6 @@ using Content.Shared.Contraband;
 using Content.Shared.EntityEffects;
 using Content.Shared.Localizations;
 using Content.Shared.Nutrition;
-<<<<<<< HEAD
-using Content.Shared.Prototypes;
-=======
->>>>>>> upstream/master
 using Content.Shared.Roles;
 using Content.Shared.Slippery;
 using Robust.Shared.Audio;
@@ -212,16 +208,7 @@ namespace Content.Shared.Chemistry.Reagent
             return removed;
         }
 
-<<<<<<< HEAD
-        public void ReactionPlant(EntityUid? plantHolder,
-            ReagentQuantity amount,
-            Solution solution,
-            EntityManager entityManager,
-            IRobustRandom random,
-            ISharedAdminLogManager logger)
-=======
         public IEnumerable<string> GuidebookReagentEffectsDescription(IPrototypeManager prototype, IEntitySystemManager entSys, IEnumerable<EntityEffect> effects, FixedPoint2? metabolism = null)
->>>>>>> upstream/master
         {
             return effects.Select(x => GuidebookReagentEffectDescription(prototype, entSys, x, metabolism))
                 .Where(x => x is not null)
@@ -229,29 +216,12 @@ namespace Content.Shared.Chemistry.Reagent
                 .ToArray();
         }
 
-<<<<<<< HEAD
-            var args = new EntityEffectReagentArgs(plantHolder.Value, entityManager, null, solution, amount.Quantity, this, null, 1f);
-            foreach (var plantMetabolizable in PlantMetabolisms)
-            {
-                if (!plantMetabolizable.ShouldApply(args, random))
-                    continue;
-
-                if (plantMetabolizable.ShouldLog)
-                {
-                    var entity = args.TargetEntity;
-                    logger.Add(
-                        LogType.ReagentEffect,
-                        plantMetabolizable.LogImpact,
-                        $"Plant metabolism effect {plantMetabolizable.GetType().Name:effect} of reagent {ID} applied on entity {entity}");
-                }
-=======
         public string? GuidebookReagentEffectDescription(IPrototypeManager prototype, IEntitySystemManager entSys, EntityEffect effect, FixedPoint2? metabolism)
         {
             if (effect.EntityEffectGuidebookText(prototype, entSys) is not { } description)
                 return null;
 
             var quantity = metabolism == null ? 0f : (double) (effect.MinScale * metabolism);
->>>>>>> upstream/master
 
             return Loc.GetString(
                 "guidebook-reagent-effect-description",

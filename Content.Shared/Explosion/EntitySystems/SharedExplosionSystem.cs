@@ -69,8 +69,6 @@ public abstract class SharedExplosionSystem : EntitySystem
                                         bool addLog = true)
     {
     }
-<<<<<<< HEAD
-=======
 
     /// <summary>
     /// This forces the explosion system to re-calculate the explosion intensity required to destroy all airtight entities.
@@ -78,5 +76,4 @@ public abstract class SharedExplosionSystem : EntitySystem
     public virtual void ReloadMap()
     {
     }
->>>>>>> upstream/master
 }
