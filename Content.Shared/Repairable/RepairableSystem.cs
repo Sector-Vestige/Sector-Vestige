@@ -1,10 +1,6 @@
 using Content.Shared.Administration.Logs;
-<<<<<<< HEAD
-using Content.Shared.Damage;
-=======
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
->>>>>>> upstream/master
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
@@ -37,23 +33,14 @@ public sealed partial class RepairableSystem : EntitySystem
 
         if (ent.Comp.Damage != null)
         {
-<<<<<<< HEAD
-            var damageChanged = _damageableSystem.TryChangeDamage(ent.Owner, ent.Comp.Damage, true, false, origin: args.User);
-            _adminLogger.Add(LogType.Healed, $"{ToPrettyString(args.User):user} repaired {ToPrettyString(ent.Owner):target} by {damageChanged?.GetTotal()}");
-=======
             var damageChanged = _damageableSystem.ChangeDamage(ent.Owner, ent.Comp.Damage, true, false, origin: args.User);
             _adminLogger.Add(LogType.Healed, $"{ToPrettyString(args.User):user} repaired {ToPrettyString(ent.Owner):target} by {damageChanged.GetTotal()}");
->>>>>>> upstream/master
         }
 
         else
         {
             // Repair all damage
-<<<<<<< HEAD
-            _damageableSystem.SetAllDamage(ent.Owner, damageable, 0);
-=======
             _damageableSystem.SetAllDamage((ent.Owner, damageable), 0);
->>>>>>> upstream/master
             _adminLogger.Add(LogType.Healed, $"{ToPrettyString(args.User):user} repaired {ToPrettyString(ent.Owner):target} back to full health");
         }
 

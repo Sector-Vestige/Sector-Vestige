@@ -1,8 +1,5 @@
 using Content.Shared.DeviceNetwork;
-<<<<<<< HEAD:Content.Server/SurveillanceCamera/Components/SurveillanceCameraComponent.cs
-=======
 using Robust.Shared.GameStates;
->>>>>>> upstream/master:Content.Shared/SurveillanceCamera/Components/SurveillanceCameraComponent.cs
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.SurveillanceCamera.Components;
