@@ -4,10 +4,6 @@ using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
-<<<<<<< HEAD
-using Content.Shared.Mobs.Components;
-=======
->>>>>>> upstream/master
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;

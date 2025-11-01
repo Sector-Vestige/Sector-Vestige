@@ -1,9 +1,5 @@
 using Content.Shared.Damage.Components;
 using Robust.Shared.Prototypes;
-<<<<<<< HEAD
-using Robust.Shared.Serialization;
-=======
->>>>>>> upstream/master
 
 namespace Content.Shared.Damage.Prototypes
 {

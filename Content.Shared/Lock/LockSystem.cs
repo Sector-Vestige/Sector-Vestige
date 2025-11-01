@@ -33,11 +33,8 @@ public sealed class LockSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _sharedPopupSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-<<<<<<< HEAD
-=======
 
     private readonly LocId _defaultDenyReason = "lock-comp-has-user-access-fail";
->>>>>>> upstream/master
 
     /// <inheritdoc />
     public override void Initialize()
@@ -46,10 +43,7 @@ public sealed class LockSystem : EntitySystem
 
         SubscribeLocalEvent<LockComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<LockComponent, ActivateInWorldEvent>(OnActivated, before: [typeof(ActivatableUISystem)]);
-<<<<<<< HEAD
-=======
         SubscribeLocalEvent<LockComponent, UseInHandEvent>(OnUseInHand, before: [typeof(ActivatableUISystem)]);
->>>>>>> upstream/master
         SubscribeLocalEvent<LockComponent, StorageOpenAttemptEvent>(OnStorageOpenAttempt);
         SubscribeLocalEvent<LockComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<LockComponent, GetVerbsEvent<AlternativeVerb>>(AddToggleLockVerb);
@@ -89,8 +83,6 @@ public sealed class LockSystem : EntitySystem
         {
             args.Handled = true;
             TryLock(uid, args.User, lockComp);
-<<<<<<< HEAD
-=======
         }
     }
 
@@ -108,7 +100,6 @@ public sealed class LockSystem : EntitySystem
         {
             args.Handled = true;
             TryLock(uid, args.User, lockComp);
->>>>>>> upstream/master
         }
     }
 

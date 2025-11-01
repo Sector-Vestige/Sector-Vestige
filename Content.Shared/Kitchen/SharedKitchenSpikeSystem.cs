@@ -1,20 +1,13 @@
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Systems;
-<<<<<<< HEAD
-using Content.Shared.Damage;
-=======
 using Content.Shared.Damage.Systems;
->>>>>>> upstream/master
 using Content.Shared.Database;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.DragDrop;
 using Content.Shared.Examine;
 using Content.Shared.Hands;
-<<<<<<< HEAD
-=======
 using Content.Shared.Humanoid;
->>>>>>> upstream/master
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -246,16 +239,11 @@ public sealed class SharedKitchenSpikeSystem : EntitySystem
                 args.Target.Value,
                 ent);
 
-<<<<<<< HEAD
-            _logger.Add(LogType.Action,
-                LogImpact.High,
-=======
             // normally medium severity, but for humanoids high severity, so new players get relay'd to admin alerts.
             var logSeverity = HasComp<HumanoidAppearanceComponent>(args.Target) ? LogImpact.High : LogImpact.Medium;
 
             _logger.Add(LogType.Action,
                 logSeverity,
->>>>>>> upstream/master
                 $"{ToPrettyString(args.User):user} put {ToPrettyString(args.Target):target} on the {ToPrettyString(ent):spike}");
 
             _audioSystem.PlayPredicted(ent.Comp.SpikeSound, ent, args.User);
@@ -304,11 +292,7 @@ public sealed class SharedKitchenSpikeSystem : EntitySystem
 
         // Get a random entry to spawn.
         // TODO: Replace with RandomPredicted once the engine PR is merged
-<<<<<<< HEAD
-        var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_gameTiming.CurTick.Value, GetNetEntity(ent).Id });
-=======
         var seed = SharedRandomExtensions.HashCodeCombine((int)_gameTiming.CurTick.Value, GetNetEntity(ent).Id);
->>>>>>> upstream/master
         var rand = new System.Random(seed);
 
         var index = rand.Next(butcherable.SpawnedEntities.Count);
@@ -336,32 +320,21 @@ public sealed class SharedKitchenSpikeSystem : EntitySystem
         {
             _bodySystem.GibBody(args.Target.Value, true);
 
-<<<<<<< HEAD
-            _logger.Add(LogType.Gib,
-                LogImpact.Extreme,
-=======
             var logSeverity = HasComp<HumanoidAppearanceComponent>(args.Target) ? LogImpact.Extreme : LogImpact.High;
 
             _logger.Add(LogType.Gib,
                 logSeverity,
->>>>>>> upstream/master
                 $"{ToPrettyString(args.User):user} finished butchering {ToPrettyString(args.Target):target} on the {ToPrettyString(ent):spike}");
         }
         else
         {
             EnsureComp<KitchenSpikeVictimComponent>(args.Target.Value);
 
-<<<<<<< HEAD
-            _damageableSystem.TryChangeDamage(args.Target, ent.Comp.ButcherDamage, true);
-            _logger.Add(LogType.Action,
-                LogImpact.Extreme,
-=======
             _damageableSystem.ChangeDamage(args.Target.Value, ent.Comp.ButcherDamage, true);
 
             // Log severity for damaging other entities is normally medium.
             _logger.Add(LogType.Action,
                 LogImpact.Medium,
->>>>>>> upstream/master
                 $"{ToPrettyString(args.User):user} butchered {ToPrettyString(args.Target):target} on the {ToPrettyString(ent):spike}");
         }
 
@@ -455,11 +428,7 @@ public sealed class SharedKitchenSpikeSystem : EntitySystem
             kitchenSpike.NextDamage += kitchenSpike.DamageInterval;
             Dirty(uid, kitchenSpike);
 
-<<<<<<< HEAD
-            _damageableSystem.TryChangeDamage(contained, kitchenSpike.TimeDamage, true);
-=======
             _damageableSystem.ChangeDamage(contained.Value, kitchenSpike.TimeDamage, true);
->>>>>>> upstream/master
         }
     }
 

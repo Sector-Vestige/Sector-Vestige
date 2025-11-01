@@ -47,12 +47,7 @@ public sealed class SlowOnDamageSystem : EntitySystem
 
         if (closest != FixedPoint2.Zero)
         {
-<<<<<<< HEAD
-            if (!TryComp<DamageableComponent>(uid, out var damage))
-                return;
-=======
             var speed = component.SpeedModifierThresholds[closest];
->>>>>>> upstream/master
 
             var ev = new ModifySlowOnDamageSpeedEvent(speed);
             RaiseLocalEvent(uid, ref ev);

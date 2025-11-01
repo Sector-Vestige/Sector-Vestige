@@ -16,8 +16,5 @@ public enum NodeGroupID : byte
     /// <seealso cref="Content.Server.Power.Generation.Teg.TegSystem"/>
     /// <seealso cref="Content.Server.Power.Generation.Teg.TegNodeGroup"/>
     Teg,
-<<<<<<< HEAD
-=======
     ExCable,
->>>>>>> upstream/master
 }
