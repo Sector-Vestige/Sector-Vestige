@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-using System.Diagnostics.CodeAnalysis;
-using Content.Shared.StatusEffectNew.Components;
-using Robust.Shared.Prototypes;
-=======
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.Prototypes;
 using YamlDotNet.Core.Tokens;
->>>>>>> upstream/master
 
 namespace Content.Shared.StatusEffectNew;
 
@@ -22,22 +16,15 @@ public sealed partial class StatusEffectsSystem
     /// <param name="target">The target entity to which the effect should be added.</param>
     /// <param name="effectProto">ProtoId of the status effect entity. Make sure it has StatusEffectComponent on it.</param>
     /// <param name="duration">Duration of status effect. Leave null and the effect will be permanent until it is removed using <c>TryRemoveStatusEffect</c>.</param>
-<<<<<<< HEAD
-=======
     /// <param name="delay">The delay of the effect. If a start time already exists, the closest time takes precedence. Leave null for the effect to be instant.</param>
->>>>>>> upstream/master
     /// <param name="statusEffect">The EntityUid of the status effect we have just created or null if it doesn't exist.</param>
     /// <returns>True if effect exists and its duration is set properly, false in case effect cannot be applied.</returns>
     public bool TryAddStatusEffectDuration(
         EntityUid target,
         EntProtoId effectProto,
         [NotNullWhen(true)] out EntityUid? statusEffect,
-<<<<<<< HEAD
-        TimeSpan duration
-=======
         TimeSpan duration,
         TimeSpan? delay = null
->>>>>>> upstream/master
     )
     {
         if (duration == TimeSpan.Zero)
@@ -48,32 +35,18 @@ public sealed partial class StatusEffectsSystem
 
         // We check to make sure time is greater than zero here because sometimes you want to use TryAddStatusEffect to remove duration instead...
         if (!TryGetStatusEffect(target, effectProto, out statusEffect))
-<<<<<<< HEAD
-            return TryAddStatusEffect(target, effectProto, out statusEffect, duration);
-
-        AddStatusEffectTime(statusEffect.Value, duration);
-=======
             return TryAddStatusEffect(target, effectProto, out statusEffect, duration, delay);
 
         AddStatusEffectTime(statusEffect.Value, duration);
         UpdateStatusEffectDelay(statusEffect.Value, delay);
->>>>>>> upstream/master
 
         return true;
     }
 
-
-<<<<<<< HEAD
-    ///<inheritdoc cref="TryAddStatusEffectDuration(EntityUid,EntProtoId,out EntityUid?,TimeSpan)"/>
-    public bool TryAddStatusEffectDuration(EntityUid target, EntProtoId effectProto, TimeSpan duration)
-    {
-        return TryAddStatusEffectDuration(target, effectProto, out _, duration);
-=======
     ///<inheritdoc cref="TryAddStatusEffectDuration(EntityUid,EntProtoId,out EntityUid?,TimeSpan,TimeSpan?)"/>
     public bool TryAddStatusEffectDuration(EntityUid target, EntProtoId effectProto, TimeSpan duration, TimeSpan? delay = null)
     {
         return TryAddStatusEffectDuration(target, effectProto, out _, duration, delay);
->>>>>>> upstream/master
     }
 
     /// <summary>
@@ -83,22 +56,15 @@ public sealed partial class StatusEffectsSystem
     /// <param name="target">The target entity to which the effect should be added.</param>
     /// <param name="effectProto">ProtoId of the status effect entity. Make sure it has StatusEffectComponent on it.</param>
     /// <param name="duration">Duration of status effect. Leave null and the effect will be permanent until it is removed using <c>TryRemoveStatusEffect</c>.</param>
-<<<<<<< HEAD
-=======
     /// <param name="delay">The delay of the effect. If a start time already exists, the closest time takes precedence. Leave null for the effect to be instant.</param>
->>>>>>> upstream/master
     /// <param name="statusEffect">The EntityUid of the status effect we have just created or null if it doesn't exist.</param>
     /// <returns>True if effect exists and its duration is set properly, false in case effect cannot be applied.</returns>
     public bool TrySetStatusEffectDuration(
         EntityUid target,
         EntProtoId effectProto,
         [NotNullWhen(true)] out EntityUid? statusEffect,
-<<<<<<< HEAD
-        TimeSpan? duration = null
-=======
         TimeSpan? duration = null,
         TimeSpan? delay = null
->>>>>>> upstream/master
     )
     {
         if (duration <= TimeSpan.Zero)
@@ -108,11 +74,6 @@ public sealed partial class StatusEffectsSystem
         }
 
         if (!TryGetStatusEffect(target, effectProto, out statusEffect))
-<<<<<<< HEAD
-            return TryAddStatusEffect(target, effectProto, out statusEffect, duration);
-
-        SetStatusEffectEndTime(statusEffect.Value, duration);
-=======
             return TryAddStatusEffect(target, effectProto, out statusEffect, duration, delay);
 
         if (!_effectQuery.TryComp(statusEffect, out var statusEffectComponent))
@@ -121,22 +82,14 @@ public sealed partial class StatusEffectsSystem
         var endTime = delay == null || statusEffectComponent.Applied ? _timing.CurTime + duration : _timing.CurTime + delay + duration;
         SetStatusEffectEndTime(statusEffect.Value, endTime);
         UpdateStatusEffectDelay(statusEffect.Value, delay);
->>>>>>> upstream/master
 
         return true;
     }
 
-<<<<<<< HEAD
-    /// <inheritdoc cref="TrySetStatusEffectDuration(EntityUid,EntProtoId,out EntityUid?,TimeSpan?)"/>
-    public bool TrySetStatusEffectDuration(EntityUid target, EntProtoId effectProto, TimeSpan? duration = null)
-    {
-        return TrySetStatusEffectDuration(target, effectProto, out _, duration);
-=======
     /// <inheritdoc cref="TrySetStatusEffectDuration(EntityUid,EntProtoId,out EntityUid?,TimeSpan?,TimeSpan?)"/>
     public bool TrySetStatusEffectDuration(EntityUid target, EntProtoId effectProto, TimeSpan? duration = null, TimeSpan? delay = null)
     {
         return TrySetStatusEffectDuration(target, effectProto, out _, duration, delay);
->>>>>>> upstream/master
     }
 
     /// <summary>
@@ -146,22 +99,15 @@ public sealed partial class StatusEffectsSystem
     /// <param name="target">The target entity to which the effect should be added.</param>
     /// <param name="effectProto">ProtoId of the status effect entity. Make sure it has StatusEffectComponent on it.</param>
     /// <param name="duration">Duration of status effect. Leave null and the effect will be permanent until it is removed using <c>TryRemoveStatusEffect</c>.</param>
-<<<<<<< HEAD
-=======
     /// <param name="delay">The delay of the effect. If a start time already exists, the closest time takes precedence. Leave null for the effect to be instant.</param>
->>>>>>> upstream/master
     /// <param name="statusEffect">The EntityUid of the status effect we have just created or null if it doesn't exist.</param>
     /// <returns>True if effect exists and its duration is set properly, false in case effect cannot be applied.</returns>
     public bool TryUpdateStatusEffectDuration(
         EntityUid target,
         EntProtoId effectProto,
         [NotNullWhen(true)] out EntityUid? statusEffect,
-<<<<<<< HEAD
-        TimeSpan? duration = null
-=======
         TimeSpan? duration = null,
         TimeSpan? delay = null
->>>>>>> upstream/master
     )
     {
         if (duration <= TimeSpan.Zero)
@@ -171,11 +117,6 @@ public sealed partial class StatusEffectsSystem
         }
 
         if (!TryGetStatusEffect(target, effectProto, out statusEffect))
-<<<<<<< HEAD
-            return TryAddStatusEffect(target, effectProto, out statusEffect, duration);
-
-        UpdateStatusEffectTime(statusEffect.Value, duration);
-=======
             return TryAddStatusEffect(target, effectProto, out statusEffect, duration, delay);
 
         if (!_effectQuery.TryComp(statusEffect, out var statusEffectComponent))
@@ -184,22 +125,14 @@ public sealed partial class StatusEffectsSystem
         var endTime = delay == null || statusEffectComponent.Applied ? duration : delay + duration;
         UpdateStatusEffectTime(statusEffect.Value, endTime);
         UpdateStatusEffectDelay(statusEffect.Value, delay);
->>>>>>> upstream/master
 
         return true;
     }
 
-<<<<<<< HEAD
-    /// <inheritdoc cref="TryUpdateStatusEffectDuration(EntityUid,EntProtoId,out EntityUid?,TimeSpan?)"/>
-    public bool TryUpdateStatusEffectDuration(EntityUid target, EntProtoId effectProto, TimeSpan? duration = null)
-    {
-        return TryUpdateStatusEffectDuration(target, effectProto, out _, duration);
-=======
     /// <inheritdoc cref="TryUpdateStatusEffectDuration(EntityUid,EntProtoId,out EntityUid?,TimeSpan?,TimeSpan?)"/>
     public bool TryUpdateStatusEffectDuration(EntityUid target, EntProtoId effectProto, TimeSpan? duration = null, TimeSpan? delay = null)
     {
         return TryUpdateStatusEffectDuration(target, effectProto, out _, duration, delay);
->>>>>>> upstream/master
     }
 
     /// <summary>
@@ -279,11 +212,7 @@ public sealed partial class StatusEffectsSystem
     public bool TryGetTime(
         EntityUid uid,
         EntProtoId effectProto,
-<<<<<<< HEAD
-        out (EntityUid EffectEnt, TimeSpan? EndEffectTime) time,
-=======
         out (EntityUid EffectEnt, TimeSpan? EndEffectTime, TimeSpan? StartEffectTime) time,
->>>>>>> upstream/master
         StatusEffectContainerComponent? container = null
     )
     {
@@ -299,11 +228,7 @@ public sealed partial class StatusEffectsSystem
                 if (!_effectQuery.TryComp(effect, out var effectComp))
                     return false;
 
-<<<<<<< HEAD
-                time = (effect, effectComp.EndEffectTime);
-=======
                 time = (effect, effectComp.EndEffectTime, effectComp.StartEffectTime);
->>>>>>> upstream/master
                 return true;
             }
         }
@@ -369,8 +294,6 @@ public sealed partial class StatusEffectsSystem
     }
 
     /// <summary>
-<<<<<<< HEAD
-=======
     /// A method which specifically removes time from a status effect, or removes the status effect if time is null.
     /// </summary>
     /// <param name="uid">The target entity on which the effect is applied.</param>
@@ -386,7 +309,6 @@ public sealed partial class StatusEffectsSystem
     }
 
     /// <summary>
->>>>>>> upstream/master
     /// Attempts to set the remaining time for a status effect on an entity.
     /// </summary>
     /// <param name="uid">The target entity on which the effect is applied.</param>

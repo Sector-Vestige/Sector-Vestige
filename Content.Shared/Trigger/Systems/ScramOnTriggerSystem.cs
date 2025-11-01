@@ -14,11 +14,7 @@ using Robust.Shared.Random;
 
 namespace Content.Shared.Trigger.Systems;
 
-<<<<<<< HEAD
-public sealed class ScramOnTriggerSystem : EntitySystem
-=======
 public sealed class ScramOnTriggerSystem : XOnTriggerSystem<ScramOnTriggerComponent>
->>>>>>> upstream/master
 {
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -34,27 +30,6 @@ public sealed class ScramOnTriggerSystem : XOnTriggerSystem<ScramOnTriggerCompon
     public override void Initialize()
     {
         base.Initialize();
-
-<<<<<<< HEAD
-        SubscribeLocalEvent<ScramOnTriggerComponent, TriggerEvent>(OnTrigger);
-
-        _physicsQuery = GetEntityQuery<PhysicsComponent>();
-    }
-
-    private void OnTrigger(Entity<ScramOnTriggerComponent> ent, ref TriggerEvent args)
-    {
-        if (args.Key != null && !ent.Comp.KeysIn.Contains(args.Key))
-            return;
-
-        var target = ent.Comp.TargetUser ? args.User : ent.Owner;
-
-        if (target == null)
-            return;
-
-        // We need stop the user from being pulled so they don't just get "attached" with whoever is pulling them.
-        // This can for example happen when the user is cuffed and being pulled.
-        if (TryComp<PullableComponent>(target, out var pull) && _pulling.IsPulled(target.Value, pull))
-=======
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
     }
 
@@ -63,7 +38,6 @@ public sealed class ScramOnTriggerSystem : XOnTriggerSystem<ScramOnTriggerCompon
         // We need stop the user from being pulled so they don't just get "attached" with whoever is pulling them.
         // This can for example happen when the user is cuffed and being pulled.
         if (TryComp<PullableComponent>(target, out var pull) && _pulling.IsPulled(target, pull))
->>>>>>> upstream/master
             _pulling.TryStopPull(ent, pull);
 
         // Check if the user is pulling anything, and drop it if so.
@@ -76,20 +50,12 @@ public sealed class ScramOnTriggerSystem : XOnTriggerSystem<ScramOnTriggerCompon
         if (_net.IsClient)
             return;
 
-<<<<<<< HEAD
-        var xform = Transform(target.Value);
-=======
         var xform = Transform(target);
->>>>>>> upstream/master
         var targetCoords = SelectRandomTileInRange(xform, ent.Comp.TeleportRadius);
 
         if (targetCoords != null)
         {
-<<<<<<< HEAD
-            _transform.SetCoordinates(target.Value, targetCoords.Value);
-=======
             _transform.SetCoordinates(target, targetCoords.Value);
->>>>>>> upstream/master
             args.Handled = true;
         }
     }
