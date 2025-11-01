@@ -11,10 +11,7 @@ using Content.Shared.Tag;
 using Content.Shared.Verbs;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
-<<<<<<< HEAD
-=======
 using Robust.Shared.Random;
->>>>>>> upstream/master
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -29,26 +26,9 @@ public abstract class SharedChameleonClothingSystem : EntitySystem
     [Dependency] private readonly SharedItemSystem _itemSystem = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly TagSystem _tag = default!;
-<<<<<<< HEAD
-    [Dependency] protected readonly IGameTiming _timing = default!;
-    [Dependency] private readonly LockSystem _lock = default!;
-
-    private static readonly SlotFlags[] IgnoredSlots =
-    {
-        SlotFlags.All,
-        SlotFlags.PREVENTEQUIP,
-        SlotFlags.NONE
-    };
-    private static readonly SlotFlags[] Slots = Enum.GetValues<SlotFlags>().Except(IgnoredSlots).ToArray();
-
-    private readonly Dictionary<SlotFlags, List<EntProtoId>> _data = new();
-
-    public readonly Dictionary<SlotFlags, List<string>> ValidVariants = new();
-=======
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
->>>>>>> upstream/master
     [Dependency] protected readonly SharedUserInterfaceSystem UI = default!;
     [Dependency] private readonly INetManager _net = default!;
 
@@ -73,10 +53,7 @@ public abstract class SharedChameleonClothingSystem : EntitySystem
         SubscribeLocalEvent<ChameleonClothingComponent, GotEquippedEvent>(OnGotEquipped);
         SubscribeLocalEvent<ChameleonClothingComponent, GotUnequippedEvent>(OnGotUnequipped);
         SubscribeLocalEvent<ChameleonClothingComponent, GetVerbsEvent<InteractionVerb>>(OnVerb);
-<<<<<<< HEAD
-=======
         SubscribeLocalEvent<ChameleonClothingComponent, EmpPulseEvent>(OnEmpPulse);
->>>>>>> upstream/master
 
         SubscribeLocalEvent<ChameleonClothingComponent, PrototypesReloadedEventArgs>(OnPrototypeReload);
         PrepareAllVariants();
@@ -235,8 +212,6 @@ public abstract class SharedChameleonClothingSystem : EntitySystem
         return validTargets;
     }
 
-<<<<<<< HEAD
-=======
     /// <summary>
     ///     Get a random prototype for a given slot.
     /// </summary>
@@ -245,7 +220,6 @@ public abstract class SharedChameleonClothingSystem : EntitySystem
         return _random.Pick(GetValidTargets(slot, tag).ToList());
     }
 
->>>>>>> upstream/master
     protected void PrepareAllVariants()
     {
         _data.Clear();
@@ -274,12 +248,9 @@ public abstract class SharedChameleonClothingSystem : EntitySystem
             }
         }
     }
-<<<<<<< HEAD
-=======
 
     // TODO: Predict and use component states for the UI
     public virtual void SetSelectedPrototype(EntityUid uid, string? protoId, bool forceUpdate = false,
         ChameleonClothingComponent? component = null)
     { }
->>>>>>> upstream/master
 }

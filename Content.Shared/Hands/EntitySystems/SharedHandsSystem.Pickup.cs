@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-using System.Diagnostics;
-=======
->>>>>>> upstream/master
+
 using Content.Shared.Database;
 using Content.Shared.Hands.Components;
 using Content.Shared.Item;
@@ -87,14 +84,10 @@ public abstract partial class SharedHandsSystem
         if (!Resolve(entity, ref item, false))
             return false;
 
-<<<<<<< HEAD
-        if (!CanPickupToHand(uid, entity, handId, checkActionBlocker, handsComp, item))
-=======
         if (!CanPickupToHand(uid, entity, handId, checkActionBlocker: checkActionBlocker, showPopup: true, handsComp: handsComp, item: item))
             return false;
 
         if (!BeforeDoPickup((uid, handsComp), entity))
->>>>>>> upstream/master
             return false;
 
         if (animate)
@@ -180,22 +173,12 @@ public abstract partial class SharedHandsSystem
     /// Checks whether a given item will fit into a specific user's hand.
     /// Unless otherwise specified, this will also check the general CanPickup action blocker.
     /// </summary>
-<<<<<<< HEAD
-    public bool CanPickupToHand(EntityUid uid, EntityUid entity, string handId, bool checkActionBlocker = true, HandsComponent? handsComp = null, ItemComponent? item = null)
-=======
     public bool CanPickupToHand(EntityUid uid, EntityUid entity, string handId, bool checkActionBlocker = true, bool showPopup = false, HandsComponent? handsComp = null, ItemComponent? item = null)
->>>>>>> upstream/master
     {
         if (!Resolve(uid, ref handsComp, false))
             return false;
 
         if (!ContainerSystem.TryGetContainer(uid, handId, out var handContainer))
-<<<<<<< HEAD
-            return false;
-
-        if (handContainer.ContainedEntities.FirstOrNull() != null)
-=======
->>>>>>> upstream/master
             return false;
 
         if (handContainer.ContainedEntities.FirstOrNull() != null)

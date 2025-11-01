@@ -2,16 +2,10 @@ using System.Numerics;
 using Content.Shared.Access.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Clothing;
-<<<<<<< HEAD
-using Content.Shared.Damage;
-using Content.Shared.DeviceNetwork;
-using Content.Shared.DoAfter;
-=======
 using Content.Shared.Damage.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DoAfter;
 using Content.Shared.Emp;
->>>>>>> upstream/master
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction;
@@ -56,11 +50,8 @@ public abstract class SharedSuitSensorSystem : EntitySystem
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn);
         SubscribeLocalEvent<SuitSensorComponent, ClothingGotEquippedEvent>(OnEquipped);
         SubscribeLocalEvent<SuitSensorComponent, ClothingGotUnequippedEvent>(OnUnequipped);
-<<<<<<< HEAD
-=======
         SubscribeLocalEvent<SuitSensorComponent, EmpPulseEvent>(OnEmpPulse);
         SubscribeLocalEvent<SuitSensorComponent, EmpDisabledRemovedEvent>(OnEmpFinished);
->>>>>>> upstream/master
         SubscribeLocalEvent<SuitSensorComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<SuitSensorComponent, GetVerbsEvent<Verb>>(OnVerb);
         SubscribeLocalEvent<SuitSensorComponent, EntGotInsertedIntoContainerMessage>(OnInsert);
@@ -145,8 +136,6 @@ public abstract class SharedSuitSensorSystem : EntitySystem
         Dirty(ent);
     }
 
-<<<<<<< HEAD
-=======
     private void OnEmpPulse(Entity<SuitSensorComponent> ent, ref EmpPulseEvent args)
     {
         args.Affected = true;
@@ -166,7 +155,6 @@ public abstract class SharedSuitSensorSystem : EntitySystem
         ent.Comp.ControlsLocked = ent.Comp.PreviousControlsLocked;
     }
 
->>>>>>> upstream/master
     private void OnExamine(Entity<SuitSensorComponent> ent, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)

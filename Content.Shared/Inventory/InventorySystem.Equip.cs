@@ -16,10 +16,6 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
-<<<<<<< HEAD
-using Robust.Shared.Timing;
-=======
->>>>>>> upstream/master
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Inventory;

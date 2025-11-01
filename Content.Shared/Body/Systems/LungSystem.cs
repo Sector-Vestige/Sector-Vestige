@@ -1,9 +1,3 @@
-<<<<<<< HEAD:Content.Server/Body/Systems/LungSystem.cs
-using Content.Server.Atmos.EntitySystems;
-using Content.Server.Body.Components;
-using Content.Shared.Chemistry.EntitySystems;
-=======
->>>>>>> upstream/master:Content.Shared/Body/Systems/LungSystem.cs
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
@@ -12,10 +6,7 @@ using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Inventory.Events;
-<<<<<<< HEAD:Content.Server/Body/Systems/LungSystem.cs
-=======
 using Robust.Shared.Prototypes;
->>>>>>> upstream/master:Content.Shared/Body/Systems/LungSystem.cs
 using BreathToolComponent = Content.Shared.Atmos.Components.BreathToolComponent;
 using InternalsComponent = Content.Shared.Body.Components.InternalsComponent;
 
@@ -63,10 +54,7 @@ public sealed class LungSystem : EntitySystem
         }
     }
 
-<<<<<<< HEAD:Content.Server/Body/Systems/LungSystem.cs
-=======
     // TODO: JUST METABOLIZE GASES DIRECTLY DON'T CONVERT TO REAGENTS!!! (Needs Metabolism refactor :B)
->>>>>>> upstream/master:Content.Shared/Body/Systems/LungSystem.cs
     public void GasToReagent(EntityUid uid, LungComponent lung)
     {
         if (!_solutionContainerSystem.ResolveSolution(uid, lung.SolutionName, ref lung.Solution, out var solution))

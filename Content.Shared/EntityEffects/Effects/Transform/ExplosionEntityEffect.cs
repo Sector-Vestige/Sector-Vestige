@@ -1,23 +1,12 @@
-<<<<<<<< HEAD:Content.Shared/EntityEffects/Effects/ExplosionReactionEffect.cs
 using Content.Shared.Database;
-========
-﻿using Content.Shared.Database;
->>>>>>>> upstream/master:Content.Shared/EntityEffects/Effects/Transform/ExplosionEntityEffect.cs
 using Content.Shared.Explosion;
 using Robust.Shared.Prototypes;
 
-<<<<<<<< HEAD:Content.Shared/EntityEffects/Effects/ExplosionReactionEffect.cs
-namespace Content.Shared.EntityEffects.Effects;
-
-[DataDefinition]
-public sealed partial class ExplosionReactionEffect : EventEntityEffect<ExplosionReactionEffect>
-========
 namespace Content.Shared.EntityEffects.Effects.Transform;
 
 /// <inheritdoc cref="EntityEffect"/>
 /// <seealso cref="Explode"/>
 public sealed partial class Explosion : EntityEffectBase<Explosion>
->>>>>>>> upstream/master:Content.Shared/EntityEffects/Effects/Transform/ExplosionEntityEffect.cs
 {
     /// <summary>
     ///     The type of explosion. Determines damage types and tile break chance scaling.
@@ -63,14 +52,8 @@ public sealed partial class Explosion : EntityEffectBase<Explosion>
 
     public override bool Scaling => true;
 
-<<<<<<<< HEAD:Content.Shared/EntityEffects/Effects/ExplosionReactionEffect.cs
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-explosion-reaction-effect", ("chance", Probability));
-    public override LogImpact LogImpact => LogImpact.High;
-========
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("entity-effect-guidebook-explosion", ("chance", Probability));
 
     public override LogImpact? Impact => LogImpact.High;
->>>>>>>> upstream/master:Content.Shared/EntityEffects/Effects/Transform/ExplosionEntityEffect.cs
 }

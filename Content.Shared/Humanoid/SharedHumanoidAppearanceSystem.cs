@@ -43,10 +43,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     [Dependency] private readonly MarkingManager _markingManager = default!;
     [Dependency] private readonly GrammarSystem _grammarSystem = default!;
     [Dependency] private readonly IdentitySystem _identity = default!;
-<<<<<<< HEAD
     [Dependency] private readonly SharedScaleVisualsSystem _scaleVisualsSystem = default!; // Sector Vestige - For applying character height
-=======
->>>>>>> upstream/master
 
     public static readonly ProtoId<SpeciesPrototype> DefaultSpecies = "Human";
 

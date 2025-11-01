@@ -213,19 +213,6 @@ namespace Content.Shared.Chemistry.Reaction
 
             _entityEffects.ApplyEffects(soln, reaction.Effects, unitReactions.Float());
 
-<<<<<<< HEAD
-                if (effect.ShouldLog)
-                {
-                    var entity = args.TargetEntity;
-                    _adminLogger.Add(LogType.ReagentEffect, effect.LogImpact,
-                        $"Reaction effect {effect.GetType().Name:effect} of reaction {reaction.ID:reaction} applied on entity {ToPrettyString(entity):entity} at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not Found")}");
-                }
-
-                effect.Effect(args);
-            }
-
-=======
->>>>>>> upstream/master
             // Someday, some brave soul will thread through an optional actor
             // argument in from every call of OnReaction up, all just to pass
             // it to PlayPredicted. I am not that brave soul.

@@ -5,16 +5,12 @@ using Content.Shared.Chat.Prototypes;
 using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
-<<<<<<< HEAD
-using Robust.Shared.Audio;
-=======
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Console;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
->>>>>>> upstream/master
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -64,13 +60,9 @@ public abstract partial class SharedChatSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-<<<<<<< HEAD
-        DebugTools.Assert(_prototypeManager.HasIndex(CommonChannel));
-=======
 
         DebugTools.Assert(_prototypeManager.HasIndex(CommonChannel));
 
->>>>>>> upstream/master
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReload);
         CacheRadios();
         CacheEmotes();

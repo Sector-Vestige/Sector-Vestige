@@ -1,10 +1,7 @@
 using Content.Shared.Examine;
-<<<<<<< HEAD
-=======
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
->>>>>>> upstream/master
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 using Robust.Shared.Network;
@@ -20,21 +17,13 @@ public abstract class SharedEmpSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
-<<<<<<< HEAD
-=======
     private HashSet<EntityUid> _entSet = new();
 
->>>>>>> upstream/master
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<EmpDisabledComponent, ExaminedEvent>(OnExamine);
-<<<<<<< HEAD
-    }
-
-    protected const string EmpDisabledEffectPrototype = "EffectEmpDisabled";
-=======
         SubscribeLocalEvent<EmpDisabledComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<EmpDisabledComponent, RejuvenateEvent>(OnRejuvenate);
     }
@@ -64,7 +53,6 @@ public abstract class SharedEmpSystem : EntitySystem
         var coordinates = _transform.ToCoordinates(mapCoordinates);
         _audio.PlayPredicted(EmpSound, coordinates, user);
     }
->>>>>>> upstream/master
 
     /// <summary>
     /// Triggers an EMP pulse at the given location, by first raising an <see cref="EmpAttemptEvent"/>, then a raising <see cref="EmpPulseEvent"/> on all entities in range.
@@ -73,10 +61,6 @@ public abstract class SharedEmpSystem : EntitySystem
     /// <param name="range">The range of the EMP pulse.</param>
     /// <param name="energyConsumption">The amount of energy consumed by the EMP pulse.</param>
     /// <param name="duration">The duration of the EMP effects.</param>
-<<<<<<< HEAD
-    public virtual void EmpPulse(MapCoordinates coordinates, float range, float energyConsumption, float duration)
-    {
-=======
     /// <param name="user">The player that caused the effect. Used for predicted audio.</param>
     public void EmpPulse(EntityCoordinates coordinates, float range, float energyConsumption, TimeSpan duration, EntityUid? user = null)
     {
@@ -151,15 +135,12 @@ public abstract class SharedEmpSystem : EntitySystem
 
             RemComp<EmpDisabledComponent>(uid);
         }
->>>>>>> upstream/master
     }
 
     private void OnExamine(Entity<EmpDisabledComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup(Loc.GetString("emp-disabled-comp-on-examine"));
     }
-<<<<<<< HEAD
-=======
 
     private void OnRemove(Entity<EmpDisabledComponent> ent, ref ComponentRemove args)
     {
@@ -171,7 +152,6 @@ public abstract class SharedEmpSystem : EntitySystem
     {
         RemCompDeferred<EmpDisabledComponent>(ent);
     }
->>>>>>> upstream/master
 }
 
 /// <summary>
