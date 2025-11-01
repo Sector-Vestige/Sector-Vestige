@@ -1,8 +1,5 @@
 ﻿using Robust.Shared.Prototypes;
-<<<<<<< HEAD
-=======
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
->>>>>>> upstream/master
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Stacks;

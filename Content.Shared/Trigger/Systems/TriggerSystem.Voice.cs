@@ -11,24 +11,12 @@ public sealed partial class TriggerSystem
 {
     private void InitializeVoice()
     {
-<<<<<<< HEAD
-        SubscribeLocalEvent<TriggerOnVoiceComponent, ComponentInit>(OnVoiceInit);
-=======
         SubscribeLocalEvent<TriggerOnVoiceComponent, MapInitEvent>(OnMapInit);
->>>>>>> upstream/master
         SubscribeLocalEvent<TriggerOnVoiceComponent, ExaminedEvent>(OnVoiceExamine);
         SubscribeLocalEvent<TriggerOnVoiceComponent, ListenEvent>(OnListen);
         SubscribeLocalEvent<TriggerOnVoiceComponent, GetVerbsEvent<AlternativeVerb>>(OnVoiceGetAltVerbs);
     }
 
-<<<<<<< HEAD
-    private void OnVoiceInit(Entity<TriggerOnVoiceComponent> ent, ref ComponentInit args)
-    {
-        if (ent.Comp.IsListening)
-            EnsureComp<ActiveListenerComponent>(ent).Range = ent.Comp.ListenRange;
-        else
-            RemCompDeferred<ActiveListenerComponent>(ent);
-=======
     private void OnMapInit(Entity<TriggerOnVoiceComponent> ent, ref MapInitEvent args)
     {
         if (ent.Comp.DefaultKeyPhrase != null)
@@ -38,7 +26,6 @@ public sealed partial class TriggerSystem
         }
 
         UpdateListening(ent);
->>>>>>> upstream/master
     }
 
     private void OnVoiceExamine(EntityUid uid, TriggerOnVoiceComponent component, ExaminedEvent args)
@@ -110,8 +97,6 @@ public sealed partial class TriggerSystem
             Priority = 1
         });
 
-<<<<<<< HEAD
-=======
         if (ent.Comp.DefaultKeyPhrase != null
             && ent.Comp.KeyPhrase != Loc.GetString(ent.Comp.DefaultKeyPhrase))
         {
@@ -125,7 +110,6 @@ public sealed partial class TriggerSystem
             });
         }
 
->>>>>>> upstream/master
         if (string.IsNullOrWhiteSpace(ent.Comp.KeyPhrase))
             return;
 
@@ -140,8 +124,6 @@ public sealed partial class TriggerSystem
     }
 
     /// <summary>
-<<<<<<< HEAD
-=======
     /// Updates the presence/absence of the ActiveListenerComponent based on IsListening.
     /// </summary>
     private void UpdateListening(Entity<TriggerOnVoiceComponent> ent)
@@ -153,7 +135,6 @@ public sealed partial class TriggerSystem
     }
 
     /// <summary>
->>>>>>> upstream/master
     /// Start recording a new keyphrase.
     /// </summary>
     public void StartRecording(Entity<TriggerOnVoiceComponent> ent, EntityUid? user)
@@ -209,8 +190,6 @@ public sealed partial class TriggerSystem
         Dirty(ent);
         RemComp<ActiveListenerComponent>(ent);
     }
-<<<<<<< HEAD
-=======
 
     /// <summary>
     /// Resets the current key phrase to default.
@@ -230,5 +209,4 @@ public sealed partial class TriggerSystem
 
         _popup.PopupPredicted(Loc.GetString("trigger-on-voice-set-default", ("keyphrase", ent.Comp.KeyPhrase)), ent, user);
     }
->>>>>>> upstream/master
 }

@@ -479,12 +479,9 @@ public enum LogType
     /// Events relating to midi playback.
     /// </summary>
     Instrument = 103,
-<<<<<<< HEAD
 
     /// <summary>
     /// For anything relating to bug reports.
     /// </summary>
     BugReport = 104,
-=======
->>>>>>> upstream/master
 }

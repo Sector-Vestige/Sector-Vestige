@@ -286,20 +286,7 @@ public sealed partial class SleepingSystem : EntitySystem
         // entity reset due to the status effect getting inserted
         if (!_gameTiming.ApplyingState)
             TrySleeping(args.Target);
-<<<<<<< HEAD
-    }
 
-    private void Wake(Entity<SleepingComponent> ent)
-    {
-        RemComp<SleepingComponent>(ent);
-        _actionsSystem.RemoveAction(ent.Owner, ent.Comp.WakeAction);
-
-        var ev = new SleepStateChangedEvent(false);
-        RaiseLocalEvent(ent, ref ev);
-
-        _blindableSystem.UpdateIsBlind(ent.Owner);
-=======
->>>>>>> upstream/master
     }
 
     /// <summary>

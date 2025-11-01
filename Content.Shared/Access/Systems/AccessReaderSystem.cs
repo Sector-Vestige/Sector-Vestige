@@ -10,10 +10,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Localizations;
-<<<<<<< HEAD
-=======
 using Content.Shared.Lock;
->>>>>>> upstream/master
 using Content.Shared.NameIdentifier;
 using Content.Shared.PDA;
 using Content.Shared.StationRecords;
@@ -48,12 +45,8 @@ public sealed class AccessReaderSystem : EntitySystem
         SubscribeLocalEvent<AccessReaderComponent, GotEmaggedEvent>(OnEmagged);
         SubscribeLocalEvent<AccessReaderComponent, LinkAttemptEvent>(OnLinkAttempt);
         SubscribeLocalEvent<AccessReaderComponent, AccessReaderConfigurationAttemptEvent>(OnConfigurationAttempt);
-<<<<<<< HEAD
-=======
         SubscribeLocalEvent<AccessReaderComponent, FindAvailableLocksEvent>(OnFindAvailableLocks);
         SubscribeLocalEvent<AccessReaderComponent, CheckUserHasLockAccessEvent>(OnCheckLockAccess);
->>>>>>> upstream/master
-
         SubscribeLocalEvent<AccessReaderComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<AccessReaderComponent, ComponentHandleState>(OnHandleState);
     }
@@ -79,16 +72,10 @@ public sealed class AccessReaderSystem : EntitySystem
             }
         }
 
-<<<<<<< HEAD
-        var canSeeAccessModification = accessHasBeenModified &&
-            (HasComp<ShowAccessReaderSettingsComponent>(ent) ||
-            _inventorySystem.TryGetInventoryEntity<ShowAccessReaderSettingsComponent>(args.Examiner, out _));
-=======
         var examiner = args.Examiner;
         var canSeeAccessModification = accessHasBeenModified &&
                                        (HasComp<ShowAccessReaderSettingsComponent>(examiner) ||
                                         _inventorySystem.TryGetInventoryEntity<ShowAccessReaderSettingsComponent>(examiner, out _));
->>>>>>> upstream/master
 
         if (canSeeAccessModification)
         {
@@ -184,8 +171,6 @@ public sealed class AccessReaderSystem : EntitySystem
         ent.Comp.AccessListsOriginal ??= new(ent.Comp.AccessLists);
     }
 
-<<<<<<< HEAD
-=======
     private void OnFindAvailableLocks(Entity<AccessReaderComponent> ent, ref FindAvailableLocksEvent args)
     {
         args.FoundReaders |= LockTypes.Access;
@@ -202,7 +187,6 @@ public sealed class AccessReaderSystem : EntitySystem
             args.HasAccess |= LockTypes.Access;
     }
 
->>>>>>> upstream/master
     /// <summary>
     /// Searches the source for access tags
     /// then compares it with the all targets accesses to see if it is allowed.

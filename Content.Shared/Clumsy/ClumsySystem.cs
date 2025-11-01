@@ -49,11 +49,7 @@ public sealed class ClumsySystem : EntitySystem
             return;
 
         // TODO: Replace with RandomPredicted once the engine PR is merged
-<<<<<<< HEAD
-        var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(ent).Id });
-=======
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id);
->>>>>>> upstream/master
         var rand = new System.Random(seed);
         if (!rand.Prob(ent.Comp.ClumsyDefaultCheck))
             return;
@@ -72,11 +68,7 @@ public sealed class ClumsySystem : EntitySystem
             return;
 
         // TODO: Replace with RandomPredicted once the engine PR is merged
-<<<<<<< HEAD
-        var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(ent).Id });
-=======
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id);
->>>>>>> upstream/master
         var rand = new System.Random(seed);
         if (!rand.Prob(ent.Comp.ClumsyDefaultCheck))
             return;
@@ -95,11 +87,7 @@ public sealed class ClumsySystem : EntitySystem
             return;
 
         // TODO: Replace with RandomPredicted once the engine PR is merged
-<<<<<<< HEAD
-        var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(args.Item).Id });
-=======
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(args.Item).Id);
->>>>>>> upstream/master
         var rand = new System.Random(seed);
         if (!rand.Prob(ent.Comp.ClumsyDefaultCheck))
             return;
@@ -107,11 +95,7 @@ public sealed class ClumsySystem : EntitySystem
         args.Cancelled = true; // fail to catch
 
         if (ent.Comp.CatchingFailDamage != null)
-<<<<<<< HEAD
-            _damageable.TryChangeDamage(ent, ent.Comp.CatchingFailDamage, origin: args.Item);
-=======
             _damageable.ChangeDamage(ent.Owner, ent.Comp.CatchingFailDamage, origin: args.Item);
->>>>>>> upstream/master
 
         // Collisions don't work properly with PopupPredicted or PlayPredicted.
         // So we make this server only.
@@ -137,11 +121,7 @@ public sealed class ClumsySystem : EntitySystem
             return;
 
         // TODO: Replace with RandomPredicted once the engine PR is merged
-<<<<<<< HEAD
-        var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(args.Gun).Id });
-=======
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(args.Gun).Id);
->>>>>>> upstream/master
         var rand = new System.Random(seed);
         if (!rand.Prob(ent.Comp.ClumsyDefaultCheck))
             return;
@@ -166,11 +146,7 @@ public sealed class ClumsySystem : EntitySystem
             return;
 
         // TODO: Replace with RandomPredicted once the engine PR is merged
-<<<<<<< HEAD
-        var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(ent).Id });
-=======
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id);
->>>>>>> upstream/master
         var rand = new System.Random(seed);
         if (!_cfg.GetCVar(CCVars.GameTableBonk) && !rand.Prob(ent.Comp.ClumsyDefaultCheck))
             return;
