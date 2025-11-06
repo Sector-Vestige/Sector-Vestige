@@ -1,3 +1,10 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2025 qu4drivium (GitHub)
+// SPDX-FileCopyrightText: 2025 Kryyto <69859497+Kryyto@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using Content.IntegrationTests;
