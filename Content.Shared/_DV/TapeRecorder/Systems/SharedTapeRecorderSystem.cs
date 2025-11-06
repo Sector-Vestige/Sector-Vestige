@@ -1,4 +1,6 @@
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared._DV.TapeRecorder.Components;
 using Content.Shared.Destructible;
