@@ -41,12 +41,4 @@ namespace Content.Shared.Power
         Medium = NodeGroupID.MVPower,
         Apc = NodeGroupID.Apc,
     }
-
-    [Serializable, NetSerializable]
-    public enum Voltage
-    {
-        High = NodeGroupID.HVPower,
-        Medium = NodeGroupID.MVPower,
-        Apc = NodeGroupID.Apc,
-    }
 }

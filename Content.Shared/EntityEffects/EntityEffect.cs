@@ -46,19 +46,6 @@ public abstract partial class EntityEffect
     public virtual LogType LogType => LogType.EntityEffect;
 }
 
-[ByRefEvent]
-public struct ExecuteEntityEffectEvent<T> where T : EntityEffect
-{
-    public T Effect;
-    public EntityEffectBaseArgs Args;
-
-    public ExecuteEntityEffectEvent(T effect, EntityEffectBaseArgs args)
-    {
-        Effect = effect;
-        Args = args;
-    }
-}
-
 /// <summary>
 /// Used to store an <see cref="EntityEffect"/> so it can be raised without losing the type of the condition.
 /// </summary>

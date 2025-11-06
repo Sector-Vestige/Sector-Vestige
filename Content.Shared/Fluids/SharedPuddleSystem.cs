@@ -44,8 +44,6 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
     private string[] _standoutReagents = [];
 
-    private string[] _standoutReagents = [];
-
     /// <summary>
     /// The lowest threshold to be considered for puddle sprite states as well as slipperiness of a puddle.
     /// </summary>
