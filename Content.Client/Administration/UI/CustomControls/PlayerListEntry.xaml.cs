@@ -3,8 +3,8 @@
 // SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Southbridge <7013162+southbridge-fur@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Vasilis The Pikachu <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2025 qu4drivium (GitHub)
 // SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 qu4drivium (GitHub)
 //
 // SPDX-License-Identifier: MIT
 

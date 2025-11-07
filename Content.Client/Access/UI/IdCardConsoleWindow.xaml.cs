@@ -21,9 +21,9 @@
 // SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
 // SPDX-FileCopyrightText: 2025 Vasilis The Pikachu <vasilis@pikachu.systems>
 // SPDX-FileCopyrightText: 2025 qu4drivium (GitHub)
+// SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
 // SPDX-FileCopyrightText: 2025 qwerltaz <69696513+qwerltaz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
-// SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
 //
 // SPDX-License-Identifier: MIT
 
