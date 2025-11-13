@@ -1,15 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Physics;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Prototypes;
@@ -55,14 +43,6 @@ public sealed partial class RCDPrototype : IPrototype
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
     public string? Prototype { get; private set; }
-
-    //Sector Vestige - Begin: RPD System to allow for flipping atmospheric systems
-    /// <summary>
-    /// The flipped prototype of the stored prototype
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadOnly)]
-    public string? FlippedPrototype { get; private set; }
-    //Sector Vestige - End: RPD System to allow for flipping atmospheric systems
 
     /// <summary>
     /// Number of charges consumed when the operation is completed
@@ -139,7 +119,6 @@ public enum RcdMode : byte
 {
     Invalid,
     Deconstruct,
-    DeconstructPipe,            //Sector Vestige: RPD System
     ConstructTile,
     ConstructObject,
 }
@@ -159,5 +138,4 @@ public enum RcdRotation : byte
     Fixed,      // The entity has a local rotation of zero
     Camera,     // The rotation of the entity matches the local player camera
     User,       // The entity can be rotated by the local player prior to placement
-    Pipe,       // The entity should use the AtmosPipeLaying system //Sector Vestige: RPD Logic
 }

@@ -1,15 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Fildrance <fildrance@gmail.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 youtissoum <51883137+youtissoum@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Client.Popups;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.RCD;
@@ -36,10 +24,6 @@ public sealed class RCDMenuBoundUserInterface : BoundUserInterface
             ["Airlocks"] = ("rcd-component-airlocks", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/airlocks.png"))),
             ["Electrical"] = ("rcd-component-electrical", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/multicoil.png"))),
             ["Lighting"] = ("rcd-component-lighting", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/lighting.png"))),
-            ["Piping"] = ("rcd-component-piping", new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/piping.png"))), //Sector Vestige: Added RPD
-            ["Utility"] = ("rcd-component-utility", new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/utility.png"))), //Sector Vestige: Added RPD
-            ["Vents"] = ("rcd-component-vents", new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/ventMultiple.png"))), //Sector Vestige: Added RPD
-            ["Pumps"] = ("rcd-component-pumps", new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/pumps_and_valves.png"))), //Sector Vestige: Added RPD
         };
 
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;

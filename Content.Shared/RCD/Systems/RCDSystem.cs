@@ -1,28 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Administration.Logs;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
@@ -48,11 +23,6 @@ using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using System.Linq;
-using System.Numerics; //Sector Vestige: RPD Logic
-using Content.Shared._SV.RPD; //Sector Vestige: RPD Logic
-using Content.Shared.Atmos.Components; //Sector Vestige: RPD Logic
-using Content.Shared.Atmos.EntitySystems; //Sector Vestige: RPD Logic
-using Content.Shared._SV.EyeTracker; //Sector Vestige: RPD Logic
 
 namespace Content.Shared.RCD.Systems;
 
@@ -74,16 +44,12 @@ public sealed class RCDSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tags = default!;
-    [Dependency] private readonly SharedAtmosPipeLayersSystem _layer = default!; //Sector Vestige: RPD Logic
-    [Dependency] private readonly IEntityManager _entityManager = default!; //Sector Vestige: RPD Logic
-    [Dependency] private readonly IEntityNetworkManager _entityNetworkManager = default!; //Sector Vestige: RPD Logic
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
     private readonly ProtoId<RCDPrototype> _deconstructTileProto = "DeconstructTile";
     private readonly ProtoId<RCDPrototype> _deconstructLatticeProto = "DeconstructLattice";
     private static readonly ProtoId<TagPrototype> CatwalkTag = "Catwalk";
-    private AtmosPipeLayer _currentLayer = default; //Sector Vestige: RPD Logic
 
     private HashSet<EntityUid> _intersectingEntities = new();
 
@@ -98,7 +64,6 @@ public sealed class RCDSystem : EntitySystem
         SubscribeLocalEvent<RCDComponent, DoAfterAttemptEvent<RCDDoAfterEvent>>(OnDoAfterAttempt);
         SubscribeLocalEvent<RCDComponent, RCDSystemMessage>(OnRCDSystemMessage);
         SubscribeNetworkEvent<RCDConstructionGhostRotationEvent>(OnRCDconstructionGhostRotationEvent);
-        SubscribeNetworkEvent<RCDConstructionGhostFlipEvent>(OnRCDFlipPrototype); //Sector Vestige: Handle prototype flipping
     }
 
     #region Event handling
@@ -175,9 +140,6 @@ public sealed class RCDSystem : EntitySystem
             _popup.PopupClient(Loc.GetString("rcd-component-no-valid-grid"), uid, user);
             return;
         }
-        if (prototype.Rotation == RcdRotation.Pipe) // Sector Vestige: Get Eye rotation for RPD
-            _entityNetworkManager.SendSystemNetworkMessage(new GetEyeRotationEvent(_entityManager.GetNetEntity(args.Used), _entityManager.GetNetEntity(user))); // Sector Vestige: Get Eye rotation for RPD
-
         var tile = _mapSystem.GetTileRef(gridUid.Value, mapGrid, location);
         var position = _mapSystem.TileIndicesFor(gridUid.Value, mapGrid, location);
 
@@ -238,19 +200,6 @@ public sealed class RCDSystem : EntitySystem
                 }
 
                 break;
-
-            //Sector Vestige - Begin: RPD Logic
-            case  RcdMode.DeconstructPipe:
-
-                if (TryComp<RPDDeconstructableComponent>(args.Target, out var destructiblePipe))
-                {
-                    cost = destructiblePipe.Cost;
-                    delay = destructiblePipe.Delay;
-                    effectPrototype = destructiblePipe.Effect;
-                }
-
-                break;
-            //Sector Vestige - End: RPD Logic
         }
 
         #endregion
@@ -336,7 +285,7 @@ public sealed class RCDSystem : EntitySystem
             return;
 
         // Finalize the operation (this should handle prediction properly)
-        FinalizeRCDOperation(uid, component, gridUid.Value, mapGrid, tile, position, args.Direction, args.Target, args.User, location); //Sector Vestige: RPD Logic
+        FinalizeRCDOperation(uid, component, gridUid.Value, mapGrid, tile, position, args.Direction, args.Target, args.User);
 
         // Play audio and consume charges
         _audio.PlayPredicted(component.SuccessSound, uid, args.User);
@@ -405,8 +354,7 @@ public sealed class RCDSystem : EntitySystem
             case RcdMode.ConstructObject:
                 return IsConstructionLocationValid(uid, component, gridUid, mapGrid, tile, position, user, popMsgs);
             case RcdMode.Deconstruct:
-            case RcdMode.DeconstructPipe: //Sector Vestige: RPD Logic
-                return IsDeconstructionStillValid(uid, tile, target, user, component, popMsgs); //Sector Vestige: RPD Logic
+                return IsDeconstructionStillValid(uid, tile, target, user, popMsgs);
         }
 
         return false;
@@ -515,22 +463,11 @@ public sealed class RCDSystem : EntitySystem
         return true;
     }
 
-    private bool IsDeconstructionStillValid(EntityUid uid, TileRef tile, EntityUid? target, EntityUid user, RCDComponent component, bool popMsgs = true) //Sector Vestige: RPD Logic
+    private bool IsDeconstructionStillValid(EntityUid uid, TileRef tile, EntityUid? target, EntityUid user, bool popMsgs = true)
     {
-        var prototype = _protoManager.Index(component.ProtoId); //Sector Vestige: RPD Logic
         // Attempt to deconstruct a floor tile
         if (target == null)
         {
-            // Sector Vestige - Begin: RPD Deconstruction Logic - Ensure the RPD can't deconstruct tiles
-            if (prototype.Mode == RcdMode.DeconstructPipe)
-            {
-                if (popMsgs)
-                    _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
-
-                return false;
-            }
-            // Sector Vestige - End: RPD Deconstruction Logic - Ensure the RPD can't deconstruct tiles
-
             // The tile is empty
             if (tile.Tile.IsEmpty)
             {
@@ -562,38 +499,17 @@ public sealed class RCDSystem : EntitySystem
         }
 
         // Attempt to deconstruct an object
-        // Sector Vestige - Begin: RPD Logic
         else
         {
             // The object is not in the whitelist
-            switch (prototype.Mode)
+            if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible) || !deconstructible.Deconstructable)
             {
-                //Check if the object that is being deconstructed is in the RCD whitelist
-                case RcdMode.Deconstruct:
-                    if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible) || !deconstructible.Deconstructable)
-                    {
-                        if (popMsgs)
-                            _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
+                if (popMsgs)
+                    _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
 
-                        return false;
-                    }
-
-                    break;
-
-                //Check if the object that is being deconstructed is in the RPD whitelist, or is a tile
-                case RcdMode.DeconstructPipe:
-                    if (!TryComp<RPDDeconstructableComponent>(target, out var deconstructiblePipe) || !deconstructiblePipe.Deconstructable)
-                    {
-                        if (popMsgs)
-                            _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
-
-                        return false;
-                    }
-
-                    break;
+                return false;
             }
-
-        } // Sector Vestige - End: RPD Logic
+        }
 
         return true;
     }
@@ -602,7 +518,7 @@ public sealed class RCDSystem : EntitySystem
 
     #region Entity construction/deconstruction
 
-    private void FinalizeRCDOperation(EntityUid uid, RCDComponent component, EntityUid gridUid, MapGridComponent mapGrid, TileRef tile, Vector2i position, Direction direction, EntityUid? target, EntityUid user, EntityCoordinates location) // Sector Vestige: Added location to help with pipe layering
+    private void FinalizeRCDOperation(EntityUid uid, RCDComponent component, EntityUid gridUid, MapGridComponent mapGrid, TileRef tile, Vector2i position, Direction direction, EntityUid? target, EntityUid user)
     {
         if (!_net.IsServer)
             return;
@@ -619,81 +535,23 @@ public sealed class RCDSystem : EntitySystem
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {gridUid} {position} to {prototype.Prototype}");
                 break;
 
-            //Sector Vestige - Begin: RPD Logic
-            //Most of this is stolen from funky station
-            //Gets the alternate pipe layer of the selected layer, then assign it to what gets spawned
             case RcdMode.ConstructObject:
-                if (prototype.Prototype == null)
-                    return;
-                if (prototype.Rotation == RcdRotation.Pipe &&
-                    _entityManager.TryGetComponent<EyeTrackerComponent>(uid, out var eye))
+                var ent = Spawn(prototype.Prototype, _mapSystem.GridTileToLocal(gridUid, mapGrid, position));
+
+                switch (prototype.Rotation)
                 {
-                    //Get the layer that the pipe needs to be on via where the click is
-                    var gridRotation = _transform.GetWorldRotation(gridUid);
-                    float tileSize = mapGrid.TileSize;
-                    var mouseDeadzone = 0.25f;
-                    var tileCenter = new Vector2(tile.X + tileSize / 2, tile.Y + tileSize / 2);
-                    var alignedMouseCords = new EntityCoordinates(location.EntityId, tileCenter);
-                    var mouseCordsDiff = location.Position - alignedMouseCords.Position;
-
-                    _currentLayer = AtmosPipeLayer.Primary;
-
-                    if (mouseCordsDiff.Length() > mouseDeadzone)
-                    {
-                        var pipeRotation = (new Angle(mouseCordsDiff)+ eye.Rotation + gridRotation + Math.PI / 2).GetCardinalDir();
-                        _currentLayer = (pipeRotation == Direction.North || pipeRotation == Direction.East) ? AtmosPipeLayer.Secondary : AtmosPipeLayer.Tertiary;
-                    }
+                    case RcdRotation.Fixed:
+                        Transform(ent).LocalRotation = Angle.Zero;
+                        break;
+                    case RcdRotation.Camera:
+                        Transform(ent).LocalRotation = Transform(uid).LocalRotation;
+                        break;
+                    case RcdRotation.User:
+                        Transform(ent).LocalRotation = direction.ToAngle();
+                        break;
                 }
 
-                string ent;
-                if (_protoManager.TryIndex<EntityPrototype>(prototype.Prototype, out var entProto) &&
-                    entProto.TryGetComponent<AtmosPipeLayersComponent>(out var pipeLayer, _entityManager.ComponentFactory) &&
-                    _layer.TryGetAlternativePrototype(pipeLayer, _currentLayer, out var actualPipe))
-                {
-                    ent = actualPipe;
-                }
-                else
-                {
-                    ent = prototype.Prototype;
-                }
-
-                //Use the flipped prototype if it is called for, and if there is a flipped prototype provided
-                if (_entityManager.TryGetComponent<RCDComponent>(uid, out var rcd) &&
-                    rcd.UseFlippedPrototype &&
-                    !string.IsNullOrEmpty(prototype.FlippedPrototype))
-                {
-                    ent = prototype.FlippedPrototype;
-                }
-
-                var rotation = prototype.Rotation switch
-                {
-                    RcdRotation.Fixed => Angle.Zero,
-                    RcdRotation.Camera => Transform(uid).LocalRotation,
-                    RcdRotation.User or RcdRotation.Pipe => direction.ToAngle(),
-                    _ => Angle.Zero,
-                };
-
-                var entCords = _mapSystem.GridTileToLocal(gridUid, mapGrid, position);
-                var mapCords = _transform.ToMapCoordinates(entCords);
-
-                var entspawn = Spawn(ent, mapCords, rotation: rotation);
-
-//                switch (prototype.Rotation)
-//                {
-//                    case RcdRotation.Fixed:
-//                        Transform(ent).LocalRotation = Angle.Zero;
-//                        break;
-//                    case RcdRotation.Camera:
-//                        Transform(ent).LocalRotation = Transform(uid).LocalRotation;
-//                        break;
-//                    case RcdRotation.User:
-//                    case RcdRotation.Pipe:
-//                        Transform(ent).LocalRotation = direction.ToAngle();
-//                        break;
-//                }
-                //Sector Vestige - End: RPD Logic
-
-                _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to spawn {ToPrettyString(entspawn)} at {position} on grid {gridUid}"); // Sector Vestige: Set the logger to log the entity that was spawned
+                _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to spawn {ToPrettyString(ent)} at {position} on grid {gridUid}");
                 break;
 
             case RcdMode.Deconstruct:
@@ -713,14 +571,6 @@ public sealed class RCDSystem : EntitySystem
                 }
 
                 break;
-
-            //Sector Vestige - Begin: RPD Logic
-            case RcdMode.DeconstructPipe:
-
-                _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RPD to delete: {ToPrettyString(target):target}");
-                QueueDel(target);
-                break;
-            //Sector Vestige - End: RPD Logic
         }
     }
 
@@ -736,17 +586,6 @@ public sealed class RCDSystem : EntitySystem
         return boundingPolygon.ComputeAABB(boundingTransform, 0).Intersects(fixture.Shape.ComputeAABB(entXform, 0));
     }
 
-    //Sector Vestig - Begin: RPD prototype flipping
-    private void OnRCDFlipPrototype(RCDConstructionGhostFlipEvent args)
-    {
-        var rcd = _entityManager.GetEntity(args.NetEntity);
-        if (!_entityManager.TryGetComponent<RCDComponent>(rcd, out var component))
-            return;
-
-        component.UseFlippedPrototype = !component.UseFlippedPrototype;
-        Dirty(rcd, component);
-    }
-    //Sector Vestig - End: RPD prototype flipping
     #endregion
 }
 
