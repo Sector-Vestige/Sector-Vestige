@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2025 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 JuneSzalkowska <juneszalkowska@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: localizedDataset
+  id: NamesDeepbornFirst
+  values:
+    prefix: names-deepborn-first-dataset-
+    count: 37
+
+- type: localizedDataset
+  id: NamesDeepbornLast
+  values:
+    prefix: names-deepborn-last-dataset-
+    count: 52

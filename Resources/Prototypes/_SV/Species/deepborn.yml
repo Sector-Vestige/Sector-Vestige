@@ -15,6 +15,10 @@
   dollPrototype: MobDeepbornDummy
   skinColoration: Hues
   defaultHeight: 1.1
+  maleFirstNames: NamesDeepbornFirst
+  femaleFirstNames: NamesDeepbornFirst
+  lastNames: NamesDeepbornLast
+  naming: FirstTheLast
 
 - type: speciesBaseSprites
   id: MobDeepbornSprites
