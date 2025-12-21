@@ -1,5 +1,5 @@
 ﻿﻿using System.Numerics;
-using Content.Server.Maps;
+using Content.Shared.Maps;
 using Content.Shared._Harmony.EntitySelector;
 using Robust.Shared.Prototypes;
 
