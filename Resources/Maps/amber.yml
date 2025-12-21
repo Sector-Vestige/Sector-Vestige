@@ -16112,8 +16112,6 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: NavMap
-    - type: BecomesStation
-      id: Oasis
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
   - uid: 21002
