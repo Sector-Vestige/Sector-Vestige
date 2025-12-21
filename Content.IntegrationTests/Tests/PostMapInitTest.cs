@@ -166,7 +166,6 @@ namespace Content.IntegrationTests.Tests
             "Saltern",
             // "Reach", // Vestige: Derotated Map
             // "Oasis", // Vestige: Derotated Map
-            "Amber",
             "Plasma",
             "Elkridge",
             "Snowball",
