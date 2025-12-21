@@ -39,8 +39,8 @@
         ejectSound: /Audio/_Harmony/Weapons/Guns/MagOut/garand-ping-short.wav
         priority: 2
         whitelist:
-          tags:
-            - SpeedLoaderRifle
+          components:
+            - SpeedLoader
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber

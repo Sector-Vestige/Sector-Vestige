@@ -104,5 +104,4 @@
   - !type:BuyerJobCondition
     whitelist:
     - Bartender
-    - Zookeeper
 
