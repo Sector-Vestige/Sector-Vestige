@@ -37,7 +37,7 @@
 - type: gameMapPool
   id: DefaultMapPool
   maps:
-  - Amber
+  # - Amber
   - Bagel
   # - Box # Vestige: Derotated Map
   - Elkridge
