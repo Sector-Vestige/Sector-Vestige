@@ -52,9 +52,9 @@
       whitelist:
         components:
         - SecretStash
-    # - type: GuideHelp # SV - make sure to add a guidebook entry later
-    #   guides:
-    #     - AIShells
+    - type: GuideHelp # SV - make sure to add a guidebook entry later
+      guides:
+        - AIShells
 
 # Borgs
 - type: entity
