@@ -26,52 +26,35 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
-      - name: Get PR and Review Info
-        id: pr-info
-        uses: actions/github-script@v7
+      - name: Download review info
+        uses: actions/download-artifact@v4
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
-          script: |
-            // Get the workflow run that triggered this
-            const runId = context.payload.workflow_run.id;
+          run-id: ${{ github.event.workflow_run.id }}
+          pattern: review-info-*
+          merge-multiple: true
+          path: review-info/
 
-            // Get the review event from the triggering workflow
-            const { data: workflowRun } = await github.rest.actions.getWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: runId
-            });
+      - name: Get PR and Review Info
+        id: pr-info
+        run: |
+          if [ ! -f review-info/pr_number.txt ]; then
+            echo "No review info found"
+            exit 1
+          fi
 
-            // Get PR number from the workflow run
-            const prNumber = workflowRun.pull_requests[0]?.number;
+          PR_NUMBER=$(cat review-info/pr_number.txt)
+          REVIEW_STATE=$(cat review-info/review_state.txt)
+          REVIEWER=$(cat review-info/reviewer.txt)
 
-            if (!prNumber) {
-              core.setFailed('No PR found for this workflow run');
-              return;
-            }
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "review_state=$REVIEW_STATE" >> $GITHUB_OUTPUT
+          echo "reviewer=$REVIEWER" >> $GITHUB_OUTPUT
 
-            // Get all reviews for this PR
-            const { data: reviews } = await github.rest.pulls.listReviews({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: prNumber
-            });
-
-            // Find the most recent CHANGES_REQUESTED review
-            const changesRequestedReview = reviews
-              .reverse()
-              .find(review => review.state === 'CHANGES_REQUESTED');
-
-            if (!changesRequestedReview) {
-              console.log('No changes requested review found');
-              return;
-            }
-
-            core.setOutput('pr_number', prNumber);
-            core.setOutput('review_state', changesRequestedReview.state);
+          echo "PR: $PR_NUMBER, State: $REVIEW_STATE, Reviewer: $REVIEWER"
 
       - name: Manage labels
-        if: steps.pr-info.outputs.review_state == 'CHANGES_REQUESTED'
+        if: steps.pr-info.outputs.review_state == 'changes_requested'
         uses: actions/github-script@v7
         with:
           github-token: ${{ steps.generate-token.outputs.token }}

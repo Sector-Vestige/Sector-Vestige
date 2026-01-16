@@ -13,7 +13,18 @@ jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Log review event
+      - name: Save review info
         run: |
+          mkdir -p review-info
+          echo "${{ github.event.pull_request.number }}" > review-info/pr_number.txt
+          echo "${{ github.event.review.state }}" > review-info/review_state.txt
+          echo "${{ github.event.review.user.login }}" > review-info/reviewer.txt
           echo "PR #${{ github.event.pull_request.number }} received review from ${{ github.event.review.user.login }}"
           echo "Review state: ${{ github.event.review.state }}"
+
+      - name: Upload review info
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-info-${{ github.event.pull_request.number }}
+          path: review-info/
+          retention-days: 1
