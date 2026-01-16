@@ -1,3 +1,4 @@
+using Content.Shared._SV.Roles;
 using Content.Shared.Guidebook;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -63,4 +64,10 @@ public sealed partial class AntagPrototype : IPrototype
     /// </summary>
     [DataField]
     public bool VisiblePreference { get; private set; }
+
+    /// <summary>
+    ///     Adds an antag to a category, allowing you to group antag preferences by faction or type in the UI.
+    /// </summary>
+    [DataField]
+    public ProtoId<AntagCategoryPrototype>? Category;
 }

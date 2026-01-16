@@ -1,0 +1,19 @@
+# NANOTRASEN ALIGNED ROLES
+
+- type: antag
+  id: NanoTrasenAgent
+  name: roles-nanotrasen-agent
+  antagonist: true
+  setPreference: true
+  objective: roles-nanotrasen-agent-desc
+  visiblePreference: true
+  category: NanoTrasen
+
+- type: antag
+  id: NanoTrasenOperative
+  name: roles-nanotrasen-operative
+  antagonist: true
+  setPreference: true
+  objective: roles-nanotrasen-operative-desc
+  visiblePreference: true
+  category: NanoTrasen

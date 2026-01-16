@@ -1,0 +1,15 @@
+- type: antagCategory
+  id: Independent
+  name: antag-category-independent
+
+- type: antagCategory
+  id: Syndicate
+  name: antag-category-syndicate
+
+- type: antagCategory
+  id: NanoTrasen
+  name: antag-category-nanotrasen
+
+- type: antagCategory
+  id: OptIn
+  name: antag-category-optin
