@@ -2,7 +2,7 @@
   <img alt="Sector Vestige" src="https://raw.githubusercontent.com/Sector-Vestige/Sector-Vestige/refs/heads/master/Resources/Textures/Logo/logo.png" />
 </p>
 
-# Sector Vestige
+# Sector Vestige.
 
 [![REUSE status](https://api.reuse.software/badge/github.com/Sector-Vestige/Sector-Vestige)](https://api.reuse.software/info/github.com/Sector-Vestige/Sector-Vestige)
 [![Build & Test Debug](https://github.com/Sector-Vestige/Sector-Vestige/actions/workflows/build-test-debug.yml/badge.svg?branch=master)](https://github.com/Sector-Vestige/Sector-Vestige/actions/workflows/build-test-debug.yml)
