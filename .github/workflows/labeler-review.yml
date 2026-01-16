@@ -9,12 +9,14 @@
 
 name: "Labels: Approved"
 on:
-  pull_request_review:
-    types: [submitted]
+  workflow_run:
+    workflows: ["PR Review Trigger"]
+    types: [completed]
+
 jobs:
   add_label:
     # Change the repository name after you've made sure the team name is correct for your fork!
-    if: ${{ (github.repository == 'Sector-Vestige/Sector-Vestige') && (github.event.review.state == 'APPROVED') }}
+    if: github.repository == 'Sector-Vestige/Sector-Vestige'
     permissions:
       contents: read
       pull-requests: write
@@ -27,20 +29,67 @@ jobs:
         app-id: ${{ secrets.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
-    - uses: tspascoal/get-user-teams-membership@v3
-      id: checkUserMember
-      with:
-        username: ${{ github.actor }}
-        team: "Maintainer team"
-        GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
-
-    - name: Manage labels
-      if: ${{ steps.checkUserMember.outputs.isTeamMember == 'true' }}
+    - name: Get PR and Review Info
+      id: pr-info
       uses: actions/github-script@v7
       with:
         github-token: ${{ steps.generate-token.outputs.token }}
         script: |
-          const issue_number = context.issue.number;
+          // Get the workflow run that triggered this
+          const runId = context.payload.workflow_run.id;
+
+          // Get the review event from the triggering workflow
+          const { data: workflowRun } = await github.rest.actions.getWorkflowRun({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            run_id: runId
+          });
+
+          // Get PR number from the workflow run
+          const prNumber = workflowRun.pull_requests[0]?.number;
+
+          if (!prNumber) {
+            core.setFailed('No PR found for this workflow run');
+            return;
+          }
+
+          // Get all reviews for this PR
+          const { data: reviews } = await github.rest.pulls.listReviews({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: prNumber
+          });
+
+          // Find the most recent APPROVED review
+          const approvedReview = reviews
+            .reverse()
+            .find(review => review.state === 'APPROVED');
+
+          if (!approvedReview) {
+            console.log('No approved review found');
+            return;
+          }
+
+          core.setOutput('pr_number', prNumber);
+          core.setOutput('reviewer', approvedReview.user.login);
+          core.setOutput('review_state', approvedReview.state);
+
+    - name: Check Team Membership
+      if: steps.pr-info.outputs.review_state == 'APPROVED'
+      id: checkUserMember
+      uses: tspascoal/get-user-teams-membership@v3
+      with:
+        username: ${{ steps.pr-info.outputs.reviewer }}
+        team: "Maintainer team"
+        GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
+    - name: Manage labels
+      if: steps.checkUserMember.outputs.isTeamMember == 'true'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ steps.generate-token.outputs.token }}
+        script: |
+          const issue_number = ${{ steps.pr-info.outputs.pr_number }};
           const owner = context.repo.owner;
           const repo = context.repo.repo;
 

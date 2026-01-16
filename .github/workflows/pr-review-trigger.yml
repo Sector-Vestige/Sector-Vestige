@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+name: PR Review Trigger
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger workflow_run
+        run: |
+          echo "PR #${{ github.event.pull_request.number }} received review from ${{ github.event.review.user.login }}"
+          echo "Review state: ${{ github.event.review.state }}"
+          echo "Reviewer: ${{ github.event.review.user.login }}"
