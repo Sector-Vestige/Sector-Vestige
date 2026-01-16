@@ -24,7 +24,7 @@ jobs:
       id: checkUserMember
       with:
         username: ${{ github.actor }}
-        team: "maintainer-team"
+        team: "Maintainer team"
         GITHUB_TOKEN: ${{ secrets.WEH_BOT_PAT }}
     - name: Manage labels
       if: ${{ steps.checkUserMember.outputs.isTeamMember == 'true' }}
