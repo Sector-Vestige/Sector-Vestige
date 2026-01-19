@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 lambdatiger <11843718+lambdatiger@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 lambdatiger <spam.stnuocca.sl@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+## Personal item for Beem-Kilaya
+- type: entity
+  parent: SilverRing
+  id: PersonalItemSilverRing
+  name: Silver Ring
+  description: A simple silver ring.
+- type: loadout
+  id: PersonalItemSilverRing
+  storage:
+    back:
+    - PersonalItemSilverRing
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Beem-Kilaya

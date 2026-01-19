@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Players: SqueakDrake - Character: Tee Gam
+- type: entity
+  parent: ViolinInstrument
+  id: PersonalItemTeegamViolin
+  name: Tee-Gam's violin
+  description: A mundane, purple violin. It has clearly been well cared for.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _SV/PersonalItems/Items/teegamviolin.rsi
+    state: icon
+  - type: Item
+    sprite: _SV/PersonalItems/Items/teegamviolin.rsi
+    size: Normal
+
+- type: loadout
+  id: PersonalItemTeegamViolin
+  storage:
+    back:
+    - PersonalItemTeegamViolin
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Tee-Gam

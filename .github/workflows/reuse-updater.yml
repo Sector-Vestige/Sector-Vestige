@@ -31,8 +31,8 @@ permissions:
 jobs:
   update_headers:
     # Skip if the event was triggered by the bot's own auto-commit so we don't loop.
-    # Also skip if the PR has the "Maintenance" label.
-    if: ${{ github.actor != 'vestige-bot' && github.actor != 'vestige-bot[bot]' && !contains(github.event.pull_request.labels.*.name, 'Maintenance') }}
+    # Also skip if the PR has the "Maintenance" label or is a draft.
+    if: ${{ github.actor != 'vestige-bot' && github.actor != 'vestige-bot[bot]' && !contains(github.event.pull_request.labels.*.name, 'Maintenance') && github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code

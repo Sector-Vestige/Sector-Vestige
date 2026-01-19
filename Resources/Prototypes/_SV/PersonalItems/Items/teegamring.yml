@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+## Personal item for Tee-Gam
+- type: entity
+  parent: GoldRing
+  id: PersonalItemTeegamRing
+  name: Gold Ring
+  description: A simple gold ring with the added inscription "This ring belongs to the best husband that the galaxy can offer, I love you Starlight."
+  components:
+  - type: Sprite
+    layers:
+    - state: ring
+      color: "#ffc833"
+
+- type: loadout
+  id: PersonalItemTeegamRing
+  storage:
+    back:
+    - PersonalItemTeegamRing
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Tee-Gam
