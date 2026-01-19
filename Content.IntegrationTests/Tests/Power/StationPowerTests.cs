@@ -22,21 +22,18 @@ public sealed class StationPowerTests
 
     private static readonly string[] GameMaps =
     [
-            // "Fland", // Vestige: Derotated Map
-            "Packed",
-            "Bagel",
-            // "Box", // Vestige: Derotated Map
-            "Marathon",
-            "Saltern",
-            // "Reach", // Vestige: Derotated Map
-            // "Oasis", // Vestige: Derotated Map
-            "Plasma",
-            "Elkridge",
-            "Snowball",
-            // "Relic", // Vestige: Derotated Map
-            // "Exo", // Vestige: Derotated Map
-            "Vanquish", // LateStation Map by Lachri
-            "Cluster", // Sector Vestige, remade by Rebound
+        "Bagel",
+        "Box",
+        "Elkridge",
+        "Fland",
+        "Marathon",
+        "Oasis",
+        "Packed",
+        "Plasma",
+        "Relic",
+        "Snowball",
+        "Reach",
+        "Exo",
     ];
 
     [Explicit]

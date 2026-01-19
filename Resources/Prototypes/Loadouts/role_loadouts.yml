@@ -321,7 +321,6 @@
   groups:
   - GroupTankHarness
   - ChiefEngineerHead
-  - EngineeringEyewear # CD
   - ChiefEngineerJumpsuit
   - StationEngineerBackpack
   - ChiefEngineerNeck

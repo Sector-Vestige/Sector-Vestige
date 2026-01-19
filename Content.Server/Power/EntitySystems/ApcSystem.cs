@@ -170,6 +170,9 @@ public sealed class ApcSystem : EntitySystem
         if (apc.MainBreakerEnabled)
             apc.TripFlag = false;
 
+        if (apc.MainBreakerEnabled)
+            apc.TripFlag = false;
+
         RaiseLocalEvent(uid, new ApcToggledMainBreakerEvent(apc.MainBreakerEnabled)); //Umbra-APCs explode when toggled on during power outages
 
         UpdateUIState(uid, apc);

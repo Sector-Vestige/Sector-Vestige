@@ -16,7 +16,6 @@ using Content.Shared.Roles;
 using Content.Shared._SV.JobWhitelist; // SV changes - Job whitelist groups
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
-using Robust.Shared.Log;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -33,9 +32,8 @@ public sealed class JobWhitelistManager : IPostInjectInit
     [Dependency] private readonly UserDbDataManager _userDb = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
 
-    private ISawmill _sawmill = default!;
-
     private readonly Dictionary<NetUserId, HashSet<string>> _whitelists = new();
+    private ISawmill _sawmill = default!;
     // SV changes start - Job whitelist groups
     private readonly Dictionary<NetUserId, HashSet<string>> _groupWhitelists = new();
     // SV changes end

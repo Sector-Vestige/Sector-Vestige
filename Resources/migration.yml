@@ -254,10 +254,10 @@ SpyCrewMonitorEmpty: null
 SyndiCrewMonitor: null
 SyndiCrewMonitorEmpty: null
 
-# SpawnVehicleWheelchair: null
-# SpawnVehicleWheelchairFolded: null
-# VehicleWheelchair: null
-# VehicleWheelchairFolded: null
+# SpawnVehicleWheelchair: null #SV-Add wheelchair
+# SpawnVehicleWheelchairFolded: null #SV-Add wheelchair
+# VehicleWheelchair: null #SV-Add wheelchair
+# VehicleWheelchairFolded: null #SV-Add wheelchair
 VehicleSecwayStealObjective: null
 VehicleKeyJanicart: null
 VehicleKeySecway: null
@@ -801,6 +801,9 @@ ClothingUniformJumpsuitParamedicNT: ClothingUniformJumpsuitParamedic
 # 2025-08-29
 PrefilledSyringe: Syringe
 
+# 2025-09-12
+BaseChemistryEmptyVial: ChemistryEmptyVial
+
 # 2025-10-6
 BibleTanakh: null
 BibleSatanic: null
@@ -838,3 +841,10 @@ SpawnPointBoxer: null
 FigureSpawner: MechFigurineSpawner50
 ToySpawner: PlushieSpawner50
 SpacemenFigureSpawner: SpacemenFigurineSpawner90
+
+# 2026-01-07
+HandheldHealthAnalyzerUnpowered: HandheldHealthAnalyzer
+HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
+
+#2026-01-09
+BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
