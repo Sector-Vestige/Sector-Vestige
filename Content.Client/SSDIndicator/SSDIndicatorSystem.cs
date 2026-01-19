@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kot <1192090+koteq@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.CCVar;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
@@ -41,7 +32,8 @@ public sealed class SSDIndicatorSystem : EntitySystem
             _cfg.GetCVar(CCVars.ICShowSSDIndicator) &&
             !_mobState.IsDead(uid) &&
             !HasComp<ActiveNPCComponent>(uid) &&
-            HasComp<MindExaminableComponent>(uid))
+            TryComp<MindContainerComponent>(uid, out var mindContainer) &&
+            mindContainer.ShowExamineInfo)
         {
             args.StatusIcons.Add(_prototype.Index(component.Icon));
         }
