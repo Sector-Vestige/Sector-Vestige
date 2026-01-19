@@ -1,9 +1,3 @@
-## Cargo
-- type: latheRecipePack
-  id: HarmonyCargoStatic
-  recipes:
-  - BoxFolderClipboard
-
 ## Clothing
 - type: latheRecipePack
   id: HarmonyClothing
@@ -49,7 +43,6 @@
   # Topicals
   - Bloodpack
   # Chemistry
-  - BaseChemistryEmptyVial
   # Surgery
   - CircularSaw
   # Other
@@ -67,9 +60,3 @@
 #   recipes:
 #   - StripperClip
 
-## Service
-- type: latheRecipePack
-  id: HarmonyServiceStatic
-  recipes:
-  - CassetteTape # DeltaV
-  - TapeRecorder # DeltaV
