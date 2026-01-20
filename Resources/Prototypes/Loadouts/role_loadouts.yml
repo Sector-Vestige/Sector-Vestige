@@ -322,6 +322,7 @@
   - GroupTankHarness
   - ChiefEngineerHead
   - ChiefEngineerJumpsuit
+  - EngineeringEyewear # CD - SV added
   - StationEngineerBackpack
   - ChiefEngineerNeck
   - ChiefEngineerOuterClothing
@@ -337,6 +338,7 @@
   groups:
   - GroupTankHarness
   - TechnicalAssistantJumpsuit
+  - EngineeringEyewear # CD - SV added
   - StationEngineerBackpack
   - SurvivalExtended
   - Trinkets
