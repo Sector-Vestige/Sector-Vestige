@@ -133,7 +133,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// The maximum height for this species
     /// </summary>
     [DataField("maxHeight")]
-    public float MaxHeight = 1.2f; // Sector Vestige - Changed from 1.4f
+    public float MaxHeight = 1.4f; // Sector Vestige - Changed back to 1.4f
 
     /// <summary>
     /// The default height for this species
