@@ -1305,3 +1305,9 @@ Entries:
       message: Crutches now work as mobility aids.
   id: 178
   time: '2026-01-20T10:59:34.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Tweak
+      message: Felinds now can use Undergarment and snout markings.
+  id: 179
+  time: '2026-01-24T11:58:03.0000000+00:00'
