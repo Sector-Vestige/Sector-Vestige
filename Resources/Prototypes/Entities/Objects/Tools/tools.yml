@@ -4,9 +4,6 @@
   id: Wirecutter
   description: This kills the wire.
   components:
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/Items/wirecutter_drop.ogg
   - type: Tag
     tags:
     - PlantSampleTaker
@@ -43,6 +40,15 @@
       Steel: 100
   - type: StaticPrice
     price: 30
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/wirecutter_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/wirecutter_pickup.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/wirecutter_pickup.ogg
 
 - type: entity
   name: screwdriver
@@ -50,9 +56,6 @@
   id: Screwdriver
   description: Industrial grade torque in a small screwdriving package.
   components:
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/Items/screwdriver_drop.ogg
   - type: Tag
     tags:
     - Screwdriver
@@ -87,6 +90,15 @@
       Steel: 100
   - type: StaticPrice
     price: 30
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/screwdriver_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/screwdriver_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/screwdriver_drop.ogg
 
 - type: entity
   name: wrench
@@ -129,6 +141,19 @@
   - type: GuideHelp
     guides:
     - Construction
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/wrench_pickup.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/wrench_drop.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/wrench_drop.ogg
 
 - type: entity
   name: multitool
@@ -136,9 +161,6 @@
   id: Multitool
   description: An advanced tool to copy, store, and send electrical pulses and signals through wires and machines.
   components:
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/Items/multitool_drop.ogg
   - type: Sprite
     sprite: Objects/Tools/multitool.rsi
     layers:
@@ -183,6 +205,16 @@
     - WirePanels
     - Airlocks
     - InspectingPower
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/multitool_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/multitool_drop.ogg
+  # Goobstation edit end
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/multitool_drop.ogg
 
 - type: entity
   name: network configurator
