@@ -117,6 +117,15 @@
     { "pattern": "Resources/Locale/en-US/_Moffstation/**", "license": "MIT" },
     { "pattern": "Resources/Maps/_Moffstation/**", "license": "MIT" },
 
+    { "pattern": "Content.Server/_Goobstation/**", "license": "AGPL" },
+    { "pattern": "Content.Client/_Goobstation/**", "license": "AGPL" },
+    { "pattern": "Content.Shared/_Goobstation/**", "license": "AGPL" },
+    { "pattern": "Resources/_Goobstation/**", "license": "AGPL" },
+    { "pattern": "Resources/Prototypes/_Goobstation/**", "license": "AGPL" },
+    { "pattern": "Resources/Audio/_Goobstation/**", "license": "AGPL" },
+    { "pattern": "Resources/Locale/en-US/_Goobstation/**", "license": "AGPL" },
+    { "pattern": "Resources/Maps/_Goobstation/**", "license": "AGPL" },
+
     { "pattern": "Content.Server/**", "license": "MIT" },
     { "pattern": "Content.Client/**", "license": "MIT" },
     { "pattern": "Content.Shared/**", "license": "MIT" },
