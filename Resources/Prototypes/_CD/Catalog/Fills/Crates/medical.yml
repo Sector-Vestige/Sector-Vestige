@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  id: CrateMedicalTrackingImplants
+  parent: CrateMedicalSecure
+  name: medical tracking implants
+  description: Contains a handful of medical tracking implanters. Good for people who perish alone often.
+  components:
+  - type: StorageFill
+    contents:
+    - id: MedicalTrackingImplanter
+      amount: 5

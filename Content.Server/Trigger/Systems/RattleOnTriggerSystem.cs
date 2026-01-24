@@ -1,3 +1,11 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Pinpointer;
 using Content.Shared.Mobs.Components;
@@ -40,10 +48,16 @@ public sealed class RattleOnTriggerSystem : EntitySystem
             return;
 
         // Gets the location of the user
-        var posText = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(target.Value));
+        // CD: Also adds the coordinates, as well as the location
+        var ownerXform = Transform(ent.Owner);
+        var pos = ownerXform.MapPosition;
+        var x = (int) pos.X;
+        var y = (int) pos.Y;
+        var posText = $"({x}, {y})";
 
-        var message = Loc.GetString(messageId, ("user", target.Value), ("position", posText));
-        // Sends a message to the radio channel specified by the implant
+        var posText2 = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(target.Value));
+
+        var message = Loc.GetString(messageId, ("user", target.Value), ("position", posText + ", " + posText2));        // Sends a message to the radio channel specified by the implant
         _radio.SendRadioMessage(ent.Owner, message, _prototypeManager.Index(ent.Comp.RadioChannel), ent.Owner);
     }
 }
