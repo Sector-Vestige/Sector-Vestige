@@ -74,9 +74,6 @@
   id: CaptainSabre
   description: A ceremonial weapon belonging to the captain of the station.
   components:
-  - type: EmitSoundOnDrop
-    sound:
-      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
   - type: EmitSoundOnLand
     sound:
       path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
