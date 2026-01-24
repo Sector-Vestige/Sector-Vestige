@@ -45,13 +45,13 @@
     price: 500
   - type: EmitSoundOnPickup
     sound:
-        path: /Audio/_Goobstation/Items/handling/ammobox_pickup.ogg
+      collection: ShotgunPickUp
   - type: EmitSoundOnDrop
     sound:
-        path: /Audio/_Goobstation/Items/handling/ammobox_drop.ogg
+      collection: ShotgunDrop
   - type: EmitSoundOnLand
     sound:
-        path: /Audio/_Goobstation/Items/handling/ammobox_drop.ogg
+      collection: ShotgunDrop
 
 - type: entity
   name: Bulldog

@@ -94,7 +94,7 @@
   - Resources/Audio/_Goobstation/Items/Weapons/Sniper/drop2.ogg
   - Resources/Audio/_Goobstation/Items/Weapons/Sniper/drop3.ogg
 
-# Unused collections commented out, Zamshi8
+# Unused collections commented out
 # Generic
 # - type: soundCollection
 #   id: GenericDrop
