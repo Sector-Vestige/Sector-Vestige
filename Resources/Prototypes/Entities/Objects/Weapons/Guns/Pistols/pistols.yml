@@ -68,6 +68,15 @@
   - type: Appearance
   - type: StaticPrice
     price: 500
+  - type: EmitSoundOnPickup
+    sound:
+      collection: PistolsPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: PistolsDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: PistolsDrop
 
 - type: entity
   name: viper

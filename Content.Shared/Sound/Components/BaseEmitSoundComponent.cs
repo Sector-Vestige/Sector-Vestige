@@ -21,3 +21,15 @@ public abstract partial class BaseEmitSoundComponent : Component
     [DataField, AutoNetworkedField]
     public bool Positional;
 }
+
+/// <summary>
+/// Represents the state of <see cref="BaseEmitSoundComponent"/>.
+/// </summary>
+/// <remarks>This is obviously very cursed, but since the BaseEmitSoundComponent is abstract, we cannot network it.
+/// AutoGenerateComponentState attribute won't work here, and since everything revolves around inheritance for some fucking reason,
+/// there's no better way of doing this.</remarks>
+[Serializable, NetSerializable]
+public struct EmitSoundComponentState(SoundSpecifier? sound) : IComponentState
+{
+    public SoundSpecifier? Sound { get; } = sound;
+}
