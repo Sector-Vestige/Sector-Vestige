@@ -42,13 +42,13 @@
     price: 30
   - type: EmitSoundOnPickup
     sound:
-      path: /Audio/_Goobstation/Items/handling/wirecutter_pickup.ogg
+      path: /Audio/_Goobstation/Items/Handling/wirecutter_pickup.ogg
   - type: EmitSoundOnDrop
     sound:
-      path: /Audio/_Goobstation/Items/handling/wirecutter_pickup.ogg
+      path: /Audio/_Goobstation/Items/Handling/wirecutter_pickup.ogg
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/_Goobstation/Items/handling/wirecutter_pickup.ogg
+      path: /Audio/_Goobstation/Items/Handling/wirecutter_pickup.ogg
 
 - type: entity
   name: screwdriver
@@ -92,7 +92,7 @@
     price: 30
   - type: EmitSoundOnPickup
     sound:
-      path: /Audio/_Goobstation/Items/handling/screwdriver_pickup.ogg
+      path: /Audio/_Goobstation/Items/Handling/screwdriver_pickup.ogg
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/Items/screwdriver_drop.ogg
@@ -140,7 +140,7 @@
     - Construction
   - type: EmitSoundOnPickup
     sound:
-      path: /Audio/_Goobstation/Items/handling/wrench_pickup.ogg
+      path: /Audio/_Goobstation/Items/Handling/wrench_pickup.ogg
       params:
         volume: -2
   - type: EmitSoundOnDrop
@@ -204,7 +204,7 @@
     - InspectingPower
   - type: EmitSoundOnPickup
     sound:
-      path: /Audio/_Goobstation/Items/handling/multitool_pickup.ogg
+      path: /Audio/_Goobstation/Items/Handling/multitool_pickup.ogg
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/Items/multitool_drop.ogg

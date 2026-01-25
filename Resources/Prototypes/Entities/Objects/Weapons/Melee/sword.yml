@@ -77,7 +77,7 @@
 
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/_Goobstation/Items/handling/sabre_drop.ogg
+      path: /Audio/_Goobstation/Items/Handling/sabre_drop.ogg
   - type: Sprite
     sprite: Objects/Weapons/Melee/captain_sabre.rsi
   - type: MeleeWeapon
