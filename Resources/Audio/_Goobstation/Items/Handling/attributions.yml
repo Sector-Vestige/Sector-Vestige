@@ -29,8 +29,6 @@
     - "pillbottle_pickup.ogg"
     - "knife_drop.ogg"
     - "knife_pickup.ogg"
-    -
   license: "CC-BY-SA-3.0"
-  copyright: "Taken from Paradise SS13"
-  source: "https://github.com/ss220-space/Paradise/tree/master220/sound/items/handling, https://github.com/Goob-Station/Goob-Station/pull/2940"
-
+  copyright: "https://github.com/ss220-space/Paradise/tree/master220/sound/items/handling"
+  source: "https://github.com/Goob-Station/Goob-Station/pull/2940"
