@@ -6,25 +6,25 @@
 
 - files: [ "drop1.ogg" ]
   license: "CC-BY-SA-3.0"
-  copyright: "Merged from Goobstation, Taken from Paradise"
-  source: "https://github.com/ss220-space/Paradise/pull/3856, https://github.com/Goob-Station/Goob-Station/pull/2940
+  copyright: "https://github.com/ss220-space/Paradise/pull/3856"
+  source: https://github.com/Goob-Station/Goob-Station/pull/2940"
 
 - files: [ "drop2.ogg" ]
   license: "CC-BY-SA-3.0"
-  copyright: "Merged from Goobstation, Taken from Paradise"
-  source: "https://github.com/ss220-space/Paradise/pull/3856, https://github.com/Goob-Station/Goob-Station/pull/2940
+  copyright: "https://github.com/ss220-space/Paradise/pull/3856"
+  source: https://github.com/Goob-Station/Goob-Station/pull/2940"
+
+- files: [ "drop3.ogg" ]
+  license: "CC-BY-SA-3.0"
+  copyright: "https://github.com/ss220-space/Paradise/pull/3856"
+  source: https://github.com/Goob-Station/Goob-Station/pull/2940"
 
 - files: [ "pickup1.ogg" ]
   license: "CC-BY-SA-3.0"
-  copyright: "Merged from Goobstation, Taken from Paradise"
-  source: "https://goida.zip/unknown, https://github.com/Goob-Station/Goob-Station/pull/2940"
+  copyright: "https://github.com/ss220-space/Paradise/pull/3856"
+  source: "https://github.com/Goob-Station/Goob-Station/pull/2940"
 
 - files: [ "pickup2.ogg" ]
   license: "CC-BY-SA-3.0"
-  copyright: "Merged from Goobstation, Taken from Paradise"
-  source: "https://goida.zip/unknown, https://github.com/Goob-Station/Goob-Station/pull/2940"
-
-- files: [ "pickup3.ogg" ]
-  license: "CC-BY-SA-3.0"
-  copyright: "Merged from Goobstation, Taken from Paradise"
-  source: "https://goida.zip/unknown, https://github.com/Goob-Station/Goob-Station/pull/2940"
+  copyright: "https://github.com/ss220-space/Paradise/pull/3856"
+  source: "https://github.com/Goob-Station/Goob-Station/pull/2940"
