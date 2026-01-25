@@ -50,6 +50,7 @@
       path: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
   - type: StaticPrice
     price: 500
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       collection: RevolversPickUp
@@ -59,6 +60,7 @@
   - type: EmitSoundOnLand
     sound:
       collection: RevolversDrop
+#Goob - End: pickup and drop sounds
 
 - type: entity
   name: Deckard

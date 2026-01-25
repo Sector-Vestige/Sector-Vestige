@@ -4,9 +4,9 @@
   id: Welder
   description: "Melts anything as long as it's fueled, don't forget your eye protection!"
   components:
-  - type: EmitSoundOnPickup
+  - type: EmitSoundOnLand
     sound:
-      path: /Audio/_Goobstation/Items/Handling/weldingtool_pickup.ogg
+      path: /Audio/_Goobstation/Items/Handling/weldingtool_drop.ogg
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/Items/welder_drop.ogg

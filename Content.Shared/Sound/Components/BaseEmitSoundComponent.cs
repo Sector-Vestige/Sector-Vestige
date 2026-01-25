@@ -13,7 +13,6 @@
 // SPDX-FileCopyrightText: 2026 Zamshi8 <235235723+Zamshi8@users.noreply.github.com>
 //
 // SPDX-License-Identifier: MIT
-
 using Robust.Shared.Audio;
 
 namespace Content.Shared.Sound.Components;

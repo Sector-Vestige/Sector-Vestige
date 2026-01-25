@@ -700,6 +700,7 @@
       tags:
       - Pill
   - type: Dumpable
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/Handling/pillbottle_pickup.ogg
@@ -709,3 +710,4 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/_Goobstation/Items/Handling/pillbottle_drop.ogg
+#Goob - End: pickup and drop sounds

@@ -26,6 +26,7 @@
     - GhostOnlyWarp
   - type: StealTarget
     stealGroup: NukeDisk
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/Handling/disk_pickup.ogg
@@ -41,6 +42,7 @@
       path: /Audio/_Goobstation/Items/Handling/disk_drop.ogg
       params:
         volume: -7
+#Goob - End: pickup and drop sounds
 
 - type: entity
   name: nuclear authentication disk
@@ -57,6 +59,7 @@
   - type: Tag
     tags:
     - FakeNukeDisk
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/Handling/disk_pickup.ogg
@@ -72,3 +75,4 @@
       path: /Audio/_Goobstation/Items/Handling/disk_drop.ogg
       params:
         volume: -7
+#Goob - End: pickup and drop sounds

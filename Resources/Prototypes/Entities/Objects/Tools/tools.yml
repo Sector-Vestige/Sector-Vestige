@@ -4,6 +4,13 @@
   id: Wirecutter
   description: This kills the wire.
   components:
+#Goob - Begin: Redundant code
+
+#  - type: EmitSoundOnLand
+#    sound:
+#      path: /Audio/Items/wirecutter_drop.ogg
+
+#Goob - End: Redundant code
   - type: Tag
     tags:
     - PlantSampleTaker
@@ -40,6 +47,7 @@
       Steel: 100
   - type: StaticPrice
     price: 30
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/Handling/wirecutter_pickup.ogg
@@ -49,6 +57,7 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/_Goobstation/Items/Handling/wirecutter_pickup.ogg
+#Goob - End: pickup and drop sounds
 
 - type: entity
   name: screwdriver
@@ -90,6 +99,7 @@
       Steel: 100
   - type: StaticPrice
     price: 30
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/Handling/screwdriver_pickup.ogg
@@ -99,6 +109,7 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/screwdriver_drop.ogg
+#Goob - End: pickup and drop sounds
 
 - type: entity
   name: wrench
@@ -106,6 +117,11 @@
   id: Wrench
   description: 'A common tool for assembly and disassembly. Remember: lefty latchy, righty removey.'
   components:
+#Goob - Begin: Redundant code
+#  - type: EmitSoundOnLand
+#    sound:
+#      path: /Audio/Items/wrench_drop.ogg
+#Goob - End: Redundant code
   - type: Tag
     tags:
     - Wrench
@@ -138,6 +154,7 @@
   - type: GuideHelp
     guides:
     - Construction
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/Handling/wrench_pickup.ogg
@@ -151,6 +168,7 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/wrench_drop.ogg
+#Goob - End: pickup and drop sounds
 
 - type: entity
   name: multitool
@@ -158,6 +176,11 @@
   id: Multitool
   description: An advanced tool to copy, store, and send electrical pulses and signals through wires and machines.
   components:
+#Goob - Begin: Redundant code
+#  - type: EmitSoundOnLand
+#    sound:
+#      path: /Audio/Items/multitool_drop.ogg
+#Goob - End: Redundant code
   - type: Sprite
     sprite: Objects/Tools/multitool.rsi
     layers:
@@ -202,16 +225,17 @@
     - WirePanels
     - Airlocks
     - InspectingPower
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/Handling/multitool_pickup.ogg
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/Items/multitool_drop.ogg
-  # Goobstation edit end
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/multitool_drop.ogg
+#Goob - End: pickup and drop sounds
 
 - type: entity
   name: network configurator

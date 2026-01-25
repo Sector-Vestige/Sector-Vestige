@@ -58,6 +58,7 @@
       gun_chamber: !type:ContainerSlot
   - type: StaticPrice
     price: 500
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       collection: SMGPickUp
@@ -67,6 +68,7 @@
   - type: EmitSoundOnLand
     sound:
       collection: SMGDrop
+#Goob - End: pickup and drop sounds
 
 - type: entity
   name: Atreides
