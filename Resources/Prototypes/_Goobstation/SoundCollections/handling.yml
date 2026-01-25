@@ -61,7 +61,7 @@
   - /Audio/_Goobstation/Items/Weapons/Revolver/pickup2.ogg
 
 - type: soundCollection
-  id: RevolversDrop
+  id: RevovlersDrop
   files:
   - /Audio/_Goobstation/Items/Weapons/Revolver/drop1.ogg
   - /Audio/_Goobstation/Items/Weapons/Revolver/drop2.ogg

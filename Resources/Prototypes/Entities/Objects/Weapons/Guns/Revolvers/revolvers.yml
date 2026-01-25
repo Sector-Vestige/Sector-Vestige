@@ -58,7 +58,7 @@
       collection: RevolversDrop
   - type: EmitSoundOnLand
     sound:
-      collection: RevovlersDrop
+      collection: RevolversDrop
 
 - type: entity
   name: Deckard
