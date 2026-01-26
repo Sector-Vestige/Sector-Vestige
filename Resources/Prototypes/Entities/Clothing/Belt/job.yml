@@ -97,7 +97,6 @@
         volume: -4
 #Goob - End: pickup and drop sounds
 
-
 - type: entity
   parent: BaseClothingBeltEngineering
   id: ClothingBeltUtility

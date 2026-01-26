@@ -74,7 +74,6 @@
   id: CaptainSabre
   description: A ceremonial weapon belonging to the captain of the station.
   components:
-
 #Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnLand
     sound:

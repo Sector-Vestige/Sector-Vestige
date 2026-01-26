@@ -4,13 +4,6 @@
   id: Wirecutter
   description: This kills the wire.
   components:
-#Goob - Begin: Redundant code
-
-#  - type: EmitSoundOnLand
-#    sound:
-#      path: /Audio/Items/wirecutter_drop.ogg
-
-#Goob - End: Redundant code
   - type: Tag
     tags:
     - PlantSampleTaker
@@ -47,6 +40,12 @@
       Steel: 100
   - type: StaticPrice
     price: 30
+#Goob - Begin: Redundant code
+#  - type: EmitSoundOnLand
+#    sound:
+#      path: /Audio/Items/wirecutter_drop.ogg
+#Goob - End: Redundant code
+
 #Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
@@ -65,6 +64,11 @@
   id: Screwdriver
   description: Industrial grade torque in a small screwdriving package.
   components:
+  #Goob - Begin: Redundant code
+    #type: EmitSoundOnLand
+    #sound:
+    #path: /Audio/Items/wirecutter_drop.ogg
+  #Goob - End: Redundant code
   - type: Tag
     tags:
     - Screwdriver
