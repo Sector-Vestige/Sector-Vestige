@@ -1,0 +1,12 @@
+- type: loadout
+  id: PersonalItemSwapsThreeCandles
+  dummyEntity: PersonalItemSwapsDummyCandles
+  storage:
+    back:
+    - CandleInfiniteLightable
+    - CandleInfiniteLightable
+    - CandleSmallPurpleInfiniteLightable
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Swaps-the-Batteries
