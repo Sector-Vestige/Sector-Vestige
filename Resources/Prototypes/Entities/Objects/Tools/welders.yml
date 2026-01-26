@@ -10,7 +10,7 @@
       path: /Audio/_Goobstation/Items/Handling/weldingtool_drop.ogg
   - type: EmitSoundOnDrop
     sound:
-      path: /Audio/Items/welder_drop.ogg
+      path: /Audio/Items/weldingtool_drop.ogg
   - type: Sprite
 #Goob - End: pickup and drop sounds
     sprite: Objects/Tools/welder.rsi
