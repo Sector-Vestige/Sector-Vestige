@@ -4,6 +4,13 @@
   id: Wirecutter
   description: This kills the wire.
   components:
+ #Goob - Begin: Redundant code
+ #  - type: EmitSoundOnLand
+ #    sound:
+ #      path: /Audio/Items/wirecutter_drop.ogg
+ #Goob - End: Redundant code
+
+ #Goob - Begin: pickup and drop sounds
   - type: Tag
     tags:
     - PlantSampleTaker
@@ -40,13 +47,6 @@
       Steel: 100
   - type: StaticPrice
     price: 30
-#Goob - Begin: Redundant code
-#  - type: EmitSoundOnLand
-#    sound:
-#      path: /Audio/Items/wirecutter_drop.ogg
-#Goob - End: Redundant code
-
-#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Goobstation/Items/Handling/wirecutter_pickup.ogg
@@ -56,7 +56,6 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/_Goobstation/Items/Handling/wirecutter_pickup.ogg
-#Goob - End: pickup and drop sounds
 
 - type: entity
   name: screwdriver
