@@ -1,117 +1,88 @@
-using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 Alex Evgrashin <aevgrashin@yandex.ru>
+// SPDX-FileCopyrightText: 2021 Alex Evgrashin <evgrashin.adl@gmail.com>
+// SPDX-FileCopyrightText: 2021 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2024 Magnus Larsen <i.am.larsenml@gmail.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
+// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
+//
+// SPDX-License-Identifier: MIT
 
-namespace Content.Shared.Light.Components;
+using Content.Shared.Light.EntitySystems;
+using Content.Shared.Storage;
+using Robust.Shared.Audio;
+using Robust.Shared.Containers;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
+
+namespace Content.Server.Light.Components;
 
 /// <summary>
-/// Component that represents a light bulb. Can be broken, or burned, which turns them mostly useless.
-/// TODO: Breaking and burning should probably be moved to another component eventually.
+///     Device that allows user to quikly change bulbs in <see cref="PoweredLightComponent"/>
+///     Can be reloaded by new light tubes or light bulbs
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class LightBulbComponent : Component
+[RegisterComponent, NetworkedComponent, Access(typeof(SharedLightReplacerSystem))]
+public sealed partial class LightReplacerComponent : Component
 {
-    /// <summary>
-    /// The color of the lightbulb and the light it produces.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public Color Color = Color.White;
+    [DataField("sound")]
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Weapons/click.ogg")
+    {
+        Params = new()
+        {
+            Volume = -4f
+        }
+    };
 
     /// <summary>
-    /// The type of lightbulb. Tube/bulb/etc...
+    /// Bulbs that were inserted inside light replacer
     /// </summary>
-    [DataField("bulb")]
-    public LightBulbType Type = LightBulbType.Tube;
+    [ViewVariables]
+    public Container InsertedBulbs = default!;
 
     /// <summary>
-    /// The initial state of the lightbulb.
+    /// The default starting bulbs
     /// </summary>
-    [DataField("startingState"), AutoNetworkedField]
-    public LightBulbState State = LightBulbState.Normal;
+    [DataField("contents")]
+    public List<EntitySpawnEntry> Contents = new();
 
     /// <summary>
-    /// The temperature the air around the lightbulb is exposed to when the lightbulb burns out.
-    /// </summary>
-    [DataField("BurningTemperature")]
-    public int BurningTemperature = 1400;
-
-    /// <summary>
-    /// Relates to how bright the light produced by the lightbulb is.
-    /// </summary>
-    [DataField]
-    public float LightEnergy = 0.8f;
-
-    /// <summary>
-    /// The maximum radius of the point light source this light produces.
+    /// Goobstation
+    /// How much glass is inside of the light replacer.
+    /// One means it will create a new bulb.
     /// </summary>
     [DataField]
-    public float LightRadius = 10;
+    public float GlassRecycled;
 
     /// <summary>
-    /// Relates to the falloff constant of the light produced by the lightbulb.
+    /// Goobstation
+    /// How much glass required for one bulb.
     /// </summary>
     [DataField]
-    public float LightSoftness = 1;
+    public float GlassRequired = 1f;
 
     /// <summary>
-    /// The amount of power used by the lightbulb when it's active.
-    /// </summary>
-    [DataField("PowerUse")]
-    public int PowerUse = 60;
-
-    /// <summary>
-    /// The sound produced when the lightbulb breaks.
+    /// Goobstation
+    /// How much glass given per bulb recycled.
     /// </summary>
     [DataField]
-    public SoundSpecifier BreakSound = new SoundCollectionSpecifier("GlassBreak", AudioParams.Default.WithVolume(-6f));
-
-    #region Appearance
+    public float GlassPerBulb = 0.25f;
 
     /// <summary>
-    /// The sprite state used when the lightbulb is intact.
+    /// Goobstation
+    /// What bulb is spawned when the max glass is reached?
     /// </summary>
     [DataField]
-    public string NormalSpriteState = "normal";
-
-    /// <summary>
-    /// The sprite state used when the lightbulb is broken.
-    /// </summary>
-    [DataField]
-    public string BrokenSpriteState = "broken";
-
-    /// <summary>
-    /// The sprite state used when the lightbulb is burned.
-    /// </summary>
-    [DataField]
-    public string BurnedSpriteState = "burned";
-
-    #endregion Appearance
-}
-
-[Serializable, NetSerializable]
-public enum LightBulbState : byte
-{
-    Normal,
-    Broken,
-    Burned,
-}
-
-[Serializable, NetSerializable]
-public enum LightBulbVisuals : byte
-{
-    State,
-    Color
-}
-
-[Serializable, NetSerializable]
-public enum LightBulbType : byte
-{
-    Bulb,
-    Tube,
-}
-
-[Serializable, NetSerializable]
-public enum LightBulbVisualLayers : byte
-{
-    Base,
+    public EntProtoId LightBulbProto = "LedLightTube";
 }

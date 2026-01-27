@@ -13,7 +13,10 @@ comp-light-replacer-insert-broken-light = You can't insert broken lights!
 # Shown when player refill light from light box
 comp-light-replacer-refill-from-storage = You refill {THE($light-replacer)}.
 
-### Examine 
+# Displays the progress towards a new light
+comp-light-replacer-recycle-progress = It is {$num}% of the way to a new light tube.
+
+### Examine
 
 comp-light-replacer-no-lights = It's empty.
 comp-light-replacer-has-lights = It contains the following:
