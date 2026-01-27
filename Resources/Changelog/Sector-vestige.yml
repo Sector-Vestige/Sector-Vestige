@@ -1311,3 +1311,9 @@ Entries:
       message: Felinds now can use Undergarment and snout markings.
   id: 179
   time: '2026-01-24T11:58:03.0000000+00:00'
+- author: qu4drivium
+  changes:
+    - type: Add
+      message: Added Cortexene and Saprodipine.
+  id: 180
+  time: '2026-01-27T13:54:05.0000000+00:00'

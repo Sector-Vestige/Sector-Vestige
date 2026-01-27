@@ -1042,12 +1042,23 @@ def main():
                 if isinstance(r, dict) and "pattern" in r and "license" in r:
                     rules.append({"pattern": str(r["pattern"]), "license": str(r["license"])})
 
-        # Augment with REUSE.toml if available
+        # Augment with REUSE.toml if available (check .reuse/ directory first per REUSE spec 3.0)
         try:
-            if _tomllib is not None and os.path.exists("REUSE.toml"):
-                with open("REUSE.toml", "rb") as f:
+            reuse_toml_path = None
+            for candidate_path in (".reuse/REUSE.toml", "REUSE.toml"):
+                if os.path.exists(candidate_path):
+                    reuse_toml_path = candidate_path
+                    break
+
+            if _tomllib is not None and reuse_toml_path:
+                with open(reuse_toml_path, "rb") as f:
                     toml_data = _tomllib.load(f)
+
+                # Support both old format (files list) and REUSE spec format (annotations list)
                 files_rules = toml_data.get("files")
+                annotations = toml_data.get("annotations")
+
+                # Handle old format: files list with path/license keys
                 if isinstance(files_rules, list):
                     for entry in files_rules:
                         if not isinstance(entry, dict):
@@ -1066,7 +1077,44 @@ def main():
                             patterns.append(f"{p}/**")
                         for pat in patterns:
                             rules.append({"pattern": pat, "license": lic})
-                print("Loaded license rules from REUSE.toml")
+
+                # Handle REUSE spec format: [[annotations]] with path and SPDX-License-Identifier
+                if isinstance(annotations, list):
+                    for entry in annotations:
+                        if not isinstance(entry, dict):
+                            continue
+                        # path can be a string or a list of strings
+                        path_val = entry.get("path", "")
+                        lic = str(entry.get("SPDX-License-Identifier", "")).strip()
+                        if not path_val or not lic:
+                            continue
+
+                        # Normalize path(s) to a list
+                        if isinstance(path_val, str):
+                            paths = [path_val]
+                        elif isinstance(path_val, list):
+                            paths = [str(p) for p in path_val]
+                        else:
+                            continue
+
+                        for p in paths:
+                            p = p.replace("\\", "/").strip()
+                            if not p:
+                                continue
+                            # Convert a directory path to a glob pattern
+                            patterns: list[str] = []
+                            if p.endswith("/"):
+                                patterns.append(f"{p}**")
+                            elif "**" in p or "*" in p:
+                                # Already a glob pattern
+                                patterns.append(p)
+                            else:
+                                patterns.append(p)
+                                patterns.append(f"{p}/**")
+                            for pat in patterns:
+                                rules.append({"pattern": pat, "license": lic})
+
+                print(f"Loaded license rules from {reuse_toml_path}")
         except Exception as ex:
             print(f"Warning: Failed to load REUSE.toml: {ex}", file=sys.stderr)
         return rules
