@@ -1,6 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
 # SPDX-FileCopyrightText: 2025 Contributors of the _CD upstream project
 # SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
 #
 # SPDX-License-Identifier: MIT
 
@@ -10,6 +12,10 @@
   description: trait-synth-desc
   components:
     - type: Synth
+      bloodReferenceSolution:
+        reagents:
+        - ReagentId: SynthBlood
+          Quantity: 300
 
 - type: trait
   id: VeryLightweightDrunk
