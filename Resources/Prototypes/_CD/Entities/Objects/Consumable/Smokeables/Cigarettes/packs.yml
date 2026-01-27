@@ -1,4 +1,36 @@
 - type: entity
+  parent: CigPackBase
+  id: CigPackPurple
+  name: De Jure packet
+  description: Your divine right to smoke. Tastes like olives and fake gold.
+  components:
+  - type: Sprite
+    sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/purple.rsi
+  - type: Item
+    sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/purple.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteOlive
+        amount: 10
+
+- type: entity
+  parent: CigPackBase
+  id: CigPackCandy
+  name: Sugar Rush packet
+  description: It's sweetened!
+  components:
+  - type: Sprite
+    sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/pink.rsi
+  - type: Item
+    sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/pink.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteCandy
+        amount: 10
+
+- type: entity
   id: CigPackDarkGreen
   parent: CigPackBase
   name: Garden Mirage packet
@@ -8,10 +40,11 @@
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/darkgreen.rsi
   - type: Item
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/darkgreen.rsi
-  - type: StorageFill
-    contents:
-    - id: CigaretteMirage
-      amount: 10
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteMirage
+        amount: 10
 
 # Unmarked packets
 
@@ -26,10 +59,11 @@
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
   - type: Item
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
-  - type: StorageFill
-    contents:
-    - id: CigaretteWeh
-      amount: 10
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteWeh
+        amount: 10
 
 - type: entity
   id: CigPackUnmarkedHappiPsi
@@ -42,10 +76,11 @@
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
   - type: Item
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
-  - type: StorageFill
-    contents:
-    - id: CigaretteHappiPsi
-      amount: 10
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteHappiPsi
+        amount: 10
 
 - type: entity
   id: CigPackUnmarkedBliss
@@ -58,10 +93,11 @@
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
   - type: Item
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
-  - type: StorageFill
-    contents:
-    - id: CigaretteBliss
-      amount: 10
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteBliss
+        amount: 10
 
 - type: entity
   id: CigPackUnmarkedAgono
@@ -74,10 +110,11 @@
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
   - type: Item
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
-  - type: StorageFill
-    contents:
-    - id: CigaretteAgono
-      amount: 10
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteAgono
+        amount: 10
 
 - type: entity
   id: CigPackUnmarkedEquili
@@ -90,10 +127,11 @@
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
   - type: Item
     sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Packs/unmarked.rsi
-  - type: StorageFill
-    contents:
-    - id: CigaretteEquili
-      amount: 10
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteEquili
+        amount: 10
 
 - type: entity
   parent: CigPackBaseUnmarked
@@ -156,13 +194,17 @@
       Steel: 50
   - type: SpaceGarbage
   - type: Item
-    size: 10
+    size: Normal
+    shape:
+    - 0,0,4,1
   - type: Storage
-    capacity: 10
-  - type: StorageFill
-    contents:
-    - id: Cigarette
-      amount: 10
+    grid:
+    - 0,0,4,1
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: Cigarette
+        amount: 10
   - type: ItemCounter
     count:
       tags: [Cigarette]

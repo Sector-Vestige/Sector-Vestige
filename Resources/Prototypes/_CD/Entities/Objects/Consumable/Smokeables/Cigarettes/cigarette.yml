@@ -1,4 +1,50 @@
 - type: entity
+  parent: Cigarette
+  id: CigaretteOlive
+  name: cigarette
+  suffix: olive
+  description: A roll of tobacco and nicotine soaked in some chemical, smells like olives.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      smokable:
+        maxVol: 15
+        reagents:
+        - ReagentId: Nicotine
+          Quantity: 10
+        - ReagentId: OilOlive
+          Quantity: 5
+
+- type: entity
+  parent: [ Cigarette, FoodBase ]
+  id: CigaretteCandy
+  name: cigarette
+  suffix: candy
+  description: Sugar sticks designed to look like a roll of nicotine and tobacco.
+  components:
+  - type: Appearance
+  - type: Edible
+  - type: Tag
+    tags:
+    - FoodSnack
+  - type: FlavorProfile
+    flavors:
+    - sweet
+  - type: Sprite
+    sprite: Objects/Consumable/Smokeables/Cigarettes/cigarette.rsi
+    state: unlit-icon
+  - type: Clothing
+    sprite: Objects/Consumable/Smokeables/Cigarettes/cigarette.rsi
+    slots: [ mask ]
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 10
+
+- type: entity
   id: CigaretteMirage
   suffix: mirage
   parent: Cigarette
@@ -19,7 +65,7 @@
 
 - type: entity
   id: CigaretteHappiPsi
-  suffix: happiness
+  suffix: happsiness
   parent: Cigarette
   name: cigarette
   description: A laced cigarette roll. This one has a striped mint and violet ring above the filter.

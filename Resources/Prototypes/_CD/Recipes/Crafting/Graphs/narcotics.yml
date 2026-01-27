@@ -7,7 +7,7 @@
     - to: empty
       steps:
       - tag: EmptyPacket
-        name: an empty packet
+        name: cd-construction-graph-an-empty-packet
         doAfter: 1
   - node: empty
     entity: EmptyPacket
@@ -21,6 +21,6 @@
         solution: drink
         reagent:
           ReagentId: Bake
-        quantity: 30
+        quantity: 10
   - node: bakeWrapped
     entity: WrappedBakePackage
