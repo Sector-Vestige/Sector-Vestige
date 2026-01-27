@@ -1,88 +1,137 @@
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2021 Alex Evgrashin <evgrashin.adl@gmail.com>
-// SPDX-FileCopyrightText: 2021 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
 // SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 Magnus Larsen <i.am.larsenml@gmail.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Shared.Light.EntitySystems;
-using Content.Shared.Storage;
 using Robust.Shared.Audio;
-using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
-namespace Content.Server.Light.Components;
+namespace Content.Shared.Light.Components;
 
 /// <summary>
-///     Device that allows user to quikly change bulbs in <see cref="PoweredLightComponent"/>
-///     Can be reloaded by new light tubes or light bulbs
+/// Component that represents a light bulb. Can be broken, or burned, which turns them mostly useless.
+/// TODO: Breaking and burning should probably be moved to another component eventually.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedLightReplacerSystem))]
-public sealed partial class LightReplacerComponent : Component
+[RegisterComponent, NetworkedComponent]
+public sealed partial class LightBulbComponent : Component
 {
-    [DataField("sound")]
-    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Weapons/click.ogg")
-    {
-        Params = new()
-        {
-            Volume = -4f
-        }
-    };
+    /// <summary>
+    /// The color of the lightbulb and the light it produces.
+    /// </summary>
+    [DataField("color")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public Color Color = Color.White;
 
     /// <summary>
-    /// Bulbs that were inserted inside light replacer
+    /// The type of lightbulb. Tube/bulb/etc...
     /// </summary>
-    [ViewVariables]
-    public Container InsertedBulbs = default!;
+    [DataField("bulb")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public LightBulbType Type = LightBulbType.Tube;
 
     /// <summary>
-    /// The default starting bulbs
+    /// The initial state of the lightbulb.
     /// </summary>
-    [DataField("contents")]
-    public List<EntitySpawnEntry> Contents = new();
+    [DataField("startingState")]
+    public LightBulbState State = LightBulbState.Normal;
 
     /// <summary>
-    /// Goobstation
-    /// How much glass is inside of the light replacer.
-    /// One means it will create a new bulb.
+    /// The temperature the air around the lightbulb is exposed to when the lightbulb burns out.
     /// </summary>
-    [DataField]
-    public float GlassRecycled;
+    [DataField("BurningTemperature")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public int BurningTemperature = 1400;
 
     /// <summary>
-    /// Goobstation
-    /// How much glass required for one bulb.
+    /// Relates to how bright the light produced by the lightbulb is.
     /// </summary>
-    [DataField]
-    public float GlassRequired = 1f;
+    [DataField("lightEnergy")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float LightEnergy = 0.8f;
 
     /// <summary>
-    /// Goobstation
-    /// How much glass given per bulb recycled.
+    /// The maximum radius of the point light source this light produces.
     /// </summary>
-    [DataField]
-    public float GlassPerBulb = 0.25f;
+    [DataField("lightRadius")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float LightRadius = 10;
 
     /// <summary>
-    /// Goobstation
-    /// What bulb is spawned when the max glass is reached?
+    /// Relates to the falloff constant of the light produced by the lightbulb.
     /// </summary>
-    [DataField]
-    public EntProtoId LightBulbProto = "LedLightTube";
+    [DataField("lightSoftness")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float LightSoftness = 1;
+
+    /// <summary>
+    /// The amount of power used by the lightbulb when it's active.
+    /// </summary>
+    [DataField("PowerUse")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public int PowerUse = 60;
+
+    /// <summary>
+    /// The sound produced when the lightbulb breaks.
+    /// </summary>
+    [DataField("breakSound")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public SoundSpecifier BreakSound = new SoundCollectionSpecifier("GlassBreak", AudioParams.Default.WithVolume(-6f));
+
+    #region Appearance
+
+    /// <summary>
+    /// The sprite state used when the lightbulb is intact.
+    /// </summary>
+    [DataField("normalSpriteState")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public string NormalSpriteState = "normal";
+
+    /// <summary>
+    /// The sprite state used when the lightbulb is broken.
+    /// </summary>
+    [DataField("brokenSpriteState")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public string BrokenSpriteState = "broken";
+
+    /// <summary>
+    /// The sprite state used when the lightbulb is burned.
+    /// </summary>
+    [DataField("burnedSpriteState")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public string BurnedSpriteState = "burned";
+
+    #endregion Appearance
+}
+
+[Serializable, NetSerializable]
+public enum LightBulbState : byte
+{
+    Normal,
+    Broken,
+    Burned,
+}
+
+[Serializable, NetSerializable]
+public enum LightBulbVisuals : byte
+{
+    State,
+    Color
+}
+
+[Serializable, NetSerializable]
+public enum LightBulbType : byte
+{
+    Bulb,
+    Tube,
+}
+
+[Serializable, NetSerializable]
+public enum LightBulbVisualLayers : byte
+{
+    Base,
 }
