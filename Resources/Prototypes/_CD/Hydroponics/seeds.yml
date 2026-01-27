@@ -6,7 +6,7 @@
   plantRsi: _CD/Objects/Specific/Hydroponics/mindleaf.rsi
   packetPrototype: MindleafSeeds
   productPrototypes:
-  - LeavesMindleaf
+    - LeavesMindleaf
   lifespan: 180
   maturation: 12
   production: 12

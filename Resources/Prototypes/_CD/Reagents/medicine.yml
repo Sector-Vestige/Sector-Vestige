@@ -165,7 +165,7 @@
           reagent: Neurozenium
           min: 5.1
       - !type:Emote
-        emote: Scream # makes you screna sometimes
+        emote: Scream # makes you scream sometimes
         showInChat: true
         probability: 0.05
         conditions:
@@ -773,9 +773,9 @@
         - "reagent-effect-painkiller-fade" # A decent chance to notify the player when their meds run out
         probability: 0.5
         conditions:
-        - !type:ReagentCondition
-          reagent: Agonolexyne
-          max: 0.1
+          - !type:ReagentCondition
+            reagent: Agonolexyne
+            max: 0.1
 
 - type: reagent
   id: Saprodipine
@@ -839,6 +839,7 @@
           min: 20 # taking far too much has a chance to knock you out
         key: ForcedSleep
         component: ForcedSleeping
+        time: 5
         type: Add
       - !type:PopupMessage
         type: Local
@@ -902,6 +903,7 @@
         reagent: Cortexene
         amount: 0.02
       - !type:AdjustReagent
+        probability: 0.8 # Chance of Addiction rising per tick
         conditions:
         - !type:ReagentCondition
           reagent: Addictine
@@ -910,7 +912,7 @@
           reagent: Cortexene
           min: 4
         reagent: Addictine
-        amount: 0.25
+        amount: 0.2
       - !type:PopupMessage
         type: Local
         visualType: Medium
