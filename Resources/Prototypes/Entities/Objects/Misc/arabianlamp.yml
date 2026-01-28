@@ -122,7 +122,7 @@
     duration: 5
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/Items/welder_drop.ogg
+      path: /Audio/Items/weldingtool_drop.ogg #Goobstation
   - type: Welder
     fuelConsumption: 0.05
     fuelLitCost: 0.05

@@ -1,0 +1,129 @@
+# Pistols
+- type: soundCollection
+  id: PistolsPickUp
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Pistol/pickup1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Pistol/pickup2.ogg
+  - /Audio/_Goobstation/Items/Weapons/Pistol/pickup3.ogg
+  - /Audio/_Goobstation/Items/Weapons/Pistol/pickup4.ogg
+
+- type: soundCollection
+  id: PistolsDrop
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Pistol/drop1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Pistol/drop2.ogg
+  - /Audio/_Goobstation/Items/Weapons/Pistol/drop3.ogg
+
+# SMGs
+- type: soundCollection
+  id: SMGPickUp
+  files:
+  - /Audio/_Goobstation/Items/Weapons/SMG/pickup1.ogg
+  - /Audio/_Goobstation/Items/Weapons/SMG/pickup2.ogg
+  - /Audio/_Goobstation/Items/Weapons/SMG/pickup3.ogg
+
+- type: soundCollection
+  id: SMGDrop
+  files:
+  - /Audio/_Goobstation/Items/Weapons/SMG/drop1.ogg
+  - /Audio/_Goobstation/Items/Weapons/SMG/drop2.ogg
+# Rifles
+- type: soundCollection
+  id: RiflesPickUp
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Rifle/pickup1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Rifle/pickup2.ogg
+  - /Audio/_Goobstation/Items/Weapons/Rifle/pickup3.ogg
+
+- type: soundCollection
+  id: RiflesDrop
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Rifle/drop1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Rifle/drop2.ogg
+
+# Lasers
+- type: soundCollection
+  id: LasersPickUp
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Laser/pickup1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Laser/pickup2.ogg
+
+- type: soundCollection
+  id: LasersDrop
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Laser/drop1.ogg
+
+# Revolvers
+- type: soundCollection
+  id: RevolversPickUp
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Revolver/pickup1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Revolver/pickup2.ogg
+
+- type: soundCollection
+  id: RevolversDrop
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Revolver/drop1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Revolver/drop2.ogg
+
+# Shotguns
+- type: soundCollection
+  id: ShotgunPickUp
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Shotgun/pickup1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Shotgun/pickup2.ogg
+  - /Audio/_Goobstation/Items/Weapons/Shotgun/pickup3.ogg
+
+- type: soundCollection
+  id: ShotgunDrop
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Shotgun/drop1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Shotgun/drop2.ogg
+
+# Snipers
+- type: soundCollection
+  id: SnipersPickUp
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Sniper/pickup1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Sniper/pickup2.ogg
+
+- type: soundCollection
+  id: SnipersDrop
+  files:
+  - /Audio/_Goobstation/Items/Weapons/Sniper/drop1.ogg
+  - /Audio/_Goobstation/Items/Weapons/Sniper/drop2.ogg
+  - /Audio/_Goobstation/Items/Weapons/Sniper/drop3.ogg
+
+# Unused collections commented out
+# Generic
+# - type: soundCollection
+#   id: GenericDrop
+#   files:
+#   - /Audio/_Goobstation/Items/Handling/generic_drop1.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_drop2.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_drop3.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_drop4.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_drop5.ogg
+
+# - type: soundCollection
+#   id: GenericEquip
+#   files:
+#   - /Audio/_Goobstation/Items/Handling/generic_equip1.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_equip2.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_equip3.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_equip4.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_equip5.ogg
+
+# - type: soundCollection
+#   id: GenericPickup
+#   files:
+#   - /Audio/_Goobstation/Items/Handling/generic_pickup1.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_pickup2.ogg
+#   - /Audio/_Goobstation/Items/Handling/generic_pickup3.ogg
+
+# # Organs
+# - type: soundCollection
+#   id: OrganInteraction
+#   files:
+#   - /Audio/_Shitmed/Medical/Surgery/organ1.ogg
+#   - /Audio/_Shitmed/Medical/Surgery/organ2.ogg
