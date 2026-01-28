@@ -496,7 +496,7 @@
           "reagent-effect-medaddiction-6",
           "reagent-effect-medaddiction-7",
           "reagent-effect-medaddiction-8" ]
-        probability: 0.08
+        probability: 0.04 # SV Change: Lowered from 8% chance to trigger to 4%.
         conditions:
         - !type:ReagentCondition # the following ten chemicals are addictive, and thus will counteract cravings.
           reagent: Blissifylovene
