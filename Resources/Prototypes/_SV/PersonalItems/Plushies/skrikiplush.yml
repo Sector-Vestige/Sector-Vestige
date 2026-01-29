@@ -6,9 +6,9 @@
   description: A worn and stained Vox plushie with numerous small stitches on it. It smells heavily of ammonia
   components:
   - type: Sprite
-    sprite: _SV/PersonalItems/skrikiplush.rsi
+    sprite: _SV/PersonalItems/Plushies/skrikiplush.rsi
   - type: Item
-    sprite: _SV/PersonalItems/skrikiplush.rsi
+    sprite: _SV/PersonalItems/Plushies/skrikiplush.rsi
 
 - type: loadout
   id: PersonalItemSkrikiPlush
