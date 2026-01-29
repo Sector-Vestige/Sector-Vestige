@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 MissKay1994 <15877268+MissKay1994@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Player: MissKay1994 / Character: Skrikikaki
+- type: entity
+  parent: PlushieVox
+  id: PersonalItemSkrikiPlush
+  suffix: PersonalItem
+  description: A worn and stained Vox plushie with numerous small stitches on it. It smells heavily of ammonia
+  components:
+  - type: Sprite
+    sprite: _SV/PersonalItems/Plushies/skrikiplush.rsi
+  - type: Item
+    sprite: _SV/PersonalItems/Plushies/skrikiplush.rsi
+
+- type: loadout
+  id: PersonalItemSkrikiPlush
+  storage:
+    back:
+    - PersonalItemSkrikiPlush
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Skrikikaki

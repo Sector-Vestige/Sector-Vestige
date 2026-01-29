@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: 2025 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2025 BackeTako <branne33@gmail.com>
 # SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -14,10 +14,10 @@
   components:
   - type: Sprite
     state: plushie_dawn
-    sprite: /Textures/_SV/PersonalItems/DawnPlushie.rsi
+    sprite: /Textures/_SV/PersonalItems/Plushies/DawnPlushie.rsi
   - type: Clothing
     quickEquip: false
-    sprite: /Textures/_SV/PersonalItems/DawnPlushie.rsi
+    sprite: /Textures/_SV/PersonalItems/Plushies/DawnPlushie.rsi
     equippedPrefix: dawn
     slots:
     - HEAD

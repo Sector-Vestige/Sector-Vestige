@@ -4,10 +4,15 @@
   id: Welder
   description: "Melts anything as long as it's fueled, don't forget your eye protection!"
   components:
+#Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/Items/welder_drop.ogg
+      path: /Audio/_Goobstation/Items/Handling/weldingtool_drop.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/weldingtool_drop.ogg
   - type: Sprite
+#Goob - End: pickup and drop sounds
     sprite: Objects/Tools/welder.rsi
     layers:
     - state: icon

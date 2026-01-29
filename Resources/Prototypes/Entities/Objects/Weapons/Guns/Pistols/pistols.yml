@@ -68,6 +68,17 @@
   - type: Appearance
   - type: StaticPrice
     price: 500
+#Goob - Begin: pickup and drop sounds
+  - type: EmitSoundOnPickup
+    sound:
+      collection: PistolsPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: PistolsDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: PistolsDrop
+#Goob - End: pickup and drop sounds
 
 - type: entity
   name: viper

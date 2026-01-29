@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 BackeTako <branne33@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Player: Tako - Character: Tako-Ja
+- type: entity
+  parent: [ PlushieLizard, BaseFoldable ]
+  id: PersonalItemTakoPlushie
+  name: Tako plushie
+  description: A lizard plushie made to look like Tako-Ja, it smells faintly of roses.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: plushie_tako
+    sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie.rsi
+  - type: Item
+    sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie_64.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: drag-verb
+    foldVerbText: hold-verb
+  - type: FoldableClothing
+    foldedEquippedPrefix: holding
+    foldedHeldPrefix: holding
+
+- type: loadout
+  id: PersonalItemTakoPlushie
+  storage:
+    back:
+    - PersonalItemTakoPlushie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Tako-Ja

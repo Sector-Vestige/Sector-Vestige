@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: construction
+  id: wrappedBakePackage
+  graph: WrappedBakePackage
+  startNode: start
+  targetNode: bakeWrapped
+  category: construction-category-misc
+  objectType: Item
+
+- type: construction
+  id: FoldSmugglerPackage
+  graph: FoldSmugglerPackage
+  startNode: start
+  targetNode: emptyPacket
+  category: construction-category-misc
+  objectType: Item

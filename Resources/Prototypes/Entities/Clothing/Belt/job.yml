@@ -79,6 +79,23 @@
           tags:
           - Multitool
   - type: Appearance
+#Goob - Begin: pickup and drop sounds
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/Handling/toolbelt_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/Handling/toolbelt_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/Handling/toolbelt_drop.ogg
+      params:
+        volume: -4
+#Goob - End: pickup and drop sounds
 
 - type: entity
   parent: BaseClothingBeltEngineering

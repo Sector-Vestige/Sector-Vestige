@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  parent: CigCartonGreen
+  id: CigCartonPurple
+  name: De Jure carton
+  description: A carton containing 6 packets of De Jure.
+  components:
+  - type: Sprite
+    sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Cartons/purple.rsi
+    layers:
+    - state: closed
+  - type: Item
+    sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Cartons/purple.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigPackPurple
+        amount: 5
+
+- type: entity
+  parent: CigCartonGreen
+  id: CigCartonCandy
+  name: Sugar Rush carton
+  description: A carton containing 6 packets of Sugar Rush.
+  components:
+  - type: Sprite
+    sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Cartons/pink.rsi
+    layers:
+    - state: closed
+  - type: Item
+    sprite: _CD/Objects/Consumable/Smokeables/Cigarettes/Cartons/pink.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigPackCandy
+        amount: 5
