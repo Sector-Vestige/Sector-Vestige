@@ -1,4 +1,9 @@
-﻿# Player: MissKay1994 / Character: Skrikikaki
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 MissKay1994 <15877268+MissKay1994@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Player: MissKay1994 / Character: Skrikikaki
 - type: entity
   parent: PlushieVox
   id: PersonalItemSkrikiPlush
