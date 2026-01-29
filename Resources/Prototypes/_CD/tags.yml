@@ -1,2 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: Tag
   id: VehicleKey
+
+- type: Tag
+  id: EmptyPacket

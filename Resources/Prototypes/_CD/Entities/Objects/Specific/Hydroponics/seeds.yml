@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  parent: SeedBase
+  name: packet of mindleaf seeds
+  id: MindleafSeeds
+  components:
+  - type: Seed
+    seedId: mindleaf
+  - type: Sprite
+    sprite: _CD/Objects/Specific/Hydroponics/mindleaf.rsi

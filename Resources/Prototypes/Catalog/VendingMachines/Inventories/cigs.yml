@@ -1,5 +1,4 @@
-# SPDX-FileCopyrightText: 2026 Wizards Den contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
 # SPDX-FileCopyrightText: 2019 DamianX <DamianX@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2020 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2020 Hugo Laloge <hugo.laloge@gmail.com>
@@ -22,6 +21,7 @@
 # SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Smith <182301147+AgentSmithRadio@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
 #
 # SPDX-License-Identifier: MIT
 
@@ -45,3 +45,5 @@
     GroundTobacco: 3
     CigarGold: 2
     Igniter: 1
+    CigPackDarkGreen: 2 # _CD
+    CigPackUnmarked: 4 # _CD
