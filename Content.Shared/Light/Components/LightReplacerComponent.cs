@@ -4,6 +4,7 @@ using Content.Shared.Storage;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes; //Goobstation
 
 namespace Content.Shared.Light.Components;
 
@@ -34,4 +35,33 @@ public sealed partial class LightReplacerComponent : Component
     /// </summary>
     [DataField("contents")]
     public List<EntitySpawnEntry> Contents = new();
+
+    /// <summary>
+    /// Goobstation
+    /// How much glass is inside of the light replacer.
+    /// One means it will create a new bulb.
+    /// </summary>
+    [DataField]
+    public float GlassRecycled;
+
+    /// <summary>
+    /// Goobstation
+    /// How much glass required for one bulb.
+    /// </summary>
+    [DataField]
+    public float GlassRequired = 1f;
+
+    /// <summary>
+    /// Goobstation
+    /// How much glass given per bulb recycled.
+    /// </summary>
+    [DataField]
+    public float GlassPerBulb = 0.25f;
+
+    /// <summary>
+    /// Goobstation
+    /// What bulb is spawned when the max glass is reached?
+    /// </summary>
+    [DataField]
+    public EntProtoId LightBulbProto = "LightTube";
 }
