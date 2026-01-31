@@ -223,7 +223,7 @@ public abstract class SharedPoweredLightSystem : EntitySystem
     /// </summary>
         public bool ReplaceBulb(EntityUid uid, EntityUid bulb, out EntityUid? oldBulb, PoweredLightComponent? light = null) // Goobstation
     {
-            oldBulb = EjectBulb(uid, null, light); // Goobstation
+        oldBulb = EjectBulb(uid, null, light); // Goobstation
         return InsertBulb(uid, bulb, light);
     }
 
