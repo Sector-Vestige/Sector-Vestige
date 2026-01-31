@@ -199,8 +199,6 @@ public sealed class LightReplacerSystem : SharedLightReplacerSystem
                 replacer.GlassRecycled -= replacer.GlassRequired;
                 TrySpawnInContainer(replacer.LightBulbProto, replacerUid, "light_replacer_storage", out _);
             } // Goobstation - End
-
-
         }
 
         return wasReplaced;
