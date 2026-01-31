@@ -221,7 +221,7 @@ public abstract class SharedPoweredLightSystem : EntitySystem
     ///     Try to replace current bulb with a new one
     ///     If succeed old bulb just drops on floor
     /// </summary>
-        public bool ReplaceBulb(EntityUid uid, EntityUid bulb, out EntityUid? oldBulb, PoweredLightComponent? light = null) // Goobstation
+    public bool ReplaceBulb(EntityUid uid, EntityUid bulb, out EntityUid? oldBulb, PoweredLightComponent? light = null) // Goobstation
     {
         oldBulb = EjectBulb(uid, null, light); // Goobstation
         return InsertBulb(uid, bulb, light);
