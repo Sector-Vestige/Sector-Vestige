@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseBulletAP
+  id: BulletPistolAP
+  categories: [ HideSpawnMenu ]
+  name: bullet (.35 pistol armor-piercing)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 10
+    ignoreResistances: true

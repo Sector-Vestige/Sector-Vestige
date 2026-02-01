@@ -10,3 +10,5 @@
   id: MagazineLocust # Magazine for S77-Locust
 - type: Tag
   id: CartridgeCaselessLightRifle # Cartridge for S77-Locust
+- type: Tag
+  id: MagazineViolee # Magazine for R36-Violee
