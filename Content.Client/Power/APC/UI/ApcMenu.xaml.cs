@@ -57,10 +57,7 @@ namespace Content.Client.Power.APC.UI
         {
             var castState = (ApcBoundInterfaceState) state;
 
-            if (!BreakerButton.Disabled)
-            {
-                BreakerButton.Pressed = castState.MainBreaker;
-            }
+            BreakerButton.Pressed = castState.MainBreaker;
 
             if (PowerLabel != null)
             {

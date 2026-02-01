@@ -68,6 +68,11 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] protected readonly ThrowingSystem ThrowingSystem = default!;
 
     /// <summary>
+    /// Default projectile speed
+    /// </summary>
+    public const float ProjectileSpeed = 40f;
+
+    /// <summary>
     ///     Name of the container slot used as the gun's chamber
     /// </summary>
     public const string ChamberSlot = "gun_chamber";
@@ -76,11 +81,6 @@ public abstract partial class SharedGunSystem : EntitySystem
     ///     Name of the container slot used as the gun's magazine
     /// </summary>
     public const string MagazineSlot = "gun_magazine";
-
-    /// <summary>
-    /// Default projectile speed
-    /// </summary>
-    public const float ProjectileSpeed = 40f;
 
     private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
 
@@ -158,6 +158,8 @@ public abstract partial class SharedGunSystem : EntitySystem
         gun.Comp.ShootCoordinates = GetCoordinates(msg.Coordinates);
         gun.Comp.Target = GetEntity(msg.Target);
         AttemptShoot(user.Value, gun);
+        if (msg.Continuous)
+            gun.Comp.ShotCounter = 0;
     }
 
     private void OnStopShootRequest(RequestStopShootEvent ev, EntitySessionEventArgs args)

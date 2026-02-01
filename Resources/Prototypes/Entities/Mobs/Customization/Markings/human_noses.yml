@@ -8,10 +8,8 @@
 - type: marking
   id: HumanNoseSchnozz
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Dwarf, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: schnozz
@@ -19,10 +17,8 @@
 - type: marking
   id: HumanNoseNubby
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Dwarf, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: nubby
@@ -30,10 +26,8 @@
 - type: marking
   id: HumanNoseDroop
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Dwarf, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: droop
@@ -41,10 +35,8 @@
 - type: marking
   id: HumanNoseBlob
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Dwarf, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: blob
@@ -52,10 +44,8 @@
 - type: marking
   id: HumanNoseUppie
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Dwarf, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: uppie

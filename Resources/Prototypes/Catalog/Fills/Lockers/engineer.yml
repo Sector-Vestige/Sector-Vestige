@@ -194,6 +194,8 @@
     - id: RPD #Sector Vestige: RPD instead of RCD for atmos techs
     - id: RCDAmmo
     - id: AirGrenade
+    - id: PlushieLizardJobAtmospherictechnician
+      prob: 0.02
 
 - type: entityTable
   id: FillAtmosphericsHardsuit
@@ -237,6 +239,10 @@
     - id: RCD
     - id: RCDAmmo
     - id: MetalFoamGrenade
+    - id: PlushieLizardJobTechnicalassistant
+      prob: 0.02
+    - id: PlushieLizardJobStationengineer
+      prob: 0.02
 
 - type: entityTable
   id: FillEngineerHardsuit

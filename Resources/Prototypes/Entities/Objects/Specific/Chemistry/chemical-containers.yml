@@ -1,92 +1,118 @@
 - type: entity
-  name: jug
-  parent: BaseItem
+  parent: [ DrinkBaseMaterialStrongPlastic, DrinkBase, DrinkVisualsAll ]
   id: Jug
+  name: jug
   description: Used to contain a very large amount of chemicals or solutions. Chugging is extremely ill-advised.
   components:
-    - type: SolutionContainerManager
-      solutions:
-        beaker:
-          maxVol: 200
-    - type: Sprite
-      sprite: Objects/Specific/Chemistry/jug.rsi
-      layers:
-        - state: jug
-        - state: jug1
-          map: [ "enum.SolutionContainerLayers.Fill" ]
-          visible: false
-    - type: Item
-      size: Normal
-      sprite: Objects/Specific/Chemistry/jug.rsi
-    - type: MixableSolution
-      solution: beaker
-    - type: RefillableSolution
-      solution: beaker
-    - type: DrainableSolution
-      solution: beaker
-    - type: ExaminableSolution
-      solution: beaker
-      exactVolume: true
-    - type: DrawableSolution
-      solution: beaker
-    - type: InjectableSolution
-      solution: beaker
-    - type: SolutionTransfer
-      canChangeTransferAmount: true
-    - type: SolutionItemStatus
-      solution: beaker
-    - type: UserInterface
-      interfaces:
-        enum.TransferAmountUiKey.Key:
-          type: TransferAmountBoundUserInterface
-    - type: Edible
-      edible: Drink
-      solution: beaker
-      destroyOnEmpty: false
-      utensil: Spoon
-    - type: Spillable
-      solution: beaker
-    - type: Appearance
-    - type: SolutionContainerVisuals
-      maxFillLevels: 6
-      fillBaseName: jug
-      inHandsMaxFillLevels: 5
-      inHandsFillBaseName: -fill-
-    - type: StaticPrice
-      price: 60
-    - type: Damageable
-      damageContainer: Inorganic
-    - type: Destructible
-      thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 200
-        behaviors:
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
-      - trigger:
-          !type:DamageTrigger
-          damage: 20
-        behaviors:
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalBreak
-            params:
-              volume: -4
-        - !type:SpillBehavior { }
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            SheetPlastic1:
-              min: 0
-              max: 1
-          transferForensics: true
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-    - type: Label
-    - type: Tag
-      tags:
-      - ChemDispensable
-    - type: DnaSubstanceTrace
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/jug.rsi
+  - type: Item
+    size: Normal
+    sprite: Objects/Specific/Chemistry/jug.rsi
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 200
+  - type: SolutionContainerVisuals
+    maxFillLevels: 6
+    inHandsMaxFillLevels: 5
+  - type: ExaminableSolution
+    exactVolume: true # Chemistry item
+  - type: StaticPrice
+    price: 60
+  - type: Tag
+    tags:
+    - ChemDispensable
+
+- type: entity
+  parent: Jug
+  id: JugPunctTranex
+  suffix: punct & tranex
+  components:
+  - type: Label
+    currentLabel: reagent-name-puncturase-tranexamic
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Puncturase
+          Quantity: 160
+        - ReagentId: TranexamicAcid
+          Quantity: 40
+
+- type: entity
+  parent: Jug
+  id: JugPyraDerma
+  suffix: pyra & derma
+  components:
+  - type: Label
+    currentLabel: reagent-name-pyrazine-dermaline
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Pyrazine
+          Quantity: 50
+        - ReagentId: Dermaline
+          Quantity: 150
+
+- type: entity
+  parent: Jug
+  id: JugDexPlusSaline
+  suffix: dex+ & saline
+  components:
+  - type: Label
+    currentLabel: reagent-name-dexalin-plus-saline
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: DexalinPlus
+          Quantity: 100
+        - ReagentId: Saline
+          Quantity: 100
+
+- type: entity
+  parent: Jug
+  id: JugTrico
+  suffix: tricordrazine
+  components:
+  - type: Label
+    currentLabel: reagent-name-tricordrazine
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Tricordrazine
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  id: JugBlood
+  suffix: blood
+  components:
+  - type: Label
+    currentLabel: reagent-name-blood
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Blood
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  id: JugWater
+  suffix: water
+  components:
+  - type: Label
+    currentLabel: reagent-name-water
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Water
+          Quantity: 200
 
 - type: entity
   parent: Jug
@@ -188,7 +214,7 @@
     currentLabel: reagent-name-carbon
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Carbon
           Quantity: 200
@@ -203,7 +229,7 @@
     currentLabel: reagent-name-iodine
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Iodine
           Quantity: 200
@@ -218,7 +244,7 @@
     currentLabel: reagent-name-fluorine
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Fluorine
           Quantity: 200
@@ -233,7 +259,7 @@
     currentLabel: reagent-name-chlorine
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Chlorine
           Quantity: 200
@@ -248,7 +274,7 @@
     currentLabel: reagent-name-aluminium
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Aluminium
           Quantity: 200
@@ -263,7 +289,7 @@
     currentLabel: reagent-name-phosphorus
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Phosphorus
           Quantity: 200
@@ -278,7 +304,7 @@
     currentLabel: reagent-name-sulfur
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Sulfur
           Quantity: 200
@@ -293,7 +319,7 @@
     currentLabel: reagent-name-silicon
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Silicon
           Quantity: 200
@@ -308,7 +334,7 @@
     currentLabel: reagent-name-hydrogen
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Hydrogen
           Quantity: 200
@@ -323,7 +349,7 @@
     currentLabel: reagent-name-lithium
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Lithium
           Quantity: 200
@@ -338,7 +364,7 @@
     currentLabel: reagent-name-sodium
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Sodium
           Quantity: 200
@@ -353,7 +379,7 @@
     currentLabel: reagent-name-potassium
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Potassium
           Quantity: 200
@@ -368,7 +394,7 @@
     currentLabel: reagent-name-radium
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Radium
           Quantity: 200
@@ -383,7 +409,7 @@
     currentLabel: reagent-name-iron
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Iron
           Quantity: 200
@@ -398,7 +424,7 @@
     currentLabel: reagent-name-copper
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Copper
           Quantity: 200
@@ -413,7 +439,7 @@
     currentLabel: reagent-name-gold
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Gold
           Quantity: 200
@@ -428,7 +454,7 @@
     currentLabel: reagent-name-mercury
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Mercury
           Quantity: 200
@@ -443,7 +469,7 @@
     currentLabel: reagent-name-silver
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Silver
           Quantity: 200
@@ -458,7 +484,7 @@
     currentLabel: reagent-name-ethanol
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Ethanol
           Quantity: 200
@@ -473,7 +499,7 @@
     currentLabel: reagent-name-sugar
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Sugar
           Quantity: 200
@@ -488,7 +514,7 @@
     currentLabel: reagent-name-nitrogen
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Nitrogen
           Quantity: 200
@@ -503,7 +529,7 @@
     currentLabel: reagent-name-oxygen
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: Oxygen
           Quantity: 200
@@ -518,7 +544,7 @@
     currentLabel: reagent-name-plant-b-gone
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: PlantBGone
           Quantity: 200
@@ -533,7 +559,127 @@
     currentLabel: reagent-name-welding-fuel
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: WeldingFuel
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: bicaridine
+  id: JugBicaridine
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Label
+    currentLabel: reagent-name-bicaridine
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Bicaridine
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: puncturase
+  id: JugPuncturase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Label
+    currentLabel: reagent-name-puncturase
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Puncturase
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: dermaline
+  id: JugDermaline
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Label
+    currentLabel: reagent-name-dermaline
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Dermaline
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: dylovene
+  id: JugDylovene
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Label
+    currentLabel: reagent-name-dylovene
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Dylovene
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: tranexamic acid
+  id: JugTranexamicAcid
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Label
+    currentLabel: reagent-name-tranexamic-acid
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: TranexamicAcid
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: hyronalin
+  id: JugHyronalin
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Label
+    currentLabel: reagent-name-hyronalin
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Hyronalin
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: saline
+  id: JugSaline
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Label
+    currentLabel: reagent-name-saline
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Saline
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: dexalin plus
+  id: JugDexalinPlus
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Label
+    currentLabel: reagent-name-dexalin-plus
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: DexalinPlus
           Quantity: 200

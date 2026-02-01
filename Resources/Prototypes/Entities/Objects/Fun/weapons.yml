@@ -134,6 +134,30 @@
       - SpeedLoaderMagnum
     proto: CartridgeMagnumAP
 
+- type: entity
+  parent: [ BaseItem, BaseToyGun ]
+  id: WeaponStickyHand
+  name: sticky hand
+  description: They're saying you're reaching. They're saying it's a stretch. You'll show them all, and you'll stick it to them.
+  components:
+  - type: GrapplingGun
+    cycleSound: /Audio/Misc/woosh.ogg
+    ropeSprite:
+      sprite: Objects/Weapons/Guns/Launchers/sticky_hand.rsi
+      state: rope
+  - type: Gun
+    soundGunshot: /Audio/Misc/stickystretch.ogg
+    fireRate: 0.5
+    soundEmpty: /Audio/Misc/boing.ogg
+  - type: BasicEntityAmmoProvider
+    proto: StickyHandPalm
+    capacity: 1
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Launchers/sticky_hand.rsi
+    state: base
+  - type: UseDelay
+    delay: 1.5
+
 ## Toy swords
 
 - type: entity
