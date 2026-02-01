@@ -5,6 +5,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Tag;
 using Content.Shared.Humanoid;
@@ -15,7 +16,7 @@ namespace Content.Shared._DV.Harpy;
 public sealed class HarpyVisualsSystem : EntitySystem
 {
     [Dependency] private readonly TagSystem _tagSystem = default!;
-    [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoidSystem = default!;
+    [Dependency] private readonly SharedHideableHumanoidLayersSystem _hideableHumanoidLayers = default!;
 
     //    [ValidatePrototypeId<TagPrototype>] // Frontier
     //    private const string HarpyWingsTag = "HidesHarpyWings"; // Frontier
@@ -32,8 +33,8 @@ public sealed class HarpyVisualsSystem : EntitySystem
     {
         if (args.Slot == "outerClothing" && HasComp<HarpyHideWingsComponent>(args.Equipment)) // Frontier: Swap tag to comp
         {
-            _humanoidSystem.SetLayerVisibility(uid, HumanoidVisualLayers.RArm, false);
-            _humanoidSystem.SetLayerVisibility(uid, HumanoidVisualLayers.Tail, false);
+            _hideableHumanoidLayers.SetLayerOcclusion(uid, HumanoidVisualLayers.RArm, true, SlotFlags.OUTERCLOTHING);
+            _hideableHumanoidLayers.SetLayerOcclusion(uid, HumanoidVisualLayers.Tail, true, SlotFlags.OUTERCLOTHING);
         }
     }
 
@@ -41,8 +42,8 @@ public sealed class HarpyVisualsSystem : EntitySystem
     {
         if (args.Slot == "outerClothing" && HasComp<HarpyHideWingsComponent>(args.Equipment)) // Frontier: Swap tag to comp
         {
-            _humanoidSystem.SetLayerVisibility(uid, HumanoidVisualLayers.RArm, true);
-            _humanoidSystem.SetLayerVisibility(uid, HumanoidVisualLayers.Tail, true);
+            _hideableHumanoidLayers.SetLayerOcclusion(uid, HumanoidVisualLayers.RArm, false, SlotFlags.OUTERCLOTHING);
+            _hideableHumanoidLayers.SetLayerOcclusion(uid, HumanoidVisualLayers.Tail, false, SlotFlags.OUTERCLOTHING);
         }
     }
 }
