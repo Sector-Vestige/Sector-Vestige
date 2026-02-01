@@ -4,7 +4,4 @@
   roundStart: false
   prototype: MobSkeletonPerson
   defaultSkinTone: "#fff9e2"
-  maleFirstNames: NamesSkeletonFirst
-  femaleFirstNames: NamesSkeletonFirst
-  dollPrototype: AppearanceSkeletonPerson
-  skinColoration: TintedHues
+  defaultHeight: 1.0
