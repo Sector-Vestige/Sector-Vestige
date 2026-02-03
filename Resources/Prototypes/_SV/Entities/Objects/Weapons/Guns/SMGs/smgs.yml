@@ -86,6 +86,7 @@
     sprite: _SV/Objects/Weapons/Guns/SMGs/Violee.rsi
     slots:
     - Belt
+    - suitStorage
   - type: Wieldable
     unwieldOnUse: false
   - type: GunWieldBonus
