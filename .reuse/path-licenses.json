@@ -54,6 +54,15 @@
     { "pattern": "Resources/Locale/en-US/_EinsteinEngines/**", "license": "AGPL" },
     { "pattern": "Resources/Maps/_EinsteinEngines/**", "license": "AGPL" },
 
+    { "pattern": "Content.Server/_EE/**", "license": "AGPL" },
+    { "pattern": "Content.Client/_EE/**", "license": "AGPL" },
+    { "pattern": "Content.Shared/_EE/**", "license": "AGPL" },
+    { "pattern": "Resources/_EE/**", "license": "AGPL" },
+    { "pattern": "Resources/Prototypes/_EE/**", "license": "AGPL" },
+    { "pattern": "Resources/Audio/_EE/**", "license": "AGPL" },
+    { "pattern": "Resources/Locale/en-US/_EE/**", "license": "AGPL" },
+    { "pattern": "Resources/Maps/_EE/**", "license": "AGPL" },
+
     { "pattern": "Content.Server/_Funkystation/**", "license": "AGPL" },
     { "pattern": "Content.Client/_Funkystation/**", "license": "AGPL" },
     { "pattern": "Content.Shared/_Funkystation/**", "license": "AGPL" },

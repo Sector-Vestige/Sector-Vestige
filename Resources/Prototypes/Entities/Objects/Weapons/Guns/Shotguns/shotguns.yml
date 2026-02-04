@@ -43,6 +43,17 @@
         ents: []
   - type: StaticPrice
     price: 500
+#Goob - Begin: pickup and drop sounds
+  - type: EmitSoundOnPickup
+    sound:
+      collection: ShotgunPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: ShotgunDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: ShotgunDrop
+#Goob - End: pickup and drop sounds
 
 - type: entity
   name: Bulldog

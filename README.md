@@ -97,9 +97,10 @@ Sector Vestige includes code ported from other SS14 forks, organized in namespac
 | **Cosmatic Drift** | `_CD/` | MIT | [GitHub](https://github.com/cosmatic-drift-14/cosmatic-drift) |
 | **Delta-V** | `_DV/` | AGPL-3.0-or-later | [GitHub](https://github.com/DeltaV-Station/Delta-v) |
 | **Frontier** | `_NF/` | AGPL-3.0-or-later | [GitHub](https://github.com/new-frontiers-14/frontier-station-14) |
+| **Goob** | `_Goobstation/` | AGPL-3.0-or-later | [GitHub](https://github.com/Goob-Station/Goob-Station) |
 | **Harmony** | `_Harmony/` | AGPL-3.0-or-later | [GitHub](https://github.com/ss14-harmony/ss14-harmony) |
 | **Umbra** | `_Umbra/` | MIT | [GitHub](https://github.com/Sector-Umbra/Sector-Umbra) |
-| **FloofStation** | `_Floofstation/` | AGPL-3.0-or-later | [GitHub](https://github.com/Simple-Station/Einstein-Engines) |
+| **FloofStation** | `_Floofstation/` | AGPL-3.0-or-later | [GitHub](https://github.com/Floof-Station/Floof-Station) |
 | **Impstation** | `_Impstation/` | AGPL-3.0-or-later | [GitHub](https://github.com/impstation/imp-station-14) |
 | **Einstein Engines** | `_EE/` | AGPL-3.0-or-later | [GitHub](https://github.com/Simple-Station/Einstein-Engines) |
 | **Funkystation** | `_Funkystation/` | AGPL-3.0-or-later | [GitHub](https://github.com/funky-station/funky-station) |

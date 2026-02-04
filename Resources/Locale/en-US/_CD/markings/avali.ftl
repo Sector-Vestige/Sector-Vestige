@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 MoonlightHollow <muszynskinicholas8@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 marking-AvaliEarsBase = (Base) Avali Ears 
 marking-AvaliEarsBase-ears_avalibase_primary = Top Ears
 marking-AvaliEarsBase-ears_avalibase_secondary = Bottom Ears

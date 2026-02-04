@@ -1,0 +1,30 @@
+{
+    "version": 2,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "plushie_tako modified by BackeTako (GitHub) from commit: https://github.com/Sector-Umbra/Sector-Umbra/commit/ebebb3603acc9d801d5ae87ac948b1c287aa2116. holding-inhand & inhand sprites by BackeTako (GitHub) inspired by plushie_lizard.png from ://github.com/Sector-Umbra/Sector-Umbra/commit/ebebb3603acc9d801d5ae87ac948b1c287aa2116" ,
+    "size": {
+      "x": 32,
+      "y": 32
+    },
+    "states": [
+        {
+          "name": "plushie_tako"
+        },
+        {
+          "name": "inhand-left",
+          "directions": 4
+        },
+        {
+          "name": "inhand-right",
+          "directions": 4
+        },
+        {
+          "name": "holding-inhand-left",
+          "directions": 4
+        },
+        {
+          "name": "holding-inhand-right",
+          "directions": 4
+        }
+      ]
+    }

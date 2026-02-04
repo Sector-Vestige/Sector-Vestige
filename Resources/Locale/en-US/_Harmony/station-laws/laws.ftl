@@ -1,3 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2024 Unisol <1929445+Unisol@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 NakataRin <45946146+NakataRin@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 SteroidsOnSteroids <161250813+SteroidsOnSteroids@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Jajsha <101492056+Zap527@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 law-orwellian-1 = War is Peace. Freedom is Slavery. Ignorance is Strength.
 law-orwellian-2 = The Captain is Big Brother. Command is the Inner Party. Security is the Thought Police. Perma is the Ministry of Love.
 law-orwellian-3 = Anyone who goes against the interests of Big Brother are "thought criminals".

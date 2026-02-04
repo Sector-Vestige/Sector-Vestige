@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: stack
+  id: LeavesMindleafDried
+  name: cd-stack-dried-mindleaf-leaves
+  icon: { sprite: /Textures/Objects/Specific/Hydroponics/tobacco.rsi, state: dried }
+  spawn: LeavesMindleafDried
+  maxCount: 5

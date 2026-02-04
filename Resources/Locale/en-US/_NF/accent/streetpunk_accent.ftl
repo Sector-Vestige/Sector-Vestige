@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 bruhmogus <104110869+bruhmogus@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # mix of slang terms from Cyberpunk 2020 TTRPG, Cyberpunk 2077, Shadowrun 5e TTRPG and Informal Contractions
 # sources:
 # https://cyberpunk.fandom.com/wiki/Streetslang

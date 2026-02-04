@@ -25,6 +25,17 @@
     startingCharge: 1000
   - type: StaticPrice
     price: 500
+#Goob - Begin: pickup and drop sounds
+  - type: EmitSoundOnPickup
+    sound:
+      collection: LasersPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: LasersDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: LasersDrop
+#Goob - End: pickup and drop sounds
 
 - type: entity
   parent: [BaseWeaponBattery, BaseGunWieldable]

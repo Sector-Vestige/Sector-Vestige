@@ -1,17 +1,21 @@
 # SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 BackeTako <branne33@gmail.com>
 # SPDX-FileCopyrightText: 2025 EvilAtheist <88866615+Mixmaster49@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 JuneSzalkowska <juneszalkowska@gmail.com>
 # SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
 # SPDX-FileCopyrightText: 2025 TheNarwhalrus <84911598+TheNarwhalrus@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 TheNarwhalrus <luca.patel.05@gmail.com>
+# SPDX-FileCopyrightText: 2026 MissKay1994 <15877268+MissKay1994@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Nico64 <74880554+NicoSGF64@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 TakoDragon <69509841+BackeTako@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 lambdatiger <11843718+lambdatiger@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 lambdatiger <spam.stnuocca.sl@gmail.com>
 # SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
 # SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 Nico64 <74880554+NicoSGF64@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -36,11 +40,14 @@
   - PersonalItemRiyadaCrucifix
   - PersonalItemMelodyGlasses
   - PersonalItemCloverBeret
+  - PersonalItemTakoPlushie
   - PersonalItemJaytauBook
   - PersonalItemSilverRing
   - PersonalItemTeegamRing
   - PersonalItemTeegamViolin
   - PersonalItemSwapsThreeCandles
+  - PersonalItemDamienNanoweaveMantle
+  - PersonalItemSkrikiPlush
 
 # Senior Courier
 - type: loadoutGroup

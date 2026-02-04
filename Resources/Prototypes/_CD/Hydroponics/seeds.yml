@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: seed
+  id: mindleaf
+  name: seeds-mindleaf-name
+  noun: seeds-noun-seeds
+  displayName: mindleaf
+  plantRsi: _CD/Objects/Specific/Hydroponics/mindleaf.rsi
+  packetPrototype: MindleafSeeds
+  productPrototypes:
+    - LeavesMindleaf
+  lifespan: 180
+  maturation: 12
+  production: 12
+  yield: 2
+  potency: 20
+  growthStages: 3
+  waterConsumption: 0.25
+  idealLight: 9
+  idealHeat: 303
+  chemicals:
+    MindleafSap:
+      Min: 1
+      Max: 6
+      PotencyDivisor: 20
