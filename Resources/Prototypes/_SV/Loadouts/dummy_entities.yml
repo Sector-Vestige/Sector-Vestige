@@ -5,5 +5,5 @@
   description: A set of three, specially-treated colorful candles for secret rituals!
   components:
   - type: Sprite
-    sprite: Objects/Misc/candles.rsi
+    sprite: _SV/PersonalItems/Items/swapscandles.rsi
     state: loadout

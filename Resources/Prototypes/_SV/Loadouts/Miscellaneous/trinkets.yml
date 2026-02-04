@@ -3,9 +3,9 @@
   dummyEntity: PersonalItemSwapsDummyCandles
   storage:
     back:
-    - CandleInfiniteLightable
-    - CandleInfiniteLightable
-    - CandleSmallPurpleInfiniteLightable
+    - CandleTreated
+    - CandleTreated
+    - CandleSmallPurpleTreated
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
