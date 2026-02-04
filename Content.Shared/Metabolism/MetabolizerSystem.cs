@@ -155,13 +155,6 @@ public sealed class MetabolizerSystem : EntitySystem
         var ev = new MetabolismExclusionEvent();
         RaiseLocalEvent(solutionOwner.Value, ref ev);
 
-        // Copy the solution do not edit the original solution list
-        var list = solution.Contents.ToList();
-
-        // Collecting blood reagent for filtering
-        var ev = new MetabolismExclusionEvent();
-        RaiseLocalEvent(solutionEntityUid.Value, ref ev);
-
         // randomize the reagent list so we don't have any weird quirks
         // like alphabetical order or insertion order mattering for processing
         _random.Shuffle(list);
