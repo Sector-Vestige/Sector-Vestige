@@ -81,7 +81,8 @@ namespace Content.Server.Database
 
             // CD: Store Records
             modelBuilder.Entity<CDModel.CDProfile>()
-                .Property(log => log.CharacterRecords);
+                .Property(log => log.CharacterRecords)
+                .HasConversion(jsonByteArrayConverter);
             // CD: Store Records
 
             modelBuilder.Entity<Profile>()
