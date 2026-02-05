@@ -151,7 +151,7 @@ namespace Content.Shared.Preferences
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
             Dictionary<string, RoleLoadout> loadouts,
-            PlayerProvidedCharacterRecords? cdCharacterRecords)
+            PlayerProvidedCharacterRecords? cdCharacterRecords) // CD character records
         {
             Name = name;
             FlavorText = flavortext;
@@ -167,7 +167,7 @@ namespace Content.Shared.Preferences
             _antagPreferences = antagPreferences;
             _traitPreferences = traitPreferences;
             _loadouts = loadouts;
-            CDCharacterRecords = cdCharacterRecords;
+            CDCharacterRecords = cdCharacterRecords; // CD character records
 
             var hasHighPrority = false;
             foreach (var (key, value) in _jobPriorities)

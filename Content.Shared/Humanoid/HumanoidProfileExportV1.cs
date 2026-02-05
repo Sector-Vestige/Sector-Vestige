@@ -8,6 +8,7 @@ using Content.Shared.Traits;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared._CD.Records;
 
 namespace Content.Shared.Humanoid;
 
@@ -79,9 +80,17 @@ public sealed partial class HumanoidCharacterProfileV1
     [DataField]
     public PreferenceUnavailableMode PreferenceUnavailable;
 
+    // SV - CD-Record migration after the Humanoidprofilesystem migration - START
+    [DataField]
+    public float Height;
+
+    [DataField]
+    public PlayerProvidedCharacterRecords CDCharacterRecord;
+    // SV - CD-Record migration after the Humanoidprofilesystem migration - END
+
     public HumanoidCharacterProfile ToV2()
     {
-        return new(Name, FlavorText, Species, Age, Sex, Gender, Appearance.ToV2(Species), SpawnPriority, JobPriorities, PreferenceUnavailable, AntagPreferences, TraitPreferences, Loadouts);
+        return new(Name, FlavorText, Species, Height, Age, Sex, Gender, Appearance.ToV2(Species), SpawnPriority, JobPriorities, PreferenceUnavailable, AntagPreferences, TraitPreferences, Loadouts, CDCharacterRecord);
     }
 }
 
