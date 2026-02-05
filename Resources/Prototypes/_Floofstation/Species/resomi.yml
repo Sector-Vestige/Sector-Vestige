@@ -14,7 +14,7 @@
   sprites: MobResomiSprites
   defaultSkinTone: "#faf7f7"
   markingLimits: MobResomiMarkingLimits
-  dollPrototype: MobResomiDummy
+  dollPrototype: AppearanceResomi
   skinColoration: Hues
   defaultHeight: 0.8
   naming: First

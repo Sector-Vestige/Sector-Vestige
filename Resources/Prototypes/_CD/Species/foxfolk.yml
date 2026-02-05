@@ -13,7 +13,7 @@
   sprites: MobFoxfolkSprites
   defaultSkinTone: "#985629"
   markingLimits: MobFoxfolkMarkingLimits
-  dollPrototype: MobFoxfolkDummy
+  dollPrototype: AppearanceFoxfolk
   skinColoration: Hues
   defaultHeight: 1.0
   maleFirstNames: NamesFoxfolkMale

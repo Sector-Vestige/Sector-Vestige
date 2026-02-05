@@ -15,7 +15,7 @@
   sprites: MobAvaliSprites
   defaultSkinTone: "#D2B48C"
   markingLimits: MobAvaliMarkingLimits
-  dollPrototype: MobAvaliDummy
+  dollPrototype: AppearanceAvali
   skinColoration: Hues
   defaultHeight: 0.8
   maleFirstNames: names_avali_unisex
