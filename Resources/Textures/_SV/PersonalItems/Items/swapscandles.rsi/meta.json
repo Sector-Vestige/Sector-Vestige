@@ -5,7 +5,7 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Made by NicoSGF64 (Github) for SS14. Modifications of the candle-small and candle-big sprites, taken from https://github.com/space-wizards/space-station-14/commit/aa713ea7e6428a515bc69a8d40acde1105b78f39",
+    "copyright": "Made by NicoSGF64 (Github) for SS14. Modifications of the candle-small, candle-big and loadout sprites, taken from https://github.com/space-wizards/space-station-14/commit/aa713ea7e6428a515bc69a8d40acde1105b78f39",
     "states": [
     {
       "name": "loadout"
