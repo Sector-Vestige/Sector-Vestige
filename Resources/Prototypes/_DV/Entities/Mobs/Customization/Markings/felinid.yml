@@ -10,8 +10,7 @@
 - type: marking
   id: FelinidEarsBasic
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_ears.rsi
     state: basic_outer
@@ -21,8 +20,7 @@
 - type: marking
   id: FelinidEarsCurled
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_ears.rsi
     state: curled_outer
@@ -32,8 +30,7 @@
 - type: marking
   id: FelinidEarsDroopy
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_ears.rsi
     state: droopy_outer
@@ -43,8 +40,7 @@
 - type: marking
   id: FelinidEarsFuzzy
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_ears.rsi
     state: basic_outer
@@ -54,8 +50,7 @@
 - type: marking
   id: FelinidEarsStubby
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_ears.rsi
     state: stubby_outer
@@ -65,8 +60,7 @@
 - type: marking
   id: FelinidEarsTall
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_ears.rsi
     state: tall_outer
@@ -78,8 +72,7 @@
 - type: marking
   id: FelinidEarsTorn
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_ears.rsi
     state: torn_outer
@@ -89,8 +82,7 @@
 - type: marking
   id: FelinidEarsWide
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_ears.rsi
     state: wide_outer
@@ -102,8 +94,7 @@
 - type: marking
   id: FelinidTailBasic
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_tails.rsi
     state: basic_tail_tip
@@ -115,8 +106,7 @@
 - type: marking
   id: FelinidTailBasicWithBow
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_tails.rsi
     state: basic_tail_tip
@@ -130,8 +120,7 @@
 - type: marking
   id: FelinidTailBasicWithBell
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_tails.rsi
     state: basic_tail_tip
@@ -145,8 +134,7 @@
 - type: marking
   id: FelinidTailBasicWithBowAndBell
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   sprites:
   - sprite: _DV/Mobs/Customization/felinid_tails.rsi
     state: basic_tail_tip

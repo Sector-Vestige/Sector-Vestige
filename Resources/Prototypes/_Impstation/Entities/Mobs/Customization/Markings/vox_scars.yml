@@ -8,8 +8,7 @@
 - type: marking
   id: ScarsVoxRoadrashLeftHead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Vox]
+  groupWhitelist: [Vox]
   coloring:
     default:
       type:
@@ -22,8 +21,7 @@
 - type: marking
   id: ScarsVoxRoadrashRightHead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Vox]
+  groupWhitelist: [Vox]
   coloring:
     default:
       type:
@@ -36,8 +34,7 @@
 - type: marking
   id: ScarsVoxBigslashLeftHead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Vox]
+  groupWhitelist: [Vox]
   coloring:
     default:
       type:
@@ -50,8 +47,7 @@
 - type: marking
   id: ScarsVoxBigslashRightHead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Vox]
+  groupWhitelist: [Vox]
   coloring:
     default:
       type:
@@ -64,8 +60,7 @@
 - type: marking
   id: ScarsVoxSlashLeftHead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Vox]
+  groupWhitelist: [Vox]
   coloring:
     default:
       type:
@@ -78,8 +73,7 @@
 - type: marking
   id: ScarsVoxSlashRightHead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Vox]
+  groupWhitelist: [Vox]
   coloring:
     default:
       type:
@@ -92,8 +86,7 @@
 - type: marking
   id: ScarsVoxClawTorso
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Vox]
+  groupWhitelist: [Vox]
   coloring:
     default:
       type:

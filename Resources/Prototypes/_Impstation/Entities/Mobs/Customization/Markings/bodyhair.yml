@@ -8,8 +8,7 @@
 - type: marking
   id: BodyhairHumanMale
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Dwarf, Human, Felinid, Rodentia ]
+  groupWhitelist: [ Human, Felinid, Rodentia ]
   sexRestriction: [ Male ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/bodyhair.rsi
@@ -18,8 +17,7 @@
 - type: marking
   id: BodyhairHumanFemale
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Dwarf, Human, Felinid, Rodentia ]
+  groupWhitelist: [ Human, Felinid, Rodentia ]
   sexRestriction: [ Female ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/bodyhair.rsi
@@ -28,8 +26,7 @@
 - type: marking
   id: BodyhairHumanUnsexed
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Dwarf, Human, Felinid, Rodentia ]
+  groupWhitelist: [ Human, Felinid, Rodentia ]
   sexRestriction: [ Unsexed ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/bodyhair.rsi

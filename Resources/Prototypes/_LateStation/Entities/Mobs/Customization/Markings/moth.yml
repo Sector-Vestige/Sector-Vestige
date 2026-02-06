@@ -8,8 +8,7 @@
 - type: marking
   id: MothWingsSoftcoat
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Moth]
+  groupWhitelist: [Moth]
   sprites:
   - sprite: _LateStation/Mobs/Customization/Moth/VS_moth_wings.rsi
     state: softcoat_primary
@@ -21,8 +20,7 @@
 - type: marking
   id: MothWingsVoltaic
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Moth]
+  groupWhitelist: [Moth]
   sprites:
   - sprite: _LateStation/Mobs/Customization/Moth/VS_moth_wings.rsi
     state: voltaic_primary
@@ -34,8 +32,7 @@
 - type: marking
   id: MothScarVoltaic
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Moth]
+  groupWhitelist: [Moth]
   sprites:
   - sprite: _LateStation/Mobs/Customization/Moth/VS_moth_wings.rsi
     state: voltaic_scar
@@ -43,8 +40,7 @@
 - type: marking
   id: MothAntennaeSoftcoat
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Moth]
+  groupWhitelist: [Moth]
   sprites:
   - sprite: _LateStation/Mobs/Customization/Moth/VS_moth_wings.rsi
     state: softcoat_antennae

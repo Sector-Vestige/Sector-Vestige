@@ -8,8 +8,7 @@
 - type: marking
   id: MothMarkingRing
   bodyPart: HeadTop
-  markingCategory: Overlay
-  speciesRestriction: [Moth]
+  groupWhitelist: [Moth]
   sprites:
   - sprite: _Umbra/Mobs/Customization/forehead.rsi
     state: ring
