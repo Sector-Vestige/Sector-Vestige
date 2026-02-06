@@ -35,15 +35,6 @@
     ClothingBeltMedicalFilled: 2
     # Shared Essential
     HandheldHealthAnalyzer: 3
-    Gauze: 5
-    Brutepack: 5
-    Ointment: 5
-    Bloodpack: 5
-    Tourniquet: 2
-    ChemistryBottleEpinephrine: 3
-    ChemistryBottleBicaridine: 1
-    Syringe: 5
-    JetInjector: 2
     JetInjector: 3
     # Paramed Essential Gear
     ClothingBeltMedicalEMTFilled: 1
