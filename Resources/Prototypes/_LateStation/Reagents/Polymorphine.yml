@@ -15,7 +15,7 @@
   flavor: nothing
   color: "#a150b5"
   metabolisms:
-    Drink:
+    Bloodstream:
       metabolismRate: 1
       effects:
       # note: THIS also sucks - CobaltBox

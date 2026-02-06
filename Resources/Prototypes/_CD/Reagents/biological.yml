@@ -17,7 +17,7 @@
   recognizable: true
   physicalDesc: reagent-physical-desc-reflective
   metabolisms:
-    Drink:
+    Bloodstream:
       effects:
       - !type:SatiateThirst
         factor: 1.5

@@ -156,13 +156,13 @@
   equipment:
     id: MedicalPDA
 
-# - type: loadout
-#   id: SeniorPhysicianPDA
-#   effects:
-#   - !type:GroupLoadoutEffect
-#     proto: SeniorPhysician
-#   equipment:
-#     id: SeniorPhysicianPDA
+- type: loadout
+  id: SeniorPhysicianPDA
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
+  equipment:
+    id: SeniorPhysicianPDA
 
 #Masks
 - type: loadout

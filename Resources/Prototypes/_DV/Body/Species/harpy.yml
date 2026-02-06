@@ -431,14 +431,21 @@
   components:
   - type: Metabolizer
     updateInterval: 2.0
-    removeEmpty: true
-    solutionOnBody: false
-    solution: "Lung"
     metabolizerTypes: [ Human ]
-    groups:
-    - id: Gas
-      rateModifier: 200.0
 
 - type: entity
   parent: [ OrganBaseHeart, OrganHarpyInternal, OrganHarpyMetabolizer ]
   id: OrganHarpyHeart
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionHarpyPlayMidi
+  name: Play MIDI
+  description: Open your vocal MIDI interface.
+  components:
+  - type: Action
+    icon: Interface/Actions/pai-midi.png
+    itemIconStyle: NoItem
+  - type: InstantAction
+    event: !type:OpenUiActionEvent
+      key: enum.InstrumentUiKey.Key

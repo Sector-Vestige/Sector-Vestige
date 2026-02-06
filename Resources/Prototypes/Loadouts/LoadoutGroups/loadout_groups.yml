@@ -1,80 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Wizards Den contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Bellwether <157836624+BellwetherLogic@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 BuildTools <unconfigured@null.spigotmc.org>
-# SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 DieselMohawk <gavin.drinka@gmail.com>
-# SPDX-FileCopyrightText: 2024 Doctor-Cpu <77215380+Doctor-Cpu@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 FluffMe <1780586+FluffMe@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 FluffMe <dex.stb@gmail.com>
-# SPDX-FileCopyrightText: 2024 Ghagliiarghii <68826635+Ghagliiarghii@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Hanz <41141796+Hanzdegloker@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kelderan <66748890+KeldWolf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 LittleNorthStar <vorriasam@gmail.com>
-# SPDX-FileCopyrightText: 2024 Michael Krebs <michael@krb.io>
-# SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Pancake <Pangogie@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 PoorMansDreams <150595537+PoorMansDreams@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 SpeltIncorrectyl <66873282+SpeltIncorrectyl@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-# SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 cool dolphin <36332236+Afrokada@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 jack-thedragon95 <dankbooty66@gmail.com>
-# SPDX-FileCopyrightText: 2024 joshepvodka <86210200+joshepvodka@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 liltenhead <liltenhead@gmail.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 pigeonpeas <147350443+pigeonpeas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 thesaladmancer <86530143+thesaladmancer@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 96flo <163569033+96flo@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 BoskiYourk <175783845+BoskiYourk@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 BoskiYourk <175783845+BoskiYourk@users.noreply.guthub.com>
-# SPDX-FileCopyrightText: 2025 Brassica Prime <114382089+Pumkin69@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Cass <45694413+CubixThree@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-# SPDX-FileCopyrightText: 2025 Hitlinemoss <209321380+Hitlinemoss@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Huaqas <zacswebb@gmail.com>
-# SPDX-FileCopyrightText: 2025 Jajsha <101492056+Zap527@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Julian Giebel <juliangiebel@live.de>
-# SPDX-FileCopyrightText: 2025 JuneSzalkowska <113352036+JuneSzalkowska@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 JuneSzalkowska <juneszalkowska@gmail.com>
-# SPDX-FileCopyrightText: 2025 KingFroozy <140668342+KingFroozy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 MissKay1994 <15877268+MissKay1994@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Momo <Rsnesrud@gmail.com>
-# SPDX-FileCopyrightText: 2025 MoonlightHollow <muszynskinicholas8@gmail.com>
-# SPDX-FileCopyrightText: 2025 Mora <46364955+TrixxedHeart@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 NakataRin <45946146+NakataRin@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Phooooooooooooooooooooooooooooooosphate <184853112+Phooooooooooooooooooooooooooooooosphate@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2025 T <theo75cg@gmail.com>
-# SPDX-FileCopyrightText: 2025 TheCrimsonJupiter <54331834+TheCrimsonJupiter@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 TheSecondLord <88201625+TheSecondLord@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Trosling <111116669+RHSvenson@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Vasilis The Pikachu <vasilis@pikachu.systems>
-# SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 bruhmogus <104110869+bruhmogus@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 centcomofficer24 <theo75cg@gmail.com>
-# SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
-# SPDX-FileCopyrightText: 2025 kosticia <kosticia46@gmail.com>
-# SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 paige404 <59348003+paige404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
-# SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 whythelettuce <stephanietokai@gmail.com>
-# SPDX-FileCopyrightText: 2025 youtissoum <51883137+youtissoum@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 # Miscellaneous
 - type: loadoutGroup
   id: Trinkets
@@ -87,14 +10,6 @@
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
-  - PlushieVox # CD
-  - PlushieArachind # CD
-  - PlushieDiona # CD
-  - PlushieHuman # CD
-  - PlushieMoth # CD
-  - PlushieSharkBlue # CD
-  - PlushieSharkPink # CD
-  - PlushieSharkGrey # CD: Putting these up here so they show up along the existing plushies.
   - ThreeCandles
   - Lighter
   - CigPackGreen
@@ -131,22 +46,6 @@
   - OffsetCaneNT
   - Cane
   - TowelColorWhite
-  - TowelColorGray
-  - TowelColorBlack
-  - TowelColorRed
-  - TowelColorOrange
-  - TowelColorLightBrown
-  - TowelColorYellow
-  - TowelColorDarkGreen
-  - TowelColorGreen
-  - TowelColorLightBlue
-  - TowelColorDarkBlue
-  - TowelColorPurple
-  - TowelColorMaroon
-  - TowelColorMime
-  - TowelColorSilver
-  - TowelColorGold
-  - CDDogtags #Sector Vestige - Dogtags to loadout
 
 - type: loadoutGroup
   id: Glasses
@@ -208,7 +107,6 @@
   loadouts:
   - CaptainHead
   - CaptainCap
-  - CaptainTricorn #Added by Sector-Vestige
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -790,7 +688,6 @@
   loadouts:
   - QuartermasterHead
   - QuartermasterBeret
-  - QuartermasterTricorn #Added by Sector-Vestige
 
 - type: loadoutGroup
   id: QuartermasterJumpsuit
@@ -801,7 +698,6 @@
   - QuartermasterTurtleneck
   - QuartermasterTurtleneckSkirt
   - QuartermasterFormalSuit
-  - QuartermasterForemansuit # CD
 
 - type: loadoutGroup
   id: QuartermasterNeck
@@ -817,15 +713,11 @@
   minLimit: 0
   loadouts:
   - QuartermasterWintercoat
-  - CargoBomber # CD
-  - ForemanCoat # CD
 
 - type: loadoutGroup
   id: QuartermasterShoes
   name: loadout-group-quartermaster-shoes
   loadouts:
-  - LeatherShoes # CD
-  - LaceupShoes # CD
   - BrownShoes
   - CargoWinterBoots
 
@@ -846,14 +738,8 @@
   id: CargoTechnicianJumpsuit
   name: loadout-group-cargo-technician-jumpsuit
   loadouts:
-#  - CargoTechnicianJumpsuit
-#  - CargoTechnicianJumpskirt
-  - CargoTechnicianPants # CD
-  - CargoTechnicianJumpsuitLight # CD
-  - CargoTechnicianJumpskirtLight # CD
-  - CargoTechnicianJumpsuitDark # CD
-  - CargoTechnicianJumpskirtDark # CD
-  - CargoTechnicianOveralls # CD
+  - CargoTechnicianJumpsuit
+  - CargoTechnicianJumpskirt
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
@@ -869,7 +755,6 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
-  - CargoBomber # CD
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
@@ -877,7 +762,6 @@
   loadouts:
   - BlackShoes
   - CargoWinterBoots
-  - SteelWorkboots # CD
 
 - type: loadoutGroup
   id: CargoTechnicianID
@@ -906,7 +790,6 @@
   minLimit: 0
   loadouts:
   - SalvageSpecialistWintercoat
-  - SalvageSpecialistMiningJacket #Added by Sector-Vestige
 
 - type: loadoutGroup
   id: SalvageSpecialistShoes
@@ -936,9 +819,6 @@
   loadouts:
   - ChiefEngineerJumpsuit
   - ChiefEngineerJumpskirt
-  - ChiefEngineerJumpsuitModern # CD Drip 4
-  - ChiefEngineerJumpskirtModern # CD Drip 4
-  - ChiefEngineerJumpsuitFormal # CD Drip 4
   - ChiefEngineerTurtleneck
   - ChiefEngineerTurtleneckSkirt
 
@@ -956,15 +836,12 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
-  - StationEngineerJacket # CD
 
 - type: loadoutGroup
   id: ChiefEngineerShoes
   name: loadout-group-chief-engineer-shoes
   loadouts:
-  - LaceupShoes # CD
-  - LeatherShoes # CD
-  - WorkBoots # CD
+  - BrownShoes
   - EngineeringWinterBoots
 
 #- type: loadoutGroup
@@ -1003,16 +880,8 @@
   - StationEngineerJumpsuit
   - StationEngineerJumpskirt
   - StationEngineerHazardsuit
-  - StationEngineerJumpsuitModern # CD
-  - StationEngineerJumpskirtModern # CD
-  - StationEngineerHazardsuitModern # CD
-  - StationEngineerCasualsuit # CD
-  - StationEngineerPants # CD
-  - StationEngineerJumpsuitEVA # CD
-  - StationEngineerJumpsuitMechanic # CD
-  - StationEngineerJumpskirtMechanic # CD
-  # - SeniorEngineerJumpsuit
-  # - SeniorEngineerJumpskirt
+  - SeniorEngineerJumpsuit
+  - SeniorEngineerJumpskirt
 
 - type: loadoutGroup
   id: StationEngineerBackpack
@@ -1021,7 +890,6 @@
   - StationEngineerBackpack
   - StationEngineerSatchel
   - StationEngineerDuffel
-  - EngineeringCarrybag # CD
 
 - type: loadoutGroup
   id: StationEngineerOuterClothing
@@ -1043,7 +911,7 @@
   name: loadout-group-station-engineer-id
   loadouts:
   - StationEngineerPDA
-  # - SeniorEngineerPDA
+  - SeniorEngineerPDA
 
 #- type: loadoutGroup
 #  id: StationEngineerJobTrinkets
@@ -1057,9 +925,6 @@
   loadouts:
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
-  - AtmosphericTechnicianJumpsuitModern # CD
-  - AtmosphericTechnicianJumpskirtModern # CD
-  - AtmosphericTechnicianHazardsuit # CD
   - AtmosphericTechnicianJumpsuitCasual
 
 - type: loadoutGroup
@@ -1068,7 +933,6 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
-  - AtmosphericTechnicianOveralls # CD
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -1077,7 +941,6 @@
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianSatchel
   - AtmosphericTechnicianDuffel
-  - EngineeringCarrybag # CD
 
 - type: loadoutGroup
   id: AtmosphericTechnicianShoes
@@ -1131,15 +994,13 @@
   minLimit: 0
   loadouts:
   - ResearchDirectorLabCoat
-  - HighCutRD #Added by Sector-Vestige
   - ResearchDirectorWintercoat
 
 - type: loadoutGroup
   id: ResearchDirectorShoes
   name: loadout-group-research-director-shoes
   loadouts:
-  - LeatherShoes # CD
-  - LaceupShoes # CD
+  - BrownShoes
   - ScienceWinterBoots
 
 #- type: loadoutGroup
@@ -1172,8 +1033,8 @@
   - ScientistJumpskirt
   - RoboticistJumpsuit
   - RoboticistJumpskirt
-  # - SeniorResearcherJumpsuit
-  # - SeniorResearcherJumpskirt
+  - SeniorResearcherJumpsuit
+  - SeniorResearcherJumpskirt
 
 - type: loadoutGroup
   id: ScientistBackpack
@@ -1189,13 +1050,11 @@
   minLimit: 0
   loadouts:
   - RegularLabCoat
-  - HighCutBase #Sector-Vestige
   - ScienceLabCoat
-  - HighCutScience #Sector-Vestige
   - ScienceWintercoat
   - RoboticistLabCoat
   - RoboticistWintercoat
-  # - SeniorResearcherLabCoat
+  - SeniorResearcherLabCoat
 
 - type: loadoutGroup
   id: ScientistShoes
@@ -1219,8 +1078,7 @@
   name: loadout-group-scientist-id
   loadouts:
   - ScientistPDA
-  - RoboticistPDA #CD addition
-  # - SeniorResearcherPDA
+  - SeniorResearcherPDA
 
 #- type: loadoutGroup
 #  id: ScientistJobTrinkets
@@ -1249,7 +1107,6 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
-  - HeadofSecuritySheriffHat #CD
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -1257,8 +1114,6 @@
   loadouts:
   - HeadofSecurityJumpsuit
   - HeadofSecurityJumpskirt
-  - SeniorOfficerCasualsuit # CD
-  - SeniorOfficerCasualskirt # CD
   - HeadofSecurityTurtleneck
   - HeadofSecurityTurtleneckSkirt
   - HeadofSecurityFormalSuit
@@ -1278,7 +1133,6 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
-  - SecurityGreatcoat # CD
 
 - type: loadoutGroup
   id: HeadofSecurityJobTrinkets
@@ -1301,8 +1155,6 @@
   loadouts:
   - WardenJumpsuit
   - WardenJumpskirt
-  - WardenCasualsuit # CD
-  - WardenCasualskirt # CD
 
 - type: loadoutGroup
   id: WardenOuterClothing
@@ -1310,7 +1162,6 @@
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
-  - SecurityGreatcoat # CD
 
 - type: loadoutGroup
   id: WardenJobTrinkets
@@ -1335,12 +1186,10 @@
   loadouts:
   - SecurityJumpsuit
   - SecurityJumpskirt
-  - SecurityCasualsuit # CD
-  - SecurityCasualskirt # CD
-  # - SeniorOfficerJumpsuit
-  # - SeniorOfficerJumpskirt
   - SecurityJumpsuitGrey
   - SecurityJumpskirtGrey
+  - SeniorOfficerJumpsuit
+  - SeniorOfficerJumpskirt
   - TrooperUniform
 
 - type: loadoutGroup
@@ -1357,7 +1206,6 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
-  - SecurityPlateCarrier #CD
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1366,13 +1214,12 @@
   - ArmorVest
   - ArmorVestSlim
   - SecurityOfficerWintercoat
-  - SecurityGreatcoat # CD
 
 - type: loadoutGroup
   id: SecurityShoes
   name: loadout-group-security-shoes
   loadouts:
-  - CombatBoots #CD change from JackBoots to CombatBoots
+  - JackBoots
   - SecurityWinterBoots
 
 - type: loadoutGroup
@@ -1380,7 +1227,7 @@
   name: loadout-group-security-id
   loadouts:
   - SecurityPDA
-  # - SeniorOfficerPDA
+  - SeniorOfficerPDA
 
 - type: loadoutGroup
   id: SecurityJobTrinkets
@@ -1410,8 +1257,6 @@
   loadouts:
   - DetectiveJumpsuit
   - DetectiveJumpskirt
-  - DetectiveJumpsuitCasual # CD
-  - DetectiveJumpskirtCasual # CD
   - NoirJumpsuit
   - NoirJumpskirt
 
@@ -1422,7 +1267,6 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
-  - ForensicJacket # CD
 
 - type: loadoutGroup
   id: DetectiveJobTrinkets
@@ -1454,266 +1298,6 @@
   - EmergencyOxygenSecurity
   - LoadoutSpeciesVoxNitrogen
 
-# Medical
-- type: loadoutGroup
-  id: ChiefMedicalOfficerHead
-  name: loadout-group-chief-medical-officer-head
-  minLimit: 0
-  loadouts:
-  - ChiefMedicalOfficerBeret
-  - CMOMedicalHeadMirror
-
-- type: loadoutGroup
-  id: ChiefMedicalOfficerJumpsuit
-  name: loadout-group-chief-medical-officer-jumpsuit
-  loadouts:
-  - ChiefMedicalOfficerJumpsuit
-  - ChiefMedicalOfficerJumpskirt
-  - ChiefMedicalOfficerTurtleneckJumpsuit
-  - ChiefMedicalOfficerTurtleneckJumpskirt
-  - ChiefMedicalOfficerFormalsuit # CD
-
-- type: loadoutGroup
-  id: ChiefMedicalOfficerOuterClothing
-  name: loadout-group-chief-medical-officer-outerclothing
-  minLimit: 0
-  loadouts:
-  - ChiefMedicalOfficerLabCoat
-  - HighCutCMO #Added by Sector-Vestige
-  - ChiefMedicalOfficerWintercoat
-
-- type: loadoutGroup
-  id: ChiefMedicalOfficerNeck
-  name: loadout-group-chief-medical-officer-neck
-  minLimit: 0
-  loadouts:
-  - ChiefMedicalOfficerCloak
-  - ChiefMedicalOfficerMantle
-
-- type: loadoutGroup
-  id: ChiefMedicalOfficerShoes
-  name: loadout-group-chief-medical-officer-shoes
-  loadouts:
-  - LeatherShoes # CD
-  - LaceupShoes # CD
-  - MedicalWinterBoots
-  - BrownShoes
-
-- type: loadoutGroup
-  id: ChiefMedicalOfficerJobTrinkets
-  name: loadout-group-jobtrinkets
-  minLimit: 0
-  loadouts:
-  - LizardPlushieChiefMedicalOfficer
-
-- type: loadoutGroup
-  id: MedicalDoctorHead
-  name: loadout-group-medical-doctor-head
-  minLimit: 0
-  loadouts:
-  - MedicalBeret
-  # - SeniorPhysicianBeret
-  - MedicalHeadMirror
-  - BlueSurgeryCap
-  - GreenSurgeryCap
-  - PurpleSurgeryCap
-  - NurseHat
-
-- type: loadoutGroup
-  id: MedicalDoctorJumpsuit
-  name: loadout-group-medical-doctor-jumpsuit
-  loadouts:
-  - MedicalDoctorJumpsuit
-  - MedicalDoctorJumpskirt
-  - MedicalCasualsuit # CD
-  # - SeniorPhysicianJumpsuit
-  # - SeniorPhysicianJumpskirt
-  - MedicalBlueScrubs
-  - MedicalGreenScrubs
-  - MedicalPurpleScrubs
-  - ViroJumpsuit # CD
-  - ViroJumpskirt # CD
-  - GeneJumpsuit # CD
-  - GeneJumpskirt # CD
-
-- type: loadoutGroup
-  id: MedicalDoctorOuterClothing
-  name: loadout-group-medical-doctor-outerclothing
-  minLimit: 0
-  loadouts:
-  - RegularLabCoat
-  - HighCutBase #Sector-Vestige
-  - MedicalDoctorWintercoat
-  # - SeniorPhysicianLabCoat
-  - ViroCoat # CD
-  - ViroWintercoat # CD
-  - GeneCoat # CD
-  - GeneWintercoat # CD
-
-- type: loadoutGroup
-  id: MedicalBackpack
-  name: loadout-group-medical-doctor-backpack
-  loadouts:
-  - MedicalDoctorBackpack
-  - MedicalDoctorSatchel
-  - MedicalDoctorDuffel
-  - MedicalCarrybag # CD
-  - ParamedicCarrybag # CD
-
-- type: loadoutGroup
-  id: MedicalShoes
-  name: loadout-group-medical-doctor-shoes
-  loadouts:
-  - WhiteShoes
-  - MedicalWinterBoots
-
-- type: loadoutGroup
-  id: MedicalDoctorPDA
-  name: loadout-group-medical-doctor-id
-  loadouts:
-  - MedicalDoctorPDA
-  # - SeniorPhysicianPDA
-
-- type: loadoutGroup
-  id: MedicalGloves
-  name: loadout-group-medical-gloves
-  minLimit: 0
-  loadouts:
-  - LatexGloves
-  - NitrileGloves
-
-- type: loadoutGroup
-  id: MedicalMask
-  name: loadout-group-medical-mask
-  minLimit: 0
-  loadouts:
-  - SterileMask
-
-- type: loadoutGroup
-  id: MedicalDoctorJobTrinkets
-  name: loadout-group-jobtrinkets
-  minLimit: 0
-  loadouts:
-  - LizardPlushieMedicalDoctor
-
-- type: loadoutGroup
-  id: MedicalInternJumpsuit
-  name: loadout-group-medical-intern-jumpsuit
-  loadouts:
-  - WhiteJumpsuit
-  - WhiteJumpskirt
-
-- type: loadoutGroup
-  id: MedicalInternJobTrinkets
-  name: loadout-group-jobtrinkets
-  minLimit: 0
-  loadouts:
-  - LizardPlushieMedicalIntern
-
-- type: loadoutGroup
-  id: ChemistJumpsuit
-  name: loadout-group-chemist-jumpsuit
-  loadouts:
-  - ChemistJumpsuit
-  - ChemistJumpskirt
-  - ChemistCasualsuit # CD
-
-- type: loadoutGroup
-  id: ChemistOuterClothing
-  name: loadout-group-chemist-outerclothing
-  minLimit: 0
-  loadouts:
-  - RegularLabCoat
-  - HighCutBase #Sector-Vestige
-  - ChemistLabCoat
-  - HighCutChemist #Sector-Vestige
-  - ChemistWintercoat
-
-- type: loadoutGroup
-  id: ChemistBackpack
-  name: loadout-group-chemist-backpack
-  loadouts:
-  - ChemistBackpack
-  - ChemistSatchel
-  - ChemistDuffel
-
-- type: loadoutGroup
-  id: ChemistJobTrinkets
-  name: loadout-group-jobtrinkets
-  minLimit: 0
-  loadouts:
-  - LizardPlushieChemist
-
-- type: loadoutGroup
-  id: ParamedicHead
-  name: loadout-group-paramedic-head
-  minLimit: 0
-  loadouts:
-  - ParamedicHead
-  # CD: ETU Loadout
-  - HeadHelmetETUPointman
-
-- type: loadoutGroup
-  id: ParamedicJumpsuit
-  name: loadout-group-paramedic-jumpsuit
-  loadouts:
-  - ParamedicJumpsuit
-  - ParamedicJumpskirt
-  - ParamedicCasualsuit # CD
-  - ParamedicCasualskirt # CD
-  # CD: ETU Loadout
-  - JumpsuitETUFlightsuit
-
-- type: loadoutGroup
-  id: ParamedicOuterClothing
-  name: loadout-group-paramedic-outerclothing
-  minLimit: 0
-  loadouts:
-  - ParamedicWindbreaker
-  - ParamedicWintercoat
-  - BlueHighvisBomber # CD
-  # CD: ETU Loadout
-  # - BeltHarnessETU
-
-- type: loadoutGroup
-  id: ParamedicShoes
-  name: loadout-group-paramedic-shoes
-  loadouts:
-  - BlueShoes
-  - WhiteShoes
-  - MedicalWinterBoots
-  # CD: ETU Loadout
-  - ShoesColorSlate
-
-- type: loadoutGroup
-  id: ParamedicJobTrinkets
-  name: loadout-group-jobtrinkets
-  minLimit: 0
-  loadouts:
-  - LizardPlushieParamedic
-
-- type: loadoutGroup
-  id: MedicalEyewear
-  name: loadout-group-medical-glasses
-  minLimit: 0
-  loadouts:
-  - MedicalHud
-  - MedicalEyePatchHud
-  - MedicalVisorHud #CD Addition
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-
-- type: loadoutGroup
-  id: SurvivalMedical
-  name: loadout-group-survival-medical
-  minLimit: 2
-  hidden: true
-  loadouts:
-  - EmergencyNitrogenMedical
-  - EmergencyOxygenMedical
-  - LoadoutSpeciesVoxNitrogen
-
 # Wildcards
 - type: loadoutGroup
   id: ReporterJumpsuit
@@ -1734,14 +1318,12 @@
   loadouts:
   - PsychologistJumpsuit
   - PsychologistJumpskirt
-  - PsychologistCasualJumpsuit # CD
 
-- type: loadoutGroup
-  id: PsychologistJobTrinkets
-  name: loadout-group-jobtrinkets
-  minLimit: 0
-  loadouts:
-  - LizardPlushiePsychologist
+#- type: loadoutGroup
+#  id: PsychologistJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
 
 # Other
 - type: loadoutGroup

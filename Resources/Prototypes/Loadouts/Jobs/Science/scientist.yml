@@ -1,12 +1,12 @@
-# # Senior Time (CD: Disabled)
-# - type: loadoutEffectGroup
-#   id: SeniorResearcher
-#   effects:
-#   - !type:JobRequirementLoadoutEffect
-#     requirement:
-#       !type:DepartmentTimeRequirement
-#       department: Science
-#       time: 216000 #60 hrs
+# Senior Time
+- type: loadoutEffectGroup
+  id: SeniorResearcher
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Science
+      time: 216000 #60 hrs
 
 # Head
 - type: startingGear
@@ -148,10 +148,10 @@
   equipment:
     id: SciencePDA
 
-# - type: loadout
-#   id: SeniorResearcherPDA
-#   effects:
-#   - !type:GroupLoadoutEffect
-#     proto: SeniorResearcher
-#   equipment:
-#     id: SeniorResearcherPDA
+- type: loadout
+  id: SeniorResearcherPDA
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorResearcher
+  equipment:
+    id: SeniorResearcherPDA
