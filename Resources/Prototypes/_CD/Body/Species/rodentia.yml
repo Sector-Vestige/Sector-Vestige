@@ -220,7 +220,7 @@
   id: OrganRodentiaTorso
 
 - type: entity
-  parent: [ OrganBaseHead, OrganRodentiaExternal ]
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganRodentiaExternal ]
   id: OrganRodentiaHead
   components:
   - type: VisualOrganMarkings

@@ -229,7 +229,7 @@
         Quantity: 10
 
 - type: entity
-  parent: [ OrganBaseHead, OrganAvaliExternal ]
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganAvaliExternal ]
   id: OrganAvaliHead
   components:
   - type: VisualOrganMarkings

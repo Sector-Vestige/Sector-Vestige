@@ -244,7 +244,7 @@
   id: OrganFoxfolkTorso
 
 - type: entity
-  parent: [ OrganBaseHead, OrganFoxfolkExternal ]
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganFoxfolkExternal ]
   id: OrganFoxfolkHead
   components:
   - type: VisualOrganMarkings
@@ -295,6 +295,10 @@
 - type: entity
   parent: [ OrganFoxfolkVisual, OrganBaseEyes, OrganFoxfolkInternal ]
   id: OrganFoxfolkEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
 
 - type: entity
   parent: [ OrganBaseTongue, OrganFoxfolkInternal ]

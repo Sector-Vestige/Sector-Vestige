@@ -334,7 +334,7 @@
         Quantity: 20
 
 - type: entity
-  parent: [ OrganBaseHead, OrganResomiExternal ]
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganResomiExternal ]
   id: OrganResomiHead
   components:
   - type: VisualOrganMarkings

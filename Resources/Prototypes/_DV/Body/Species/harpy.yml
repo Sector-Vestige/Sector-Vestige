@@ -292,7 +292,7 @@
         Quantity: 20
 
 - type: entity
-  parent: [ OrganBaseHead, OrganHarpyExternal ]
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganHarpyExternal ]
   id: OrganHarpyHead
   components:
   - type: VisualOrganMarkings

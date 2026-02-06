@@ -118,9 +118,9 @@
         density: 130
         restitution: 0.0
         mask:
-          - MobMask
+        - MobMask
         layer:
-          - MobLayer
+        - MobLayer
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -150,11 +150,11 @@
     - reagents: [ MilkOat ]
       methods: [ Touch ]
       effects:
-        - !type:PopupMessage
-          type: Local
-          visualType: Large
-          messages: [ "skeleton-sprayed-by-oat-milk-popup" ]
-          probability: 0.5
+      - !type:PopupMessage
+        type: Local
+        visualType: Large
+        messages: [ "skeleton-sprayed-by-oat-milk-popup" ]
+        probability: 0.5
   - type: FireVisuals
     alternateState: Standing
   - type: FlashImmunity
