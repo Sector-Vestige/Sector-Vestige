@@ -8,7 +8,7 @@
 - type: marking
   id: HumanHairGatheredlow
   bodyPart: Hair
-  groupWhitelist: [Human, Slime, Felinid ] 
+  groupWhitelist: [Human, Slime, Felinid ]
   sprites:
     - sprite: _Impstation/Mobs/Customization/human_hair.rsi
       state: gatheredlow
@@ -16,7 +16,7 @@
 - type: marking
   id: HumanHairLowpigtails
   bodyPart: Hair
-  groupWhitelist: [Human, Slime, Felinid ] 
+  groupWhitelist: [Human, Slime, Felinid ]
   sprites:
     - sprite: _Impstation/Mobs/Customization/human_hair.rsi
       state: lowpigtails
@@ -24,7 +24,7 @@
 - type: marking
   id: HumanHairFrenchBraid
   bodyPart: Hair
-  groupWhitelist: [Human, Slime, Felinid ] 
+  groupWhitelist: [Human, Slime, Felinid ]
   sprites:
     - sprite: _Impstation/Mobs/Customization/human_hair.rsi
       state: frenchbraid
