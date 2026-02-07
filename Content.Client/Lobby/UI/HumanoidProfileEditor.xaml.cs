@@ -874,6 +874,7 @@ namespace Content.Client.Lobby.UI
 
             SpriteView.ReloadProfilePreview(Profile);
 
+            // Sector Vestige - Added a null guard
             if (!_entManager.EntityExists(SpriteView.PreviewDummy))
                 return;
 
