@@ -14,7 +14,7 @@
   <GuideEntityEmbed Entity="AppearanceReptilian" Caption="Reptilian"/>
   <GuideEntityEmbed Entity="AppearanceSlimePerson" Caption="Slime Person"/>
   <GuideEntityEmbed Entity="AppearanceVox" Caption="Vox"/>
-  <GuideEntityEmbed Entity="MobVulpkanin" Caption="Vulpkanin"/>
+  <GuideEntityEmbed Entity="AppearanceVulpkanin" Caption="Vulpkanin"/>
   </Box>
   <Box>
   <GuideEntityEmbed Entity="AppearanceFelinid" Caption="Felinid"/>
@@ -23,9 +23,6 @@
   <GuideEntityEmbed Entity="AppearanceAvali" Caption="Avali"/>
   <GuideEntityEmbed Entity="AppearanceFoxfolk" Caption="Foxfolk"/>
   <GuideEntityEmbed Entity="AppearanceRodentia" Caption="Rodentia"/>
-  </Box>
-  <Box>
-    <GuideEntityEmbed Entity="AppearanceVulpkanin" Caption="Vulpkanin"/>
   </Box>
 
 </Document>

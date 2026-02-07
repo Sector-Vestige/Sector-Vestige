@@ -88,6 +88,7 @@
   - type: Sprite
     noRot: true
     drawdepth: Mobs
+  - type: ScaleVisuals
     scale: 1, 0.8
 
 - type: entity
