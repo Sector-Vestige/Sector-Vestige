@@ -5,4 +5,4 @@
   prototype: MobDwarf
   dollPrototype: AppearanceDwarf
   skinColoration: HumanToned
-  defaultHeight: 0.8
+  defaultHeight: 0.8 # SV Height system

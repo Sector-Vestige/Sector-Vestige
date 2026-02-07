@@ -1,17 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Wizards Den contributors
-# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2023 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 PixelTK <85175107+PixelTheKermit@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Adrian16199 <144424013+Adrian16199@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Boaz1111 <boazwand@gmail.com>
-# SPDX-FileCopyrightText: 2025 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Zalycon <84675130+Zalycon@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Mangohydra <156087924+Mangohydra@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 - type: species
   id: Arachnid
   name: species-name-arachnid
@@ -20,9 +6,9 @@
   defaultSkinTone: "#385878"
   dollPrototype: AppearanceArachnid
   skinColoration: Hues
-  defaultHeight: 1.0
   maleFirstNames: NamesArachnidFirst
   femaleFirstNames: NamesArachnidFirst
   lastNames: NamesArachnidLast
   sexes:
   - Unsexed
+  defaultHeight: 1.0 # SV Height system
