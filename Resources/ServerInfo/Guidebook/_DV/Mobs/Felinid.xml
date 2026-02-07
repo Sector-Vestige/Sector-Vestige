@@ -2,7 +2,7 @@
   # Felinid
 
   <Box>
-    <GuideEntityEmbed Entity="MobFelinidDummy" Caption=""/>
+    <GuideEntityEmbed Entity="AppearanceFelinid" Caption=""/>
   </Box>
 
   Felinids are a feline humanoid species with cat-like ears and tails.
