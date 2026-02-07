@@ -17,12 +17,12 @@
   <GuideEntityEmbed Entity="MobVulpkanin" Caption="Vulpkanin"/>
   </Box>
   <Box>
-  <GuideEntityEmbed Entity="MobFelinidDummy" Caption="Felinid"/>
-  <GuideEntityEmbed Entity="MobHarpyDummy" Caption="Harpy"/>
-  <GuideEntityEmbed Entity="MobResomiDummy" Caption="Resomi"/>
-  <GuideEntityEmbed Entity="MobAvali" Caption="Avali"/>
-  <GuideEntityEmbed Entity="MobFoxfolk" Caption="Foxfolk"/>
-  <GuideEntityEmbed Entity="MobRodentia" Caption="Rodentia"/>
+  <GuideEntityEmbed Entity="AppearanceFelinid" Caption="Felinid"/>
+  <GuideEntityEmbed Entity="AppearanceHarpy" Caption="Harpy"/>
+  <GuideEntityEmbed Entity="AppearanceResomi" Caption="Resomi"/>
+  <GuideEntityEmbed Entity="AppearanceAvali" Caption="Avali"/>
+  <GuideEntityEmbed Entity="AppearanceFoxfolk" Caption="Foxfolk"/>
+  <GuideEntityEmbed Entity="AppearanceRodentia" Caption="Rodentia"/>
   </Box>
   <Box>
     <GuideEntityEmbed Entity="AppearanceVulpkanin" Caption="Vulpkanin"/>

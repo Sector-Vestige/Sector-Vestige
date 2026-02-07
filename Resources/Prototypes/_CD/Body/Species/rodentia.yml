@@ -271,6 +271,10 @@
 - type: entity
   parent: [ OrganRodentiaVisual, OrganBaseEyes, OrganRodentiaInternal ]
   id: OrganRodentiaEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
 
 - type: entity
   parent: [ OrganBaseTongue, OrganRodentiaInternal ]

@@ -874,6 +874,9 @@ namespace Content.Client.Lobby.UI
 
             SpriteView.ReloadProfilePreview(Profile);
 
+            if (!_entManager.EntityExists(SpriteView.PreviewDummy))
+                return;
+
             // Sector Vestige - Get the original base scale from the species (before any height modifications)
             // This ensures we don't multiply an already-scaled value
             var baseScale = Vector2.One;

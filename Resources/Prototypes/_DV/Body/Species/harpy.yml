@@ -414,6 +414,10 @@
 - type: entity
   parent: [ OrganHarpyVisual, OrganBaseEyes, OrganHarpyInternal ]
   id: OrganHarpyEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
 
 - type: entity
   parent: [ OrganBaseTongue, OrganHarpyInternal ]
