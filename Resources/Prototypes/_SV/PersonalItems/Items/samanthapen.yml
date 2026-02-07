@@ -1,0 +1,36 @@
+# Personal item for Samnatha Cartor
+# Todo: fix offset to move slightly upwards, fix inhand left and inhand right sprites, fix inventory size to be 1x1
+- type: entity
+  parent: BaseItem
+  id: PersonalItemSamanthaPen
+  name: Smantha's Pen
+  description: A well crafted and timeworn ink pen. It's body is made from a fine ivory, three colorful bird feathers protrude from the end.
+  components:
+  - type: Sprite
+    sprite: _SV/PersonalItems/Items/samanthapen.rsi
+    state: samantha-pen
+  - type: Item
+    sprite: _SV/PersonalItems/Items/samanthapen.rsi
+    size: Tiny
+  - type: Tag
+    tags:
+    - Write
+    - Pen
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/pen_click.ogg
+      params:
+        volume: -4
+        maxDistance: 2
+  - type: UseDelay
+    delay: 1.5
+
+- type: loadout
+  id: PersonalItemSamanthaPen
+  storage:
+    back:
+    - PersonalItemSamanthaPen
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Samantha Cartor
