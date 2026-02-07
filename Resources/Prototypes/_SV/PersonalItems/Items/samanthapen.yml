@@ -3,7 +3,7 @@
 - type: entity
   parent: BaseItem
   id: PersonalItemSamanthaPen
-  name: Smantha's Pen
+  name: Samantha's Pen
   description: A well crafted and timeworn ink pen. It's body is made from a fine ivory, three colorful bird feathers protrude from the end.
   components:
   - type: Sprite
