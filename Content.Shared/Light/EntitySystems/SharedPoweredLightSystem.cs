@@ -1,3 +1,14 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2025 Perry Fraser <perryprog@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Zamshi8 <235235723+Zamshi8@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -211,9 +222,9 @@ public abstract class SharedPoweredLightSystem : EntitySystem
     ///     Try to replace current bulb with a new one
     ///     If succeed old bulb just drops on floor
     /// </summary>
-    public bool ReplaceBulb(EntityUid uid, EntityUid bulb, PoweredLightComponent? light = null)
+    public bool ReplaceBulb(EntityUid uid, EntityUid bulb, out EntityUid? oldBulb, PoweredLightComponent? light = null) // Goobstation
     {
-        EjectBulb(uid, null, light);
+        oldBulb = EjectBulb(uid, null, light); // Goobstation
         return InsertBulb(uid, bulb, light);
     }
 
