@@ -225,6 +225,7 @@
     - Snarl
     - Howl
     - Whine
+    - Coo # FloofStation
   - type: Vocal
     sounds:
       Male: SoundsHarpyMale

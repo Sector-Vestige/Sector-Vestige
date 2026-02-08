@@ -1371,3 +1371,23 @@ Entries:
       message: light replacers now recycle lights
   id: 188
   time: '2026-01-31T16:04:27.0000000+00:00'
+- author: purpleskittleo
+  changes:
+    - type: Add
+      message: Added 12 different heartbeat SFX for GMs to play with.
+    - type: Add
+      message: Added "Monomania (Stinger Ver.)"
+    - type: Tweak
+      message: >-
+        Overhauled & reorganised the _SV audio folder. Things should be much
+        easier to navigate for GMs!
+  id: 189
+  time: '2026-02-06T18:04:05.0000000+00:00'
+- author: BackeTako
+  changes:
+    - type: Add
+      message: >-
+        Added new "Yip" & "Hiss" emotes for Lizards and "Coo" emote for Harpy
+        and Resomi
+  id: 190
+  time: '2026-02-08T12:30:38.0000000+00:00'

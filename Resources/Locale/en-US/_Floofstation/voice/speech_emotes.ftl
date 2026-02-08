@@ -5,4 +5,8 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-chat-emote-name-yip = Yips
+chat-emote-name-yip = Yip
+chat-emote-name-coo = Coo
+
+floof-chat-emote-msg-yip = yips!
+floof-chat-emote-msg-coo = coos.

@@ -255,7 +255,7 @@
   - type: Speech
     speechVerb: Parrot
     speechSounds: MaleAvali
-    allowedEmotes: ['Chirp']
+    allowedEmotes: ['Chirp', 'Coo'] # FloofStation - Coo
   - type: Vocal
     sounds:
       Male: MaleAvaliEmote
