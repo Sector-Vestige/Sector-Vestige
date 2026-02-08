@@ -81,10 +81,10 @@ public sealed partial class HumanoidCharacterProfileV1
     public PreferenceUnavailableMode PreferenceUnavailable;
 
     // SV - CD-Record migration after the Humanoidprofilesystem migration - START
-    [DataField]
+    [DataField("cosmaticDriftCharacterHeight")]
     public float Height;
 
-    [DataField]
+    [DataField("cosmaticDriftCharacterRecords")]
     public PlayerProvidedCharacterRecords CDCharacterRecord;
     // SV - CD-Record migration after the Humanoidprofilesystem migration - END
 
