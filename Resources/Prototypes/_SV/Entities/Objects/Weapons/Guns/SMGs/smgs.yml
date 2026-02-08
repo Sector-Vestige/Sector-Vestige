@@ -73,7 +73,7 @@
   name: R36-Violee
   parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
   id: WeaponSubMachineGunViolee
-  description: A newly issued NanoTrasen assault submachine gun, featuring enhanced ergonomics and a sleek, modern design. Despite being roughly the lenght of an average arm, it's suprisingly comfortable to wield. Advertised as an alternative to the well-known Drozd. Features barrel rifling, increasing the velocity of projectiles, takes mainly from .35 Auto.
+  description: A newly issued NanoTrasen assault submachine gun, featuring enhanced ergonomics and a sleek, modern design. Advertised as an alternative to the well-known Drozd. Features barrel rifling, increasing the velocity and precision of projectiles, takes mainly from .35 Auto.
   components:
   - type: Sprite
     sprite: _SV/Objects/Weapons/Guns/SMGs/Violee.rsi
@@ -95,6 +95,8 @@
   - type: Gun
     minAngle: 16
     maxAngle: 36
+    angleIncrease: 8
+    angleDecay: 3
     fireRate: 8
     projectileSpeed: 48
     soundGunshot:
