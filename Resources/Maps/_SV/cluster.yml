@@ -4576,6 +4576,8 @@ entities:
     - type: GridTree
     - type: Broadphase
     - type: OccluderTree
+    - type: Parallax
+      parallax: KettleStation
 - proto: AcousticGuitarInstrument
   entities:
   - uid: 5973
@@ -8302,7 +8304,7 @@ entities:
     - type: Transform
       pos: 11.3402405,-17.842106
       parent: 1
-- proto: ArrivalsSpawnPointHeadOfSecurity
+- proto: SpawnPointHeadOfSecurity
   entities:
   - uid: 10636
     components:
