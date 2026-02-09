@@ -1,22 +1,24 @@
+# SV - Begin: Remove Senior Courier PDA in favor of new role
 # Senior times
-- type: loadoutEffectGroup
-  id: SeniorCargo
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobCargoTechnician
-      time: 21600 #6 hrs
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobSalvageSpecialist
-      time: 21600 #6 hrs
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Cargo
-      time: 216000 # 60 hrs
+# - type: loadoutEffectGroup
+#   id: SeniorCargo
+#   effects:
+#   - !type:JobRequirementLoadoutEffect
+#     requirement:
+#       !type:RoleTimeRequirement
+#      role: JobCargoTechnician
+#      time: 21600 #6 hrs
+#  - !type:JobRequirementLoadoutEffect
+#    requirement:
+#      !type:RoleTimeRequirement
+#      role: JobSalvageSpecialist
+#      time: 21600 #6 hrs
+#  - !type:JobRequirementLoadoutEffect
+#     requirement:
+#       !type:DepartmentTimeRequirement
+#       department: Cargo
+#       time: 216000 # 60 hrs
+# SV - End: Remove Senior Courier PDA in favor of new role
 
 # Head
 - type: loadout
@@ -69,10 +71,12 @@
   equipment:
     id: CargoPDA
 
-- type: loadout
-  id: SeniorCourierPDA
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorCargo
-  equipment:
-    id: SeniorCourierPDA
+# SV - Begin: Remove Senior Courier PDA in favor of new role
+# - type: loadout
+#   id: SeniorCourierPDA
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: SeniorCargo
+#   equipment:
+#     id: SeniorCourierPDA
+# SV - End: Remove Senior Courier PDA in favor of new role

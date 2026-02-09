@@ -156,13 +156,15 @@
   equipment:
     id: MedicalPDA
 
-- type: loadout
-  id: SeniorPhysicianPDA
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorPhysician
-  equipment:
-    id: SeniorPhysicianPDA
+# SV - Begin: Remove Senior Physician PDA in favor of new role
+# - type: loadout
+#   id: SeniorPhysicianPDA
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: SeniorPhysician
+#   equipment:
+#     id: SeniorPhysicianPDA
+# SV - Begin: Remove Senior Physician PDA in favor of new role
 
 #Masks
 - type: loadout

@@ -1,17 +1,19 @@
+# SV - Begin: Remove Senior Officer PDA in favor of new role
 # Senior Time
-- type: loadoutEffectGroup
-  id: SeniorOfficer
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobWarden
-      time: 21600 #6 hrs
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Security
-      time: 216000 # 60 hrs
+# - type: loadoutEffectGroup
+#   id: SeniorOfficer
+#   effects:
+#   - !type:JobRequirementLoadoutEffect
+#     requirement:
+#       !type:RoleTimeRequirement
+#       role: JobWarden
+#       time: 21600 #6 hrs
+#   - !type:JobRequirementLoadoutEffect
+#     requirement:
+#       !type:DepartmentTimeRequirement
+#       department: Security
+#       time: 216000 # 60 hrs
+# SV - End: Remove Senior Officer PDA in favor of new role
 
 # Head
 - type: loadout
@@ -141,11 +143,12 @@
   equipment:
     id: SecurityPDA
 
-- type: loadout
-  id: SeniorOfficerPDA
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorOfficer
-  equipment:
-    id: SeniorOfficerPDA
-
+# SV - Begin: Remove Senior Officer PDA in favor of new role
+# - type: loadout
+#   id: SeniorOfficerPDA
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: SeniorOfficer
+#   equipment:
+#     id: SeniorOfficerPDA
+# SV - End: Remove Senior Officer PDA in favor of new role

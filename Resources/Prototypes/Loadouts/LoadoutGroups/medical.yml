@@ -50,6 +50,7 @@
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
+  - ChiefMedicalOfficerFormalsuit # CD
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
@@ -57,6 +58,7 @@
   minLimit: 0
   loadouts:
   - ChiefMedicalOfficerLabCoat
+  - HighCutCMO #Added by Sector-Vestige
   - ChiefMedicalOfficerWintercoat
 
 - type: loadoutGroup
@@ -71,7 +73,8 @@
   id: ChiefMedicalOfficerShoes
   name: loadout-group-chief-medical-officer-shoes
   loadouts:
-  - BrownShoes
+  - LeatherShoes # CD
+  - LaceupShoes # CD
   - MedicalWinterBoots
 
 #- type: loadoutGroup
@@ -88,7 +91,7 @@
   minLimit: 0
   loadouts:
   - MedicalBeret
-  - SeniorPhysicianBeret
+  # - SeniorPhysicianBeret
   - MedicalHeadMirror
   - BlueSurgeryCap
   - GreenSurgeryCap
@@ -101,11 +104,16 @@
   loadouts:
   - MedicalDoctorJumpsuit
   - MedicalDoctorJumpskirt
-  - SeniorPhysicianJumpsuit
-  - SeniorPhysicianJumpskirt
+  - MedicalCasualsuit # CD
+  # - SeniorPhysicianJumpsuit
+  # - SeniorPhysicianJumpskirt
   - MedicalBlueScrubs
   - MedicalGreenScrubs
   - MedicalPurpleScrubs
+  - ViroJumpsuit # CD
+  - ViroJumpskirt # CD
+  - GeneJumpsuit # CD
+  - GeneJumpskirt # CD
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing
@@ -113,6 +121,7 @@
   minLimit: 0
   loadouts:
   - RegularLabCoat
+  - HighCutBase #Sector-Vestige
   - MedicalDoctorWintercoat
   - SeniorPhysicianLabCoat
 
@@ -121,7 +130,7 @@
   name: loadout-group-medical-doctor-id
   loadouts:
   - MedicalDoctorPDA
-  - SeniorPhysicianPDA
+  # - SeniorPhysicianPDA
 
 #- type: loadoutGroup
 #  id: MedicalDoctorJobTrinkets
@@ -152,6 +161,7 @@
   loadouts:
   - ChemistJumpsuit
   - ChemistJumpskirt
+  - ChemistCasualsuit # CD
 
 - type: loadoutGroup
   id: ChemistOuterClothing
@@ -159,7 +169,9 @@
   minLimit: 0
   loadouts:
   - RegularLabCoat
+  - HighCutBase #Sector-Vestige
   - ChemistLabCoat
+  - HighCutChemist #Sector-Vestige
   - ChemistWintercoat
 
 - type: loadoutGroup
@@ -184,6 +196,8 @@
   minLimit: 0
   loadouts:
   - ParamedicHead
+  # CD: ETU Loadout
+  - HeadHelmetETUPointman
 
 - type: loadoutGroup
   id: ParamedicJumpsuit
@@ -191,6 +205,10 @@
   loadouts:
   - ParamedicJumpsuit
   - ParamedicJumpskirt
+  - ParamedicCasualsuit # CD
+  - ParamedicCasualskirt # CD
+  # CD: ETU Loadout
+  - JumpsuitETUFlightsuit
 
 - type: loadoutGroup
   id: ParamedicOuterClothing
@@ -199,6 +217,9 @@
   loadouts:
   - ParamedicWindbreaker
   - ParamedicWintercoat
+  - BlueHighvisBomber # CD
+  # CD: ETU Loadout
+  # - BeltHarnessETU
 
 - type: loadoutGroup
   id: ParamedicShoes

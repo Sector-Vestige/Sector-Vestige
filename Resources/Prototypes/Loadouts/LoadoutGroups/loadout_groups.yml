@@ -10,6 +10,14 @@
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
+  - PlushieVox # CD
+  - PlushieArachind # CD
+  - PlushieDiona # CD
+  - PlushieHuman # CD
+  - PlushieMoth # CD
+  - PlushieSharkBlue # CD
+  - PlushieSharkPink # CD
+  - PlushieSharkGrey # CD: Putting these up here so they show up along the existing plushies.
   - ThreeCandles
   - Lighter
   - CigPackGreen
@@ -107,6 +115,7 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+  - CaptainTricorn #Added by Sector-Vestige
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -688,6 +697,7 @@
   loadouts:
   - QuartermasterHead
   - QuartermasterBeret
+  - QuartermasterTricorn #Added by Sector-Vestige
 
 - type: loadoutGroup
   id: QuartermasterJumpsuit
@@ -698,6 +708,7 @@
   - QuartermasterTurtleneck
   - QuartermasterTurtleneckSkirt
   - QuartermasterFormalSuit
+  - QuartermasterForemansuit # CD
 
 - type: loadoutGroup
   id: QuartermasterNeck
@@ -713,11 +724,15 @@
   minLimit: 0
   loadouts:
   - QuartermasterWintercoat
+  - CargoBomber # CD
+  - ForemanCoat # CD
 
 - type: loadoutGroup
   id: QuartermasterShoes
   name: loadout-group-quartermaster-shoes
   loadouts:
+  - LeatherShoes # CD
+  - LaceupShoes # CD
   - BrownShoes
   - CargoWinterBoots
 
@@ -738,8 +753,14 @@
   id: CargoTechnicianJumpsuit
   name: loadout-group-cargo-technician-jumpsuit
   loadouts:
-  - CargoTechnicianJumpsuit
-  - CargoTechnicianJumpskirt
+  #  - CargoTechnicianJumpsuit
+  #  - CargoTechnicianJumpskirt
+  - CargoTechnicianPants # CD
+  - CargoTechnicianJumpsuitLight # CD
+  - CargoTechnicianJumpskirtLight # CD
+  - CargoTechnicianJumpsuitDark # CD
+  - CargoTechnicianJumpskirtDark # CD
+  - CargoTechnicianOveralls # CD
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
@@ -755,6 +776,7 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
+  - CargoBomber # CD
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
@@ -762,13 +784,14 @@
   loadouts:
   - BlackShoes
   - CargoWinterBoots
+  - SteelWorkboots # CD
 
 - type: loadoutGroup
   id: CargoTechnicianID
   name: loadout-group-cargo-technician-id
   loadouts:
   - CargoTechnicianPDA
-  - SeniorCourierPDA
+#  - SeniorCourierPDA #SV - Remove senior PDA in favor of other role
 
 #- type: loadoutGroup
 #  id: CargoTechnicianJobTrinkets
@@ -790,6 +813,7 @@
   minLimit: 0
   loadouts:
   - SalvageSpecialistWintercoat
+  - SalvageSpecialistMiningJacket #Added by Sector-Vestige
 
 - type: loadoutGroup
   id: SalvageSpecialistShoes
@@ -819,6 +843,9 @@
   loadouts:
   - ChiefEngineerJumpsuit
   - ChiefEngineerJumpskirt
+  - ChiefEngineerJumpsuitModern # CD Drip 4
+  - ChiefEngineerJumpskirtModern # CD Drip 4
+  - ChiefEngineerJumpsuitFormal # CD Drip 4
   - ChiefEngineerTurtleneck
   - ChiefEngineerTurtleneckSkirt
 
@@ -836,12 +863,16 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
+  - StationEngineerJacket # CD
 
 - type: loadoutGroup
   id: ChiefEngineerShoes
   name: loadout-group-chief-engineer-shoes
   loadouts:
   - BrownShoes
+  - LaceupShoes # CD
+  - LeatherShoes # CD
+  - WorkBoots # CD
   - EngineeringWinterBoots
 
 #- type: loadoutGroup
@@ -880,8 +911,8 @@
   - StationEngineerJumpsuit
   - StationEngineerJumpskirt
   - StationEngineerHazardsuit
-  - SeniorEngineerJumpsuit
-  - SeniorEngineerJumpskirt
+  # - SeniorEngineerJumpsuit
+  # - SeniorEngineerJumpskirt
 
 - type: loadoutGroup
   id: StationEngineerBackpack
@@ -911,7 +942,7 @@
   name: loadout-group-station-engineer-id
   loadouts:
   - StationEngineerPDA
-  - SeniorEngineerPDA
+#  - SeniorEngineerPDA #SV - Remove senior PDA in favor of other role
 
 #- type: loadoutGroup
 #  id: StationEngineerJobTrinkets
@@ -926,6 +957,9 @@
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
   - AtmosphericTechnicianJumpsuitCasual
+  - AtmosphericTechnicianJumpsuitModern # CD
+  - AtmosphericTechnicianJumpskirtModern # CD
+  - AtmosphericTechnicianHazardsuit # CD
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
@@ -933,6 +967,7 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
+  - AtmosphericTechnicianOveralls # CD
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -994,6 +1029,7 @@
   minLimit: 0
   loadouts:
   - ResearchDirectorLabCoat
+  - HighCutRD #Added by Sector-Vestige
   - ResearchDirectorWintercoat
 
 - type: loadoutGroup
@@ -1001,6 +1037,8 @@
   name: loadout-group-research-director-shoes
   loadouts:
   - BrownShoes
+  - LeatherShoes # CD
+  - LaceupShoes # CD
   - ScienceWinterBoots
 
 #- type: loadoutGroup
@@ -1033,8 +1071,8 @@
   - ScientistJumpskirt
   - RoboticistJumpsuit
   - RoboticistJumpskirt
-  - SeniorResearcherJumpsuit
-  - SeniorResearcherJumpskirt
+  # - SeniorResearcherJumpsuit
+  # - SeniorResearcherJumpskirt
 
 - type: loadoutGroup
   id: ScientistBackpack
@@ -1050,11 +1088,13 @@
   minLimit: 0
   loadouts:
   - RegularLabCoat
+  - HighCutBase #Sector-Vestige
   - ScienceLabCoat
+  - HighCutScience #Sector-Vestige
   - ScienceWintercoat
   - RoboticistLabCoat
   - RoboticistWintercoat
-  - SeniorResearcherLabCoat
+  # - SeniorResearcherLabCoat
 
 - type: loadoutGroup
   id: ScientistShoes
@@ -1078,7 +1118,7 @@
   name: loadout-group-scientist-id
   loadouts:
   - ScientistPDA
-  - SeniorResearcherPDA
+#  - SeniorResearcherPDA #SV - Remove senior PDA in favor of other role
 
 #- type: loadoutGroup
 #  id: ScientistJobTrinkets
@@ -1114,6 +1154,8 @@
   loadouts:
   - HeadofSecurityJumpsuit
   - HeadofSecurityJumpskirt
+  - SeniorOfficerCasualsuit # CD
+  - SeniorOfficerCasualskirt # CD
   - HeadofSecurityTurtleneck
   - HeadofSecurityTurtleneckSkirt
   - HeadofSecurityFormalSuit
@@ -1133,6 +1175,7 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
+  - SecurityGreatcoat # CD
 
 - type: loadoutGroup
   id: HeadofSecurityJobTrinkets
@@ -1155,6 +1198,8 @@
   loadouts:
   - WardenJumpsuit
   - WardenJumpskirt
+  - WardenCasualsuit # CD
+  - WardenCasualskirt # CD
 
 - type: loadoutGroup
   id: WardenOuterClothing
@@ -1162,6 +1207,7 @@
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
+  - SecurityGreatcoat # CD
 
 - type: loadoutGroup
   id: WardenJobTrinkets
@@ -1186,10 +1232,12 @@
   loadouts:
   - SecurityJumpsuit
   - SecurityJumpskirt
+  - SecurityCasualsuit # CD
+  - SecurityCasualskirt # CD
   - SecurityJumpsuitGrey
   - SecurityJumpskirtGrey
-  - SeniorOfficerJumpsuit
-  - SeniorOfficerJumpskirt
+  # - SeniorOfficerJumpsuit
+  # - SeniorOfficerJumpskirt
   - TrooperUniform
 
 - type: loadoutGroup
@@ -1206,6 +1254,7 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
+  - SecurityPlateCarrier #CD
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1214,12 +1263,13 @@
   - ArmorVest
   - ArmorVestSlim
   - SecurityOfficerWintercoat
+  - SecurityGreatcoat # CD
 
 - type: loadoutGroup
   id: SecurityShoes
   name: loadout-group-security-shoes
   loadouts:
-  - JackBoots
+  - CombatBoots #CD change from JackBoots to CombatBoots
   - SecurityWinterBoots
 
 - type: loadoutGroup
@@ -1227,7 +1277,7 @@
   name: loadout-group-security-id
   loadouts:
   - SecurityPDA
-  - SeniorOfficerPDA
+#  - SeniorOfficerPDA #SV - Remove senior PDA in favor of other role
 
 - type: loadoutGroup
   id: SecurityJobTrinkets
@@ -1257,6 +1307,8 @@
   loadouts:
   - DetectiveJumpsuit
   - DetectiveJumpskirt
+  - DetectiveJumpsuitCasual # CD
+  - DetectiveJumpskirtCasual # CD
   - NoirJumpsuit
   - NoirJumpskirt
 
@@ -1267,6 +1319,7 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  - ForensicJacket # CD
 
 - type: loadoutGroup
   id: DetectiveJobTrinkets
@@ -1318,6 +1371,7 @@
   loadouts:
   - PsychologistJumpsuit
   - PsychologistJumpskirt
+  - PsychologistCasualJumpsuit # CD
 
 #- type: loadoutGroup
 #  id: PsychologistJobTrinkets
