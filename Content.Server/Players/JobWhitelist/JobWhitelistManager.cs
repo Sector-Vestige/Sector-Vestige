@@ -118,16 +118,27 @@ public sealed class JobWhitelistManager : IPostInjectInit
             return true;
 
         // SV changes start - Job whitelist groups
-        // Check if player has any groups that include this job
-        if (_config.GetCVar(SVCCVars.GameGroupWhitelist) &&
-            _groupWhitelists.TryGetValue(player, out var groups))
+        // If group whitelists are disabled, grant access to any job that belongs to a group
+        if (!_config.GetCVar(SVCCVars.GameGroupWhitelist))
         {
-            foreach (var groupId in groups)
+            foreach (var groupProto in _prototypes.EnumeratePrototypes<JobWhitelistGroupPrototype>())
             {
-                if (_prototypes.TryIndex<JobWhitelistGroupPrototype>(groupId, out var groupProto) &&
-                    groupProto.Jobs.Contains(job))
-                {
+                if (groupProto.Jobs.Contains(job))
                     return true;
+            }
+        }
+        else
+        {
+            // Check if player has any groups that include this job
+            if (_groupWhitelists.TryGetValue(player, out var groups))
+            {
+                foreach (var groupId in groups)
+                {
+                    if (_prototypes.TryIndex<JobWhitelistGroupPrototype>(groupId, out var groupProto) &&
+                        groupProto.Jobs.Contains(job))
+                    {
+                        return true;
+                    }
                 }
             }
         }
@@ -182,17 +193,30 @@ public sealed class JobWhitelistManager : IPostInjectInit
         var whitelist = new HashSet<string>(_whitelists.GetValueOrDefault(player.UserId) ?? new HashSet<string>());
 
         // SV changes start - Job whitelist groups
-        // Add jobs from all groups the player is in
-        if (_config.GetCVar(SVCCVars.GameGroupWhitelist) &&
-            _groupWhitelists.TryGetValue(player.UserId, out var groups))
+        if (!_config.GetCVar(SVCCVars.GameGroupWhitelist))
         {
-            foreach (var groupId in groups)
+            // Group whitelists disabled - add all jobs from all groups for everyone
+            foreach (var groupProto in _prototypes.EnumeratePrototypes<JobWhitelistGroupPrototype>())
             {
-                if (_prototypes.TryIndex<JobWhitelistGroupPrototype>(groupId, out var groupProto))
+                foreach (var job in groupProto.Jobs)
                 {
-                    foreach (var job in groupProto.Jobs)
+                    whitelist.Add(job.Id);
+                }
+            }
+        }
+        else
+        {
+            // Add jobs from all groups the player is in
+            if (_groupWhitelists.TryGetValue(player.UserId, out var groups))
+            {
+                foreach (var groupId in groups)
+                {
+                    if (_prototypes.TryIndex<JobWhitelistGroupPrototype>(groupId, out var groupProto))
                     {
-                        whitelist.Add(job.Id);
+                        foreach (var job in groupProto.Jobs)
+                        {
+                            whitelist.Add(job.Id);
+                        }
                     }
                 }
             }
