@@ -13,6 +13,7 @@ using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.Players.JobWhitelist;
 using Content.Shared.Roles;
+using Content.Shared._SV.CCVar; // SV changes - Group whitelist CVar
 using Content.Shared._SV.JobWhitelist; // SV changes - Job whitelist groups
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -114,7 +115,8 @@ public sealed class JobWhitelistManager : IPostInjectInit
 
         // SV changes start - Job whitelist groups
         // Check if player has any groups that include this job
-        if (_groupWhitelists.TryGetValue(player, out var groups))
+        if (_config.GetCVar(SVCCVars.GameGroupWhitelist) &&
+            _groupWhitelists.TryGetValue(player, out var groups))
         {
             foreach (var groupId in groups)
             {
@@ -177,7 +179,8 @@ public sealed class JobWhitelistManager : IPostInjectInit
 
         // SV changes start - Job whitelist groups
         // Add jobs from all groups the player is in
-        if (_groupWhitelists.TryGetValue(player.UserId, out var groups))
+        if (_config.GetCVar(SVCCVars.GameGroupWhitelist) &&
+            _groupWhitelists.TryGetValue(player.UserId, out var groups))
         {
             foreach (var groupId in groups)
             {
