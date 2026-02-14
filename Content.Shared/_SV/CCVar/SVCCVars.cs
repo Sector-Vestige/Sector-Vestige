@@ -18,5 +18,5 @@ public sealed class SVCCVars : CVars
     /// When disabled, group whitelists are ignored and only individual job whitelists apply.
     /// </summary>
     public static readonly CVarDef<bool>
-        GameGroupWhitelist = CVarDef.Create("game.group_whitelist", true, CVar.SERVER | CVar.REPLICATED);
+        GameGroupWhitelist = CVarDef.Create("sv.group_whitelist", true, CVar.SERVER | CVar.REPLICATED);
 }
