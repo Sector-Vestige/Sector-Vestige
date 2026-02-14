@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Numerics;
 using Content.Shared.Body;
 using Content.Shared.Humanoid.Markings;
@@ -33,11 +33,29 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         Markings = markings;
     }
 
+    // SV - Markings fix start
     public HumanoidCharacterAppearance(HumanoidCharacterAppearance other) :
-        this(other.EyeColor, other.SkinColor, new(other.Markings))
+        this(other.EyeColor, other.SkinColor, DeepCopyMarkings(other.Markings))
     {
 
     }
+
+    private static Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>> DeepCopyMarkings(
+        Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>> markings)
+    {
+        var copy = new Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>>(markings.Count);
+        foreach (var (organ, innerDict) in markings)
+        {
+            var innerCopy = new Dictionary<HumanoidVisualLayers, List<Marking>>(innerDict.Count);
+            foreach (var (layer, list) in innerDict)
+            {
+                innerCopy[layer] = new List<Marking>(list);
+            }
+            copy[organ] = innerCopy;
+        }
+        return copy;
+    }
+    // SV - Markings fix end
 
     public HumanoidCharacterAppearance WithEyeColor(Color newColor)
     {
@@ -141,7 +159,20 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
                     continue;
                 }
 
-                var actualMarkings = appearance.Markings.GetValueOrDefault(organ)?.ShallowClone() ?? [];
+                // SV - Markings fix start
+                var sourceMarkings = appearance.Markings.GetValueOrDefault(organ);
+                Dictionary<HumanoidVisualLayers, List<Marking>> actualMarkings;
+                if (sourceMarkings != null)
+                {
+                    actualMarkings = new(sourceMarkings.Count);
+                    foreach (var (layer, list) in sourceMarkings)
+                        actualMarkings[layer] = new List<Marking>(list);
+                }
+                else
+                {
+                    actualMarkings = [];
+                }
+                // SV - Markings fix end
 
                 markingManager.EnsureValidColors(actualMarkings);
                 markingManager.EnsureValidGroupAndSex(actualMarkings, organData.Value.Group, sex);
