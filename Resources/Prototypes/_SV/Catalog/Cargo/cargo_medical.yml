@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: medpenboxepi
+  icon:
+    sprite: _SV/Objects/Storage/boxIcons.rsi
+    state: epi_pen
+  product: CrateEmergencyMedipenDispencer
+  cost: 3000
+  category: cargoproduct-category-name-medical
+  group: market

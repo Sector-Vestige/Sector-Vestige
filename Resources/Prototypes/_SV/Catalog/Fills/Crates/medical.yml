@@ -1,0 +1,9 @@
+- type: entity
+  id: CrateEmergencyMedipenDispencer
+  parent: CrateMedical
+  name: emergency medipen dispenser crate
+  description: A crate containing an emergency medical pen dispencer.
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxEmergencyPen
