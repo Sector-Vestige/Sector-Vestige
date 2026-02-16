@@ -54,6 +54,7 @@
   - OffsetCaneNT
   - Cane
   - TowelColorWhite
+  - CDDogtags #Sector Vestige - Dogtags to loadout
 
 - type: loadoutGroup
   id: Glasses
