@@ -2,7 +2,7 @@
   id: CrateEmergencyMedipenDispencer
   parent: CrateMedical
   name: emergency medipen dispenser crate
-  description: A crate containing an emergency medical pen dispencer.
+  description: A crate containing an emergency medipen dispenser containing 6 emergency medipens.
   components:
   - type: StorageFill
     contents:
