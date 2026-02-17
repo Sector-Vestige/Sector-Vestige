@@ -5,17 +5,20 @@
 #
 # SPDX-License-Identifier: MIT
 
-- type: latheRecipe
-  id: HandheldCrewMonitor
-  result: HandheldCrewMonitorEmpty
-  categories:
-  - Tools
-  completetime: 4
-  materials:
-    Glass: 600
-    Steel: 600
-    Plastic: 600
-    Gold: 300
+# Begin Sector Vestige additions
+# You shouldn't be able to print crew monitors
+#- type: latheRecipe
+#  id: HandheldCrewMonitor
+#  result: HandheldCrewMonitorEmpty
+#  categories:
+#  - Tools
+#  completetime: 4
+#  materials:
+#    Glass: 600
+#    Steel: 600
+#    Plastic: 600
+#    Gold: 300
+# End Sector Vestige additions
 
 - type: latheRecipe
   id: MedCrutchesForearm

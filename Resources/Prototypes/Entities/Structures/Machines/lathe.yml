@@ -431,6 +431,7 @@
     - CargoBoardsStatic
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
+    - CDBoardsStatic # SV
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
@@ -563,6 +564,7 @@
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
+    - CDSecfabStatic # SV
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -644,6 +646,7 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
+    - CDMedfabStatic # SV
     dynamicPacks:
     - Chemistry
   - type: Machine
@@ -689,6 +692,7 @@
     - Scarves
     - Carpets
     - Bedsheets
+    - CDUniformPrinterStatic # SV
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm
