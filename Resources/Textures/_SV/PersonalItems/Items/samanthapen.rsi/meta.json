@@ -12,11 +12,11 @@
       "name": "samantha-pen"
     },
     {
-      "name": "inhand-left",
+      "name": "pen_fancy-inhand-left",
       "directions": 4
     },
     {
-      "name": "inhand-right",
+      "name": "pen_fancy-inhand-right",
       "directions": 4
     }
   ]
