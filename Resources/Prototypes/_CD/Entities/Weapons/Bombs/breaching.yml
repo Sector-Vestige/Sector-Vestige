@@ -19,7 +19,6 @@
       map: ["base"]
   - type: Item
     size: Normal
-  - type: MultiHandedItem
   - type: Sticky
     stickDelay: 8
     unstickDelay: 3
