@@ -891,11 +891,13 @@
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Battery
     maxCharge: 480
+  # SV Change Start
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 24
     autoRechargePause: true
   autoRechargePauseTime: 10
+  # SV Change End
 
 - type: entity
   name: energy magnum
