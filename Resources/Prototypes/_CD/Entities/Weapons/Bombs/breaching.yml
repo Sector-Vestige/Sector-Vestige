@@ -20,6 +20,7 @@
       map: ["base"]
   - type: Item
     size: Normal
+  #  - type: MultiHandedItem #SV - Change breaching charge to be one-handed
   - type: Sticky
     stickDelay: 8
     unstickDelay: 3
