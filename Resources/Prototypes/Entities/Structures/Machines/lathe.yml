@@ -649,6 +649,7 @@
     - EmptyMedkitsStatic
     - SurgeryStatic
     - CDMedfabStatic # SV
+    - SVMedfabStatic # SV
     dynamicPacks:
     - Chemistry
   - type: Machine
