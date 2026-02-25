@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: 2025 Sector-Vestige contributors
 # SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2025 JuneSzalkowska <113352036+JuneSzalkowska@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 JuneSzalkowska <juneowo69@gmail.com>
 # SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 JuneSzalkowska <juneszalkowska@gmail.com>
 #
@@ -86,3 +85,18 @@
     sprite: _SV/Clothing/Head/Hats/andalusian_tricorn.rsi
   - type: Clothing
     sprite: _SV/Clothing/Head/Hats/andalusian_tricorn.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretCaptain
+  name: captain beret
+  description: A dark blue beret for Captains that are too good for the regular hat. 
+  components:
+  - type: Sprite
+    sprite: _SV/Clothing/Head/Hats/beret_medic.rsi
+  - type: Clothing
+    sprite: _SV/Clothing/Head/Hats/beret_medic.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
