@@ -1,26 +1,69 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+# UNALIGNED / INDEPENDENT ROLES
+
 - type: antag
-  id: LowImpactAntag
+  id: LowImpactThief
   name: roles-low-impact-antag
   antagonist: true
   setPreference: true
   objective: roles-low-impact-antag-desc
   visiblePreference: true
+  category: Independent
 
 - type: antag
-  id: ModerateImpactAntag
+  id: PersonalGainsThief
+  name: roles-personal-gains-thief
+  antagonist: true
+  setPreference: true
+  objective: roles-personal-gains-thief-desc
+  visiblePreference: true
+  category: Independent
+
+# SYNDICATE ALIGNED ROLES
+
+- type: antag
+  id: SyndicateThief
+  name: roles-syndicate-thief
+  antagonist: true
+  setPreference: true
+  objective: roles-syndicate-thief-desc
+  visiblePreference: true
+  category: Syndicate
+
+- type: antag
+  id: SyndicateAgent
   name: roles-moderate-impact-antag
   antagonist: true
   setPreference: true
   objective: roles-moderate-impact-antag-desc
   visiblePreference: true
+  category: Syndicate
 
 - type: antag
-  id: HighImpactAntag
+  id: SyndicateOperative
   name: roles-high-impact-antag
   antagonist: true
   setPreference: true
   objective: roles-high-impact-antag-desc
   visiblePreference: true
+  category: Syndicate
+
+# OPT-IN PREFERENCES
+
+- type: antag
+  id: AntagTarget
+  name: roles-antag-target-opt-in
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-target-opt-in-desc
+  visiblePreference: true
+  category: OptIn
 
 - type: antag
   id: RoundRemovalOptIn
@@ -29,11 +72,4 @@
   setPreference: true
   objective: roles-round-removal-opt-in-desc
   visiblePreference: true
-
-- type: antag
-  id: AntagTargetOptIn
-  name: roles-antag-target-opt-in
-  antagonist: true
-  setPreference: true
-  objective: roles-antag-target-opt-in-desc
-  visiblePreference: true
+  category: OptIn

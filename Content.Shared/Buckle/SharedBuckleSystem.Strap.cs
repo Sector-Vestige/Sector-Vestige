@@ -1,4 +1,20 @@
-﻿using System.Linq;
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Vasilis <vasilis@pikachu.systems>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
+using System.Linq;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Construction;
 using Content.Shared.Destructible;
@@ -44,7 +60,7 @@ public abstract partial class SharedBuckleSystem
     private void OnStrapContainerGettingInsertedAttempt(EntityUid uid, StrapComponent component, ContainerGettingInsertedAttemptEvent args)
     {
         // If someone is attempting to put this item inside of a backpack, ensure that it has no entities strapped to it.
-        if (args.Container.ID == StorageComponent.ContainerId && component.BuckledEntities.Count != 0)
+        if (component.BuckledEntities.Count != 0)
             args.Cancel();
     }
 

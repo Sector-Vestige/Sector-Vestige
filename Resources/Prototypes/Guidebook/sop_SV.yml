@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 Mixmaster49 (GitHub)
+# SPDX-FileCopyrightText: 2026 EvilAtheist <maximschaper49@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: guideEntry
+  id: SOP
+  name: guide-entry-SV-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/SOP.xml"
+  children:
+  - AlertSOP
+  - LogisticsSOP
+  - CommandSOP
+  - EngineeringSOP
+  - LegalSOP
+  - MedicalSOP
+  - ResearchSOP
+  - SecuritySOP
+  - ServiceSOP
+
+- type: guideEntry
+  id: AlertSOP
+  name: guide-entry-SV-alert-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/AlertSOP.xml"
+
+- type: guideEntry
+  id: LogisticsSOP
+  name: guide-entry-logistics-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/LogisticsSOP.xml"
+
+- type: guideEntry
+  id: CommandSOP
+  name: guide-entry-SV-command-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/CommandSOP.xml"
+
+- type: guideEntry
+  id: EngineeringSOP
+  name: guide-entry-SV-engineering-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/EngineeringSOP.xml"
+
+- type: guideEntry
+  id: LegalSOP
+  name: guide-entry-SV-legal-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/LegalSOP.xml"
+
+- type: guideEntry
+  id: MedicalSOP
+  name: guide-entry-SV-medical-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/MedicalSOP.xml"
+
+- type: guideEntry
+  id: ResearchSOP
+  name: guide-entry-SV-research-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/ResearchSOP.xml"
+
+- type: guideEntry
+  id: SecuritySOP
+  name: guide-entry-SV-security-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/SecuritySOP.xml"
+  children:
+  - SecurityEquipmentSOP
+
+- type: guideEntry
+  id: SecurityEquipmentSOP
+  name: guide-entry-SV-security-equipment-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/SecurityEquipmentSOP.xml"
+
+- type: guideEntry
+  id: ServiceSOP
+  name: guide-entry-SV-service-sop
+  text: "/ServerInfo/Guidebook/_SV/SOP/ServiceSOP.xml"

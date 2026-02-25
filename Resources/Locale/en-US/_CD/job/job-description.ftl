@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 job-description-prisoner = Sit in prison. Negogiate with the Warden. Serve parole. You are not an antagonist, and are bound to the same crime rules as any normal crew member.
 job-prisoner-sec-notify-text = Prisoner has been transferred to the arrivals terminal and requires transportation.
 job-description-private-investigator = Investigate crimes for the civillian part of the crew. Get drunk in the bar and rant about the one that got away. 

@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 // SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
 // SPDX-FileCopyrightText: 2024 ShadowCommander <shadowjjt@gmail.com>
@@ -10,6 +10,7 @@
 // SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
 // SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 //
 // SPDX-License-Identifier: MIT
 
@@ -26,6 +27,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
+using Content.Shared._CD.Silicons.StationAi; // CD - Boris changes
 
 namespace Content.Client.Silicons.Borgs;
 
@@ -36,7 +38,7 @@ public sealed partial class BorgMenu : FancyWindow
     [Dependency] private readonly IEntityManager _entity = default!;
     private readonly NameModifierSystem _nameModifier;
     private readonly PowerCellSystem _powerCell;
-    private readonly PredictedBatterySystem _battery;
+    private readonly SharedBatterySystem _battery;
 
     public Action? BrainButtonPressed;
     public Action? EjectBatteryButtonPressed;
@@ -59,7 +61,7 @@ public sealed partial class BorgMenu : FancyWindow
 
         _nameModifier = _entity.System<NameModifierSystem>();
         _powerCell = _entity.System<PowerCellSystem>();
-        _battery = _entity.System<PredictedBatterySystem>();
+        _battery = _entity.System<SharedBatterySystem>();
 
         _maxNameLength = _cfgManager.GetCVar(CCVars.MaxNameLength);
 
@@ -111,6 +113,20 @@ public sealed partial class BorgMenu : FancyWindow
         ChargeBar.Value = chargeFraction;
         ChargeLabel.Text = Loc.GetString("borg-ui-charge-label",
             ("charge", (int)MathF.Round(chargeFraction * 100)));
+
+        // CD - AI Shell Changes below here
+        var hasBoris = false;
+        if (!_entity.TryGetComponent(Entity, out BorgChassisComponent? chassis))
+        {
+            hasBoris = false;
+        }
+        else
+        {
+            hasBoris = chassis.BrainEntity != null &&
+                       _entity.TryGetComponent<StationAiShellBrainComponent>(chassis.BrainEntity.Value, out _);
+        }
+
+        BorgNameEditContainer.Visible = hasBoris; // CD - ai shells change
     }
 
     public void UpdateBatteryButton()

@@ -1448,13 +1448,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,-3.5
       parent: 1
-- proto: RandomHumanoidSpawnerERTSecurityEVALecterTime
-  entities:
-  - uid: 207
-    components:
-    - type: Transform
-      pos: -2.5,7.5
-      parent: 1
   - uid: 258
     components:
     - type: Transform

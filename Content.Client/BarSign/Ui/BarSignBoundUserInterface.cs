@@ -1,3 +1,12 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using Content.Shared.BarSign;
 using JetBrains.Annotations;
@@ -19,32 +28,27 @@ public sealed class BarSignBoundUserInterface(EntityUid owner, Enum uiKey) : Bou
         var sign = EntMan.GetComponentOrNull<BarSignComponent>(Owner)?.Current is { } current
             ? _prototype.Index(current)
             : null;
-        var allSigns = Shared.BarSign.BarSignSystem.GetAllBarSigns(_prototype)
+        var allSigns = BarSignSystem.GetAllBarSigns(_prototype)
             .OrderBy(p => Loc.GetString(p.Name))
             .ToList();
         _menu = new(sign, allSigns);
 
         _menu.OnSignSelected += id =>
         {
-            SendMessage(new SetBarSignMessage(id));
+            SendPredictedMessage(new SetBarSignMessage(id));
         };
 
         _menu.OnClose += Close;
         _menu.OpenCentered();
     }
 
-    public void Update(ProtoId<BarSignPrototype>? sign)
+    public override void Update()
     {
-        if (_prototype.Resolve(sign, out var signPrototype))
-            _menu?.UpdateState(signPrototype);
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-        if (!disposing)
+        if (!EntMan.TryGetComponent<BarSignComponent>(Owner, out var signComp))
             return;
-        _menu?.Dispose();
+
+        if (_prototype.Resolve(signComp.Current, out var signPrototype))
+            _menu?.UpdateState(signPrototype);
     }
 }
 

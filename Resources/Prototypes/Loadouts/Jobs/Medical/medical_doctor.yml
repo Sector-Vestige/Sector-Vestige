@@ -43,7 +43,7 @@
   id: MedicalHeadMirror
   effects:
   - !type:GroupLoadoutEffect
-    proto: MedicalHeadMirrorTimer
+    proto: MedicalJourneymanTimer
   equipment:
     head: ClothingHeadMirror
 
@@ -156,6 +156,7 @@
   equipment:
     id: MedicalPDA
 
+# SV - Begin: Remove Senior Physician PDA in favor of new role
 # - type: loadout
 #   id: SeniorPhysicianPDA
 #   effects:
@@ -163,26 +164,10 @@
 #     proto: SeniorPhysician
 #   equipment:
 #     id: SeniorPhysicianPDA
-
-# Gloves
-- type: loadout
-  id: NitrileGloves
-  equipment:
-    gloves: ClothingHandsGlovesNitrile
+# SV - Begin: Remove Senior Physician PDA in favor of new role
 
 #Masks
 - type: loadout
   id: SterileMask
   equipment:
     mask: ClothingMaskSterile
-
-#Eyewear
-- type: loadout
-  id: MedicalHud
-  equipment:
-    eyes: ClothingEyesHudMedical
-
-- type: loadout
-  id: MedicalEyePatchHud
-  equipment:
-    eyes: ClothingEyesEyepatchHudMedical

@@ -1,3 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Harmony contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 NakataRin <45946146+NakataRin@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 OrnamentalFreak <190691663+OrnamentalFreak@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Sadie <147350443+Sadie-silly@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 halycon <104782767+GithubEnjoyer1984@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - files: ["moodswings.ogg"]
   license: "CC-BY-SA-3.0"
   copyright: "Created by pigeonbeans"

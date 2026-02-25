@@ -1,3 +1,14 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Kyle Tyo <36606155+VerinSenpai@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Buffers;
 using System.Numerics;
 using Content.Client.Shuttles.Systems;
@@ -124,7 +135,7 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
                 else
                 {
                     // We'll send the "adjusted" position and server will adjust it back when relevant.
-                    var mapCoords = new MapCoordinates(InverseMapPosition(args.RelativePosition), ViewingMap);
+                    var mapCoords = new MapCoordinates(InverseMapPosition(args.RelativePixelPosition), ViewingMap);
                     RequestFTL?.Invoke(mapCoords, _ftlAngle);
                 }
             }
@@ -180,7 +191,7 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
 
         // Remove offset so we can floor.
         var botLeft = new Vector2(0f, 0f);
-        var topRight = botLeft + Size;
+        var topRight = botLeft + PixelSize;
 
         var flooredBL = botLeft - originBL;
 

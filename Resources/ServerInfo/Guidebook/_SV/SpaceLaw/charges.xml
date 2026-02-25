@@ -1,0 +1,41 @@
+<Document>
+# Charges and Sentencing
+
+## SL-5 Charges
+[bold]SL-5-A[/bold]
+- A valid charge is an accusation of a crime that has gone through due process with a guilty party. If by trial or arbitration.
+
+[bold]SL-5-B[/bold]
+- Charges will be assigned a punishment through sentencing under SL-6, using the guidelines of SL-7. This punishment will have a duration of a number of shifts, with a parole interval of tens of minutes. 
+
+[bold]SL-5-C[/bold]
+- When the parole interval elapses, the guilty party will be eligible for a parole hearing.
+
+[bold]SL-5-D[/bold]
+- Punishments may not have a parole interval or a determinate number of shifts.
+
+## SL-6 Sentencing
+[bold]SL-6-A[/bold]
+- Sentences will be assigned in proportion to the charges with relevant extenuating and mitigating factors, with consideration of the possibility of reform and the impact on worker efficiency.
+
+[bold]SL-6-B[/bold]
+- The most punishing charge will be considered the Primary Charge. And all additional charges will be considered Secondary Charges. Secondary Charges shall be considered extenuating factors of the Primary Charge.
+
+[bold]SL-6-C[/bold]
+- The listed maximum duration and parole interval is assuming there are no extenuating or mitigating factors involved, and should be taken as a guideline.
+
+[bold]SL-6-D[/bold]
+- Counseling and Probation are considered Minor Punishments. Incarceration and Forced Labor are considered Major Punishments. Extradition and Execution are considered Capital Punishments.
+
+[bold]SL-6-E[/bold]
+- Punishments increase in severity incrementally from: Minor Punishments, to Major Punishments, to Capital Punishments. 
+
+[bold]SL-6-F[/bold]
+- Punishments of the same severity can be swapped for each other. To increase severity of a punishment, generally the duration and parole interval is halved for the relevant charge. To decrease severity of a punishment, generally the duration and parole interval is doubled. 
+
+[bold]SL-6-G[/bold]
+- A punishment can never be increased to Capital Punishments unless the Primary Charge could have sentenced a Capital Punishment. Capital Punishments should only be considered in very rare, very extreme circumstances.
+
+[bold]SL-6-H[/bold]
+- Any punishment exceeding a duration of 10 shifts will instead have a duration of forever. And any parole interval exceeding 210 minutes will instead have a parole interval of none.
+</Document>

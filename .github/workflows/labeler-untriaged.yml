@@ -1,4 +1,13 @@
-﻿name: "Labels: Untriaged"
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+name: "Labels: Untriaged"
 
 on:
   issues:
@@ -16,31 +25,83 @@ jobs:
     steps:
     - name: Add Untriaged when no labels exist (issue)
       if: "${{ github.event_name == 'issues' && github.event.action == 'opened' && toJSON(github.event.issue.labels) == '[]' }}"
-      uses: actions-ecosystem/action-add-labels@v1
+      uses: actions/github-script@v7
       with:
-        labels: "S: Untriaged"
+        script: |
+          await github.rest.issues.addLabels({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            labels: ['S: Untriaged']
+          });
     - name: Add Untriaged when no labels exist (pull request)
       if: "${{ github.event_name == 'pull_request_target' && github.event.action == 'opened' && toJSON(github.event.pull_request.labels) == '[]' }}"
-      uses: actions-ecosystem/action-add-labels@v1
+      uses: actions/github-script@v7
       with:
-        labels: "S: Untriaged"
+        script: |
+          await github.rest.issues.addLabels({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            labels: ['S: Untriaged']
+          });
     - name: Remove Untriaged when a different label is added (issue)
       if: "${{ github.event_name == 'issues' && github.event.action == 'labeled' && github.event.label.name != 'S: Untriaged' }}"
-      uses: actions-ecosystem/action-remove-labels@v1
+      uses: actions/github-script@v7
       with:
-        labels: "S: Untriaged"
+        script: |
+          try {
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              name: 'S: Untriaged'
+            });
+          } catch (error) {
+            if (error.status !== 404) throw error;
+          }
     - name: Remove Untriaged when a different label is added (pull request)
       if: "${{ github.event_name == 'pull_request_target' && github.event.action == 'labeled' && github.event.label.name != 'S: Untriaged' }}"
-      uses: actions-ecosystem/action-remove-labels@v1
+      uses: actions/github-script@v7
       with:
-        labels: "S: Untriaged"
+        script: |
+          try {
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              name: 'S: Untriaged'
+            });
+          } catch (error) {
+            if (error.status !== 404) throw error;
+          }
     - name: Remove Untriaged when assigned (issue)
       if: "${{ github.event_name == 'issues' && github.event.action == 'assigned' }}"
-      uses: actions-ecosystem/action-remove-labels@v1
+      uses: actions/github-script@v7
       with:
-        labels: "S: Untriaged"
+        script: |
+          try {
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              name: 'S: Untriaged'
+            });
+          } catch (error) {
+            if (error.status !== 404) throw error;
+          }
     - name: Remove Untriaged when assigned or PR ready for review (pull request)
       if: "${{ github.event_name == 'pull_request_target' && (github.event.action == 'assigned' || github.event.action == 'ready_for_review') }}"
-      uses: actions-ecosystem/action-remove-labels@v1
+      uses: actions/github-script@v7
       with:
-        labels: "S: Untriaged"
+        script: |
+          try {
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              name: 'S: Untriaged'
+            });
+          } catch (error) {
+            if (error.status !== 404) throw error;
+          }

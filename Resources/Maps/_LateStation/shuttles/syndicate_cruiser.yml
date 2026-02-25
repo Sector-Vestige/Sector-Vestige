@@ -1570,6 +1570,7 @@ entities:
     - type: RadiationGridResistance
     - type: SalvageShuttle
     - type: ImplicitRoof
+    - type: ExplosionAirtightGrid
 - proto: AirAlarm
   entities:
   - uid: 1828

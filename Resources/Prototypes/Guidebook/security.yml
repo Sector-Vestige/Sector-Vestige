@@ -1,4 +1,21 @@
-﻿- type: guideEntry
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 eclips_e <67359748+Just-a-Unity-Dev@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 faint <46868845+ficcialfaint@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 GrownSamoyedDog <61863648+GrownSamoyedDog@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
+# SPDX-FileCopyrightText: 2026 EvilAtheist <maximschaper49@gmail.com>
+# SPDX-FileCopyrightText: 2026 Mixmaster49 (GitHub)
+#
+# SPDX-License-Identifier: MIT
+
+- type: guideEntry
   id: Security
   name: guide-entry-security
   text: "/ServerInfo/Guidebook/Security/Security.xml"
@@ -6,7 +23,9 @@
   - Forensics
   - Defusal
   - CriminalRecords
-  - SpaceLaw
+  - SpaceLawSV
+  #- SpaceLaw
+
 
 - type: guideEntry
   id: Forensics
@@ -23,14 +42,15 @@
   name: guide-entry-criminal-records
   text: "/ServerInfo/Guidebook/Security/CriminalRecords.xml"
 
-- type: guideEntry
-  id: SpaceLaw
-  name: guide-entry-rules-space-law
-  text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SpaceLaw.xml"
-  children:
-  - SpaceLawCrimeList
-
-- type: guideEntry
-  id: SpaceLawCrimeList
-  name: guide-entry-rules-sl-crime-list
-  text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SLCrimeList.xml"
+# Replaced with SV Space Law
+#- type: guideEntry
+#  id: SpaceLaw
+#  name: guide-entry-rules-space-law
+#  text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SpaceLaw.xml"
+#  children:
+#  - SpaceLawCrimeList
+#
+#- type: guideEntry
+#  id: SpaceLawCrimeList
+#  name: guide-entry-rules-sl-crime-list
+#  text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SLCrimeList.xml"

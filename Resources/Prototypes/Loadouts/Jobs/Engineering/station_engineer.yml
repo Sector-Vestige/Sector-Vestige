@@ -1,22 +1,24 @@
-# # Senior times (CD: Disabled timers)
-# - type: loadoutEffectGroup
-#   id: SeniorEngineering
-#   effects:
-#   - !type:JobRequirementLoadoutEffect
-#     requirement:
-#       !type:RoleTimeRequirement
-#       role: JobAtmosphericTechnician
-#       time: 21600 #6 hrs
-#   - !type:JobRequirementLoadoutEffect
-#     requirement:
-#       !type:RoleTimeRequirement
-#       role: JobStationEngineer
-#       time: 21600 #6 hrs
-#   - !type:JobRequirementLoadoutEffect
-#     requirement:
-#       !type:DepartmentTimeRequirement
-#       department: Engineering
-#       time: 216000 # 60 hrs
+# SV - Begin: Remove Senior Engineer PDA in favor of new role
+# # Senior times
+#- type: loadoutEffectGroup
+#  id: SeniorEngineering
+#  effects:
+# - !type:JobRequirementLoadoutEffect
+#    requirement:
+#      !type:RoleTimeRequirement
+#      role: JobAtmosphericTechnician
+#      time: 21600 #6 hrs
+#  - !type:JobRequirementLoadoutEffect
+#    requirement:
+#      !type:RoleTimeRequirement
+#      role: JobStationEngineer
+#      time: 21600 #6 hrs
+#  - !type:JobRequirementLoadoutEffect
+#    requirement:
+#      !type:DepartmentTimeRequirement
+#      department: Engineering
+#      time: 216000 # 60 hrs
+# SV - End: Remove Senior Engineer PDA in favor of new role
 
 # Head
 - type: startingGear
@@ -122,10 +124,12 @@
   equipment:
     id: EngineerPDA
 
+# SV - Begin: Remove Senior Engineer PDA in favor of new role
 # - type: loadout
 #   id: SeniorEngineerPDA
 #   effects:
 #   - !type:GroupLoadoutEffect
 #     proto: SeniorEngineering
 #   equipment:
-#     id: SeniorEngineerPDA
+#    id: SeniorEngineerPDA
+# SV - End: Remove Senior Engineer PDA in favor of new role

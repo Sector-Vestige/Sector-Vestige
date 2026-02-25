@@ -1,3 +1,23 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2020 ComicIronic <comicironic@gmail.com>
+# SPDX-FileCopyrightText: 2020 Tyler Young <tyler.young@impromptu.ninja>
+# SPDX-FileCopyrightText: 2020 Ygg01 <y.laughing.man.y@gmail.com>
+# SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
+# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
+# SPDX-FileCopyrightText: 2021 mirrorcult <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2022 0x6273 <0x40@keemail.me>
+# SPDX-FileCopyrightText: 2022 Kara D <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2022 Zoldorf <silvertorch5@gmail.com>
+# SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Nikolai Korolev <korolevns98@gmail.com>
+# SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 name: Build & Publish Docfx
 
 on:
@@ -21,7 +41,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v4.1.0
       with:
-        dotnet-version: 9.0.x
+        dotnet-version: 10.0.x
 
     - name: Install dependencies
       run: dotnet restore

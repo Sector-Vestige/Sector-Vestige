@@ -55,24 +55,31 @@ This helps with resolving future merge conflicts and makes your intent clear.
 ### Commenting Example
 
 YAML – Inline field comment:
+```
   hidden: false # Sector Vestige change for various Vox masks
+```
 
 YAML – Block comment:
+```
   # Begin Sector Vestige Personal trinkets
   - ItemJamesCane
   - ItemAnnabellePlushie
   - ItemPititiRockGorb
   # End Sector Vestige Personal trinkets
+```
 
 C# – Inline logic comment:
+```
   if (!_actionBlocker.CanSpeak(source, true) && !ignoreActionBlocker) // Sector Vestige: support hypophonia trait
+```
 
 C# – Enclosing block:
+```
   // Sector Vestige - start of additional statuses (ported from CD)
   SecurityStatus.Monitor => "SecurityIconMonitor",
   SecurityStatus.Search => "SecurityIconSearch",
   // Sector Vestige - end of additional statuses (ported from CD)
-
+```
 ---
 
 ## Porting (Importing from Other Forks)

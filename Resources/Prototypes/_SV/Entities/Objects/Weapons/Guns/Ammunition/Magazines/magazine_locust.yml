@@ -1,0 +1,136 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 akirrer <mateusz.dychala@gmail.com>
+# SPDX-FileCopyrightText: 2026 akirrer <220388269+akirrer@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseMagazineLocust
+  name: Locust magazine (.22LR)
+  components:
+  - type: Tag
+    tags:
+    - MagazineLocust
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+      - CartridgeCaselessLightRifle
+    capacity: 45
+  - type: Item
+    size: Small
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _SV/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/locust.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseMagazineLocustDrum
+  name: Locust drum magazine (.22LR)
+  components:
+  - type: Tag
+    tags:
+    - MagazineLocust
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+      - CartridgeCaselessLightRifle
+    capacity: 90
+  - type: Item
+    size: Normal
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _SV/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/locust_drum.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 12
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  parent: BaseMagazineLocustDrum
+  id: MagazineLocustDrum
+  name: Locust drum magazine (.22LR)
+  description: 90-round magazine for S77-Locust. Works like an extra large swarm of hornets!
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeCaselessLightRifle
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/bullet_insert.ogg
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      right:
+      - state: inhand-right-mag
+
+- type: entity
+  parent: BaseMagazineLocust
+  id: MagazineLocust
+  name: Locust magazine (.22LR)
+  description: 45-round magazine for S77-Locust. Works like a swarm of hornets!
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeCaselessLightRifle
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/bullet_insert.ogg
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      right:
+      - state: inhand-right-mag
+
+- type: entity
+  parent: BaseMagazineLocust
+  id: MagazineLocustRubber
+  name: Locust magazine (.22LR rubber)
+  description: 45-round magazine for S77-Locust with rubber tips. Works like a swarm of bees!
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeCaselessLightRifleRubber
+  - type: Sprite
+    layers:
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-1
+      map: [ "enum.GunVisualLayers.Mag" ]
+    - state: stripe
+      color: "#418ce8"

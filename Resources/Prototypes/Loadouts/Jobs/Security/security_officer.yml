@@ -1,4 +1,5 @@
-# # Senior Time (CD: Disabled)
+# SV - Begin: Remove Senior Officer PDA in favor of new role
+# Senior Time
 # - type: loadoutEffectGroup
 #   id: SeniorOfficer
 #   effects:
@@ -12,6 +13,7 @@
 #       !type:DepartmentTimeRequirement
 #       department: Security
 #       time: 216000 # 60 hrs
+# SV - End: Remove Senior Officer PDA in favor of new role
 
 # Head
 - type: loadout
@@ -141,6 +143,7 @@
   equipment:
     id: SecurityPDA
 
+# SV - Begin: Remove Senior Officer PDA in favor of new role
 # - type: loadout
 #   id: SeniorOfficerPDA
 #   effects:
@@ -148,3 +151,4 @@
 #     proto: SeniorOfficer
 #   equipment:
 #     id: SeniorOfficerPDA
+# SV - End: Remove Senior Officer PDA in favor of new role

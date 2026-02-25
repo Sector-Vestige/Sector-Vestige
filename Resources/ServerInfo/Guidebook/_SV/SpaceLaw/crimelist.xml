@@ -1,0 +1,854 @@
+<Document>
+# SL-7 Punishments
+
+## Petty Crimes
+    <Table Columns="6">
+        <ColorBox Color="#d9ead3">
+            [bold][color=#000000]Charge Name[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9ead3">
+            [bold][color=#000000]Description[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9ead3">
+            [bold][color=#000000]Max Duration[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9ead3">
+            [bold][color=#000000]Max Parole Interval[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9ead3">
+            [bold][color=#000000]Max Punishment[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9ead3">
+            [bold][color=#000000]Additional Notes[/color][/bold]
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Trespass
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To enter a restricted area without permission and refusing to leave. Or, breaking into a restricted area.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            1 Shift
+        </ColorBox>
+        <ColorBox Color="#252632">
+            40 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Probation
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Walking through an open door into security and refusing to leave, or hacking a door into security.
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Vandalism
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally deface or superficially damage public or private property.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            1 Shift
+        </ColorBox>
+        <ColorBox Color="#252632">
+            20 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Probation
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Petty Theft
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To take non-vital or inexpensive property of another individual, organization, or common property, without consent.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            1 Shift
+        </ColorBox>
+        <ColorBox Color="#252632">
+            40 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Probation
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Disturbance
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To cause a public disturbance.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            1 Shift
+        </ColorBox>
+        <ColorBox Color="#252632">
+            40 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Counciling
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+    </Table>
+
+## Minor Crimes
+    <Table Columns="6">
+        <ColorBox Color="#c9daf8">
+            [bold][color=#000000]Charge Name[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#c9daf8">
+            [bold][color=#000000]Description[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#c9daf8">
+            [bold][color=#000000]Max Duration[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#c9daf8">
+            [bold][color=#000000]Max Parole Interval[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#c9daf8">
+            [bold][color=#000000]Max Punishment[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#c9daf8">
+            [bold][color=#000000]Additional Notes[/color][/bold]
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Perjury
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To lie under oath, or intentionally mislead the court with a testimony.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            1 Shift
+        </ColorBox>
+        <ColorBox Color="#252632">
+            60 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+        
+        <ColorBox Color="#252632">
+            Destruction
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To cause unnecessary damage to the station.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            1 Shift
+        </ColorBox>
+        <ColorBox Color="#252632">
+            40 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Rioting
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To incite, or participate in, actions that; Significantly effects productivity, threatens stability of the status quo.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            2 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            40 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Animal Cruelty
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To inflict unnecessary suffering or harm on a non-sophont being with malicious intent.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            3 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            80 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Probation
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Endangerment
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To act in a way that may cause harm to yourself or others.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            2 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            40 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Failure to Comply
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To refuse or resist reasonable orders given by authority.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            1 Shift
+        </ColorBox>
+        <ColorBox Color="#252632">
+            40 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Damage of Property
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Interference with the orderly administration of law and justice.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            3 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            80 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Counciling
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+        
+        <ColorBox Color="#252632">
+            Breach of Arrest
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally resist legal arrest by an authorised officer.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            3 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            80 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Probation
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Obstruction of Justice
+        </ColorBox>
+        <ColorBox Color="#252632">
+            An interference with the normal admittance of the law.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            1 Shift
+        </ColorBox>
+        <ColorBox Color="#252632">
+            60 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Possession: Substances
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To possess restricted substances without legal authority to hold them.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            1 Shift
+        </ColorBox>
+        <ColorBox Color="#252632">
+            40 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+    </Table>
+
+    ## Major Crimes
+    <Table Columns="6">
+        <ColorBox Color="#d9d2e9">
+            [bold][color=#000000]Charge Name[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9d2e9">
+            [bold][color=#000000]Description[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9d2e9">
+            [bold][color=#000000]Max Duration[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9d2e9">
+            [bold][color=#000000]Max Parole Interval[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9d2e9">
+            [bold][color=#000000]Max Punishment[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#d9d2e9">
+            [bold][color=#000000]Additional Notes[/color][/bold]
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Manslaughter
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To unintentionally cause the death of another sophont.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            2 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            80 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Assault
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To cause intentional harm to another sophont without the intent to kill.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            3 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            90 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Sabotage
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally cause damage to systems or areas of the station that may interfere with productivity.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            3 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            90 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Grand Theft
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To steal critical and or NanoTrasen proprietary items or objects.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            3 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            90 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Secure Trespass
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To enter high-security areas of the station without authority or permission from reasonable authority.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            5 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            120 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Probation
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Walking into the vault or armoury without permission, regardless of if it’s easily accessible is Secure Trespass.
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Mass Destruction
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To cause massive damage to an area or major station system.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            3 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            90 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Contempt of Court
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To significantly undermine the integrity and authority of the court.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            2 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            40 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Breach of Custody
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally escape from legal confinement.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            2 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            100 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Custody as defined under SL-A-2. This would apply to breaking out of Corporal Punishment custody.
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Breach of Probation
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally evade the rules of Probation.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Double initial
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Double initial
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Probation
+        </ColorBox>
+        <ColorBox Color="#252632">
+            This charge replaces the time for all your previous charges with its modified time.
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Breach of Counciling
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally evade the rules of Counciling.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Double initial
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Double initial
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Counciling
+        </ColorBox>
+        <ColorBox Color="#252632">
+            This charge replaces the time for all your previous charges with its modified time.
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Possession: Gear
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To possess gear without proper authorisation.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            2 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            60 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Armour, Sec glasses, Knives.
+        </ColorBox>
+    </Table>
+
+    ## Extreme Crimes
+    <Table Columns="6">
+        <ColorBox Color="#f4cccc">
+            [bold][color=#000000]Charge Name[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#f4cccc">
+            [bold][color=#000000]Description[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#f4cccc">
+            [bold][color=#000000]Max Duration[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#f4cccc">
+            [bold][color=#000000]Max Parole Interval[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#f4cccc">
+            [bold][color=#000000]Max Punishment[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#f4cccc">
+            [bold][color=#000000]Additional Notes[/color][/bold]
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Attempted Murder
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To cause intentional harm to a sophont with the intent to kill.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            5 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            120 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Murder
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally cause the death of another sophont.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            7 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            180 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Major Sabotage
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally cause damage to critical station systems or areas that significantly affects productivity.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            5 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            120 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Unlawful Control
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Kidnapping or Mindwashing.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            5 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            180 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Breach of Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally evade the rules of Forced Labor.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Double initial
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Double initial
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            This charge replaces the time for all your previous charges with its modified time.
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Breach of Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally escape from legal permanent confinement.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Double initial
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Double initial
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration
+        </ColorBox>
+        <ColorBox Color="#252632">
+            This charge replaces the time for all your previous charges with its modified time.
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Possession: Weaponry
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To possess weaponry without proper authorisation.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            3 Shifts
+        </ColorBox>
+        <ColorBox Color="#252632">
+            90 minutes
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            All firearms, Stun Batons, Disablers, Baseball Bats and other Improvised Weapons.All firearms, Stun Batons, Disablers, Baseball Bats and other Improvised Weapons.
+        </ColorBox>
+    </Table>
+
+    ## Capital Crimes
+    <Table Columns="6">
+        <ColorBox Color="#e6b8af">
+            [bold][color=#000000]Charge Name[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#e6b8af">
+            [bold][color=#000000]Description[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#e6b8af">
+            [bold][color=#000000]Max Duration[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#e6b8af">
+            [bold][color=#000000]Max Parole Interval[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#e6b8af">
+            [bold][color=#000000]Max Punishment[/color][/bold]
+        </ColorBox>
+        <ColorBox Color="#e6b8af">
+            [bold][color=#000000]Additional Notes[/color][/bold]
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Terrorism
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To threaten to significantly compromise the integrity of the station.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forever
+        </ColorBox>
+        <ColorBox Color="#252632">
+            None
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration or Extradition or Execution
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Sedition
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally organise in a manner to disrupt the absolute authority of the corporation.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forever
+        </ColorBox>
+        <ColorBox Color="#252632">
+            None
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration or Extradition or Execution
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Mass Murder
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To intentionally cause the death of several sophonts.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forever
+        </ColorBox>
+        <ColorBox Color="#252632">
+            None
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration or Extradition
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Prevention of Revival
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To cause another sophont to lose the ability to be revived, regardless of intent.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forever
+        </ColorBox>
+        <ColorBox Color="#252632">
+            None
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Incarceration or Extradition or Execution
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Mail Fraud
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To tamper with mail.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forever
+        </ColorBox>
+        <ColorBox Color="#252632">
+            None
+        </ColorBox>
+        <ColorBox Color="#252632">
+            Forced Labor
+        </ColorBox>
+        <ColorBox Color="#252632">
+            
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            Breach of Corporate Secret
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To unlawfully spread a corporate secret.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            X
+        </ColorBox>
+        <ColorBox Color="#252632">
+            X
+        </ColorBox>
+        <ColorBox Color="#252632">
+            X
+        </ColorBox>
+        <ColorBox Color="#252632">
+            This charge will always be decided in a Sector Magistrate’s Court. 
+        </ColorBox>
+
+        <ColorBox Color="#252632">
+            High Treason
+        </ColorBox>
+        <ColorBox Color="#252632">
+            To act against a Central Commander.
+        </ColorBox>
+        <ColorBox Color="#252632">
+            X
+        </ColorBox>
+        <ColorBox Color="#252632">
+            X
+        </ColorBox>
+        <ColorBox Color="#252632">
+            X
+        </ColorBox>
+        <ColorBox Color="#252632">
+            This charge will always be decided in a Sector Magistrate’s Court. 
+        </ColorBox>
+    </Table>
+</Document>

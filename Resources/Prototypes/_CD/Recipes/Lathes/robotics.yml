@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+# Recipies
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: AIShellBrain
+  result: AIShellBrain
+  completetime: 3
+  icon:
+    sprite: _CD/Objects/Devices/boris.rsi
+    state: boris
+  materials:
+    Steel: 1000
+    Glass: 200
+    Plastic: 500
+    Gold: 200

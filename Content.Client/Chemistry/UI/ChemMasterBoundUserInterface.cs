@@ -1,3 +1,23 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2020 ike709 <ike709@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Spartak <artak10t@gmail.com>
+// SPDX-FileCopyrightText: 2021 Ygg01 <y.laughing.man.y@gmail.com>
+// SPDX-FileCopyrightText: 2022 0x6273 <0x40@keemail.me>
+// SPDX-FileCopyrightText: 2022 Illiux <newoutlook@gmail.com>
+// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Dora <27211909+catdotjs@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Chemistry;
 using Content.Shared.Containers.ItemSlots;
 using JetBrains.Annotations;
@@ -48,6 +68,10 @@ namespace Content.Client.Chemistry.UI
                     (uint) _window.BottleDosage.Value, _window.LabelLine));
             _window.BufferSortButton.OnPressed += _ => SendMessage(
                     new ChemMasterSortingTypeCycleMessage());
+            _window.OutputBufferDraw.OnPressed += _ => SendMessage(
+                new ChemMasterOutputDrawSourceMessage(ChemMasterDrawSource.Internal));
+            _window.OutputBeakerDraw.OnPressed += _ => SendMessage(
+                new ChemMasterOutputDrawSourceMessage(ChemMasterDrawSource.External));
 
             for (uint i = 0; i < _window.PillTypeButtons.Length; i++)
             {

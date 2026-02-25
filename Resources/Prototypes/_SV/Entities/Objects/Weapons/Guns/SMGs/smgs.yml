@@ -1,0 +1,130 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 akirrer <mateusz.dychala@gmail.com>
+# SPDX-FileCopyrightText: 2026 akirrer <220388269+akirrer@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  name: S77-Locust
+  parent: BaseWeaponSubMachineGun
+  id: WeaponSubMachineGunLocust
+  description: Formally known to be lost to time and technological advancement, S77-Locust is a continued model of the old-school Terra shooters. Chambered in .22LR and scaled down, features a retractable stock. Watch the recoil!
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Weapons/Guns/SMGs/locust.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _SV/Objects/Weapons/Guns/SMGs/locust.rsi
+    slots:
+    - Belt
+    - suitStorage
+  - type: Wieldable
+    unwieldOnUse: false
+  - type: GunWieldBonus
+    minAngle: -3
+    maxAngle: -14
+  - type: Gun
+    minAngle: 3
+    maxAngle: 32
+    shotsPerBurst: 6
+    fireRate: 22
+    burstFireRate: 22
+    availableModes:
+    - Burst
+    - FullAuto
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/smg.ogg
+  - type: ChamberMagazineAmmoProvider
+    autoEject: true
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 4000
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineLocust
+        insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineLocust
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - CartridgeCaselessLightRifle
+
+- type: entity
+  name: R36-Violee
+  parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
+  id: WeaponSubMachineGunViolee
+  description: A newly issued NanoTrasen assault submachine gun, featuring enhanced ergonomics and a sleek, modern design. Advertised as an alternative to the well-known Drozd. Features barrel rifling, increasing the velocity and precision of projectiles, takes mainly from .35 Auto.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Weapons/Guns/SMGs/Violee.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _SV/Objects/Weapons/Guns/SMGs/Violee.rsi
+    slots:
+    - Belt
+    - suitStorage
+  - type: Wieldable
+    unwieldOnUse: false
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -18
+  - type: Gun
+    minAngle: 16
+    maxAngle: 36
+    angleIncrease: 8
+    angleDecay: 3
+    fireRate: 8
+    projectileSpeed: 48
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    - SemiAuto
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistolViolee
+        insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineViolee
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - CartridgePistol
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance

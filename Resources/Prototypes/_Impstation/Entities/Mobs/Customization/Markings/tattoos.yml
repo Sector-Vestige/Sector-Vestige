@@ -1,8 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Impstation contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: marking
   id: ChestCutHere
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Arachnid, SlimePerson, Felinid ]
+  groupWhitelist: [Human, Arachnid, Slime, Felinid ]
   coloring:
     default:
       type:
@@ -15,8 +21,7 @@
 - type: marking
   id: ArmDollJointsTattooLeft
   bodyPart: LArm
-  markingCategory: Arms
-  speciesRestriction: [Human, Dwarf, Arachnid, SlimePerson, Felinid ]
+  groupWhitelist: [Human, Arachnid, Slime, Felinid ]
   coloring:
     default:
       type:
@@ -29,8 +34,7 @@
 - type: marking
   id: ArmDollJointsTattooRight
   bodyPart: RArm
-  markingCategory: Arms
-  speciesRestriction: [Human, Dwarf, Arachnid, SlimePerson, Felinid ]
+  groupWhitelist: [Human, Arachnid, Slime, Felinid ]
   coloring:
     default:
       type:
@@ -43,8 +47,7 @@
 - type: marking
   id: HandDollJointsTattooLeft
   bodyPart: LHand
-  markingCategory: Arms
-  speciesRestriction: [Human, Dwarf, Arachnid, SlimePerson, Felinid ]
+  groupWhitelist: [Human, Arachnid, Slime, Felinid ]
   coloring:
     default:
       type:
@@ -57,8 +60,7 @@
 - type: marking
   id: HandDollJointsTattooRight
   bodyPart: RHand
-  markingCategory: Arms
-  speciesRestriction: [Human, Dwarf, Arachnid, SlimePerson, Felinid ]
+  groupWhitelist: [Human, Arachnid, Slime, Felinid ]
   coloring:
     default:
       type:
@@ -71,8 +73,7 @@
 - type: marking
   id: LegDollJointsTattooLeft
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [Human, Dwarf, Arachnid, SlimePerson, Felinid ]
+  groupWhitelist: [Human, Arachnid, Slime, Felinid ]
   coloring:
     default:
       type:
@@ -85,8 +86,7 @@
 - type: marking
   id: LegDollJointsTattooRight
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [Human, Dwarf, Arachnid, SlimePerson, Felinid ]
+  groupWhitelist: [Human, Arachnid, Slime, Felinid ]
   coloring:
     default:
       type:
@@ -99,8 +99,7 @@
 - type: marking
   id: FootDollJointsTattooLeft
   bodyPart: LFoot
-  markingCategory: Legs
-  speciesRestriction: [Human, Dwarf, Arachnid, SlimePerson, Felinid ]
+  groupWhitelist: [Human, Arachnid, Slime, Felinid ]
   coloring:
     default:
       type:
@@ -113,8 +112,7 @@
 - type: marking
   id: FootDollJointsTattooRight
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [Human, Dwarf, Arachnid, SlimePerson, Felinid ]
+  groupWhitelist: [Human, Arachnid, Slime, Felinid ]
   coloring:
     default:
       type:

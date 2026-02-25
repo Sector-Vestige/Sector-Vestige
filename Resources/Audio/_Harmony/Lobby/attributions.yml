@@ -1,4 +1,14 @@
-﻿- files: ["rustycansbattle.ogg"]
+# SPDX-FileCopyrightText: 2026 Harmony contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2024 Jacob Scott <scott@wearejacob.com>
+# SPDX-FileCopyrightText: 2024 meatballwalkin <173872871+meatballwalkin@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 FluffMe <1780586+FluffMe@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Spanky <scott@wearejacob.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- files: ["rustycansbattle.ogg"]
   license: "CC-BY-NC-SA-3.0"
   copyright: "Aaron Opfer, Rusty Cans Battle, created for FTL Captain's edition mod."
   source: "https://www.subsetgames.com/forum/viewtopic.php?f=11&t=15663"

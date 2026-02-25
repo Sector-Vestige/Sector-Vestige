@@ -1,25 +1,42 @@
-﻿name: Build & Test Map Renderer
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
+# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
+# SPDX-FileCopyrightText: 2021 mirrorcult <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2022 0x6273 <0x40@keemail.me>
+# SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
+# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Myra <vasilis@pikachu.systems>
+# SPDX-FileCopyrightText: 2024 Nikolai Korolev <korolevns98@gmail.com>
+# SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+name: Build & Test Map Renderer
 
 on:
   push:
     branches: [ master, staging, stable ]
   merge_group:
-  pull_request:
+  pull_request_target:
     types: [ opened, reopened, synchronize, ready_for_review ]
     branches: [ master, staging, stable ]
 
 jobs:
   build:
-    if: github.actor != 'PJBot' && github.event.pull_request.draft == false
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
-    runs-on: ${{ matrix.os }}
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Master
         uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          submodules: 'recursive'
 
       - name: Setup Submodule
         run: |
@@ -36,7 +53,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v4.1.0
         with:
-          dotnet-version: 9.0.x
+          dotnet-version: 10.0.x
 
       - name: Install dependencies
         run: dotnet restore

@@ -1,0 +1,129 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 akirrer <220388269+akirrer@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  abstract: true
+  parent: [ BaseItem, BaseSecurityContraband ]
+  id: BaseMagazinePistolViolee
+  name: R36-Violee magazine (.35 auto)
+  components:
+  - type: Tag
+    tags:
+    - MagazineViolee
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+      - CartridgePistol
+    capacity: 20
+  - type: Item
+    size: Small
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _SV/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/Violee.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  parent: BaseMagazinePistolViolee
+  id: MagazinePistolViolee
+  name: R36-Violee magazine (.35 auto)
+  description: 20-round magazine for the R36-Violee. Accepts .35 Auto while feeling quite light.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgePistol
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/bullet_insert.ogg
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      right:
+      - state: inhand-right-mag
+
+- type: entity
+  parent: BaseMagazinePistolViolee
+  id: MagazinePistolVioleeEmpty
+  name: R36-Violee magazine (.35 auto any)
+  suffix: empty
+  description: 20-round magazine for the R36-Violee. Accepts .35 Auto while feeling quite light.
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      right:
+      - state: inhand-right-mag
+
+- type: entity
+  parent: BaseMagazinePistolViolee
+  id: MagazinePistolVioleePractice
+  name: R36-Violee magazine (.35 auto practice)
+  description: 20-round magazine for the R36-Violee. Accepts .35 Auto while feeling quite light. Filled with practice rounds.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgePistolPractice
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripe
+      color: "#dbdbdb"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      right:
+      - state: inhand-right-mag
+
+- type: entity
+  parent: BaseMagazinePistolViolee
+  id: MagazinePistolVioleeAP
+  name: R36-Violee magazine (.35 auto AP)
+  description: 20-round magazine for the R36-Violee. Accepts .35 Auto while feeling quite light. Filled with rare armor-piercing rounds. Reserved only to NanoTrasen elite squads.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgePistolAP
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripe
+      color: "#540000"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      right:
+      - state: inhand-right-mag

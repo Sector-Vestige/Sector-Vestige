@@ -1,8 +1,11 @@
-## Cargo
-- type: latheRecipePack
-  id: HarmonyCargoStatic
-  recipes:
-  - BoxFolderClipboard
+# SPDX-FileCopyrightText: 2026 Harmony contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 Jajsha <101492056+Zap527@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 ## Clothing
 - type: latheRecipePack
@@ -49,27 +52,19 @@
   # Topicals
   - Bloodpack
   # Chemistry
-  - BaseChemistryEmptyVial
   # Surgery
   - CircularSaw
   # Other
   - ClothingEyesEyepatchHudMedical
   - ClothingEyesHudMedical
 
-## Security
-- type: latheRecipePack
-  id: HarmonySecurityEquipmentStatic
-  recipes:
-  - SecurityBola
+# ## Security
+# - type: latheRecipePack
+#   id: HarmonySecurityEquipmentStatic
+#   recipes:
+#   - SecurityBola
 
-- type: latheRecipePack
-  id: HarmonySecurityAmmoStatic
-  recipes:
-  - StripperClip
-
-## Service
-- type: latheRecipePack
-  id: HarmonyServiceStatic
-  recipes:
-  - CassetteTape # DeltaV
-  - TapeRecorder # DeltaV
+# - type: latheRecipePack
+#   id: HarmonySecurityAmmoStatic
+#   recipes:
+#   - StripperClip

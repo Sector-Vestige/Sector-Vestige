@@ -1,11 +1,32 @@
+// SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2023 Daniil Sikinami <60344369+VigersRay@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Anzuneth <malachigene@gmail.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Numerics;
 using Content.Shared.Access.Components;
 using Content.Shared.Actions;
-using Content.Shared.Actions.Components;
 using Content.Shared.Audio;
 using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Hands;
+using Content.Shared.Actions.Components;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
 using Content.Shared.Light.Components;
@@ -53,7 +74,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         base.Initialize();
         InitializeRider();
 
-//        SubscribeLocalEvent<VehicleComponent, ComponentStartup>(OnVehicleStartup);
+        SubscribeLocalEvent<VehicleComponent, ComponentStartup>(OnVehicleStartup);
         SubscribeLocalEvent<VehicleComponent, StrappedEvent>(OnBuckled);
         SubscribeLocalEvent<VehicleComponent, UnstrappedEvent>(OnUnbuckled);
         SubscribeLocalEvent<VehicleComponent, HonkActionEvent>(OnHonkAction);
@@ -89,19 +110,19 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         }
     }
 
-//    private void OnVehicleStartup(EntityUid uid, VehicleComponent component, ComponentStartup args)
-//    {
-//        UpdateDrawDepth(uid, 2);
+    private void OnVehicleStartup(EntityUid uid, VehicleComponent component, ComponentStartup args)
+    {
+        UpdateDrawDepth(uid, 2);
 
         // This code should be purged anyway but with that being said this doesn't handle components being changed.
-//        if (TryComp<StrapComponent>(uid, out var strap))
-//        {
-//            component.BaseBuckleOffset = strap.BuckleOffset;
-//            strap.BuckleOffset = Vector2.Zero;
-//        }
+        if (TryComp<StrapComponent>(uid, out var strap))
+        {
+            component.BaseBuckleOffset = strap.BuckleOffset;
+            strap.BuckleOffset = Vector2.Zero;
+        }
 
-//        _modifier.RefreshMovementSpeedModifiers(uid);
-//    }
+        _modifier.RefreshMovementSpeedModifiers(uid);
+    }
 
     /// <summary>
     /// Add the rider component to the user
@@ -310,14 +331,14 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         // TODO: Strap should handle this but buckle E/C moment.
         var oldOffset = strap.BuckleOffset;
 
-//        strap.BuckleOffset = xform.LocalRotation.Degrees switch
-//{
-//            < 45f => new(0, component.SouthOverride),
-//            <= 135f => component.BaseBuckleOffset,
-//            < 225f  => new(0, component.NorthOverride),
-//            <= 315f => new(component.BaseBuckleOffset.X * -1, component.BaseBuckleOffset.Y),
-//            _ => new(0, component.SouthOverride)
-//        };
+        strap.BuckleOffset = xform.LocalRotation.Degrees switch
+        {
+            < 45f => new(0, component.SouthOverride),
+            <= 135f => component.BaseBuckleOffset,
+            < 225f  => new(0, component.NorthOverride),
+            <= 315f => new(component.BaseBuckleOffset.X * -1, component.BaseBuckleOffset.Y),
+            _ => new(0, component.SouthOverride)
+        };
 
         if (!oldOffset.Equals(strap.BuckleOffset))
             Dirty(uid, strap);

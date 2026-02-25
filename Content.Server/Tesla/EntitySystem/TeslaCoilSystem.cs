@@ -33,7 +33,7 @@ public sealed class TeslaCoilSystem : EntitySystem
     {
         if (TryComp<BatteryComponent>(coil, out var batteryComponent))
         {
-            _battery.SetCharge((coil, batteryComponent), batteryComponent.CurrentCharge + coil.Comp.ChargeFromLightning);
+            _battery.ChangeCharge((coil, batteryComponent), coil.Comp.ChargeFromLightning);
         }
     }
 }

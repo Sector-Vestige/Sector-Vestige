@@ -1,0 +1,381 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 MoonlightHollow <muszynskinicholas8@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: markingsGroup
+  parent: Undergarments
+  id: Avali
+  limits:
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 0
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadSide:
+      limit: 1
+      required: true
+      default: [ AvaliEarsBase ]
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [ AvaliTailBase ]
+    enum.HumanoidVisualLayers.LArm:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.LHand:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 3 #SV 2 -> 3
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceAvali
+  name: avali appearance
+  components:
+  - type: InitialBody
+    organs:
+      Torso: OrganAvaliTorso
+      Head: OrganAvaliHead
+      ArmLeft: OrganAvaliArmLeft
+      ArmRight: OrganAvaliArmRight
+      HandRight: OrganAvaliHandRight
+      HandLeft: OrganAvaliHandLeft
+      LegLeft: OrganAvaliLegLeft
+      LegRight: OrganAvaliLegRight
+      FootLeft: OrganAvaliFootLeft
+      FootRight: OrganAvaliFootRight
+      Brain: OrganAvaliBrain
+      Eyes: OrganAvaliEyes
+      Tongue: OrganAvaliTongue
+      Ears: OrganAvaliEars
+      Lungs: OrganAvaliLungs
+      Heart: OrganAvaliHeart
+      Stomach: OrganAvaliStomach
+      Liver: OrganAvaliLiver
+      Kidneys: OrganAvaliKidneys
+  - type: HumanoidProfile
+    species: Avali
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+  - type: ScaleVisuals
+    scale: 1, 1
+
+- type: entity
+  parent:
+  - AppearanceAvali
+  - BaseSpeciesMobOrganic
+  id: MobAvali
+  name: Urist McRaptor
+  components:
+  - type: Hunger
+  - type: Thirst
+  - type: Icon
+    sprite: _CD/Mobs/Species/Avali/parts.rsi
+    state: full
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatChicken
+      amount: 3
+  - type: Speech
+    speechVerb: Parrot
+    speechSounds: MaleAvali
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 95
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Vocal
+    sounds:
+      Male: MaleAvali
+      Female: FemaleAvali
+      Unsexed: MaleAvali
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Avali
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#7a8bf2"
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: AmmoniaBlood
+        Quantity: 300
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+  - type: Temperature
+    currentTemperature: 296.15
+    specificHeat: 48
+  - type: TemperatureDamage
+    heatDamageThreshold: 310
+    coldDamageThreshold: 223
+    coldDamage:
+      types:
+        Cold: 0.05
+    heatDamage:
+      types:
+        Heat: 3
+  - type: TemperatureSpeed
+    thresholds:
+      265: 0.8
+      251: 0.6
+      226: 0.4
+  - type: ThermalRegulator
+    metabolismHeat: 400
+    radiatedHeat: 100
+    implicitHeatRegulation: 500
+    sweatHeatRegulation: 2000
+    shiveringHeatRegulation: 2000
+    normalBodyTemperature: 296.15
+    thermalRegulationTemperatureThreshold: 10
+
+# Base organ definitions
+- type: entity
+  parent: OrganBase
+  id: OrganAvali
+  abstract: true
+  suffix: avali
+
+- type: entity
+  id: OrganAvaliMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Animal ]
+
+- type: entity
+  parent: OrganAvali
+  id: OrganAvaliInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganAvaliVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _CD/Mobs/Species/Avali/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Avali
+
+- type: entity
+  parent: [ OrganAvali, OrganAvaliVisual ]
+  id: OrganAvaliExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _CD/Mobs/Species/Avali/parts.rsi
+
+# External organs (body parts)
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganAvaliExternal ]
+  id: OrganAvaliTorso
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 5
+      - ReagentId: AmmoniaBlood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganAvaliExternal ]
+  id: OrganAvaliHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.Snout
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.HeadSide
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 5
+      - ReagentId: AmmoniaBlood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganAvaliExternal ]
+  id: OrganAvaliArmLeft
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 1.5
+      - ReagentId: AmmoniaBlood
+        Quantity: 5
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganAvaliExternal ]
+  id: OrganAvaliArmRight
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 1.5
+      - ReagentId: AmmoniaBlood
+        Quantity: 5
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganAvaliExternal ]
+  id: OrganAvaliHandLeft
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 1.5
+      - ReagentId: AmmoniaBlood
+        Quantity: 5
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganAvaliExternal ]
+  id: OrganAvaliHandRight
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 1.5
+      - ReagentId: AmmoniaBlood
+        Quantity: 5
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganAvaliExternal ]
+  id: OrganAvaliLegLeft
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 1.5
+      - ReagentId: AmmoniaBlood
+        Quantity: 5
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganAvaliExternal ]
+  id: OrganAvaliLegRight
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 1.5
+      - ReagentId: AmmoniaBlood
+        Quantity: 5
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganAvaliExternal ]
+  id: OrganAvaliFootLeft
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 1.5
+      - ReagentId: AmmoniaBlood
+        Quantity: 5
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganAvaliExternal ]
+  id: OrganAvaliFootRight
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 1.5
+      - ReagentId: AmmoniaBlood
+        Quantity: 5
+
+# Internal organs
+- type: entity
+  parent: [ OrganBaseBrain, OrganSpriteHumanInternal, OrganAvaliInternal ]
+  id: OrganAvaliBrain
+
+- type: entity
+  parent: [ OrganAvaliVisual, OrganBaseEyes, OrganAvaliInternal ]
+  id: OrganAvaliEyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganAvaliInternal ]
+  id: OrganAvaliTongue
+
+- type: entity
+  parent: [ OrganBaseEars, OrganSpriteHumanInternal, OrganAvaliInternal ]
+  id: OrganAvaliEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganSpriteHumanInternal, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliKidneys

@@ -1,3 +1,20 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2018 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2019 Silver <Silvertorch5@gmail.com>
+// SPDX-FileCopyrightText: 2020 Tyler Young <tyler.young@impromptu.ninja>
+// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <zddm@outlook.es>
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 20kdc <asdd2808@gmail.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -98,10 +115,13 @@ public sealed class ParallaxManager : IParallaxManager
             }
             else
             {
-                layers = await Task.WhenAll(
+                // Explicitly allocate params array to avoid sandbox violation since C# 14.
+                var tasks = new[]
+                {
                     LoadParallaxLayers(parallaxPrototype.Layers, loadedLayers, cancel),
-                    LoadParallaxLayers(parallaxPrototype.LayersLQ, loadedLayers, cancel)
-                );
+                    LoadParallaxLayers(parallaxPrototype.LayersLQ, loadedLayers, cancel),
+                };
+                layers = await Task.WhenAll(tasks);
             }
 
             cancel.ThrowIfCancellationRequested();

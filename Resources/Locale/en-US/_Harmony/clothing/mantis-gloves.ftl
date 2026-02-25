@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 NakataRin <45946146+NakataRin@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 mantis-gloves-activated = The blades extend from the gloves with a menacing gleam.
 mantis-gloves-deactivated = The blades retract into the gloves.
 mantis-gloves-name-active = mantis blades

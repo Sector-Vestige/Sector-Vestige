@@ -2,7 +2,7 @@
   # Resomi
 
   <Box>
-    <GuideEntityEmbed Entity="MobResomiDummy" Caption=""/>
+    <GuideEntityEmbed Entity="AppearanceResomi" Caption=""/>
   </Box>
 
   Resomi are a small avian species with distinctive features and feathers.

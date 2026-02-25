@@ -1,3 +1,12 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2024 Southbridge <7013162+southbridge-fur@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface.RichText;
@@ -10,7 +19,7 @@ namespace Content.Client.UserInterface.RichText;
 /// <summary>
 /// Sets the font to a monospaced variant
 /// </summary>
-public sealed class MonoTag : IMarkupTag
+public sealed class MonoTag : IMarkupTagHandler
 {
     public static readonly ProtoId<FontPrototype> MonoFont = "Monospace";
 

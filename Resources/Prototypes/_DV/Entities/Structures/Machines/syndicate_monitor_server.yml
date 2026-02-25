@@ -1,3 +1,16 @@
+# SPDX-FileCopyrightText: 2026 Delta-V contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Julian Giebel <juliangiebel@live.de>
+# SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+# SPDX-FileCopyrightText: 2024 V <97265903+formlessnameless@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   id: SyndicateMonitoringServer
   parent: BaseMachinePowered

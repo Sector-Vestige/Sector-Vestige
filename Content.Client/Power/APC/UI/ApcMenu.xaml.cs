@@ -17,6 +17,7 @@
 // SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Partmedia <kevinz5000@gmail.com>
 // SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
 //
 // SPDX-License-Identifier: MIT
@@ -56,14 +57,18 @@ namespace Content.Client.Power.APC.UI
         {
             var castState = (ApcBoundInterfaceState) state;
 
-            if (!BreakerButton.Disabled)
-            {
-                BreakerButton.Pressed = castState.MainBreaker;
-            }
+            BreakerButton.Pressed = castState.MainBreaker;
 
             if (PowerLabel != null)
             {
-                PowerLabel.Text = Loc.GetString("apc-menu-power-state-label-text", ("power", castState.Power));
+                if (castState.Tripped)
+                {
+                    PowerLabel.Text = Loc.GetString("apc-menu-power-state-label-tripped");
+                }
+                else
+                {
+                    PowerLabel.Text = Loc.GetString("apc-menu-power-state-label-text", ("power", castState.Power), ("maxLoad", castState.MaxLoad));
+                }
             }
 
             if (ExternalPowerStateLabel != null)

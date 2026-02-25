@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 FloofStation contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2023 AndresE55
 # SPDX-FileCopyrightText: 2024 Dvir
 # SPDX-FileCopyrightText: 2024 ErhardSteinhauer
@@ -7,6 +9,8 @@
 # SPDX-FileCopyrightText: 2025 Redrover1760
 # SPDX-FileCopyrightText: 2025 Whatstone
 # SPDX-FileCopyrightText: 2025 mogaiskii <sani.mog@gmail.com>
+# SPDX-FileCopyrightText: 2026 BackeTako <branne33@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -55,6 +59,8 @@
       collection: Whistles
     Weh:
       collection: Weh
+    Coo:
+      collection: HarpyCoos
     Gasp:
       collection: MaleGasp
     DefaultDeathgasp:
@@ -96,6 +102,8 @@
       collection: Whistles
     Weh:
       collection: Weh
+    Coo:
+      collection: HarpyCoos
     Gasp:
       collection: FemaleGasp
     DefaultDeathgasp:

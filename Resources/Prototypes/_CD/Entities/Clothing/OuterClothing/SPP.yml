@@ -1,3 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 # Parents
 - type: entity
   parent: ClothingOuterBaseMedium
@@ -61,12 +69,13 @@
       - sprite: _CD/Clothing/OuterClothing/Armor/armor_overlays.rsi
         state: lamp-off
   - type: Appearance
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
     spriteLayer: light
     clothingVisuals:
       outerClothing:
       - sprite: _CD/Clothing/OuterClothing/Armor/armor_overlays.rsi
         state: lamp-on
+  - type: ItemTogglePointLight
   - type: PointLight
     enabled: false
     radius: 3.5
@@ -109,7 +118,6 @@
     maxCharge: 600 #lights drain 3/s but recharge of 2 makes this 1/s. Therefore 600 is 10 minutes of light.
     startingCharge: 600
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 2 #recharge of 2 makes total drain 1w / s so max charge is 1:1 with time. Time to fully charge should be 5 minutes. Having recharge gives light an extended flicker period which gives you some warning to return to light area.
 
 # SPP armors

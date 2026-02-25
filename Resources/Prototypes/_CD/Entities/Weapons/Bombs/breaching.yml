@@ -1,4 +1,12 @@
-﻿- type: entity
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
   parent: BasePlasticExplosive
   id: BreachingCharge
   name: breaching charge
@@ -12,7 +20,7 @@
       map: ["base"]
   - type: Item
     size: Normal
-  - type: MultiHandedItem
+  #  - type: MultiHandedItem #SV - Change breaching charge to be one-handed
   - type: Sticky
     stickDelay: 8
     unstickDelay: 3

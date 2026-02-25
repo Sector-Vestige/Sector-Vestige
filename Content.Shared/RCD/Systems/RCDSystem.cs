@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 // SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
 // SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
@@ -7,19 +7,23 @@
 // SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
 // SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
 // SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
 // SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
 // SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 JesterX666 <32009105+JesterX666@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
 // SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2025 TemporalOroboros <TemporalOroboros@gmail.com>
 // SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
 // SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
 // SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
 //
 // SPDX-License-Identifier: MIT
 
@@ -68,6 +72,7 @@ public sealed class RCDSystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
@@ -82,7 +87,7 @@ public sealed class RCDSystem : EntitySystem
     private readonly ProtoId<RCDPrototype> _deconstructTileProto = "DeconstructTile";
     private readonly ProtoId<RCDPrototype> _deconstructLatticeProto = "DeconstructLattice";
     private static readonly ProtoId<TagPrototype> CatwalkTag = "Catwalk";
-    private AtmosPipeLayer _currentLayer = default; //Sector Vestige: RPD Logic
+    private AtmosPipeLayer _currentLayer; //Sector Vestige: RPD Logic
 
     private HashSet<EntityUid> _intersectingEntities = new();
 
@@ -170,7 +175,13 @@ public sealed class RCDSystem : EntitySystem
         if (!location.IsValid(EntityManager))
             return;
 
-        var gridUid = _transform.GetGrid(location);
+        // Get grid corresponding to user's click location.
+        // If that doesn't exist, try using the one they're standing on.
+        // In the future we might want to also check adjacent spaces for grids,
+        // in case the user is floating in space for whatever reason.
+        var clickGridUid = _transform.GetGrid(location);
+        var userGridUid = _transform.GetGrid(user);
+        var gridUid = clickGridUid.HasValue ? clickGridUid : userGridUid;
 
         if (!TryComp<MapGridComponent>(gridUid, out var mapGrid))
         {
@@ -183,7 +194,7 @@ public sealed class RCDSystem : EntitySystem
         var tile = _mapSystem.GetTileRef(gridUid.Value, mapGrid, location);
         var position = _mapSystem.TileIndicesFor(gridUid.Value, mapGrid, location);
 
-        if (!IsRCDOperationStillValid(uid, component, gridUid.Value, mapGrid, tile, position, args.Target, args.User))
+        if (!IsRCDOperationStillValid(uid, component, gridUid.Value, mapGrid, tile, position, component.ConstructionDirection, args.Target, args.User))
             return;
 
         if (!_net.IsServer)
@@ -258,9 +269,14 @@ public sealed class RCDSystem : EntitySystem
         #endregion
 
         // Try to start the do after
-        var effect = Spawn(effectPrototype, location);
-        var ev = new RCDDoAfterEvent(GetNetCoordinates(location), component.ConstructionDirection, component.ProtoId, cost, GetNetEntity(effect));
-
+        var effect = Spawn(effectPrototype, _mapSystem.ToCenterCoordinates(tile, mapGrid));
+        var ev = new RCDDoAfterEvent(
+            GetNetCoordinates(location),
+            GetNetEntity(gridUid.Value),
+            component.ConstructionDirection,
+            component.ProtoId,
+            cost,
+            GetNetEntity(effect));
         var doAfterArgs = new DoAfterArgs(EntityManager, user, delay, ev, uid, target: args.Target, used: uid)
         {
             BreakOnDamage = true,
@@ -290,9 +306,7 @@ public sealed class RCDSystem : EntitySystem
         }
 
         // Ensure the RCD operation is still valid
-        var location = GetCoordinates(args.Event.Location);
-
-        var gridUid = _transform.GetGrid(location);
+        var gridUid = GetEntity(args.Event.TargetGridId);
 
         if (!TryComp<MapGridComponent>(gridUid, out var mapGrid))
         {
@@ -301,10 +315,11 @@ public sealed class RCDSystem : EntitySystem
         }
 
 
-        var tile = _mapSystem.GetTileRef(gridUid.Value, mapGrid, location);
-        var position = _mapSystem.TileIndicesFor(gridUid.Value, mapGrid, location);
+        var location = GetCoordinates(args.Event.Location);
+        var tile = _mapSystem.GetTileRef(gridUid, mapGrid, location);
+        var position = _mapSystem.TileIndicesFor(gridUid, mapGrid, location);
 
-        if (!IsRCDOperationStillValid(uid, component, gridUid.Value, mapGrid, tile, position, args.Event.Target, args.Event.User))
+        if (!IsRCDOperationStillValid(uid, component, gridUid, mapGrid, tile, position, args.Event.Direction, args.Event.Target, args.Event.User))
             args.Cancel();
     }
 
@@ -323,22 +338,23 @@ public sealed class RCDSystem : EntitySystem
 
         args.Handled = true;
 
-        var location = GetCoordinates(args.Location);
-
-        var gridUid = _transform.GetGrid(location);
+        var gridUid = GetEntity(args.TargetGridId);
 
         if (!TryComp<MapGridComponent>(gridUid, out var mapGrid))
             return;
 
-        var tile = _mapSystem.GetTileRef(gridUid.Value, mapGrid, location);
-        var position = _mapSystem.TileIndicesFor(gridUid.Value, mapGrid, location);
+        var location = GetCoordinates(args.Location);
+        var tile = _mapSystem.GetTileRef(gridUid, mapGrid, location);
+        var position = _mapSystem.TileIndicesFor(gridUid, mapGrid, location);
 
         // Ensure the RCD operation is still valid
-        if (!IsRCDOperationStillValid(uid, component, gridUid.Value, mapGrid, tile, position, args.Target, args.User))
+        if (!IsRCDOperationStillValid(uid, component, gridUid, mapGrid, tile, position, args.Direction, args.Target, args.User))
+        {
             return;
+        }
 
         // Finalize the operation (this should handle prediction properly)
-        FinalizeRCDOperation(uid, component, gridUid.Value, mapGrid, tile, position, args.Direction, args.Target, args.User, location); //Sector Vestige: RPD Logic
+        FinalizeRCDOperation(uid, component, gridUid, mapGrid, tile, position, args.Direction, args.Target, args.User, location); //Sector Vestige: RPD Logic
 
         // Play audio and consume charges
         _audio.PlayPredicted(component.SuccessSound, uid, args.User);
@@ -369,6 +385,11 @@ public sealed class RCDSystem : EntitySystem
     #region Entity construction/deconstruction rule checks
 
     public bool IsRCDOperationStillValid(EntityUid uid, RCDComponent component, EntityUid gridUid, MapGridComponent mapGrid, TileRef tile, Vector2i position, EntityUid? target, EntityUid user, bool popMsgs = true)
+    {
+        return IsRCDOperationStillValid(uid, component, gridUid, mapGrid, tile, position, component.ConstructionDirection, target, user, popMsgs);
+    }
+
+    public bool IsRCDOperationStillValid(EntityUid uid, RCDComponent component, EntityUid gridUid, MapGridComponent mapGrid, TileRef tile, Vector2i position, Direction direction, EntityUid? target, EntityUid user, bool popMsgs = true)
     {
         var prototype = _protoManager.Index(component.ProtoId);
 
@@ -405,7 +426,7 @@ public sealed class RCDSystem : EntitySystem
         {
             case RcdMode.ConstructTile:
             case RcdMode.ConstructObject:
-                return IsConstructionLocationValid(uid, component, gridUid, mapGrid, tile, position, user, popMsgs);
+                return IsConstructionLocationValid(uid, component, gridUid, mapGrid, tile, position, direction, user, popMsgs);
             case RcdMode.Deconstruct:
             case RcdMode.DeconstructPipe: //Sector Vestige: RPD Logic
                 return IsDeconstructionStillValid(uid, tile, target, user, component, popMsgs); //Sector Vestige: RPD Logic
@@ -414,7 +435,7 @@ public sealed class RCDSystem : EntitySystem
         return false;
     }
 
-    private bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, EntityUid gridUid, MapGridComponent mapGrid, TileRef tile, Vector2i position, EntityUid user, bool popMsgs = true)
+    private bool IsConstructionLocationValid(EntityUid uid, RCDComponent component, EntityUid gridUid, MapGridComponent mapGrid, TileRef tile, Vector2i position, Direction direction, EntityUid user, bool popMsgs = true)
     {
         var prototype = _protoManager.Index(component.ProtoId);
 
@@ -457,8 +478,24 @@ public sealed class RCDSystem : EntitySystem
                 return false;
             }
 
+            var tileDef = _turf.GetContentTileDefinition(tile);
+
+            // Check rule: Respect baseTurf and baseWhitelist
+            if (prototype.Prototype != null && _tileDefMan.TryGetDefinition(prototype.Prototype, out var replacementDef))
+            {
+                var replacementContentDef = (ContentTileDefinition) replacementDef;
+
+                if (replacementContentDef.BaseTurf != tileDef.ID && !replacementContentDef.BaseWhitelist.Contains(tileDef.ID))
+                {
+                    if (popMsgs)
+                        _popup.PopupClient(Loc.GetString("rcd-component-cannot-build-on-empty-tile-message"), uid, user);
+
+                    return false;
+                }
+            }
+
             // Check rule: Tiles can't be identical
-            if (_turf.GetContentTileDefinition(tile).ID == prototype.Prototype)
+            if (tileDef.ID == prototype.Prototype)
             {
                 if (popMsgs)
                     _popup.PopupClient(Loc.GetString("rcd-component-cannot-build-identical-tile"), uid, user);
@@ -481,6 +518,28 @@ public sealed class RCDSystem : EntitySystem
 
         foreach (var ent in _intersectingEntities)
         {
+            // If the entity is the exact same prototype as what we are trying to build, then block it.
+            // This is to prevent spamming objects on the same tile (e.g. lights)
+            if (prototype.Prototype != null && MetaData(ent).EntityPrototype?.ID == prototype.Prototype)
+            {
+                var isIdentical = true;
+
+                if (prototype.AllowMultiDirection)
+                {
+                    var entDirection = Transform(ent).LocalRotation.GetCardinalDir();
+                    if (entDirection != direction)
+                        isIdentical = false;
+                }
+
+                if (isIdentical)
+                {
+                    if (popMsgs)
+                        _popup.PopupClient(Loc.GetString("rcd-component-cannot-build-identical-entity"), uid, user);
+
+                    return false;
+                }
+            }
+
             if (isWindow && HasComp<SharedCanBuildWindowOnTopComponent>(ent))
                 continue;
 
@@ -617,7 +676,10 @@ public sealed class RCDSystem : EntitySystem
         switch (prototype.Mode)
         {
             case RcdMode.ConstructTile:
-                _mapSystem.SetTile(gridUid, mapGrid, position, new Tile(_tileDefMan[prototype.Prototype].TileId));
+                if (!_tileDefMan.TryGetDefinition(prototype.Prototype, out var tileDef))
+                    return;
+
+                _tile.ReplaceTile(tile, (ContentTileDefinition) tileDef, gridUid, mapGrid);
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {gridUid} {position} to {prototype.Prototype}");
                 break;
 
@@ -678,7 +740,9 @@ public sealed class RCDSystem : EntitySystem
                 var entCords = _mapSystem.GridTileToLocal(gridUid, mapGrid, position);
                 var mapCords = _transform.ToMapCoordinates(entCords);
 
-                var entspawn = Spawn(ent, mapCords, rotation: rotation);
+                var entspawn = Spawn(ent, _mapSystem.GridTileToLocal(gridUid, mapGrid, position));
+
+                Transform(entspawn).LocalRotation = rotation;
 
 //                switch (prototype.Rotation)
 //                {
@@ -702,10 +766,9 @@ public sealed class RCDSystem : EntitySystem
 
                 if (target == null)
                 {
-                    // Deconstruct tile (either converts the tile to lattice, or removes lattice)
-                    var tileDef = (_turf.GetContentTileDefinition(tile).ID != "Lattice") ? new Tile(_tileDefMan["Lattice"].TileId) : Tile.Empty;
-                    _mapSystem.SetTile(gridUid, mapGrid, position, tileDef);
-                    _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {gridUid} tile: {position} open to space");
+                    // Deconstruct tile, don't drop tile as item
+                    if (_tile.DeconstructTile(tile, spawnItem: false))
+                        _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {gridUid} tile: {position} open to space");
                 }
                 else
                 {
@@ -738,7 +801,7 @@ public sealed class RCDSystem : EntitySystem
         return boundingPolygon.ComputeAABB(boundingTransform, 0).Intersects(fixture.Shape.ComputeAABB(entXform, 0));
     }
 
-    //Sector Vestig - Begin: RPD prototype flipping
+    //Sector Vestige - Begin: RPD prototype flipping
     private void OnRCDFlipPrototype(RCDConstructionGhostFlipEvent args)
     {
         var rcd = _entityManager.GetEntity(args.NetEntity);
@@ -748,7 +811,7 @@ public sealed class RCDSystem : EntitySystem
         component.UseFlippedPrototype = !component.UseFlippedPrototype;
         Dirty(rcd, component);
     }
-    //Sector Vestig - End: RPD prototype flipping
+    //Sector Vestige - End: RPD prototype flipping
     #endregion
 }
 
@@ -757,6 +820,9 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
 {
     [DataField(required: true)]
     public NetCoordinates Location { get; private set; }
+
+    [DataField(required: true)]
+    public NetEntity TargetGridId {get ; private set; }
 
     [DataField]
     public Direction Direction { get; private set; }
@@ -772,9 +838,17 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
 
     private RCDDoAfterEvent() { }
 
-    public RCDDoAfterEvent(NetCoordinates location, Direction direction, ProtoId<RCDPrototype> startingProtoId, int cost, NetEntity? effect = null)
+    public RCDDoAfterEvent(
+        NetCoordinates location,
+        NetEntity targetGridId,
+        Direction direction,
+        ProtoId<RCDPrototype>
+            startingProtoId,
+        int cost,
+        NetEntity? effect = null)
     {
         Location = location;
+        TargetGridId = targetGridId;
         Direction = direction;
         StartingProtoId = startingProtoId;
         Cost = cost;

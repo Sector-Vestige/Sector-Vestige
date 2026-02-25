@@ -1,14 +1,16 @@
+# SPDX-FileCopyrightText: 2026 FloofStation contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2025 Ark
 # SPDX-FileCopyrightText: 2025 NotActuallyMarty
 # SPDX-FileCopyrightText: 2025 mogaiskii <sani.mog@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: marking
   id: ResomiTail
   bodyPart: Tail    #Goob - was Chest
-  markingCategory: Tail
-  speciesRestriction: [Resomi]
+  groupWhitelist: [Resomi]
   forcedColoring: true
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
@@ -17,8 +19,7 @@
 - type: marking
   id: ResomiTailFeathers
   bodyPart: Tail #Goob - was Chest
-  markingCategory: Tail
-  speciesRestriction: [Resomi]
+  groupWhitelist: [Resomi]
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
     state: tail_feathers
@@ -26,8 +27,7 @@
 - type: marking
   id: ResomiLArmFeathers
   bodyPart: LHand
-  markingCategory: Arms
-  speciesRestriction: [Resomi]
+  groupWhitelist: [Resomi]
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
     state: l_hand_feathers
@@ -35,8 +35,7 @@
 - type: marking
   id: ResomiLLegFeathers
   bodyPart: LFoot
-  markingCategory: Legs
-  speciesRestriction: [Resomi]
+  groupWhitelist: [Resomi]
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
     state: l_foot_feathers
@@ -44,8 +43,7 @@
 - type: marking
   id: ResomiRArmFeathers
   bodyPart: RHand
-  markingCategory: Arms
-  speciesRestriction: [Resomi]
+  groupWhitelist: [Resomi]
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
     state: r_hand_feathers
@@ -53,8 +51,7 @@
 - type: marking
   id: ResomiRLegFeathers
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [Resomi]
+  groupWhitelist: [Resomi]
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
     state: r_foot_feathers
@@ -62,8 +59,7 @@
 - type: marking
   id: ResomiFluff
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Resomi]
+  groupWhitelist: [Resomi]
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
     state: fluff
@@ -71,8 +67,7 @@
 - type: marking
   id: ResomiFluffHead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Resomi]
+  groupWhitelist: [Resomi]
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
     state: fluff_head
@@ -80,8 +75,7 @@
 - type: marking
   id: ResomiFluffHeadUp
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Resomi]
+  groupWhitelist: [Resomi]
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
     state: fluff_head_up

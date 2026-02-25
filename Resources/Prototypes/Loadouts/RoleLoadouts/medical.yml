@@ -1,0 +1,78 @@
+- type: roleLoadout
+  id: JobChiefMedicalOfficer
+  groups:
+  - GroupTankHarness
+  - ChiefMedicalOfficerHead
+  - MedicalMask
+  - ChiefMedicalOfficerJumpsuit
+  - MedicalBackpack
+  - ChiefMedicalOfficerOuterClothing
+  - ChiefMedicalOfficerNeck
+  - ChiefMedicalOfficerShoes
+  - SurvivalMedical
+  - Trinkets
+#  - ChiefMedicalOfficerJobTrinkets
+  - GroupSpeciesBreathToolMedical
+  - PersonalItemsJobAgnostic #SV Change
+
+- type: roleLoadout
+  id: JobMedicalDoctor
+  groups:
+  - GroupTankHarness
+  - MedicalDoctorHead
+  - MedicalMask
+  - MedicalDoctorJumpsuit
+  - MedicalSpecializationBackpack # CD change from MedicalBackpack
+  - MedicalDoctorOuterClothing
+  - MedicalShoes
+  - MedicalDoctorPDA
+  - SurvivalMedical
+  - Trinkets
+#  - MedicalDoctorJobTrinkets
+  - GroupSpeciesBreathToolMedical
+  - PersonalItemsJobAgnostic #SV Change
+
+- type: roleLoadout
+  id: JobMedicalIntern
+  groups:
+  - GroupTankHarness
+  - MedicalInternJumpsuit
+  - MedicalBackpack
+  - SurvivalMedical
+  - Trinkets
+#  - MedicalInternJobTrinkets
+  - GroupSpeciesBreathToolMedical
+  - PersonalItemsJobAgnostic #SV Change
+
+- type: roleLoadout
+  id: JobChemist
+  groups:
+  - GroupTankHarness
+  - MedicalMask
+  - ChemistJumpsuit
+  - ChemistBackpack
+  - ChemistOuterClothing
+  - MedicalShoes
+  - SurvivalMedical
+  - Trinkets
+#  - ChemistJobTrinkets
+  - GroupSpeciesBreathToolMedical
+  - PersonalItemsJobAgnostic #SV Change
+
+- type: roleLoadout
+  id: JobParamedic
+  groups:
+  - GroupTankHarness
+  - ParamedicHead
+  # CD: ETU Gear
+  - ParamedicMask
+  - ParamedicJumpsuit
+  # CD: ETU Gear
+  - MedicalBackpack
+  - ParamedicOuterClothing
+  - ParamedicShoes
+  - SurvivalMedical
+  - Trinkets
+#  - ParamedicJobTrinkets
+  - GroupSpeciesBreathToolMedical
+  - PersonalItemsJobAgnostic #SV Change

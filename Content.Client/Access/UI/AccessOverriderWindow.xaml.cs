@@ -1,9 +1,13 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
 // SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 c4llv07e <38111072+c4llv07e@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 LordCarve <27449516+LordCarve@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
 //
 // SPDX-License-Identifier: MIT
@@ -63,6 +67,8 @@ namespace Content.Client.Access.UI
 
         public void UpdateState(IPrototypeManager protoManager, AccessOverriderBoundUserInterfaceState state)
         {
+            PrivilegedIdGrid.Visible = state.ShowPrivilegedIdGrid;
+
             PrivilegedIdLabel.Text = state.PrivilegedIdName;
             PrivilegedIdButton.Text = state.IsPrivilegedIdPresent
                 ? Loc.GetString("access-overrider-window-eject-button")
@@ -87,7 +93,9 @@ namespace Content.Client.Access.UI
                     missingPrivileges.Add(privilege);
                 }
 
-                MissingPrivilegesLabel.Text = Loc.GetString("access-overrider-window-missing-privileges");
+                MissingPrivilegesLabel.Text = state.ShowPrivilegedIdGrid ?
+                    Loc.GetString("access-overrider-window-missing-privileges") :
+                    Loc.GetString("access-overrider-window-missing-privileges-no-id");
                 MissingPrivilegesText.Text = string.Join(", ", missingPrivileges);
             }
 

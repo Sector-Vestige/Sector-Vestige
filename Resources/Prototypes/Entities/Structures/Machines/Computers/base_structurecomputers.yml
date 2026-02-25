@@ -17,7 +17,11 @@
       - board
   - type: Computer
   - type: ApcPowerReceiver
-    powerLoad: 200
+    powerLoad: 50
+  - type: PowerState
+    idlePowerDraw: 50
+    workingPowerDraw: 500
+  - type: UIPowerState
   - type: ExtensionCableReceiver
   - type: ActivatableUIRequiresPower
   - type: Sprite
@@ -33,6 +37,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: Appearance
   - type: GenericVisualizer
     visuals:

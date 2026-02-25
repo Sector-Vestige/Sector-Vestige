@@ -1,4 +1,11 @@
-﻿using Content.Server.Administration;
+// SPDX-FileCopyrightText: 2026 Umbra contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
+//
+// SPDX-License-Identifier: MIT
+
+using Content.Server.Administration;
 using Content.Shared._Umbra.Examine;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;

@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+#
+# SPDX-License-Identifier: MIT
+
 ### Messages to be used with RP-based medication.
 
 reagent-effect-antidepressant-mild1 = You feel like things aren't so bad.
@@ -87,3 +94,18 @@ reagent-effect-painkiller-strong5 = You hardly feel anything at all.
 reagent-effect-painkiller-strong6 = Any pain you were feeling is gone.
 
 reagent-effect-painkiller-fade = The painkiller's effects start to fade...
+
+reagent-effect-antipsych-normal1 = You gain a sense of clarity.
+reagent-effect-antipsych-normal2 = You feel your mind has somewhat calmed.
+reagent-effect-antipsych-normal3 = Your sanity seems to improve.
+reagent-effect-antipsych-normal4 = You space out for a moment.
+reagent-effect-antipsych-normal5 = You feel a bit drowsy.
+
+reagent-effect-antipsych-fade = The anti-psychotic's effects start to fade...
+
+reagent-effect-anti-amnesia-normal1 = You recall things from the past more clearly...
+reagent-effect-anti-amnesia-normal2 = A suppressed memory comes to light...
+reagent-effect-anti-amnesia-normal3 = Your mind feels exceptionally clear...
+reagent-effect-anti-amnesia-normal4 = You remember something small you forgot.
+
+reagent-effect-anti-amnesia-fade = Your mind no longer feels as clear...

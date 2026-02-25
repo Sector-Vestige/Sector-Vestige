@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseAmmoProvider # this is for cycling swabs out and not spawning 30 entities, trust
+  id: BoxEmergencyPen
+  name: emergency medipen dispenser
+  description: Dispenses 6 emergency medipens.
+  components:
+      - type: Sprite
+        sprite: _SV/Objects/Storage/boxes.rsi
+        layers:
+        - state: boxwide
+        - state: epi_pen
+      - type: BallisticAmmoProvider
+        whitelist:
+            components:
+                - Injector
+        proto: EmergencyMedipen
+        capacity: 6
+      - type: GuideHelp
+        guides:
+        - MedicalDoctor

@@ -1,3 +1,11 @@
+// SPDX-FileCopyrightText: 2026 LateStation14 contributors
+// SPDX-FileCopyrightText: 2025 Eirenex <41762755+EirenexTheDragon@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Late <latemare@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Text.RegularExpressions;
 using Content.Shared.Speech;
 using Content.Server.Speech.EntitySystems;

@@ -1,9 +1,35 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2020 DamianX <DamianX@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Paul <ritter.paul1+git@googlemail.com>
+// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
+// SPDX-FileCopyrightText: 2021 collinlunn <60152240+collinlunn@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Magnus Larsen <i.am.larsenml@gmail.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Numerics;
-using Content.Server.Body.Systems;
 using Content.Shared.Buckle;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Part;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -31,6 +57,8 @@ namespace Content.IntegrationTests.Tests.Buckle
   - type: Hands
   - type: ComplexInteraction
   - type: InputMover
+  - type: Physics
+    bodyType: KinematicController
   - type: Body
     prototype: Human
   - type: StandingState
@@ -245,7 +273,6 @@ namespace Content.IntegrationTests.Tests.Buckle
             EntityUid human = default;
             BuckleComponent buckle = null;
             HandsComponent hands = null;
-            BodyComponent body = null;
 
             await server.WaitIdleAsync();
 
@@ -265,7 +292,6 @@ namespace Content.IntegrationTests.Tests.Buckle
                     Assert.That(entityManager.TryGetComponent(human, out buckle));
                     Assert.That(entityManager.HasComponent<StrapComponent>(chair));
                     Assert.That(entityManager.TryGetComponent(human, out hands));
-                    Assert.That(entityManager.TryGetComponent(human, out body));
                 });
 
                 // Buckle
@@ -292,33 +318,10 @@ namespace Content.IntegrationTests.Tests.Buckle
                 // Still buckled
                 Assert.That(buckle.Buckled);
 
-                // With items in all hands
+                // Still with items in hand
                 foreach (var hand in hands.Hands.Keys)
                 {
                     Assert.That(handsSys.GetHeldItem((human, hands), hand), Is.Not.Null);
-                }
-
-                var bodySystem = entityManager.System<BodySystem>();
-                var legs = bodySystem.GetBodyChildrenOfType(human, BodyPartType.Leg, body);
-
-                // Break our guy's kneecaps
-                foreach (var leg in legs)
-                {
-                    entityManager.DeleteEntity(leg.Id);
-                }
-            });
-
-            await server.WaitRunTicks(10);
-
-            await server.WaitAssertion(() =>
-            {
-                // Still buckled
-                Assert.That(buckle.Buckled);
-
-                // Now with no item in any hand
-                foreach (var hand in hands.Hands.Keys)
-                {
-                    Assert.That(handsSys.GetHeldItem((human, hands), hand), Is.Null);
                 }
 
                 buckleSystem.Unbuckle(human, human);

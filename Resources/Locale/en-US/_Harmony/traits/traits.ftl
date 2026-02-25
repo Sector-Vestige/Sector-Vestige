@@ -1,3 +1,12 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2024 FluffMe <1780586+FluffMe@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Anzu <108382695+Anzuneth@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 trait-raisedbyarachnids-name = Raised by Arachnids
 trait-raisedbyarachnids-desc = You've lived with Arachnids for so long that you sound like them. (Replace speech sounds and verbs)
 

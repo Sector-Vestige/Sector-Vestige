@@ -1,0 +1,94 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by NicoSGF64 (Github) for SS14. Modifications of the candle-small, candle-big and loadout sprites, taken from https://github.com/space-wizards/space-station-14/commit/aa713ea7e6428a515bc69a8d40acde1105b78f39",
+    "states": [
+    {
+      "name": "loadout"
+    },
+    {
+      "name": "candle-small"
+    },
+    {
+      "name": "candle-big"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "fire-small",
+      "delays": [
+        [
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ]
+      ]
+    },
+    {
+      "name": "fire-big",
+      "delays": [
+        [
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ]
+      ]
+    },
+    {
+      "name": "inhand-left-flame",
+      "directions": 4,
+      "delays": [
+        [
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "inhand-right-flame",
+      "directions": 4,
+      "delays": [
+        [
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2
+        ]
+      ]
+    }
+  ]
+}

@@ -1,4 +1,11 @@
-﻿# Harmony poquito gear
+# SPDX-FileCopyrightText: 2026 Harmony contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2024 Ermucat <NCramey09@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Harmony poquito gear
 - type: startingGear
   id: MobPoquitoGear
   equipment:

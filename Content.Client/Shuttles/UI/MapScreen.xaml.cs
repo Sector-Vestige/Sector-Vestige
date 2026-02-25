@@ -1,3 +1,15 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 LordCarve <27449516+LordCarve@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using System.Numerics;
 using Content.Client.Shuttles.Systems;
@@ -153,7 +165,7 @@ public sealed partial class MapScreen : BoxContainer
                 break;
         }
 
-        if (IsFTLBlocked())
+        if (IsPingBlocked())
         {
             MapRebuildButton.Disabled = true;
             ClearMapObjects();
@@ -408,9 +420,21 @@ public sealed partial class MapScreen : BoxContainer
         }
     }
 
+    /// <summary>
+    /// Returns true if we shouldn't be able to select the Scan for Objects button.
+    /// </summary>
+    private bool IsPingBlocked()
+    {
+        return _state switch
+        {
+            FTLState.Available or FTLState.Cooldown => false,
+            _ => true,
+        };
+    }
+
     private void OnMapObjectPress(IMapObject mapObject)
     {
-        if (IsFTLBlocked())
+        if (IsPingBlocked())
             return;
 
         var coordinates = _shuttles.GetMapCoordinates(mapObject);
@@ -506,7 +530,7 @@ public sealed partial class MapScreen : BoxContainer
             BumpMapDequeue();
         }
 
-        if (!IsFTLBlocked() && _nextPing < curTime)
+        if (!IsPingBlocked() && _nextPing < curTime)
         {
             MapRebuildButton.Disabled = false;
         }

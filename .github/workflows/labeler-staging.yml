@@ -1,3 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 name: "Labels: Branch staging"
 
 on:
@@ -14,6 +22,12 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-    - uses: actions-ecosystem/action-add-labels@v1
+    - uses: actions/github-script@v7
       with:
-        labels: "Branch: Staging"
+        script: |
+          await github.rest.issues.addLabels({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            labels: ['Branch: Staging']
+          });

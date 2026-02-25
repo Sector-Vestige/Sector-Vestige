@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master, staging, stable ]
   merge_group:
-  pull_request:
+  pull_request_target:
     paths:
       - '**.rsi/**'
 
@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          submodules: 'true'
       - name: Setup Submodule
         run: git submodule update --init
       - name: Pull engine updates

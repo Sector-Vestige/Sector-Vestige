@@ -1,3 +1,14 @@
+# SPDX-FileCopyrightText: 2025 Wizards Den contributors
+# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Jessica M <jessica@jessicamaybe.com>
+# SPDX-FileCopyrightText: 2025 PJB3005 <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2025 Vasilis The Pikachu <vasilis@pikachu.systems>
+# SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
+# SPDX-FileCopyrightText: 2025 Mangohydra <156087924+Mangohydra@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: latheRecipe
   id: BioGenMonkeyCube
   result: MonkeyCube
@@ -270,3 +281,13 @@
   completetime: 5
   materials:
     Biomass: 20
+
+# SV additions below
+- type: latheRecipe
+  id: BioGenCigaretteFilter1
+  result: CigaretteFilter1
+  categories:
+  - Materials
+  completetime: 1
+  materials:
+    Biomass: 1

@@ -1,8 +1,12 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 // SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
 // SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 beck-thompson <beck314159@hotmail.com>
+// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 //
 // SPDX-License-Identifier: MIT
 
@@ -13,13 +17,13 @@ using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.Players.JobWhitelist;
 using Content.Shared.Roles;
+using Content.Shared._SV.CCVar; // SV changes - Group whitelist CVar
 using Content.Shared._SV.JobWhitelist; // SV changes - Job whitelist groups
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Serilog;
 
 namespace Content.Server.Players.JobWhitelist;
 
@@ -31,8 +35,10 @@ public sealed class JobWhitelistManager : IPostInjectInit
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly UserDbDataManager _userDb = default!;
+    [Dependency] private readonly ILogManager _logManager = default!;
 
     private readonly Dictionary<NetUserId, HashSet<string>> _whitelists = new();
+    private ISawmill _sawmill = default!;
     // SV changes start - Job whitelist groups
     private readonly Dictionary<NetUserId, HashSet<string>> _groupWhitelists = new();
     // SV changes end
@@ -100,7 +106,7 @@ public sealed class JobWhitelistManager : IPostInjectInit
     {
         if (!_whitelists.TryGetValue(player, out var whitelists))
         {
-            Log.Error("Unable to check if player {Player} is whitelisted for {Job}. Stack trace:\\n{StackTrace}",
+            _sawmill.Error("Unable to check if player {Player} is whitelisted for {Job}. Stack trace:\\n{StackTrace}",
                 player,
                 job,
                 Environment.StackTrace);
@@ -113,7 +119,8 @@ public sealed class JobWhitelistManager : IPostInjectInit
 
         // SV changes start - Job whitelist groups
         // Check if player has any groups that include this job
-        if (_groupWhitelists.TryGetValue(player, out var groups))
+        if (_config.GetCVar(SVCCVars.GameGroupWhitelist) &&
+            _groupWhitelists.TryGetValue(player, out var groups))
         {
             foreach (var groupId in groups)
             {
@@ -176,7 +183,8 @@ public sealed class JobWhitelistManager : IPostInjectInit
 
         // SV changes start - Job whitelist groups
         // Add jobs from all groups the player is in
-        if (_groupWhitelists.TryGetValue(player.UserId, out var groups))
+        if (_config.GetCVar(SVCCVars.GameGroupWhitelist) &&
+            _groupWhitelists.TryGetValue(player.UserId, out var groups))
         {
             foreach (var groupId in groups)
             {
@@ -204,5 +212,6 @@ public sealed class JobWhitelistManager : IPostInjectInit
         _userDb.AddOnLoadPlayer(LoadData);
         _userDb.AddOnFinishLoad(FinishLoad);
         _userDb.AddOnPlayerDisconnect(ClientDisconnected);
+        _sawmill = _logManager.GetSawmill("job_whitelist");
     }
 }

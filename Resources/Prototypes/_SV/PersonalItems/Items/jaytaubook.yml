@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Nico64 <74880554+NicoSGF64@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Players: Maria64 - Character: Jaytau Cometa
+- type: entity
+  parent: BookBase
+  id: PersonalItemJaytauBook
+  name: Jaytau's book
+  description: A very thick, slightly well-worn book detailing all sorts of philosophical debates titled 'An essay on the two main ontological propositions'. On the bottom, the authorship is attributed to one Jaytau Cometa. In the first page of the book, there is a signature that barely reads 'Jumper'.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _SV/PersonalItems/Items/jaytaubook.rsi
+    scale: 0.93, 0.93
+    layers:
+    - state: paper
+  - type: Paper
+    content: book-text-jaytau # Resources/Locale/en-US/_SV/PersonalItems/jaytau-book.ftl
+
+- type: loadout
+  id: PersonalItemJaytauBook
+  storage:
+    back:
+    - PersonalItemJaytauBook
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Jaytau Cometa

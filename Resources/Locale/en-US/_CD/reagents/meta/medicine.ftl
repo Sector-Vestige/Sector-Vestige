@@ -1,3 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 reagent-name-serenitol = Serenitol
 reagent-desc-serenitol = A fairly unreactive chemical that has mild antidepressant properties. Originally used to help patients overcome the loss of a pet or family friend, it is fairly safe to administer.
 
@@ -27,3 +35,12 @@ reagent-desc-soretizone = A fairly effective painkiller developed to treat chron
 
 reagent-name-agonolexyne = Agonolexyne
 reagent-desc-agonolexyne = An incredibly potent and fast acting opioid invented to speed up the application of painkillers during surgery. Stops you from feeling pain (or really anything at all). Interacts poorly with alcohol. Known to be very addictive. Overdose may relax the lungs to the point of non-function.
+
+reagent-name-saprodipine = Saprodipine
+reagent-desc-saprodipine = A commonly used anti-psychotic with minimal side-effects. Typically used to treat hallucinations. Side effects include fatigue.
+
+reagent-name-cortexene = Cortexene
+reagent-desc-cortexene = A somewhat addictive chemical used to treat amnesia. Not effective on cloning related memory loss. Incompatible with alcohol and generally dangerous if improperly used.
+
+reagent-name-dynamoxine = Dynamoxine
+reagent-desc-dynamoxine = An attempt at synthizing a stimulant for extended engagements, the Dynamoxine project was shelved after Donk Co. came out with Hyperzine. Overdoses will cause heart and lung spasms. Reacts violently with Epinephrine.

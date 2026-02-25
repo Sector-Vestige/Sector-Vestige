@@ -1,4 +1,5 @@
-# # Senior Time (CD: Disabled)
+# SV - Begin: Remove Senior Researcher PDA in favor of new role
+# Senior Time
 # - type: loadoutEffectGroup
 #   id: SeniorResearcher
 #   effects:
@@ -7,6 +8,7 @@
 #       !type:DepartmentTimeRequirement
 #       department: Science
 #       time: 216000 #60 hrs
+# SV - End: Remove Senior Researcher PDA in favor of new role
 
 # Head
 - type: startingGear
@@ -148,6 +150,7 @@
   equipment:
     id: SciencePDA
 
+# SV - Begin: Remove Senior Researcher PDA in favor of new role
 # - type: loadout
 #   id: SeniorResearcherPDA
 #   effects:
@@ -155,3 +158,4 @@
 #     proto: SeniorResearcher
 #   equipment:
 #     id: SeniorResearcherPDA
+# SV - End: Remove Senior Researcher PDA in favor of new role

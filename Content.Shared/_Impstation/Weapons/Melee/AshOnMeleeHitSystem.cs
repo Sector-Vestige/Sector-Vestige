@@ -1,3 +1,11 @@
+// SPDX-FileCopyrightText: 2026 Impstation contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2025 beck <163376292+widgetbeck@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared._EE.Supermatter.Components;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;

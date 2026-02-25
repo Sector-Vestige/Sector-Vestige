@@ -5,6 +5,7 @@ using Content.Server.PDA;
 using Content.Server.Station.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared.Body;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing;
 using Content.Shared.DetailExaminable;
@@ -15,6 +16,8 @@ using Content.Shared.PDA;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
+using System.Numerics;
+using Content.Shared.Sprite;
 using Content.Shared.Station;
 using JetBrains.Annotations;
 using Robust.Shared.Configuration;
@@ -36,12 +39,14 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     [Dependency] private readonly ActorSystem _actors = default!;
     [Dependency] private readonly IdCardSystem _cardSystem = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoidSystem = default!;
+    [Dependency] private readonly HumanoidProfileSystem _humanoidProfile = default!;
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
     [Dependency] private readonly IdentitySystem _identity = default!;
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly PdaSystem _pdaSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
+    [Dependency] private readonly SharedScaleVisualsSystem _scaleVisuals = default!;
 
     /// <summary>
     /// Attempts to spawn a player character onto the given station.
@@ -124,7 +129,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             return jobEntity;
         }
 
-        string speciesId = profile != null ? profile.Species : SharedHumanoidAppearanceSystem.DefaultSpecies;
+        string speciesId = profile != null ? profile.Species : HumanoidCharacterProfile.DefaultSpecies;
 
         if (!_prototypeManager.TryIndex<SpeciesPrototype>(speciesId, out var species))
             throw new ArgumentException($"Invalid species prototype was used: {speciesId}");
@@ -133,13 +138,21 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
 
         if (profile != null)
         {
-            _humanoidSystem.LoadProfile(entity.Value, profile);
+            _visualBody.ApplyProfileTo(entity.Value, profile);
+            _humanoidProfile.ApplyProfileTo(entity.Value, profile);
             _metaSystem.SetEntityName(entity.Value, profile.Name);
 
             if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
             {
                 AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
             }
+
+            // Sector Vestige - Apply profile height scaling, preserving species base proportions
+            var baseScale = Vector2.One;
+            if (TryComp<ScaleVisualsComponent>(entity.Value, out var scaleComp))
+                baseScale = scaleComp.Scale;
+
+            _scaleVisuals.SetSpriteScale(entity.Value, baseScale * profile.Height);
         }
 
         if (loadout != null)

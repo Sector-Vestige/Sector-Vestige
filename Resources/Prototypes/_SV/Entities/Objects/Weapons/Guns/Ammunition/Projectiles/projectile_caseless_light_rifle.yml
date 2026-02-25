@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 akirrer <mateusz.dychala@gmail.com>
+# SPDX-FileCopyrightText: 2026 akirrer <220388269+akirrer@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BulletCaselessRifle
+  id: BulletCaselessLightRifle
+  categories: [ HideSpawnMenu ]
+  name: bullet (.22LR)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 5
+
+- type: entity
+  parent: BulletCaselessRifle
+  id: BulletCaselessLightRifleRubber
+  categories: [ HideSpawnMenu ]
+  name: bullet (.22LR rubber)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 0.25
+  - type: StaminaDamageOnCollide
+    damage: 5

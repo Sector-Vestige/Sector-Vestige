@@ -1,3 +1,11 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 pathetic meowmeow <uhhadd@gmail.com>
+// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Client.UserInterface.Controls;
 using Content.Shared.SmartFridge;
 using Robust.Client.UserInterface;
@@ -19,12 +27,13 @@ public sealed class SmartFridgeBoundUserInterface : BoundUserInterface
 
         _menu = this.CreateWindow<SmartFridgeMenu>();
         _menu.OnItemSelected += OnItemSelected;
+        _menu.OnRemoveButtonPressed += data => SendPredictedMessage(new SmartFridgeRemoveEntryMessage(data.Entry));
         Refresh();
     }
 
     public void Refresh()
     {
-        if (_menu is not {} menu || !EntMan.TryGetComponent(Owner, out SmartFridgeComponent? fridge))
+        if (_menu is not { } menu || !EntMan.TryGetComponent(Owner, out SmartFridgeComponent? fridge))
             return;
 
         menu.SetFlavorText(Loc.GetString(fridge.FlavorText));

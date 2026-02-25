@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 Mixmaster49 (GitHub)
+# SPDX-FileCopyrightText: 2026 EvilAtheist <maximschaper49@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: guideEntry
+  id: SpaceLawSV
+  name: guide-entry-SV-spacelaw
+  text: "/ServerInfo/Guidebook/_SV/SpaceLaw/spacelaw.xml"
+  children:
+  - Rights
+  - Charges
+  - Punishment
+  - Contraband
+
+- type: guideEntry
+  id: Rights
+  name: guide-entry-SV-rights
+  text: "/ServerInfo/Guidebook/_SV/SpaceLaw/rights.xml"
+
+- type: guideEntry
+  id: Charges
+  name: guide-entry-SV-charges-and-sentencing
+  text: "/ServerInfo/Guidebook/_SV/SpaceLaw/charges.xml"
+  children:
+  - Factors
+
+- type: guideEntry
+  id: Punishment
+  name: guide-entry-SV-punishment
+  text: "/ServerInfo/Guidebook/_SV/SpaceLaw/punishment.xml"
+  children:
+  - CrimeList
+
+- type: guideEntry
+  id: Contraband
+  name: guide-entry-SV-contraband
+  text: "/ServerInfo/Guidebook/_SV/SpaceLaw/contraband.xml"
+
+- type: guideEntry
+  id: CrimeList
+  name: guide-entry-SV-crime-list
+  text: "/ServerInfo/Guidebook/_SV/SpaceLaw/crimelist.xml"
+
+- type: guideEntry
+  id: Factors
+  name: guide-entry-SV-slaw-factors
+  text: "/ServerInfo/Guidebook/_SV/SpaceLaw/slawfactors.xml"

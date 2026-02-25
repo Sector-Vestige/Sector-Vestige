@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 Zamshi8 <235235723+Zamshi8@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Personal item for Samnatha Cartor
+- type: entity
+  name: Samantha's Pen
+  parent: Pen
+  id: PersonalItemSamanthaPen
+  description: A well crafted and timeworn ink pen. Its body is made from a fine ivory, three colorful bird feathers protrude from the end.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _SV/PersonalItems/Items/samanthapen.rsi
+    state: samantha-pen
+  - type: Item
+    sprite: _SV/PersonalItems/Items/samanthapen.rsi
+    size: Tiny
+    heldPrefix: feathery
+
+- type: loadout
+  id: PersonalItemSamanthaPen
+  storage:
+    back:
+    - PersonalItemSamanthaPen
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Samantha Cartor

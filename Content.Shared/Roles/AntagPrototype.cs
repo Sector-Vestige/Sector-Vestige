@@ -1,3 +1,30 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2020 ike709 <ike709@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Paul <ritter.paul1+git@googlemail.com>
+// SPDX-FileCopyrightText: 2022 CommieFlowers <rasmus.cedergren@hotmail.com>
+// SPDX-FileCopyrightText: 2022 Morb <14136326+Morb0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 rolfero <45628623+rolfero@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Ray <vigersray@gmail.com>
+// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2025 beck-thompson <beck314159@hotmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
+using Content.Shared._SV.Roles;
 using Content.Shared.Guidebook;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -63,4 +90,10 @@ public sealed partial class AntagPrototype : IPrototype
     /// </summary>
     [DataField]
     public bool VisiblePreference { get; private set; }
+
+    /// <summary>
+    ///     Adds an antag to a category, allowing you to group antag preferences by faction or type in the UI.
+    /// </summary>
+    [DataField]
+    public ProtoId<AntagCategoryPrototype>? Category;
 }

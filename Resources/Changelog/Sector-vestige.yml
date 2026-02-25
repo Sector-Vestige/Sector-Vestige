@@ -1169,3 +1169,293 @@ Entries:
       message: Personal item for Clover Evergreen.
   id: 158
   time: '2025-12-08T07:50:03.0000000+00:00'
+- author: Mangohydra
+  changes:
+    - type: Add
+      message: Cigarette filters can now be printed from the biogenerator.
+  id: 159
+  time: '2025-12-15T14:44:36.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Fix
+      message: >-
+        The supermatter console doesn't crash the client when interacting with
+        it.
+  id: 160
+  time: '2025-12-17T15:55:11.0000000+00:00'
+- author: purpleskittleo
+  changes:
+    - type: Add
+      message: Added "Purple Twilight (Stinger Ver.)"
+  id: 161
+  time: '2025-12-19T12:27:10.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: Harpies are able to wear clothes again.
+  id: 162
+  time: '2025-12-21T13:08:24.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: Cluster fixed again!
+  id: 163
+  time: '2025-12-21T13:58:09.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Tweak
+      message: APCs now explode when turned on during a power outage.
+  id: 164
+  time: '2025-12-22T09:24:50.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Tweak
+      message: Tape recorders and cassettes can be printed from the autolathe.
+    - type: Tweak
+      message: Rings can now be printed from the autolathe
+  id: 165
+  time: '2025-12-22T09:25:40.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: Rodentia FTL fixed.
+  id: 166
+  time: '2025-12-22T17:35:26.0000000+00:00'
+- author: Zamshi8
+  changes:
+    - type: Tweak
+      message: >-
+        fixed some minor issues with medical, salvage, materials and the SM on
+        Cluster
+  id: 167
+  time: '2025-12-28T10:54:52.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Add
+      message: People can now emote in their sleep
+    - type: Add
+      message: People can now whisper in their sleep
+  id: 168
+  time: '2026-01-02T17:05:05.0000000+00:00'
+- author: NicoSGF64
+  changes:
+    - type: Add
+      message: Added Jaytau's personal item
+  id: 169
+  time: '2026-01-03T14:57:48.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Tweak
+      message: Reintroduced most ways of obtaining cigarettes.
+  id: 170
+  time: '2026-01-05T12:26:32.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: Fixed the wheelchairs.
+    - type: Fix
+      message: Crutches and wheelchairs are back in the lathe.
+  id: 171
+  time: '2026-01-06T08:48:48.0000000+00:00'
+- author: Mixmaster49
+  changes:
+    - type: Add
+      message: Added SOP and Space Law to the guidebook
+  id: 172
+  time: '2026-01-09T09:55:47.0000000+00:00'
+- author: akirrer
+  changes:
+    - type: Add
+      message: Added S77-Locust along with .22LR caliber.
+  id: 173
+  time: '2026-01-09T12:40:09.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Add
+      message: Added the B.O.R.I.S module.
+  id: 174
+  time: '2026-01-10T17:56:10.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Add
+      message: Added antag categories.
+    - type: Tweak
+      message: Tweaked all the preferences to be more logical
+  id: 175
+  time: '2026-01-16T12:39:04.0000000+00:00'
+- author: akirrer
+  changes:
+    - type: Add
+      message: Added .22LR rubber ammunition, magazine and ammo box
+    - type: Add
+      message: Added .22LR drum magazine
+    - type: Tweak
+      message: Adjusted .22LR base magazine.
+  id: 176
+  time: '2026-01-16T19:06:08.0000000+00:00'
+- author: lambdatiger
+  changes:
+    - type: Add
+      message: Silver ring personal item for Beem-Kilaya.
+  id: 177
+  time: '2026-01-19T10:29:34.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: Crutches now work as mobility aids.
+  id: 178
+  time: '2026-01-20T10:59:34.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Tweak
+      message: Felinds now can use Undergarment and snout markings.
+  id: 179
+  time: '2026-01-24T11:58:03.0000000+00:00'
+- author: qu4drivium
+  changes:
+    - type: Add
+      message: Added Cortexene and Saprodipine.
+  id: 180
+  time: '2026-01-27T13:54:05.0000000+00:00'
+- author: Added new pickup and drop sounds
+  changes: []
+  id: 181
+  time: '2026-01-27T18:35:03.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Add
+      message: Personal item for Damien Nesuli
+  id: 182
+  time: '2026-01-28T18:15:04.0000000+00:00'
+- author: BackeTako
+  changes:
+    - type: Add
+      message: Tako-Ja Plush
+  id: 183
+  time: '2026-01-28T18:39:56.0000000+00:00'
+- author: qu4drivium
+  changes:
+    - type: Add
+      message: Added several new narcotics.
+    - type: Add
+      message: Added Dynamoxine.
+    - type: Add
+      message: Added Stray.
+    - type: Tweak
+      message: Unmarked cigarette packets return to hacked cig vendors.
+    - type: Tweak
+      message: Lowers the chance of seeing the red addictine flavor text popup.
+  id: 184
+  time: '2026-01-28T18:40:47.0000000+00:00'
+- author: MissKay1994
+  changes:
+    - type: Add
+      message: Added Skrikikaki's plushie
+  id: 185
+  time: '2026-01-29T09:39:41.0000000+00:00'
+- author: lambdatiger
+  changes:
+    - type: Add
+      message: Unique handheld power console for the CE.
+  id: 186
+  time: '2026-01-29T10:45:15.0000000+00:00'
+- author: lambdatiger
+  changes:
+    - type: Add
+      message: Added externals access to engi door remote.
+  id: 187
+  time: '2026-01-31T15:56:01.0000000+00:00'
+- author: Zamshi8
+  changes:
+    - type: Tweak
+      message: light replacers now recycle lights
+  id: 188
+  time: '2026-01-31T16:04:27.0000000+00:00'
+- author: purpleskittleo
+  changes:
+    - type: Add
+      message: Added 12 different heartbeat SFX for GMs to play with.
+    - type: Add
+      message: Added "Monomania (Stinger Ver.)"
+    - type: Tweak
+      message: >-
+        Overhauled & reorganised the _SV audio folder. Things should be much
+        easier to navigate for GMs!
+  id: 189
+  time: '2026-02-06T18:04:05.0000000+00:00'
+- author: BackeTako
+  changes:
+    - type: Add
+      message: >-
+        Added new "Yip" & "Hiss" emotes for Lizards and "Coo" emote for Harpy
+        and Resomi
+  id: 190
+  time: '2026-02-08T12:30:38.0000000+00:00'
+- author: NicoSGF64
+  changes:
+    - type: Add
+      message: Added Swaps' personal item.
+  id: 191
+  time: '2026-02-08T16:45:01.0000000+00:00'
+- author: akirrer
+  changes:
+    - type: Add
+      message: Added R36-Violee, a Drozd alternative.
+    - type: Add
+      message: Added AP .35 auto cartridges.
+  id: 192
+  time: '2026-02-09T17:54:11.0000000+00:00'
+- author: Mixmaster49
+  changes:
+    - type: Remove
+      message: Removed the asteroid event from the Vestige Extended scheduler
+  id: 193
+  time: '2026-02-14T13:28:52.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Fix
+      message: RCD and RPD now rotate properly.
+  id: 194
+  time: '2026-02-15T17:50:00.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: Fixed harpy markings.
+  id: 195
+  time: '2026-02-16T17:23:47.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Fix
+      message: Fixed dog tags not showing up in the loadout selection.
+  id: 196
+  time: '2026-02-17T08:13:14.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Add
+      message: >-
+        Emergency medipen dispenser boxes are able to be purchased from cargo
+        for $3000.
+  id: 197
+  time: '2026-02-17T09:37:09.0000000+00:00'
+- author: NicoSGF64
+  changes:
+    - type: Fix
+      message: >-
+        CD-exclusive items can be printed once more from their corresponding
+        lathes.
+  id: 198
+  time: '2026-02-19T11:02:25.0000000+00:00'
+- author: Zamshi8
+  changes:
+    - type: Add
+      message: Personal item for Samantha Cartor
+  id: 199
+  time: '2026-02-21T11:55:26.0000000+00:00'
+- author: qu4drivium
+  changes:
+    - type: Tweak
+      message: Breaching charges are one handed.
+    - type: Tweak
+      message: The energy shotgun self-recharges again.
+  id: 200
+  time: '2026-02-23T09:40:51.0000000+00:00'

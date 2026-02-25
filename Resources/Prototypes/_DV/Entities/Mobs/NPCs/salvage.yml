@@ -1,6 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Delta-V contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2024 V <97265903+formlessnameless@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   name: Syndicate Guard
-  parent: BaseMobHuman
+  parent: MobHuman
   id: MobRadioGuard
   description: "Product of Cybersun Cloning technology, this Syndicate puppet-guard is tasked with protecting the outpost. They will throw their life away to defend their objective."
   components:
@@ -12,7 +20,6 @@
         0: Alive
         100: Dead #Tweak for "Acidify on Crit"
     - type: MindContainer
-      showExamineInfo: False
     - type: Loadout
       prototypes:
         - RadioGuardGear

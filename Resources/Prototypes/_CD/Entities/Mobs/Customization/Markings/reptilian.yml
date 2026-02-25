@@ -1,10 +1,16 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Alzore <140123969+Blackern5000@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 # Snake Tails
 
 - type: marking
   id: LizardTailSnake
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Reptilian]
+  groupWhitelist: [Reptilian]
   sprites:
   - sprite: _CD/Mobs/Customization/snaketail.rsi
     state: tail_snake_primary
@@ -14,8 +20,7 @@
 - type: marking
   id: LizardTailSnakeStripe
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Reptilian]
+  groupWhitelist: [Reptilian]
   sprites:
   - sprite: _CD/Mobs/Customization/snaketailstripe.rsi
     state: tail_snake_primary
@@ -25,8 +30,7 @@
 - type: marking
   id: LizardTailSnakeUnder
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Reptilian]
+  groupWhitelist: [Reptilian]
   sprites:
   - sprite: _CD/Mobs/Customization/snaketailunder.rsi
     state: tail_snake_primary
@@ -36,8 +40,7 @@
 - type: marking
   id: LizardTailSnakeDual
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Reptilian]
+  groupWhitelist: [Reptilian]
   sprites:
   - sprite: _CD/Mobs/Customization/snaketaildual.rsi
     state: tail_snake_primary
@@ -49,8 +52,7 @@
 - type: marking
   id: LizardTailSnakeAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _CD/Mobs/Customization/snaketail.rsi
     state: tail_snake_wag_primary
@@ -60,8 +62,7 @@
 - type: marking
   id: LizardTailSnakeStripeAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _CD/Mobs/Customization/snaketailstripe.rsi
     state: tail_snake_wag_primary
@@ -71,8 +72,7 @@
 - type: marking
   id: LizardTailSnakeUnderAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _CD/Mobs/Customization/snaketailunder.rsi
     state: tail_snake_wag_primary
@@ -82,8 +82,7 @@
 - type: marking
   id: LizardTailSnakeDualAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _CD/Mobs/Customization/snaketaildual.rsi
     state: tail_snake_wag_primary

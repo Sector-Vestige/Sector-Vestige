@@ -1,0 +1,321 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: markingsGroup
+  parent: Undergarments
+  id: Foxfolk
+  limits:
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: true
+      default: [ FoxfolkEar ]
+    enum.HumanoidVisualLayers.HeadSide:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [ FoxfolkTailAlt ]
+    enum.HumanoidVisualLayers.LArm:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.LHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Overlay:
+      limit: 6
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceFoxfolk
+  name: foxfolk appearance
+  components:
+  - type: InitialBody
+    organs:
+      Torso: OrganFoxfolkTorso
+      Head: OrganFoxfolkHead
+      ArmLeft: OrganFoxfolkArmLeft
+      ArmRight: OrganFoxfolkArmRight
+      HandRight: OrganFoxfolkHandRight
+      HandLeft: OrganFoxfolkHandLeft
+      LegLeft: OrganFoxfolkLegLeft
+      LegRight: OrganFoxfolkLegRight
+      FootLeft: OrganFoxfolkFootLeft
+      FootRight: OrganFoxfolkFootRight
+      Brain: OrganFoxfolkBrain
+      Eyes: OrganFoxfolkEyes
+      Tongue: OrganFoxfolkTongue
+      Ears: OrganFoxfolkEars
+      Lungs: OrganFoxfolkLungs
+      Heart: OrganFoxfolkHeart
+      Stomach: OrganAnimalStomach
+      Liver: OrganAnimalLiver
+      Kidneys: OrganFoxfolkKidneys
+  - type: HumanoidProfile
+    species: Foxfolk
+  - type: Inventory
+    speciesId: foxfolk
+  - type: Sprite
+    netsync: false
+    noRot: true
+    drawdepth: Mobs
+    layers:
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: Mobs/Species/Human/parts.rsi
+        state: l_leg
+      - shader: StencilMask
+        map: [ "enum.HumanoidVisualLayers.StencilMask" ]
+        sprite: _CD/Mobs/Customization/Foxfolk/masking_helpers.rsi
+        state: female_full
+        visible: false
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+      - map: [ "jumpsuit" ]
+      - map: [ "enum.HumanoidVisualLayers.LHand" ]
+      - map: [ "enum.HumanoidVisualLayers.RHand" ]
+      - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - map: [ "id" ]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: [ "clownedon" ]
+        sprite: "_CD/Effects/creampie.rsi"
+        state: "creampie_foxfolk"
+        visible: false
+
+- type: entity
+  parent:
+  - AppearanceFoxfolk
+  - BaseSpeciesMobOrganic
+  id: MobFoxfolk
+  name: Urist McFoxfolk
+  components:
+  - type: Hunger
+  - type: Thirst
+  - type: Icon
+    sprite: _CD/Mobs/Species/Foxfolk/parts.rsi
+    state: full
+  - type: Speech
+    speechSounds: Foxfolk
+    speechVerb: Foxfolk
+    allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ]
+  - type: TypingIndicator
+    proto: foxfolk
+  - type: Vocal
+    sounds:
+      Male: MaleFoxfolk
+      Female: FemaleFoxfolk
+      Unsexed: MaleFoxfolk
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Foxfolk
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Blunt: 2
+        Slash: 3
+  - type: Temperature
+    currentTemperature: 310.15
+    specificHeat: 46
+  - type: TemperatureDamage
+    heatDamageThreshold: 320
+    coldDamageThreshold: 230
+    coldDamage:
+      types:
+        Cold: 0.05
+    heatDamage:
+      types:
+        Heat: 3
+  - type: Wagging
+    action: ActionToggleFoxfolkakinWagging
+
+# Base organ definitions
+- type: entity
+  parent: OrganBase
+  id: OrganFoxfolk
+  abstract: true
+  suffix: foxfolk
+
+- type: entity
+  id: OrganFoxfolkMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Animal ]
+
+- type: entity
+  parent: OrganFoxfolk
+  id: OrganFoxfolkInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganFoxfolkVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _CD/Mobs/Species/Foxfolk/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Foxfolk
+
+- type: entity
+  parent: [ OrganFoxfolk, OrganFoxfolkVisual ]
+  id: OrganFoxfolkExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _CD/Mobs/Species/Foxfolk/parts.rsi
+
+# External organs (body parts)
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganFoxfolkExternal ]
+  id: OrganFoxfolkTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganFoxfolkExternal ]
+  id: OrganFoxfolkHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.Snout
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.HeadSide
+    - enum.HumanoidVisualLayers.FacialHair
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganFoxfolkExternal ]
+  id: OrganFoxfolkArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganFoxfolkExternal ]
+  id: OrganFoxfolkArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganFoxfolkExternal ]
+  id: OrganFoxfolkHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganFoxfolkExternal ]
+  id: OrganFoxfolkHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganFoxfolkExternal ]
+  id: OrganFoxfolkLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganFoxfolkExternal ]
+  id: OrganFoxfolkLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganFoxfolkExternal ]
+  id: OrganFoxfolkFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganFoxfolkExternal ]
+  id: OrganFoxfolkFootRight
+
+# Internal organs
+- type: entity
+  parent: [ OrganBaseBrain, OrganSpriteHumanInternal, OrganFoxfolkInternal ]
+  id: OrganFoxfolkBrain
+
+- type: entity
+  parent: [ OrganFoxfolkVisual, OrganBaseEyes, OrganFoxfolkInternal ]
+  id: OrganFoxfolkEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganFoxfolkInternal ]
+  id: OrganFoxfolkTongue
+
+- type: entity
+  parent: [ OrganBaseEars, OrganSpriteHumanInternal, OrganFoxfolkInternal ]
+  id: OrganFoxfolkEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganFoxfolkInternal, OrganFoxfolkMetabolizer ]
+  id: OrganFoxfolkLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganFoxfolkInternal, OrganFoxfolkMetabolizer ]
+  id: OrganFoxfolkHeart
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganSpriteHumanInternal, OrganFoxfolkInternal, OrganFoxfolkMetabolizer ]
+  id: OrganFoxfolkKidneys

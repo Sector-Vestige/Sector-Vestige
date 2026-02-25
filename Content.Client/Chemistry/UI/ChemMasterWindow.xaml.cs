@@ -1,3 +1,32 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
+// SPDX-FileCopyrightText: 2021 Spartak <artak10t@gmail.com>
+// SPDX-FileCopyrightText: 2022 0x6273 <0x40@keemail.me>
+// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
+// SPDX-FileCopyrightText: 2022 Illiux <newoutlook@gmail.com>
+// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 Linus Wacker <70486856+SirDragooon@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DEATHB4DEFEAT <77995199+DEATHB4DEFEAT@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 PrPleGoo <PrPleGoo@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Ygg01 <y.laughing.man.y@gmail.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Intoxicating-Innocence <188202277+Intoxicating-Innocence@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Brandon Li <48413902+aspiringLich@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Dora <27211909+catdotjs@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 abadaba695 <spacestation13thingy@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Chemistry;
@@ -150,7 +179,17 @@ namespace Content.Client.Chemistry.UI
             // Ensure the Panel Info is updated, including UI elements for Buffer Volume, Output Container and so on
             UpdatePanelInfo(castState);
 
-            BufferCurrentVolume.Text = $" {castState.BufferCurrentVolume?.Int() ?? 0}u";
+            switch (castState.DrawSource)
+            {
+                case ChemMasterDrawSource.Internal:
+                    SetBufferText(castState.BufferCurrentVolume, "chem-master-output-buffer-draw");
+                    break;
+                case ChemMasterDrawSource.External:
+                    SetBufferText(castState.InputContainerInfo?.CurrentVolume, "chem-master-output-beaker-draw");
+                    break;
+                default:
+                    throw new($"Chemmaster {castState.OutputContainerInfo} draw source is not set");
+            }
 
             InputEjectButton.Disabled = castState.InputContainerInfo is null;
             OutputEjectButton.Disabled = castState.OutputContainerInfo is null;
@@ -168,9 +207,14 @@ namespace Content.Client.Chemistry.UI
             var holdsReagents = output?.Reagents != null;
             var pillNumberMax = holdsReagents ? 0 : remainingCapacity;
             var bottleAmountMax = holdsReagents ? remainingCapacity : 0;
-            var bufferVolume = castState.BufferCurrentVolume?.Int() ?? 0;
+            var outputVolume = castState.DrawSource switch
+            {
+                ChemMasterDrawSource.Internal => castState.BufferCurrentVolume?.Int() ?? 0,
+                ChemMasterDrawSource.External => castState.InputContainerInfo?.CurrentVolume.Int() ?? 0,
+                _ => 0,
+            };
 
-            PillDosage.Value = (int)Math.Min(bufferVolume, castState.PillDosageLimit);
+            PillDosage.Value = (int)Math.Min(outputVolume, castState.PillDosageLimit);
 
             PillTypeButtons[castState.SelectedPillType].Pressed = true;
 
@@ -186,25 +230,35 @@ namespace Content.Client.Chemistry.UI
             // Avoid division by zero
             if (PillDosage.Value > 0)
             {
-                PillNumber.Value = Math.Min(bufferVolume / PillDosage.Value, pillNumberMax);
+                PillNumber.Value = Math.Min(outputVolume / PillDosage.Value, pillNumberMax);
             }
             else
             {
                 PillNumber.Value = 0;
             }
 
-            BottleDosage.Value = Math.Min(bottleAmountMax, bufferVolume);
+            BottleDosage.Value = Math.Min(bottleAmountMax, outputVolume);
         }
         /// <summary>
-        /// Generate a product label based on reagents in the buffer.
+        /// Generate a product label based on reagents in the buffer or beaker.
         /// </summary>
         /// <param name="state">State data sent by the server.</param>
         private string GenerateLabel(ChemMasterBoundUserInterfaceState state)
         {
-            if (state.BufferCurrentVolume == 0)
+            if (
+                state.BufferCurrentVolume == 0 && state.DrawSource == ChemMasterDrawSource.Internal ||
+                state.InputContainerInfo?.CurrentVolume == 0 && state.DrawSource == ChemMasterDrawSource.External ||
+                state.InputContainerInfo?.Reagents == null
+            )
                 return "";
 
-            var reagent = state.BufferReagents.OrderBy(r => r.Quantity).First().Reagent;
+            var reagent = (state.DrawSource switch
+                {
+                    ChemMasterDrawSource.Internal => state.BufferReagents,
+                    ChemMasterDrawSource.External => state.InputContainerInfo.Reagents ?? [],
+                    _ => throw new($"Chemmaster {state.OutputContainerInfo} draw source is not set"),
+                }).MinBy(r => r.Quantity)
+                .Reagent;
             _prototypeManager.TryIndex(reagent.Prototype, out ReagentPrototype? proto);
             return proto?.LocalizedName ?? "";
         }
@@ -233,6 +287,8 @@ namespace Content.Client.Chemistry.UI
                 _ => Loc.GetString("chem-master-window-sort-type-none")
             };
 
+            OutputBufferDraw.Pressed = state.DrawSource == ChemMasterDrawSource.Internal;
+            OutputBeakerDraw.Pressed = state.DrawSource == ChemMasterDrawSource.External;
 
             if (!state.BufferReagents.Any())
             {
@@ -413,6 +469,12 @@ namespace Content.Client.Chemistry.UI
         {
             get => LabelLineEdit.Text;
             set => LabelLineEdit.Text = value;
+        }
+
+        private void SetBufferText(FixedPoint2? volume, string text)
+        {
+            BufferCurrentVolume.Text = $" {volume ?? FixedPoint2.Zero}u";
+            DrawSource.Text = Loc.GetString(text);
         }
     }
 

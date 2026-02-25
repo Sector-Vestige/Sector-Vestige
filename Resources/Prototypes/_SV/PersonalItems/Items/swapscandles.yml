@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 Nico64 <74880554+NicoSGF64@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Players: Maria64 - Character: Swaps-the-Batteries
+- type: entity
+  name: treated candle
+  parent: Candle
+  description: A specially treated candle used for all sorts of candle-related purposes. There's a small inscription on the bottom with a symbol you can't recognize.
+  suffix: PersonalItem
+  id: CandleTreated
+  components:
+    - type: Sprite
+      noRot: true
+      sprite: _SV/PersonalItems/Items/swapscandles.rsi
+      layers:
+        - state: candle-big
+          color: "#decb8e"
+    - type: Flammable
+      firestackFade: 0.00
+      damage:
+        types:
+          Heat: 0.0
+
+- type: entity
+  name: small purple treated candle
+  parent: CandlePurpleSmall
+  description: A specially treated small candle used for all sorts of candle-related purposes. There's a small inscription on the bottom with a symbol you can't recognize.
+  suffix: PersonalItem
+  id: CandlePurpleSmallTreated
+  components:
+    - type: Sprite
+      sprite: _SV/PersonalItems/Items/swapscandles.rsi
+      layers:
+        - state: candle-small
+          color: "#984aa1"
+    - type: Flammable
+      firestackFade: 0.00
+      damage:
+        types:
+          Heat: 0.0

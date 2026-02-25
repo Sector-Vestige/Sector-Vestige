@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: construction
+  id: wrappedBakePackage
+  graph: WrappedBakePackage
+  startNode: start
+  targetNode: bakeWrapped
+  category: construction-category-misc
+  objectType: Item
+
+- type: construction
+  id: FoldSmugglerPackage
+  graph: FoldSmugglerPackage
+  startNode: start
+  targetNode: emptyPacket
+  category: construction-category-misc
+  objectType: Item

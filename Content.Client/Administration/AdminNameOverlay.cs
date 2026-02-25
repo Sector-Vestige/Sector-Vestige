@@ -1,3 +1,26 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 E F R <602406+Efruit@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Paul <ritter.paul1+git@googlemail.com>
+// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
+// SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
+// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 Schrödinger <132720404+Schrodinger71@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Collections.Frozen;
 using System.Linq;
 using System.Numerics;
@@ -134,7 +157,7 @@ internal sealed class AdminNameOverlay : Overlay
                 ? null
                 : _prototypeManager.Index(playerInfo.RoleProto.Value);
 
-            var roleName = Loc.GetString(rolePrototype?.Name ?? RoleTypePrototype.FallbackName);
+            var roleName = rolePrototype?.Name ?? RoleTypePrototype.FallbackName;
             var roleColor = rolePrototype?.Color ?? RoleTypePrototype.FallbackColor;
             var roleSymbol = rolePrototype?.Symbol ?? RoleTypePrototype.FallbackSymbol;
 
@@ -213,7 +236,7 @@ internal sealed class AdminNameOverlay : Overlay
             {
                 color = Color.GreenYellow;
                 color.A = alpha;
-                args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, Loc.GetString(playerInfo.StartingJob), uiScale, playerInfo.Connected ? color : colorDisconnected);
+                args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.StartingJob, uiScale, playerInfo.Connected ? color : colorDisconnected);
                 currentOffset += lineoffset;
             }
 
@@ -241,7 +264,7 @@ internal sealed class AdminNameOverlay : Overlay
                     color = roleColor;
                     symbol = IsFiltered(playerInfo.RoleProto) ? symbol : string.Empty;
                     text = IsFiltered(playerInfo.RoleProto)
-                        ? roleName.ToUpper()
+                        ? Loc.GetString(roleName).ToUpper()
                         : string.Empty;
                     break;
                 case AdminOverlayAntagFormat.Subtype:

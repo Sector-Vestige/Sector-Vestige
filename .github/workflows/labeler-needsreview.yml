@@ -1,4 +1,13 @@
-﻿name: "Labels: Review"
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+name: "Labels: Review"
 
 on:
   pull_request_target:
@@ -11,11 +20,32 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-    - if: ${{ github.event_name == 'pull_request_target' && (github.event.pull_request.draft == false || github.event.action == 'review_requested') }}
-      uses: actions-ecosystem/action-add-labels@v1
+    - name: Manage labels
+      if: ${{ github.event_name == 'pull_request_target' && (github.event.pull_request.draft == false || github.event.action == 'review_requested') }}
+      uses: actions/github-script@v7
       with:
-        labels: "S: Needs Review"
-    - if: ${{ github.event_name == 'pull_request_target' }}
-      uses: actions-ecosystem/action-remove-labels@v1
-      with:
-        labels: "S: Awaiting Changes"
+        script: |
+          const issue_number = context.issue.number;
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+
+          // Add "S: Needs Review" label
+          await github.rest.issues.addLabels({
+            owner,
+            repo,
+            issue_number,
+            labels: ['S: Needs Review']
+          });
+
+          // Remove "S: Awaiting Changes" label if present
+          try {
+            await github.rest.issues.removeLabel({
+              owner,
+              repo,
+              issue_number,
+              name: 'S: Awaiting Changes'
+            });
+          } catch (error) {
+            // Ignore errors if label doesn't exist
+            if (error.status !== 404) throw error;
+          }

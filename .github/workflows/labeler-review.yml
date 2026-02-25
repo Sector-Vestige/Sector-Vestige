@@ -1,29 +1,100 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2024 Myra <vasilis@pikachu.systems>
+# SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
+# SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 name: "Labels: Approved"
 on:
-  pull_request_review:
-    types: [submitted]
+  workflow_run:
+    workflows: ["PR Review Trigger"]
+    types: [completed]
+
 jobs:
   add_label:
     # Change the repository name after you've made sure the team name is correct for your fork!
-    if: ${{ (github.repository == 'Sector-Vestige/Sector-Vestige') && (github.event.review.state == 'APPROVED') }}
+    if: github.repository == 'Sector-Vestige/Sector-Vestige'
     permissions:
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - uses: tspascoal/get-user-teams-membership@v3
+    - name: Generate GitHub App Token
+      id: generate-token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ secrets.APP_ID }}
+        private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+    - name: Download review info
+      uses: actions/download-artifact@v4
+      with:
+        github-token: ${{ steps.generate-token.outputs.token }}
+        run-id: ${{ github.event.workflow_run.id }}
+        pattern: review-info-*
+        merge-multiple: true
+        path: review-info/
+
+    - name: Get PR and Review Info
+      id: pr-info
+      run: |
+        if [ ! -f review-info/pr_number.txt ]; then
+          echo "No review info found"
+          exit 1
+        fi
+
+        PR_NUMBER=$(cat review-info/pr_number.txt)
+        REVIEW_STATE=$(cat review-info/review_state.txt)
+        REVIEWER=$(cat review-info/reviewer.txt)
+
+        echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+        echo "review_state=$REVIEW_STATE" >> $GITHUB_OUTPUT
+        echo "reviewer=$REVIEWER" >> $GITHUB_OUTPUT
+
+        echo "PR: $PR_NUMBER, State: $REVIEW_STATE, Reviewer: $REVIEWER"
+
+    - name: Check Team Membership
+      if: steps.pr-info.outputs.review_state == 'approved'
       id: checkUserMember
+      uses: tspascoal/get-user-teams-membership@v3
       with:
-        username: ${{ github.actor }}
-        team: "admin-team"
-        GITHUB_TOKEN: ${{ secrets.WEH_BOT_PAT }}
-    - if: ${{ steps.checkUserMember.outputs.isTeamMember == 'true' }}
-      uses: actions-ecosystem/action-add-labels@v1
+        username: ${{ steps.pr-info.outputs.reviewer }}
+        team: "Maintainer team"
+        GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
+    - name: Manage labels
+      if: steps.checkUserMember.outputs.isTeamMember == 'true'
+      uses: actions/github-script@v7
       with:
-        labels: "S: Approved"
-    - if: ${{ steps.checkUserMember.outputs.isTeamMember == 'true' }}
-      uses: actions-ecosystem/action-remove-labels@v1
-      with:
-        labels: |
-          S: Needs Review
-          S: Awaiting Changes
+        github-token: ${{ steps.generate-token.outputs.token }}
+        script: |
+          const issue_number = ${{ steps.pr-info.outputs.pr_number }};
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+
+          // Add "S: Approved" label
+          await github.rest.issues.addLabels({
+            owner,
+            repo,
+            issue_number,
+            labels: ['S: Approved']
+          });
+
+          // Remove other status labels
+          const labelsToRemove = ['S: Needs Review', 'S: Awaiting Changes'];
+          for (const label of labelsToRemove) {
+            try {
+              await github.rest.issues.removeLabel({
+                owner,
+                repo,
+                issue_number,
+                name: label
+              });
+            } catch (error) {
+              // Ignore errors if label doesn't exist
+              if (error.status !== 404) throw error;
+            }
+          }

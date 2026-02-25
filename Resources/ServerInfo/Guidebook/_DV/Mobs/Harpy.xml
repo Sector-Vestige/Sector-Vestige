@@ -2,7 +2,7 @@
   # Harpy
 
   <Box>
-    <GuideEntityEmbed Entity="MobHarpyDummy" Caption=""/>
+    <GuideEntityEmbed Entity="AppearanceHarpy" Caption=""/>
   </Box>
 
   Harpies are a species of avian humanoids with colorful wings and feathers.

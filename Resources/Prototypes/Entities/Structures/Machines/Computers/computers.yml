@@ -18,6 +18,7 @@
       state: atmos_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: GenericVisualizer
     visuals:
       enum.ComputerVisuals.Powered:
@@ -73,6 +74,7 @@
       state: atmos_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: AtmosMonitoringConsole
     navMapTileColor: "#1a1a1a"
     navMapWallColor: "#404040"
@@ -174,6 +176,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: Computer
     board: ShuttleConsoleCircuitboard
 
@@ -195,6 +198,7 @@
       state: syndie_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: Tag
     tags:
       - Syndicate
@@ -227,6 +231,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: DroneConsole
     components:
       - type: CargoShuttle
@@ -261,6 +266,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: ActivatableUI
     key: enum.IFFConsoleUiKey.Key
   - type: UserInterface
@@ -283,6 +289,7 @@
     allowedFlags:
       - Hide
       - HideLabel
+    hideOnInit: true
   - type: ActivatableUI
     key: enum.IFFConsoleUiKey.Key
   - type: UserInterface
@@ -312,6 +319,7 @@
       state: power_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -354,6 +362,7 @@
       state: med_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -396,6 +405,7 @@
       state: security_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -454,6 +464,7 @@
       state: med_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -493,6 +504,7 @@
       state: rd_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: ResearchClient
   - type: ResearchConsole
   - type: ActiveRadio
@@ -510,7 +522,10 @@
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: ApcPowerReceiver
-    powerLoad: 1000
+    powerLoad: 50
+  - type: PowerState
+    idlePowerDraw: 50
+    workingPowerDraw: 1000
   - type: Computer
     board: ResearchComputerCircuitboard
   - type: AccessReader
@@ -541,6 +556,7 @@
       state: tech_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: ResearchClient
   - type: AnalysisConsole
   - type: DeviceList
@@ -561,7 +577,10 @@
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: ApcPowerReceiver
-    powerLoad: 1000
+    powerLoad: 50
+  - type: PowerState
+    idlePowerDraw: 50
+    workingPowerDraw: 1000
   - type: Computer
     board: AnalysisComputerCircuitboard
   - type: PointLight
@@ -622,6 +641,7 @@
       state: id_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: Computer
     board: IDComputerCircuitboard
   - type: PointLight
@@ -641,8 +661,6 @@
   name: body scanner computer
   description: A body scanner.
   components:
-  - type: ApcPowerReceiver
-    powerLoad: 500
   - type: Computer
     board: BodyScannerComputerCircuitboard
   - type: PointLight
@@ -668,6 +686,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: AccessReader
     access: [[ "Command" ]]
   - type: CommunicationsConsole
@@ -711,6 +730,7 @@
       state: syndie_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: AccessReader
     access: [[ "NuclearOperative" ]]
   - type: CommunicationsConsole
@@ -745,6 +765,7 @@
       state: wizard_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: AccessReader
     access: [[ "Wizard" ]]
   - type: CommunicationsConsole
@@ -779,6 +800,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: AccessReader
     access: [[ "CentralCommand" ]]
   - type: CommunicationsConsole
@@ -811,6 +833,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: SolarControlConsole
   - type: ActivatableUI
     key: enum.SolarControlConsoleUiKey.Key
@@ -849,6 +872,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: RadarConsole
   - type: ActivatableUI
     key: enum.RadarConsoleUiKey.Key
@@ -883,6 +907,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: CargoOrderConsole
     removeLimitAccess: [ "Quartermaster" ]
   - type: ActiveRadio
@@ -936,6 +961,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: CargoOrderConsole
     account: Engineering
     announcementChannel: Engineering
@@ -969,6 +995,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: CargoOrderConsole
     account: Medical
     announcementChannel: Medical
@@ -1002,6 +1029,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: CargoOrderConsole
     account: Science
     announcementChannel: Science
@@ -1035,6 +1063,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: CargoOrderConsole
     account: Security
     announcementChannel: Security
@@ -1068,6 +1097,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: CargoOrderConsole
     account: Service
     announcementChannel: Service
@@ -1101,6 +1131,7 @@
       state: tech_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: CargoBountyConsole
   - type: ActivatableUI
     key: enum.CargoConsoleUiKey.Bounty
@@ -1141,6 +1172,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: FundingAllocationConsole
   - type: ActivatableUI
     key: enum.FundingAllocationConsoleUiKey.Key
@@ -1182,8 +1214,6 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
-  - type: ApcPowerReceiver
-    powerLoad: 3100 #We want this to fail first so I transferred most of the scanner and pod's power here. (3500 in total)
   - type: Computer
     board: CloningConsoleComputerCircuitboard
   - type: PointLight
@@ -1231,6 +1261,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: SalvageJobBoardConsole
   - type: ActivatableUI
     key: enum.SalvageJobBoardUiKey.Key
@@ -1320,6 +1351,7 @@
       state: tech_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: Computer
     board: SurveillanceCameraMonitorCircuitboard
   - type: DeviceNetwork
@@ -1359,6 +1391,7 @@
       state: tech_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: Computer
     board: SurveillanceWirelessCameraMonitorCircuitboard
   - type: DeviceNetwork
@@ -1415,6 +1448,7 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: Anchorable
     flags:
     - Anchorable
@@ -1455,6 +1489,7 @@
       state: service_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: Computer
     board: ComputerMassMediaCircuitboard
   - type: DeviceNetworkRequiresPower
@@ -1525,7 +1560,7 @@
   parent: BaseComputerAiAccess
   id: ComputerRoboticsControl
   name: robotics control console
-  description: Used to remotely monitor, disable and destroy the station's cyborgs.
+  description: Used to remotely monitor the station's cyborgs.
   components:
   - type: Sprite
     layers:
@@ -1539,7 +1574,9 @@
       state: rd_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: RoboticsConsole
+    allowBorgControl: false
   - type: ActiveRadio
     channels:
     - Science
@@ -1552,7 +1589,11 @@
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: ApcPowerReceiver
-    powerLoad: 1000
+    powerLoad: 5
+  - type: PowerState
+    idlePowerDraw: 5
+    workingPowerDraw: 1000
+  - type: UIPowerState
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: RoboticsConsole
@@ -1582,6 +1623,7 @@
       state: rd_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: ActivatableUI
     key: enum.RoboticsConsoleUiKey.Key
   - type: UserInterface
@@ -1597,7 +1639,10 @@
     channels:
     - Xenoborg
   - type: ApcPowerReceiver
-    powerLoad: 1000
+    powerLoad: 50
+  - type: PowerState
+    idlePowerDraw: 50
+    workingPowerDraw: 1000
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: Mothership
@@ -1623,8 +1668,12 @@
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: ApcPowerReceiver
-    powerLoad: 1000
+    powerLoad: 50
+  - type: PowerState
+    idlePowerDraw: 50
+    workingPowerDraw: 1000
   - type: Computer
     board: StationAiUploadCircuitboard
   - type: AccessReader
@@ -1671,6 +1720,7 @@
       state: rd_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+      visible: false
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -1700,7 +1750,10 @@
           True: { visible: false }
           False: { visible: true }
   - type: ApcPowerReceiver
-    powerLoad: 1000
+    powerLoad: 50
+  - type: PowerState
+    idlePowerDraw: 50
+    workingPowerDraw: 1000
   - type: Computer
     board: StationAiFixerCircuitboard
   - type: AccessReader
@@ -1735,3 +1788,41 @@
         type: StationAiFixerConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+
+- type: entity
+  parent: BaseComputer
+  id: ComputerNukieDelivery
+  name: syndicate delivery computer
+  description: "A computer that can bluespace in certain equipment for Nuclear Operations. \nThe circuitboard is integrated into the frame and can't be recovered if deconstructed."
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request-syndie
+    - map: ["computerLayerKeys"]
+      state: syndie_generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  # - type: Computer
+  #   board: SyndicateCommsComputerCircuitboard
+  - type: Anchorable
+    flags:
+    - Anchorable # No taking the console along!
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#f71713"
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    name: store-preset-name-nukie-delivery
+    categories:
+    - NukieDelivery

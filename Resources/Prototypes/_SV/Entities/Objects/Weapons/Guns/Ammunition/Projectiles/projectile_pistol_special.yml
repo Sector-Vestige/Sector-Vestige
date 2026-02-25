@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 akirrer <220388269+akirrer@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseBulletAP
+  id: BulletPistolAP
+  categories: [ HideSpawnMenu ]
+  name: bullet (.35 pistol armor-piercing)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 10
+    ignoreResistances: true

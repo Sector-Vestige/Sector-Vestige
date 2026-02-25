@@ -1,5 +1,13 @@
-﻿﻿using System.Numerics;
-using Content.Server.Maps;
+// SPDX-FileCopyrightText: 2026 Harmony contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 youtissoum <51883137+youtissoum@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+﻿using System.Numerics;
+using Content.Shared.Maps;
 using Content.Shared._Harmony.EntitySelector;
 using Robust.Shared.Prototypes;
 
@@ -15,7 +23,7 @@ namespace Content.Server._Harmony.Maps.Modifications;
 ///
 /// </remarks>
 [Prototype]
-public sealed class MapModificationPrototype : IPrototype
+public sealed partial class MapModificationPrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;

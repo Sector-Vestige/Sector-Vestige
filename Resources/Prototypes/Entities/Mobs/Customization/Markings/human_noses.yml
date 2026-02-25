@@ -1,10 +1,15 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: marking
   id: HumanNoseSchnozz
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf]
+  groupWhitelist: [Human, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: schnozz
@@ -12,10 +17,8 @@
 - type: marking
   id: HumanNoseNubby
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf]
+  groupWhitelist: [Human, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: nubby
@@ -23,10 +26,8 @@
 - type: marking
   id: HumanNoseDroop
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf]
+  groupWhitelist: [Human, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: droop
@@ -34,10 +35,8 @@
 - type: marking
   id: HumanNoseBlob
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf]
+  groupWhitelist: [Human, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: blob
@@ -45,10 +44,8 @@
 - type: marking
   id: HumanNoseUppie
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [Human, Dwarf]
+  groupWhitelist: [Human, Felinid]
   sprites:
   - sprite: Mobs/Customization/human_noses.rsi
     state: uppie

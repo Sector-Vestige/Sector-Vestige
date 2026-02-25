@@ -1,3 +1,16 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
+# SPDX-FileCopyrightText: 2021 mirrorcult <notzombiedude@gmail.com>
+# SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2023 Repo <47093363+Titian3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 ### Special messages used by internal localizer stuff.
 
 # Used internally by the PRESSURE() function.

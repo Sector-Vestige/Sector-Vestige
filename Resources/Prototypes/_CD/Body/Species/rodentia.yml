@@ -1,0 +1,294 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: markingsGroup
+  parent: Undergarments
+  id: Rodentia
+  limits:
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 3 # SV 1 -> 3
+      required: true
+      default: [ RodentiaHeadTopEarDefault ]
+    enum.HumanoidVisualLayers.HeadSide:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [ RodentiaTailDefault ]
+    enum.HumanoidVisualLayers.LArm:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.LHand:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 3 #SV 2 -> 3
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 3 #SV 2 -> 3
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceRodentia
+  name: rodentia appearance
+  components:
+  - type: InitialBody
+    organs:
+      Torso: OrganRodentiaTorso
+      Head: OrganRodentiaHead
+      ArmLeft: OrganRodentiaArmLeft
+      ArmRight: OrganRodentiaArmRight
+      HandRight: OrganRodentiaHandRight
+      HandLeft: OrganRodentiaHandLeft
+      LegLeft: OrganRodentiaLegLeft
+      LegRight: OrganRodentiaLegRight
+      FootLeft: OrganRodentiaFootLeft
+      FootRight: OrganRodentiaFootRight
+      Brain: OrganRodentiaBrain
+      Eyes: OrganRodentiaEyes
+      Tongue: OrganRodentiaTongue
+      Ears: OrganRodentiaEars
+      Lungs: OrganRodentiaLungs
+      Heart: OrganAnimalHeart
+      Stomach: OrganAnimalStomach
+      Liver: OrganAnimalLiver
+      Kidneys: OrganRodentiaKidneys
+  - type: HumanoidProfile
+    species: Rodentia
+  - type: Inventory
+    speciesId: rodentia
+  - type: ScaleVisuals
+    scale: 1, 1
+  - type: Sprite
+    layers:
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - map: [ "jumpsuit" ]
+      - map: [ "enum.HumanoidVisualLayers.LHand" ]
+      - map: [ "enum.HumanoidVisualLayers.RHand" ]
+      - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - map: [ "id" ]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: [ "clownedon" ]
+        sprite: "_CD/Effects/creampie.rsi"
+        state: "creampie_rodentia"
+        visible: false
+
+- type: entity
+  parent:
+  - AppearanceRodentia
+  - BaseSpeciesMobOrganic
+  id: MobRodentia
+  name: Urist McRat
+  components:
+  - type: Hunger
+    baseDecayRate: 0.0467
+  - type: Thirst
+  - type: Icon
+    sprite: _CD/Mobs/Species/Rodentia/parts.rsi
+    state: full
+  - type: Speech
+    speechVerb: Rodentia
+    speechSounds: Squeak
+    allowedEmotes: ['Squeak']
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Blunt: 2
+        Slash: 3
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatRat
+      amount: 5
+  - type: TypingIndicator
+    proto: rodentia
+  - type: Vocal
+    sounds:
+      Male: MaleRodentia
+      Female: FemaleRodentia
+      Unsexed: MaleRodentia
+  - type: MouthStorage
+    mouthProto: CheekStorage
+    openStorageAction: ActionOpenMouthStorage
+    spitDamageThreshold: 3
+
+# Base organ definitions
+- type: entity
+  parent: OrganBase
+  id: OrganRodentia
+  abstract: true
+  suffix: rodentia
+
+- type: entity
+  id: OrganRodentiaMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Animal ]
+
+- type: entity
+  parent: OrganRodentia
+  id: OrganRodentiaInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganRodentiaVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _CD/Mobs/Species/Rodentia/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Rodentia
+
+- type: entity
+  parent: [ OrganRodentia, OrganRodentiaVisual ]
+  id: OrganRodentiaExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _CD/Mobs/Species/Rodentia/parts.rsi
+
+# External organs (body parts)
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganRodentiaExternal ]
+  id: OrganRodentiaTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganRodentiaExternal ]
+  id: OrganRodentiaHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.Snout
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.HeadSide
+    - enum.HumanoidVisualLayers.FacialHair
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganRodentiaExternal ]
+  id: OrganRodentiaArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganRodentiaExternal ]
+  id: OrganRodentiaArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganRodentiaExternal ]
+  id: OrganRodentiaHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganRodentiaExternal ]
+  id: OrganRodentiaHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganRodentiaExternal ]
+  id: OrganRodentiaLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganRodentiaExternal ]
+  id: OrganRodentiaLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganRodentiaExternal ]
+  id: OrganRodentiaFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganRodentiaExternal ]
+  id: OrganRodentiaFootRight
+
+# Internal organs
+- type: entity
+  parent: [ OrganBaseBrain, OrganSpriteHumanInternal, OrganRodentiaInternal ]
+  id: OrganRodentiaBrain
+
+- type: entity
+  parent: [ OrganRodentiaVisual, OrganBaseEyes, OrganRodentiaInternal ]
+  id: OrganRodentiaEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganRodentiaInternal ]
+  id: OrganRodentiaTongue
+
+- type: entity
+  parent: [ OrganBaseEars, OrganSpriteHumanInternal, OrganRodentiaInternal ]
+  id: OrganRodentiaEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganRodentiaInternal, OrganRodentiaMetabolizer ]
+  id: OrganRodentiaLungs
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganSpriteHumanInternal, OrganRodentiaInternal, OrganRodentiaMetabolizer ]
+  id: OrganRodentiaKidneys

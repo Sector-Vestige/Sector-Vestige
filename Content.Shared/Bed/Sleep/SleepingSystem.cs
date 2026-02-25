@@ -1,3 +1,25 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SkaldetSkaeg <impotekh@gmail.com>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Coolsurf6 <coolsurf24@yahoo.com.au>
+// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Fildrance <fildrance@gmail.com>
+// SPDX-FileCopyrightText: 2025 Hannah Giovanna Dawson <karakkaraz@gmail.com>
+// SPDX-FileCopyrightText: 2025 Perry Fraser <perryprog@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Princess-Cheeseballs@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Pronana@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 Red <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Buckle.Components;
@@ -169,6 +191,11 @@ public sealed partial class SleepingSystem : EntitySystem
             RemCompDeferred<AllowNextCritSpeechComponent>(ent);
             return;
         }
+
+        // SV Start - Allow sleeptalking but whispering
+        if (args.IsWhisper)
+            return;
+        // SV End - Allow sleeptalking but whispering
 
         args.Cancel();
     }
@@ -355,7 +382,9 @@ public sealed partial class SleepingSystem : EntitySystem
     /// </summary>
     public void OnEmoteAttempt(Entity<SleepingComponent> ent, ref EmoteAttemptEvent args)
     {
-        args.Cancel();
+        // SV Start - Emoting while asleep
+        // args.Cancel();
+        // SV End - Emoting while asleep
     }
 
     private void OnChangeForceSay(Entity<SleepingComponent> ent, ref BeforeForceSayEvent args)

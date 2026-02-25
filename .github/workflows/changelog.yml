@@ -6,7 +6,6 @@ on:
     types: [closed]
 
 env:
-  GITHUB_TOKEN: ${{ secrets.WEH_BOT_PAT }}
   CHANGELOG_DIR: ${{ vars.CHANGELOG_DIR }}
   PR_NUMBER: ${{ github.event.number }}
 
@@ -17,10 +16,17 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Generate GitHub App Token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Checkout Master
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.WEH_BOT_PAT }}
+          token: ${{ steps.generate-token.outputs.token }}
           ref: "${{ vars.CHANGELOG_BRANCH }}"
 
       - name: Setup Git

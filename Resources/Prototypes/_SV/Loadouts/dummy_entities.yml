@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 Nico64 <74880554+NicoSGF64@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: PersonalItemSwapsDummyCandles
+  categories: [ HideSpawnMenu ]
+  name: three treated candles
+  description: A set of three, specially-treated colorful candles for secret rituals!
+  components:
+  - type: Sprite
+    sprite: _SV/PersonalItems/Items/swapscandles.rsi
+    state: loadout

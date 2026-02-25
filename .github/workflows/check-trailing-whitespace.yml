@@ -1,7 +1,7 @@
 ﻿name: Trailing Whitespace Check
 
 on:
-  pull_request:
+  pull_request_target:
     types: [ opened, reopened, synchronize, ready_for_review ]
 
 jobs:
@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
     - name: Get changed text files
       id: changed-files
       uses: tj-actions/changed-files@v46.0.5

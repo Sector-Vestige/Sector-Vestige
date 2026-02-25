@@ -1,3 +1,10 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Text;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface.RichText;
@@ -10,7 +17,7 @@ namespace Content.Client.UserInterface.RichText;
 /// Adds a specified length of random characters that scramble at a set rate.
 /// </summary>
 [UsedImplicitly]
-public sealed class ScrambleTag : IMarkupTag
+public sealed class ScrambleTag : IMarkupTagHandler
 {
     [Dependency] private readonly IGameTiming _timing = default!;
 

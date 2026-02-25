@@ -1,0 +1,457 @@
+# SPDX-FileCopyrightText: 2026 Delta-V contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: markingsGroup
+  parent: Undergarments
+  id: Harpy
+  limits:
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 1
+      required: true
+      default: [ HarpyChestDefault ]
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: true
+      default: [ HarpyEarsDefault ]
+    enum.HumanoidVisualLayers.HeadSide:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [ HarpyTailPhoenix ]
+    enum.HumanoidVisualLayers.LArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 1
+      required: true
+      default: [ HarpyWingDefault ]
+    enum.HumanoidVisualLayers.LHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 1
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceHarpy
+  name: harpy appearance
+  components:
+  - type: InitialBody
+    organs:
+      Torso: OrganHarpyTorso
+      Head: OrganHarpyHead
+      ArmLeft: OrganHarpyArmLeft
+      ArmRight: OrganHarpyArmRight
+      HandRight: OrganHarpyHandRight
+      HandLeft: OrganHarpyHandLeft
+      LegLeft: OrganHarpyLegLeft
+      LegRight: OrganHarpyLegRight
+      FootLeft: OrganHarpyFootLeft
+      FootRight: OrganHarpyFootRight
+      Brain: OrganHarpyBrain
+      Eyes: OrganHarpyEyes
+      Tongue: OrganHarpyTongue
+      Ears: OrganHarpyEars
+      Lungs: OrganHarpyLungs
+      Heart: OrganHarpyHeart
+      Stomach: OrganAnimalStomach
+      Liver: OrganAnimalLiver
+      Kidneys: OrganAnimalKidneys
+  - type: HumanoidProfile
+    species: Harpy
+  - type: Inventory
+    speciesId: harpy
+    templateId: digitigrade
+  - type: ScaleVisuals
+    scale: 0.9, 0.9
+  - type: Sprite
+    layers:
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+      - map: [ "jumpsuit" ]
+      - map: ["enum.HumanoidVisualLayers.LFoot"]
+      - map: ["enum.HumanoidVisualLayers.RFoot"]
+      - map: ["enum.HumanoidVisualLayers.LHand"]
+      - map: ["enum.HumanoidVisualLayers.RHand"]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - map: [ "id" ]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: [ "clownedon" ]
+        sprite: "Effects/creampie.rsi"
+        state: "creampie_human"
+        visible: false
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "singingLayer" ]
+        sprite: _DV/Effects/harpysinger.rsi
+        state: singing_music_notes
+        visible: false
+
+- type: entity
+  parent:
+  - AppearanceHarpy
+  - BaseSpeciesMobOrganic
+  id: MobHarpy
+  name: Urist McHarpy
+  components:
+  - type: HarpySinger
+  - type: Instrument
+    allowPercussion: false
+    program: 52
+  - type: SwappableInstrument
+    instrumentList:
+      "Voice": {52: 0}
+      "Trumpet": {56: 0}
+      "Electric": {27: 0}
+      "Bass": {33: 0}
+      "Rock": {29: 0}
+      "Acoustic": {24: 0}
+      "Flute": {73: 0}
+      "Sax": {66: 0}
+      "Piano": {1: 0}
+      "Church Organ": {19: 0}
+      "Harp": {46: 0}
+    onlySetBySelf: true
+  - type: UserInterface
+    interfaces:
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+      enum.VoiceMaskUIKey.Key:
+        type: VoiceMaskBoundUserInterface
+      enum.HumanoidMarkingModifierKey.Key:
+        type: HumanoidMarkingModifierBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.32
+        density: 90
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Damageable
+    damageModifierSet: Harpy
+  - type: MeleeWeapon
+    soundHit:
+      collection: AlienClaw
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Piercing: 5
+  - type: Speech
+    speechSounds: Harpy
+    speechVerb: Harpy
+    mimicEmotes: true
+    allowedEmotes:
+    - Squish
+    - Chitter
+    - Click
+    - Ring
+    - Pew
+    - Bang
+    - Rev
+    - Caw
+    - Sneeze
+    - Cough
+    - Hiss
+    - Meow
+    - Mew
+    - Growl
+    - Purr
+    - Beep
+    - Squeak
+    - Chirp
+    - Honk
+    - Bark
+    - Snarl
+    - Howl
+    - Whine
+    - Coo # FloofStation
+  - type: Vocal
+    sounds:
+      Male: SoundsHarpyMale
+      Female: SoundsHarpyFemale
+      Unsexed: SoundsHarpyMale
+  - type: GenericVisualizer
+    visuals:
+      enum.HarpyVisualLayers.Singing:
+        singingLayer:
+          False:  {visible: false}
+          True:  {visible: true}
+  - type: HarpyVisuals
+
+# Base organ definitions
+- type: entity
+  parent: OrganBase
+  id: OrganHarpy
+  abstract: true
+  suffix: harpy
+
+- type: entity
+  id: OrganHarpyMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Human ]
+
+- type: entity
+  parent: OrganHarpy
+  id: OrganHarpyInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganHarpyVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _DV/Mobs/Species/Harpy/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Harpy
+
+- type: entity
+  parent: [ OrganHarpy, OrganHarpyVisual ]
+  id: OrganHarpyExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _DV/Mobs/Species/Harpy/parts.rsi
+
+# External organs (body parts)
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganHarpyExternal ]
+  id: OrganHarpyTorso
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 10
+      - ReagentId: Blood
+        Quantity: 20
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganHarpyExternal ]
+  id: OrganHarpyHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.Snout
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.HeadSide
+    - enum.HumanoidVisualLayers.FacialHair
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 5
+      - ReagentId: Blood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganHarpyExternal ]
+  id: OrganHarpyArmLeft
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganHarpyExternal ]
+  id: OrganHarpyArmRight
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganHarpyExternal ]
+  id: OrganHarpyHandLeft
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganHarpyExternal ]
+  id: OrganHarpyHandRight
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganHarpyExternal ]
+  id: OrganHarpyLegLeft
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganHarpyExternal ]
+  id: OrganHarpyLegRight
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganHarpyExternal ]
+  id: OrganHarpyFootLeft
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganHarpyExternal ]
+  id: OrganHarpyFootRight
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+
+# Internal organs
+- type: entity
+  parent: [ OrganBaseBrain, OrganSpriteHumanInternal, OrganHarpyInternal ]
+  id: OrganHarpyBrain
+
+- type: entity
+  parent: [ OrganHarpyVisual, OrganBaseEyes, OrganHarpyInternal ]
+  id: OrganHarpyEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganHarpyInternal ]
+  id: OrganHarpyTongue
+
+- type: entity
+  parent: [ OrganBaseEars, OrganSpriteHumanInternal, OrganHarpyInternal ]
+  id: OrganHarpyEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganHarpyInternal, OrganHarpyMetabolizer ]
+  id: OrganHarpyLungs
+  name: lungs
+  description: "An advanced pair of avian lungs. Filters oxygen by way of moving air constantly through air sacs."
+  components:
+  - type: Metabolizer
+    updateInterval: 2.0
+    metabolizerTypes: [ Human ]
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganHarpyInternal, OrganHarpyMetabolizer ]
+  id: OrganHarpyHeart
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionHarpyPlayMidi
+  name: Play MIDI
+  description: Open your vocal MIDI interface.
+  components:
+  - type: Action
+    icon: Interface/Actions/pai-midi.png
+    itemIconStyle: NoItem
+  - type: InstantAction
+    event: !type:OpenUiActionEvent
+      key: enum.InstrumentUiKey.Key

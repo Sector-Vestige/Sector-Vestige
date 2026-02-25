@@ -1,3 +1,35 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 Clyybber <darkmine956@gmail.com>
+// SPDX-FileCopyrightText: 2021 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
+// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr.@gmail.com>
+// SPDX-FileCopyrightText: 2022 Morb <14136326+Morb0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 08A <git@08a.re>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 PixelTK <85175107+PixelTheKermit@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2024 Artjom <artjombebenin@gmail.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 David <david.owen.dev@gmail.com>
+// SPDX-FileCopyrightText: 2025 Ertanic <36124833+Ertanic@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Princess-Cheeseballs@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Pronana@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 YotaXP <yotaxp@gmail.com>
+// SPDX-FileCopyrightText: 2025 qwerltaz <69696513+qwerltaz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using System.Numerics;
 using Content.Client.Lobby;
@@ -30,7 +62,10 @@ namespace Content.Client.Construction.UI
         [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IClientPreferencesManager _preferencesManager = default!;
+        [Dependency] private readonly ILogManager _logManager = default!;
+
         private readonly SpriteSystem _spriteSystem;
+        private readonly ISawmill _sawmill;
 
         private readonly IConstructionMenuView _constructionView;
         private readonly EntityWhitelistSystem _whitelistSystem;
@@ -90,6 +125,7 @@ namespace Content.Client.Construction.UI
             _constructionView = new ConstructionMenu();
             _whitelistSystem = _entManager.System<EntityWhitelistSystem>();
             _spriteSystem = _entManager.System<SpriteSystem>();
+            _sawmill = _logManager.GetSawmill("construction.ui");
 
             // This is required so that if we load after the system is initialized, we can bind to it immediately
             if (_systemManager.TryGetEntitySystem<ConstructionSystem>(out var constructionSystem))
@@ -284,7 +320,7 @@ namespace Content.Client.Construction.UI
 
                 if (!_constructionSystem!.TryGetRecipePrototype(recipe.ID, out var targetProtoId))
                 {
-                    Logger.Error("Cannot find the target prototype in the recipe cache with the id \"{0}\" of {1}.",
+                    _sawmill.Error("Cannot find the target prototype in the recipe cache with the id \"{0}\" of {1}.",
                         recipe.ID,
                         nameof(ConstructionPrototype));
                     continue;

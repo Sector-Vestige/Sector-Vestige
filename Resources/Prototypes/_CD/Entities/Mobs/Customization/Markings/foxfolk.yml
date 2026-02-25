@@ -1,11 +1,17 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 # All the Foxfolk customization
 
 # Ears Markings
 - type: marking
   id: FoxfolkEar
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: foxfolk
@@ -15,8 +21,7 @@
 - type: marking
   id: FoxfolkEarFade
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: foxfolk
@@ -26,8 +31,7 @@
 - type: marking
   id: FoxfolkEarSharp
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: foxfolk
@@ -37,8 +41,7 @@
 - type: marking
   id: FoxfolkEarJackal
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: jackal
@@ -48,8 +51,7 @@
 - type: marking
   id: FoxfolkEarTerrier
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: terrier
@@ -59,8 +61,7 @@
 - type: marking
   id: FoxfolkEarWolf
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: wolf
@@ -70,8 +71,7 @@
 - type: marking
   id: FoxfolkEarFennec
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: fennec
@@ -81,8 +81,7 @@
 - type: marking
   id: FoxfolkEarFox
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: fox
@@ -90,8 +89,7 @@
 - type: marking
   id: FoxfolkEarOtie
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: otie
@@ -101,8 +99,7 @@
 - type: marking
   id: FoxfolkEarTajaran
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: msai
@@ -112,8 +109,7 @@
 - type: marking
   id: FoxfolkEarShock
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: shock
@@ -121,8 +117,7 @@
 - type: marking
   id: FoxfolkEarCoyote
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: coyote
@@ -130,8 +125,7 @@
 - type: marking
   id: FoxfolkEarDalmatian
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/ear_markings.rsi
       state: dalmatian
@@ -140,8 +134,7 @@
 - type: marking
   id: FoxfolkSnoutAlt
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: muzzle_alt
@@ -151,8 +144,7 @@
 - type: marking
   id: FoxfolkSnout
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: muzzle
@@ -162,8 +154,7 @@
 - type: marking
   id: FoxfolkSnoutSharp
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: muzzle_sharp
@@ -173,8 +164,7 @@
 - type: marking
   id: FoxfolkSnoutFade
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: muzzle_fade
@@ -184,8 +174,7 @@
 - type: marking
   id: FoxfolkSnoutNose
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: nose
@@ -193,8 +182,7 @@
 - type: marking
   id: FoxfolkSnoutMask
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: mask
@@ -204,8 +192,7 @@
 - type: marking
   id: FoxfolkSnoutVulpine
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: vulpine
@@ -215,8 +202,7 @@
 - type: marking
   id: FoxfolkSnoutSwift
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: vulpine-lines
@@ -224,8 +210,7 @@
 - type: marking
   id: FoxfolkSnoutBlaze
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: blaze
@@ -233,8 +218,7 @@
 - type: marking
   id: FoxfolkSnoutPatch
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: patch
@@ -243,8 +227,7 @@
 - type: marking
   id: FoxfolkHeadTiger
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: tiger_head
@@ -252,8 +235,7 @@
 - type: marking
   id: FoxfolkHeadTigerFace
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: tiger_face
@@ -261,8 +243,7 @@
 - type: marking
   id: FoxfolkHeadSlash
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/head_markings.rsi
       state: slash
@@ -271,8 +252,7 @@
 - type: marking
   id: FoxfolkTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: foxfolk
@@ -282,8 +262,7 @@
 - type: marking
   id: FoxfolkTailTip
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: foxfolk
@@ -293,8 +272,7 @@
 - type: marking
   id: FoxfolkTailAlt
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: foxfolk_alt
@@ -304,8 +282,7 @@
 - type: marking
   id: FoxfolkTailAltTip
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: foxfolk_alt
@@ -315,8 +292,7 @@
 - type: marking
   id: FoxfolkTailLong
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: long
@@ -326,8 +302,7 @@
 - type: marking
   id: FoxfolkTailFox
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: fox
@@ -337,8 +312,7 @@
 - type: marking
   id: FoxfolkTailFoxTip
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: fox
@@ -348,8 +322,7 @@
 - type: marking
   id: FoxfolkTailBushy
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: bushfluff
@@ -357,8 +330,7 @@
 - type: marking
   id: FoxfolkTailCoyote
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: coyote
@@ -366,8 +338,7 @@
 - type: marking
   id: FoxfolkTailHusky
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: husky-inner
@@ -377,8 +348,7 @@
 - type: marking
   id: FoxfolkTailHuskyAlt
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: husky
@@ -386,8 +356,7 @@
 - type: marking
   id: FoxfolkTailFox2
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: fox2
@@ -395,8 +364,7 @@
 - type: marking
   id: FoxfolkTailFox3
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: fox3
@@ -406,8 +374,7 @@
 - type: marking
   id: FoxfolkTailFennec
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: fennec
@@ -415,8 +382,7 @@
 - type: marking
   id: FoxfolkTailOtie
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: otie
@@ -424,8 +390,7 @@
 - type: marking
   id: FoxfolkTailFluffy
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: fluffy
@@ -433,8 +398,7 @@
 - type: marking
   id: FoxfolkTailCorgi #These will need locale
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: corgi
@@ -442,8 +406,7 @@
 - type: marking
   id: FoxfolkTailDalmation #These will need locale
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: dalmatian
@@ -452,8 +415,7 @@
 - type: marking
   id: FoxfolkBellyCrest
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: belly_crest
@@ -461,8 +423,7 @@
 - type: marking
   id: FoxfolkBellyFull
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: belly_full
@@ -470,8 +431,7 @@
 - type: marking
   id: FoxfolkBellyFox
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: belly_fox
@@ -508,36 +468,32 @@
 # Leg Markings
 - type: marking
   id: FoxfolkPointsFeet
-  markingCategory: Overlay
   bodyPart: RFoot
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: points_feet
 
 - type: marking
   id: FoxfolkPointsCrestLegs
-  markingCategory: Legs
   bodyPart: LLeg
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: points_crest-legs
 
 - type: marking
   id: FoxfolkPointsFadeLegs
-  markingCategory: Legs
   bodyPart: LLeg
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: points_fade-legs
 
 - type: marking
   id: FoxfolkPointsSharpLegs
-  markingCategory: Legs
   bodyPart: LLeg
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: points_sharp-legs
@@ -545,36 +501,32 @@
 # Arm Markings
 - type: marking
   id: FoxfolkPointsHands
-  markingCategory: Overlay
   bodyPart: RHand
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: points_hands
 
 - type: marking
   id: FoxfolkPointsCrestArms
-  markingCategory: Arms
   bodyPart: LArm
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: points_crest-arms
 
 - type: marking
   id: FoxfolkPointsFadeArms
-  markingCategory: Arms
   bodyPart: LArm
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: points_fade-arms
 
 - type: marking
   id: FoxfolkPointsSharpArms
-  markingCategory: Arms
   bodyPart: LArm
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/body_markings.rsi
       state: points_sharp-arms
@@ -583,8 +535,7 @@
 - type: marking
   id: FoxfolkHairAdhara
   bodyPart: Hair
-  speciesRestriction: [ Foxfolk ]
-  markingCategory: Hair
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: adhara
@@ -592,8 +543,7 @@
 - type: marking
   id: FoxfolkHairAnita
   bodyPart: Hair
-  speciesRestriction: [ Foxfolk ]
-  markingCategory: Hair
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: anita
@@ -601,8 +551,7 @@
 - type: marking
   id: FoxfolkHairApollo
   bodyPart: Hair
-  speciesRestriction: [ Foxfolk ]
-  markingCategory: Hair
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: apollo
@@ -610,8 +559,7 @@
 - type: marking
   id: FoxfolkHairBelle
   bodyPart: Hair
-  speciesRestriction: [ Foxfolk ]
-  markingCategory: Hair
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: belle
@@ -619,8 +567,7 @@
 - type: marking
   id: FoxfolkHairBraided
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: braided
@@ -628,8 +575,7 @@
 - type: marking
   id: FoxfolkHairBun
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: bun
@@ -637,8 +583,7 @@
 - type: marking
   id: FoxfolkHairCleanCut
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: clean_cut
@@ -646,8 +591,7 @@
 - type: marking
   id: FoxfolkHairCurl
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: curl
@@ -655,8 +599,7 @@
 - type: marking
   id: FoxfolkHairHawk
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: hawk
@@ -664,8 +607,7 @@
 - type: marking
   id: FoxfolkHairJagged
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: jagged
@@ -673,8 +615,7 @@
 - type: marking
   id: FoxfolkHairJeremy
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: jeremy
@@ -682,8 +623,7 @@
 - type: marking
   id: FoxfolkHairKajam
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: kajam
@@ -691,8 +631,7 @@
 - type: marking
   id: FoxfolkHairKeid
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: keid
@@ -700,8 +639,7 @@
 - type: marking
   id: FoxfolkHairKleeia
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: kleeia
@@ -709,8 +647,7 @@
 - type: marking
   id: FoxfolkHairMizar
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: mizar
@@ -718,8 +655,7 @@
 - type: marking
   id: FoxfolkHairPunkBraided
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: punkbraided
@@ -727,8 +663,7 @@
 - type: marking
   id: FoxfolkHairRaine
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: raine
@@ -736,8 +671,7 @@
 - type: marking
   id: FoxfolkHairRough
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: rough
@@ -745,8 +679,7 @@
 - type: marking
   id: FoxfolkHairShort
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: short
@@ -754,8 +687,7 @@
 - type: marking
   id: FoxfolkHairShort2
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: short2
@@ -763,8 +695,7 @@
 - type: marking
   id: FoxfolkHairSpike
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/hair.rsi
       state: spike
@@ -773,8 +704,7 @@
 - type: marking
   id: FoxfolkFacialHairRuff
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/facial_hair.rsi
       state: ruff
@@ -782,8 +712,7 @@
 - type: marking
   id: FoxfolkFacialHairElder
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/facial_hair.rsi
       state: elder
@@ -791,8 +720,7 @@
 - type: marking
   id: FoxfolkFacialHairElderChin
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/facial_hair.rsi
       state: elder_chin
@@ -800,8 +728,7 @@
 - type: marking
   id: FoxfolkFacialHairKita
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Foxfolk ]
+  groupWhitelist: [ Foxfolk ]
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/facial_hair.rsi
       state: kita
@@ -811,8 +738,7 @@
 - type: marking
   id: FoxfolkTailAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: foxfolk_wag
@@ -822,8 +748,7 @@
 - type: marking
   id: FoxfolkTailTipAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: foxfolk_wag
@@ -833,8 +758,7 @@
 - type: marking
   id: FoxfolkTailAltAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: foxfolk_wag
@@ -844,8 +768,7 @@
 - type: marking
   id: FoxfolkTailAltTipAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: foxfolk_wag
@@ -855,8 +778,7 @@
 - type: marking
   id: FoxfolkTailFoxAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: fox_wag
@@ -866,8 +788,7 @@
 - type: marking
   id: FoxfolkTailFoxTipAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: fox_wag
@@ -877,8 +798,7 @@
 - type: marking
   id: FoxfolkTailBushyAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: bushfluff_wag
@@ -886,8 +806,7 @@
 - type: marking
   id: FoxfolkTailCoyoteAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: coyote_wag
@@ -895,8 +814,7 @@
 - type: marking
   id: FoxfolkTailCorgiAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: corgi_wag
@@ -904,8 +822,7 @@
 - type: marking
   id: FoxfolkTailDalmatianAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
       state: dalmatian_wag

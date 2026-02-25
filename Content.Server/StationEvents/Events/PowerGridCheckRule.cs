@@ -1,4 +1,20 @@
+// SPDX-FileCopyrightText: 2025 Wizards Den contributors
+// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
+// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Threading;
+using Content.Server._Umbra.Power.Components; //Umbra-APCs explode when toggled on during power outages
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.StationEvents.Components;
@@ -52,6 +68,7 @@ namespace Content.Server.StationEvents.Events
                     if(!apcComponent.MainBreakerEnabled)
                         _apcSystem.ApcToggleBreaker(entity, apcComponent);
                 }
+                RemComp<ElectricalOverloadComponent>(entity); //Umbra-APCs explode when toggled on during power outages
             }
 
             // Can't use the default EndAudio
@@ -87,7 +104,10 @@ namespace Content.Server.StationEvents.Events
                 if (TryComp<ApcComponent>(selected, out var apcComponent))
                 {
                     if (apcComponent.MainBreakerEnabled)
+                    {
                         _apcSystem.ApcToggleBreaker(selected, apcComponent);
+                        AddComp<ElectricalOverloadComponent>(selected); //Umbra-APCs explode when toggled on during power outages
+                    }
                 }
                 component.Unpowered.Add(selected);
             }

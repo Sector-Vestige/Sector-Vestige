@@ -206,3 +206,23 @@ guide-entry-rules-ban-durations = Ban Durations
 
 guide-entry-writing = Writing
 guide-entry-glossary = Glossary
+
+guide-entry-SV-spacelaw = Space Law
+guide-entry-SV-rights = Rights
+guide-entry-SV-charges-and-sentencing = Charges & Sentencing
+guide-entry-SV-punishment = Punishment
+guide-entry-SV-contraband = Contraband
+guide-entry-SV-crime-list = Crime List
+guide-entry-SV-slaw-factors = Extenuating & Mitigating Factors
+
+guide-entry-SV-sop = Standard Operating Procedure
+guide-entry-logistics-sop = Logistics
+guide-entry-SV-command-sop = Command
+guide-entry-SV-engineering-sop = Engineering
+guide-entry-SV-legal-sop = Legal
+guide-entry-SV-medical-sop = Medical
+guide-entry-SV-research-sop = Research
+guide-entry-SV-security-sop = Security
+guide-entry-SV-security-equipment-sop = Security Equipment
+guide-entry-SV-service-sop = Service
+guide-entry-SV-alert-sop = Alert Levels

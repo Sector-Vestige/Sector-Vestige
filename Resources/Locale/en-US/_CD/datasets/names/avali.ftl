@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 MoonlightHollow <muszynskinicholas8@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 names-avali-unisex-dataset-1 = Ko
 names-avali-unisex-dataset-2 = Nomi
 names-avali-unisex-dataset-3 = Jasyo

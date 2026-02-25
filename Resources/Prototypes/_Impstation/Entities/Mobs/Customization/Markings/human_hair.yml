@@ -1,8 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Impstation contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: marking
   id: HumanHairGatheredlow
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, SlimePerson, Felinid ] 
+  groupWhitelist: [Human, Slime, Felinid ]
   sprites:
     - sprite: _Impstation/Mobs/Customization/human_hair.rsi
       state: gatheredlow
@@ -10,8 +16,7 @@
 - type: marking
   id: HumanHairLowpigtails
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, SlimePerson, Felinid ] 
+  groupWhitelist: [Human, Slime, Felinid ]
   sprites:
     - sprite: _Impstation/Mobs/Customization/human_hair.rsi
       state: lowpigtails
@@ -19,8 +24,7 @@
 - type: marking
   id: HumanHairFrenchBraid
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, SlimePerson, Felinid ] 
+  groupWhitelist: [Human, Slime, Felinid ]
   sprites:
     - sprite: _Impstation/Mobs/Customization/human_hair.rsi
       state: frenchbraid
