@@ -93,9 +93,9 @@
   description: A dark blue beret for Captains that are too good for the regular hat. 
   components:
   - type: Sprite
-    sprite: _SV/Clothing/Head/Hats/beret_medic.rsi
+    sprite: _SV/Clothing/Head/Hats/beret_captain.rsi
   - type: Clothing
-    sprite: _SV/Clothing/Head/Hats/beret_medic.rsi
+    sprite: _SV/Clothing/Head/Hats/beret_captain.rsi
   - type: Tag
     tags:
     - PetWearable
