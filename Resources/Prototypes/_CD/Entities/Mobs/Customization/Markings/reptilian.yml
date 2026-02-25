@@ -88,3 +88,13 @@
     state: tail_snake_wag_primary
   - sprite: _CD/Mobs/Customization/snaketaildual.rsi
     state: tail_snake_wag_secondary
+
+# Dragon Wings
+
+- type: marking
+  id: LizardChestDragonwings
+  bodyPart: Tail
+  groupWhitelist: [Reptilian]
+  sprites:
+  - sprite: _CD/Mobs/Customization/reptilian_wings.rsi
+    state: body_dragonwings

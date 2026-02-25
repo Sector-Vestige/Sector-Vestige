@@ -20,3 +20,6 @@ marking-LizardTailSnakeUnder-tail_snake_secondary = Under Tone color
 marking-LizardTailSnakeDual = Snake Tail (Dual)
 marking-LizardTailSnakeDual-tail_snake_primary = Primary color
 marking-LizardTailSnakeDual-tail_snake_secondary = End color
+
+marking-LizardChestDragonwings-body_dragonwings = Draconic Wings
+marking-LizardChestDragonwings = Draconic Wings
