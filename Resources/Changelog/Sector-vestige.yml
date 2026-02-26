@@ -1459,3 +1459,9 @@ Entries:
       message: The energy shotgun self-recharges again.
   id: 200
   time: '2026-02-23T09:40:51.0000000+00:00'
+- author: qu4drivium
+  changes:
+    - type: Tweak
+      message: Straitjackets can now be printed at the Medical Fabricator.
+  id: 201
+  time: '2026-02-25T20:39:53.0000000+00:00'
