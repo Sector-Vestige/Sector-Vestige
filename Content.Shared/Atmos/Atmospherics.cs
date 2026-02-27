@@ -87,8 +87,8 @@ namespace Content.Shared.Atmos
         /// </summary>
         public const float MCellWithRatio = (MolesCellStandard * 0.005f);
 
-        public const float OxygenStandard = 0.25f;
-        public const float NitrogenStandard = 0.75f;
+        public const float OxygenStandard = 0.25f; // Sector Vestige: Harpies deserve not to gasp roundstart maybe
+        public const float NitrogenStandard = 0.75f; // Sector Vestige: Harpies deserve not to gasp roundstart maybe
 
         public const float OxygenMolesStandard = MolesCellStandard * OxygenStandard;
         public const float NitrogenMolesStandard = MolesCellStandard * NitrogenStandard;
