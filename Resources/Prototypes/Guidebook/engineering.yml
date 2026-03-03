@@ -286,7 +286,6 @@
   text: "/ServerInfo/Guidebook/Engineering/Power.xml"
   children:
     - Generators
-    - Supermatter
     - InspectingPower
     - PowerStorage
     - Ramping
@@ -317,6 +316,7 @@
   name: guide-entry-generators
   text: "/ServerInfo/Guidebook/Engineering/Generators.xml"
   children:
+  - Supermatter
   - PortableGenerator
   - AME
   - SingularityTeslaEngine
