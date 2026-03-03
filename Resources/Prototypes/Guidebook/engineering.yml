@@ -286,6 +286,7 @@
   text: "/ServerInfo/Guidebook/Engineering/Power.xml"
   children:
     - Generators
+    - Supermatter
     - InspectingPower
     - PowerStorage
     - Ramping
