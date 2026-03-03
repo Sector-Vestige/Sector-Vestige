@@ -16,7 +16,7 @@
       limit: 0
       required: false
     enum.HumanoidVisualLayers.Chest:
-      limit: 1
+      limit: 2 #SV 1 -> 2
       required: false
     enum.HumanoidVisualLayers.Snout:
       limit: 1

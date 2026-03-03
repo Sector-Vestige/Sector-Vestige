@@ -34,17 +34,17 @@
       required: true
       default: [ HarpyTailPhoenix ]
     enum.HumanoidVisualLayers.LArm:
-      limit: 1
+      limit: 2 #SV 1 -> 2
       required: false
     enum.HumanoidVisualLayers.RArm:
-      limit: 1
+      limit: 2 #SV 1 -> 2
       required: true
       default: [ HarpyWingDefault ]
     enum.HumanoidVisualLayers.LHand:
-      limit: 1
+      limit: 2 #SV 1 -> 2
       required: false
     enum.HumanoidVisualLayers.RHand:
-      limit: 1
+      limit: 2 #SV 1 -> 2
       required: false
     enum.HumanoidVisualLayers.LLeg:
       limit: 1

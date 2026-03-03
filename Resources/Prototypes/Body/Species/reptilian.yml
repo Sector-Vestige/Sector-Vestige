@@ -10,11 +10,11 @@
       limit: 0
       required: false
     enum.HumanoidVisualLayers.Tail:
-      limit: 1
+      limit: 2 #SV 1 -> 2
       required: true
       default: [ LizardTailSmooth ]
     enum.HumanoidVisualLayers.Chest:
-      limit: 3
+      limit: 4 #SV 3 -> 4
       required: false
     enum.HumanoidVisualLayers.Snout:
       limit: 1
