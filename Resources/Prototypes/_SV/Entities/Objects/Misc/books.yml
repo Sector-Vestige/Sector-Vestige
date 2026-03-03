@@ -31,15 +31,13 @@
     - state: paper
     - state: cover_base
       color: "#1b67a5"
-      map: [ "cover" ]
     - state: decor_wingette_circle
       color: "#1b67a5"
-      map: [ "decor" ]
     - state: icon_letter_N
-      color: "#1b67a5"
-    - type: GuideHelp
-      guides:
-      - CommandSOP
+      color: "#434343"
+  - type: GuideHelp
+    guides:
+    - CommandSOP
 
 - type: entity
   parent: BaseGuidebook
