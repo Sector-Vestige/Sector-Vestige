@@ -5,7 +5,6 @@
   description: The standard procedures followed on any uniform NT station.
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
     layers:
     - state: paper
     - state: cover_base
@@ -19,6 +18,7 @@
   - type: GuideHelp
     guides:
     - SOP
+    - AlertSOP
 
 - type: entity
   parent: BaseGuidebook
@@ -27,7 +27,6 @@
   description: The standard procedures followed by command staff on any uniform NT station.
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
     layers:
   - state: paper
   - state: cover_base
@@ -49,7 +48,6 @@
   description: The standard procedures followed by security staff on any uniform NT station.
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
     layers:
     - state: paper
     - state: cover_base
@@ -71,7 +69,6 @@
   description: The standard procedures followed by engineering staff on any uniform NT station.
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
     layers:
     - state: paper
     - state: cover_base
@@ -93,7 +90,6 @@
   description: The standard procedures followed by medical staff on any uniform NT station.
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
     layers:
     - state: paper
     - state: cover_base
@@ -115,7 +111,6 @@
   description: The standard procedures followed by science staff on any uniform NT station.
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
     layers:
     - state: paper
     - state: cover_base
@@ -137,7 +132,6 @@
   description: The standard procedures followed by cargo staff on any uniform NT station.
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
     layers:
     - state: paper
     - state: cover_base
@@ -159,7 +153,6 @@
   description: The standard procedures followed by service staff on any uniform NT station.
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
     layers:
     - state: paper
     - state: cover_base
@@ -181,7 +174,6 @@
   description: The standard procedures followed by legal staff on any uniform NT station.
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
     layers:
     - state: paper
     - state: cover_base
@@ -195,25 +187,3 @@
   - type: GuideHelp
     guides:
     - LegalSOP
-
-- type: entity
-  parent: BaseGuidebook
-  id: BookSOPAlert
-  name: Alert Operating Procedure
-  description: The standard procedures dictated by alert level on any uniform NT station.
-  components:
-  - type: Sprite
-    sprite: Objects/Misc/books.rsi
-    layers:
-  - state: paper
-  - state: cover_base
-    color: "#1b67a5"
-  - state: decor_wingette_circle
-    color: "#1b67a5"
-  - state: decor_wingette
-    color: "#434343"
-  - state: icon_letter_N
-    color: "#1b67a5"
-  - type: GuideHelp
-    guides:
-    - AlertSOP
