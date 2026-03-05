@@ -510,6 +510,7 @@
   - Trinkets
   #- SecurityCadetJobTrinkets
   - GroupSpeciesBreathToolSecurity
+  - PersonalItemsJobAgnostic # SV Change
 
 # Wildcards
 - type: roleLoadout
