@@ -156,6 +156,12 @@
     - miau.
     - miaus.
     - miaus!
+    - mrow
+    - mrows
+    - miao
+    - miaos
+    - miaou
+    - miaous
     - nya
     - nyas
     - nya.
@@ -184,6 +190,8 @@
   chatTriggers:
     - mew
     - mews
+    - mew!
+    - mews!
     - mewing
     - mewed
 
