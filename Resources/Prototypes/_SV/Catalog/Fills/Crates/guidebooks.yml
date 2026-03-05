@@ -1,0 +1,17 @@
+- type: entity
+  id: CrateSOPGuidebooks
+  parent: CrateGenericSteel
+  name: SOP guidebook crate
+  description: A crate containing a complete set of the SOP guidebooks.
+  components:
+  - type: StorageFill
+    contents:
+    - id: BookSOPGeneral
+    - id: BookSOPCommand
+    - id: BookSOPSecurity
+    - id: BookSOPEngineering
+    - id: BookSOPMedical
+    - id: BookSOPScience
+    - id: BookSOPCargo
+    - id: BookSOPService
+    - id: BookSOPLegal

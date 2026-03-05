@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: SOPBooks
+  icon:
+    sprite: Objects/Misc/books.rsi
+    state: book_icon
+  product: CrateSOPGuidebooks
+  cost: 1000
+  category: cargoproduct-category-name-service
+  group: market
