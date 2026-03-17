@@ -10,7 +10,7 @@
   parent: ClothingEyesGlassesCheapSunglasses
   id: PersonalItemMelodyGlasses
   name: cracked sunglasses
-  description: A pair of black sunglasses with multiple large fracures running across the left lens. What looks like dried blood coats the lower edge of the left frame. These no longer protect against bright flashes.
+  description: These no longer protect against bright flashes.
   suffix: PersonalItem
   components:
   - type: Sprite
