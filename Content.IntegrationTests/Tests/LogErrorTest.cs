@@ -14,21 +14,19 @@ public sealed class LogErrorTest
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
         var server = pair.Server;
-        var client = pair.Client;
 
         var cfg = server.ResolveDependency<IConfigurationManager>();
-        var logmill = server.ResolveDependency<ILogManager>().RootSawmill;
+        var serverLogmill = server.ResolveDependency<ILogManager>().RootSawmill;
+        var clientLogmill = pair.Client.ResolveDependency<ILogManager>().RootSawmill;
 
         // Default cvar is properly configured
         Assert.That(cfg.GetCVar(RTCVars.FailureLogLevel), Is.EqualTo(LogLevel.Error));
 
-        // Warnings don't cause tests to fail.
-        await server.WaitPost(() => logmill.Warning("test"));
+        // Errors don't throw immediately...
+        Assert.DoesNotThrow(() => serverLogmill.Error("test"));
+        Assert.DoesNotThrow(() => clientLogmill.Error("test"));
 
-        // But errors do
-        await server.WaitPost(() => Assert.Throws<AssertionException>(() => logmill.Error("test")));
-        await client.WaitPost(() => Assert.Throws<AssertionException>(() => logmill.Error("test")));
-
-        await pair.CleanReturnAsync();
+        // ...but do cause CleanReturnAsync to fail.
+        Assert.ThrowsAsync<MultipleAssertException>(async () => await pair.CleanReturnAsync());
     }
 }

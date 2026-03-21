@@ -11,11 +11,20 @@ using Robust.Shared.Serialization.Markdown.Validation;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Robust.UnitTesting;
+using Robust.UnitTesting.Pool;
+using System.IO;
 
 namespace Content.YAMLLinter
 {
+    internal sealed class YamlLinterTestContext : ITestContextLike
+    {
+        public string FullName => "YAMLLinter";
+        public TextWriter Out => Console.Out;
+    }
+
     internal static class Program
     {
+        private static readonly YamlLinterTestContext TestCtx = new();
         private static async Task<int> Main(string[] _)
         {
             GameDataScrounger.NoScrounging = true; // Ugly hack for YAML Linter.
@@ -57,7 +66,7 @@ namespace Content.YAMLLinter
         private static async Task<(Dictionary<string, HashSet<ErrorNode>> YamlErrors, List<string> FieldErrors)>
             ValidateClient()
         {
-            await using var pair = await PoolManager.GetServerClient();
+            await using var pair = await PoolManager.GetServerClient(testContext: TestCtx);
             var client = pair.Client;
             var result = await ValidateInstance(client);
             await pair.CleanReturnAsync();
@@ -67,7 +76,7 @@ namespace Content.YAMLLinter
         private static async Task<(Dictionary<string, HashSet<ErrorNode>> YamlErrors, List<string> FieldErrors)>
             ValidateServer()
         {
-            await using var pair = await PoolManager.GetServerClient();
+            await using var pair = await PoolManager.GetServerClient(testContext: TestCtx);
             var server = pair.Server;
             var result = await ValidateInstance(server);
             await pair.CleanReturnAsync();
@@ -179,7 +188,7 @@ namespace Content.YAMLLinter
         private static async Task<(Assembly[] clientAssemblies, Assembly[] serverAssemblies)>
             GetClientServerAssemblies()
         {
-            await using var pair = await PoolManager.GetServerClient();
+            await using var pair = await PoolManager.GetServerClient(testContext: TestCtx);
 
             var result = (GetAssemblies(pair.Client), GetAssemblies(pair.Server));
 
