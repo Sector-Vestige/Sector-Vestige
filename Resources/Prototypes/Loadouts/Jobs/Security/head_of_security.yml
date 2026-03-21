@@ -62,6 +62,11 @@
     jumpsuit: ClothingUniformJumpskirtHosFormal
   groupBy: "formal" #Changed by SV
 
+- type: loadout # Changed by SV
+  id: HeadofSecurityMidnightUniform
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSMidnightUniform
+
 # Head
 - type: loadout
   id: HeadofSecurityHead
@@ -80,6 +85,11 @@
     neck: ClothingNeckCloakHos
 
 - type: loadout
+  id: HeadofSecurityMidnightCape
+  equipment:
+    neck: ClothingNeckCloakHoSMidnight
+
+- type: loadout
   id: HeadofSecurityMantle
   equipment:
     neck: ClothingNeckMantleHOS
@@ -87,7 +97,7 @@
 #  effects:
 #  - !type:GroupLoadoutEffect
 #    proto: MasterHoS
-
+    
 - type: startingGear
   id: HeadofSecurityMantle
   equipment:
@@ -103,3 +113,8 @@
   id: HeadofSecurityWinterCoat
   equipment:
     outerClothing: ClothingOuterWinterHoS
+
+- type: loadout # Changed by SV
+  id: HeadofSecurityMidnightJacket
+  equipment:
+    outerClothing: ClothingOuterCoatHoSMidnightJacket

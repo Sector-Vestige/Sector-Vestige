@@ -16,3 +16,15 @@
     sprite: _SV/Clothing/Neck/Cloaks/andalusian.rsi
   - type: StealTarget
     stealGroup: HeadCloak # leaving this here because CC one counts too.
+
+#Head of Security's Midnight Cape
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakHoSMidnight
+  name: head of security's midnight cape
+  description: A stylish cape in midnight black with a scarlet red lining. The right side of the cape is folded over the shoulder, leaving the officer with an unimpeded sword arm.
+  components:
+  - type: Sprite
+    sprite: _SV/Clothing/Neck/Cloaks/hos_midnight.rsi
+  - type: StealTarget
+    stealGroup: HeadCloak 
