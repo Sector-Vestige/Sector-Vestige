@@ -1246,6 +1246,7 @@
   - HeadofSecurityTurtleneckSkirt
   - HeadofSecurityFormalSuit
   - HeadofSecurityFormalSkirt
+  - HeadofSecurityMidnightUniform # SV
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
@@ -1254,6 +1255,7 @@
   loadouts:
   - HeadofSecurityCloak
   - HeadofSecurityMantle
+  - HeadofSecurityMidnightCape # SV
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
@@ -1262,6 +1264,7 @@
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
   - SecurityGreatcoat # CD
+  - HeadofSecurityMidnightJacket # SV
 
 - type: loadoutGroup
   id: HeadofSecurityJobTrinkets

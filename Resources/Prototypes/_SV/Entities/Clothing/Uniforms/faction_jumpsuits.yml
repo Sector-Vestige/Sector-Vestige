@@ -71,3 +71,17 @@
     sprite: _SV/Clothing/Uniforms/Jumpsuit/interdyne2.rsi
   - type: Clothing
     sprite: _SV/Clothing/Uniforms/Jumpsuit/interdyne2.rsi
+
+#!!!THE CREW!!!
+
+#Head of Security's Midnight Uniform'
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitHoSMidnightUniform
+  name: Head of Security's Midnight Uniform
+  description: Dark black slacks with a striking red blood stripe down the side, combined with a stylish blue shirt presents the appearance of a formidable officer.
+  components:
+  - type: Sprite
+    sprite: _SV/Clothing/Uniforms/Jumpsuit/hos_midnight_uniform.rsi
+  - type: Clothing
+    sprite: _SV/Clothing/Uniforms/Jumpsuit/hos_midnight_uniform.rsi

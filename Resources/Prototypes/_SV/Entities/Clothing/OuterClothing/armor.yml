@@ -16,3 +16,14 @@
     sprite: _SV/Clothing/OuterClothing/Armor/ayanianmarine.rsi
   - type: Clothing
     sprite: _SV/Clothing/OuterClothing/Armor/ayanianmarine.rsi
+
+- type: entity
+  parent: [BaseSecurityCommandContraband, ClothingOuterArmorHoS]
+  id: ClothingOuterCoatHoSMidnightJacket
+  name: head of security's aramid formal jacket
+  description: A midnight black formal jacket with a woven aramid fibre lining providing some lightweight ballistic protection.
+  components:
+  - type: Sprite
+    sprite: _SV/Clothing/OuterClothing/Armor/hos_midnight_jacket.rsi
+  - type: Clothing
+    sprite: _SV/Clothing/OuterClothing/Armor/hos_midnight_jacket.rsi
