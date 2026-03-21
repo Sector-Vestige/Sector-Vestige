@@ -28,4 +28,4 @@
   - type: Sprite
     sprite: _SV/Clothing/Neck/Cloaks/hos_midnight.rsi
   - type: StealTarget
-    stealGroup: HeadCloak 
+    stealGroup: HeadCloak
