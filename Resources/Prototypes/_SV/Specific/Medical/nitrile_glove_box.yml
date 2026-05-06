@@ -1,0 +1,20 @@
+- type: entity
+  parent: BaseAmmoProvider # this is for cycling swabs out and not spawning 30 entities, trust
+  id: BoxNitrileGlove
+  name: nitrile glove dispenser
+  description: Dispenses 20 nitrile gloves.
+  components:
+      - type: Sprite
+        sprite: _SV/Objects/Storage/boxes.rsi
+        layers:
+        - state: boxwide
+        - state: nitrile
+      - type: BallisticAmmoProvider
+        whitelist:
+            components:
+                - Injector
+        proto: ClothingHandsGlovesNitrile
+        capacity: 20
+      - type: GuideHelp
+        guides:
+        - MedicalDoctor
