@@ -1,3 +1,10 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 s3ptemb3rr (GitHub)
+// SPDX-FileCopyrightText: 2026 september <rdamico2204@gmail.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Storage.Components;
 using Content.Shared.Materials;
 using Robust.Shared.Physics.Components;
