@@ -1,8 +1,14 @@
+// using Content.Server.Storage.Components;
+using Content.Shared.Clothing.Components;    // Frontier
+using Content.Shared.Examine;   // Frontier
+using Content.Shared.Hands.Components;  // Frontier
 using Content.Shared.Inventory;
-using Content.Shared.Storage.Components;
-using Content.Shared.Whitelist;
+using Content.Shared.Verbs;     // Frontier
+using Content.Shared.Storage.Components;    // Frontier
+using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;    // Frontier
 
 namespace Content.Shared.Storage.EntitySystems;
 
@@ -16,8 +22,6 @@ public sealed class MagnetPickupSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedStorageSystem _storage = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-
 
     private static readonly TimeSpan ScanDelay = TimeSpan.FromSeconds(1);
 
@@ -28,6 +32,14 @@ public sealed class MagnetPickupSystem : EntitySystem
         base.Initialize();
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
         SubscribeLocalEvent<MagnetPickupComponent, MapInitEvent>(OnMagnetMapInit);
+        SubscribeLocalEvent<MagnetPickupComponent, EntityUnpausedEvent>(OnMagnetUnpaused);
+        SubscribeLocalEvent<MagnetPickupComponent, ExaminedEvent>(OnExamined);  // Frontier
+        SubscribeLocalEvent<MagnetPickupComponent, GetVerbsEvent<AlternativeVerb>>(AddToggleMagnetVerb);    // Frontier
+    }
+
+    private void OnMagnetUnpaused(EntityUid uid, MagnetPickupComponent component, ref EntityUnpausedEvent args)
+    {
+        component.NextScan += args.PausedTime;
     }
 
     private void OnMagnetMapInit(EntityUid uid, MagnetPickupComponent component, MapInitEvent args)
@@ -35,29 +47,78 @@ public sealed class MagnetPickupSystem : EntitySystem
         component.NextScan = _timing.CurTime;
     }
 
+    // Frontier, used to add the magnet toggle to the context menu
+    private void AddToggleMagnetVerb(EntityUid uid, MagnetPickupComponent component, GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract)
+            return;
+
+        if (!HasComp<HandsComponent>(args.User))
+            return;
+
+        AlternativeVerb verb = new()
+        {
+            Act = () =>
+            {
+                ToggleMagnet(uid, component);
+            },
+            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/Spare/poweronoff.svg.192dpi.png")),
+            Text = Loc.GetString("magnet-pickup-component-toggle-verb"),
+            Priority = 3
+        };
+
+        args.Verbs.Add(verb);
+    }
+
+    // Frontier, used to show the magnet state on examination
+    private void OnExamined(EntityUid uid, MagnetPickupComponent component, ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("magnet-pickup-component-on-examine-main",
+                        ("stateText", Loc.GetString(component.MagnetEnabled
+                        ? "magnet-pickup-component-magnet-on"
+                        : "magnet-pickup-component-magnet-off"))));
+    }
+
+    // Frontier, used to toggle the magnet on the ore bag/box
+    public bool ToggleMagnet(EntityUid uid, MagnetPickupComponent comp)
+    {
+        var query = EntityQueryEnumerator<MagnetPickupComponent>();
+        comp.MagnetEnabled = !comp.MagnetEnabled;
+
+        return comp.MagnetEnabled;
+    }
+
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-        var query = EntityQueryEnumerator<MagnetPickupComponent, StorageComponent, TransformComponent, MetaDataComponent>();
+        var query = EntityQueryEnumerator<MagnetPickupComponent, StorageComponent, TransformComponent>();
         var currentTime = _timing.CurTime;
 
-        while (query.MoveNext(out var uid, out var comp, out var storage, out var xform, out var meta))
+        while (query.MoveNext(out var uid, out var comp, out var storage, out var xform))
         {
             if (comp.NextScan > currentTime)
                 continue;
 
             comp.NextScan += ScanDelay;
-            Dirty(uid, comp);
-
-            if (!_inventory.TryGetContainingSlot((uid, xform, meta), out var slotDef))
-                continue;
-
-            if ((slotDef.SlotFlags & comp.SlotFlags) == 0x0)
-                continue;
 
             // No space
-            if (!_storage.HasSpace((uid, storage)))
+            if (storage.StorageUsed >= storage.StorageCapacityMax)
                 continue;
+
+            // Frontier - magnet disabled
+            if (!comp.MagnetEnabled)
+                continue;
+
+            // Frontier - is ore bag on belt?
+            if (HasComp<ClothingComponent>(uid))
+            {
+                if (!_inventory.TryGetContainingSlot(uid, out var slotDef))
+                    continue;
+
+                if ((slotDef.SlotFlags & comp.SlotFlags) == 0x0)
+                    continue;
+            }
 
             var parentUid = xform.ParentUid;
             var playedSound = false;
@@ -66,7 +127,7 @@ public sealed class MagnetPickupSystem : EntitySystem
 
             foreach (var near in _lookup.GetEntitiesInRange(uid, comp.Range, LookupFlags.Dynamic | LookupFlags.Sundries))
             {
-                if (_whitelistSystem.IsWhitelistFail(storage.Whitelist, near))
+                if (storage.Whitelist?.IsValid(near, EntityManager) == false)
                     continue;
 
                 if (!_physicsQuery.TryGetComponent(near, out var physics) || physics.BodyStatus != BodyStatus.OnGround)
@@ -80,8 +141,8 @@ public sealed class MagnetPickupSystem : EntitySystem
                 // the problem is that stack pickups delete the original entity, which is fine, but due to
                 // game state handling we can't show a lerp animation for it.
                 var nearXform = Transform(near);
-                var nearMap = _transform.GetMapCoordinates(near, xform: nearXform);
-                var nearCoords = _transform.ToCoordinates(moverCoords.EntityId, nearMap);
+                var nearMap = nearXform.MapPosition;
+                var nearCoords = EntityCoordinates.FromMap(moverCoords.EntityId, nearMap, _transform, EntityManager);
 
                 if (!_storage.Insert(uid, near, out var stacked, storageComp: storage, playSound: !playedSound))
                     continue;
