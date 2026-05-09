@@ -14,6 +14,7 @@
 // SPDX-FileCopyrightText: 2025 kosticia <kosticia46@gmail.com>
 // SPDX-FileCopyrightText: 2026 s3ptemb3rr (GitHub)
 // SPDX-FileCopyrightText: 2026 september <rdamico2204@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 //
 // SPDX-License-Identifier: MIT
 
