@@ -123,11 +123,7 @@
         - MobMask
         layer:
         - MobLayer
-  - type: Vocal
-    sounds:
-      Male: MaleAvali
-      Female: FemaleAvali
-      Unsexed: MaleAvali
+  - type: Vocal # Sector Vestige: per-sex `sounds` dict removed upstream; voice now comes from humanoid Voice
   - type: Injurable
     damageContainer: Biological
   - type: Damageable

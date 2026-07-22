@@ -58,7 +58,7 @@ public sealed partial class WheelchairSystem : EntitySystem
         var pilot = EnsureComp<ActiveWheelchairPilotComponent>(buckle);
 
         _mover.SetRelay(buckle, ent);
-        _movementSpeed.RefreshMovementSpeedModifiers(ent);
+        _movementSpeed.RefreshMovementSpeedModifiers(ent.Owner);
 
         if (ent.Comp.BellAction != null)
         {
@@ -88,7 +88,7 @@ public sealed partial class WheelchairSystem : EntitySystem
             RemCompDeferred<RelayInputMoverComponent>(buckle);
             RemCompDeferred<ActiveWheelchairPilotComponent>(buckle);
 
-            _movementSpeed.RefreshMovementSpeedModifiers(ent);
+            _movementSpeed.RefreshMovementSpeedModifiers(ent.Owner);
         }
         finally
         {

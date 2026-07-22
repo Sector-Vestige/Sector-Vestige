@@ -294,13 +294,3 @@
   completetime: 1
   materials:
     Biomass: 10
-
-# SV additions below
-- type: latheRecipe
-  id: BioGenCigaretteFilter1
-  result: CigaretteFilter1
-  categories:
-  - Materials
-  completetime: 1
-  materials:
-    Biomass: 1

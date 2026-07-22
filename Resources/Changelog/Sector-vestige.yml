@@ -1929,3 +1929,27 @@ Entries:
       message: Hypohonia is fixed again.
   id: 266
   time: '2026-07-08T23:30:17.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Tweak
+      message: Removed snowball from rotation.
+  id: 267
+  time: '2026-07-11T22:39:31.0000000+00:00'
+- author: lambdatiger
+  changes:
+    - type: Add
+      message: Amber back into map pool.
+  id: 268
+  time: '2026-07-12T13:09:13.0000000+00:00'
+- author: lambdatiger
+  changes:
+    - type: Add
+      message: In-hand alternate interaction to cycle door remote.
+  id: 269
+  time: '2026-07-12T13:11:45.0000000+00:00'
+- author: qu4drivium
+  changes:
+    - type: Tweak
+      message: Rodentia starve at a slower rate.
+  id: 270
+  time: '2026-07-13T16:52:15.0000000+00:00'

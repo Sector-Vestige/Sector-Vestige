@@ -1,3 +1,18 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Partmedia <kevinz5000@gmail.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 Spessmann <156740760+Spessmann@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 lambdatiger <11843718+lambdatiger@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 lambdatiger <spam.stnuocca.sl@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Collections.Generic;
 using System.Linq;
 using Content.IntegrationTests.Fixtures;
@@ -33,12 +48,13 @@ public sealed class StationPowerTests : GameTest
             // "Oasis", // Vestige: Derotated Map
             "Plasma",
             "Elkridge",
-            "Snowball",
+            // "Snowball", // Vestige: Derotated Map
             // "Relic", // Vestige: Derotated Map
             // "Exo", // Vestige: Derotated Map
             // "Vanquish", // LateStation Map by Lachri
             "Cluster", // Sector Vestige, remade by Rebound
             "Packed_SM", // Sector Vestige, edits by Lambda.Tiger
+            "Amber", // Sector Vestige, edits by Lambda.Tiger
     ];
 
     public override PoolSettings PoolSettings => new ()

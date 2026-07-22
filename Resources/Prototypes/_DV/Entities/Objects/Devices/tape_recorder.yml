@@ -114,7 +114,7 @@
   id: CassetteTapeInterview
   components:
   - type: Label
-    currentLabel: Interview with Garry Smosh
+    localizedLabel: tape-cassette-label-interview
   - type: TapeCassette
     recordedData:
       - timestamp: 2

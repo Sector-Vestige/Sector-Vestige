@@ -899,6 +899,26 @@
   - type: PresetIdCard
     job: CargoTechnician
 
+# Sector Vestige - start: superseded by the _SV SeniorCourierIDCard override (custom sprite);
+# commented out (not deleted) to avoid a duplicate-prototype-ID crash. See
+# Resources/Prototypes/_SV/Entities/Objects/Devices/Misc/identification_cards.yml
+#- type: entity
+#  parent: CargoIDCard
+#  id: SeniorCourierIDCard
+#  name: senior courier ID card
+#  components:
+#  - type: Sprite
+#    layers:
+#    - state: default
+#    - state: stripe_top
+#      color: *color-supply-top
+#    - state: stripe_bottom
+#      color: *color-supply-bottom
+#    - sprite: *icon-rsi
+#      offset: *icon-offset
+#      state: SeniorCourier
+# Sector Vestige - end
+
 - type: entity
   parent: IDCardStandard
   id: SalvageIDCard

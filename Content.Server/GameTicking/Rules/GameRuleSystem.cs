@@ -17,7 +17,6 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Chat.Managers;
 using Content.Shared.GameTicking.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
@@ -29,7 +28,6 @@ namespace Content.Server.GameTicking.Rules;
 public abstract partial class GameRuleSystem<T> : EntitySystem where T : IComponent
 {
     [Dependency] protected IGameTiming Timing = default!;
-    [Dependency] protected IPrototypeManager Proto = default!;
     [Dependency] protected IRobustRandom RobustRandom = default!;
     [Dependency] protected GameTicker GameTicker = default!;
 

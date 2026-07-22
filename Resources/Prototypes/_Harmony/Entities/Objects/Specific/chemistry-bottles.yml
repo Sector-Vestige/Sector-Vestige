@@ -11,7 +11,7 @@
   parent: BaseChemistryBottleFilled
   components:
   - type: Label
-    currentLabel: reagent-name-bicaridine
+    localizedLabel: reagent-name-bicaridine
   - type: Solution
     solution:
       maxVol: 30
@@ -25,7 +25,7 @@
   parent: BaseChemistryBottleFilled
   components:
   - type: Label
-    currentLabel: reagent-name-dermaline
+    localizedLabel: reagent-name-dermaline
   - type: Solution
     solution:
       maxVol: 30

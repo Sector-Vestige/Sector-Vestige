@@ -356,6 +356,18 @@ public sealed partial class ClampedHslColoration : ISkinColorationStrategy
 [Serializable, NetSerializable]
 public sealed partial class HueNodeClampedHsvColoration : ISkinColorationStrategy
 {
+    // TODO: this is awful - why is it so large?
+    /// <summary>
+    /// The maximum amount of change to the saturation that we can expect between generating an HSV value
+    /// at a threshold, converting it to RGB, then resaving it.
+    /// Found experimentally by running HumanoidProfileTests.EnsureValidRandomSpecies("Vulpkanin") many times.
+    /// </summary>
+    /// <remarks>
+    /// Due to RGB colors being clamped to 8 bits, precision is lost during transformation to HSL or HSV.
+    /// The precision of the result _should be_ approximately 1/180.
+    /// </remarks>
+    public const float HSVTolerance = 0.019f;
+
     /// <summary>
     /// List of valid nodes in this coloration.
     /// </summary>

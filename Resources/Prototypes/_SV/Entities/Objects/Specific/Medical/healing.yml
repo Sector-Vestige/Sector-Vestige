@@ -16,7 +16,7 @@
   - type: Sprite
     state: pill9
   - type: Label
-    currentLabel: stubantazine 5u
+    localizedLabel: reagent-name-stubantazine
   - type: Solution
     solution:
       maxVol: 20
@@ -32,7 +32,7 @@
   suffix: Stubantazine 5u, 5
   components:
   - type: Label
-    currentLabel: stubantazine 5u
+    localizedLabel: reagent-name-stubantazine
   - type: EntityTableContainerFill
     containers:
       storagebase:
@@ -50,7 +50,7 @@
   - type: Sprite
     state: pill18
   - type: Label
-    currentLabel: soretizone 5u
+    localizedLabel: reagent-name-soretizone
   - type: Solution
     solution:
       maxVol: 20
@@ -66,7 +66,7 @@
   suffix: Soretizone 5u, 5
   components:
   - type: Label
-    currentLabel: soretizone 5u
+    localizedLabel: reagent-name-soretizone
   - type: EntityTableContainerFill
     containers:
       storagebase:

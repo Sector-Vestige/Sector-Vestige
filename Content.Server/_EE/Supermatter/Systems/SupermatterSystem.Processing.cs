@@ -165,7 +165,7 @@ public sealed partial class SupermatterSystem
                 * _config.GetCVar(EECCVars.SupermatterRadsModifier);
 
             _radiation.SetIntensity((uid, rad), intensity);
-            _radiation.SetSlope((uid, rad), Math.Clamp(intensity / 15, 0.2f, 1f));
+            _radiation.SetSlope((uid, rad), Math.Clamp(intensity / 15, 0.2f, 1f)); // Sector Vestige - SetSlope helper (see SharedRadiationSystem.SV.cs)
         }
 
         // Power * 0.55 * a value between 1 and 0.8

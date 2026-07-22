@@ -8,6 +8,10 @@
 
 # 1 cost - using the same point rules as vanilla.
 
+# Sector Vestige: VocalComponent's per-sex `sounds` dict was removed upstream (voice is now
+# driven by the humanoid's Voice), so the `sounds:` blocks below were dropped to keep these
+# traits loading. Restoring per-trait voices would require the new Voice system.
+
 - type: trait
   id: ValleyGirl
   name: trait-valleygirl-name
@@ -40,10 +44,6 @@
       speechSounds: Arachnid
       allowedEmotes: ['Click', 'Chitter']
     - type: Vocal
-      sounds:
-        Male: UnisexArachnid
-        Female: UnisexArachnid
-        Unsexed: UnisexArachnid
     - type: TypingIndicator
       proto: spider
 
@@ -58,10 +58,6 @@
       speechSounds: Alto
       speechVerb: Plant
     - type: Vocal
-      sounds:
-        Male: UnisexDiona
-        Female: UnisexDiona
-        Unsexed: UnisexDiona
     - type: TypingIndicator
       proto: diona
 
@@ -78,10 +74,6 @@
     - type: ReplacementAccent
       accent: scottish
     - type: Vocal
-      sounds:
-        Male: UnisexDwarf
-        Female: FemaleDwarf
-        Unsexed: UnisexDwarf
     - type: TypingIndicator
       proto: default
 
@@ -97,10 +89,6 @@
       speechSounds: Alto
       speechVerb: Default
     - type: Vocal
-      sounds:
-        Male: MaleHuman
-        Female: FemaleHuman
-        Unsexed: MaleHuman
     - type: TypingIndicator
       proto: default
 
@@ -117,10 +105,6 @@
       speechVerb: Moth
       allowedEmotes: ['Chitter', 'Squeak']
     - type: Vocal
-      sounds:
-        Male: UnisexMoth
-        Female: UnisexMoth
-        Unsexed: UnisexMoth
     - type: TypingIndicator
       proto: moth
 
@@ -136,10 +120,6 @@
       speechSounds: Lizard
       speechVerb: Reptilian
     - type: Vocal
-      sounds:
-        Male: MaleReptilian
-        Female: FemaleReptilian
-        Unsexed: MaleReptilian
     - type: TypingIndicator
       proto: lizard
 
@@ -155,10 +135,6 @@
       speechSounds: Slime
       allowedEmotes: ['Squish']
     - type: Vocal
-      sounds:
-        Male: MaleSlime
-        Female: FemaleSlime
-        Unsexed: MaleSlime
     - type: TypingIndicator
       proto: slime
 
@@ -173,9 +149,5 @@
       speechVerb: Vox
       speechSounds: Vox
     - type: Vocal
-      sounds:
-        Male: UnisexVox
-        Female: UnisexVox
-        Unsexed: UnisexVox
     - type: TypingIndicator
       proto: vox

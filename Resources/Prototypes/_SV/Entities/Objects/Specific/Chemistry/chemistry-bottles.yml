@@ -10,7 +10,7 @@
   parent: BaseChemistryBottleFilled
   components:
   - type: Label
-    currentLabel: stubantazine
+    localizedLabel: reagent-name-stubantazine
   - type: Solution
     solution:
       maxVol: 30
@@ -24,7 +24,7 @@
   parent: BaseChemistryBottleFilled
   components:
   - type: Label
-    currentLabel: soretizone
+    localizedLabel: reagent-name-soretizone
   - type: Solution
     solution:
       maxVol: 30

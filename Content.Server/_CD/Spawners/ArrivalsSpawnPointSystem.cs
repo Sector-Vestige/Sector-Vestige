@@ -19,7 +19,7 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
 {
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     public override void Initialize()
     {
@@ -83,9 +83,8 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
         _transform.SetCoordinates(args.Mob, xform.Coordinates);
 
         // Unpause the map if it's paused. We don't want people spawning on paused maps.
-        if(_mapManager.IsMapPaused(xform.MapID))
-            _mapManager.SetMapPaused(xform.MapID, false);
-
+        if (_map.IsPaused(xform.MapID))
+            _map.SetPaused(xform.MapID, false);
         return;
     }
 }

@@ -78,9 +78,9 @@ public sealed partial class ArrivalsSystem : EntitySystem
     [Dependency] private IConfigurationManager _cfgManager = default!;
     [Dependency] private IConsoleHost _console = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IPrototypeManager _protoManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ActorSystem _actor = default!;
+    [Dependency] private BatterySystem _batterySystem = default!; // Moffstation
     [Dependency] private BiomeSystem _biomes = default!;
     [Dependency] private DeviceNetworkSystem _deviceNetworkSystem = default!;
     [Dependency] private GameTicker _ticker = default!;
@@ -96,7 +96,6 @@ public sealed partial class ArrivalsSystem : EntitySystem
     [Dependency] private EntityQuery<PendingClockInComponent> _pendingQuery = default!;
     [Dependency] private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery = default!;
     [Dependency] private EntityQuery<MobStateComponent> _mobQuery = default!;
-    [Dependency] private BatterySystem _batterySystem = default!;  // Moffstation - Arrivals fixes
 
     /// <summary>
     /// If enabled then spawns players on an alternate map so they can take a shuttle to the station.
@@ -136,8 +135,6 @@ public sealed partial class ArrivalsSystem : EntitySystem
         SubscribeLocalEvent<ArrivalsShuttleComponent, FTLCompletedEvent>(OnArrivalsDocked);
 
         SubscribeLocalEvent<ArrivalsShuttleComponent, FirstArrivalEvent>(OnFirstArrival); // Moffstation - First arrival event
-
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(SendDirections);
 
         // Don't invoke immediately as it will get set in the natural course of things.
         Enabled = _cfgManager.GetCVar(CCVars.ArrivalsShuttles);
@@ -612,7 +609,7 @@ public sealed partial class ArrivalsSystem : EntitySystem
         if (_cfgManager.GetCVar(CCVars.ArrivalsPlanet))
         {
             var template = _random.Pick(_arrivalsBiomeOptions);
-            _biomes.EnsurePlanet(mapUid, _protoManager.Index(template));
+            _biomes.EnsurePlanet(mapUid, ProtoMan.Index(template));
             var restricted = new RestrictedRangeComponent
             {
                 Range = _cfgManager.GetCVar(CCVars.ArrivalsRange)

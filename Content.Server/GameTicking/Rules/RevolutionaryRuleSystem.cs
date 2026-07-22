@@ -90,36 +90,36 @@ public sealed partial class RevolutionaryRuleSystem : GameRuleSystem<Revolutiona
         }
     }
 
-//    protected override void AppendRoundEndText(EntityUid uid, // Vestige 14/04/2026 Remove antags and related things from round-end text.
-//        RevolutionaryRuleComponent component,
-//        GameRuleComponent gameRule,
-//        ref RoundEndTextAppendEvent args)
-//    {
-//        base.AppendRoundEndText(uid, component, gameRule, ref args);
-//
-//        var revsLost = CheckRevsLose();
-//        var commandLost = CheckCommandLose();
-//        // This is (revsLost, commandsLost) concatted together
-//        // (moony wrote this comment idk what it means)
-//        var index = (commandLost ? 1 : 0) | (revsLost ? 2 : 0);
-//        args.AddLine(Loc.GetString(Outcomes[index]));
-//
-//        var sessionData = _antag.GetAntagIdentifiers(uid);
-//        args.AddLine(Loc.GetString("rev-headrev-count", ("initialCount", sessionData.Count)));
-//        foreach (var (mind, data, name) in sessionData)
-//        {
-//            _role.MindHasRole<RevolutionaryRoleComponent>(mind, out var role);
-//            var count = CompOrNull<RevolutionaryRoleComponent>(role)?.ConvertedCount ?? 0;
-//
-//            args.AddLine(Loc.GetString("rev-headrev-name-user",
-//                ("name", name),
-//                ("username", data.UserName),
-//                ("count", count)));
+    // protected override void AppendRoundEndText(EntityUid uid,
+    //     RevolutionaryRuleComponent component,
+    //     GameRuleComponent gameRule,
+    //     ref RoundEndTextAppendEvent args)
+    // {
+    //     base.AppendRoundEndText(uid, component, gameRule, ref args);
 
-//            // TODO: someone suggested listing all alive? revs maybe implement at some point
-//        }
-//        args.AddLine("");
-//    }
+    //     var revsLost = CheckRevsLose();
+    //     var commandLost = CheckCommandLose();
+    //     // This is (revsLost, commandsLost) concatted together
+    //     // (moony wrote this comment idk what it means)
+    //     var index = (commandLost ? 1 : 0) | (revsLost ? 2 : 0);
+    //     args.AddLine(Loc.GetString(Outcomes[index]));
+
+    //     var sessionData = _antag.GetAntagIdentifiers(uid).ToList();
+    //     args.AddLine(Loc.GetString("rev-headrev-count", ("initialCount", sessionData.Count)));
+    //     foreach (var (mind, data, name) in sessionData)
+    //     {
+    //         _role.MindHasRole<RevolutionaryRoleComponent>(mind, out var role);
+    //         var count = CompOrNull<RevolutionaryRoleComponent>(role)?.ConvertedCount ?? 0;
+
+    //         args.AddLine(Loc.GetString("rev-headrev-name-user",
+    //             ("name", name),
+    //             ("username", data.UserName),
+    //             ("count", count)));
+
+    //         // TODO: someone suggested listing all alive? revs maybe implement at some point
+    //     }
+    //     args.AddLine("");
+    // }
 
     private void OnGetBriefing(EntityUid uid, RevolutionaryRoleComponent comp, ref GetBriefingEvent args)
     {

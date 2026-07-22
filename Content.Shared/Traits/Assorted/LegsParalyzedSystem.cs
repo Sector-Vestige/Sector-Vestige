@@ -22,7 +22,6 @@ public sealed partial class LegsParalyzedSystem : EntitySystem
 {
     [Dependency] private MovementSpeedModifierSystem _movementSpeedModifierSystem = default!;
     [Dependency] private StandingStateSystem _standingSystem = default!;
-   // [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

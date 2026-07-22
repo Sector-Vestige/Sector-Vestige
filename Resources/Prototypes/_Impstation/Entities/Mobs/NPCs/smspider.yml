@@ -97,11 +97,7 @@
     speechVerb: Arachnid
   - type: TypingIndicator
     proto: robot
-  - type: Vocal
-    sounds:
-      Male: UnisexArachnid
-      Female: UnisexArachnid
-      Unsexed: UnisexArachnid
+  - type: Vocal # Sector Vestige: per-sex `sounds` dict removed upstream; voice now comes from humanoid Voice
   - type: AnimatedEmotes
   - type: Buckle
   - type: Climbing

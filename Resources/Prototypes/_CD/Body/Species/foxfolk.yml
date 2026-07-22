@@ -164,11 +164,7 @@
     allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ]
   - type: TypingIndicator
     proto: foxfolk
-  - type: Vocal
-    sounds:
-      Male: MaleFoxfolk
-      Female: FemaleFoxfolk
-      Unsexed: MaleFoxfolk
+  - type: Vocal # Sector Vestige: per-sex `sounds` dict removed upstream; voice now comes from humanoid Voice
   - type: Injurable
     damageContainer: Biological
   - type: Damageable

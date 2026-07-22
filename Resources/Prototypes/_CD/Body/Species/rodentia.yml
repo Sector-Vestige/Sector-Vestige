@@ -1,7 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
 # SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
 #
 # SPDX-License-Identifier: MIT
 
@@ -140,7 +141,7 @@
   name: Urist McRat
   components:
   - type: Hunger
-    baseDecayRate: 0.0467
+    baseDecayRate: 0.025
   - type: Thirst
   - type: Icon
     sprite: _CD/Mobs/Species/Rodentia/parts.rsi
@@ -164,11 +165,7 @@
       amount: 5
   - type: TypingIndicator
     proto: rodentia
-  - type: Vocal
-    sounds:
-      Male: MaleRodentia
-      Female: FemaleRodentia
-      Unsexed: MaleRodentia
+  - type: Vocal # Sector Vestige: per-sex `sounds` dict removed upstream; voice now comes from humanoid Voice
   - type: MouthStorage
     mouthProto: CheekStorage
     openStorageAction: ActionOpenMouthStorage

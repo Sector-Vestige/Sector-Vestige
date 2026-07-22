@@ -1422,8 +1422,8 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
-  - ForensicJacket # CD
   - SecurityOfficerWintercoat
+  - ForensicJacket # CD
 
 - type: loadoutGroup
   id: DetectiveJobTrinkets

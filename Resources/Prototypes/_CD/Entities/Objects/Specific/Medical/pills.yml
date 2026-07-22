@@ -30,7 +30,7 @@
   - type: Sprite
     state: pill1
   - type: Label
-    currentLabel: Happiness
+    localizedLabel: reagent-name-happiness
   - type: Solution
     solution:
       maxVol: 20
@@ -45,7 +45,7 @@
   suffix: Happiness 7
   components:
   - type: Label
-    currentLabel: Happiness
+    localizedLabel: reagent-name-happiness
   - type: StorageFill
     contents:
     - id: PillHappiness
