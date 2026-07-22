@@ -1,12 +1,13 @@
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Station.Components;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Random.Helpers;
 using Content.Shared.Station.Components;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Utility;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -82,83 +83,98 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
     protected bool TryFindRandomTileOnStation(Entity<StationDataComponent> station,
         out Vector2i tile,
         out EntityUid targetGrid,
-        out EntityCoordinates targetCoords)
+        out EntityCoordinates targetCoords,
+        int numAttempts = 10)
     {
         tile = default;
         targetCoords = EntityCoordinates.Invalid;
         targetGrid = EntityUid.Invalid;
 
         // Weight grid choice by tilecount
-        var weights = new Dictionary<Entity<MapGridComponent>, float>();
+        var totalTiles = 0;
+        var grids = new List<(Entity<MapGridComponent> Entity, int Count, List<TileRef> Tiles)>();
         foreach (var possibleTarget in station.Comp.Grids)
         {
             if (!TryComp<MapGridComponent>(possibleTarget, out var comp))
                 continue;
 
-            weights.Add((possibleTarget, comp), _map.GetAllTiles(possibleTarget, comp).Count());
+            // Get the tile count for the given grid.
+            var tileCount = _map.GetFilledTileCount((possibleTarget, comp));
+
+            // Just to be sure, no empty elements.
+            if (tileCount > 0)
+            {
+                grids.Add(((possibleTarget, comp), tileCount, new()));
+                totalTiles += tileCount;
+            }
         }
 
-        if (weights.Count == 0)
+        if (grids.Count == 0)
         {
             targetGrid = EntityUid.Invalid;
             return false;
         }
 
-        (targetGrid, var gridComp) = RobustRandom.Pick(weights);
-
-        var found = false;
-        var aabb = gridComp.LocalAABB;
-        var mapUid = Transform(targetGrid).MapUid;
-
-        for (var i = 0; i < 10; i++)
+        for (var i = 0; i < numAttempts; i++)
         {
-            var randomX = RobustRandom.Next((int) aabb.Left, (int) aabb.Right);
-            var randomY = RobustRandom.Next((int) aabb.Bottom, (int) aabb.Top);
+            // Find random tile within list.
+            var nextTileIndex = RobustRandom.Next(totalTiles);
+            TileRef? randomTileRef = null;
+            MapGridComponent gridComp = default!;
+            var startIndex = 0;
+            for (int j = 0; j < grids.Count; j++)
+            {
+                var grid = grids[j];
+                // If the index is in this particular grid, find it and remove the tile to prevent selecting it twice.
+                if (nextTileIndex >= startIndex + grid.Count)
+                {
+                    startIndex += grid.Count;
+                    continue;
+                }
 
-            tile = new Vector2i(randomX, randomY);
-            if (_atmosphere.IsTileSpace(targetGrid, mapUid, tile)
-                || _atmosphere.IsTileAirBlockedCached(targetGrid, tile))
+                (targetGrid, gridComp) = grid.Entity;
+
+                // Empty list: hasn't been queried yet - get our tiles.
+                if (grid.Tiles.Count <= 0)
+                {
+                    grid.Tiles = _map.GetAllTiles(targetGrid, gridComp).ToList();
+
+                    // Actual list count doesn't match expected count (a bug - return failure).
+                    Debug.Assert(grid.Tiles.Count == grid.Count);
+                    if (grid.Tiles.Count != grid.Count)
+                        return false;
+                }
+
+                var ourTileIndex = nextTileIndex - startIndex;
+                randomTileRef = grid.Tiles[ourTileIndex];
+                grid.Tiles.RemoveSwap(ourTileIndex);
+                grid.Count--;
+                totalTiles--;
+
+                // Empty list, remove element
+                if (grid.Tiles.Count <= 0)
+                    grids.RemoveSwap(j);
+
+                break;
+            }
+
+            // Out of valid tiles, return early.
+            if (randomTileRef is not { } tileRef)
+                return false;
+
+            // Invalid tile, try again.
+            if (_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, tileRef.GridIndices)
+                || _atmosphere.IsTileAirBlockedCached(targetGrid, tileRef.GridIndices))
             {
                 continue;
             }
 
-            found = true;
-            targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
-            break;
+            targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tileRef.GridIndices);
+            tile = tileRef.GridIndices;
+            return true;
         }
 
-        // Sector Vestige - start: the random AABB sampling above only makes 10 attempts, and station
-        // grids occupy a fraction of their bounding box, so it intermittently fails to find a valid
-        // floor tile even when plenty exist. Consumers that cache this result (e.g. AntagRandomSpawn)
-        // were then left without coordinates, producing an intermittent "no valid positions to place
-        // antag spawner" error (heisentest in TestAntagGhostRolesSequential). Deterministically fall
-        // back to a real, non-air-blocked tile so we reliably succeed whenever the grid has one.
-        if (!found)
-        {
-            var validTiles = new ValueList<Vector2i>();
-            var tileEnumerator = _map.GetAllTilesEnumerator(targetGrid, gridComp);
-            while (tileEnumerator.MoveNext(out var tileRef))
-            {
-                var indices = tileRef.Value.GridIndices;
-                if (_atmosphere.IsTileSpace(targetGrid, mapUid, indices)
-                    || _atmosphere.IsTileAirBlockedCached(targetGrid, indices))
-                {
-                    continue;
-                }
-
-                validTiles.Add(indices);
-            }
-
-            if (validTiles.Count > 0)
-            {
-                tile = validTiles[RobustRandom.Next(validTiles.Count)];
-                targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
-                found = true;
-            }
-        }
-        // Sector Vestige - end
-
-        return found;
+        return false;
     }
 
     protected void ForceEndSelf(EntityUid uid, GameRuleComponent? component = null)

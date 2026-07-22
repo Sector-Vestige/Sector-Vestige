@@ -33,3 +33,6 @@ tape-recorder-menu-no-cassette-label = Cassette tape is not inserted
 tape-recorder-print-start-text = [bold]Start of recorded transcript[/bold]
 tape-recorder-print-message-text = [bold][{$time}] {$source}: [/bold] {$message}
 tape-recorder-print-end-text = [bold]End of recorded transcript[/bold]
+
+# Sector Vestige: label for the pre-recorded interview cassette (LabelComponent.LocalizedLabel; CurrentLabel must not be set in prototypes)
+tape-cassette-label-interview = Interview with Garry Smosh

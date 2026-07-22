@@ -1,3 +1,16 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Fildrance <fildrance@gmail.com>
+// SPDX-FileCopyrightText: 2025 Samuka <47865393+Samuka-C@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 lambdatiger <spam.stnuocca.sl@gmail.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
@@ -10,9 +23,11 @@ using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Remotes.Components;
 using Content.Shared.Tag;
+using Content.Shared.Verbs; // SV changes: Door remote alt verb
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility; // SV changes: Door remote alt verb
 
 namespace Content.Shared.Remotes.EntitySystems;
 
@@ -33,13 +48,44 @@ public abstract partial class SharedDoorRemoteSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<DoorRemoteComponent, DoorRemoteModeChangeMessage>(OnDoorRemoteModeChange);
+        SubscribeLocalEvent<DoorRemoteComponent, GetVerbsEvent<AlternativeVerb>>(OnAddSwitchModeVerb); // SV changes: Door remote alt verb
         SubscribeLocalEvent<DoorRemoteComponent, BeforeRangedInteractEvent>(OnBeforeInteract);
     }
+    // Begin SV changes: Door remote alt verb, based on other examples such as t-ray (mainly) and eshotgun (secondary)
+    private void OnAddSwitchModeVerb(Entity<DoorRemoteComponent> remote, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || !args.Using.HasValue)
+            return;
 
+        var user = args.User;
+        AlternativeVerb verb = new() // alt verb definition based on t-ray scanner implementation
+        {
+            Text = Loc.GetString("door-remote-switch-mode"),
+            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/settings.svg.192dpi.png")),
+            Act = () => SwitchMode(remote, user),
+            Impact = LogImpact.Low
+        };
+        args.Verbs.Add(verb);
+    } // end SV Changes: Door remote alt verb
     private void OnDoorRemoteModeChange(Entity<DoorRemoteComponent> ent, ref DoorRemoteModeChangeMessage args)
     {
         ent.Comp.Mode = args.Mode;
         Dirty(ent);
+    }
+
+    private void SwitchMode(Entity<DoorRemoteComponent> remote, EntityUid? userUid)
+    {
+        if (!userUid.HasValue)
+            return;
+        // Could add a delay/hold-off here to avoid a ton of network events if someone changes quickly
+        remote.Comp.Mode = remote.Comp.Mode switch // Clockwise rotation on the menu
+        {
+            OperatingMode.ToggleEmergencyAccess => OperatingMode.ToggleBolts,
+            OperatingMode.ToggleBolts => OperatingMode.OpenClose,
+            OperatingMode.OpenClose => OperatingMode.ToggleEmergencyAccess,
+            _ => OperatingMode.OpenClose
+        };
+        Dirty(remote);
     }
 
     private void OnBeforeInteract(Entity<DoorRemoteComponent> entity, ref BeforeRangedInteractEvent args)

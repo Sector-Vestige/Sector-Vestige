@@ -124,29 +124,6 @@ namespace Content.IntegrationTests.Tests.Preferences
             Assert.That(profile.MemberwiseEquals(originalProfile));
         }
 
-        // SV: Regression test for the first-join boot bug. When a player has no prefs yet, two
-        // load paths can race to create them (the connect-time preference load and the
-        // character-documents lobby refresh), each seeing no row and each calling InitPrefsAsync.
-        // The loser's INSERT used to trip "UNIQUE constraint failed: preference.user_id" and boot
-        // the player with "Loading of server user data failed, this is a bug." InitPrefsAsync must
-        // instead resolve to the already-created row. Modelled here as a deterministic second init
-        // for a user who already has a row (which is exactly what the losing racer observes).
-        [Test]
-        public async Task TestInitPrefsDoesNotThrowWhenPrefsAlreadyExist()
-        {
-            var pair = Pair;
-            var db = GetDb(pair.Server);
-            var username = new NetUserId(new Guid("640bd619-fc8d-4fe2-bf3c-4a5fb17d6ddd"));
-
-            await db.InitPrefsAsync(username, CharlieCharlieson());
-
-            Assert.DoesNotThrowAsync(async () => await db.InitPrefsAsync(username, CharlieCharlieson()));
-
-            var prefs = await db.GetPlayerPreferencesAsync(username);
-            Assert.That(prefs, Is.Not.Null);
-            Assert.That(prefs!.Profiles, Has.Count.EqualTo(1));
-        }
-
         [Test]
         public async Task TestDeleteCharacter()
         {

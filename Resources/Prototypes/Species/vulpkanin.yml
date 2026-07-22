@@ -10,3 +10,10 @@
   femaleFirstNames: names_vulpkanin_female
   lastNames: names_vulpkanin_last
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex:
+  - MaleVulpkanin
+  - FemaleVulpkanin
+  - MaleVulpkanin
+  voices:
+  - MaleVulpkanin
+  - FemaleVulpkanin

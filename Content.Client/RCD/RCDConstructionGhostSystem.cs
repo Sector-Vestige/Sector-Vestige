@@ -38,7 +38,6 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
 
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IPlacementManager _placementManager = default!;
-    [Dependency] private IPrototypeManager _protoManager = default!;
     [Dependency] private HandsSystem _hands = default!;
 
     private Direction _placementDirection = default;
@@ -71,10 +70,10 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
             var placerEntity = _placementManager.CurrentPermission?.MobUid;
 
             if (!TryComp<RCDComponent>(placerEntity, out var rcd) ||
-                string.IsNullOrEmpty(_protoManager.Index(rcd.ProtoId).FlippedPrototype))
+                string.IsNullOrEmpty(ProtoMan.Index(rcd.ProtoId).FlippedPrototype))
                 return false;
 
-            var prototype = _protoManager.Index(rcd.ProtoId);
+            var prototype = ProtoMan.Index(rcd.ProtoId);
 
             var useProto = rcd.UseFlippedPrototype && !string.IsNullOrEmpty(prototype.FlippedPrototype)
                 ? prototype.FlippedPrototype
@@ -119,7 +118,7 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
 
             return;
         }
-        var prototype = _protoManager.Index(rcd.ProtoId);
+        var prototype = ProtoMan.Index(rcd.ProtoId);
 
         // Update the direction the RCD prototype based on the placer direction
         if (_placementDirection != _placementManager.Direction)
@@ -148,7 +147,7 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
     {
     //If the entity that is being spawned is a pipe, use the AlignAtmosPipeLayers placement system
         PlacementInformation? newObjInfo = null;
-        switch (_protoManager.Index(rcd.ProtoId).Rotation)
+        switch (ProtoMan.Index(rcd.ProtoId).Rotation)
         {
             // Create a new placer
             case RcdRotation.Camera:
@@ -160,7 +159,7 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
                     PlacementOption = PlacementMode,
                     EntityType = prototype,
                     Range = (int)Math.Ceiling(SharedInteractionSystem.InteractionRange),
-                    IsTile = (_protoManager.Index(rcd.ProtoId).Mode == RcdMode.ConstructTile),
+                    IsTile = (ProtoMan.Index(rcd.ProtoId).Mode == RcdMode.ConstructTile),
                     UseEditorContext = false,
                 };
                     break;

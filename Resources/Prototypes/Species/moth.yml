@@ -10,3 +10,9 @@
   femaleFirstNames: NamesMothFirstFemale
   lastNames: NamesMothLast
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex:
+  - UnisexMoth
+  - UnisexMoth
+  - UnisexMoth
+  voices:
+  - UnisexMoth

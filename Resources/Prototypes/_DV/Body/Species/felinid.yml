@@ -133,11 +133,7 @@
   - type: Stamina
   - type: TypingIndicator
     proto: felinid
-  - type: Vocal
-    sounds:
-      Male: SoundsFelinidMale
-      Female: SoundsFelinidFemale
-      Unsexed: SoundsFelinidMale
+  - type: Vocal # Sector Vestige: per-sex `sounds` dict removed upstream; voice now comes from humanoid Voice
   - type: Reactive
     groups:
       Flammable: [ Touch ]

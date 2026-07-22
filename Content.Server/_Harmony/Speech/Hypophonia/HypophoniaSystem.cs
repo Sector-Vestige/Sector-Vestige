@@ -25,7 +25,6 @@ namespace Content.Server._Harmony.Speech.Hypophonia
             base.Initialize();
             SubscribeLocalEvent<HypophoniaComponent, SpeakAttemptEvent>(OnSpeakAttempt);
             SubscribeLocalEvent<HypophoniaComponent, EmoteEvent>(OnEmote, before: new[] { typeof(VocalSystem) });
-            SubscribeLocalEvent<HypophoniaComponent, ScreamActionEvent>(OnScreamAction, before: new[] { typeof(VocalSystem) });
         }
 
         private void OnEmote(EntityUid uid, HypophoniaComponent component, ref EmoteEvent args)
@@ -41,21 +40,6 @@ namespace Content.Server._Harmony.Speech.Hypophonia
             if (args.Emote.Category.HasFlag(EmoteCategory.Vocal))
                 args.Handled = true;
         }
-
-        private void OnScreamAction(EntityUid uid, HypophoniaComponent component, ScreamActionEvent args)
-        {
-            if (args.Handled)
-                return;
-
-            // Let MutingSystem handle the event muted characters (mimes included)
-            if (HasComp<MutedComponent>(uid))
-                return;
-
-            // Mark the event as handled and show the popup
-            _popupSystem.PopupEntity(Loc.GetString("speech-hypophonia"), uid, uid);
-            args.Handled = true;
-        }
-
 
         private void OnSpeakAttempt(EntityUid uid, HypophoniaComponent component, SpeakAttemptEvent args)
         {

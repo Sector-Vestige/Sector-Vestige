@@ -227,11 +227,7 @@
     - Howl
     - Whine
     - Coo # FloofStation
-  - type: Vocal
-    sounds:
-      Male: SoundsHarpyMale
-      Female: SoundsHarpyFemale
-      Unsexed: SoundsHarpyMale
+  - type: Vocal # Sector Vestige: per-sex `sounds` dict removed upstream; voice now comes from humanoid Voice
   - type: GenericVisualizer
     visuals:
       enum.HarpyVisualLayers.Singing:

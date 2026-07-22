@@ -1,33 +1,4 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2020 DamianX <DamianX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Moses <StrawberryMoses@gmail.com>
-// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 csqrb <56765288+CaptainSqrBeard@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 B_Kirill <153602297+B-Kirill@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 beck <163376292+widgetbeck@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 pathetic meowmeow <uhhadd@gmail.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
-using System.Linq;
-using System.Numerics;
+﻿using System.Numerics;
 using Content.Shared.Body;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -35,6 +6,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using static Content.Shared.Preferences.HumanoidCharacterProfile;
 
 namespace Content.Shared.Humanoid;
 
@@ -129,30 +101,74 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         Color.Black
     };
 
-    public static HumanoidCharacterAppearance Random(string species, Sex sex)
+    /// <summary>
+    /// Picks a random eye color.
+    /// </summary>
+    public static Color RandomEyes()
     {
         var random = IoCManager.Resolve<IRobustRandom>();
-        var markingManager = IoCManager.Resolve<MarkingManager>();
 
-        // TODO: Add random markings
+        var eyes = random.Pick(_realisticEyeColors);
+        return eyes;
+    }
 
-        var newEyeColor = random.Pick(_realisticEyeColors);
-
+    /// <summary>
+    /// Picks a random skin color using species.
+    /// </summary>
+    public static Color RandomSkin(ProtoId<SpeciesPrototype> species)
+    {
+        var random = IoCManager.Resolve<IRobustRandom>();
         var protoMan = IoCManager.Resolve<IPrototypeManager>();
-        var skinType = protoMan.Index<SpeciesPrototype>(species).SkinColoration;
+
+        var speciesProto = protoMan.Index(species);
+        var skinType = speciesProto.SkinColoration;
         var strategy = protoMan.Index(skinType).Strategy;
 
-        var newSkinColor = strategy.InputType switch
+        var skinColor = strategy.InputType switch
         {
             SkinColorationStrategyInput.Unary => strategy.FromUnary(random.NextFloat(0f, 100f)),
             SkinColorationStrategyInput.Color => strategy.ClosestSkinColor(new Color(random.NextFloat(1), random.NextFloat(1), random.NextFloat(1), 1)),
             _ => strategy.ClosestSkinColor(new Color(random.NextFloat(1), random.NextFloat(1), random.NextFloat(1), 1)),
         };
 
+        return skinColor;
+    }
+
+    /// <summary>
+    /// Generates a randomized character appearance.
+    /// </summary>
+    public static HumanoidCharacterAppearance Random(string species, Sex sex)
+    {
+        // TODO: Add random markings
+
+        var appearance = Random(
+            RandomizeConfigAll,
+            new HumanoidCharacterAppearance { Markings = new () },
+            species,
+            sex
+        );
+
+        return appearance;
+    }
+
+    /// <summary>
+    /// Generates a randomized character appearance with selective randomizing.
+    /// </summary>
+    /// <param name="charEditorRandomizeConfig">Which values to randomize.</param>
+    /// <param name="baseAppearance">Appearance to base the new appearance on. Values that are not randomized will be taken from this appearance.</param>
+    /// <param name="species">Species prototype ID.</param>
+    /// <param name="sex">Sex.</param>
+    /// <returns>A new character appearance with selected values randomized</returns>
+    public static HumanoidCharacterAppearance Random(RandomizeCfg charEditorRandomizeConfig, HumanoidCharacterAppearance baseAppearance, ProtoId<SpeciesPrototype> species, Sex sex)
+    {
+        var appearance = new HumanoidCharacterAppearance { Markings = new () };
+        appearance.EyeColor = (charEditorRandomizeConfig & RandomizeCfg.Eyes) != 0 ? RandomEyes() : baseAppearance.EyeColor;
+        appearance.SkinColor = (charEditorRandomizeConfig & RandomizeCfg.Skin) != 0 ? RandomSkin(species) : baseAppearance.SkinColor;
+
         // Safety step. Most systems which called Random() also called this, and not doing so caused issues with markings.
         // In the future it could *maybe* be removed, but it's probably worth the extra CPU cycles to validate this info.
         return EnsureValid(
-            new HumanoidCharacterAppearance(newEyeColor, newSkinColor, new()),
+            appearance,
             species,
             sex);
     }
