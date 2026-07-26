@@ -1,0 +1,138 @@
+# Icons offered by name to the customobjective command.
+
+# paperwork and information
+- type: customObjectiveIcon
+  id: paper
+  icon:
+    sprite: Objects/Misc/bureaucracy.rsi
+    state: paper
+
+- type: customObjectiveIcon
+  id: folder
+  icon:
+    sprite: Objects/Misc/folders.rsi
+    state: folder-white
+
+- type: customObjectiveIcon
+  id: book
+  icon:
+    sprite: Objects/Misc/books.rsi
+    state: book_icon
+
+- type: customObjectiveIcon
+  id: id
+  icon:
+    sprite: Objects/Misc/id_cards.rsi
+    state: centcom
+
+- type: customObjectiveIcon
+  id: mail
+  icon:
+    sprite: Objects/Specific/Cargo/mail_bag.rsi
+    state: icon
+
+- type: customObjectiveIcon
+  id: phone
+  icon:
+    sprite: Objects/Fun/Instruments/otherinstruments.rsi
+    state: red_phone
+
+- type: customObjectiveIcon
+  id: money
+  icon:
+    sprite: Objects/Economy/cash.rsi
+    state: cash
+
+# technology
+- type: customObjectiveIcon
+  id: server
+  icon:
+    sprite: Structures/Machines/server.rsi
+    state: server
+
+- type: customObjectiveIcon
+  id: ai
+  icon:
+    sprite: Mobs/Silicon/station_ai.rsi
+    state: ai
+
+- type: customObjectiveIcon
+  id: emag
+  icon:
+    sprite: Objects/Tools/emag.rsi
+    state: icon
+
+- type: customObjectiveIcon
+  id: toolbox
+  icon:
+    sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+    state: icon
+
+- type: customObjectiveIcon
+  id: anomaly
+  icon:
+    sprite: Structures/Specific/anomaly.rsi
+    state: anom1
+
+# people and medical
+- type: customObjectiveIcon
+  id: heart
+  icon:
+    sprite: Mobs/Species/Human/organs.rsi
+    state: heart-on
+
+- type: customObjectiveIcon
+  id: medical
+  icon:
+    sprite: Objects/Specific/Medical/medical.rsi
+    state: gauze
+
+- type: customObjectiveIcon
+  id: ghost
+  icon:
+    sprite: Mobs/Ghosts/ghost_human.rsi
+    state: icon
+
+# violence
+- type: customObjectiveIcon
+  id: gun
+  icon:
+    sprite: Objects/Weapons/Guns/Pistols/viper.rsi
+    state: icon
+
+- type: customObjectiveIcon
+  id: axe
+  icon:
+    sprite: Objects/Weapons/Melee/fireaxe.rsi
+    state: icon
+
+- type: customObjectiveIcon
+  id: baton
+  icon:
+    sprite: Objects/Weapons/Melee/stunbaton.rsi
+    state: stunbaton_on
+
+- type: customObjectiveIcon
+  id: bomb
+  icon:
+    sprite: Objects/Weapons/Bombs/spidercharge.rsi
+    state: icon
+
+- type: customObjectiveIcon
+  id: cuffs
+  icon:
+    sprite: Objects/Misc/cablecuffs.rsi
+    state: cuff
+
+# elsewhere
+- type: customObjectiveIcon
+  id: magic
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: fireball
+
+- type: customObjectiveIcon
+  id: shuttle
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: shuttle
