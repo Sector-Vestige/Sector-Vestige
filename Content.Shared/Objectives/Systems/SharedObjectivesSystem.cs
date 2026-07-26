@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
+using Content.Shared.Objectives.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -154,4 +155,19 @@ public abstract partial class SharedObjectivesSystem : EntitySystem
 
         comp.Icon = icon;
     }
+
+    // SV ADDITION - Custom objectives start
+    /// <summary>
+    /// Sets the objective's issuer to the one specified.
+    /// Only useful for objectives whose issuer isn't known until they are assigned,
+    /// everything else should set it in yaml.
+    /// </summary>
+    public void SetIssuer(EntityUid uid, ProtoId<ObjectiveIssuerPrototype> issuer, ObjectiveComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        comp.Issuer = issuer;
+    }
+    // SV ADDITION - Custom objectives end
 }

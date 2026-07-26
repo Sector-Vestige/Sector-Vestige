@@ -41,7 +41,7 @@ namespace Content.IntegrationTests.Tests.Access
             EntityUid ent = default;
             ExpireIdCardComponent expireComp = default!;
             AccessComponent accessComp = default!;
-            var expirationTimeInSeconds = 2.0f;
+            var expirationTimeInSeconds = 5.0f; //SV: Up the expiration time to stop issue #368
             var expireTime = TimeSpan.FromSeconds(expirationTimeInSeconds);
 
             await Pair.Server.WaitPost(() =>
@@ -81,7 +81,7 @@ namespace Content.IntegrationTests.Tests.Access
             }
 
             // Ensure that after expiry, the card has expired and the access has been replaced
-            await Pair.RunSeconds(1.0f);
+            await Pair.RunSeconds(expirationTimeInSeconds - 1.0f); //SV: Up the expiration time to stop issue #368
             using (Assert.EnterMultipleScope())
             {
                 Assert.That(expireComp.Expired, Is.True);

@@ -312,10 +312,10 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
         };
 
         // Apply color coding for antagonists
-        if (playerInfo.Antag)
-        {
-            icNameLabel.FontColorOverride = Color.Red;
-        }
+        // if (playerInfo.Antag)
+        // {
+        //     icNameLabel.FontColorOverride = Color.Red; // SV - Disabled for antag secrecy
+        // }
 
         _playerGrid.AddChild(icNameLabel);
 
@@ -344,11 +344,11 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
         };
 
         // Apply color coding based on player type
-        if (playerInfo.Antag)
-        {
-            playerTypeLabel.FontColorOverride = Color.Red;
-        }
-        else if (playerInfo.Observer)
+        // if (playerInfo.Antag) // SV - Disabled for antag secrecy
+        // {
+        //     playerTypeLabel.FontColorOverride = Color.Gray;
+        // }
+        if (playerInfo.Observer)
         {
             playerTypeLabel.FontColorOverride = Color.Gray;
         }
@@ -374,8 +374,8 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
     {
         if (playerInfo.Observer)
             return Loc.GetString("round-end-summary-window-player-manifest-tab-sort-player-type-observer");
-        if (playerInfo.Antag)
-            return Loc.GetString("round-end-summary-window-player-manifest-tab-sort-player-type-antag");
+        // if (playerInfo.Antag)
+        //     return Loc.GetString("round-end-summary-window-player-manifest-tab-sort-player-type-antag"); // SV - Disable them from showing in the Antag menu to keep secrecy
 
         return Loc.GetString("round-end-summary-window-player-manifest-tab-sort-player-type-crew");
     }

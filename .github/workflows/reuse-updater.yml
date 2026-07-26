@@ -29,8 +29,6 @@ concurrency:
   group: reuse-updater-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
-# The default GITHUB_TOKEN needs no write: every write below is performed with WEH_BOT_PAT
-# (the checkout token and the push remote). Keep it read-only to shrink the blast radius.
 permissions:
   contents: read
   pull-requests: read
@@ -42,17 +40,29 @@ jobs:
     if: ${{ github.actor != 'Vestige-bot' && github.actor != 'vestige-bot[bot]' && !contains(github.event.pull_request.labels.*.name, 'Maintenance') && github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - name: Checkout trusted tooling
+        uses: actions/checkout@v7
         with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+
+      - name: Stash trusted tooling outside the workspace
+        run: cp Tools/update_pr_reuse_headers.py "$RUNNER_TEMP/update_pr_reuse_headers.py"
+        shell: bash
+
+      - name: Checkout PR head
+        uses: actions/checkout@v7
+        with:
+          allow-unsafe-pr-checkout: true
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
           token: ${{ secrets.WEH_BOT_PAT }}
           persist-credentials: false
+          clean: true
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
@@ -156,7 +166,7 @@ jobs:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: |
-          python Tools/update_pr_reuse_headers.py \
+          python "$RUNNER_TEMP/update_pr_reuse_headers.py" \
             --files-added="$ADDED_FILES_LIST" \
             --files-modified="$MODIFIED_FILES_LIST" \
             --pr-license "$PR_LICENSE" \
@@ -165,10 +175,6 @@ jobs:
             --pr-author "$PR_AUTHOR"
         working-directory: ${{ github.workspace }}
 
-      # Re-attach push credentials ONLY after the untrusted PR script has finished, so the PAT
-      # is never on disk while that code runs. head.repo.full_name is GitHub-constrained to a
-      # safe charset, but we still route it through env to keep the rule "no untrusted data in
-      # ${{ }} shell templating" airtight.
       - name: Configure push credentials
         if: ${{ steps.changed_files.outputs.has_files == 'true' }}
         env:
@@ -180,7 +186,7 @@ jobs:
 
       - name: Commit changes
         if: ${{ steps.changed_files.outputs.has_files == 'true' }}
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: automatically update REUSE headers"
           commit_user_name: ${{ steps.bot_id.outputs.name }}

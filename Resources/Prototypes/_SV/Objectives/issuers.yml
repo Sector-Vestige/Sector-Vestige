@@ -1,0 +1,62 @@
+
+#Independant Factions
+- type: objectiveIssuer
+  id: SVMercenary
+  name: objective-issuer-mercenary
+
+#Syndicate aligned
+- type: objectiveIssuer
+  id: SVCybersun
+  name: objective-issuer-cybersun
+
+- type: objectiveIssuer
+  id: SVInnerCircle
+  name: objective-issuer-inner-circle
+
+- type: objectiveIssuer
+  id: SVInterdynePharmaceuticals
+  name: objective-issuer-interdyne
+
+- type: objectiveIssuer
+  id: SVHawkmoonAcquisitions
+  name: objective-issuer-hawkmoon
+
+- type: objectiveIssuer
+  id: SVElectraDynamics
+  name: objective-issuer-electra
+
+- type: objectiveIssuer
+  id: SVFaid
+  name: objective-issuer-faid
+
+#Criminal Entities
+
+- type: objectiveIssuer
+  id: SVGorlexMarauders
+  name: objective-issuer-gorlex
+
+- type: objectiveIssuer
+  id: SVWaffleCompany
+  name: objective-issuer-waffle
+
+- type: objectiveIssuer
+  id: SVSelf
+  name: objective-issuer-self
+
+- type: objectiveIssuer
+  id: SVArc
+  name: objective-issuer-arc
+
+#NanoTrasen
+
+- type: objectiveIssuer
+  id: SVNanoTrasenCentralCommand
+  name: objective-issuer-nanotrasen-centcomm
+
+- type: objectiveIssuer
+  id: SVNanoTrasenInternalAffairs
+  name: objective-issuer-nanotrasen-ia
+
+- type: objectiveIssuer
+  id: SVNanoTrasenRnD
+  name: objective-issuer-nanotrasen-rnd
