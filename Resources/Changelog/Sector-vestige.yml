@@ -1969,3 +1969,9 @@ Entries:
   changes: []
   id: 273
   time: '2026-08-13T23:32:33.0000000+00:00'
+- author: OnyxTheBrave
+  changes:
+    - type: Tweak
+      message: Increased timeout for Holopads to 600 seconds.
+  id: 274
+  time: '2026-08-15T13:03:45.0000000+00:00'
