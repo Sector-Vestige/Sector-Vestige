@@ -134,6 +134,8 @@ public sealed partial class ArrivalsSystem : EntitySystem
         SubscribeLocalEvent<ArrivalsShuttleComponent, FTLStartedEvent>(OnArrivalsFTL);
         SubscribeLocalEvent<ArrivalsShuttleComponent, FTLCompletedEvent>(OnArrivalsDocked);
 
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(SendDirections);
+
         SubscribeLocalEvent<ArrivalsShuttleComponent, FirstArrivalEvent>(OnFirstArrival); // Moffstation - First arrival event
 
         // Don't invoke immediately as it will get set in the natural course of things.

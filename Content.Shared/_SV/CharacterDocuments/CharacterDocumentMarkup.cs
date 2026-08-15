@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Collections.Generic;
 using Robust.Shared.Utility;
 
@@ -11,9 +17,16 @@ public static class CharacterDocumentMarkup
 {
     /// <summary>
     ///     Parses <paramref name="content"/> permissively and returns a <see cref="FormattedMessage"/>
-    ///     whose tags are guaranteed to be balanced: unmatched closing tags are dropped and any tags
-    ///     left open at the end are closed. Safe to feed straight into a rich-text control.
+    ///     whose tags are guaranteed to be balanced: closing tags that never had a matching opening
+    ///     tag are dropped and any tags left open at the end are closed. Safe to feed straight into
+    ///     a rich-text control.
     /// </summary>
+    /// <remarks>
+    ///     Authors routinely overlap tags rather than nesting them properly — <c>[head]a[bold]b[/head]c[/bold]</c>
+    ///     is a perfectly clear intent even though it isn't well-formed. Such a closing tag is honoured
+    ///     where it was written by closing the tags opened after it, closing it, then reopening those
+    ///     tags, so only the tag the author closed stops applying.
+    /// </remarks>
     public static FormattedMessage BuildBalancedMessage(string? content)
     {
         FormattedMessage parsed;
@@ -31,9 +44,10 @@ public static class CharacterDocumentMarkup
         }
 
         var result = new FormattedMessage();
-        // Names of tags currently open, innermost last. Mirrors the FormattedMessage's own
-        // internal open-node stack so result.Pop() always closes the matching tag.
-        var open = new Stack<string>();
+        // Opening nodes currently open, innermost last. Mirrors the FormattedMessage's own
+        // internal open-node stack so result.Pop() always closes the matching tag, and keeps the
+        // original nodes around so a tag can be reopened with its attributes intact.
+        var open = new List<MarkupNode>();
 
         foreach (var node in parsed)
         {
@@ -47,26 +61,33 @@ public static class CharacterDocumentMarkup
             {
                 // Re-add the original opening node verbatim so colours/attributes are preserved.
                 result.PushTag(node);
-                open.Push(node.Name);
+                open.Add(node);
                 continue;
             }
 
-            // Only honour a closing tag if it actually closes the innermost open tag. A stray
-            // closer (no matching open, or improperly nested) is dropped rather than allowed to
-            // underflow the renderer's stack.
-            if (open.Count > 0 && open.Peek() == node.Name)
-            {
-                open.Pop();
+            // A closer with nothing to close would underflow the renderer's draw stack, so drop it.
+            var index = open.FindLastIndex(openNode => openNode.Name == node.Name);
+            if (index < 0)
+                continue;
+
+            // Unwind down to the tag being closed. Everything opened after it is still wanted by
+            // the author, so note it before closing and put it straight back afterwards.
+            var reopen = open.GetRange(index + 1, open.Count - index - 1);
+            for (var i = index; i < open.Count; i++)
                 result.Pop();
+
+            open.RemoveRange(index, open.Count - index);
+
+            foreach (var reopened in reopen)
+            {
+                result.PushTag(reopened);
+                open.Add(reopened);
             }
         }
 
         // Close anything the user left open, innermost first.
-        while (open.Count > 0)
-        {
-            open.Pop();
+        for (var i = open.Count - 1; i >= 0; i--)
             result.Pop();
-        }
 
         return result;
     }

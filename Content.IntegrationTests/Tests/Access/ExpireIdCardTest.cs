@@ -41,14 +41,18 @@ namespace Content.IntegrationTests.Tests.Access
             EntityUid ent = default;
             ExpireIdCardComponent expireComp = default!;
             AccessComponent accessComp = default!;
-            var expirationTimeInSeconds = 5.0f; //SV: Up the expiration time to stop issue #368
-            var expireTime = TimeSpan.FromSeconds(expirationTimeInSeconds);
+            var expirationTimeInSeconds = 2.0f;
+            // SV: ExpireTime is an absolute timestamp, not a duration. Test pairs are pooled and
+            // recycled, so CurTime is already well past a bare TimeSpan.FromSeconds() and the
+            // card expires on the first tick. Anchor to the server clock instead. (issue #368)
+            var expireTime = TimeSpan.Zero;
 
             await Pair.Server.WaitPost(() =>
             {
                 ent = SSpawn(TestExpireIdCard);
                 expireComp = SComp<ExpireIdCardComponent>(ent);
                 accessComp = SComp<AccessComponent>(ent);
+                expireTime = SGameTiming.CurTime + TimeSpan.FromSeconds(expirationTimeInSeconds);
             });
 
             // Check that default component values are all correct
@@ -81,7 +85,9 @@ namespace Content.IntegrationTests.Tests.Access
             }
 
             // Ensure that after expiry, the card has expired and the access has been replaced
-            await Pair.RunSeconds(expirationTimeInSeconds - 1.0f); //SV: Up the expiration time to stop issue #368
+            // SV: overshoot the deadline rather than landing exactly on it, so the assertion does
+            // not sit on a tick boundary.
+            await Pair.RunSeconds(expirationTimeInSeconds);
             using (Assert.EnterMultipleScope())
             {
                 Assert.That(expireComp.Expired, Is.True);

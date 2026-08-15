@@ -70,7 +70,6 @@ using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
-using Content.Server.StationRecords.Systems;
 using Content.Server.Store.Systems;
 using Content.Shared.Access.Systems;
 using Content.Shared.GameTicking.Components;
@@ -102,6 +101,7 @@ using Robust.Shared.Utility;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Content.Shared.StationRecords.Systems;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -180,87 +180,87 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
     }
 
     #region Event Handlers
-    // protected override void AppendRoundEndText(EntityUid uid,
-    //     NukeopsRuleComponent component,
-    //     GameRuleComponent gameRule,
-    //     ref RoundEndTextAppendEvent args)
-    // {
-    //     var winText = Loc.GetString($"nukeops-{component.WinType.ToString().ToLower()}");
-    //     args.AddLine(winText);
+    protected override void AppendRoundEndText(EntityUid uid,
+        NukeopsRuleComponent component,
+        GameRuleComponent gameRule,
+        ref RoundEndTextAppendEvent args)
+    {
+        var winText = Loc.GetString($"nukeops-{component.WinType.ToString().ToLower()}");
+        args.AddLine(winText);
 
-    //     foreach (var cond in component.WinConditions)
-    //     {
-    //         var text = Loc.GetString($"nukeops-cond-{cond.ToString().ToLower()}");
-    //         args.AddLine(text);
-    //     }
+        foreach (var cond in component.WinConditions)
+        {
+            var text = Loc.GetString($"nukeops-cond-{cond.ToString().ToLower()}");
+            args.AddLine(text);
+        }
 
-    //     // Print disk location if nuke didn't explode and is not armed
-    //     List<WinCondition> diskWinConditions = [WinCondition.NukeDiskOnCentCom, WinCondition.NukeDiskNotOnCentCom];
-    //     if (component.WinConditions.Any(diskWinConditions.Contains))
-    //     {
-    //         var diskQuery = AllEntityQuery<NukeDiskComponent, TransformComponent>();
-    //         while (diskQuery.MoveNext(out var diskUid, out _, out var transform))
-    //         {
-    //             StringBuilder text = new StringBuilder(Loc.GetString("nukeops-disk-location-title"));
+        // Print disk location if nuke didn't explode and is not armed
+        List<WinCondition> diskWinConditions = [WinCondition.NukeDiskOnCentCom, WinCondition.NukeDiskNotOnCentCom];
+        if (component.WinConditions.Any(diskWinConditions.Contains))
+        {
+            var diskQuery = AllEntityQuery<NukeDiskComponent, TransformComponent>();
+            while (diskQuery.MoveNext(out var diskUid, out _, out var transform))
+            {
+                StringBuilder text = new StringBuilder(Loc.GetString("nukeops-disk-location-title"));
 
-    //             List<String> containers = new List<String>();
-    //             bool carriedByMob = false;
+                List<String> containers = new List<String>();
+                bool carriedByMob = false;
 
-    //             var tempParent = diskUid;
-    //             while (_containers.TryGetContainingContainer((tempParent, null), out var container) && !carriedByMob)
-    //             {
-    //                 if (HasComp<MindContainerComponent>(container.Owner))
-    //                 {
-    //                     carriedByMob = true;
-    //                 }
-    //                 var containermeta = MetaData(container.Owner);
-    //                 containers.Add(containermeta.EntityName);
-    //                 tempParent = container.Owner;
-    //             }
+                var tempParent = diskUid;
+                while (_containers.TryGetContainingContainer((tempParent, null), out var container) && !carriedByMob)
+                {
+                    if (HasComp<MindContainerComponent>(container.Owner))
+                    {
+                        carriedByMob = true;
+                    }
+                    var containermeta = MetaData(container.Owner);
+                    containers.Add(containermeta.EntityName);
+                    tempParent = container.Owner;
+                }
 
-    //             string location = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((diskUid, transform)));
+                string location = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((diskUid, transform)));
 
-    //             if (carriedByMob)
-    //             {
-    //                 GetDiskCarrierData(tempParent, out var name, out var job, out var username);
-    //                 text.Append(Loc.GetString("nukeops-disk-carried-by",
-    //                     ("name", name),
-    //                     ("job", job),
-    //                     ("user", username),
-    //                     ("location", location)));
-    //             }
-    //             else
-    //             {
-    //                 if (containers.Count > 0)
-    //                 {
-    //                     string hierarchy = string.Empty;
-    //                     for (var i = 0; i < containers.Count; i++)
-    //                     {
-    //                         hierarchy = (Loc.GetString(
-    //                             "storage-hierarchy-list",
-    //                             ("item", containers[i]),
-    //                             ("existing-text", hierarchy),
-    //                             ("items-left", containers.Count - i - 1)));
-    //                     }
-    //                     text.Append(hierarchy);
-    //                 }
-    //                 text.Append(" ");
-    //                 text.Append(location);
-    //             }
-    //             args.AddLine(text.ToString());
-    //         }
-    //     }
+                if (carriedByMob)
+                {
+                    GetDiskCarrierData(tempParent, out var name, out var job, out var username);
+                    text.Append(Loc.GetString("nukeops-disk-carried-by",
+                        ("name", name),
+                        ("job", job),
+                        ("user", username),
+                        ("location", location)));
+                }
+                else
+                {
+                    if (containers.Count > 0)
+                    {
+                        string hierarchy = string.Empty;
+                        for (var i = 0; i < containers.Count; i++)
+                        {
+                            hierarchy = (Loc.GetString(
+                                "storage-hierarchy-list",
+                                ("item", containers[i]),
+                                ("existing-text", hierarchy),
+                                ("items-left", containers.Count - i - 1)));
+                        }
+                        text.Append(hierarchy);
+                    }
+                    text.Append(" ");
+                    text.Append(location);
+                }
+                args.AddLine(text.ToString());
+            }
+        }
 
-    //     args.AddLine(Loc.GetString("nukeops-list-start"));
+        args.AddLine(Loc.GetString("nukeops-list-start"));
 
-    //     var antags = _antag.GetAntagIdentifiers(uid);
+        var antags = _antag.GetAntagIdentifiers(uid);
 
-    //     foreach (var (_, sessionData, name) in antags)
-    //     {
-    //         args.AddLine(Loc.GetString("nukeops-list-name-user", ("name", name), ("user", sessionData.UserName)));
-    //     }
-    //     args.AddLine("");
-    // }
+        foreach (var (_, sessionData, name) in antags)
+        {
+            args.AddLine(Loc.GetString("nukeops-list-name-user", ("name", name), ("user", sessionData.UserName)));
+        }
+        args.AddLine("");
+    }
 
     private void OnNukeExploded(NukeExplodedEvent ev)
     {

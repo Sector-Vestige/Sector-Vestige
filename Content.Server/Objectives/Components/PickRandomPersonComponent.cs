@@ -25,5 +25,5 @@ public sealed partial class PickRandomPersonComponent : Component
     /// </summary>
     [DataField]
     [AlwaysPushInheritance]
-    public EntityCondition[] Conditions = []; // Sector Vestige: default to empty so objectives that need no extra filter (e.g. TeachLessonRandomPersonObjective) don't leave this non-nullable field null and crash serialization Copy().
+    public EntityCondition[] Conditions;
 }

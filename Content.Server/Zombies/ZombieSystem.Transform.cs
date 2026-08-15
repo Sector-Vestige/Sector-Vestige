@@ -312,13 +312,7 @@ public sealed partial class ZombieSystem
 
         if (!HasComp<GhostRoleMobSpawnerComponent>(target)) //this specific component gives build test trouble so pop off, ig
         {
-            //yet more hardcoding. Visit zombie.ftl for more information.
-            var ghostRole = EnsureComp<GhostRoleComponent>(target);
-            EnsureComp<GhostTakeoverAvailableComponent>(target);
-            ghostRole.RoleName = Loc.GetString("zombie-generic");
-            ghostRole.RoleDescription = Loc.GetString("zombie-role-desc");
-            ghostRole.RoleRules = Loc.GetString("zombie-role-rules");
-            ghostRole.MindRoles.Add(MindRoleZombie);
+            MakeGhostRole(target);
         }
 
         if (TryComp<HandsComponent>(target, out var handsComp))

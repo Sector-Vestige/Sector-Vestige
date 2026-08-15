@@ -25,7 +25,6 @@ public sealed partial class GameTicker
 
     [ViewVariables] private readonly List<(TimeSpan, string)> _allPreviousGameRules = new();
 
-
     /// <summary>
     /// List of ignored game rules, these rules won't be spawned by normal means.
     /// This list is populated by <see cref="CCVars.GameTickerIgnoredPresets"/>

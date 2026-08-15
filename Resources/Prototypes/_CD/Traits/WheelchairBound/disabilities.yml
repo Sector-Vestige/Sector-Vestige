@@ -15,5 +15,5 @@
       - BorgChassis
   components:
     - type: BuckleOnMapInit
-      prototype: RMCWheelchairBell
+      prototype: VehicleWheelchair
     - type: LegsParalyzed

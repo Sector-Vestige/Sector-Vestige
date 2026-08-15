@@ -52,8 +52,6 @@
   id: MakeshiftJuicer
   graph: MakeshiftJuicer
   targetNode: juicer
-  category: construction-category-tools
-  objectType: Item
 
 - type: construction
   parent: BaseTool

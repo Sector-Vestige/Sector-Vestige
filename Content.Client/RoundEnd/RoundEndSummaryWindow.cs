@@ -344,11 +344,11 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
         };
 
         // Apply color coding based on player type
-        // if (playerInfo.Antag) // SV - Disabled for antag secrecy
-        // {
-        //     playerTypeLabel.FontColorOverride = Color.Gray;
-        // }
-        if (playerInfo.Observer)
+        if (playerInfo.Antag)
+        {
+            playerTypeLabel.FontColorOverride = Color.Red;
+        }
+        else if (playerInfo.Observer)
         {
             playerTypeLabel.FontColorOverride = Color.Gray;
         }
@@ -374,8 +374,8 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
     {
         if (playerInfo.Observer)
             return Loc.GetString("round-end-summary-window-player-manifest-tab-sort-player-type-observer");
-        // if (playerInfo.Antag)
-        //     return Loc.GetString("round-end-summary-window-player-manifest-tab-sort-player-type-antag"); // SV - Disable them from showing in the Antag menu to keep secrecy
+        // if (playerInfo.Antag) //SV - stop antags from displaying on endscreen
+        //     return Loc.GetString("round-end-summary-window-player-manifest-tab-sort-player-type-antag"); //SV - stop antags from displaying on endscreen
 
         return Loc.GetString("round-end-summary-window-player-manifest-tab-sort-player-type-crew");
     }
@@ -413,14 +413,14 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
         IEnumerable<RoundEndPlayerInfo> players,
         Func<RoundEndPlayerInfo, TKey> primaryKey,
         bool descending)
-    {
+        {
         static string SecondaryKey(RoundEndPlayerInfo p) =>
             (p.PlayerICName ?? p.PlayerOOCName).ToLowerInvariant();
 
         return descending
             ? players.OrderByDescending(primaryKey).ThenByDescending(SecondaryKey)
             : players.OrderBy(primaryKey).ThenBy(SecondaryKey);
-    }
+        }
 
     /// <summary>
     /// Gets a sort key for player type to ensure consistent ordering: Antagonist -> Crew -> Observer
@@ -450,7 +450,7 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
             if (playerInfo.Role.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ||
                 Loc.GetString(playerInfo.Role).Contains(_searchText, StringComparison.OrdinalIgnoreCase))
                 return true;
-        }
+    }
 
         // Search in player type
         var playerType = GetPlayerTypeText(playerInfo);
@@ -506,7 +506,7 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
             container.AddChild(_sortIndicator);
 
             AddChild(container);
-        }
+    }
 
         public void SetSortIndicator(bool active, bool descending = false)
         {
