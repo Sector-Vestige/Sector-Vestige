@@ -35,29 +35,49 @@
                         <LineEdit Name="TitleInput" PlaceHolder="{Loc 'sv-document-console-title-input'}" VerticalAlignment="Top" HorizontalExpand="True" Editable="False"/>
                         <BoxContainer Orientation="Horizontal" Margin="0 5 0 0" HorizontalExpand="True" MinHeight="75" VerticalAlignment="Bottom" >
                             <Label Name="ControlPanelStatus"/>
-                            <!-- Left Control panel: document metadata in a bordered card. Widened so
-                                 values like "Central Command" don't clip to "Central co..". -->
-                            <PanelContainer StyleClasses="BorderedWindowPanel" MinWidth="355" MaxWidth="355" VerticalExpand="True" HorizontalAlignment="Left">
-                                <BoxContainer Orientation="Vertical" Margin="6 4 6 4">
-                                    <Label Text="{Loc 'sv-document-console-header-details'}" StyleClasses="LabelKeyText" Margin="0 0 0 4"/>
-                                    <BoxContainer>
-                                        <BoxContainer HorizontalAlignment="Left" Orientation="Vertical" Margin="0 0 8 0">
-                                            <Label Name="DocAuthorLabel" Text="{Loc 'sv-document-console-author-label'}"/>
-                                            <Label Name="DocLastEditedByLabel" Text="{Loc 'sv-document-console-editedby-label'}"/>
-                                            <Label Name="DocDateLabel" Text="{Loc 'sv-document-console-date-label'}"/>
-                                            <Label Name="DocSecurityStatusLabel" Text="{Loc 'sv-document-console-security-status-label'}" Visible="False"/>
-                                            <Label Name="DocSecurityReasonLabel" Text="{Loc 'sv-document-console-security-reason-label'}" Visible="False"/>
-                                        </BoxContainer>
-                                        <BoxContainer HorizontalExpand="True" Orientation="Vertical">
-                                            <Label Name="DocAuthorLabelValue" Text="{Loc 'sv-document-console-author-label-value-none'}" ClipText="True"/>
-                                            <Label Name="DocLastEditedByLabelValue" Text="{Loc 'sv-document-console-editedby-label-value-none'}" ClipText="True"/>
-                                            <Label Name="DocDateLabelValue" Text="{Loc 'sv-document-console-date-label-value-none'}" ClipText="True"/>
-                                            <Label Name="DocSecurityStatusLabelValue" Text="-" Visible="False" ClipText="True"/>
-                                            <Label Name="DocSecurityReasonLabelValue" Text="-" Visible="False" ClipText="True"/>
+                            <!-- Left column. Widened to 355 so values like "Central Command" don't clip to
+                                 "Central co..". Each card hugs its own rows; the security card stacks
+                                 underneath so the column fills the height of the actions card beside it
+                                 instead of leaving a band of background. -->
+                            <BoxContainer Orientation="Vertical" MinWidth="355" MaxWidth="355" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <PanelContainer StyleClasses="BorderedWindowPanel" HorizontalExpand="True">
+                                    <BoxContainer Orientation="Vertical" Margin="6 4 6 4">
+                                        <Label Text="{Loc 'sv-document-console-header-details'}" StyleClasses="LabelKeyText" Margin="0 0 0 4"/>
+                                        <BoxContainer>
+                                            <BoxContainer HorizontalAlignment="Left" Orientation="Vertical" Margin="0 0 8 0">
+                                                <Label Name="DocAuthorLabel" Text="{Loc 'sv-document-console-author-label'}"/>
+                                                <Label Name="DocLastEditedByLabel" Text="{Loc 'sv-document-console-editedby-label'}"/>
+                                                <Label Name="DocDateLabel" Text="{Loc 'sv-document-console-date-label'}"/>
+                                            </BoxContainer>
+                                            <BoxContainer HorizontalExpand="True" Orientation="Vertical">
+                                                <Label Name="DocAuthorLabelValue" Text="{Loc 'sv-document-console-author-label-value-none'}" ClipText="True"/>
+                                                <Label Name="DocLastEditedByLabelValue" Text="{Loc 'sv-document-console-editedby-label-value-none'}" ClipText="True"/>
+                                                <Label Name="DocDateLabelValue" Text="{Loc 'sv-document-console-date-label-value-none'}" ClipText="True"/>
+                                            </BoxContainer>
                                         </BoxContainer>
                                     </BoxContainer>
-                                </BoxContainer>
-                            </PanelContainer>
+                                </PanelContainer>
+                                <!-- Security record card. Unlike the details card above it, this describes the
+                                     selected crew member rather than the open document, and every value comes
+                                     live from station records. Security consoles only. -->
+                                <PanelContainer Name="SecurityRecordPanel" StyleClasses="BorderedWindowPanel" HorizontalExpand="True" Margin="0 5 0 0" Visible="False">
+                                    <BoxContainer Orientation="Vertical" Margin="6 4 6 4">
+                                        <Label Text="{Loc 'sv-document-console-security-heading'}" StyleClasses="LabelKeyText" Margin="0 0 0 4"/>
+                                        <BoxContainer>
+                                            <BoxContainer HorizontalAlignment="Left" Orientation="Vertical" Margin="0 0 8 0">
+                                                <Label Text="{Loc 'sv-document-console-security-status-label'}"/>
+                                                <Label Text="{Loc 'sv-document-console-security-reason-label'}"/>
+                                                <Label Text="{Loc 'sv-document-console-fingerprint-label'}"/>
+                                            </BoxContainer>
+                                            <BoxContainer HorizontalExpand="True" Orientation="Vertical">
+                                                <Label Name="DocSecurityStatusLabelValue" Text="-" ClipText="True"/>
+                                                <Label Name="DocSecurityReasonLabelValue" Text="-" ClipText="True"/>
+                                                <Label Name="DocFingerprintLabelValue" Text="-" ClipText="True"/>
+                                            </BoxContainer>
+                                        </BoxContainer>
+                                    </BoxContainer>
+                                </PanelContainer>
+                            </BoxContainer>
                             <!-- Right Control panel: actions in a bordered card. -->
                             <PanelContainer StyleClasses="BorderedWindowPanel" HorizontalExpand="True" VerticalExpand="True" Margin="5 0 0 0">
                                 <BoxContainer Orientation="Vertical" Margin="6 4 6 4">

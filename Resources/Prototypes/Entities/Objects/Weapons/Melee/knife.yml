@@ -109,10 +109,10 @@
       fix1:
         shape: !type:PolygonShape
           vertices:
-          - -0.4,-0.2 # Change Start - Sector Vestige 17/04/2026 Change fixtures to the fixtures of a combat knife, to fix some knives not fitting in lockers.
-          - -0.2,-0.4
-          - 0.4,0.2
-          - 0.2,0.4 # Change End
+          - -0.35,-0.2
+          - -0.2,-0.35
+          - 0.4,0.25
+          - 0.25,0.4
         density: 20 # derived from base_item
         mask:
         - ItemMask
@@ -150,10 +150,10 @@
       fix1:
         shape: !type:PolygonShape
           vertices:
-          - -0.4,-0.2 # Change Start - Sector Vestige 17/04/2026 Change fixtures to the fixtures of a combat knife, to fix some knives not fitting in lockers.
-          - -0.2,-0.4
-          - 0.4,0.2
-          - 0.2,0.4 # Change End
+          - -0.48,-0.15
+          - -0.3,-0.48
+          - 0.48,-0.075
+          - 0.3,0.3
         density: 20 # derived from base_item
         mask:
         - ItemMask
@@ -424,10 +424,10 @@
         shape: !type:PolygonShape
           radius: 0.01
           vertices:
-          - -0.4,-0.2 # Change Start - Sector Vestige 17/04/2026 Change fixtures to the fixtures of a combat knife, to fix some knives not fitting in lockers.
-          - -0.2,-0.4
-          - 0.4,0.2
-          - 0.2,0.4 # Change End
+          - -0.35,-0.2
+          - -0.2,-0.35
+          - 0.4,0.25
+          - 0.25,0.4
         density: 20 # derived from base_item
         mask:
         - ItemMask

@@ -1,41 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 sBasalto <109002990+sBasalto@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 OctoRocket <88291550+OctoRocket@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Tom Leys <tom@crump-leys.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vyacheslav Titov <rincew1nd@ya.ru>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArchPigeon <bookmaster3@gmail.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Rainfey <rainfey0+github@gmail.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Wrexbe (Josh) <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Milon <milonpl.git@proton.me>
-// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 Samuka <47865393+Samuka-C@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 pathetic meowmeow <uhhadd@gmail.com>
-// SPDX-FileCopyrightText: 2026 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Server.Antag;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking.Rules.Components;
@@ -95,59 +57,59 @@ public sealed partial class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponen
         args.Append(Loc.GetString("zombie-infection-greeting"));
     }
 
-    // protected override void AppendRoundEndText(EntityUid uid,
-    //     ZombieRuleComponent component,
-    //     GameRuleComponent gameRule,
-    //     ref RoundEndTextAppendEvent args)
-    // {
-    //     base.AppendRoundEndText(uid, component, gameRule, ref args);
+    protected override void AppendRoundEndText(EntityUid uid,
+        ZombieRuleComponent component,
+        GameRuleComponent gameRule,
+        ref RoundEndTextAppendEvent args)
+    {
+        base.AppendRoundEndText(uid, component, gameRule, ref args);
 
-    //     // This is just the general condition thing used for determining the win/lose text
-    //     var fraction = GetInfectedFraction(true, true);
+        // This is just the general condition thing used for determining the win/lose text
+        var fraction = GetInfectedFraction(true, true);
 
-    //     if (fraction <= 0)
-    //         args.AddLine(Loc.GetString("zombie-round-end-amount-none"));
-    //     else if (fraction <= 0.25)
-    //         args.AddLine(Loc.GetString("zombie-round-end-amount-low"));
-    //     else if (fraction <= 0.5)
-    //         args.AddLine(Loc.GetString("zombie-round-end-amount-medium", ("percent", Math.Round((fraction * 100), 2).ToString(CultureInfo.InvariantCulture))));
-    //     else if (fraction < 1)
-    //         args.AddLine(Loc.GetString("zombie-round-end-amount-high", ("percent", Math.Round((fraction * 100), 2).ToString(CultureInfo.InvariantCulture))));
-    //     else
-    //         args.AddLine(Loc.GetString("zombie-round-end-amount-all"));
+        if (fraction <= 0)
+            args.AddLine(Loc.GetString("zombie-round-end-amount-none"));
+        else if (fraction <= 0.25)
+            args.AddLine(Loc.GetString("zombie-round-end-amount-low"));
+        else if (fraction <= 0.5)
+            args.AddLine(Loc.GetString("zombie-round-end-amount-medium", ("percent", Math.Round((fraction * 100), 2).ToString(CultureInfo.InvariantCulture))));
+        else if (fraction < 1)
+            args.AddLine(Loc.GetString("zombie-round-end-amount-high", ("percent", Math.Round((fraction * 100), 2).ToString(CultureInfo.InvariantCulture))));
+        else
+            args.AddLine(Loc.GetString("zombie-round-end-amount-all"));
 
-    //     var antags = _antag.GetAntagIdentifiers(uid).ToList();
-    //     args.AddLine(Loc.GetString("zombie-round-end-initial-count", ("initialCount", antags.Count)));
-    //     foreach (var (_, data, entName) in antags)
-    //     {
-    //         args.AddLine(Loc.GetString("zombie-round-end-user-was-initial",
-    //             ("name", entName),
-    //             ("username", data.UserName)));
-    //     }
+        var antags = _antag.GetAntagIdentifiers(uid).ToList();
+        args.AddLine(Loc.GetString("zombie-round-end-initial-count", ("initialCount", antags.Count)));
+        foreach (var (_, data, entName) in antags)
+        {
+            args.AddLine(Loc.GetString("zombie-round-end-user-was-initial",
+                ("name", entName),
+                ("username", data.UserName)));
+        }
 
-    //     var healthy = GetHealthyHumans();
-    //     // Gets a bunch of the living players and displays them if they're under a threshold.
-    //     // InitialInfected is used for the threshold because it scales with the player count well.
-    //     if (healthy.Count <= 0 || healthy.Count > 2 * antags.Count)
-    //         return;
-    //     args.AddLine("");
-    //     args.AddLine(Loc.GetString("zombie-round-end-survivor-count", ("count", healthy.Count)));
-    //     foreach (var survivor in healthy)
-    //     {
-    //         var meta = MetaData(survivor);
-    //         var username = string.Empty;
-    //         if (_mindSystem.TryGetMind(survivor, out _, out var mind) &&
-    //             _player.TryGetSessionById(mind.UserId, out var session))
-    //         {
-    //             username = session.Name;
-    //         }
+        var healthy = GetHealthyHumans();
+        // Gets a bunch of the living players and displays them if they're under a threshold.
+        // InitialInfected is used for the threshold because it scales with the player count well.
+        if (healthy.Count <= 0 || healthy.Count > 2 * antags.Count)
+            return;
+        args.AddLine("");
+        args.AddLine(Loc.GetString("zombie-round-end-survivor-count", ("count", healthy.Count)));
+        foreach (var survivor in healthy)
+        {
+            var meta = MetaData(survivor);
+            var username = string.Empty;
+            if (_mindSystem.TryGetMind(survivor, out _, out var mind) &&
+                _player.TryGetSessionById(mind.UserId, out var session))
+            {
+                username = session.Name;
+            }
 
-    //         args.AddLine(Loc.GetString("zombie-round-end-user-was-survivor",
-    //             ("name", meta.EntityName),
-    //             ("username", username)));
-    //     }
-    //     args.AddLine("");
-    // }
+            args.AddLine(Loc.GetString("zombie-round-end-user-was-survivor",
+                ("name", meta.EntityName),
+                ("username", username)));
+        }
+        args.AddLine("");
+    }
 
     /// <summary>
     ///     The big kahoona function for checking if the round is gonna end

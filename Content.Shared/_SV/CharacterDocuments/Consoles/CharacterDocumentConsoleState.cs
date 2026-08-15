@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared._SV.CharacterDocuments.Components;
 using Content.Shared.Security;
 using Robust.Shared.Serialization;
@@ -23,6 +29,12 @@ public sealed class CharacterDocumentConsoleState : BoundUserInterfaceState
     public SecurityStatus SecurityStatus;
     public string? SecurityReason;
     /// <summary>
+    /// Selected player's fingerprint, read from their station record. Null when no player is
+    /// selected, no station record matches their name, or the record never captured one.
+    /// Security consoles only; other document types leave this null.
+    /// </summary>
+    public string? SelectedPlayerFingerprint;
+    /// <summary>
     /// Selected player's General flavour block (allergies, height, etc). Null if no player selected.
     /// Console UIs render relevant fields based on the active tab (or primary type for single-type consoles).
     /// </summary>
@@ -41,7 +53,8 @@ public sealed class CharacterDocumentConsoleState : BoundUserInterfaceState
         DocumentType documentType = DocumentType.Employment,
         SecurityStatus securityStatus = SecurityStatus.None, string? securityReason = null,
         List<DocumentType>? additionalDocumentTypes = null,
-        CharacterDocumentGeneral? selectedPlayerGeneral = null)
+        CharacterDocumentGeneral? selectedPlayerGeneral = null,
+        string? selectedPlayerFingerprint = null)
     {
         PlayerList = playerlist;
         SelectedPlayer = selectedplayer;
@@ -53,5 +66,6 @@ public sealed class CharacterDocumentConsoleState : BoundUserInterfaceState
         SecurityReason = securityReason;
         AdditionalDocumentTypes = additionalDocumentTypes ?? new List<DocumentType>();
         SelectedPlayerGeneral = selectedPlayerGeneral;
+        SelectedPlayerFingerprint = selectedPlayerFingerprint;
     }
 }

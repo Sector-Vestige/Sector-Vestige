@@ -16,7 +16,7 @@
   - type: Objective
     unique: false
     icon:
-      sprite: Objects/Weapons/Melee/fireaxe.rsi
+      sprite: Objects/Weapons/Guns/Pistols/viper.rsi
       state: icon
   - type: TeachLessonCondition
   - type: CodeCondition
@@ -25,7 +25,6 @@
       components:
       - SocialObjective
 
-# Kill
 - type: entity
   parent: [BaseTraitorObjective, BaseTeachLessonObjective]
   id: TeachLessonRandomPersonObjective
@@ -37,3 +36,10 @@
   - type: TargetObjective
     title: objective-condition-teach-person-title
   - type: PickRandomPerson
+    conditions:
+    # Can't have multiple objectives to kill the same person.
+    - !type:ObjectiveTargetCondition
+      inverted: true
+      whitelist:
+        components:
+        - KillPersonCondition

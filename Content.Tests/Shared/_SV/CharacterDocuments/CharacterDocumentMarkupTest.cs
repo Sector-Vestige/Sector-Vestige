@@ -1,4 +1,11 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Collections.Generic;
+using System.Linq;
 using Content.Shared._SV.CharacterDocuments;
 using NUnit.Framework;
 using Robust.Shared.Utility;
@@ -55,6 +62,99 @@ public sealed class CharacterDocumentMarkupTest
     private static bool RenderWouldThrow(string markup)
         => RenderWouldThrow(FormattedMessage.FromMarkupPermissive(markup));
 
+    /// <summary>
+    ///     Describes which tags are actually in effect over each run of visible text, which is the
+    ///     behaviour a document author sees. Rendered as <c>'text'&lt;tag,tag&gt;</c> per run so a
+    ///     failure message reads like the document itself.
+    /// </summary>
+    private static string Describe(FormattedMessage message)
+    {
+        var runs = new List<string>();
+        var open = new List<string>();
+
+        foreach (var node in message)
+        {
+            if (node.Name == null)
+            {
+                runs.Add($"'{node.Value.StringValue}'<{string.Join(",", open)}>");
+                continue;
+            }
+
+            if (!node.Closing)
+            {
+                open.Add(node.Name);
+                continue;
+            }
+
+            var index = open.LastIndexOf(node.Name);
+            if (index >= 0)
+                open.RemoveAt(index);
+        }
+
+        return string.Join(" | ", runs);
+    }
+
+    private static string Describe(string markup)
+        => Describe(CharacterDocumentMarkup.BuildBalancedMessage(markup));
+
+    [Test]
+    public void OuterClosingTagEndsFormattingWhereItWasWritten()
+    {
+        // Issue #380: the tag opened first had its closer dropped and silently re-emitted at the
+        // end of the document, so the heading bled over every following paragraph.
+        Assert.That(Describe("[head=2][bold]Title[/head]body[/bold]"),
+            Is.EqualTo("'Title'<head,bold> | 'body'<bold>"));
+    }
+
+    [Test]
+    public void OverlappingTagsKeepTheStillOpenTagAlive()
+    {
+        // The inner tag has to be closed to close the outer one, then reopened so the author's
+        // remaining text keeps the formatting they asked for.
+        Assert.That(Describe("[bold][color=red]X[/bold]Y[/color]"),
+            Is.EqualTo("'X'<bold,color> | 'Y'<color>"));
+    }
+
+    [Test]
+    public void ReopenedTagsAreClosedAtTheEndOfTheDocument()
+    {
+        Assert.That(Describe("[bold][color=red]X[/bold]Y"),
+            Is.EqualTo("'X'<bold,color> | 'Y'<color>"));
+    }
+
+    [Test]
+    public void StrayClosingTagForANeverOpenedTagIsStillDropped()
+    {
+        Assert.That(Describe("[/head]text"), Is.EqualTo("'text'<>"));
+    }
+
+    [Test]
+    public void EveryClosingTagAppliesWhenTagsAreClosedInOpeningOrder()
+    {
+        // The exact shape reported in issue #380: closing in the order the tags were opened meant
+        // only the innermost tag ([color]) actually closed, and [head]/[bold] ran on to the end.
+        Assert.That(Describe("[head=2][bold][color=red]text[/head][/bold][/color]after"),
+            Is.EqualTo("'text'<head,bold,color> | 'after'<>"));
+    }
+
+    [Test]
+    public void SavedMarkupKeepsTheClosingTagWhereTheAuthorPutIt()
+    {
+        // Documents are rebalanced on the save path, so this is the markup the author gets back
+        // when they reopen the document. Issue #380: the [/head] used to reappear at the very end.
+        Assert.That(CharacterDocumentMarkup.Balance("[head=2][bold]Title[/head]body[/bold]"),
+            Is.EqualTo("[head=2][bold]Title[/bold][/head][bold]body[/bold]"));
+    }
+
+    [Test]
+    public void RebalancedOverlappingMarkupIsIdempotent()
+    {
+        const string raw = "[head=2][bold]Title[/head]body[/bold]";
+        var once = CharacterDocumentMarkup.Balance(raw);
+        var twice = CharacterDocumentMarkup.Balance(once);
+        Assert.That(twice, Is.EqualTo(once));
+    }
+
     [Test]
     public void RawDoubleClosingColorReproducesTheCrash()
     {
@@ -71,6 +171,9 @@ public sealed class CharacterDocumentMarkupTest
     [TestCase("[/font][/font]")]
     [TestCase("[color=red]unterminated")]
     [TestCase("[color=red][font]bad nesting[/color][/font]")]
+    [TestCase("[head=2][bold]Title[/head]body[/bold]")]
+    [TestCase("[bold][color=red]X[/bold]Y")]
+    [TestCase("[color=red][color=green]X[/color][/color][/color]")]
     [TestCase("")]
     [TestCase("plain document text, no tags")]
     [TestCase("[color=#ff0000]valid[/color]")]

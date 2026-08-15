@@ -13,8 +13,6 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Standing;
 using Content.Shared.Throwing;
-using Content.Shared.Popups;
-using Content.Shared.Stunnable;
 
 namespace Content.Shared.Traits.Assorted;
 
@@ -30,22 +28,13 @@ public sealed partial class LegsParalyzedSystem : EntitySystem
         SubscribeLocalEvent<LegsParalyzedComponent, BuckledEvent>(OnBuckled);
         SubscribeLocalEvent<LegsParalyzedComponent, UnbuckledEvent>(OnUnbuckled);
         SubscribeLocalEvent<LegsParalyzedComponent, ThrowPushbackAttemptEvent>(OnThrowPushbackAttempt);
-        SubscribeLocalEvent<LegsParalyzedComponent, StandUpAttemptEvent>(OnStandAttempt);
+        SubscribeLocalEvent<LegsParalyzedComponent, UpdateCanMoveEvent>(OnUpdateCanMoveEvent);
     }
-
-    // Afterlight Start
-    private void OnStandAttempt(Entity<LegsParalyzedComponent> ent, ref StandUpAttemptEvent args)
-    {
-        args.Message = (Loc.GetString("al-paraplegia-component-cannot-stand-message"), PopupType.SmallCaution);
-        args.Autostand = false;
-        args.Cancelled = true;
-    }
-    // Afterlight End
 
     private void OnStartup(EntityUid uid, LegsParalyzedComponent component, ComponentStartup args)
     {
         // TODO: In future probably must be surgery related wound
-        _movementSpeedModifierSystem.ChangeBaseSpeed(uid, 0, 1, 20);
+        _movementSpeedModifierSystem.ChangeBaseSpeed(uid, 0, 0, 20);
     }
 
     private void OnShutdown(EntityUid uid, LegsParalyzedComponent component, ComponentShutdown args)
@@ -63,12 +52,10 @@ public sealed partial class LegsParalyzedSystem : EntitySystem
         _standingSystem.Down(uid);
     }
 
-    // RMC wheelchair port
-    // you can atleast drag your body around on your arms, yo
-//    private void OnUpdateCanMoveEvent(EntityUid uid, LegsParalyzedComponent component, UpdateCanMoveEvent args)
-//    {
-//        args.Cancel();
-//    }
+    private void OnUpdateCanMoveEvent(EntityUid uid, LegsParalyzedComponent component, UpdateCanMoveEvent args)
+    {
+        args.Cancel();
+    }
 
     private void OnThrowPushbackAttempt(EntityUid uid, LegsParalyzedComponent component, ThrowPushbackAttemptEvent args)
     {

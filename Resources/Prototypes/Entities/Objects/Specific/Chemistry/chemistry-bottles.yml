@@ -383,7 +383,7 @@
 
 - type: entity
   id: ChemistryBottleDiphenylmethylamine
-  suffix: meth
+  suffix: diphenylmethylamine
   parent: BaseChemistryBottleFilled
   components:
   - type: Label

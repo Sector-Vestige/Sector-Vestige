@@ -12,8 +12,13 @@ concurrency:
 
 on:
   pull_request_target:
+    types: [ opened, reopened, synchronize, ready_for_review ]
     paths:
       - '**.rsi/**.png'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   diff:

@@ -18,7 +18,8 @@
   components:
   - type: RandomMetadata
     nameSegments:
-    - NamesDeathCommando
+    - NamesDeathCommandoFirst
+    - NamesDeathCommandoLast
   - type: AutoImplant
     implants:
     - DeathAcidifierImplant
@@ -59,4 +60,3 @@
     - !type:FixedAntagCount
       proto: SyndicateListener
       count: 2
-

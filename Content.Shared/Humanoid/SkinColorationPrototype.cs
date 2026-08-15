@@ -20,6 +20,20 @@ public sealed partial class SkinColorationPrototype : IPrototype
     /// </summary>
     [DataField(required: true)]
     public ISkinColorationStrategy Strategy = default!;
+
+    /// <summary>
+    ///     If true, will randomly generate realistic hair and eye colors.
+    ///     Will also crush randomly generated colors down to the skin's luminosity
+    ///     so markings don't appear too bright on darker skin.
+    /// </summary>
+    [DataField]
+    public bool RealisticColors;
+
+    /// <summary>
+    ///     If true, will also squash hair and eye colors to the coloration strategy.
+    /// </summary>
+    [DataField]
+    public bool SquashEyeHairColors;
 }
 
 /// <summary>
@@ -143,7 +157,7 @@ public sealed partial class HumanTonedSkinColoration : ISkinColorationStrategy
 
     public Color ClosestSkinColor(Color color)
     {
-        return ValidHumanSkinTone;
+        return FromUnary(ToUnary(color));
     }
 
     public Color FromUnary(float color)
@@ -526,18 +540,6 @@ public sealed partial class HueNodeClampedHsvColorationNode
 /// </summary>
 internal static class SkinColorationUtils
 {
-    /// <summary>
-    /// A value derived by dividing 1 by 361, rounding down.
-    /// Due to the way these values are stored and deconstructed we can't expect much more precision than this..
-    /// </summary>
-    public const float EpsilonHue = 0.00277f;
-
-    /// <summary>
-    /// Due to RGB colors being clamped to 8 bits, precision is lost during transformation to HSL or HSV.
-    /// The precision of the result is approximately 1/180.
-    /// </summary>
-    public const float Epsilon = 0.0056f;
-
     // Sector Vestige - start: quantization-aware verification helpers (see the VerifySkinColor changes above).
     /// <summary>
     /// Per-channel RGB tolerance used when verifying a stored skin color.
@@ -547,6 +549,13 @@ internal static class SkinColorationUtils
     /// verifying channel-by-channel in HSV/HSL needs awkward value-dependent epsilons. Comparing back in RGB against the
     /// clamped color sidesteps all of that, with a small margin on top of the raw 1/255 quantization step.
     /// </summary>
+    public const float EpsilonHue = 0.00277f;
+
+    /// <summary>
+    /// A value derived by dividing 1 by 256.
+    /// Due to the way these values are stored and deconstructed we can't expect much more precision than this..
+    /// </summary>
+    public const float Epsilon = 0.00390625f;
     public const float ChannelEpsilon = 4f / 255f;
 
     /// <summary>

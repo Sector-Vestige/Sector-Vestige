@@ -6,7 +6,6 @@
 
 using System.Linq;
 using Content.Server.Station.Systems;
-using Content.Server.StationRecords.Systems;
 using Content.Shared._SV.Delivery;
 using Content.Shared.Delivery;
 using Content.Shared.Examine;
@@ -15,6 +14,8 @@ using Content.Shared.Labels.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.StationRecords;
+using Content.Shared.StationRecords.Components;
+using Content.Shared.StationRecords.Systems;
 using Content.Shared.Storage;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -123,9 +124,9 @@ public sealed partial class AddressableDeliverySystem : EntitySystem
         var crew = new Dictionary<uint, string>();
 
         var station = _station.GetOwningStation(ent.Owner);
-        if (TryComp<StationRecordsComponent>(station, out var records))
+        if (HasComp<StationRecordsComponent>(station))
         {
-            foreach (var (id, record) in _records.GetRecordsOfType<GeneralStationRecord>(station.Value, records))
+            foreach (var (id, record) in _records.GetRecordsOfType<GeneralStationRecord>(station.Value))
             {
                 crew[id] = Loc.GetString("addressable-delivery-crew-entry",
                     ("name", record.Name),

@@ -90,36 +90,36 @@ public sealed partial class RevolutionaryRuleSystem : GameRuleSystem<Revolutiona
         }
     }
 
-    // protected override void AppendRoundEndText(EntityUid uid,
-    //     RevolutionaryRuleComponent component,
-    //     GameRuleComponent gameRule,
-    //     ref RoundEndTextAppendEvent args)
-    // {
-    //     base.AppendRoundEndText(uid, component, gameRule, ref args);
+    protected override void AppendRoundEndText(EntityUid uid,
+        RevolutionaryRuleComponent component,
+        GameRuleComponent gameRule,
+        ref RoundEndTextAppendEvent args)
+    {
+        base.AppendRoundEndText(uid, component, gameRule, ref args);
 
-    //     var revsLost = CheckRevsLose();
-    //     var commandLost = CheckCommandLose();
-    //     // This is (revsLost, commandsLost) concatted together
-    //     // (moony wrote this comment idk what it means)
-    //     var index = (commandLost ? 1 : 0) | (revsLost ? 2 : 0);
-    //     args.AddLine(Loc.GetString(Outcomes[index]));
+        var revsLost = CheckRevsLose();
+        var commandLost = CheckCommandLose();
+        // This is (revsLost, commandsLost) concatted together
+        // (moony wrote this comment idk what it means)
+        var index = (commandLost ? 1 : 0) | (revsLost ? 2 : 0);
+        args.AddLine(Loc.GetString(Outcomes[index]));
 
-    //     var sessionData = _antag.GetAntagIdentifiers(uid).ToList();
-    //     args.AddLine(Loc.GetString("rev-headrev-count", ("initialCount", sessionData.Count)));
-    //     foreach (var (mind, data, name) in sessionData)
-    //     {
-    //         _role.MindHasRole<RevolutionaryRoleComponent>(mind, out var role);
-    //         var count = CompOrNull<RevolutionaryRoleComponent>(role)?.ConvertedCount ?? 0;
+        var sessionData = _antag.GetAntagIdentifiers(uid).ToList();
+        args.AddLine(Loc.GetString("rev-headrev-count", ("initialCount", sessionData.Count)));
+        foreach (var (mind, data, name) in sessionData)
+        {
+            _role.MindHasRole<RevolutionaryRoleComponent>(mind, out var role);
+            var count = CompOrNull<RevolutionaryRoleComponent>(role)?.ConvertedCount ?? 0;
 
-    //         args.AddLine(Loc.GetString("rev-headrev-name-user",
-    //             ("name", name),
-    //             ("username", data.UserName),
-    //             ("count", count)));
+            args.AddLine(Loc.GetString("rev-headrev-name-user",
+                ("name", name),
+                ("username", data.UserName),
+                ("count", count)));
 
-    //         // TODO: someone suggested listing all alive? revs maybe implement at some point
-    //     }
-    //     args.AddLine("");
-    // }
+            // TODO: someone suggested listing all alive? revs maybe implement at some point
+        }
+        args.AddLine("");
+    }
 
     private void OnGetBriefing(EntityUid uid, RevolutionaryRoleComponent comp, ref GetBriefingEvent args)
     {

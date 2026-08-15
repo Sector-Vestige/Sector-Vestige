@@ -30,7 +30,7 @@
   recipes:
   # - HandheldCrewMonitor # SV - Handheld Crew Monitor shouldn't be able to be printed
   - MedCrutchesForearm
-  - RMCWheelchairBellSpawnFolded
+  # - VehicleWheelchairFolded #SV - upstream vehicles woohoo!!
 
 - type: latheRecipePack
   id: CDSecfabStatic

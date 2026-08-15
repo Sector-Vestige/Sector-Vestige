@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Administration.Logs;
 using Content.Shared.Database;
@@ -22,12 +28,13 @@ using Content.Shared.Coordinates;
 using System.Threading.Tasks;
 using Content.Server.CriminalRecords.Systems;
 using Content.Server.Radio.EntitySystems;
-using Content.Server.StationRecords.Systems;
 using Content.Server.Station.Systems;
 using Content.Shared.CriminalRecords;
 using Content.Shared.Radio;
 using Content.Shared.Security;
 using Content.Shared.StationRecords;
+using Content.Shared.StationRecords.Systems;
+using Content.Shared.StationRecords.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -157,11 +164,11 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
                     : null;
             }
 
-            var (secStatus, secReason) = comp.DocumentType == DocumentType.Security
-                ? GetCriminalStatus(uid, record)
-                : (SecurityStatus.None, null);
+            var (secStatus, secReason, secFingerprint) = comp.DocumentType == DocumentType.Security
+                ? GetSecurityInfo(uid, record)
+                : (SecurityStatus.None, null, null);
 
-            var state = new CharacterDocumentConsoleState(netPlayerEntities, comp.SelectedPlayer, filteredDocs, comp.SelectedDocument, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General);
+            var state = new CharacterDocumentConsoleState(netPlayerEntities, comp.SelectedPlayer, filteredDocs, comp.SelectedDocument, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint);
             PushState(uid, state);
         }
         else
@@ -203,11 +210,11 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
         comp.SelectedPlayer = args.ProfileId;
         bool paperinserted = comp.PaperSlot.ContainerSlot?.ContainedEntity != null;
 
-        var (secStatus, secReason) = comp.DocumentType == DocumentType.Security
-            ? GetCriminalStatus(uid, record)
-            : (SecurityStatus.None, null);
+        var (secStatus, secReason, secFingerprint) = comp.DocumentType == DocumentType.Security
+            ? GetSecurityInfo(uid, record)
+            : (SecurityStatus.None, null, null);
 
-        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, null, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General);
+        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, null, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint);
         PushState(uid, characterDocumentConsoleState);
     }
 
@@ -231,11 +238,11 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
 
         bool paperinserted = comp.PaperSlot.ContainerSlot?.ContainedEntity != null;
 
-        var (secStatus, secReason) = comp.DocumentType == DocumentType.Security
-            ? GetCriminalStatus(uid, record)
-            : (SecurityStatus.None, null);
+        var (secStatus, secReason, secFingerprint) = comp.DocumentType == DocumentType.Security
+            ? GetSecurityInfo(uid, record)
+            : (SecurityStatus.None, null, null);
 
-        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, selecteddoc, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General);
+        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, selecteddoc, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint);
         PushState(uid, characterDocumentConsoleState);
     }
 
@@ -548,12 +555,9 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
         if (!TryGetListedRecord(listing, args.ProfileId, out var record))
             return;
 
-        var recordListing = _stationRecords.BuildListing((station.Value, stationRecords), null);
-        var recordKey = recordListing.FirstOrDefault(x => x.Value == record.Name);
-        if (recordKey.Value == null)
+        if (!TryGetRecordKeyByName((station.Value, stationRecords), record.Name, out var key))
             return;
 
-        var key = new StationRecordKey(recordKey.Key, station.Value);
         if (!_criminalRecords.TryChangeStatus(key, args.Status, args.Reason, null))
             return;
 
@@ -576,31 +580,50 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
 
         var filteredDocs = BuildVisibleDocs(uid, comp, record);
 
-        var (newStatus, newReason) = GetCriminalStatus(uid, record);
+        var (newStatus, newReason, newFingerprint) = GetSecurityInfo(uid, record);
         bool paperInserted = comp.PaperSlot.ContainerSlot?.ContainedEntity != null;
-        var refreshState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, comp.SelectedDocument, paperInserted, comp.DocumentType, newStatus, newReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General);
+        var refreshState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, comp.SelectedDocument, paperInserted, comp.DocumentType, newStatus, newReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: newFingerprint);
         PushState(uid, refreshState);
     }
 
-    private (SecurityStatus status, string? reason) GetCriminalStatus(EntityUid consoleUid, CharacterDocumentRecord record)
+    /// <summary>
+    ///     Resolves a crew member's station-record key from their character name. Documents are keyed
+    ///     by ProfileId and station records by an opaque uint, so the name is the only link between
+    ///     the two.
+    /// </summary>
+    public bool TryGetRecordKeyByName(Entity<StationRecordsComponent> station, string characterName, out StationRecordKey key)
+    {
+        key = StationRecordKey.Invalid;
+
+        var listing = _stationRecords.BuildListing((station.Owner, station.Comp), null);
+        var match = listing.FirstOrDefault(x => x.Value == characterName);
+        if (match.Value == null)
+            return false;
+
+        key = new StationRecordKey(match.Key, station.Owner);
+        return true;
+    }
+
+    private (SecurityStatus status, string? reason, string? fingerprint) GetSecurityInfo(EntityUid consoleUid, CharacterDocumentRecord record)
     {
         var station = _stationSystem.GetOwningStation(consoleUid);
         if (station == null)
-            return (SecurityStatus.None, null);
+            return (SecurityStatus.None, null, null);
 
         if (!TryComp<StationRecordsComponent>(station, out var stationRecords))
-            return (SecurityStatus.None, null);
+            return (SecurityStatus.None, null, null);
 
-        var listing = _stationRecords.BuildListing((station.Value, stationRecords), null);
-        var recordKey = listing.FirstOrDefault(x => x.Value == record.Name);
-        if (recordKey.Value == null)
-            return (SecurityStatus.None, null);
+        if (!TryGetRecordKeyByName((station.Value, stationRecords), record.Name, out var key))
+            return (SecurityStatus.None, null, null);
 
-        var key = new StationRecordKey(recordKey.Key, station.Value);
+        var fingerprint = _stationRecords.TryGetRecord<GeneralStationRecord>(key, out var generalRecord, stationRecords)
+            ? generalRecord.Fingerprint
+            : null;
+
         if (!_stationRecords.TryGetRecord<CriminalRecord>(key, out var criminalRecord, stationRecords))
-            return (SecurityStatus.None, null);
+            return (SecurityStatus.None, null, fingerprint);
 
-        return (criminalRecord.Status, criminalRecord.Reason);
+        return (criminalRecord.Status, criminalRecord.Reason, fingerprint);
     }
 
     /// <summary>

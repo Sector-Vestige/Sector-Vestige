@@ -56,53 +56,53 @@ public sealed partial class XenoborgsRuleSystem : GameRuleSystem<XenoborgsRuleCo
     }
 
     // TODO: Refactor the end of round text
-    // protected override void AppendRoundEndText(EntityUid uid,
-    //     XenoborgsRuleComponent component,
-    //     GameRuleComponent gameRule,
-    //     ref RoundEndTextAppendEvent args)
-    // {
-    //     base.AppendRoundEndText(uid, component, gameRule, ref args);
+    protected override void AppendRoundEndText(EntityUid uid,
+        XenoborgsRuleComponent component,
+        GameRuleComponent gameRule,
+        ref RoundEndTextAppendEvent args)
+    {
+        base.AppendRoundEndText(uid, component, gameRule, ref args);
 
-    //     var numXenoborgs = GetNumberXenoborgs();
-    //     var numHumans = _target.GetMinds().Count;
+        var numXenoborgs = GetNumberXenoborgs();
+        var numHumans = _target.GetMinds().Count;
 
-    //     if (numXenoborgs < 5)
-    //         args.AddLine(Loc.GetString("xenoborgs-crewmajor"));
-    //     else if (4 * numXenoborgs < numHumans)
-    //         args.AddLine(Loc.GetString("xenoborgs-crewmajor"));
-    //     else if (2 * numXenoborgs < numHumans)
-    //         args.AddLine(Loc.GetString("xenoborgs-crewminor"));
-    //     else if (1.5 * numXenoborgs < numHumans)
-    //         args.AddLine(Loc.GetString("xenoborgs-neutral"));
-    //     else if (numXenoborgs < numHumans)
-    //         args.AddLine(Loc.GetString("xenoborgs-borgsminor"));
-    //     else
-    //         args.AddLine(Loc.GetString("xenoborgs-borgsmajor"));
+        if (numXenoborgs < 5)
+            args.AddLine(Loc.GetString("xenoborgs-crewmajor"));
+        else if (4 * numXenoborgs < numHumans)
+            args.AddLine(Loc.GetString("xenoborgs-crewmajor"));
+        else if (2 * numXenoborgs < numHumans)
+            args.AddLine(Loc.GetString("xenoborgs-crewminor"));
+        else if (1.5 * numXenoborgs < numHumans)
+            args.AddLine(Loc.GetString("xenoborgs-neutral"));
+        else if (numXenoborgs < numHumans)
+            args.AddLine(Loc.GetString("xenoborgs-borgsminor"));
+        else
+            args.AddLine(Loc.GetString("xenoborgs-borgsmajor"));
 
-    //     var numMothershipCores = GetNumberMothershipCores();
+        var numMothershipCores = GetNumberMothershipCores();
 
-    //     if (numMothershipCores == 0)
-    //         args.AddLine(Loc.GetString("xenoborgs-cond-all-xenoborgs-dead-core-dead"));
-    //     else if (numXenoborgs == 0)
-    //         args.AddLine(Loc.GetString("xenoborgs-cond-all-xenoborgs-dead-core-alive"));
-    //     else
-    //     {
-    //         args.AddLine(Loc.GetString("xenoborg-number-xenoborg-alive-end", ("count", numXenoborgs)));
-    //         args.AddLine(Loc.GetString("xenoborg-number-crew-alive-end", ("count", numHumans)));
-    //     }
+        if (numMothershipCores == 0)
+            args.AddLine(Loc.GetString("xenoborgs-cond-all-xenoborgs-dead-core-dead"));
+        else if (numXenoborgs == 0)
+            args.AddLine(Loc.GetString("xenoborgs-cond-all-xenoborgs-dead-core-alive"));
+        else
+        {
+            args.AddLine(Loc.GetString("xenoborg-number-xenoborg-alive-end", ("count", numXenoborgs)));
+            args.AddLine(Loc.GetString("xenoborg-number-crew-alive-end", ("count", numHumans)));
+        }
 
-    //     args.AddLine(Loc.GetString("xenoborg-max-number", ("count", component.MaxNumberXenoborgs)));
+        args.AddLine(Loc.GetString("xenoborg-max-number", ("count", component.MaxNumberXenoborgs)));
 
-    //     args.AddLine(Loc.GetString("xenoborgs-list-start"));
+        args.AddLine(Loc.GetString("xenoborgs-list-start"));
 
-    //     var antags = _antag.GetAntagIdentifiers(uid);
+        var antags = _antag.GetAntagIdentifiers(uid);
 
-    //     foreach (var (_, sessionData, name) in antags)
-    //     {
-    //         args.AddLine(Loc.GetString("xenoborgs-list", ("name", name), ("user", sessionData.UserName)));
-    //     }
-    //     args.AddLine("");
-    // }
+        foreach (var (_, sessionData, name) in antags)
+        {
+            args.AddLine(Loc.GetString("xenoborgs-list", ("name", name), ("user", sessionData.UserName)));
+        }
+        args.AddLine("");
+    }
 
     private void CheckRoundEnd(XenoborgsRuleComponent xenoborgsRuleComponent)
     {
