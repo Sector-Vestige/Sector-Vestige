@@ -1,7 +1,6 @@
 ﻿<Control xmlns="https://spacestation14.io"
          xmlns:pllax="clr-namespace:Content.Client.Parallax"
-         xmlns:clog="clr-namespace:Content.Client.Changelog"
-         xmlns:system="clr-namespace:System;assembly=System.Runtime">
+         xmlns:clog="clr-namespace:Content.Client.Changelog">
     <pllax:ParallaxControl
         Name="BackgroundParallax"
         SpeedX="5"
@@ -60,12 +59,8 @@
                         Access="Public"
                         Text="{Loc 'main-menu-quit-button'}"
                         TextAlign="Center"
-                        StyleIdentifier="mainMenu">
-                    <Control.StyleClasses>
-                        <system:String>negative</system:String>
-                        <system:String>OpenRight</system:String>
-                    </Control.StyleClasses>
-                </Button>
+                        StyleClasses="negative OpenRight"
+                        StyleIdentifier="mainMenu" />
             </BoxContainer>
         </PanelContainer>
     </BoxContainer>

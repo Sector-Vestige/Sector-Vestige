@@ -24,6 +24,9 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
     [Dependency] private SharedJobStatusSystem _jobStatus = default!;
     [Dependency] private SharedNanoChatSystem _nanoChat = default!;
 
+    // SV - Matches maxValue on the NanoChat nameIdentifierGroup prototype.
+    private const uint MaxNanoChatNumber = 9999;
+
     /// <summary>
     /// Steals access from interacted ids.
     /// </summary>
@@ -122,10 +125,20 @@ public abstract partial class SharedAgentIdCardSystem : EntitySystem
         UpdateUi(ent);
     }
 
+    // SV - Sets the NanoChat number on the card. The handler existed but was left empty, so the
+    // number the UI sent was silently discarded and the card kept its original one.
     [SubscribeLocalEvent]
     private void OnNumberChanged(Entity<AgentIDCardComponent> ent, ref AgentIDCardNumberChangedMessage args)
     {
+        // The UI already bounds this, but the message is predicted and trivially spoofed.
+        if (args.Number is 0 or > MaxNanoChatNumber)
+            return;
 
+        if (!TryComp<NanoChatCardComponent>(ent, out var nanoChat))
+            return;
+
+        _nanoChat.SetNumber((ent.Owner, nanoChat), args.Number);
+        UpdateUi(ent);
     }
 
     /// <summary>
