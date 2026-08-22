@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 #nullable enable
 using System.Reflection;
 using System.Linq;
@@ -102,9 +108,12 @@ public sealed class AfkSystemTest : GameTest
             var session = GetSession();
             var actor = session.AttachedEntity!.Value;
             var ev = new BoundUserInterfaceMessageReceivedEvent(actor, actor, TestUiKey.Key);
-            OnBoundUiMessageReceived.Invoke(_afkSystem, [ev]);
 
-            Assert.That(_afkManager.IsAfk(session), Is.False);
+            // Sector Vestige - start of AFK assertion that does not race the 1 ms AfkTime
+            // OnBoundUiMessageReceived.Invoke(_afkSystem, [ev]);
+            // Assert.That(_afkManager.IsAfk(session), Is.False);
+            Assert.That(ResetsAfkTimer(session, () => OnBoundUiMessageReceived.Invoke(_afkSystem, [ev])), Is.True);
+            // Sector Vestige - end of AFK assertion that does not race the 1 ms AfkTime
         });
     }
 
@@ -128,9 +137,13 @@ public sealed class AfkSystemTest : GameTest
                 NetCoordinates.Invalid,
                 ScreenCoordinates.Invalid);
 
-            HandleInputCmd.Invoke(_afkSystem, [message, new EntitySessionEventArgs(session)]);
-
-            Assert.That(_afkManager.IsAfk(session), Is.False, inputType);
+            // Sector Vestige - start of AFK assertion that does not race the 1 ms AfkTime
+            // HandleInputCmd.Invoke(_afkSystem, [message, new EntitySessionEventArgs(session)]);
+            // Assert.That(_afkManager.IsAfk(session), Is.False, inputType);
+            var args = new EntitySessionEventArgs(session);
+            Assert.That(ResetsAfkTimer(session, () => HandleInputCmd.Invoke(_afkSystem, [message, args])),
+                Is.True, inputType);
+            // Sector Vestige - end of AFK assertion that does not race the 1 ms AfkTime
         });
     }
 
@@ -176,6 +189,44 @@ public sealed class AfkSystemTest : GameTest
             Assert.That(_afkConfirm.HasConfirmation(session), Is.False);
         });
     }
+
+    // Sector Vestige - start of shared helper for the two "activity clears AFK" tests
+    /// <summary>
+    ///     Runs <paramref name="action"/> and reports whether it reset <paramref name="session"/>'s
+    ///     AFK timer.
+    /// </summary>
+    /// <remarks>
+    ///     MakeAfk drives AfkTime down to 0.001 seconds, and <see cref="IAfkManager.IsAfk"/> measures
+    ///     against wall-clock <see cref="IGameTiming.RealTime"/>. Re-reading IsAfk after triggering the
+    ///     activity therefore only passes if under a millisecond of real time elapses in between, so a
+    ///     GC pause or a busy CI runner fails the test on timing alone. Watching
+    ///     <see cref="IAfkManager.PlayerDidActionEvent"/> asserts the thing actually under test — that
+    ///     the handler reported the activity — with no clock involved.
+    /// </remarks>
+    private bool ResetsAfkTimer(ICommonSession session, Action action)
+    {
+        var reset = false;
+
+        void OnPlayerDidAction(ICommonSession player)
+        {
+            if (player == session)
+                reset = true;
+        }
+
+        _afkManager.PlayerDidActionEvent += OnPlayerDidAction;
+
+        try
+        {
+            action();
+        }
+        finally
+        {
+            _afkManager.PlayerDidActionEvent -= OnPlayerDidAction;
+        }
+
+        return reset;
+    }
+    // Sector Vestige - end of shared helper for the two "activity clears AFK" tests
 
     private async Task MakeAfk()
     {
