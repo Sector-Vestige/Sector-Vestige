@@ -182,6 +182,28 @@
             Poison: 1
       - !type:Flammable
         multiplier: 0.4
+  flammability: #SV: Begin - Flammable fluids
+    isFlammable: true
+    isOxidizer: true
+    generatedHeat: 580
+    maxHeat: 2477
+    exhaustedGases:
+    - gas: CarbonDioxide
+      spawnWeight: 1
+      gasAmount:
+        min: 10
+        max: 15
+      molPerSecond:
+        min: 10
+        max: 15
+    - gas: WaterVapor
+      spawnWeight: 1
+      gasAmount:
+        min: 5
+        max: 8
+      molPerSecond:
+        min: 10
+        max: 15 #SV: End - Flammable fluids
 
 - type: reagent
   id: Fluorosurfactant

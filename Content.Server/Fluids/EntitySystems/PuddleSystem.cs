@@ -18,6 +18,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
+using Content.Shared.Atmos; //SV: Fluid Fires
+using Content.Shared._SV.Fire; //SV: Fluid Fires
 
 namespace Content.Server.Fluids.EntitySystems;
 
@@ -33,6 +35,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private SharedActualFireSystem _fireSystem = default!; //SV: Fluid Fires
 
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
     [Dependency] private EntityQuery<EvaporationSparkleComponent> _evaporationSparklesQuery = default!;
@@ -570,4 +573,15 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
 
         return false;
     }
+
+    //SV - Begin: Flamable fluid fires
+    [SubscribeLocalEvent]
+    public void OnPuddleFire(Entity<PuddleComponent> puddle, ref TileFireEvent fireEvent)
+    {
+        if(!_solutionContainerSystem.ResolveSolution(puddle.Owner, puddle.Comp.SolutionName, ref puddle.Comp.Solution, out var solution))
+            return;
+        if (_fireSystem.CheckFlammability(solution))
+            _fireSystem.TryLightFluidFire(puddle.Owner);
+    }
+    //SV - End: Flamable fluid fires
 }
