@@ -13,6 +13,13 @@
   components:
   - type: Sprite
     sprite: _SV/Clothing/Head/Hardsuits/rnd_rct_helmets/rnd_rct_helmet_default.rsi
+    # Sector Vestige: this rsi predates upstream renaming the light layer icon-flash -> light-overlay
+    # (and adding icon-unshaded), so keep the icon/icon-flash layering the art was actually drawn for.
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      map: [ "light" ]
   - type: Clothing
     sprite: _SV/Clothing/Head/Hardsuits/rnd_rct_helmets/rnd_rct_helmet_default.rsi
   - type: PointLight

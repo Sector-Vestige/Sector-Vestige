@@ -9,6 +9,7 @@
 using System.Text.RegularExpressions;
 using Content.Shared.Speech;
 using Content.Server.Speech.EntitySystems;
+using Content.Shared.Speech.EntitySystems;
 using Content.Server._Latestation.Speech.Components;
 using Robust.Shared.Random;
 using System.Linq;

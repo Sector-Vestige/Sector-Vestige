@@ -58,7 +58,11 @@ public sealed partial class ReadyManifestUi : DefaultWindow
             ReadyManifestListing.AddChild(category);
             var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
                 .Where(job => job.SetPreference)
-                .Order(JobUIComparer.Instance);
+                .ToList();
+
+            // Sector Vestige: JobUIComparer is now driven by a job-weight profile; retain source order without one.
+            if (JobUIComparer.TryCreate(_prototypeManager, null, out var jobComparer))
+                jobs.Sort(jobComparer);
 
             foreach (var job in jobs)
             {

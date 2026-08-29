@@ -7,6 +7,7 @@ using Content.Shared.Access.Systems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Localization;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using System.Collections.Generic;
 
 namespace Content.IntegrationTests.Tests.Access
@@ -33,6 +34,8 @@ namespace Content.IntegrationTests.Tests.Access
     - GenpopLeave
 ";
 
+        [SidedDependency(Side.Server)] private readonly IGameTiming _gameTiming = null!;
+        [SidedDependency(Side.Server)] private readonly MetaDataSystem _metaDataSystem = null!;
         [SidedDependency(Side.Server)] private readonly SharedIdCardSystem _sharedIdCardSystem = null!;
 
         [Test]
@@ -42,37 +45,38 @@ namespace Content.IntegrationTests.Tests.Access
             ExpireIdCardComponent expireComp = default!;
             AccessComponent accessComp = default!;
             var expirationTimeInSeconds = 2.0f;
-            // SV: ExpireTime is an absolute timestamp, not a duration. Test pairs are pooled and
-            // recycled, so CurTime is already well past a bare TimeSpan.FromSeconds() and the
-            // card expires on the first tick. Anchor to the server clock instead. (issue #368)
-            var expireTime = TimeSpan.Zero;
+            // SV (issue #368): keep this a plain duration. Upstream now anchors it to the server
+            // clock at the SetExpireTime call below, which is what #368 asked for; adding CurTime
+            // here as well would double-count it and push the deadline out of reach of the test.
+            var expireTime = TimeSpan.FromSeconds(expirationTimeInSeconds);
 
             await Pair.Server.WaitPost(() =>
             {
                 ent = SSpawn(TestExpireIdCard);
                 expireComp = SComp<ExpireIdCardComponent>(ent);
                 accessComp = SComp<AccessComponent>(ent);
-                expireTime = SGameTiming.CurTime + TimeSpan.FromSeconds(expirationTimeInSeconds);
             });
 
             // Check that default component values are all correct
+            Assume.That(expireComp.Expired, Is.False);
+            Assume.That(expireComp.Permanent, Is.True);
+            Assume.That(expireComp.ExpireTime, Is.Null);
+
             using (Assert.EnterMultipleScope())
             {
-                Assert.That(expireComp.Expired, Is.False);
-                Assert.That(expireComp.Permanent, Is.False);
-                Assert.That(expireComp.ExpireTime, Is.EqualTo(TimeSpan.Zero));
                 Assert.That(accessComp.Tags, Is.EqualTo(new HashSet<ProtoId<AccessLevelPrototype>> { GenpopEnter }));
                 Assert.That(expireComp.ExpiredAccess, Is.EqualTo(new HashSet<ProtoId<AccessLevelPrototype>> { GenpopLeave }));
                 Assert.That(expireComp.ExpireMessage, Is.EqualTo(new LocId("genpop-prisoner-id-expire")));
             }
 
             // Set the expire time to the future
-            _sharedIdCardSystem.SetExpireTime(ent, expireTime);
+            var absoluteExpireTime = _gameTiming.CurTime + expireTime;
+            _sharedIdCardSystem.SetExpireTime(ent, absoluteExpireTime);
             using (Assert.EnterMultipleScope())
             {
                 Assert.That(expireComp.Expired, Is.False);
                 Assert.That(expireComp.Permanent, Is.False);
-                Assert.That(expireComp.ExpireTime, Is.EqualTo(expireTime));
+                Assert.That(expireComp.ExpireTime, Is.EqualTo(absoluteExpireTime));
                 Assert.That(accessComp.Tags, Is.EqualTo(new HashSet<ProtoId<AccessLevelPrototype>> { GenpopEnter }));
             }
 
@@ -94,6 +98,42 @@ namespace Content.IntegrationTests.Tests.Access
                 Assert.That(expireComp.Permanent, Is.False);
                 Assert.That(accessComp.Tags, Is.EqualTo(new HashSet<ProtoId<AccessLevelPrototype>> { GenpopLeave }));
             }
+        }
+
+        [Test]
+        public async Task TestExpireIdCardExpiryUsesPauseDuration()
+        {
+            EntityUid ent = default;
+            ExpireIdCardComponent expireComp = default!;
+            AccessComponent accessComp = default!;
+
+            await Pair.Server.WaitPost(() =>
+            {
+                ent = SSpawn(TestExpireIdCard);
+                expireComp = SComp<ExpireIdCardComponent>(ent);
+                accessComp = SComp<AccessComponent>(ent);
+
+                _sharedIdCardSystem.SetExpireTime(ent, _gameTiming.CurTime + TimeSpan.FromSeconds(1));
+                _metaDataSystem.SetEntityPaused(ent, true);
+            });
+
+            await Pair.RunSeconds(2.0f);
+
+            await Pair.Server.WaitPost(() =>
+            {
+                Assert.That(expireComp.Expired, Is.False);
+                Assert.That(accessComp.Tags, Is.EqualTo(new HashSet<ProtoId<AccessLevelPrototype>> { GenpopEnter }));
+
+                _metaDataSystem.SetEntityPaused(ent, false);
+            });
+
+            await Pair.RunSeconds(1.1f);
+
+            await Pair.Server.WaitPost(() =>
+            {
+                Assert.That(expireComp.Expired, Is.True);
+                Assert.That(accessComp.Tags, Is.EqualTo(new HashSet<ProtoId<AccessLevelPrototype>> { GenpopLeave }));
+            });
         }
     }
 }

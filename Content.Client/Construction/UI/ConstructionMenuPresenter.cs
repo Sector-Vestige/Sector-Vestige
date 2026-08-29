@@ -155,7 +155,7 @@ namespace Content.Client.Construction.UI
                     return;
                 if (b)
                     _placementManager.Clear();
-                _placementManager.ToggleEraserHijacked(new ConstructionPlacementHijack(_constructionSystem, null));
+                _placementManager.ToggleEraserHijacked(new ConstructionPlacementHijack(null));
                 _constructionView.EraseButtonPressed = b;
             };
 
@@ -290,6 +290,9 @@ namespace Content.Client.Construction.UI
 
             foreach (var entry in guide.Entries)
             {
+                if (entry.Empty())
+                    continue;
+
                 var text = entry.Arguments != null
                     ? Loc.GetString(entry.Localization, entry.Arguments)
                     : Loc.GetString(entry.Localization);
@@ -335,7 +338,7 @@ namespace Content.Client.Construction.UI
                         IsTile = false,
                         PlacementOption = _selected.PlacementMode
                     },
-                    new ConstructionPlacementHijack(_constructionSystem, _selected));
+                    new ConstructionPlacementHijack(_selected));
 
                 UpdateGhostPlacement();
             }
@@ -642,7 +645,7 @@ namespace Content.Client.Construction.UI
                     IsTile = false,
                     PlacementOption = _selected.PlacementMode,
                 },
-                new ConstructionPlacementHijack(constructSystem, _selected));
+                new ConstructionPlacementHijack(_selected));
 
             _constructionView.BuildButtonPressed = true;
         }

@@ -607,7 +607,8 @@
         - !type:ReagentCondition # makes you vomit if you OD
           reagent: Stubantazine
           min: 14
-      - !type:SatiateHunger # causes digestion inefficiency during overdose
+      - !type:Satiate # causes digestion inefficiency during overdose
+        satiationType: Hunger
         factor: -1.2
         conditions:
         - !type:ReagentCondition
@@ -619,7 +620,8 @@
         - !type:ReagentCondition # alcohol causes vomiting
           reagent: Ethanol
           min: 2
-      - !type:SatiateHunger # causes digestion inefficiency if you drink alcohol
+      - !type:Satiate # causes digestion inefficiency if you drink alcohol
+        satiationType: Hunger
         factor: -2.0
         conditions:
         - !type:ReagentCondition

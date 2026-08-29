@@ -98,8 +98,6 @@
   id: MobFelinid
   name: Urist McFelinid
   components:
-  - type: Hunger
-  - type: Thirst
   - type: Icon
     sprite: Mobs/Species/Human/parts.rsi
     state: full

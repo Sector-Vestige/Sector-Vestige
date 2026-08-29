@@ -51,6 +51,8 @@ public sealed class StationPowerTests : GameTest
             // "Snowball", // Vestige: Derotated Map
             // "Relic", // Vestige: Derotated Map
             // "Exo", // Vestige: Derotated Map
+            // "Sushi", // Vestige: Pending implementation
+            // "Tram2", // Vestige: Pending implementation
             // "Vanquish", // LateStation Map by Lachri
             "Cluster", // Sector Vestige, remade by Rebound
             "Packed_SM", // Sector Vestige, edits by Lambda.Tiger

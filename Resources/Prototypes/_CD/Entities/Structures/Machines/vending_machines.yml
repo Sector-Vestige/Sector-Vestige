@@ -14,13 +14,16 @@
   components:
   - type: VendingMachine
     pack: QuickThreadsInventory
-    dispenseOnHitChance: 0.25
-    dispenseOnHitThreshold: 2
+  - type: VendingMachineDispenseOnHit
+    chance: 0.25
+    threshold: 2
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+  - type: VendingMachineEject
     ejectDelay: 5
     soundVend: /Audio/Machines/circuitprinter.ogg
   - type: Speech

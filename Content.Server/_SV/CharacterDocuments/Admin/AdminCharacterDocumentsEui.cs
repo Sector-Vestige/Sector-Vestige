@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -105,7 +111,8 @@ public sealed partial class AdminCharacterDocumentsEui : BaseEui
     }
 
     private const int TitleMaxLen = 256;
-    private const int ContentMaxLen = 8192;
+    // 16-06-2025 - 18:26: Noone is gonna hit 16k -VI
+    public const int ContentMaxLen = 16384;
 
     private async Task ApplyEditAsync(int profileId, CharacterDocument incoming)
     {

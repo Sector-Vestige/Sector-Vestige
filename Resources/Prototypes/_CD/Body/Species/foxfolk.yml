@@ -153,8 +153,6 @@
   id: MobFoxfolk
   name: Urist McFoxfolk
   components:
-  - type: Hunger
-  - type: Thirst
   - type: Icon
     sprite: _CD/Mobs/Species/Foxfolk/parts.rsi
     state: full
@@ -180,7 +178,7 @@
         Blunt: 2
         Slash: 3
   - type: Temperature
-    currentTemperature: 310.15
+    temperature: 310.15
     specificHeat: 46
   - type: TemperatureDamage
     heatDamageThreshold: 320

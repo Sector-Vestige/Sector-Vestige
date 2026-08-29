@@ -40,7 +40,6 @@
 # SPDX-FileCopyrightText: 2025 Brassica Prime <114382089+Pumkin69@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Cass <45694413+CubixThree@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-# SPDX-FileCopyrightText: 2025 Hitlinemoss <209321380+Hitlinemoss@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Huaqas <zacswebb@gmail.com>
 # SPDX-FileCopyrightText: 2025 Jajsha <101492056+Zap527@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Julian Giebel <juliangiebel@live.de>
@@ -71,7 +70,9 @@
 # SPDX-FileCopyrightText: 2025 whythelettuce <stephanietokai@gmail.com>
 # SPDX-FileCopyrightText: 2025 youtissoum <51883137+youtissoum@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Afrokada <pchcraft@gmail.com>
+# SPDX-FileCopyrightText: 2026 Hitlinemoss <209321380+Hitlinemoss@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 JuneSzalkowska <juneszalkowska@gmail.com>
+# SPDX-FileCopyrightText: 2026 K-Dynamic <20566341+K-Dynamic@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Nico64 <74880554+NicoSGF64@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
@@ -217,6 +218,8 @@
   - CaptainJumpskirt
   - CaptainFormalSuit
   - CaptainFormalSkirt
+  - CaptainHawaiianHarmony #Added by Harmony
+  - CaptainJumpsuitTurtleneckHarmony #Added by Harmony
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -241,6 +244,7 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
+  - CaptainArmoredWinterCoatHarmony #Added by Harmony
 
 #- type: loadoutGroup
 #  id: CaptainJobTrinkets
@@ -1492,6 +1496,35 @@
 #  name: loadout-group-jobtrinkets
 #  minLimit: 0
 #  loadouts:
+
+- type: loadoutGroup
+  id: TramDriverJumpsuit
+  name: loadout-group-tramdriver-jumpsuit
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - TramDriverJumpsuit
+
+- type: loadoutGroup
+  id: TramDriverOuterClothing
+  name: loadout-group-tramdriver-outerclothing
+  minLimit: 0
+  loadouts:
+  - TramDriverSuit
+
+- type: loadoutGroup
+  id: TramDriverHat
+  name: loadout-group-tramdriver-hat
+  loadouts:
+  - TramDriverHat
+
+- type: loadoutGroup
+  id: TramDriverGloves
+  name: loadout-group-tramdriver-gloves
+  minLimit: 0
+  loadouts:
+  - TramDriverGlovesWhite
+  - TramDriverGlovesBlack
 
 # Other
 

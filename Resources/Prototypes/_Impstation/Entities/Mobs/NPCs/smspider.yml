@@ -45,6 +45,7 @@
         - MobLayer
   - type: AshOnMeleeHit
     popup: ash-on-melee-smspider
+  - type: Damageable # Sector Vestige: Injurable needs its Damageable sister component or the mob takes no damage at all.
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible

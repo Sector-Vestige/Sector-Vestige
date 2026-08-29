@@ -8,6 +8,7 @@
 using Content.Server._DV.Speech.Components;
 using Content.Shared.Speech;
 using Content.Server.Speech.EntitySystems;
+using Content.Shared.Speech.EntitySystems;
 
 namespace Content.Server._DV.Speech.EntitySystems;
 

@@ -10,6 +10,7 @@ using Content.Server.Mind;
 using Content.Shared._AXOLOTL;
 using Content.Shared.Administration;
 using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;

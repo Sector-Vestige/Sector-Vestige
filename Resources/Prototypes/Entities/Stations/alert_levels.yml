@@ -1,0 +1,20 @@
+- type: entity
+  id: BaseStationAlertLevels
+  abstract: true
+  components:
+  - type: AlertLevel
+    availableAlertLevels:
+    - Blue
+    - DeltaNuke
+    - Epsilon
+    - Gamma
+    - Green
+    - Red
+    - Violet
+    - Yellow
+    # Sector Vestige: fork-added alert levels (Cosmatic Drift + SV).
+    - Amber
+    - Bronze
+    - Delta
+    - Omega
+    - Silver

@@ -9,6 +9,7 @@
 using Content.Server._NF.Speech.Components;
 using Content.Shared.Speech;
 using Content.Server.Speech.EntitySystems;
+using Content.Shared.Speech.EntitySystems;
 using System.Text.RegularExpressions;
 
 namespace Content.Server._NF.Speech.EntitySystems;

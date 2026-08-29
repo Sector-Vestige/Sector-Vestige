@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+#
+# SPDX-License-Identifier: MIT
+
+- type: alertLevel
+  id: Amber
+  name: alert-level-amber
+  announcement: alert-level-amber-announcement
+  instructions: alert-level-amber-instructions
+  sound: /Audio/_CD/Misc/amber.ogg
+  color: "#ffbf00"
+  emergencyLightColor: "#ffbf00"
+  forceEnableEmergencyLights: true
+  shuttleTime: 600
+
+- type: alertLevel
+  id: Bronze
+  name: alert-level-bronze
+  announcement: alert-level-bronze-announcement
+  instructions: alert-level-bronze-instructions
+  sound:
+    path: /Audio/_CD/Misc/bronze.ogg
+    params:
+      volume: -2
+  color: "#cd7f32"
+  emergencyLightColor: "#cd7f32"
+  forceEnableEmergencyLights: true
+  shuttleTime: 600
+
+- type: alertLevel
+  id: Omega
+  name: alert-level-omega
+  announcement: alert-level-omega-announcement
+  instructions: alert-level-omega-instructions
+  sound: /Audio/_CD/Misc/omega.ogg
+  color: "#bf002c"
+  emergencyLightColor: "#bf002c"
+  forceEnableEmergencyLights: true
+  shuttleTime: 600

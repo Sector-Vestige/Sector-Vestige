@@ -13,6 +13,8 @@ using Content.Shared.Chat.Prototypes;
 using Content.Shared.Puppet;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Muting;
+using Content.Shared.Speech.EntitySystems;
+using Content.Shared.StatusEffectNew;
 using Content.Shared._Harmony.Speech.Hypophonia;
 
 namespace Content.Server._Harmony.Speech.Hypophonia
@@ -20,6 +22,7 @@ namespace Content.Server._Harmony.Speech.Hypophonia
     public sealed partial class HypophoniaSystem : EntitySystem
     {
         [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private StatusEffectsSystem _statusEffects = default!;
         public override void Initialize()
         {
             base.Initialize();
@@ -33,7 +36,7 @@ namespace Content.Server._Harmony.Speech.Hypophonia
                 return;
 
             // Let MutingSystem handle the event for muted characters (mimes included)
-            if (HasComp<MutedComponent>(uid))
+            if (_statusEffects.HasEffectComp<MutedStatusEffectComponent>(uid))
                 return;
 
             //still leaves the text so it looks like they are pantomiming a laugh
@@ -44,7 +47,7 @@ namespace Content.Server._Harmony.Speech.Hypophonia
         private void OnSpeakAttempt(EntityUid uid, HypophoniaComponent component, SpeakAttemptEvent args)
         {
             // Let MutingSystem handle the event for puppets and muted characters (mimes included)
-            if (HasComp<VentriloquistPuppetComponent>(uid) || HasComp<MutedComponent>(uid))
+            if (HasComp<VentriloquistPuppetComponent>(uid) || _statusEffects.HasEffectComp<MutedStatusEffectComponent>(uid))
                 return;
 
             // Allow whispering - Hypophonia means you can only whisper

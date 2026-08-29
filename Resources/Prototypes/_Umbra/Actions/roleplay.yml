@@ -15,8 +15,11 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Umbra/Interface/Actions/set-pose.rsi, state: eyeopen }
     itemIconStyle: NoItem
     useDelay: 3
+  - type: Sprite
+    sprite: _Umbra/Interface/Actions/set-pose.rsi
+    layers:
+    - state: eyeopen
   - type: InstantAction
     event: !type:SetExamineActionEvent

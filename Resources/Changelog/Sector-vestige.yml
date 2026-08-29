@@ -434,14 +434,6 @@ Entries:
       message: Added seven beanies of varying colors.
   id: 52
   time: '2025-04-27T09:30:54.0000000+00:00'
-- author: '-'
-  changes: []
-  id: 53
-  time: '2025-05-09T16:46:32.0000000+00:00'
-- author: '-'
-  changes: []
-  id: 54
-  time: '2025-05-10T16:25:35.0000000+00:00'
 - author: BaguetteYeast
   changes:
     - type: Add
@@ -450,10 +442,6 @@ Entries:
       message: Added a variant of the shuttle, NT-Biosphere-OldEarthDiner
   id: 55
   time: '2025-05-31T12:42:11.0000000+00:00'
-- author: Necro-a
-  changes: []
-  id: 56
-  time: '2025-05-31T13:14:25.0000000+00:00'
 - author: ReboundQ3
   changes:
     - type: Fix
@@ -941,10 +929,6 @@ Entries:
       message: Personal Item for Attacus Fischer
   id: 126
   time: '2025-11-03T14:16:04.0000000+00:00'
-- author: Mixmaster49
-  changes: []
-  id: 127
-  time: '2025-11-03T17:10:49.0000000+00:00'
 - author: ReboundQ3
   changes:
     - type: Tweak
@@ -1317,10 +1301,6 @@ Entries:
       message: Added Cortexene and Saprodipine.
   id: 180
   time: '2026-01-27T13:54:05.0000000+00:00'
-- author: Added new pickup and drop sounds
-  changes: []
-  id: 181
-  time: '2026-01-27T18:35:03.0000000+00:00'
 - author: OnyxTheBrave
   changes:
     - type: Add
@@ -1965,10 +1945,6 @@ Entries:
       message: 'Admin OOC messages are not a giant line of one color anymore. '
   id: 272
   time: '2026-07-25T18:07:54.0000000+00:00'
-- author: ReboundQ3
-  changes: []
-  id: 273
-  time: '2026-08-13T23:32:33.0000000+00:00'
 - author: OnyxTheBrave
   changes:
     - type: Tweak
@@ -1983,13 +1959,23 @@ Entries:
       message: Removed two lobby arts from Harmony.
   id: 275
   time: '2026-08-19T11:19:38.0000000+00:00'
-- author: ReboundQ3
-  changes: []
-  id: 276
-  time: '2026-08-19T23:38:31.0000000+00:00'
 - author: BackeTako
   changes:
     - type: Add
       message: Added Empty Portal Frame
   id: 277
   time: '2026-08-22T07:47:58.0000000+00:00'
+- author: Onyx_The_Brave, HexReject
+  changes:
+    - type: Add
+      message: Added the CentComm armored winter coat
+    - type: Tweak
+      message: added a few clothing item from harmony back into the captain's loadouts
+  id: 278
+  time: '2026-08-28T12:31:59.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Tweak
+      message: Document character limit changed to 16384.
+  id: 279
+  time: '2026-08-29T11:52:48.0000000+00:00'

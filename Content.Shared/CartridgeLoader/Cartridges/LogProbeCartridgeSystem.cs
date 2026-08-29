@@ -19,7 +19,7 @@ using Content.Shared._CD.NanoChat; // CD
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 using System.Text;
-using Robust.Shared.Random;
+using Robust.Shared.Audio;
 
 namespace Content.Shared.CartridgeLoader.Cartridges;
 

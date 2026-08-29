@@ -18,7 +18,6 @@
     - !type:RoleTimeRequirement
       role: JobHeadOfSecurity
       time: 90000 # 25 hours
-  weight: 10
   startingGear: SVMagistrateGear
   icon: "JobIconSVMagistrate"
   supervisors: job-supervisors-centcom
