@@ -24,9 +24,9 @@
       - Window
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window.rsi
+    sprite: _SV/Structures/Windows/window.rsi #Changed by Sector-Vestige
   - type: Icon
-    sprite: Structures/Windows/window.rsi
+    sprite: _SV/Structures/Windows/window.rsi #Changed by Sector-Vestige
     state: full
   - type: Physics
     bodyType: Static

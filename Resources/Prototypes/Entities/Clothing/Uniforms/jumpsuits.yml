@@ -396,7 +396,7 @@
   description: Has a strong earthy smell to it. Hopefully it's merely dirty as opposed to soiled.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hydro.rsi
+    sprite: _SV/Clothing/Uniforms/Jumpsuit/hydro.rsi #Changed by Sector-Vestige
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
