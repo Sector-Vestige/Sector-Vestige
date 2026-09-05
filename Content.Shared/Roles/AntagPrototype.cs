@@ -85,6 +85,14 @@ public sealed partial class AntagPrototype : IPrototype
     public List<ProtoId<GuideEntryPrototype>>? Guides;
 
     /// <summary>
+    /// The tags of this antagonist.
+    /// Can be used to specify the type of gameplay loop they follow.
+    /// Used for filtering purposes.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<AntagTagPrototype>> Tags = [];
+
+    /// <summary>
     ///     CD Field. If the antag will be shown on the preferences list.
     ///     Does not disable the preference entirely
     /// </summary>
@@ -92,8 +100,21 @@ public sealed partial class AntagPrototype : IPrototype
     public bool VisiblePreference { get; private set; }
 
     /// <summary>
-    ///     Adds an antag to a category, allowing you to group antag preferences by faction or type in the UI.
+    ///     SV: Adds an antag to a category, allowing you to group antag preferences by faction or type in the UI.
     /// </summary>
     [DataField]
     public ProtoId<AntagCategoryPrototype>? Category;
+}
+
+/// <summary>
+/// Used to describe the type of gameplay loop some antagonists follow.
+/// Such as whether they are on-station antags or off-station.
+/// </summary>
+[Prototype]
+public sealed partial class AntagTagPrototype : IPrototype
+{
+    [IdDataField]
+    public string ID { get; private set; } = default!;
+
+    // Can potentially be expanded in the future to show up in things like guidebooks etc.
 }
