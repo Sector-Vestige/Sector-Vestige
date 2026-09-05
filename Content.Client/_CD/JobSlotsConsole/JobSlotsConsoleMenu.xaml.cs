@@ -67,10 +67,10 @@ public sealed partial class JobSlotsConsoleMenu : FancyWindow
         // Sort and add departments
         foreach (var (department, jobs) in jobsByDepartment.OrderBy(x => x.Key, DepartmentUIComparer.Instance))
         {
-            var sortedJobs = jobs
-                .OrderByDescending(x => x.proto.RealDisplayWeight)
-                .ThenBy(x => x.proto.LocalizedName)
-                .ToList();
+            // Sector Vestige: JobPrototype.RealDisplayWeight is gone; ordering now comes from the job-weight profile.
+            var sortedJobs = JobUIComparer.TryCreate(_protoManager, null, out var jobComparer)
+                ? jobs.OrderBy(x => x.proto, jobComparer).ThenBy(x => x.proto.LocalizedName).ToList()
+                : jobs.OrderBy(x => x.proto.LocalizedName).ToList();
 
             AddDepartmentSection(department, sortedJobs);
         }

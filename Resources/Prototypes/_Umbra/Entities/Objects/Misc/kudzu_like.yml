@@ -22,7 +22,17 @@
     damageModifierSet: FireKudzu
   - type: Fixtures # Needed for IgniteOnCollide to work
     fixtures:
+      # Sector Vestige: restored from BaseKudzu. Overriding the whole Fixtures
+      fix1:
+        hard: false
+        density: 7
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+        - MidImpassable
       ignition:
+        density: 0 # sensor only - must not contribute mass
         shape:
           !type:PhysShapeAabb
           bounds: "-0.4,-0.4,0.4,0.4"

@@ -18,7 +18,7 @@
     node: apcBroken
   - type: Sprite
     drawdepth: WallMountedItems
-    sprite: Structures/Power/apc.rsi
+    sprite: Structures/Wallmounts/apc.rsi
     state: broken
   - type: Damageable
     damageModifierSet: StructuralMetallicStrong

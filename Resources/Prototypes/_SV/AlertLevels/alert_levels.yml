@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+#
+# SPDX-License-Identifier: MIT
+
+- type: alertLevel
+  id: Silver
+  name: sv-alert-level-silver
+  announcement: sv-alert-level-silver-announcement
+  instructions: sv-alert-level-silver-instructions
+  sound: /Audio/Misc/notice1.ogg
+  color: "#d9d9d9"
+  emergencyLightColor: "#d9d9d9"
+  forceEnableEmergencyLights: true
+  shuttleTime: 600
+
+# Sector Vestige: command-selectable Delta, carried over from the pre-rework
+# fork tweaks (selectable, 600s shuttle, quieter sting). Upstream's DeltaNuke
+# stays untouched: nuke-only, non-selectable, 1200s.
+- type: alertLevel
+  id: Delta
+  name: alert-level-delta
+  announcement: sv-alert-level-delta-announcement
+  instructions: alert-level-delta-instructions
+  sound:
+    path: /Audio/Misc/delta.ogg
+    params:
+      volume: -1
+  color: DarkRed
+  emergencyLightColor: Orange
+  forceEnableEmergencyLights: true
+  shuttleTime: 600

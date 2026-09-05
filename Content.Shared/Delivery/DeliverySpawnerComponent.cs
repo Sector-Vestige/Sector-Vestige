@@ -42,7 +42,7 @@ public sealed partial class DeliverySpawnerComponent : Component
     /// The sound to play when the spawner spawns a delivery.
     /// </summary>
     [DataField]
-    public SoundSpecifier? SpawnSound = new SoundCollectionSpecifier("DeliverySpawnSounds", AudioParams.Default.WithVolume(-9)); // SV - Mail additions (-7 -> -9) - This is loud AF
+    public SoundSpecifier? SpawnSound = new SoundCollectionSpecifier("DeliverySpawnSounds", AudioParams.Default.AddVolume(-9)); // SV - Mail additions (-7 -> -9) - This is loud AF
 
     /// <summary>
     /// The sound to play when a spawner is opened, and spills all the deliveries out.

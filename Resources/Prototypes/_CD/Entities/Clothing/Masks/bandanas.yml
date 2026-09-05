@@ -48,6 +48,8 @@
   components:
   - type: Foldable
     folded: true
+  - type: FoldableClothing # SV - Folding toggles the mask, which adds the toggled prefix. This overrides that prefix, matching upstream's ClothingMaskBandanaBase.
+    foldedEquippedPrefix: ""
   - type: Mask
     isToggled: true
     enabled: false

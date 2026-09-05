@@ -140,9 +140,12 @@
   id: MobRodentia
   name: Urist McRat
   components:
-  - type: Hunger
-    baseDecayRate: 0.025
-  - type: Thirst
+  - type: Satiation
+    satiations:
+      Hunger:
+        prototype: RodentiaSatiationHunger
+      Thirst:
+        prototype: NormalSatiationThirst
   - type: Icon
     sprite: _CD/Mobs/Species/Rodentia/parts.rsi
     state: full

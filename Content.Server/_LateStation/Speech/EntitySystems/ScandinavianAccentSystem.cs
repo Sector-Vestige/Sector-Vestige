@@ -8,6 +8,7 @@
 using System.Text;
 using Content.Shared.Speech;
 using Content.Server.Speech.EntitySystems;
+using Content.Shared.Speech.EntitySystems;
 using Robust.Shared.Random;
 
 namespace Content.Server._Latestation.Speech.Components;

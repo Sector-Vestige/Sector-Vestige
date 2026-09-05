@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
+# Ported from the removed `seed` prototype kind to the entity-based botany system.
+# idealLight/idealHeat/displayName no longer exist upstream; heat is now handled by
+# PlantAtmospheric tolerances, whose defaults (283K-303K) already match the old idealHeat of 303.
+- type: entity
+  parent: BasePlant
+  id: MindleafPlants
+  name: mindleaf
+  components:
+  - type: Sprite
+    sprite: _CD/Objects/Specific/Hydroponics/mindleaf.rsi
+  - type: PlantData
+    name: seeds-mindleaf-name
+    noun: seeds-noun-seeds
+    packetPrototype: MindleafSeeds
+    productPrototypes: [ LeavesMindleaf ]
+  - type: Plant
+    lifespan: 180
+    maturation: 12
+    production: 12
+    yield: 2
+    potency: 20
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.25
+  - type: PlantChemicals
+    chemicals:
+      MindleafSap:
+        min: 1
+        max: 6
+        potencyDivisor: 20

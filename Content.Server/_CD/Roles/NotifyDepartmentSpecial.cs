@@ -12,7 +12,6 @@ using Content.Shared.Radio;
 using Content.Shared.Roles;
 using Content.Shared.Station.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server._CD.Roles;
 
@@ -21,8 +20,8 @@ public sealed partial class NotifyDepartmentSpecial : JobSpecial
     [DataField("notify_text", required: true)]
     public string NotifyTextKey { get; private set; } = string.Empty;
 
-    [DataField("radio_channel", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<RadioChannelPrototype>))]
-    public string RadioChannelKey { get; private set; } = string.Empty;
+    [DataField("radio_channel", required: true)]
+    public ProtoId<RadioChannelPrototype> RadioChannelKey { get; private set; }
 
     public override void AfterEquip(EntityUid mob)
     {

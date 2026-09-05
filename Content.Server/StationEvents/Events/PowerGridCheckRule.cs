@@ -17,8 +17,10 @@ using System.Threading;
 using Content.Server._Umbra.Power.Components; //Umbra-APCs explode when toggled on during power outages
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Station.Components;
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Station;
 using Content.Shared.Station.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
@@ -33,6 +35,7 @@ namespace Content.Server.StationEvents.Events
     public sealed partial class PowerGridCheckRule : StationEventSystem<PowerGridCheckRuleComponent>
     {
         [Dependency] private ApcSystem _apcSystem = default!;
+        [Dependency] private SharedStationSystem _stationSystem = default!;
 
         public override void Initialize()
         {
@@ -50,11 +53,24 @@ namespace Content.Server.StationEvents.Events
 
             component.AffectedStation = chosenStation.Value;
 
+            var largestGrid = _stationSystem.GetLargestGrid(chosenStation.Value);
+
+            if (largestGrid == null)
+                return;
+
             var query = AllEntityQuery<ApcComponent, TransformComponent>();
-            while (query.MoveNext(out var apcUid ,out var apc, out var transform))
+            while (query.MoveNext(out var apcUid, out var apc, out var transform))
             {
-                if (apc.MainBreakerEnabled && CompOrNull<StationMemberComponent>(transform.GridUid)?.Station == chosenStation)
-                    component.Powered.Add(apcUid);
+                if (!apc.MainBreakerEnabled)
+                    continue;
+
+                if (CompOrNull<StationMemberComponent>(transform.GridUid)?.Station != chosenStation)
+                    continue;
+
+                if (transform.GridUid != largestGrid.Value)
+                    continue;
+
+                component.Powered.Add(apcUid);
             }
 
             RobustRandom.Shuffle(component.Powered);
@@ -105,10 +121,18 @@ namespace Content.Server.StationEvents.Events
             var activeRules = AllEntityQuery<PowerGridCheckRuleComponent, ActiveGameRuleComponent>();
             while (activeRules.MoveNext(out var _entity, out var powerGridRule, out var _activeGameRule))
             {
-                if (stationMemberComp.Station == powerGridRule.AffectedStation)
-                {
-                    return powerGridRule;
-                }
+                if (stationMemberComp.Station != powerGridRule.AffectedStation)
+                    continue;
+
+                var largestGrid = _stationSystem.GetLargestGrid(powerGridRule.AffectedStation);
+
+                if (largestGrid == null)
+                    continue;
+
+                if (xform.GridUid != largestGrid.Value)
+                    continue;
+
+                return powerGridRule;
             }
 
             return null;
@@ -125,7 +149,7 @@ namespace Content.Server.StationEvents.Events
 
                 if (TryComp(entity, out ApcComponent? apcComponent))
                 {
-                    if(!apcComponent.MainBreakerEnabled)
+                    if (!apcComponent.MainBreakerEnabled)
                         _apcSystem.ApcToggleBreaker(entity, apcComponent);
                 }
                 RemComp<ElectricalOverloadComponent>(entity); //Umbra-APCs explode when toggled on during power outages
@@ -149,7 +173,7 @@ namespace Content.Server.StationEvents.Events
             component.FrameTimeAccumulator += frameTime;
             if (component.FrameTimeAccumulator > component.UpdateRate)
             {
-                updates = (int) (component.FrameTimeAccumulator / component.UpdateRate);
+                updates = (int)(component.FrameTimeAccumulator / component.UpdateRate);
                 component.FrameTimeAccumulator -= component.UpdateRate * updates;
             }
 

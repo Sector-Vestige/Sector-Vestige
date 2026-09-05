@@ -219,10 +219,14 @@ public sealed partial class AlignRPDPipeLayers : SnapgridCenter
     private void UpdateHijackedPlacer(AtmosPipeLayer layer, ScreenCoordinates mouseScreen)
     {
         // Try to get alternative prototypes from the construction prototype
-        var constructionSystem = (pManager.Hijack as ConstructionPlacementHijack)?.CurrentConstructionSystem;
-        var altPrototypes = (pManager.Hijack as ConstructionPlacementHijack)?.CurrentPrototype?.AlternativePrototypes;
+        // Sector Vestige: ConstructionPlacementHijack no longer exposes CurrentConstructionSystem, resolve it directly.
+        if (pManager.Hijack is not ConstructionPlacementHijack hijack)
+            return;
 
-        if (constructionSystem == null || altPrototypes == null || (int)layer >= altPrototypes.Length)
+        var constructionSystem = _entityManager.System<ConstructionSystem>();
+        var altPrototypes = hijack.CurrentPrototype?.AlternativePrototypes;
+
+        if (altPrototypes == null || (int)layer >= altPrototypes.Length)
             return;
 
         var newProtoId = altPrototypes[(int)layer];
@@ -236,7 +240,7 @@ public sealed partial class AlignRPDPipeLayers : SnapgridCenter
             return;
         }
 
-        if (newProto.ID == (pManager.Hijack as ConstructionPlacementHijack)?.CurrentPrototype?.ID)
+        if (newProto.ID == hijack.CurrentPrototype?.ID)
             return;
 
         // Start placing
@@ -244,7 +248,7 @@ public sealed partial class AlignRPDPipeLayers : SnapgridCenter
         {
             IsTile = false,
             PlacementOption = newProto.PlacementMode,
-        }, new ConstructionPlacementHijack(constructionSystem, newProto));
+        }, new ConstructionPlacementHijack(newProto));
 
         if (pManager.CurrentMode is AlignRPDPipeLayers { } newMode)
             newMode.RefreshGrid(mouseScreen);

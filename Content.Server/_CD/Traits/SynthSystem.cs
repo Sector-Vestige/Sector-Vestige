@@ -9,6 +9,7 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Server.Body.Systems;
+using Content.Shared.Body.Systems;
 using Content.Shared.Chat.TypingIndicator;
 using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Prototypes;

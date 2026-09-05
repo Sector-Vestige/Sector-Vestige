@@ -18,8 +18,8 @@ namespace Content.Client._SV.CharacterDocuments.Lobby;
 public sealed partial class SVDocumentEditPopup : FancyWindow
 {
     public const int TitleMaxLen = 64;
-    public const int ContentMaxLen = 8192;
-
+    // 16-06-2025 - 18:26: Noone is gonna hit 16k -VI
+    public const int ContentMaxLen = 16384;
     private bool _isValid;
     private DocumentType _docType;
 

@@ -6,6 +6,7 @@ using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
+using Content.Shared.Station.Components;
 using Content.Shared.StationRecords.Components;
 using Content.Shared.StationRecords.Events;
 using Content.Shared._CD.Loadouts;
@@ -162,6 +163,12 @@ public sealed partial class StationRecordsSystem : EntitySystem
 
         // CD: Job titles. We need to inject it here for the manifest and records.
         var jobTitle = TryComp<RenameIdComponent>(idUid, out var rename) ? Loc.GetString(rename.Value) : jobPrototype.LocalizedName;
+        var jobWeights = TryComp<StationDataComponent>(station, out var stationData)
+            ? stationData.JobWeights
+            : null;
+        var displayPriority = JobUIComparer.TryCreate(ProtoMan, jobWeights, out var comparer)
+            ? comparer.GetWeight(jobPrototype) ?? 0
+            : 0;
 
         var record = new GeneralStationRecord
         {
@@ -172,7 +179,7 @@ public sealed partial class StationRecordsSystem : EntitySystem
             JobPrototype = jobId,
             Species = species,
             Gender = gender,
-            DisplayPriority = jobPrototype.RealDisplayWeight,
+            DisplayPriority = displayPriority,
             Fingerprint = mobFingerprint,
             DNA = dna
         };

@@ -1,0 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+#
+# SPDX-License-Identifier: MIT
+
+# Preserves rodentia's pre-Satiation tuning: HungerComponent used baseDecayRate 0.025,
+# which is 1.5x the 0.01666666666 default, so rodentia get hungry faster than other species.
+- type: satiation
+  id: RodentiaSatiationHunger
+  parent: NormalSatiationHunger
+  baseChangeRate: -0.025

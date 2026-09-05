@@ -8,6 +8,7 @@
 using Content.Server.Nutrition;
 using Content.Server.Speech;
 using Content.Server.Speech.EntitySystems;
+using Content.Shared.Speech.EntitySystems;
 using Content.Shared.CD.Storage.Components;
 using Content.Shared.CD.Storage.EntitySystems;
 using Content.Shared.Nutrition;

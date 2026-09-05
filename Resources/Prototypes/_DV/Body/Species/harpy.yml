@@ -447,8 +447,10 @@
   description: Open your vocal MIDI interface.
   components:
   - type: Action
-    icon: Interface/Actions/pai-midi.png
     itemIconStyle: NoItem
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/pai-midi.png
   - type: InstantAction
     event: !type:OpenUiActionEvent
       key: enum.InstrumentUiKey.Key

@@ -1,14 +1,15 @@
-﻿using Content.Client.Gameplay;
+using Content.Client.Gameplay;
 using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
-using Content.Shared._AXOLOTL;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
+using Content.Shared.Ghost.Systems;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 
 // AXOLOTL: imports for ghostrespawn
 using Content.Shared.CCVar;
+using Content.Shared._AXOLOTL;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 
