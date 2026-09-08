@@ -5,6 +5,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
+using Content.Shared.Weapons.Misc;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -24,6 +25,7 @@ public sealed partial class ServerActualFireSystem : EntitySystem
     [Dependency] private EntityLookupSystem _lookupSystem = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private SharedActualFireSystem _fireSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private const float ReagentToBurn = 5.0f;
 
@@ -87,47 +89,43 @@ public sealed partial class ServerActualFireSystem : EntitySystem
         }
     }
 
-    private void OnInit(EntityUid uid, ActualFireComponent component, ComponentInit args)
+    private void OnInit(EntityUid uid, ActualFireComponent comp, ComponentInit args)
     {
-        TargetEntity(uid, component);
+        if (!_entityManager.TryGetComponent<ActualFireComponent>(uid, out var actualFire))
+            return;
+
+        TargetEntity(uid);
         _fireSystem.UpdateData(uid);
-        Dirty(uid, component);
+        Dirty(uid, actualFire);
     }
 
-    public void TryLightFluidFire(EntityUid uid)
-    {
-        var entity = _entityManager.TryGetComponent<SolutionComponent>(uid, out var solution);
 
-        if (solution == null || solution.Solution.Contents.Count == 0)
-            return;
-
-        if (!_fireSystem.CheckFlammability(solution.Solution))
-            return;
-
-        //At this point, it should try to light
-    }
 
     /// <summary>
     /// Will try to get a target solution to burn. This will either be provided as either parsing a third target Entity UID as a target, or it will try to find a puddle where the tile the fire is contained in.
     /// It's better to use the specific target function as it's less jank, but it allows admins to spawn the entity wherever and it "just work"
     /// </summary>
     /// <param name="uid">UID of the fire</param>
-    /// <param name="component"></param>
     /// <param name="target">Optional target for the fire.</param>
-    public void TargetEntity(EntityUid uid, ActualFireComponent component, EntityUid target)
+    public void TargetEntity(EntityUid uid, EntityUid target)
     {
-        component.TargetEntity = target;
-        return;
+        if (!_entityManager.TryGetComponent<ActualFireComponent>(uid, out var actualFire))
+            return;
+
+        actualFire.TargetEntity = target;
     }
 
-    public void TargetEntity(EntityUid uid, ActualFireComponent component)
+    public void TargetEntity(EntityUid uid)
     {
+        if (!_entityManager.TryGetComponent<ActualFireComponent>(uid, out var actualFire))
+            return;
+
         var query = _lookupSystem.GetEntitiesIntersecting(uid);
         foreach (var entity in query)
         {
             if (_entityManager.HasComponent<SolutionComponent>(entity))
             {
-                component.TargetEntity = entity;
+                actualFire.TargetEntity = entity;
             }
         }
     }

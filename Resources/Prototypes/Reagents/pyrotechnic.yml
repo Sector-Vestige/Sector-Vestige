@@ -185,7 +185,7 @@
   flammability: #SV: Begin - Flammable fluids
     isFlammable: true
     isOxidizer: true
-    generatedHeat: 580
+    generatedHeat: 150
     maxHeat: 2477
     exhaustedGases:
     - gas: CarbonDioxide
@@ -204,6 +204,11 @@
       molPerSecond:
         min: 10
         max: 15 #SV: End - Flammable fluids
+    - gas: Oxygen
+      spawnWeight: 1
+      gasAmount:
+        min: -5
+        max: -5
 
 - type: reagent
   id: Fluorosurfactant

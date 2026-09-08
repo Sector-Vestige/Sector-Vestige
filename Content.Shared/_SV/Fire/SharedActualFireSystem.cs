@@ -8,6 +8,7 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Examine;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._SV.Fire;
 
@@ -18,22 +19,24 @@ public sealed partial class SharedActualFireSystem : EntitySystem
 {
     [Dependency] private SharedAtmosphereSystem _atmosphereSystem = default!;
     [Dependency] private EntityManager _entityManager = default!;
-    [Dependency] private PrototypeManager _prototypeManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private const float EffectiveOxygenOxidation = 21.8f;
     private const float EffectiveFrezonOxidation = 5.3f;
+    private const float EffectiveNitrousOxidation = 10.8f;
     /// <inheritdoc/>
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ActualFireComponent, ExaminedEvent>(OnExamine);
+//        SubscribeLocalEvent<ActualFireComponent, ExaminedEvent>(OnExamine);
     }
 
-    private void OnExamine(EntityUid uid, ActualFireComponent component, ref ExaminedEvent args)
-    {
-        throw new NotImplementedException();
-    }
+    // private void OnExamine(EntityUid uid, ActualFireComponent component, ref ExaminedEvent args)
+    // {
+    //     throw new NotImplementedException();
+    // }
 
     public void TryLightFluidFire(EntityUid uid)
     {
@@ -42,10 +45,13 @@ public sealed partial class SharedActualFireSystem : EntitySystem
         if (solution == null || solution.Solution.Contents.Count == 0)
             return;
 
-        if (!CheckFlammability(solution.Solution))
+        if (!CheckFlammability(solution.Solution) && GetOxidation(uid) <= 0)
             return;
 
-        //At this point, it should try to light
+        if (!_transform.TryGetMapOrGridCoordinates(uid, out var cords))
+            return;
+
+        _entityManager.PredictedSpawnAttachedTo("PuddleFire", cords.Value);
     }
 
     /// <summary>
@@ -131,7 +137,6 @@ public sealed partial class SharedActualFireSystem : EntitySystem
             return oxidizer;
 
         //for each oxidizing gas that exists, get the amount that exists in the tile, and then divide it by its EffectiveOxidation coefficient to get how effective the air is at oxidizing.
-        //Yes this is overkill for the fact that we only have oxygen as an oxidizing gas, but one can dream.
             foreach (var gas in mixture)
             {
                 switch (gas.gas)
@@ -141,6 +146,9 @@ public sealed partial class SharedActualFireSystem : EntitySystem
                         break;
                     case Gas.Frezon:
                         oxidizer += gas.moles / EffectiveFrezonOxidation;
+                        break;
+                    case Gas.NitrousOxide:
+                        oxidizer += gas.moles / EffectiveNitrousOxidation;
                         break;
                 }
             }
