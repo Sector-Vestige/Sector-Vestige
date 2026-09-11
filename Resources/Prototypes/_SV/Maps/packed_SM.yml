@@ -27,14 +27,14 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: gameMap
-  id: Packed_SM
-  mapName: 'Packed_SM'
+  id: Packed
+  mapName: 'Packed'
   mapPath: /Maps/_SV/packed_SM.yml
   preview: /Textures/_SV/MapPreviews/packed_sm.png # SV
   minPlayers: 5
   maxPlayers: 25 #CD change
   stations:
-    Packed_SM:
+    Packed:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
@@ -96,6 +96,6 @@
             StationAi: [ 1, 1 ]
             Borg: [ 1, 1 ]
             #misc (2)
-            Prisoner: [ 2, 2 ] #Sector Vestige: Add prioner to the map rotations
+            Prisoner: [ 2, 2 ] #Sector Vestige: Add prisoner to the map rotations
             #Central Command
             SVMagistrate: [ 1, 1 ]

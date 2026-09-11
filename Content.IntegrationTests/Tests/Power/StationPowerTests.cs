@@ -55,7 +55,7 @@ public sealed class StationPowerTests : GameTest
             // "Tram2", // Vestige: Pending implementation
             // "Vanquish", // LateStation Map by Lachri
             "Cluster", // Sector Vestige, remade by Rebound
-            "Packed_SM", // Sector Vestige, edits by Lambda.Tiger
+            "Packed", // Sector Vestige, edits by Lambda.Tiger
             "Amber", // Sector Vestige, edits by Lambda.Tiger
     ];
 
