@@ -2,6 +2,7 @@ using System.Collections.Frozen;
 using System.Linq;
 using Content.Shared.FixedPoint;
 using System.Text.Json.Serialization;
+using Content.Shared._SV.Fire;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Contraband;
 using Content.Shared.EntityEffects;
@@ -186,6 +187,11 @@ namespace Content.Shared.Chemistry.Reagent
 
         [DataField]
         public SoundSpecifier FootstepSound = new SoundCollectionSpecifier("FootstepPuddle");
+
+
+        //SV: Flamable Fluid
+        [DataField("flammability")]
+        public FlammableFluidComponent FlammableFluid;
 
         // TODO: Reaction tile doesn't work properly and destroys reagents way too quickly
         public FixedPoint2 ReactionTile(TileRef tile, FixedPoint2 reactVolume, IEntityManager entityManager, List<ReagentData>? data)
