@@ -1979,3 +1979,23 @@ Entries:
       message: Document character limit changed to 16384.
   id: 279
   time: '2026-08-29T11:52:48.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: hardsuits for foxfolk have been fixed.
+  id: 280
+  time: '2026-09-09T19:46:47.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Add
+      message: Added mapvotesv as a new command for GM's.
+    - type: Tweak
+      message: Made mapvotes have a preview.
+  id: 281
+  time: '2026-09-10T14:39:43.0000000+00:00'
+- author: lambdatiger
+  changes:
+    - type: Fix
+      message: Fixed Amber airlock, firelock, and blastdoor alignment.
+  id: 282
+  time: '2026-09-11T15:22:29.0000000+00:00'

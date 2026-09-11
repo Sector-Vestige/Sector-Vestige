@@ -1,3 +1,22 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
+// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Mith-randalf <84274729+Mith-randalf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 mirrorcult <notzombiedude@gmail.com>
+// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
+// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -154,7 +173,7 @@ namespace Content.Client.Voting
                 var vote = new ActiveVote(voteId)
                 {
                     Entries = message.Options
-                        .Select(c => new VoteEntry(c.name))
+                        .Select(c => new VoteEntry(c.name, c.icon)) // SV - option icons
                         .ToArray()
                 };
 
@@ -258,11 +277,13 @@ namespace Content.Client.Voting
         public sealed class VoteEntry
         {
             public string Text { get; }
+            public string? Icon { get; } // SV - texture path of the option icon, null for none
             public int Votes { get; set; }
 
-            public VoteEntry(string text)
+            public VoteEntry(string text, string? icon = null) // SV - option icons
             {
                 Text = text;
+                Icon = string.IsNullOrEmpty(icon) ? null : icon; // SV - option icons
             }
         }
     }
