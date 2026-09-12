@@ -27,14 +27,14 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: gameMap
-  id: Packed
+  id: Packed_SM
   mapName: 'Packed'
   mapPath: /Maps/_SV/packed_SM.yml
-  preview: /Textures/_SV/MapPreviews/packed_sm.png # SV
+  preview: /Textures/_SV/MapPreviews/packed_SM.png # SV
   minPlayers: 5
   maxPlayers: 25 #CD change
   stations:
-    Packed:
+    Packed_SM:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
