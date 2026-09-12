@@ -1,3 +1,32 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2021 mirrorcult <notzombiedude@gmail.com>
+// SPDX-FileCopyrightText: 2022 Mervill <mervills.email@gmail.com>
+// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 corentt <36075110+corentt@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 SpaceManiac <tad@platymuus.com>
+// SPDX-FileCopyrightText: 2026 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Голубь <124601871+Golubgik@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Collections;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
@@ -206,7 +235,11 @@ namespace Content.Server.Voting.Managers
         {
             var id = _nextVoteId++;
 
-            var entries = options.Options.Select(o => new VoteEntry(o.data, o.text)).ToArray();
+            // SV - option icons - Start
+            var entries = options.Options
+                .Select((o, i) => new VoteEntry(o.data, o.text, i < options.OptionIcons.Count ? options.OptionIcons[i] : null))
+                .ToArray();
+            // SV - option icons - END
 
             var start = _timing.RealTime;
             var end = start + options.Duration;
@@ -286,12 +319,14 @@ namespace Content.Server.Voting.Managers
                 msg.DisplayVotes = true;
             }
 
-            msg.Options = new (ushort votes, string name)[v.Entries.Length];
+            // SV - option icons - START
+            msg.Options = new (ushort votes, string name, string icon)[v.Entries.Length];
             for (var i = 0; i < msg.Options.Length; i++)
             {
                 ref var entry = ref v.Entries[i];
-                msg.Options[i] = (msg.DisplayVotes ? (ushort) entry.Votes : (ushort) 0, entry.Text);
+                msg.Options[i] = (msg.DisplayVotes ? (ushort) entry.Votes : (ushort) 0, entry.Text, entry.Icon ?? string.Empty);
             }
+            // SV - option icons - END
 
             player.Channel.SendMessage(msg);
         }
@@ -535,12 +570,14 @@ namespace Content.Server.Voting.Managers
         {
             public object Data;
             public string Text;
+            public string? Icon; // SV - option icons
             public int Votes;
 
-            public VoteEntry(object data, string text)
+            public VoteEntry(object data, string text, string? icon = null) // SV - option icons
             {
                 Data = data;
                 Text = text;
+                Icon = icon; // SV - option icons
                 Votes = 0;
             }
         }

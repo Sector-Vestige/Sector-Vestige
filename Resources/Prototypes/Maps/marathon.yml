@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: 2025 Wizards Den contributors
-# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 Wizards Den contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2021 Timrod <timrod@gmail.com>
 # SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
 # SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
@@ -11,7 +11,6 @@
 # SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
 # SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2023 Ubaser <134914314+UbaserB@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 Jacob Scott <scott@wearejacob.com>
 # SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
@@ -21,6 +20,9 @@
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
 # SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
 # SPDX-FileCopyrightText: 2025 youtissoum <51883137+youtissoum@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Emisse <99158783+Emisse@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 emisse <99158783+Emisse@users.noreply.github.com>
 #
 # SPDX-License-Identifier: MIT
 
@@ -28,6 +30,7 @@
   id: Marathon
   mapName: 'Marathon Station'
   mapPath: /Maps/marathon.yml
+  preview: /Textures/_SV/MapPreviews/marathon.png # SV
   minPlayers: 35
   maxPlayers: 70
   stations:

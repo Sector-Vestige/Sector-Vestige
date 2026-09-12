@@ -1,3 +1,17 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Voting.Managers;
 using Robust.Shared.Player;
 
@@ -38,6 +52,12 @@ namespace Content.Server.Voting
         ///     and a data object that can be used to keep track of options later.
         /// </summary>
         public List<(string text, object data)> Options { get; set; } = new();
+
+        /// <summary>
+        ///     SV - Optional texture path shown on the button of each option, aligned by index with <see cref="Options"/>.
+        ///     A missing or null entry means the option has no icon.
+        /// </summary>
+        public List<string?> OptionIcons { get; set; } = new();
 
         /// <summary>
         ///     Which sessions may send a vote. Used when only a subset of players should be able to vote. Defaults to all.

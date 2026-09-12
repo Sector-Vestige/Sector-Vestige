@@ -17,10 +17,10 @@
 # SPDX-FileCopyrightText: 2025 Damn Feds <20566341+K-Dynamic@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Nox <nebulousnox38@gmail.com>
 # SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
 # SPDX-FileCopyrightText: 2025 Spanky <scott@wearejacob.com>
 # SPDX-FileCopyrightText: 2025 ToxicSonicFan04 <167356917+ToxicSonicFan04@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 lambdatiger <11843718+lambdatiger@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 lambdatiger <spam.stnuocca.sl@gmail.com>
 #
@@ -28,8 +28,9 @@
 
 - type: gameMap
   id: Packed_SM
-  mapName: 'Packed_SM'
+  mapName: 'Packed'
   mapPath: /Maps/_SV/packed_SM.yml
+  preview: /Textures/_SV/MapPreviews/packed_sm.png # SV
   minPlayers: 5
   maxPlayers: 25 #CD change
   stations:
@@ -95,6 +96,6 @@
             StationAi: [ 1, 1 ]
             Borg: [ 1, 1 ]
             #misc (2)
-            Prisoner: [ 2, 2 ] #Sector Vestige: Add prioner to the map rotations
+            Prisoner: [ 2, 2 ] #Sector Vestige: Add prisoner to the map rotations
             #Central Command
             SVMagistrate: [ 1, 1 ]
