@@ -30,4 +30,11 @@ public sealed class SVCCVars : CVars
     /// </summary>
     public static readonly CVarDef<int>
         CharacterDocumentBinRetentionDays = CVarDef.Create("sv.character_documents.bin_retention_days", 30, CVar.SERVERONLY);
+
+    /// <summary>
+    /// How long, in seconds, mapvotesv lasts.
+    /// </summary>
+    public static readonly CVarDef<int>
+        MapVoteDuration = CVarDef.Create("sv.mapvote.runoff_duration", 150, CVar.SERVERONLY);
+
 }

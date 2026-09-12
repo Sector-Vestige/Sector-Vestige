@@ -24,6 +24,7 @@
   id: Cluster
   mapName: 'Cluster'
   mapPath: /Maps/_SV/cluster.yml
+  preview: /Textures/_SV/MapPreviews/cluster.png # SV
   minPlayers: 5
   maxPlayers: 25
   stations:
