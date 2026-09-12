@@ -30,7 +30,7 @@
   id: Packed_SM
   mapName: 'Packed'
   mapPath: /Maps/_SV/packed_SM.yml
-  preview: /Textures/_SV/MapPreviews/packed_SM.png # SV
+  preview: /Textures/_SV/MapPreviews/packed_sm.png # SV
   minPlayers: 5
   maxPlayers: 25 #CD change
   stations:
