@@ -1999,3 +1999,9 @@ Entries:
       message: Fixed Amber airlock, firelock, and blastdoor alignment.
   id: 282
   time: '2026-09-11T15:22:29.0000000+00:00'
+- author: lambdatiger
+  changes:
+    - type: Fix
+      message: Packed_SM resprite changes.
+  id: 283
+  time: '2026-09-12T16:25:46.0000000+00:00'
