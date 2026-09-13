@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Based on signs from bee station at commit https://github.com/BeeStation/BeeStation-Hornet/commit/13dd5ac712385642574138f6d7b30eea7c2fab9c, derived by purpleskittleo from existing signs",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "direction_altCommand",
+      "directions": 4
+    },
+    {
+      "name": "direction_altCryo",
+      "directions": 4
+    },
+    {
+      "name": "direction_altData",
+      "directions": 4
+    },
+    {
+      "name": "direction_altHabitation",
+      "directions": 4
+    },
+    {
+      "name": "direction_altHeavy",
+      "directions": 4
+    },
+    {
+      "name": "direction_altLight",
+      "directions": 4
+    },
+    {
+      "name": "direction_altMedium",
+      "directions": 4
+    },
+    {
+      "name": "direction_altMedical",
+      "directions": 4
+    },
+    {
+      "name": "direction_altOffices",
+      "directions": 4
+      }
+  ]
+}

@@ -1,0 +1,95 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseSignDirectional
+  id: SignDirectionalCommandAlt
+  name: command sign
+  description: A direction sign, pointing out which way a place labelled "COMMND" is.
+  components:
+  - type: Sprite
+    sprite: _SV/Structures/Wallmount/signs.rsi
+    state: direction_altCommand
+
+- type: entity
+  parent: BaseSignDirectional
+  id: SignDirectionalCryoAlt
+  name: cryo sign
+  description: A direction sign, pointing out which way a place labelled "CRYOGN" is.
+  components:
+  - type: Sprite
+    sprite: _SV/Structures/Wallmount/signs.rsi
+    state: direction_altCryo
+
+- type: entity
+  parent: BaseSignDirectional
+  id: SignDirectionalDataAlt
+  name: data sign
+  description: A direction sign, pointing out which way a place labelled "DATA" is.
+  components:
+  - type: Sprite
+    sprite: _SV/Structures/Wallmount/signs.rsi
+    state: direction_altData
+
+- type: entity
+  parent: BaseSignDirectional
+  id: SignDirectionalHabitationAlt
+  name: habitation sign
+  description: A direction sign, pointing out which way a place labelled "HABITN" is.
+  components:
+  - type: Sprite
+    sprite: _SV/Structures/Wallmount/signs.rsi
+    state: direction_altHabitation
+
+- type: entity
+  parent: BaseSignDirectional
+  id: SignDirectionalHeavyAlt
+  name: heavy sign
+  description: A direction sign, pointing out which way a place labelled "HEAVY" is.
+  components:
+  - type: Sprite
+    sprite: _SV/Structures/Wallmount/signs.rsi
+    state: direction_altHeavy
+
+- type: entity
+  parent: BaseSignDirectional
+  id: SignDirectionalMediumAlt
+  name: medium sign
+  description: A direction sign, pointing out which way a place labelled "MEDIUM" is.
+  components:
+  - type: Sprite
+    sprite: _SV/Structures/Wallmount/signs.rsi
+    state: direction_altMedium
+
+- type: entity
+  parent: BaseSignDirectional
+  id: SignDirectionalLightAlt
+  name: light sign
+  description: A direction sign, pointing out which way a place labelled "LIGHT" is.
+  components:
+  - type: Sprite
+    sprite: _SV/Structures/Wallmount/signs.rsi
+    state: direction_altLight
+
+- type: entity
+  parent: BaseSignDirectional
+  id: SignDirectionaMedicalAlt
+  name: medical sign
+  description: A direction sign, pointing out which way a place labelled "MEDICAL" is.
+  components:
+  - type: Sprite
+    sprite: _SV/Structures/Wallmount/signs.rsi
+    state: direction_altMedical
+
+- type: entity
+  parent: BaseSignDirectional
+  id: SignDirectionalOfficesAlt
+  name: offices sign
+  description: A direction sign, pointing out which way a place labelled "OFFICES" is.
+  components:
+  - type: Sprite
+    sprite: _SV/Structures/Wallmount/signs.rsi
+    state: direction_altOffices
