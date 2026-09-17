@@ -10,6 +10,7 @@
 # SPDX-FileCopyrightText: 2025 Whatstone
 # SPDX-FileCopyrightText: 2025 mogaiskii <sani.mog@gmail.com>
 # SPDX-FileCopyrightText: 2026 BackeTako <branne33@gmail.com>
+# SPDX-FileCopyrightText: 2026 TakoDragon <69509841+BackeTako@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -26,6 +27,7 @@
 
 - type: emoteSounds
   id: MaleAvaliEmote
+  voiceSelectorName: humanoid-profile-editor-voice-masculine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:
@@ -33,10 +35,19 @@
       collection: AvaliScreams
     Laugh:
       collection: AvaliLaugh
+    # Sector Vestige: bird noises instead of the human collections; there is no bird yawn or snore yet, so those stay silent
     Sneeze:
-      collection: MaleSneezes
+      path: /Audio/Voice/Vox/vox_sneeze.ogg
     Cough:
-      collection: MaleCoughs
+      path: /Audio/Voice/Vox/vox_cough.ogg
+    Sigh:
+      collection: HarpySigh
+    Crying:
+      collection: HarpyCry
+    Gasp:
+      collection: HarpyGasp
+    DefaultDeathgasp:
+      path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
     CatMeow:
       collection: CatMeows
     CatHisses:
@@ -45,30 +56,20 @@
       collection: MonkeyScreeches
     RobotBeep:
       collection: RobotBeeps
-    Yawn:
-      collection: MaleYawn
-    Snore:
-      collection: Snores
     Honk:
       collection: BikeHorn
-    Sigh:
-      collection: MaleSigh
-    Crying:
-      collection: MaleCry
     Whistle:
       collection: Whistles
     Weh:
       collection: Weh
     Coo:
       collection: HarpyCoos
-    Gasp:
-      collection: MaleGasp
-    DefaultDeathgasp:
-      collection: MaleDeathGasp
-
+    Chirp:
+      collection: HarpyChirps
 
 - type: emoteSounds
   id: FemaleAvaliEmote
+  voiceSelectorName: humanoid-profile-editor-voice-feminine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:
@@ -76,10 +77,19 @@
       collection: AvaliScreams
     Laugh:
       collection: AvaliLaugh
+    # Sector Vestige: bird noises instead of the human collections; there is no bird yawn or snore yet, so those stay silent
     Sneeze:
-      collection: FemaleSneezes
+      path: /Audio/Voice/Vox/vox_sneeze.ogg
     Cough:
-      collection: FemaleCoughs
+      path: /Audio/Voice/Vox/vox_cough.ogg
+    Sigh:
+      collection: HarpySigh
+    Crying:
+      collection: HarpyCry
+    Gasp:
+      collection: HarpyGasp
+    DefaultDeathgasp:
+      path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
     CatMeow:
       collection: CatMeows
     CatHisses:
@@ -88,23 +98,13 @@
       collection: MonkeyScreeches
     RobotBeep:
       collection: RobotBeeps
-    Yawn:
-      collection: FemaleYawn
-    Snore:
-      collection: Snores
     Honk:
-      collection: CluwneHorn
-    Sigh:
-      collection: FemaleSigh
-    Crying:
-      collection: FemaleCry
+      collection: BikeHorn
     Whistle:
       collection: Whistles
     Weh:
       collection: Weh
     Coo:
       collection: HarpyCoos
-    Gasp:
-      collection: FemaleGasp
-    DefaultDeathgasp:
-      collection: FemaleDeathGasp
+    Chirp:
+      collection: HarpyChirps

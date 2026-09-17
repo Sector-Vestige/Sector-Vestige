@@ -1,3 +1,14 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2026 Falcon <falcon@zigtag.dev>
+// SPDX-FileCopyrightText: 2026 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2026 Whatstone <166147148+whatston3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 pathetic meowmeow <uhhadd@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.IdentityManagement;
@@ -37,6 +48,23 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
         {
             _grammar.SetGender((ent, grammar), profile.Gender);
         }
+    }
+
+    // Sector Vestige: lets traits swap the voice after the profile has been applied.
+    /// <summary>
+    /// Changes the humanoid's voice and tells <c>Vocal</c> to load the matching emote sounds.
+    /// </summary>
+    public void SetVoice(Entity<HumanoidProfileComponent?> ent, ProtoId<EmoteSoundsPrototype> voice)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        var old = ent.Comp.Voice;
+        ent.Comp.Voice = voice;
+        Dirty(ent);
+
+        var voiceChanged = new VoiceChangedEvent(old, voice);
+        RaiseLocalEvent(ent, ref voiceChanged);
     }
 
     private void OnExamined(Entity<HumanoidProfileComponent> ent, ref ExaminedEvent args)

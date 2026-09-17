@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: [Incorporeal, BaseMob, MobNightVision]
+  id: DesynchronizedPocketMyo
+  name: a puddle
+  description: You're not sure what you're looking at.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _SV/Mobs/Demons/myoqueen.rsi
+    offset: 0,0.4
+    layers:
+    - state: jaunt
+    overrideContainerOcclusion: true
+    drawdepth: Ghosts
+    noRot: true
+  - type: Spectral
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 6
+    baseWalkSpeed: 4
+  - type: ContentEye
+    maxZoom: 1.44,1.44
+  - type: Eye
+    drawFov: false

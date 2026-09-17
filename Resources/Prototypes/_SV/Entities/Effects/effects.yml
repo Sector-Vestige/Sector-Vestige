@@ -1,0 +1,75 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: EffectMyoLiquifying
+  name: aberrant queen
+  description: It's melting into the vents!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: /Textures/_SV/Effects/myoqueen.rsi
+    drawdepth: Effects
+    noRot: true
+    offset: 0,0.4
+    layers:
+    - state: liquifying
+    - state: liquifying-unshaded
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: true
+  - type: TimedDespawn
+    lifetime: 1.6
+  - type: Damageable # Make it so that the players can shoot it and make them think they're doing something. In reality, they aren't.
+
+- type: entity
+  id: EffectMyoSolidifying
+  name: aberrant queen
+  description: It's coming out of the vents!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: /Textures/_SV/Effects/myoqueen.rsi
+    drawdepth: Effects
+    noRot: true
+    offset: 0,0.4
+    layers:
+    - state: solidifying
+    - state: solidifying-unshaded
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: true
+  - type: TimedDespawn
+    lifetime: 1.6
+  - type: Damageable # Make it so that the players can shoot it and make them think they're doing something. In reality, they aren't.

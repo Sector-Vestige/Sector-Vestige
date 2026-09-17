@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "size": {
+    "x": 64,
+    "y": 64
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://gitlab.com/cmdevs/colonial-warfare/-/tree/dev/icons/mob/xenonids and modified by HexReject (Github)",
+  "states": [
+    {
+      "name": "alive",
+      "directions": 4
+    },
+    {
+      "name": "eyes",
+      "directions": 4
+    },
+    {
+      "name": "crit"
+    },
+    {
+      "name": "crit-eyes"
+    },
+    {
+      "name": "dead"
+    },
+    {
+      "name": "jaunt",
+      "directions": 4
+    }
+  ]
+}

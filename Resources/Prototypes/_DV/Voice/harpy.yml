@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
 # SPDX-FileCopyrightText: 2026 BackeTako <branne33@gmail.com>
+# SPDX-FileCopyrightText: 2026 TakoDragon <69509841+BackeTako@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -9,6 +10,7 @@
 # species : Harpy
 - type: emoteSounds
   id: SoundsHarpyMale
+  voiceSelectorName: humanoid-profile-editor-voice-masculine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:
@@ -87,6 +89,7 @@
 
 - type: emoteSounds
   id: SoundsHarpyFemale
+  voiceSelectorName: humanoid-profile-editor-voice-feminine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:

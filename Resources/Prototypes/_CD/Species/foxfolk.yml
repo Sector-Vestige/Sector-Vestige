@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: species
   id: Foxfolk
   name: species-name-foxfolk
@@ -10,3 +17,10 @@
   femaleFirstNames: NamesFoxfolkFemale
   lastNames: NamesFoxfolkLast
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex: # Sector Vestige: voice comes from the species prototype now
+  - MaleFoxfolk
+  - FemaleFoxfolk
+  - MaleFoxfolk
+  voices:
+  - MaleFoxfolk
+  - FemaleFoxfolk

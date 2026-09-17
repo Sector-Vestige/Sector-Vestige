@@ -1,13 +1,14 @@
 # SPDX-FileCopyrightText: 2026 Delta-V contributors
 # SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Species : Felinid
 - type: emoteSounds
   id: SoundsFelinidFemale
+  voiceSelectorName: humanoid-profile-editor-voice-feminine # Sector Vestige: shown in the character editor
   sounds:
     Hiss:
       collection: FelinidHisses
@@ -54,6 +55,7 @@
 
 - type: emoteSounds
   id: SoundsFelinidMale
+  voiceSelectorName: humanoid-profile-editor-voice-masculine # Sector Vestige: shown in the character editor
   sounds:
     Hiss:
       collection: FelinidHisses

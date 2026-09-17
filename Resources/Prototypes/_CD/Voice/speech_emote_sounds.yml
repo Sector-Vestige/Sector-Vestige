@@ -2,14 +2,15 @@
 # SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2025 MoonlightHollow <muszynskinicholas8@gmail.com>
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Zamshi8 <235235723+Zamshi8@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 #
 # SPDX-License-Identifier: MIT
 
 # Avali Sounds
 - type: emoteSounds
   id: MaleAvali
+  voiceSelectorName: humanoid-profile-editor-voice-masculine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:
@@ -17,9 +18,37 @@
       path: /Audio/_CD/Voice/Avali/avali_scream.ogg
     Laugh:
       path: /Audio/_CD/Voice/Avali/avali_laugh.ogg
+    # Sector Vestige: bird noises instead of the human collections; there is no bird yawn or snore yet, so those stay silent
+    Sneeze:
+      path: /Audio/Voice/Vox/vox_sneeze.ogg
+    Cough:
+      path: /Audio/Voice/Vox/vox_cough.ogg
+    Sigh:
+      collection: HarpySigh
+    Crying:
+      collection: HarpyCry
+    Gasp:
+      collection: HarpyGasp
+    DefaultDeathgasp:
+      path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
+    CatMeow:
+      collection: CatMeows
+    CatHisses:
+      collection: CatHisses
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Honk:
+      collection: BikeHorn
+    Whistle:
+      collection: Whistles
+    Weh:
+      collection: Weh
 
 - type: emoteSounds
   id: FemaleAvali
+  voiceSelectorName: humanoid-profile-editor-voice-feminine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:
@@ -27,10 +56,38 @@
       path: /Audio/_CD/Voice/Avali/avali_scream.ogg
     Laugh:
       path: /Audio/_CD/Voice/Avali/avali_laugh.ogg
+    # Sector Vestige: bird noises instead of the human collections; there is no bird yawn or snore yet, so those stay silent
+    Sneeze:
+      path: /Audio/Voice/Vox/vox_sneeze.ogg
+    Cough:
+      path: /Audio/Voice/Vox/vox_cough.ogg
+    Sigh:
+      collection: HarpySigh
+    Crying:
+      collection: HarpyCry
+    Gasp:
+      collection: HarpyGasp
+    DefaultDeathgasp:
+      path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
+    CatMeow:
+      collection: CatMeows
+    CatHisses:
+      collection: CatHisses
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Honk:
+      collection: BikeHorn
+    Whistle:
+      collection: Whistles
+    Weh:
+      collection: Weh
 
 # Foxfolk Sounds
 - type: emoteSounds
   id: MaleFoxfolk
+  voiceSelectorName: humanoid-profile-editor-voice-masculine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:
@@ -67,6 +124,7 @@
 
 - type: emoteSounds
   id: FemaleFoxfolk
+  voiceSelectorName: humanoid-profile-editor-voice-feminine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:
@@ -103,6 +161,7 @@
 
 - type: emoteSounds
   id: MaleRodentia
+  voiceSelectorName: humanoid-profile-editor-voice-masculine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:
@@ -129,6 +188,7 @@
 
 - type: emoteSounds
   id: FemaleRodentia
+  voiceSelectorName: humanoid-profile-editor-voice-feminine # Sector Vestige: shown in the character editor
   params:
     variation: 0.125
   sounds:

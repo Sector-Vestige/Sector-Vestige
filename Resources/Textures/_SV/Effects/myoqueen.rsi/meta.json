@@ -1,0 +1,103 @@
+{
+     "version": 1,
+    "size": {
+      "x": 64,
+      "y": 64
+     },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from https://gitlab.com/cmdevs/colonial-warfare/-/tree/dev/icons/mob/xenonids and modified by HexReject (Github), then animated by purpleskittleo (Discord)",
+    "states": [
+         {
+             "name": "liquifying",
+             "delays":[
+            [
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1
+            ]
+         ]
+     },
+        {
+            "name": "liquifying-unshaded",
+            "delays":[
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "solidifying",
+            "delays":[
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "solidifying-unshaded",
+            "delays":[
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+  ]
+}

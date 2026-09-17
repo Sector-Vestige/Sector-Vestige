@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Some fucked up jaunt
+- type: polymorph
+  id: JauntXeno
+  configuration:
+    entity: DesynchronizedPocketMyo
+    revertConfirmationPopup: false
+    forced: false
+    transferName: true
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: true
+    effectProto: EffectMyoLiquifying
+    revertEffectProto: EffectMyoSolidifying
+    revertDelay: 1.6
+    polymorphSound: /Audio/_SV/Effects/Misc/myoqueen_melt.ogg
+    exitPolymorphSound: /Audio/_SV/Effects/Misc/myoqueen_melt.ogg

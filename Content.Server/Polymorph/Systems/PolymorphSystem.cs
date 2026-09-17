@@ -1,3 +1,40 @@
+// SPDX-FileCopyrightText: 2026 Wizards Den contributors
+// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
+// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Baa <9057997+Baa14453@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Bakke <luringens@protonmail.com>
+// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 B_Kirill <153602297+B-Kirill@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Flareguy <78941145+Flareguy@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Hannah Giovanna Dawson <karakkaraz@gmail.com>
+// SPDX-FileCopyrightText: 2025 Kyle Tyo <36606155+VerinSenpai@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Princess-Cheeseballs@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Perry Fraser <perryprog@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Whatstone <166147148+whatston3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 kosticia <kosticia46@gmail.com>
+// SPDX-FileCopyrightText: 2026 pathetic meowmeow <uhhadd@gmail.com>
+// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Actions;
 using Content.Server.Inventory;
 using Content.Server.Polymorph.Components;
@@ -76,6 +113,17 @@ public sealed partial class PolymorphSystem : EntitySystem
                 continue;
             }
 
+            // SV - Begin: Polymorph exit effect refactor
+            // Checks to see if the timestamp that is set in TryRevertAfterTimerAndPlayEffect has passed, and only revert after that event.
+            // Does not fire if the default value, TimeSpan.Zero is set. Even a time of now should have a timestamp to when the event should follow, AKA CurTime
+            if (_gameTiming.CurTime >= comp.Configuration.TimeTillRevert &&
+                comp.Configuration.TimeTillRevert != TimeSpan.Zero)
+            {
+                Revert((uid, comp));
+                continue;
+            }
+            // SV - End: Polymorph exit effect refactor
+
             if (!TryComp<MobStateComponent>(uid, out var mob))
                 continue;
 
@@ -130,7 +178,7 @@ public sealed partial class PolymorphSystem : EntitySystem
     private void OnRevertPolymorphActionEvent(Entity<PolymorphedEntityComponent> ent,
         ref RevertPolymorphActionEvent args)
     {
-        Revert((ent, ent));
+        TryRevertAfterTimerAndPlayEffect((ent, ent)); //SV: Polymorph effect refactor
     }
 
     private void OnBeforeToolRefined(Entity<PolymorphedEntityComponent> ent, ref BeforeToolRefinedEvent args)
@@ -139,7 +187,7 @@ public sealed partial class PolymorphSystem : EntitySystem
             return;
 
         args.Cancelled = true;
-        Revert((ent, ent));
+        TryRevertAfterTimerAndPlayEffect((ent, ent)); //SV: Polymorph effect refactor
     }
 
     /// <summary>
@@ -317,8 +365,9 @@ public sealed partial class PolymorphSystem : EntitySystem
         if (TerminatingOrDeleted(uidXform.ParentUid))
             return null;
 
-        if (component.Configuration.ExitPolymorphSound != null)
-            _audio.PlayPvs(component.Configuration.ExitPolymorphSound, uidXform.Coordinates);
+        // SV - Disabled as is handled in TryRevertAfterTimerAndPlayEffect
+        // if (component.Configuration.ExitPolymorphSound != null)
+        //     _audio.PlayPvs(component.Configuration.ExitPolymorphSound, uidXform.Coordinates);
 
         _transform.SetParent(parent, parentXform, uidXform.ParentUid);
         _transform.SetCoordinates(parent, parentXform, uidXform.Coordinates, uidXform.LocalRotation);
@@ -371,9 +420,16 @@ public sealed partial class PolymorphSystem : EntitySystem
         var ev = new PolymorphedEvent(uid, parent, true);
         RaiseLocalEvent(uid, ref ev);
 
+        //SV: Begin - Makes it so that we can use a different effect as an effect exit, and that it has an exit time animation
         // visual effect spawn
-        if (component.Configuration.EffectProto != null)
-            SpawnAttachedTo(component.Configuration.EffectProto, parent.ToCoordinates());
+        // Handled in TryRevertAfterTimerAndPlayEffect
+        // if (component.Configuration.EffectProto != null)
+        //     SpawnAttachedTo(component.Configuration.EffectProto, parent.ToCoordinates());
+
+        //Reset the timespan to zero so that we can re-use this
+        //I hate this but *shrugs*
+        component.Configuration.TimeTillRevert = TimeSpan.Zero;
+        //SV: End
 
         if (component.Configuration.ExitPolymorphPopup != null)
             _popup.PopupEntity(Loc.GetString(component.Configuration.ExitPolymorphPopup,
@@ -431,5 +487,51 @@ public sealed partial class PolymorphSystem : EntitySystem
 
         if (actions.TryGetValue(id, out var action))
             _actions.RemoveAction(target.Owner, action);
+    }
+
+    /// <summary>
+    /// SV Helper function
+    /// Set a timer to revert after a time specified in the polymorph configuration component
+    /// Also where we move the Effects to play
+    /// I wonder what other functions I'll cram into here
+    /// </summary>
+    /// <param name="uid">The entityuid of the entity being reverted</param>
+    public void TryRevertAfterTimerAndPlayEffect(Entity<PolymorphedEntityComponent?> ent)
+    {
+        var (uid, component) = ent;
+        if (!Resolve(ent, ref component))
+            return;
+
+        if (Deleted(uid))
+            return;
+
+        if (component.Parent is not { } parent)
+            return;
+
+        if (Deleted(parent))
+            return;
+
+        EntityUid? spawnedEnt = null;
+
+        //Configure how long the delay should be before reverting the player. Should be now for 99% of times
+        component.Configuration.TimeTillRevert = _gameTiming.CurTime + TimeSpan.FromSeconds(component.Configuration.RevertDelay);
+
+        if (!_transform.TryGetMapOrGridCoordinates(uid, out var coordinates))
+            return;
+
+        //Spawn effect now, so that we can wait to see if we should wait before reverting the player
+        if (component.Configuration.RevertEffectProto != null)
+            spawnedEnt = PredictedSpawnAtPosition(component.Configuration.RevertEffectProto, coordinates.Value);
+
+        // Attach the effect to the player. We can't attach the player to the entity else when the entity deletes it deletes the player
+        // looks mildly jank, buuuut it works.
+        // Only attach to the player if there is a delay, else it attaches to the polymorph and gets deleted.
+        // It's that, or we attach the effect to the parent (AKA the player) instead of the UID (the polymorph) but this fucks with things when you are in polymorph and have a polymorph delay as it spawns on the parent which is in fuckoff nowhereville
+        if (spawnedEnt != null &&  component.Configuration.RevertDelay > 0)
+            _transform.SetParent(spawnedEnt.Value, uid);
+
+        //play that funky music white boy
+        if (component.Configuration.ExitPolymorphSound != null)
+             _audio.PlayPvs(component.Configuration.ExitPolymorphSound, coordinates.Value);
     }
 }

@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: speechVerb
+  id: Myo
+  name: chat-speech-verb-name-myo
+  speechVerbStrings:
+  - chat-speech-verb-myo-1
+  - chat-speech-verb-myo-2

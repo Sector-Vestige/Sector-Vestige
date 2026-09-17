@@ -4,3 +4,8 @@ sv-chat-manager-send-ooc-admin-active-wrap-message = OOC: [bold][color={$adminCo
 
 #SV Additons Adminchat
 sv-chat-manager-send-admin-chat-wrap-message = {$adminChannelName}: [bold][color={$adminColor}]{$playerName}[/color]:[/bold] {$message}
+
+# speech verbs
+chat-speech-verb-name-myo = Queen
+chat-speech-verb-myo-1 = growls
+chat-speech-verb-myo-2 = roars

@@ -1,8 +1,9 @@
 # SPDX-FileCopyrightText: 2026 Delta-V contributors
 # SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
+# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -227,7 +228,8 @@
     - Howl
     - Whine
     - Coo # FloofStation
-  - type: Vocal # Sector Vestige: per-sex `sounds` dict removed upstream; voice now comes from humanoid Voice
+  - type: Vocal
+    emoteSounds: SoundsHarpyMale # Sector Vestige: used when spawned without a profile; players get their voice from the species prototype
   - type: GenericVisualizer
     visuals:
       enum.HarpyVisualLayers.Singing:

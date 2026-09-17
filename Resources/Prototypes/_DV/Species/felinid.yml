@@ -1,3 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Delta-V contributors
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
+# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: species
   id: Felinid
   name: species-name-felinid
@@ -6,3 +14,10 @@
   dollPrototype: AppearanceFelinid
   skinColoration: HumanToned
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex: # Sector Vestige: voice comes from the species prototype now
+  - SoundsFelinidMale
+  - SoundsFelinidFemale
+  - SoundsFelinidMale
+  voices:
+  - SoundsFelinidMale
+  - SoundsFelinidFemale
