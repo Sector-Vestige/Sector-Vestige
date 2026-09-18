@@ -2037,3 +2037,9 @@ Entries:
         trigger effect.
   id: 288
   time: '2026-09-17T11:08:49.0000000+00:00'
+- author: HexReject
+  changes:
+    - type: Add
+      message: Added new admin spawned entities.
+  id: 289
+  time: '2026-09-18T12:30:30.0000000+00:00'

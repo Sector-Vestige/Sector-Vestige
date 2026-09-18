@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
 # SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 HexReject <hexreject64@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -60,7 +61,8 @@
       Extinguish: [Touch]
   - type: NpcFactionMember
     factions:
-    - Xeno
+    - Myomass
+    - SimpleHostile
   - type: FootstepModifier
     footstepSoundCollection:
       collection: BarestepHard
@@ -157,3 +159,175 @@
   - type: Jaunt
     jauntAction: ActionPolymorphMyoJaunt
   - type: Insulated
+
+- type: entity
+  name: aberrant drone
+  description: Flesh is pulsing out of its carapace.
+  parent: MobXeno
+  id: MobMyoDrone
+  components:
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 750
+  - type: NpcFactionMember
+    factions:
+    - Myomass
+  - type: Tag
+    tags:
+    - Flesh
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _SV/Mobs/Demons/myodrone.rsi
+    offset: 0,0.2
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: running
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      80: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      40: 0.7
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 6
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 4
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 450
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+# Myo Friendly Flesh
+- type: entity
+  parent: BaseMobFleshSalvage
+  id: MobFleshJaredMyo
+  suffix: "Myomass"
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: jared
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: jared
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: NpcFactionMember
+    factions:
+    - Myomass
+    - SimpleHostile
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 8
+
+- type: entity
+  parent: BaseMobFleshSalvage
+  id: MobFleshGolemMyo
+  suffix: "Myomass"
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: golem
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: golem
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: NpcFactionMember
+    factions:
+    - Myomass
+    - SimpleHostile
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 8
+
+- type: entity
+  parent: BaseMobFleshSalvage
+  id: MobFleshClampMyo
+  suffix: "Myomass"
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: clamp
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: clamp
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: NpcFactionMember
+    factions:
+    - Myomass
+    - SimpleHostile
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2.5
+
+- type: entity
+  parent: BaseMobFleshSalvage
+  id: MobFleshLoverMyo
+  suffix: "Myomass"
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: lover
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: lover
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: NpcFactionMember
+    factions:
+    - Myomass
+    - SimpleHostile
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2.5
