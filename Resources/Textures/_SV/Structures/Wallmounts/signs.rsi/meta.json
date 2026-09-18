@@ -5,13 +5,49 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "R&D and res sprite made by HexReject (github) based off of r&d sprites made EmoGarbage404 (github)",
+    "copyright": "R&D and res sprite made by HexReject (github) based off of r&d sprites made EmoGarbage404 (github). Direction signs based on signs from bee station at commit https://github.com/BeeStation/BeeStation-Hornet/commit/13dd5ac712385642574138f6d7b30eea7c2fab9c, derived by purpleskittleo (Discord) and HexReject (Github) from existing signs",
     "states": [
         {
             "name": "R&D"
         },
         {
             "name": "res"
+        },
+        {
+            "name": "direction_altCommand",
+            "directions": 4
+        },
+        {
+            "name": "direction_altCryo",
+            "directions": 4
+        },
+        {
+            "name": "direction_altData",
+            "directions": 4
+        },
+        {
+            "name": "direction_altHabitation",
+            "directions": 4
+        },
+        {
+            "name": "direction_altHeavy",
+            "directions": 4
+        },
+        {
+            "name": "direction_altLight",
+            "directions": 4
+        },
+        {
+            "name": "direction_altMedium",
+            "directions": 4
+        },
+        {
+            "name": "direction_altMedical",
+            "directions": 4
+        },
+        {
+            "name": "direction_altOffices",
+            "directions": 4
         }
     ]
 }

@@ -86942,7 +86942,7 @@ entities:
     - type: Transform
       parent: 2
       pos: 30.5,-51.5
-- proto: SignRND
+- proto: SignRes
   entities:
   - uid: 12485
     components:
