@@ -74,6 +74,8 @@
 # SPDX-FileCopyrightText: 2025 V <97265903+formlessnameless@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 dandy <203235481+casiliuscestus@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Dogbone10 <135195193+Dogbone10@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Princess Cheeseballs <66055347+Princess-Cheeseballs@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 Tiniest Shark <head.rebel@yahoo.com>
 # SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 #
@@ -460,7 +462,10 @@
     tags:
     - Hardsuit
     - WhitelistChameleon
-  - type: SupermatterImmune
+  - type: SupermatterImmune # SV - Makes the item SuperMatterImmune
+  - type: ClothingGrantComponent # SV - Makes the wearer SuperMatterImmune
+    component:
+    - type: SupermatterImmune
 
 #Chief Medical Officer's Hardsuit
 - type: entity

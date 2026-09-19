@@ -18,6 +18,9 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitRCT
   - type: SupermatterImmune
+  - type: ClothingGrantComponent
+    component:
+    - type: SupermatterImmune
   - type: Armor
     modifiers:
       coefficients:
