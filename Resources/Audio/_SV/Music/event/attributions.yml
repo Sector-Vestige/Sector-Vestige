@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
 # SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
 # SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
+# SPDX-FileCopyrightText: 2026 HexReject <hexreject64@gmail.com>
 # SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2026 purpleskittleo <thenewredgd@gmail.com>
 #
@@ -15,6 +16,7 @@
           "MYO_1_diner_2m28s.ogg",
           "MYO_1_disfigure_3m37s.ogg",
           "MYO_2_infection.ogg"
+          "SITE_escape_2m10s.ogg"
           ]
   license: "CC-BY-4.0"
   copyright: "Created by purpleskittleo"

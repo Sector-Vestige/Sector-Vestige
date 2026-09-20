@@ -11,14 +11,6 @@
   description: You're not sure what you're looking at.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Sprite
-    sprite: _SV/Mobs/Demons/myoqueen.rsi
-    offset: 0,0.4
-    layers:
-    - state: jaunt
-    overrideContainerOcclusion: true
-    drawdepth: Ghosts
-    noRot: true
   - type: Spectral
   - type: MovementSpeedModifier
     baseSprintSpeed: 6
