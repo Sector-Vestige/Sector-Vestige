@@ -33,6 +33,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Fail if we are not running on the staging branch
+      if: ${{ github.ref != 'refs/heads/staging' }}
+      run: |
+        echo "::error::Publish Testing may only run on the staging branch, not on '$GITHUB_REF_NAME'."
+        exit 1
+
     - uses: actions/checkout@v3.6.0
       with:
         submodules: 'recursive'
