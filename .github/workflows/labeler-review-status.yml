@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 name: "Labels: Review status"
 
 # Drives the S: status labels from submitted reviews. `pull_request_review` is a

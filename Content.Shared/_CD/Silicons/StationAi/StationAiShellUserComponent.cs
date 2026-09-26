@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Radio;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.Laws;

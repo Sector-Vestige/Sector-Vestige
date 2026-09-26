@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Wizards Den contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
-# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 reagent-name-serenitol = Serenitol
 reagent-desc-serenitol = A fairly unreactive chemical that has mild antidepressant properties. Originally used to help patients overcome the loss of a pet or family friend, it is fairly safe to administer.
 

@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
-// SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;

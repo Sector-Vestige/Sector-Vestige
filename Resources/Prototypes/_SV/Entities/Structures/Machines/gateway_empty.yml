@@ -1,13 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 Jessica M <jessica@jessicamaybe.com>
-# SPDX-FileCopyrightText: 2026 BackeTako <branne33@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: BaseStructure
   id: GatewayEmpty

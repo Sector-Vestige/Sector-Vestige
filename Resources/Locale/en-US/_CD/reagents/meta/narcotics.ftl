@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Wizards Den contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 reagent-name-mindleafsap = Mindleaf Sap
 reagent-desc-mindleafsap = The pure sap from the Mindleaf plant, a relatively weak painkiller on its own. Consumption causes strain on the liver and kidneys.
 
