@@ -2061,3 +2061,11 @@ Entries:
       message: Prices of cargo products can now be influenced by GM's.
   id: 292
   time: '2026-09-26T16:10:45.0000000+00:00'
+- author: MissKay1994
+  changes:
+    - type: Add
+      message: Added a new load bearing vest for security
+    - type: Remove
+      message: Removed security plate carrier
+  id: 293
+  time: '2026-09-26T16:34:43.0000000+00:00'
