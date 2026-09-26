@@ -31,6 +31,13 @@ public sealed partial class SolutionComponent : Component
     /// </summary>
     [DataField, AlwaysPushInheritance]
     public Solution Solution = new();
+
+    /// <summary>
+    /// SV Change
+    /// EntityUID of a solution fire
+    /// </summary>
+    [DataField]
+    public EntityUid? Fire;
 }
 
 /// <remarks>
