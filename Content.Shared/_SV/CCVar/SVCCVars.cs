@@ -31,4 +31,9 @@ public sealed class SVCCVars : CVars
     public static readonly CVarDef<int>
         MapVoteDuration = CVarDef.Create("sv.mapvote.runoff_duration", 150, CVar.SERVERONLY);
 
+    /// <summary>
+    /// Percentage added to every cargo product price. 50 = prices are 1.5x.
+    /// </summary>
+    public static readonly CVarDef<int>
+        CargoMarkupPercent = CVarDef.Create("sv.cargo.markup_percent", 0, CVar.SERVER | CVar.REPLICATED);
 }
