@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+#
+# SPDX-License-Identifier: MIT
+
+# Vestige High Roleplay (HRP) ruleset guide entries.
+# Kept in the _SV namespace so the upstream rules.yml stays conflict-free on merges.
+
+- type: guideEntry
+  id: HRPRuleset
+  name: guide-entry-rules-hrp
+  ruleEntry: true
+  priority: 10
+  text: "/ServerInfo/Guidebook/ServerRules/VestigeHRPRules.xml"
+
+- type: guideEntry
+  id: HRPRules
+  name: guide-entry-rules-hrp-h0
+  ruleEntry: true
+  priority: 10
+  text: "/ServerInfo/Guidebook/ServerRules/HRPRules/RuleH0.xml"
+  children:
+  - RuleH1
+  - RuleH2
+  - RuleH3
+
+- type: guideEntry
+  id: RuleH1
+  name: guide-entry-rules-h1
+  ruleEntry: true
+  text: "/ServerInfo/Guidebook/ServerRules/HRPRules/RuleH1Immersion.xml"
+
+- type: guideEntry
+  id: RuleH2
+  name: guide-entry-rules-h2
+  ruleEntry: true
+  text: "/ServerInfo/Guidebook/ServerRules/HRPRules/RuleH2Persistent.xml"
+
+- type: guideEntry
+  id: RuleH3
+  name: guide-entry-rules-h3
+  ruleEntry: true
+  text: "/ServerInfo/Guidebook/ServerRules/HRPRules/RuleH3Escalation.xml"
