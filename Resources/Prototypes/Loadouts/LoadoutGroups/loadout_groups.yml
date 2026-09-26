@@ -1273,7 +1273,7 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
-  - SecurityPlateCarrier #CD
+  - SecurityWebbingAlt # Moffstation
 
 - type: loadoutGroup
   id: SecurityOuterClothing
