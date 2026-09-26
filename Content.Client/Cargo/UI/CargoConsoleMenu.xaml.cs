@@ -12,6 +12,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using static Robust.Client.UserInterface.Controls.BaseButton;
+using Content.Shared._SV.Cargo; // SV - SVCargoMarkupSystem
 
 namespace Content.Client.Cargo.UI
 {
@@ -26,6 +27,7 @@ namespace Content.Client.Cargo.UI
         private readonly SpriteSystem _spriteSystem;
         private EntityUid _owner;
         private EntityUid? _station;
+        private readonly SVCargoMarkupSystem _markup; // SV - lets make cargo pay more
 
         private readonly EntityQuery<CargoOrderConsoleComponent> _orderConsoleQuery;
         private readonly EntityQuery<StationBankAccountComponent> _bankQuery;
@@ -52,6 +54,7 @@ namespace Content.Client.Cargo.UI
             _cargoSystem = entMan.System<CargoSystem>();
             _spriteSystem = spriteSystem;
             _owner = owner;
+            _markup = entMan.System<SVCargoMarkupSystem>(); // SV - lets make cargo pay more
 
             _orderConsoleQuery = _entityManager.GetEntityQuery<CargoOrderConsoleComponent>();
             _bankQuery = _entityManager.GetEntityQuery<StationBankAccountComponent>();
@@ -160,7 +163,7 @@ namespace Content.Client.Cargo.UI
                         Product = prototype,
                         ProductName = { Text = prototype.Name },
                         MainButton = { ToolTip = prototype.Description },
-                        PointCost = { Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", prototype.Cost.ToString())) },
+                        PointCost = { Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", _markup.GetPrice(prototype).ToString())) },
                         Icon = { Texture = _spriteSystem.Frame0(prototype.Icon) },
                     };
                     button.MainButton.OnPressed += args =>
@@ -230,7 +233,7 @@ namespace Content.Client.Cargo.UI
                             "cargo-console-menu-order-row-title",
                             ("productName", productName),
                             ("orderAmount", order.OrderQuantity),
-                            ("orderPrice", productProto.Cost)),
+                            ("orderPrice", _markup.GetPrice(productProto))),
                     },
 
                     Stride =

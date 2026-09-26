@@ -11,12 +11,19 @@ https://docs.spacestation14.com/en/general-development/codebase-info/pull-reques
 All contributors are expected to have a working development environment:
 https://docs.spacestation14.com/en/general-development/setup/setting-up-a-development-environment.html
 
-By submitting a PR, you agree that your code contributions are licensed under AGPL-3.0-or-later, in line with Sector Vestige’s licensing model for original content.
+## Licensing
+
+- New original content goes under a `_SV/` path and is licensed AGPL-3.0-or-later.
+- Edits to files outside `_SV/` (upstream code or ported fork code) stay under that file's existing license. Mark each edit with an `SV:` comment (see below).
+- By contributing an edit to an MIT-licensed upstream file, you agree that the edit may be redistributed under MIT, including for contribution back to space-wizards/space-station-14.
+
+Which folder has which license is recorded in `REUSE.toml`. CI checks that the license REUSE computes for every `_SV/` and `_Fork/` file matches that file. If you add a new fork folder, add a `**/_Fork/**` table to `REUSE.toml` (at the end, order matters) and a row to the table in README.md.
 
 ---
 
 ## Table of Contents
 
+- Licensing
 - Sector Vestige-specific Content
 - Changes to Upstream Files
   - Commenting Example
@@ -44,42 +51,46 @@ Examples:
 
 ## Changes to Upstream Files
 
-If you need to modify upstream files (C#, YAML, etc.), you must comment your changes.
-This helps with resolving future merge conflicts and makes your intent clear.
+If you modify an upstream file (C#, YAML, etc.), mark every change with a comment that starts with `SV:`.
+This is what makes upstream merge conflicts resolvable, and it is what keeps the edit identifiable as ours inside an MIT file.
 
-- Always comment near the lines you change
-- Do not delete upstream code — comment it out
-- For large additions, use partial classes when appropriate
-- Fluent (.ftl) files don’t support inline comments — edit with care
+- Comment on or right next to the lines you change.
+- Do not delete upstream code, comment it out.
+- For value changes, write the old and new value: `# SV: 0.25 -> 0.05`.
+- For large additions, prefer a partial class or a `_SV/` file over editing the upstream file.
+- Fluent (.ftl) files have no inline comments, so put the comment on the line above.
 
 ### Commenting Example
 
-YAML – Inline field comment:
+YAML, single line:
 ```
-  hidden: false # Sector Vestige change for various Vox masks
+  hidden: false # SV: hidden for the Vox masks
+  OverlordLawset: 0.25 # SV: 0.5 -> 0.25
 ```
 
-YAML – Block comment:
+YAML, block:
 ```
-  # Begin Sector Vestige Personal trinkets
+  # SV: begin personal trinkets
   - ItemJamesCane
   - ItemAnnabellePlushie
-  - ItemPititiRockGorb
-  # End Sector Vestige Personal trinkets
+  # SV: end personal trinkets
 ```
 
-C# – Inline logic comment:
+C#, single line:
 ```
-  if (!_actionBlocker.CanSpeak(source, true) && !ignoreActionBlocker) // Sector Vestige: support hypophonia trait
+  if (!_actionBlocker.CanSpeak(source, true) && !ignoreActionBlocker) // SV: hypophonia trait
 ```
 
-C# – Enclosing block:
+C#, block:
 ```
-  // Sector Vestige - start of additional statuses (ported from CD)
+  // SV: begin additional statuses (ported from CD)
   SecurityStatus.Monitor => "SecurityIconMonitor",
   SecurityStatus.Search => "SecurityIconSearch",
-  // Sector Vestige - end of additional statuses (ported from CD)
+  // SV: end additional statuses
 ```
+
+Older code uses `// Sector Vestige` or `// SV -` for the same thing. Leave those alone, but use `SV:` for new edits.
+
 ---
 
 ## Porting (Importing from Other Forks)
@@ -97,13 +108,12 @@ When porting content (code, YAML, assets) from other SS14 forks (e.g., Delta-V, 
 
 ### License Requirements
 
-- MIT: freely portable. (will be labeled by the bot just in case)
-- AGPL: allowed, but must be clearly labeled.
-  - Add an SPDX license header to each file: (Bot does that on PR for you)
-    // SPDX-License-Identifier: AGPL-3.0-or-later
-    // Copyright (c) 2025 Delta-V contributors
-  - Keep the code in its _ForkName/ folder.
-  - AGPL requires source disclosure for servers running AGPL code.
+- Check the fork's own repository for its license before porting. Some forks switched from MIT to AGPL at a specific commit, so older code from them is MIT and newer code is AGPL.
+- MIT code: freely portable.
+- AGPL code: allowed. Keep it in its `_ForkName/` folder. AGPL requires source disclosure for servers running the code, which we already do.
+- We do not use per-file SPDX headers. `REUSE.toml` covers the folder. If ported files come with headers, strip them; if a file's license differs from the rest of its folder, record that file in `REUSE.toml` instead.
+- Porting a fork we do not have yet: add a `**/_ForkName/**` table at the end of `REUSE.toml` and a row to the license table in README.md. CI fails if a `_ForkName/` folder has no table.
+- Assets: the real license of a sprite or sound is in its `meta.json` or `attributions.yml`. Non-commercial (CC-BY-NC) assets are tracked in `Tools/nc_assets_baseline.txt`; CI fails on a new one unless you add it there on purpose.
 
 If you are unsure about the license of something you want to port, ask in the Sector Vestige Discord before submitting.
 
@@ -161,4 +171,4 @@ Sector Vestige does not maintain a separate Admin changelog.
 
 ## Additional Resources
 
-- SS14 Developer Docs: https://docs.spacestation14.io/
+- SS14 Developer Docs: https://docs.spacestation14.com/

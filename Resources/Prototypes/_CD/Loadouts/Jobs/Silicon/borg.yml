@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 lunarcomets <lunarcomets2@gmail.com>
-#
-# SPDX-License-Identifier: MIT
-
 - type: loadout
   id: MMIFilled
   dummyEntity: MMIFilled

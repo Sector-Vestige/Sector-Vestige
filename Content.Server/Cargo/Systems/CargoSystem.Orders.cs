@@ -18,6 +18,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Robust.Shared.Random;
+using Content.Shared._SV.Cargo; // SV - Cargo markupsystem
 
 namespace Content.Server.Cargo.Systems
 {
@@ -26,6 +27,7 @@ namespace Content.Server.Cargo.Systems
         [Dependency] private SharedTransformSystem _transformSystem = default!;
         [Dependency] private EmagSystem _emag = default!;
         [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private SVCargoMarkupSystem _markup = default!; // SV - Lets make cargo spend more >:)
 
         private void InitializeConsole()
         {
@@ -201,7 +203,7 @@ namespace Content.Server.Cargo.Systems
                 PlayDenySound(uid, component);
             }
 
-            var cost = product.Cost * order.OrderQuantity;
+            var cost = _markup.GetPrice(product) * order.OrderQuantity; // SV - Markup system
             var accountBalance = GetBalanceFromAccount((station.Value, bank), order.Account);
 
             // Not enough balance
@@ -347,9 +349,9 @@ namespace Content.Server.Cargo.Systems
             msg.AddMarkupPermissive(Loc.GetString("cargo-acquisition-slip-body",
                 ("product", product.Name),
                 ("description", product.Description),
-                ("unit", product.Cost),
+                ("unit", _markup.GetPrice(product)), // SV - Make sure that the slip also had the right price.
                 ("amount", args.Amount),
-                ("cost", product.Cost * args.Amount),
+                ("cost", _markup.GetPrice(product) * args.Amount), // SV - Make sure that the total is also right.
                 ("orderer", args.Requester),
                 ("reason", args.Reason)));
             _paperSystem.SetContent((label, paper), msg.ToMarkup());

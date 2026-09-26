@@ -1,14 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2026 Boaz1111 <boazwand@gmail.com>
-# SPDX-FileCopyrightText: 2026 EvilAtheist <88866615+Mixmaster49@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 EvilAtheist <maximschaper49@gmail.com>
-# SPDX-FileCopyrightText: 2026 Mixmaster49 (GitHub)
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: gamePreset
   id: VestigeExtended
   alias:

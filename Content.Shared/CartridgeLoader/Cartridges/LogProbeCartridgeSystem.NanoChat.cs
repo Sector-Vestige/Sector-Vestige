@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Interaction;
 using Content.Shared._CD.CartridgeLoader.Cartridges;
 using Content.Shared._CD.NanoChat;

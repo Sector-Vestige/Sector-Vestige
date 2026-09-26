@@ -1,177 +1,182 @@
+# REUSE.toml for Sector Vestige.
+#
+# Ordering matters. Per the REUSE specification, when several [[annotations]]
+# tables match a file, ONLY the last matching table in this file is used.
+# Generic, repo-wide rules therefore come first; the per-fork rules come last
+# so they win for everything under a fork's _Name/ folders.
+#
+# Verify with `reuse spdx` after editing, not just `reuse lint`. Lint only
+# proves every file has some license, not that it is the right one.
+
 version = 1
 SPDX-PackageName = "Sector-Vestige"
 SPDX-PackageDownloadLocation = "https://github.com/Sector-Vestige/Sector-Vestige"
 
+# ---------------------------------------------------------------------------
+# Generic rules: upstream Space Station 14 code and repo tooling (MIT)
+# ---------------------------------------------------------------------------
+
 [[annotations]]
-path = "Content.Server/**"
+path = ["Content.Server/**", "Content.Client/**", "Content.Shared/**"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
-path = "Content.Client/**"
+path = [
+  "Content.Benchmarks/**", "Content.IntegrationTests/**", "Content.MapRenderer/**",
+  "Content.Packaging/**", "Content.PatreonParser/**", "Content.Replay/**",
+  "Content.Server.Database/**", "Content.Shared.Database/**", "Content.Tests/**",
+  "Content.Tools/**", "Content.YAMLLinter/**", "Content.Docfx/**",
+  "Tools/**", "Pow3r/**", ".github/**", ".run/**", "BuildChecker/**", "BuildFiles/**",
+]
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
-path = "Content.Shared/**"
+path = [
+  "**.md", "**.txt", "**.nix", "**.lock", "**.toml", "**.sln**", "**.bat", "**.sh",
+  "**.py", "**.props", "**.csproj.DotSettings", "**.json",
+  ".editorconfig", ".envrc", ".gitattributes", ".gitignore", ".gitmodules",
+  "bors.toml", "nuget.config", "global.json", "omnisharp.json", "SpaceStation14.sln",
+]
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "MIT"
 
+# Upstream game data. Textures are handled at the very end of this file.
 [[annotations]]
-path = ".github/**"
+path = [
+  "Resources/Prototypes/**", "Resources/ServerInfo/**", "Resources/Locale/**",
+  "Resources/Audio/**", "Resources/Changelog/**", "Resources/ConfigPresets/**",
+  "Resources/Credits/**", "Resources/Fonts/**", "Resources/IgnoredPrototypes/**",
+  "Resources/Maps/**", "Resources/**.yml",
+]
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "MIT"
 
-[[annotations]]
-path = "Content.Docfx/**"
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"
+# ---------------------------------------------------------------------------
+# Ported forks. One table per fork, matching every _Name/ folder in the repo
+# (Content.*, Resources/Prototypes, Resources/Locale/<lang>, Resources/Maps, ...).
+# Keep the license in sync with the fork's own repository.
+# ---------------------------------------------------------------------------
 
 [[annotations]]
-path = "Tools/**"
+path = "**/_LateStation/**"
 precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"
+SPDX-FileCopyrightText = ["2026 LateStation14 contributors", "2026 Sector Vestige contributors (modifications)"]
+SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = ["Content.Server/_LateStation/**", "Content.Client/_LateStation/**", "Content.Shared/_LateStation/**", "Resources/_LateStation/**", "Resources/Prototypes/_LateStation/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = "2026 LateStation14 contributors"
-SPDX-License-Identifier = "MIT OR AGPL-3.0-or-later"
-
-[[annotations]]
-path = ["Content.Server/_AXOLOTL/**", "Content.Client/_AXOLOTL/**", "Content.Shared/_AXOLOTL/**", "Resources/_AXOLOTL/**", "Resources/Prototypes/_AXOLOTL/**", "Resources/Audio/_AXOLOTL/**", "Resources/Textures/_AXOLOTL/**", "Resources/Locale/_AXOLOTL/**"]
+path = "**/_AXOLOTL/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 AXOLOTL contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
-path = ["Content.Server/_CD/**", "Content.Client/_CD/**", "Content.Shared/_CD/**", "Resources/_CD/**", "Resources/Prototypes/_CD/**", "Resources/Audio/_CD/**", "Resources/Textures/_CD/**", "Resources/Locale/_CD/**"]
+path = "**/_CD/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 Cosmatic Drift contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
-path = ["Content.Server/_DV/**", "Content.Client/_DV/**", "Content.Shared/_DV/**", "Resources/_DV/**", "Resources/Prototypes/_DV/**", "Resources/Audio/_DV/**", "Resources/Textures/_DV/**", "Resources/Locale/_DV/**"]
+path = "**/_DV/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 Delta-V contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = ["Content.Server/_NF/**", "Content.Client/_NF/**", "Content.Shared/_NF/**", "Resources/_NF/**", "Resources/Prototypes/_NF/**", "Resources/Audio/_NF/**", "Resources/Textures/_NF/**", "Resources/Locale/_NF/**"]
+path = "**/_NF/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 New Frontiers contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = ["Content.Server/_Harmony/**", "Content.Client/_Harmony/**", "Content.Shared/_Harmony/**", "Resources/_Harmony/**", "Resources/Prototypes/_Harmony/**", "Resources/Audio/_Harmony/**", "Resources/Textures/_Harmony/**", "Resources/Locale/_Harmony/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Harmony contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "AGPL-3.0-or-later"
-
-[[annotations]]
-path = ["Content.Server/_Umbra/**", "Content.Client/_Umbra/**", "Content.Shared/_Umbra/**", "Resources/_Umbra/**", "Resources/Prototypes/_Umbra/**", "Resources/Audio/_Umbra/**", "Resources/Textures/_Umbra/**", "Resources/Locale/_Umbra/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Umbra contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = ["Content.Server/_Floofstation/**", "Content.Client/_Floofstation/**", "Content.Shared/_Floofstation/**", "Resources/_Floofstation/**", "Resources/Prototypes/_Floofstation/**", "Resources/Audio/_Floofstation/**", "Resources/Textures/_Floofstation/**", "Resources/Locale/_Floofstation/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 FloofStation contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "AGPL-3.0-or-later"
-
-[[annotations]]
-path = ["Content.Server/_Impstation/**", "Content.Client/_Impstation/**", "Content.Shared/_Impstation/**", "Resources/_Impstation/**", "Resources/Prototypes/_Impstation/**", "Resources/Audio/_Impstation/**", "Resources/Textures/_Impstation/**", "Resources/Locale/_Impstation/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Impstation contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "AGPL-3.0-or-later"
-
-[[annotations]]
-path = ["Content.Server/_EE/**", "Content.Client/_EE/**", "Content.Shared/_EE/**", "Resources/_EE/**", "Resources/Prototypes/_EE/**", "Resources/Audio/_EE/**", "Resources/Textures/_EE/**", "Resources/Locale/_EE/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 EinsteinEngines contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "AGPL-3.0-or-later"
-
-[[annotations]]
-path = ["Content.Server/_Funkystation/**", "Content.Client/_Funkystation/**", "Content.Shared/_Funkystation/**", "Resources/_Funkystation/**", "Resources/Prototypes/_Funkystation/**", "Resources/Audio/_Funkystation/**", "Resources/Textures/_Funkystation/**", "Resources/Locale/_Funkystation/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Funkystation contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "AGPL-3.0-or-later"
-
-[[annotations]]
-path = ["Content.Server/_SV/**", "Content.Client/_SV/**", "Content.Shared/_SV/**", "Resources/_SV/**", "Resources/Prototypes/_SV/**", "Resources/Audio/_SV/**", "Resources/Textures/_SV/**", "Resources/Locale/_SV/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Sector-Vestige contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "AGPL-3.0-or-later"
-
-[[annotations]]
-path = ["Content.Server/_Moffstation/**", "Content.Client/_Moffstation/**", "Content.Shared/_Moffstation/**", "Resources/_Moffstation/**", "Resources/Prototypes/_Moffstation/**", "Resources/Audio/_Moffstation/**", "Resources/Textures/_Moffstation/**", "Resources/Locale/_Moffstation/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Moffstation contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = ["Content.Server/_Goobstation/**", "Content.Client/_Goobstation/**", "Content.Shared/_Goobstation/**", "Resources/_Goobstation/**", "Resources/Prototypes/_Goobstation/**", "Resources/Audio/_Goobstation/**", "Resources/Textures/_Goobstation/**", "Resources/Locale/_Goobstation/**"]
+path = "**/_Goobstation/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 Goob-Station contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = ["Content.Server/_/**", "Content.Client/_RMC14/**", "Content.Shared/_RMC14/**", "Resources/_RMC14/**", "Resources/Prototypes/_RMC14/**", "Resources/Audio/_RMC14/**", "Resources/Textures/_RMC14/**", "Resources/Locale/_RMC14/**"]
+path = "**/_Harmony/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["2026 Harmony contributors", "2026 Sector Vestige contributors (modifications)"]
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "**/_Umbra/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["2026 Umbra contributors", "2026 Sector Vestige contributors (modifications)"]
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "**/_Floofstation/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["2026 FloofStation contributors", "2026 Sector Vestige contributors (modifications)"]
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "**/_Impstation/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["2026 Impstation contributors", "2026 Sector Vestige contributors (modifications)"]
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "**/_EE/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["2026 EinsteinEngines contributors", "2026 Sector Vestige contributors (modifications)"]
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+# These three came through Funkystation, which declares them as AGPL AND MIT
+# (MIT original with AGPL modifications). Must stay after the _EE table.
+[[annotations]]
+path = [
+  "Content.Client/_EE/Supermatter/Components/SupermatterVisualizerComponent.cs",
+  "Content.Client/_EE/Supermatter/Consoles/SupermatterConsoleBoundUserInterface.cs",
+  "Content.Client/_EE/Supermatter/Systems/SupermatterVisualizerSystem.cs",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["2026 EinsteinEngines contributors", "2026 Funkystation contributors", "2026 Sector Vestige contributors (modifications)"]
+SPDX-License-Identifier = "AGPL-3.0-or-later AND MIT"
+
+[[annotations]]
+path = "**/_Funkystation/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["2026 Funkystation contributors", "2026 Sector Vestige contributors (modifications)"]
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "**/_Moffstation/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["2026 Moffstation contributors", "2026 Sector Vestige contributors (modifications)"]
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "**/_RMC14/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = ["2026 RMC14 contributors", "2026 Sector Vestige contributors (modifications)"]
 SPDX-License-Identifier = "MIT"
 
+# ---------------------------------------------------------------------------
+# Sector Vestige original content (AGPL)
+# ---------------------------------------------------------------------------
+
+[[annotations]]
+path = "**/_SV/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Sector Vestige contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+# ---------------------------------------------------------------------------
+# Textures. Sprites are CC-BY-SA-3.0 regardless of which fork they came from,
+# so this comes after the fork tables. The real per-folder license and author
+# live in each meta.json; a few folders are CC-BY-NC-SA-3.0.
+# ---------------------------------------------------------------------------
+
 [[annotations]]
 path = "Resources/Textures/**"
 precedence = "aggregate"
-SPDX-FileCopyrightText = ["SS14 contributors (Check meta files)", "2026 Sector Vestige contributors (modifications)"]
+SPDX-FileCopyrightText = ["SS14, fork and Sector Vestige contributors (see meta.json in each folder)"]
 SPDX-License-Identifier = "CC-BY-SA-3.0"
-
-[[annotations]]
-path = "Resources/Locale/**"
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors"]
-SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = ["Resources/Prototypes/**", "Resources/ServerInfo/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = ["Resources/Audio/**", "Resources/Changelog/**", "Resources/ConfigPresets/**", "Resources/Credits/**", "Resources/Fonts/**", "Resources/IgnoredPrototypes/**", "Resources/Maps/**", "Resources/**.yml"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = ["**.md", "**.txt", "**.nix", "**.lock", "**.toml", "**.sln**", "**.bat", "**.sh", "**.py", "**.props", "**.csproj.DotSettings", "**.json", ".editorconfig", ".envrc", ".gitattributes", ".gitignore", ".gitmodules", "bors.toml", "nuget.config", "global.json", "omnisharp.json", "README.md", "LICENSE.TXT", "LICENSE-AGPLv3.txt", "SpaceStation14.sln"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = [".run/**", "BuildChecker/**", "BuildFiles/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = ["Content.Benchmarks/**", "Content.IntegrationTests/**", "Content.MapRenderer/**", "Content.Packaging/**", "Content.PatreonParser/**", "Content.Replay/**", "Content.Server.Database/**", "Content.Shared.Database/**", "Content.Tests/**", "Content.Tools/**", "Content.YAMLLinter/**"]
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = "Pow3r/**"
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2026 Wizards Den contributors", "2026 Sector Vestige contributors (modifications)"]
-SPDX-License-Identifier = "MIT"

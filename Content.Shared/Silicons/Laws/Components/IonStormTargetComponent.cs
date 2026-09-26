@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Jajsha <101492056+Zap527@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mephisto72 <66994453+Mephisto72@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 EvilAtheist <maximschaper49@gmail.com>
-// SPDX-FileCopyrightText: 2026 Mixmaster49 (GitHub)
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Random;
 using Robust.Shared.Prototypes;
 
