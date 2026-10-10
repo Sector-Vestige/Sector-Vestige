@@ -2083,3 +2083,27 @@ Entries:
       message: Added two personal items belonging to Michael LaRue
   id: 295
   time: '2026-10-02T14:03:28.0000000+00:00'
+- author: HexReject
+  changes:
+    - type: Add
+      message: Added a new story items.
+  id: 296
+  time: '2026-10-08T14:33:22.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Add
+      message: Added SV-Patreon colors to the OOC chat.
+    - type: Remove
+      message: Disabled the Upstream-Patreon OOC colors.
+  id: 297
+  time: '2026-10-10T17:04:23.0000000+00:00'
+- author: purpleskittleo
+  changes:
+    - type: Add
+      message: Added one new music track.
+    - type: Add
+      message: Added one new stinger.
+    - type: Add
+      message: Added two new announcement variants.
+  id: 298
+  time: '2026-10-10T17:34:29.0000000+00:00'

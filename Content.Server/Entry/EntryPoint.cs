@@ -23,6 +23,7 @@ using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
+using Content.Server._SV.Sponsors; // SV changes - Sponsor/patron entitlement manager
 using Content.Shared.CCVar;
 using Content.Shared.Localizations;
 using Robust.Server;
@@ -77,6 +78,7 @@ namespace Content.Server.Entry
         [Dependency] private ServerInfoManager _serverInfo = default!;
         [Dependency] private ServerUpdateManager _updateManager = default!;
         [Dependency] private ServerFeedbackManager _feedbackManager = null!;
+        [Dependency] private SponsorManager _sponsors = default!; // SV changes - Sponsor/patron entitlement manager
 
         public override void PreInit()
         {
@@ -131,6 +133,7 @@ namespace Content.Server.Entry
             _updateManager.Initialize();
             _playTimeTracking.Initialize();
             _watchlistWebhookManager.Initialize();
+            _sponsors.Initialize(); // SV changes - Sponsor/patron entitlement manager
             _job.Initialize();
             _rateLimit.Initialize();
         }
@@ -187,6 +190,7 @@ namespace Content.Server.Entry
                     _updateManager.Update();
                     _playTimeTracking.Update();
                     _watchlistWebhookManager.Update();
+                    _sponsors.Update(); // SV changes - Sponsor/patron entitlement manager
                     _connection.Update();
                     break;
             }
