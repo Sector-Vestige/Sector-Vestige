@@ -66,3 +66,22 @@
       types:
         Slash: 5
         Cold: 2
+
+- type: entity
+  parent: MobFrozenAbomination
+  id: RCTVoxAbomination
+  name: frozen abomination
+  description: A frozen husk of flesh and feather. It's hardsuit looks brittle.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _SV/Mobs/Demons/voxabomination.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: voxabomination
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: voxabomination
+      Dead:
+        Base: dead

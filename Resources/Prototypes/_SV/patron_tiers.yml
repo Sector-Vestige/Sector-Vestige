@@ -1,0 +1,14 @@
+- type: patronTier
+  id: tier1
+  displayName: patron-tier-tier1-name
+  oocColor: "#C27C0E"
+
+- type: patronTier
+  id: tier2
+  displayName: patron-tier-tier2-name
+  oocColor: "#C27C0E"
+
+- type: patronTier
+  id: tier3
+  displayName: patron-tier-tier3-name
+  oocColor: "#C27C0E"

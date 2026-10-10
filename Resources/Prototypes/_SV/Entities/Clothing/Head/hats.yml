@@ -92,3 +92,15 @@
     tags:
     - PetWearable
     - CorgiWearable
+
+# Rint Bintu Eyebrows. Vestige Cat Ears. Very Beautiful. Very Powerful
+- type: entity
+  parent: [ClothingHeadBase, ClothingUniformFoldableBase]
+  id: RintBintuEyebrows
+  name: rint brows
+  description: A strange set of vox-like facial accessories. Wearing them makes you want to go for the kneecaps.
+  components:
+  - type: Sprite
+    sprite: _SV/Clothing/Head/Hats/rintbrows.rsi
+  - type: Clothing
+    sprite: _SV/Clothing/Head/Hats/rintbrows.rsi
