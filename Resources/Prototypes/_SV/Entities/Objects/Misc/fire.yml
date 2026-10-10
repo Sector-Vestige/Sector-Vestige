@@ -1,0 +1,61 @@
+- type: entity
+  parent: FireKudzuWeak
+  id: PuddleFire
+  name: fire
+  description: Fire in space? This can't end well.
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Umbra/Objects/Misc/fire.rsi
+    #shader: unshaded # SV - Remove outdated attributes
+  - type: Kudzu
+    spriteVariants: 1
+    spreadChance: 0.3
+  - type: Damageable
+    damageModifierSet: FireKudzu
+  - type: Fixtures # Needed for IgniteOnCollide to work
+    fixtures:
+      ignition:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        hard: false
+        mask:
+        - ItemMask
+        layer:
+        - SlipLayer
+  - type: IgniteOnCollide # For some reason the fire dies once being collided with
+    fireStacks: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: DamageContacts
+    damage:
+      types:
+        Heat: 4
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water ]
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        #scaleByQuantity: true # SV - Remove outdated attributes
+        damage:
+          types:
+            Cold: 2
+  - type: PointLight
+    radius: 3
+    energy: 1
+    color: "#FF4913"
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.6
+    sprintSpeedModifier: 0.6
+  - type: ActualFire
