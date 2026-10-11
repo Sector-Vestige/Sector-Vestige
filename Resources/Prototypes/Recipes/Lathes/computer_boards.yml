@@ -70,7 +70,7 @@
   id: TechDiskComputerCircuitboard
   result: TechDiskComputerCircuitboard
 
-# Vestige change. Also commenting this out just incase. Might not be necessary (?)
+# SV: unresearchable Telesci, commented out recipe just incase too (may be unnecessary)
 #- type: latheRecipe
 #  parent: [ BaseGoldCircuitboardRecipe, BaseResearchComputerRecipeCategory ]
 #  id: StationTeleportersControlCircuitboard

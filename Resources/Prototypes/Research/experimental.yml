@@ -160,7 +160,7 @@
   cost: 10000
   recipeUnlocks:
   - DeviceDesynchronizer
-# Vestige change, make Telesci Unresearchable
+# SV: Make telesci unresearchable
 #- type: technology
 #  id: TeleSci
 #  name: research-technology-telesci
