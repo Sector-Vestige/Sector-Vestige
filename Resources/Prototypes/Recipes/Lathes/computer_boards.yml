@@ -70,10 +70,11 @@
   id: TechDiskComputerCircuitboard
   result: TechDiskComputerCircuitboard
 
-- type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseResearchComputerRecipeCategory ]
-  id: StationTeleportersControlCircuitboard
-  result: StationTeleportersControlCircuitboard
+# Vestige change. Also commenting this out just incase. Might not be necessary (?)
+#- type: latheRecipe
+#  parent: [ BaseGoldCircuitboardRecipe, BaseResearchComputerRecipeCategory ]
+#  id: StationTeleportersControlCircuitboard
+#  result: StationTeleportersControlCircuitboard
 
 # Cameras
 - type: latheRecipe
