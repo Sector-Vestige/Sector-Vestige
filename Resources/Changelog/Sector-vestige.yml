@@ -2107,3 +2107,9 @@ Entries:
       message: Added two new announcement variants.
   id: 298
   time: '2026-10-10T17:34:29.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: Admin colors now take presidence over Patreon colors..
+  id: 299
+  time: '2026-10-11T12:25:13.0000000+00:00'
