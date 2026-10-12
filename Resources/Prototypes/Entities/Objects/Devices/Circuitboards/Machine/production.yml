@@ -285,7 +285,7 @@
       Glass: 1
       Steel: 5
 
-- type: entity SV change
+- type: entity
   id: StationTeleporterMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: teleporter machine board
