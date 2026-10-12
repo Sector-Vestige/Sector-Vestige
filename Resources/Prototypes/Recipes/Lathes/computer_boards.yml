@@ -70,11 +70,10 @@
   id: TechDiskComputerCircuitboard
   result: TechDiskComputerCircuitboard
 
-# SV: unresearchable Telesci, commented out recipe just incase too (may be unnecessary)
-#- type: latheRecipe
-#  parent: [ BaseGoldCircuitboardRecipe, BaseResearchComputerRecipeCategory ]
-#  id: StationTeleportersControlCircuitboard
-#  result: StationTeleportersControlCircuitboard
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseResearchComputerRecipeCategory ]
+  id: StationTeleportersControlCircuitboard
+  result: StationTeleportersControlCircuitboard
 
 # Cameras
 - type: latheRecipe
