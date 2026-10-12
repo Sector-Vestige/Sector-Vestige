@@ -171,6 +171,6 @@
 #  tier: 3
 #  cost: 10000
 #  recipeUnlocks:
-# - StationTeleportersControlCircuitboard
+#  - StationTeleportersControlCircuitboard
 #  - StationTeleporterMachineCircuitboard
 #  - TeleporterChipBlank
