@@ -1,13 +1,9 @@
 - files: ["onwards_postround_5m0s.ogg",
           "shiftfall_stardust_4m02s.ogg",
           "andromeda_reef_3m32s.ogg",
-          "MYO_1_finedining_2m47s.ogg"]
+          "MYO_1_finedining_2m47s.ogg",
+          "onwards_roundstart_3m0s.ogg",
+          "service_at_dawn_1m55s.ogg"]
   license: "CC-BY-4.0"
   copyright: "Created by purpleskittleo"
   source: "https://open.spotify.com/artist/0rvC5u6wW6SMrWQXezSHhb"
-
-- files: ["onwards_roundstart_2m10s.ogg",
-          "service_at_dawn_1m50s.ogg"]
-  license: "CC-BY-4.0"
-  copyright: "Created by itsscritchscratch"
-  source: "https://soundcloud.com/itsscritchscratch"
