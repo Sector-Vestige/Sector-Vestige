@@ -2107,3 +2107,21 @@ Entries:
       message: Added two new announcement variants.
   id: 298
   time: '2026-10-10T17:34:29.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: Admin colors now take presidence over Patreon colors..
+  id: 299
+  time: '2026-10-11T12:25:13.0000000+00:00'
+- author: SpaceLizardSky
+  changes:
+    - type: Remove
+      message: Removed the ability to research telescience.
+  id: 300
+  time: '2026-10-13T13:47:11.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: DNA is back in the security computer.
+  id: 301
+  time: '2026-10-16T16:01:18.0000000+00:00'
