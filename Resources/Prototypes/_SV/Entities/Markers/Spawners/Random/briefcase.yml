@@ -1,0 +1,19 @@
+- type: entity
+  name: Random Briefcase Spawner
+  id: BriefcaseSpawner
+  parent: MarkerBase
+  placement:
+    mode: PlaceFree
+  components:
+  - type: Transform
+    anchored: false
+  - type: Sprite
+    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+    state: icon
+  - type: EntityTableSpawner
+    offset: 0
+    table: !type:GroupSelector
+      children:
+      - id: BriefcaseBrown
+      - id: BriefcaseMetal
+      - id: BriefcaseSecure

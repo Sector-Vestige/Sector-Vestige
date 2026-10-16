@@ -1,0 +1,28 @@
+- type: entity
+  parent: BaseItem
+  id: DisposableCamera
+  name: disposable camera
+  description: A picture says more than a thousand words. This one is made of cheap plastic.
+  components:
+  # aptly named component for picture taking
+  - type: PictureTaker
+    photographs: !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: TravelCameraPhotographs
+  - type: Sprite
+    sprite: _SV/Objects/Devices/disposable_camera.rsi
+    state: icon
+  - type: MeleeWeapon # allows using the camera in melee
+    damage:
+      types:
+        Blunt: 0
+  - type: LimitedCharges
+    maxCharges: 4
+  - type: UseDelay
+  - type: StaticPrice
+    price: 100
+  - type: Flash
+    flashOnRangedInteract: true
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Misc/camera_snap.ogg

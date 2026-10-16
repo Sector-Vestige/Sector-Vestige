@@ -1,0 +1,29 @@
+- type: entity
+  name: Random Secure Folder Spawner
+  id: SecureFolderSpawner
+  parent: MarkerBase
+  placement:
+    mode: PlaceFree
+  components:
+  - type: Transform
+    anchored: false
+  - type: Sprite
+    sprite: _SV/Objects/Misc/folders.rsi
+    layers:
+    - state: securefolder-colormap
+    - state: securefolder-zip
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+    - state: folder-base
+  - type: EntityTableSpawner
+    offset: 0
+    table: !type:GroupSelector
+      children:
+      - id: BoxFolderBaseSecure
+      - id: BoxFolderSecureRed
+      - id: BoxFolderSecureBlue
+      - id: BoxFolderSecureYellow
+      - id: BoxFolderSecureGrey
+      - id: BoxFolderSecureBlack
+      - id: BoxFolderSecureGreen

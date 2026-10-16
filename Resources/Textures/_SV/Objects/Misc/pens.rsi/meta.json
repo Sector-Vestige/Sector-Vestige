@@ -1,0 +1,99 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by HexReject (github) based on sprites taken from tgstation at https://github.com/tgstation/tgstation/commit/e1142f20f5e4661cb6845cfcf2dd69f864d67432",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "pen_r&d"
+        },
+        {
+            "name": "pen_r&d-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "pen_r&d-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "pen_cybersun"
+        },
+        {
+            "name": "pen_cybersun-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "pen_cybersun-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "pen_interdyne"
+        },
+        {
+            "name": "pen_interdyne-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "pen_interdyne-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "pen_cartsilica"
+        },
+        {
+            "name": "pen_cartsilica-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "pen_cartsilica-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "pen_pommersky"
+        },
+        {
+            "name": "pen_pommersky-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "pen_pommersky-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "pen_vox"
+        },
+        {
+            "name": "pen_vox-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "pen_vox-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "marker_ds"
+        },
+        {
+            "name": "marker_ds-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "marker_ds-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "marker_gorlex"
+        },
+        {
+            "name": "marker_gorlex-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "marker_gorlex-inhand-right",
+            "directions": 4
+        }
+    ]
+}
