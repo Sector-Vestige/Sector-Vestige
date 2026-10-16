@@ -158,11 +158,11 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
                     : null;
             }
 
-            var (secStatus, secReason, secFingerprint) = comp.DocumentType == DocumentType.Security
+            var (secStatus, secReason, secFingerprint, secDna) = comp.DocumentType == DocumentType.Security
                 ? GetSecurityInfo(uid, record)
-                : (SecurityStatus.None, null, null);
+                : (SecurityStatus.None, null, null, null);
 
-            var state = new CharacterDocumentConsoleState(netPlayerEntities, comp.SelectedPlayer, filteredDocs, comp.SelectedDocument, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint);
+            var state = new CharacterDocumentConsoleState(netPlayerEntities, comp.SelectedPlayer, filteredDocs, comp.SelectedDocument, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint, selectedPlayerDna: secDna);
             PushState(uid, state);
         }
         else
@@ -204,11 +204,11 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
         comp.SelectedPlayer = args.ProfileId;
         bool paperinserted = comp.PaperSlot.ContainerSlot?.ContainedEntity != null;
 
-        var (secStatus, secReason, secFingerprint) = comp.DocumentType == DocumentType.Security
+        var (secStatus, secReason, secFingerprint, secDna) = comp.DocumentType == DocumentType.Security
             ? GetSecurityInfo(uid, record)
-            : (SecurityStatus.None, null, null);
+            : (SecurityStatus.None, null, null, null);
 
-        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, null, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint);
+        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, null, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint, selectedPlayerDna: secDna);
         PushState(uid, characterDocumentConsoleState);
     }
 
@@ -232,11 +232,11 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
 
         bool paperinserted = comp.PaperSlot.ContainerSlot?.ContainedEntity != null;
 
-        var (secStatus, secReason, secFingerprint) = comp.DocumentType == DocumentType.Security
+        var (secStatus, secReason, secFingerprint, secDna) = comp.DocumentType == DocumentType.Security
             ? GetSecurityInfo(uid, record)
-            : (SecurityStatus.None, null, null);
+            : (SecurityStatus.None, null, null, null);
 
-        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, selecteddoc, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint);
+        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, selecteddoc, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint, selectedPlayerDna: secDna);
         PushState(uid, characterDocumentConsoleState);
     }
 
@@ -574,9 +574,9 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
 
         var filteredDocs = BuildVisibleDocs(uid, comp, record);
 
-        var (newStatus, newReason, newFingerprint) = GetSecurityInfo(uid, record);
+        var (newStatus, newReason, newFingerprint, newDna) = GetSecurityInfo(uid, record);
         bool paperInserted = comp.PaperSlot.ContainerSlot?.ContainedEntity != null;
-        var refreshState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, comp.SelectedDocument, paperInserted, comp.DocumentType, newStatus, newReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: newFingerprint);
+        var refreshState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, comp.SelectedDocument, paperInserted, comp.DocumentType, newStatus, newReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: newFingerprint, selectedPlayerDna: newDna);
         PushState(uid, refreshState);
     }
 
@@ -598,26 +598,30 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
         return true;
     }
 
-    private (SecurityStatus status, string? reason, string? fingerprint) GetSecurityInfo(EntityUid consoleUid, CharacterDocumentRecord record)
+    private (SecurityStatus status, string? reason, string? fingerprint, string? dna) GetSecurityInfo(EntityUid consoleUid, CharacterDocumentRecord record)
     {
         var station = _stationSystem.GetOwningStation(consoleUid);
         if (station == null)
-            return (SecurityStatus.None, null, null);
+            return (SecurityStatus.None, null, null, null);
 
         if (!TryComp<StationRecordsComponent>(station, out var stationRecords))
-            return (SecurityStatus.None, null, null);
+            return (SecurityStatus.None, null, null, null);
 
         if (!TryGetRecordKeyByName((station.Value, stationRecords), record.Name, out var key))
-            return (SecurityStatus.None, null, null);
+            return (SecurityStatus.None, null, null, null);
 
-        var fingerprint = _stationRecords.TryGetRecord<GeneralStationRecord>(key, out var generalRecord, stationRecords)
-            ? generalRecord.Fingerprint
-            : null;
+        string? fingerprint = null;
+        string? dna = null;
+        if (_stationRecords.TryGetRecord<GeneralStationRecord>(key, out var generalRecord, stationRecords))
+        {
+            fingerprint = generalRecord.Fingerprint;
+            dna = generalRecord.DNA;
+        }
 
         if (!_stationRecords.TryGetRecord<CriminalRecord>(key, out var criminalRecord, stationRecords))
-            return (SecurityStatus.None, null, fingerprint);
+            return (SecurityStatus.None, null, fingerprint, dna);
 
-        return (criminalRecord.Status, criminalRecord.Reason, fingerprint);
+        return (criminalRecord.Status, criminalRecord.Reason, fingerprint, dna);
     }
 
     /// <summary>
