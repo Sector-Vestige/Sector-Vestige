@@ -305,9 +305,9 @@ internal sealed partial class ChatManager : IChatManager
         {
             wrappedMessage = Loc.GetString("sv-chat-manager-send-ooc-admin-inactive-wrap-message", ("adminColor", prefs.AdminOOCColor), ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
         }
-
         // SV changes - Sponsor/patron entitlement manager - Start
-        if (_netConfigManager.GetClientCVar(player.Channel, SVCCVars.ShowSVOocPatreonColor)
+        // Admin colors take precedence over patron colors, so this must stay part of the else-if chain.
+        else if (_netConfigManager.GetClientCVar(player.Channel, SVCCVars.ShowSVOocPatreonColor)
             && _sponsors.TryGetOocColor(player.UserId, out var patronColor))
         {
             wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", patronColor), ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
