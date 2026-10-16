@@ -2119,3 +2119,9 @@ Entries:
       message: Removed the ability to research telescience.
   id: 300
   time: '2026-10-13T13:47:11.0000000+00:00'
+- author: ReboundQ3
+  changes:
+    - type: Fix
+      message: DNA is back in the security computer.
+  id: 301
+  time: '2026-10-16T16:01:18.0000000+00:00'
