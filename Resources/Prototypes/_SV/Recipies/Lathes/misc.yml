@@ -1,0 +1,130 @@
+# Briefcases
+- type: latheRecipe
+  id: BriefcaseBrown
+  result: BriefcaseBrown
+  completetime: 5
+  materials:
+    Wood: 1000
+    Cloth: 500
+
+- type: latheRecipe
+  id: BriefcaseMetal
+  result: BriefcaseMetal
+  completetime: 5
+  materials:
+    Steel: 1500
+
+- type: latheRecipe
+  id: BriefcaseSecure
+  result: BriefcaseSecure
+  completetime: 5
+  materials:
+    Plasteel: 1500
+    Glass: 300
+
+# Folders
+- type: latheRecipe
+  id: BoxFolderRedEmpty
+  result: BoxFolderRedEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+
+- type: latheRecipe
+  id: BoxFolderBlueEmpty
+  result: BoxFolderBlueEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+
+- type: latheRecipe
+  id: BoxFolderYellowEmpty
+  result: BoxFolderYellowEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+
+- type: latheRecipe
+  id: BoxFolderGreyEmpty
+  result: BoxFolderGreyEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+
+- type: latheRecipe
+  id: BoxFolderBlackEmpty
+  result: BoxFolderBlackEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+
+- type: latheRecipe
+  id: BoxFolderGreenEmpty
+  result: BoxFolderGreenEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+
+- type: latheRecipe
+  id: BoxFolderWhiteEmpty
+  result: BoxFolderWhiteEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+
+# Secure Folders
+- type: latheRecipe
+  id: BoxFolderSecureRedEmpty
+  result: BoxFolderSecureRedEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+    Steel: 20
+
+- type: latheRecipe
+  id: BoxFolderSecureBlueEmpty
+  result: BoxFolderSecureBlueEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+    Steel: 20
+
+- type: latheRecipe
+  id: BoxFolderSecureYellowEmpty
+  result: BoxFolderSecureYellowEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+    Steel: 20
+
+- type: latheRecipe
+  id: BoxFolderSecureGreyEmpty
+  result: BoxFolderSecureGreyEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+    Steel: 20
+
+- type: latheRecipe
+  id: BoxFolderSecureBlackEmpty
+  result: BoxFolderSecureBlackEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+    Steel: 20
+
+- type: latheRecipe
+  id: BoxFolderSecureGreenEmpty
+  result: BoxFolderSecureGreenEmpty
+  completetime: 1
+  materials:
+    Paper: 50
+    Steel: 20
+
+# Business Card
+- type: latheRecipe
+  id: BusinessCard
+  result: BusinessCard
+  completetime: 1
+  materials:
+    Paper: 20

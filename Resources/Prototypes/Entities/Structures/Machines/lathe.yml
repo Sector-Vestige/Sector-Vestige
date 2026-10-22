@@ -139,6 +139,7 @@
     - PowerCellsStatic
     - ElectronicsStatic
     - CDAutolatheStatic #CD - Custom Recepies
+    - SVAutolatheStatic #SV - Custom Recepies
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
