@@ -453,48 +453,21 @@ public sealed partial class PolymorphSystem : EntitySystem
     }
 
     /// <summary>
-    /// SV Helper function
-    /// Set a timer to revert after a time specified in the polymorph configuration component
-    /// Also where we move the Effects to play
-    /// I wonder what other functions I'll cram into here
+    /// Attempts to add provided value to duration of polymorph.
+    /// Returns false if entity is not polymorphed or has no duration limit, true otherwise.
     /// </summary>
-    /// <param name="uid">The entityuid of the entity being reverted</param>
-    public void TryRevertAfterTimerAndPlayEffect(Entity<PolymorphedEntityComponent?> ent)
+    public bool TryAddDuration(Entity<PolymorphedEntityComponent?> ent, int duration)
     {
-        var (uid, component) = ent;
-        if (!Resolve(ent, ref component))
-            return;
+        if (duration == 0)
+            return true;
 
-        if (Deleted(uid))
-            return;
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
 
-        if (component.Parent is not { } parent)
-            return;
+        if (ent.Comp.Configuration.Duration == null)
+            return false;
 
-        if (Deleted(parent))
-            return;
-
-        EntityUid? spawnedEnt = null;
-
-        //Configure how long the delay should be before reverting the player. Should be now for 99% of times
-        component.Configuration.TimeTillRevert = _gameTiming.CurTime + TimeSpan.FromSeconds(component.Configuration.RevertDelay);
-
-        if (!_transform.TryGetMapOrGridCoordinates(uid, out var coordinates))
-            return;
-
-        //Spawn effect now, so that we can wait to see if we should wait before reverting the player
-        if (component.Configuration.RevertEffectProto != null)
-            spawnedEnt = PredictedSpawnAtPosition(component.Configuration.RevertEffectProto, coordinates.Value);
-
-        // Attach the effect to the player. We can't attach the player to the entity else when the entity deletes it deletes the player
-        // looks mildly jank, buuuut it works.
-        // Only attach to the player if there is a delay, else it attaches to the polymorph and gets deleted.
-        // It's that, or we attach the effect to the parent (AKA the player) instead of the UID (the polymorph) but this fucks with things when you are in polymorph and have a polymorph delay as it spawns on the parent which is in fuckoff nowhereville
-        if (spawnedEnt != null &&  component.Configuration.RevertDelay > 0)
-            _transform.SetParent(spawnedEnt.Value, uid);
-
-        //play that funky music white boy
-        if (component.Configuration.ExitPolymorphSound != null)
-             _audio.PlayPvs(component.Configuration.ExitPolymorphSound, coordinates.Value);
+        ent.Comp.Configuration.Duration += duration;
+        return true;
     }
 }

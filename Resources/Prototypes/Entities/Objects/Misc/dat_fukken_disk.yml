@@ -39,6 +39,8 @@
       params:
         volume: -7
 #Goob - End: pickup and drop sounds
+    stealGroup:
+    - NukeDisk
 
 - type: entity
   name: nuclear authentication disk

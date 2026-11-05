@@ -12,6 +12,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      DRY_RUN: ${{ github.event.inputs.dry_run == 'true' }}
 
     steps:
     - name: Fail if we are not running on the stable branch

@@ -5,7 +5,6 @@ using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Content.Shared.Whitelist;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Traits;
 
@@ -46,6 +45,7 @@ public sealed partial class TraitSystem : EntitySystem
                 continue;
 
             // Add all components required by the prototype
+#pragma warning disable CS0618 // Enabling compatibility behaviour for TraitPrototype.Components
             if (traitPrototype.Components.Count > 0)
                 EntityManager.AddComponents(args.Mob, traitPrototype.Components, traitPrototype.ReplaceComponents); // Harmony change. See TraitPrototype.cs
 
