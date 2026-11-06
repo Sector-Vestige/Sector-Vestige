@@ -1,4 +1,5 @@
-﻿using Content.IntegrationTests.Fixtures;
+﻿using System.Collections.Generic;
+using Content.IntegrationTests.Fixtures;
 using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Utility;
 using Content.Server.StationEvents;
@@ -25,6 +26,12 @@ public sealed partial class EventSchedulerTest : GameTest
 
     private static readonly string[] AntagGameRules = GameDataScrounger.EntitiesWithComponent("StationEvent");
 
+    // SV - Rules that can't run on the test station (see TestEventScheduler).
+    private static readonly HashSet<string> RulesNeedingStationContent =
+    [
+        "SVSMOffGas", // needs an active supermatter
+    ];
+
     [Test]
     [TestOf(typeof(GameTicker)), TestOf(typeof(EventSchedulerTest)), TestOf(typeof(GameRuleComponent)),
      TestOf(typeof(StationEventComponent))]
@@ -37,6 +44,17 @@ public sealed partial class EventSchedulerTest : GameTest
         var rule = SProtoMan.Index<EntityPrototype>(ruleId);
         Assert.That(rule.TryComp<GameRuleComponent>(out var ruleComp, SEntMan.ComponentFactory), Is.True);
         Assert.That(rule.TryComp<StationEventComponent>(out var eventComp, SEntMan.ComponentFactory), Is.True);
+
+        // SV - Weight 0 events (e.g. the admin-only Harmony ERT shuttles) can never be picked by the scheduler,
+        // so there's nothing to check here.
+        if (eventComp!.Weight <= 0)
+            return;
+
+        // SV - Events that need content the test station doesn't have end themselves right away when started.
+        // Ended rules lose their GameRuleComponent, so the scheduler (by design) doesn't count them for cooldowns
+        // or max occurrences, which this test checks. Skip them here.
+        if (RulesNeedingStationContent.Contains(ruleId))
+            return;
         // TODO: This is A LOT of duplicate data we don't need. GameRules refactor some day...
         var time = TimeSpan.Compare(ruleComp!.ActivatedAt, TimeSpan.FromMinutes(eventComp!.EarliestStart)) > 0
             ? ruleComp.ActivatedAt

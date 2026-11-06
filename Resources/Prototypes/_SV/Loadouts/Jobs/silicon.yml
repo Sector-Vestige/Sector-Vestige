@@ -1,7 +1,7 @@
 # loadout
 - type: loadout
   id: Crewsimov
-  dummyEntity: AsimovCircuitBoard
+  dummyEntity: CrewsimovCircuitBoard
   lawset: Crewsimov
 
 - type: loadout

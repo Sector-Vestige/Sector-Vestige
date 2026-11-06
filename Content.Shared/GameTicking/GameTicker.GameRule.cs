@@ -39,7 +39,10 @@ public abstract partial class GameTicker
     [SubscribeLocalEvent]
     private void OnGameRuleStarted(Entity<ActiveGameRuleComponent> rule, ref MapInitEvent args)
     {
-        var ruleComp = RuleQuery.Comp(rule);
+        // SV - The rule may have ended itself while being added/started; don't crash on the missing component.
+        if (!RuleQuery.TryComp(rule, out var ruleComp))
+            return;
+
         ruleComp.ActivatedAt = GetRoundTime();
         Log.Info($"Started game rule {ToPrettyString(rule)}");
         Admin.Add(LogType.EventStarted, $"Started game rule {ToPrettyString(rule)}");
@@ -142,6 +145,11 @@ public abstract partial class GameTicker
     {
         // Game rule has already ended itself, or this was never a game rule...
         if (!RuleQuery.Resolve(rule, ref rule.Comp, false))
+            return false;
+
+        // SV - A rule that ended itself while being added (ForceEndSelf in Added) still has its component until the
+        // deferred removal runs. Starting it then crashes OnGameRuleStarted, so treat it as already ended.
+        if (rule.Comp.LifeStage > ComponentLifeStage.Running)
             return false;
 
         // can't start an already active rule

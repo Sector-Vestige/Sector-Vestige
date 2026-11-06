@@ -67,7 +67,7 @@
   - type: Speech
     speechSounds: Lizard
     speechVerb: Reptilian
-    allowedEmotes: [ 'Thump' ]
+    allowedEmotes: [ 'Thump', 'Yip', 'Hiss' ] # FloofStation , yip and hiss
   - type: Vocal
     emoteSounds: MaleReptilian
   - type: BodyEmotes

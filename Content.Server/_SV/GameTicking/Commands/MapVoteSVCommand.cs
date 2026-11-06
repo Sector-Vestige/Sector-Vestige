@@ -39,7 +39,7 @@ public sealed partial class MapVoteSVCommand : LocalizedEntityCommands
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IVoteManager _voteManager = default!;
-    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private ServerGameTicker _gameTicker = default!;
     [Dependency] private ILocalizationManager _localizationManager = default!;
 
     public override string Command => "mapvotesv";

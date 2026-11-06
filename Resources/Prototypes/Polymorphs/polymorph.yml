@@ -237,6 +237,7 @@
     exitPolymorphSound: /Audio/Magic/ethereal_exit.ogg
     duration: 120
     effectProto: EffectDesynchronizer
+    revertEffectProto: EffectDesynchronizer
 
 # Changeling Meteor
 - type: polymorph

@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Numerics; // Sector Vestige - profile height scaling
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Body;
@@ -13,6 +14,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Mind;
 using Content.Shared.PDA;
+using Content.Shared.Sprite; // Sector Vestige - profile height scaling
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
@@ -46,6 +48,7 @@ public sealed partial class StationSpawningSystem : EntitySystem
     [Dependency] private SharedAccessSystem _accessSystem = default!;
     [Dependency] private SharedIdCardSystem _cardSystem = default!;
     [Dependency] private SharedPdaSystem _pdaSystem = default!;
+    [Dependency] private SharedScaleVisualsSystem _scaleVisuals = default!; // Sector Vestige - profile height scaling
 
     [Dependency] private EntityQuery<HandsComponent> _handsQuery;
     [Dependency] private EntityQuery<InventoryComponent> _inventoryQuery;

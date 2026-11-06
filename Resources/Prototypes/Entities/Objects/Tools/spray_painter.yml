@@ -47,8 +47,8 @@
   suffix: ""
   components:
   - type: LimitedCharges
-    maxCharges: 15
-    lastCharges: 15
+    maxCharges: 30 # SV change, used to be 15
+    lastCharges: 30 # SV change, used to be 15
 
 - type: entity
   parent: SprayPainter

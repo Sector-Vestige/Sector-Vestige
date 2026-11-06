@@ -70,7 +70,7 @@ public sealed partial class GhostRespawnCommand : IConsoleCommand
             return;
         }
 
-        var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+        var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
 
         gameTicker.Respawn(shell.Player);
     }

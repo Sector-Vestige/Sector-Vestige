@@ -9,9 +9,6 @@
       refuelMaterialTime: 60 #SV: Wood plank refuels for more
       glowDuration: 120 #SV: torch default burn duration to 2 minutes
       refuelMaximumDuration: 480 #SV: torch maximum burn duration to 8 minutes
-      glowDuration: 100
-      refuelMaterialTime: 50
-      refuelMaximumDuration: 205
       fadeOutDuration: 4
       iconStateSpent: torch_spent
       iconStateLit: torch_nocloth

@@ -18,6 +18,9 @@ public sealed partial class SwappableInstrumentSystem : EntitySystem
         if (!_sharedInstrument.ResolveInstrument(ent, ref instrument) || instrument is null)
             return;
 
+        if (ent.Comp.OnlySetBySelf && ent.Owner != args.User) // Frontier: restrict instrument changes
+            return; // Frontier: restrict instrument changes
+
         var user = args.User;
         var priority = 0;
         foreach (var entry in ent.Comp.InstrumentList)

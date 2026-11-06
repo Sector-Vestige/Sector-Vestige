@@ -27,6 +27,7 @@ public sealed partial class CargoSystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private EmagSystem _emag = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SVCargoMarkupSystem _markup = default!; // SV - Lets make cargo spend more >:)
 
     [SubscribeLocalEvent]
     private void OnInit(Entity<CargoOrderConsoleComponent> ent, ref ComponentInit args)
@@ -205,7 +206,7 @@ public sealed partial class CargoSystem
             PlayDenySound(ent);
         }
 
-        var cost = product.Cost * order.OrderQuantity;
+        var cost = _markup.GetPrice(product) * order.OrderQuantity; // SV - Markup system
         var accountBalance = GetBalanceFromAccount((station.Value, bank), order.Account);
 
         // Not enough balance

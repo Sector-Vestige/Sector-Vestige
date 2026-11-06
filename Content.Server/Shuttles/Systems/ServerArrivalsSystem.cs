@@ -6,6 +6,8 @@ using Content.Shared.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Parallax;
+using Content.Shared.Power.Components; // Moffstation
+using Content.Shared.Power.EntitySystems; // Moffstation
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Events;
@@ -45,6 +47,7 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
     [Dependency] private IConsoleHost _console = default!;
     [Dependency] private ActorSystem _actor = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private SharedBatterySystem _batterySystem = default!; // Moffstation
     [Dependency] private BiomeSystem _biomes = default!;
     [Dependency] private DeviceNetworkSystem _deviceNetworkSystem = default!;
     [Dependency] private MapLoaderSystem _loader = default!;
@@ -146,7 +149,7 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
             _biomes.EnsurePlanet(mapUid, ProtoMan.Index(template));
             var restricted = new RestrictedRangeComponent
             {
-                Range = _cfgManager.GetCVar(CCVars.ArrivalsRange)
+                Range = Cfg.GetCVar(CCVars.ArrivalsRange)
             };
             AddComp(mapUid, restricted);
         }
@@ -338,7 +341,38 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
             };
             _deviceNetworkSystem.SendPacket(uid, null, ref payload, netComp.TransmitFrequency);
         }
+
+        // Moffstation - Start - Arrivals start fixes
+        if (component.FirstArrival &&
+            TryGetArrivals(out var arrivals) &&
+            args.MapUid != Transform(arrivals).MapUid)
+        {
+            // raise first arrivals event
+            RaiseLocalEvent(uid, new FirstArrivalEvent());
+            component.FirstArrival = false;
+        }
+        // Moffstation - End
     }
+
+    // Moffstation - Start - First arrivals event
+    [SubscribeLocalEvent]
+    private void OnFirstArrival(Entity<ArrivalsShuttleComponent> ent, ref FirstArrivalEvent ev)
+    {
+        // Fixes to problems exclusive to the group arrivals start
+        if (Cfg.GetCVar(CCVars.StartAtArrivals))
+        {
+            if (_station.GetStationInMap(Transform(ent.Owner).MapID) is not { } station)
+                return;
+            // Refills all the station's batteries, gives engi more leeway since they have to wait to arrive at the station
+            var query = EntityQueryEnumerator<BatteryComponent>();
+            while (query.MoveNext(out var entity, out var comp))
+            {
+                if (_station.GetOwningStation(entity) == station)
+                    _batterySystem.SetCharge((entity, comp), comp.MaxCharge);
+            }
+        }
+    }
+    // Moffstation - End
 
     private void DumpChildren(EntityUid uid, ref FTLStartedEvent args)
     {

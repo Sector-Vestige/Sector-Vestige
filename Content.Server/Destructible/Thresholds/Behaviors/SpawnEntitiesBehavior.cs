@@ -65,7 +65,19 @@ namespace Content.Server.Destructible.Thresholds.Behaviors
                     if (count == 0)
                         continue;
 
-                    if (system.PrototypeManager.TryIndex(entityId, out var prototype) && prototype.HasComp<StackComponent>(system.EntityManager.ComponentFactory))
+                    if (SpawnAfter > 0)
+                    {
+                        // TODO: TransferForensics is not supported here because the actual entity UID is not known until the spawner spawns it.
+                        for (var i = 0; i < count; i++)
+                        {
+                            var spawner = system.EntityManager.SpawnEntity(TempEntityProtoId, position.Offset(GetRandomVector()));
+                            var timedDespawn = system.EntityManager.GetComponent<TimedDespawnComponent>(spawner);
+                            timedDespawn.Lifetime = SpawnAfter;
+                            var spawnOnDespawn = system.EntityManager.GetComponent<SpawnOnDespawnComponent>(spawner);
+                            system.EntityManager.System<SpawnOnDespawnSystem>().SetPrototype((spawner, spawnOnDespawn), entityId);
+                        }
+                    }
+                    else if (system.PrototypeManager.TryIndex(entityId, out var prototype) && prototype.HasComp<StackComponent>(system.EntityManager.ComponentFactory))
                     {
                         var spawned = SpawnInContainer
                             ? system.EntityManager.SpawnNextToOrDrop(entityId, owner)

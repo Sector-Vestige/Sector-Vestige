@@ -51,10 +51,11 @@ public sealed partial class ServerTraitorRuleSystem : TraitorRuleSystem
     }
 
     // TODO: AntagCodewordsComponent
-    [SubscribeLocalEvent]
-    private void OnObjectivesTextPrepend(EntityUid uid, TraitorRuleComponent comp, ref ObjectivesTextPrependEvent args)
-    {
-        if(comp.GiveCodewords)
-            args.Text += "\n" + Loc.GetString("traitor-round-end-codewords", ("codewords", string.Join(", ", Codeword.GetCodewords(comp.CodewordFactionPrototypeId))));
-    }
+    // Vestige 14/04/2026 Remove antags and related things from round-end text.
+    // [SubscribeLocalEvent]
+    // private void OnObjectivesTextPrepend(EntityUid uid, TraitorRuleComponent comp, ref ObjectivesTextPrependEvent args)
+    // {
+    //     if(comp.GiveCodewords)
+    //         args.Text += "\n" + Loc.GetString("traitor-round-end-codewords", ("codewords", string.Join(", ", Codeword.GetCodewords(comp.CodewordFactionPrototypeId))));
+    // }
 }

@@ -6,17 +6,23 @@
   components:
   - type: Sprite
     layers:
-    - map: [ "computerLayerBody" ]
+    - map: [ "enum.ComputerVisualLayers.Frame" ]
       state: computer
-    - map: [ "computerLayerKeyboard" ]
+    - map: [ "enum.ComputerVisualLayers.Keyboard" ]
       state: generic_keyboard
-    - map: [ "computerLayerScreen" ]
+    - map: [ "enum.ComputerVisualLayers.Screen" ]
       state: command
-    - map: [ "computerLayerKeys" ]
+    - map: [ "enum.ComputerVisualLayers.Keys" ]
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
       visible: false
+  - type: ComputerVisuals # SV - upstream ComputerVisuals now sets the layer states
+    stateFrame: computer
+    stateKeyboard: generic_keyboard
+    stateScreen: command
+    stateKeys: generic_keys
+    statePanel: generic_panel_open
   - type: Computer
     board: JobSlotsComputerCircuitboard
   - type: DeviceNetworkRequiresPower
@@ -56,14 +62,20 @@
   components:
   - type: Sprite
     layers:
-    - map: [ "computerLayerBody" ]
+    - map: [ "enum.ComputerVisualLayers.Frame" ]
       state: computer
-    - map: [ "computerLayerKeyboard" ]
+    - map: [ "enum.ComputerVisualLayers.Keyboard" ]
       state: generic_keyboard
-    - map: [ "computerLayerScreen" ]
+    - map: [ "enum.ComputerVisualLayers.Screen" ]
       state: shuttle
-    - map: [ "computerLayerKeys" ]
+    - map: [ "enum.ComputerVisualLayers.Keys" ]
       state: generic_keys
+  - type: ComputerVisuals # SV - upstream ComputerVisuals now sets the layer states
+    stateFrame: computer
+    stateKeyboard: generic_keyboard
+    stateScreen: shuttle
+    stateKeys: generic_keys
+    statePanel: null
   - type: DroneConsole
     components:
     - type: SalvageShuttle

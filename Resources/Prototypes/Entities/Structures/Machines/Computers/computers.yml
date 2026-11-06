@@ -306,27 +306,22 @@
   - type: CriminalRecordsConsole
   - type: Sprite
     layers:
-    - map: [ "computerLayerBody" ]
+    - map: [ "enum.ComputerVisualLayers.Frame" ]
       state: computer
-    - map: [ "computerLayerKeyboard" ]
+    - map: [ "enum.ComputerVisualLayers.Keyboard" ]
       state: generic_keyboard
-    - map: [ "computerLayerScreen" ]
+    - map: [ "enum.ComputerVisualLayers.Screen" ]
       state: explosive
-    - map: [ "computerLayerKeys" ]
+    - map: [ "enum.ComputerVisualLayers.Keys" ]
       state: security_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
-  - type: UserInterface
-    interfaces:
-      enum.CriminalRecordsConsoleKey.Key:
-        type: CriminalRecordsConsoleBoundUserInterface
-      enum.WiresUiKey.Key:
-        type: WiresBoundUserInterface
-  - type: ActivatableUI
-    key: enum.CriminalRecordsConsoleKey.Key
   - type: ComputerVisuals
+    stateFrame: computer
+    stateKeyboard: generic_keyboard
     stateScreen: explosive
     stateKeys: security_key
+    statePanel: generic_panel_open
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -408,16 +403,22 @@
   components:
   - type: Sprite
     layers:
-    - map: ["computerLayerBody"]
+    - map: [ "enum.ComputerVisualLayers.Frame" ]
       state: computer
-    - map: ["computerLayerKeyboard"]
+    - map: [ "enum.ComputerVisualLayers.Keyboard" ]
       state: generic_keyboard
-    - map: ["computerLayerScreen"]
+    - map: [ "enum.ComputerVisualLayers.Screen" ]
       state: comm
-    - map: ["computerLayerKeys"]
+    - map: [ "enum.ComputerVisualLayers.Keys" ]
       state: tech_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+  - type: ComputerVisuals # SV - upstream ComputerVisuals now sets the layer states
+    stateFrame: computer
+    stateKeyboard: generic_keyboard
+    stateScreen: comm
+    stateKeys: tech_key
+    statePanel: generic_panel_open
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -465,16 +466,22 @@
   components:
   - type: Sprite
     layers:
-    - map: ["computerLayerBody"]
+    - map: [ "enum.ComputerVisualLayers.Frame" ]
       state: computer
-    - map: ["computerLayerKeyboard"]
+    - map: [ "enum.ComputerVisualLayers.Keyboard" ]
       state: generic_keyboard
-    - map: ["computerLayerScreen"]
+    - map: [ "enum.ComputerVisualLayers.Screen" ]
       state: comm_syndie
-    - map: ["computerLayerKeys"]
+    - map: [ "enum.ComputerVisualLayers.Keys" ]
       state: syndie_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+  - type: ComputerVisuals # SV - upstream ComputerVisuals now sets the layer states
+    stateFrame: computer
+    stateKeyboard: generic_keyboard
+    stateScreen: comm_syndie
+    stateKeys: syndie_key
+    statePanel: generic_panel_open
   - type: PointLight
     radius: 1.5
     energy: 4.0

@@ -7,9 +7,7 @@
   - type: StationEvent
     startAnnouncement: station-event-unknown-shuttle-incoming #!!
   - type: LoadMapRule
-    preloadedGrid: ShuttleChemLab
-
-# - type: entity
+    gridPath: /Maps/_Harmony/Shuttles/ShuttleEvent/chemlab.yml # SV - upstream deprecated preloadedGrid (was ShuttleChemLab)
 #   id: UnknownShuttleBrigmedic
 #   parent: BaseUnknownShuttleRule
 #   components:
@@ -29,4 +27,4 @@
     weight: 5 #  Slightly lower chance, but not too low.
     earliestStart: 45 # Late because antag.
   - type: LoadMapRule
-    preloadedGrid: ShuttleSyndicateReinforcement
+    gridPath: /Maps/_Harmony/Shuttles/ShuttleEvent/syndicatereinforcement.yml # SV - upstream deprecated preloadedGrid (was ShuttleSyndicateReinforcement)

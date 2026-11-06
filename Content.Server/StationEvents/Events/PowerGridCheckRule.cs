@@ -122,6 +122,7 @@ public sealed partial class PowerGridCheckRule : StationEventSystem<PowerGridChe
 
             if (!apcComponent.MainBreakerEnabled)
                 _apc.ApcToggleBreaker(entity, apcComponent);
+            RemComp<ElectricalOverloadComponent>(entity); //Umbra-APCs explode when toggled on during power outages
         }
 
         // Can't use the default EndAudio
@@ -160,7 +161,10 @@ public sealed partial class PowerGridCheckRule : StationEventSystem<PowerGridChe
             if (TryComp<ApcComponent>(selected, out var apcComponent))
             {
                 if (apcComponent.MainBreakerEnabled)
+                {
                     _apc.ApcToggleBreaker(selected, apcComponent);
+                    AddComp<ElectricalOverloadComponent>(selected); //Umbra-APCs explode when toggled on during power outages
+                }
             }
 
             component.Unpowered.Add(selected);

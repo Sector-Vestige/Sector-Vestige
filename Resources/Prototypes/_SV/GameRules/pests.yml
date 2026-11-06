@@ -68,7 +68,7 @@
     duration: 60
   - type: VentCrittersRule
     entries:
-    - id: MobGiantSpiderAngry
+    - id: MobGiantSpiderTarantulaAngry # SV - upstream split MobGiantSpiderAngry into variants; tarantula is the old base spider
       prob: 0.025 # Sector Vestige: Halved from 0.05 to 0.025
 
 # Note: Spider Clown event is intentionally excluded from Vestige events

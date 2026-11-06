@@ -11,6 +11,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Audio;
 using Content.Shared.Chat;
 using Content.Shared.DeviceLinking;
+using Content.Shared.DeviceLinking.Components;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Light.Components;
 using Content.Shared.Mobs;
@@ -700,8 +701,7 @@ public sealed partial class SupermatterSystem
         }
 
         // Add post-delamination event scheduler
-        var gamerule = _gameTicker.AddGameRule(sm.DelamGamerulePrototype);
-        _gameTicker.StartGameRule(gamerule);
+        _gameTicker.StartGameRule(sm.DelamGamerulePrototype); // adds and starts the rule
 
         var effects = _proto.Index(sm.DelamEffectsPrototype).Components;
 

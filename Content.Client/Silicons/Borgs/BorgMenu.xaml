@@ -20,7 +20,7 @@
                     <SpriteView Name="BorgSprite" Scale="5 5"/>
                 </BoxContainer>
             </PanelContainer>
-            <customControls:HSeparator Margin="0 10 0 10"/>
+            <controls:Separator StyleClasses="LowDivider" Margin="0 10 0 10"/>
             <BoxContainer Orientation="Horizontal"
                           Name="BorgNameEditContainer"> <!-- CD - ai shell changes -->
                 <LineEdit Name="NameLineEdit" HorizontalExpand="True"/>

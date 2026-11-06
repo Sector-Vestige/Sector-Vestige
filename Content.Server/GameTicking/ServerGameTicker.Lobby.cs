@@ -131,7 +131,7 @@ public sealed partial class ServerGameTicker
         {
             _pauseTime = Timing.CurTime;
         }
-        else if (_pauseTime != default)
+        else // Moffstation - Remove exception for if pausetime is 0
         {
             _roundStartTime += Timing.CurTime - _pauseTime;
         }
@@ -156,10 +156,14 @@ public sealed partial class ServerGameTicker
         var status = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
         foreach (var playerUserId in _playerGameStatuses.Keys)
         {
-            _playerGameStatuses[playerUserId] = status;
-            if (!_playerManager.TryGetSessionById(playerUserId, out var playerSession))
+            if (!_playerManager.TryGetSessionById(playerUserId, out var playerSession) || _playerGameStatuses[playerUserId] == status)  // Moffstation - Ready manifest
                 continue;
+            _playerGameStatuses[playerUserId] = status; // Moffstation - Ready Manifest
             RaiseNetworkEvent(GetStatusMsg(playerSession), playerSession.Channel);
+            // Moffstation - Start - Ready manifest
+            var ev = new PlayerToggleReadyEvent(playerSession);
+            RaiseLocalEvent(ref ev);
+            // Moffstation - End
         }
     }
 
@@ -178,6 +182,10 @@ public sealed partial class ServerGameTicker
 
         _playerGameStatuses[player.UserId] = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
         RaiseNetworkEvent(GetStatusMsg(player), player.Channel);
+        // Moffstation - Start - Ready Manifest
+        var ev = new PlayerToggleReadyEvent(player);
+        RaiseLocalEvent(ref ev);
+        // Moffstation - End
         // update server info to reflect new ready count
         UpdateInfoText();
     }
@@ -185,3 +193,8 @@ public sealed partial class ServerGameTicker
     public override bool UserHasJoinedGame(NetUserId userId)
         => PlayerGameStatuses.TryGetValue(userId, out var status) && status == PlayerGameStatus.JoinedGame;
 }
+
+// Moffstation - Start - Ready Manifest
+[ByRefEvent]
+public record struct PlayerToggleReadyEvent(ICommonSession PlayerSession);
+// Moffstation - End

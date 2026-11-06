@@ -8,6 +8,7 @@ using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerUpdates;
 using Content.Server.Station.Systems;
+using Content.Shared.CCVar; // Moffstation
 using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Station.Systems;
@@ -86,7 +87,7 @@ namespace Content.Server.GameTicking
             if (!DummyTicker)
                 RestartRound();
 
-            PauseStart(_cfg.GetCVar(CCVars.StartServerPaused)); // Moffstation - Pause the round on startup if the Cvar is enabled
+            PauseStart(Cfg.GetCVar(CCVars.StartServerPaused)); // Moffstation - Pause the round on startup if the Cvar is enabled
 
             _postInitialized = true;
         }

@@ -2,8 +2,8 @@
   id: Snowball
   mapName: 'Snowball Station'
   mapPath: /Maps/snowball.yml
-  minPlayers: 5
-  maxPlayers: 25
+  minPlayers: 15
+  maxPlayers: 50
   stations:
     Snowball:
       stationProto: StandardNanotrasenStation
@@ -16,51 +16,59 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_rod.yml
         - type: StationJobs
-          availableJobs:
-            # TOTAL: 54 job slots
-            # Command (7)
+          availableJobs: # 60 jobs total w/o latejoins & interns, 77 jobs total w/ latejoins & interns
+            #command (7)
             Captain: [ 1, 1 ]
             #service
             HeadOfPersonnel: [ 1, 1 ]
-            HeadOfSecurity: [ 1, 1 ]
-            ChiefMedicalOfficer: [ 1, 1 ]
+            Bartender: [ 1, 2 ]
+            Botanist: [ 2, 2 ]
+            Chef: [ 2, 3 ]
+            Janitor: [ 1, 2 ]
+            Chaplain: [ 1, 1 ]
+            Librarian: [ 1, 1 ]
+            ServiceWorker: [ 2, 2 ]
+            #engineering
             ChiefEngineer: [ 1, 1 ]
+            SeniorEngineer: [ 1, 1 ] #CD Role
+            AtmosphericTechnician: [ 2, 2 ]
+            StationEngineer: [ 3, 5 ] #CD change from 3-3 to 4-4.
+            TechnicalAssistant: [ 3, 3 ] #CD disabled.
+            #medical
+            ChiefMedicalOfficer: [ 1, 1 ]
+            SeniorPhysician: [ 1, 1 ] #CD Role
+            Chemist: [ 2, 2 ] #CD change from 3 to 2.
+            MedicalDoctor: [ 3, 5 ] #CD change from 3-3 to 4-4.
+            Paramedic: [ 1, 1 ]
+            MedicalIntern: [ 3, 3 ] #CD disabled.
+            #science
             ResearchDirector: [ 1, 1 ]
-            Quartermaster: [ 1, 1 ]
-            # Service (8-9)
-            Bartender: [ 0, 1 ]
-            Botanist: [ 0, 2 ]
-            Chef: [ 0, 1 ]
-            Janitor: [ 0, 2 ]
-            Chaplain: [ 0, 1 ]
-            Librarian: [ 0, 1 ]
-            ServiceWorker: [ 0, 1 ]
-            # Engineering (7)
-            AtmosphericTechnician: [ 1, 2 ]
-            StationEngineer: [ 1, 3 ]
-            TechnicalAssistant: [ 0, 2 ]
-            # Medical (8)
-            Chemist: [ 1, 2 ]
-            MedicalDoctor: [ 1, 3 ]
-            MedicalIntern: [ 0, 2 ]
-            Paramedic: [ 0, 1 ]
-            # Science (5)
-            Scientist: [ 1, 3 ]
-            ResearchAssistant: [ 0, 2 ]
-            # Security (8)
+            SeniorResearcher: [ 1, 1 ] #CD Role
+            Scientist: [ 3, 5 ] #CD change from 4-4 to 5-5.
+            ResearchAssistant: [ 2, 2 ] #CD disabled.
+            #security
+            HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 1, 3 ]
+            SeniorOfficer: [ 1, 1 ] #CD Role
+            SecurityOfficer: [ 3, 5 ] #CD change from 3-3 to 4-4.
             Detective: [ 1, 1 ]
-            SecurityCadet: [ 0, 2 ]
-            Lawyer: [ 0, 1 ]
-            # Supply (4)
-            SalvageSpecialist: [ 1, 2 ]
-            CargoTechnician: [ 1, 2 ]
-            # Civilian (3 + overflow)
-            Passenger: [ -1, -1 ] # infinite, not counted
-            Clown: [ 0, 1 ]
-            Mime: [ 0, 1 ]
-            Musician: [ 0, 1 ]
-            # Silicon (3)
+            SecurityCadet: [ 4, 4 ] #CD disabled.
+            Lawyer: [ 1, 1 ]
+            #supply
+            Quartermaster: [ 1, 1 ]
+            SeniorCourier: [ 1, 1 ]
+            SalvageSpecialist: [ 3, 5 ]
+            CargoTechnician: [ 3, 3 ]
+            #civilian
+            Passenger: [ -1, -1 ]
+            Clown: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Musician: [ 1, 1 ]
+            Reporter: [ 2, 2 ]
+            #silicon
             StationAi: [ 1, 1 ]
-            Borg: [ 0, 2 ]
+            Borg: [ 2, 2 ]
+            #misc (2)
+            Prisoner: [ 2, 2 ] #Sector Vestige: Add prioner to the map rotations
+            #Central Command
+            SVMagistrate: [ 1, 1 ]

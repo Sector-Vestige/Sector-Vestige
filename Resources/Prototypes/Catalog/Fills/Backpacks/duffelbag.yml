@@ -432,6 +432,7 @@
         - id: MedkitCombatFilled
         - id: EmpImplanter
         - id: ClothingShoesChameleonNoSlips
+        - id: AgentIDCard # SV
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
