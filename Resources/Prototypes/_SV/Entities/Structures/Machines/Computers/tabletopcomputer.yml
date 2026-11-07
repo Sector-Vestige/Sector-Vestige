@@ -6,18 +6,24 @@
   components:
   - type: Sprite
     layers:
-    - map: [ "computerLayerBody" ]
+    - map: [ "enum.ComputerVisualLayers.Frame" ]
       sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
       state: computer_tabletop
-    - map: [ "computerLayerKeyboard" ]
+    - map: [ "enum.ComputerVisualLayers.Keyboard" ]
       sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
       state: generic_keyboard_tabletop
-    - map: [ "computerLayerScreen" ]
+    - map: [ "enum.ComputerVisualLayers.Screen" ]
       sprite: Structures/Machines/computers.rsi
       state: comm
-    - map: [ "computerLayerKeys" ]
+    - map: [ "enum.ComputerVisualLayers.Keys" ]
       sprite: Structures/Machines/computers.rsi
       state: tech_key
+  - type: ComputerVisuals # SV - upstream ComputerVisuals now sets the layer states
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: comm
+    stateKeys: tech_key
+    statePanel: null
 
 # Syndicate documentation terminal — tabletop variant.
 # Single-type Syndicate console; clandestine, no NT branding.
@@ -28,15 +34,21 @@
   components:
   - type: Sprite
     layers:
-    - map: [ "computerLayerBody" ]
+    - map: [ "enum.ComputerVisualLayers.Frame" ]
       sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
       state: computer_tabletop
-    - map: [ "computerLayerKeyboard" ]
+    - map: [ "enum.ComputerVisualLayers.Keyboard" ]
       sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
       state: generic_keyboard_tabletop
-    - map: [ "computerLayerScreen" ]
+    - map: [ "enum.ComputerVisualLayers.Screen" ]
       sprite: Structures/Machines/computers.rsi
       state: comm_syndie
-    - map: [ "computerLayerKeys" ]
+    - map: [ "enum.ComputerVisualLayers.Keys" ]
       sprite: Structures/Machines/computers.rsi
       state: syndie_key
+  - type: ComputerVisuals # SV - upstream ComputerVisuals now sets the layer states
+    stateFrame: computer_tabletop
+    stateKeyboard: generic_keyboard_tabletop
+    stateScreen: comm_syndie
+    stateKeys: syndie_key
+    statePanel: null

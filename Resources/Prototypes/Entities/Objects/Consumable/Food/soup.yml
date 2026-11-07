@@ -594,6 +594,9 @@
         Quantity: 15
       - ReagentId: Vodka
         Quantity: 5
+  - type: Tag
+    tags:
+    - FinishedMeal
 
 # Soup
 
@@ -823,6 +826,7 @@
     - ChiliBowl
     - Meat  #sv - Chili contains meat; makes edible for lizards
     - Fruit  #sv - Chili contains tomato; makes edible for lizards
+    - FinishedMeal
 
 
 - type: entity
@@ -857,6 +861,7 @@
   - type: Tag
     tags:
     - ChiliBowl
+    - FinishedMeal
 
 - type: entity
   name: chili con carnival
@@ -879,6 +884,7 @@
     - ChiliBowl
     - Meat  #sv - Chili contains meat; makes edible for lizards
     - Fruit  #sv - Chili contains tomato; makes edible for lizards
+    - FinishedMeal
 
 - type: entity
   name: monkey's delight

@@ -3,7 +3,7 @@
   name: job-name-prisoner
   description: job-description-prisoner
   playTimeTracker: JobPrisoner
-  startingGear: PrisonerGear
+  startingGear: CDPrisonerGear # SV - renamed, upstream now defines PrisonerGear
   icon: "JobIconPrisoner"
   supervisors: job-supervisors-security
   special:
@@ -12,12 +12,12 @@
     radio_channel: Security
 
 - type: startingGear
-  id: PrisonerGear
+  id: CDPrisonerGear # SV - renamed, upstream now defines PrisonerGear
   equipment:
     shoes: ClothingShoesColorBlack
-    id: PrisonerPDA
+    id: CDPrisonerPDA
     ears: ClothingHeadsetGrey
 
 - type: chameleonOutfit
-  id: PrisonerChameleonOutfit
+  id: CDPrisonerChameleonOutfit # SV - renamed, upstream now defines PrisonerChameleonOutfit
   job: Prisoner

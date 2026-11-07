@@ -1,6 +1,6 @@
 - type: entity
   parent: BasePDA
-  id: PrisonerPDA
+  id: CDPrisonerPDA # SV - renamed, upstream now defines PrisonerPDA
   name: prisoner PDA
   description: Clear, so you can make sure there's nothing being smuggled inside.
   components:

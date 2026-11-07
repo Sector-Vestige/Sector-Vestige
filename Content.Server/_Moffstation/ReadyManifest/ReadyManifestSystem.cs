@@ -11,13 +11,14 @@ using Content.Shared.Roles;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Content.Shared.GameTicking.Events;
 
 namespace Content.Server._Moffstation.ReadyManifest;
 
 public sealed partial class ReadyManifestSystem : EntitySystem
 {
     [Dependency] private EuiManager _euiManager = default!;
-    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private ServerGameTicker _gameTicker = default!;
     [Dependency] private IServerPreferencesManager _prefsManager = default!;
     [Dependency] private IPrototypeManager _protoMan = default!;
 

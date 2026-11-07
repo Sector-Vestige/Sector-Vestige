@@ -20,9 +20,9 @@
     sprite: _SV/PersonalItems/Items/attacusguitar.rsi
   - type: SwappableInstrument
     instrumentList:
-      "Nylon": {24: 0}
-      "Steel": {25: 0}
-      "Jazz": {26: 0}
+      swappable-instrument-style-nylon: {24: 0}
+      swappable-instrument-style-steel: {25: 0}
+      swappable-instrument-style-jazz: {26: 0}
 
 - type: loadout
   id: PersonalItemAttacusGuitar
