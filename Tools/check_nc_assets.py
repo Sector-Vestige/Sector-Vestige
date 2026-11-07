@@ -12,7 +12,8 @@ Usage:
     python Tools/check_nc_assets.py --baseline           # fail only on NC assets
                                                          # that are not in the baseline
 
-The baseline lives in Tools/nc_assets_baseline.txt. CI runs with --baseline so
+The baseline lives in Tools/nc_assets_baseline.txt, grouped per namespace
+(lines starting with # are comments). CI runs with --baseline so
 existing NC assets do not block anything, but no new ones can be merged
 without someone consciously adding them to the baseline.
 """
@@ -54,17 +55,47 @@ def scan() -> dict[str, str]:
     return found
 
 
+def namespace(path: str) -> str:
+    """The fork namespace of an asset (e.g. "_Harmony"), or "Upstream" for vanilla paths."""
+    parts = path.split("/")
+    # Resources/<Audio|Textures|...>/<_Namespace>/...
+    if len(parts) > 2 and parts[2].startswith("_"):
+        return parts[2]
+    return "Upstream"
+
+
+def write_baseline(found: dict[str, str]) -> None:
+    """Write the baseline grouped per namespace (Upstream first), each group sorted."""
+    groups: dict[str, list[str]] = {}
+    for p in found:
+        groups.setdefault(namespace(p), []).append(p)
+
+    order = sorted(groups, key=lambda ns: (ns != "Upstream", ns.lower()))
+    blocks = []
+    for ns in order:
+        blocks.append(f"# {ns}\n" + "".join(f"{p}\n" for p in sorted(groups[ns])))
+    BASELINE.write_text("\n".join(blocks), encoding="utf-8")
+
+
+def read_baseline() -> set[str]:
+    """Baseline entries, one path per line; blank lines and # comments are ignored."""
+    if not BASELINE.exists():
+        return set()
+    lines = (line.strip() for line in BASELINE.read_text(encoding="utf-8").splitlines())
+    return {line for line in lines if line and not line.startswith("#")}
+
+
 def main() -> int:
     args = sys.argv[1:]
     found = scan()
 
     if "--write-baseline" in args:
-        BASELINE.write_text("".join(f"{p}\n" for p in sorted(found)), encoding="utf-8")
+        write_baseline(found)
         print(f"Wrote {len(found)} entries to {BASELINE.relative_to(REPO)}")
         return 0
 
     if "--baseline" in args:
-        known = set(BASELINE.read_text(encoding="utf-8").split()) if BASELINE.exists() else set()
+        known = read_baseline()
         new = {p: l for p, l in found.items() if p not in known}
         gone = sorted(known - found.keys())
         if gone:
