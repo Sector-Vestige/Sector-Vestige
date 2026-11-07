@@ -18,23 +18,21 @@
                          MinSize="32 32"
                          RectClipContent="True" />
 
-            <Label Name="LicenceName"
-                   Access="Public"
-                   HorizontalExpand="True"
-                   ClipText="True" />
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          Margin="4 2">
 
-            <Label Name="LicenceDescription"
-                   Access="Public"
-                   HorizontalExpand="True"
-                   ClipText="True"/>
+                <Label Name="LicenceName"
+                       Access="Public"
+                       HorizontalExpand="True"
+                       ClipText="True" />
 
+                <Label Name="LicenceDescription"
+                       Access="Public"
+                       HorizontalExpand="True"
+                       ClipText="True"
+                       StyleClasses="LabelSubText" />
+            </BoxContainer>
         </BoxContainer>
     </PanelContainer>
-
-    <Label Name="PointCost"
-           Access="Public"
-           MinSize="56 32"
-           Align="Right"
-           Margin="0 0 5 0"
-           HorizontalAlignment="Right"/>
 </BoxContainer>

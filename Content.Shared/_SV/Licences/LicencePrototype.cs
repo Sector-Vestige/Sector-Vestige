@@ -21,4 +21,7 @@ public sealed partial class LicencePrototype : IPrototype
 
     [DataField]
     public List<ProtoId<CargoProductPrototype>> Products = new();
+
+    [DataField(required: true)]
+    public ProtoId<CargoAccountPrototype> CargoAccount;
 }

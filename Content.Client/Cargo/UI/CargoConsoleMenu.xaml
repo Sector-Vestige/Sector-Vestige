@@ -216,7 +216,7 @@
                     <LineEdit Name="LicenceSearchBar" PlaceHolder="{Loc 'cargo-console-menu-search-bar-placeholder'}" HorizontalExpand="True" />
                 </BoxContainer>
 
-                <ScrollContainer HorizontalExpand="False" VerticalExpand="false" HScrollEnabled="False" >
+                <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False" >
                     <BoxContainer Name="Licences" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True"/>
                 </ScrollContainer>
 

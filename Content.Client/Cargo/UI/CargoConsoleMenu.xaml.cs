@@ -12,7 +12,8 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using static Robust.Client.UserInterface.Controls.BaseButton;
-using Content.Shared._SV.Cargo; // SV - SVCargoMarkupSystem
+using Content.Shared._SV.Cargo;
+using Content.Shared._SV.Licences; // SV - SVCargoMarkupSystem
 
 namespace Content.Client.Cargo.UI
 {
@@ -82,7 +83,23 @@ namespace Content.Client.Cargo.UI
 
             TabContainer.SetTabTitle(0, Loc.GetString("cargo-console-menu-tab-title-orders"));
             TabContainer.SetTabTitle(1, Loc.GetString("cargo-console-menu-tab-title-funds"));
+
+            // SV - Defining the new licencing tab
             TabContainer.SetTabTitle(2, Loc.GetString("sv-cargo-console-menu-tab-title-licences"));
+            TabContainer.SetTabVisible(2, false);
+            // SV - End change
+
+            if (entMan.TryGetComponent<CargoOrderConsoleComponent>(owner, out var cargoOrderConsole))
+            {
+                foreach (var licence in protoManager.EnumeratePrototypes<LicencePrototype>())
+                {
+                    if (licence.CargoAccount == cargoOrderConsole.Account)
+                    {
+                        TabContainer.SetTabVisible(2, true);
+                        break; // One matching licence is enough
+                    }
+                }
+            }
 
             ActionOptions.OnItemSelected += idx =>
             {
@@ -114,11 +131,13 @@ namespace Content.Client.Cargo.UI
         {
             SetCategoryText(args.Id);
             PopulateProducts();
+            PopulateLicences(); // SV - Populate the licences
         }
 
         private void OnSearchBarTextChanged(LineEdit.LineEditEventArgs args)
         {
             PopulateProducts();
+            PopulateLicences(); // SV - Populate the licences
         }
 
         private void SetCategoryText(int id)
