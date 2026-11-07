@@ -1,0 +1,14 @@
+- type: licence
+  id: t1_armory
+  cargoAccount: Security
+  name: "Paramilitary Licence"
+  icon:
+    sprite: Objects/Misc/bureaucracy.rsi
+    state: paper
+  description: "Get access to paramilitary weaponry"
+  products:
+  - SVAtmosphericsAir
+  - SVAtmosphericsOxygen
+  - SVAtmosphericsNitrogen
+  - SVAtmosphericsCarbonDioxide
+  - SVAtmosphericsStorage

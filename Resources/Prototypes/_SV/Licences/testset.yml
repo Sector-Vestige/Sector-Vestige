@@ -1,0 +1,54 @@
+- type: cargoProduct
+  id: SVAtmosphericsAir
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: grey
+  product: AirCanister
+  cost: 600
+  category: cargoproduct-category-name-atmospherics
+  group: market
+  visible: false
+
+- type: cargoProduct
+  id: SVAtmosphericsOxygen
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: blue
+  product: OxygenCanister
+  cost: 600
+  category: cargoproduct-category-name-atmospherics
+  group: market
+  visible: false
+
+- type: cargoProduct
+  id: SVAtmosphericsNitrogen
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: red
+  product: NitrogenCanister
+  cost: 500
+  category: cargoproduct-category-name-atmospherics
+  group: market
+  visible: false
+
+- type: cargoProduct
+  id: SVAtmosphericsCarbonDioxide
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: black
+  product: CarbonDioxideCanister
+  cost: 670 # even though it's poisonous, it comes locked and only damages you slowly even with high amounts (tested)
+  category: cargoproduct-category-name-atmospherics
+  group: market
+  visible: false
+
+- type: cargoProduct
+  id: SVAtmosphericsStorage
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: yellow
+  product: StorageCanister
+  cost: 210 # No gases in it so it's cheaper
+  category: cargoproduct-category-name-atmospherics
+  group: market
+  visible: false

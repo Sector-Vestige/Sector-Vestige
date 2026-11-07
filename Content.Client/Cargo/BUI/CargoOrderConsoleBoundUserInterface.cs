@@ -1,4 +1,5 @@
 using Content.Client.Cargo.UI;
+using Content.Shared._SV.Licences.Events; // SV
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
@@ -83,6 +84,16 @@ namespace Content.Client.Cargo.BUI
                 _orderMenu.OpenCentered();
                 _orderMenu.SetPositionLast();
             };
+            // SV - Licences
+            _menu.OnLicenceSelected += row =>
+            {
+                if (row.Licence == null)
+                    return;
+
+                SendMessage(new CargoConsoleBuyLicenceMessage(row.Licence.ID));
+            };
+            // SV end
+
             _menu.OnOrderApproved += ApproveOrder;
             _menu.OnOrderCanceled += RemoveOrder;
             _orderMenu.SubmitButton.OnPressed += (_) =>
@@ -115,6 +126,7 @@ namespace Content.Client.Cargo.BUI
             _menu.PopulateCategories();
             _menu.PopulateOrders(orders);
             _menu.PopulateAccountActions();
+            _menu.PopulateLicences(); // SV - Populating licences
         }
 
         protected override void UpdateState(BoundUserInterfaceState state)
