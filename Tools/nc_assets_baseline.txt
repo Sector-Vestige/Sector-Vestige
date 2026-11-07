@@ -1,3 +1,4 @@
+# Upstream
 Resources/Audio/Ambience/Antag/attributions.yml
 Resources/Audio/Animals/attributions.yml
 Resources/Audio/Effects/Diseases/attributions.yml
@@ -17,25 +18,32 @@ Resources/Audio/Voice/Zombie/attributions.yml
 Resources/Audio/Weapons/Guns/MagIn/attributions.yml
 Resources/Audio/Weapons/Guns/Misc/attributions.yml
 Resources/Audio/Weapons/Xeno/attributions.yml
-Resources/Audio/_CD/Voice/Avali/attributions.yml
-Resources/Audio/_CD/Voice/Foxfolk/attributions.yml
-Resources/Audio/_CD/Voice/Talk/attributions.yml
-Resources/Audio/_DV/Items/TapeRecorder/attributions.yml
-Resources/Audio/_Floofstation/Voice/Avali/attributions.yml
-Resources/Audio/_Harmony/Jukebox/attributions.yml
-Resources/Audio/_Harmony/Lobby/attributions.yml
-Resources/Audio/_Harmony/Voice/Talk/attributions.yml
-Resources/Audio/_Harmony/Voice/Vulpkanin/attributions.yml
 Resources/Textures/Clothing/Eyes/Glasses/noir.rsi
+Resources/Textures/Clothing/Head/Misc/virtual-chimera-wig.rsi
+Resources/Textures/Clothing/Head/Misc/virtual-fan-wig.rsi
+Resources/Textures/Clothing/Head/Misc/virtual-foreigner-wig.rsi
+Resources/Textures/Clothing/Head/Misc/virtual-ice-wig.rsi
+Resources/Textures/Clothing/Head/Misc/virtual-singer-wig.rsi
 Resources/Textures/Clothing/Head/Soft/bizarresoft.rsi
-Resources/Textures/Clothing/Shoes/Boots/performer.rsi
+Resources/Textures/Clothing/Neck/Scarfs/virtual_ice.rsi
+Resources/Textures/Clothing/OuterClothing/Coats/virtual_ice.rsi
+Resources/Textures/Clothing/Shoes/Boots/virtual_chimera.rsi
+Resources/Textures/Clothing/Shoes/Boots/virtual_fan.rsi
+Resources/Textures/Clothing/Shoes/Boots/virtual_foreigner.rsi
+Resources/Textures/Clothing/Shoes/Boots/virtual_ice.rsi
+Resources/Textures/Clothing/Shoes/Boots/virtual_singer.rsi
 Resources/Textures/Clothing/Shoes/Misc/snakeskin.rsi
-Resources/Textures/Clothing/Uniforms/Jumpskirts/Service/performer.rsi
+Resources/Textures/Clothing/Uniforms/Jumpskirts/Service/virtual_chimera.rsi
+Resources/Textures/Clothing/Uniforms/Jumpskirts/Service/virtual_fan.rsi
+Resources/Textures/Clothing/Uniforms/Jumpskirts/Service/virtual_foreigner.rsi
+Resources/Textures/Clothing/Uniforms/Jumpskirts/Service/virtual_singer.rsi
 Resources/Textures/Clothing/Uniforms/Jumpsuits/Color/rainbow.rsi
+Resources/Textures/Clothing/Uniforms/Jumpsuits/Service/virtual_ice.rsi
 Resources/Textures/Decals/Overlays/greyscale.rsi
 Resources/Textures/Interface/Default
 Resources/Textures/LobbyScreens/attributions.yml
-Resources/Textures/Mobs/Animals/buffrat.rsi
+Resources/Textures/Mobs/Animals/Rodents/buffrat.rsi
+Resources/Textures/Mobs/Animals/possum_old.rsi
 Resources/Textures/Mobs/Animals/raccoon.rsi
 Resources/Textures/Mobs/Animals/scurret/scurret.rsi
 Resources/Textures/Mobs/Pets/ferret.rsi
@@ -45,6 +53,7 @@ Resources/Textures/Objects/Consumable/Drinks/crushdepth.rsi
 Resources/Textures/Objects/Consumable/Drinks/dark&stormy.rsi
 Resources/Textures/Objects/Consumable/Drinks/electricshark.rsi
 Resources/Textures/Objects/Consumable/Drinks/glass_clear.rsi
+Resources/Textures/Objects/Consumable/Drinks/glass_coupe_shape.rsi
 Resources/Textures/Objects/Consumable/Drinks/glue-tube.rsi
 Resources/Textures/Objects/Consumable/Drinks/jackrose.rsi
 Resources/Textures/Objects/Consumable/Drinks/junglebird.rsi
@@ -61,7 +70,6 @@ Resources/Textures/Objects/Fun/Plushies/vulp.rsi
 Resources/Textures/Objects/Fun/rubber_hammer.rsi
 Resources/Textures/Objects/Misc/buffering.rsi
 Resources/Textures/Objects/Misc/chopstick.rsi
-Resources/Textures/Objects/Misc/flies.rsi
 Resources/Textures/Objects/Misc/guardian_info.rsi
 Resources/Textures/Objects/Misc/killsign.rsi
 Resources/Textures/Objects/Power/powersink.rsi
@@ -90,8 +98,25 @@ Resources/Textures/Structures/Power/Generation/Singularity/collector.rsi
 Resources/Textures/Structures/Power/cell_recharger.rsi
 Resources/Textures/Structures/monitors.rsi
 Resources/Textures/Tiles/attributions.yml
+
+# _CD
+Resources/Audio/_CD/Voice/Avali/attributions.yml
+Resources/Audio/_CD/Voice/Foxfolk/attributions.yml
+Resources/Audio/_CD/Voice/Talk/attributions.yml
 Resources/Textures/_CD/Clothing/Belt/halfapron.rsi
 Resources/Textures/_CD/Clothing/Shoes/Boots/lowdrag-heels.rsi
+
+# _DV
+Resources/Audio/_DV/Items/TapeRecorder/attributions.yml
+
+# _Floofstation
+Resources/Audio/_Floofstation/Voice/Avali/attributions.yml
+
+# _Harmony
+Resources/Audio/_Harmony/Jukebox/attributions.yml
+Resources/Audio/_Harmony/Lobby/attributions.yml
+Resources/Audio/_Harmony/Voice/Talk/attributions.yml
+Resources/Audio/_Harmony/Voice/Vulpkanin/attributions.yml
 Resources/Textures/_Harmony/Clothing/Hands/Gloves/mantis_activated.rsi
 Resources/Textures/_Harmony/Clothing/Head/Hardsuits/atmospherics.rsi
 Resources/Textures/_Harmony/Clothing/Head/Hardsuits/engineering-white.rsi
@@ -123,5 +148,7 @@ Resources/Textures/_Harmony/Objects/Weapons/Guns/Battery/laser_carbine.rsi
 Resources/Textures/_Harmony/Objects/Weapons/Guns/Projectiles/large_projectile.rsi
 Resources/Textures/_Harmony/Objects/Weapons/Guns/Projectiles/laser_projectile.rsi
 Resources/Textures/_Harmony/Objects/Weapons/Guns/Projectiles/xray_projectile.rsi
+
+# _SV
 Resources/Textures/_SV/LobbyScreens/attributions.yml
 Resources/Textures/_SV/PersonalItems/Plushies/skrikiplush.rsi

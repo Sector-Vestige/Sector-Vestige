@@ -3,7 +3,6 @@ using Content.Shared.Destructible.Thresholds;
 using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Shared.Forensics.Components;
-using Content.Shared.Prototypes;
 using Content.Shared.Stacks;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
@@ -78,7 +77,7 @@ namespace Content.Server.Destructible.Thresholds.Behaviors
                             system.EntityManager.System<SpawnOnDespawnSystem>().SetPrototype((spawner, spawnOnDespawn), entityId);
                         }
                     }
-                    else if (EntityPrototypeHelpers.HasComponent<StackComponent>(entityId, system.PrototypeManager, system.EntityManager.ComponentFactory))
+                    else if (system.PrototypeManager.TryIndex(entityId, out var prototype) && prototype.HasComp<StackComponent>(system.EntityManager.ComponentFactory))
                     {
                         var spawned = SpawnInContainer
                             ? system.EntityManager.SpawnNextToOrDrop(entityId, owner)

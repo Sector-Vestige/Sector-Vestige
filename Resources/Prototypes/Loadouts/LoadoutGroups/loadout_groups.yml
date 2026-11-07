@@ -441,6 +441,14 @@
   loadouts:
   - ChaplainNeck
 
+- type: loadoutGroup
+  id: ChaplainShoes
+  name: loadout-group-chaplain-shoes
+  loadouts:
+  - BlackShoes
+  - BlackSandals
+  - BrownSandals
+
 #- type: loadoutGroup
 #  id: ChaplainJobTrinkets
 #  name: loadout-group-jobtrinkets
@@ -719,6 +727,7 @@
   - QuartermasterTurtleneckSkirt
   - QuartermasterFormalSuit
   - QuartermasterForemansuit # CD
+  - QuartermasterFormalDress
 
 - type: loadoutGroup
   id: QuartermasterNeck
@@ -1421,6 +1430,7 @@
   maxLimit: 1
   loadouts:
   - TramDriverJumpsuit
+  - TramDriverJumpskirt
 
 - type: loadoutGroup
   id: TramDriverOuterClothing

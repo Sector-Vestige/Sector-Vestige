@@ -10,8 +10,7 @@
     startAnnouncement: station-event-ert-sec-shuttle-incoming #!!
     weight: 0 #  Admin only.
   - type: LoadMapRule
-    preloadedGrid: ShuttleERTSecMedium
-
+    gridPath: /Maps/_Harmony/Shuttles/ShuttleEvent/ERTSecMedium.yml # SV - upstream deprecated preloadedGrid (was ShuttleERTSecMedium)
 - type: entity
   id: ERTSecSmall
   parent: BaseUnknownShuttleRule
@@ -20,9 +19,7 @@
     startAnnouncement: station-event-ert-sec-shuttle-incoming #!!
     weight: 0 #  Admin only.
   - type: LoadMapRule
-    preloadedGrid: ShuttleERTSecSmall
-
-# Medical
+    gridPath: /Maps/_Harmony/Shuttles/ShuttleEvent/ERTSecSmall.yml # SV - upstream deprecated preloadedGrid (was ShuttleERTSecSmall)
 
 - type: entity
   id: ERTMedMedium
@@ -32,8 +29,7 @@
     startAnnouncement: station-event-ert-sec-shuttle-incoming #!!
     weight: 0 #  Admin only.
   - type: LoadMapRule
-    preloadedGrid: ShuttleERTMedMedium
-
+    gridPath: /Maps/_Harmony/Shuttles/ShuttleEvent/ERTMedMedium.yml # SV - upstream deprecated preloadedGrid (was ShuttleERTMedMedium)
 - type: entity
   id: ERTMedSmall
   parent: BaseUnknownShuttleRule
@@ -42,9 +38,7 @@
     startAnnouncement: station-event-ert-med-shuttle-incoming #!!
     weight: 0 #  Admin only.
   - type: LoadMapRule
-    preloadedGrid: ShuttleERTMedSmall
-
-# Engineering
+    gridPath: /Maps/_Harmony/Shuttles/ShuttleEvent/ERTMedSmall.yml # SV - upstream deprecated preloadedGrid (was ShuttleERTMedSmall)
 
 - type: entity
   id: ERTEngiJaniMedium
@@ -54,8 +48,7 @@
     startAnnouncement: station-event-ert-engi-shuttle-incoming #!!
     weight: 0 #  Admin only.
   - type: LoadMapRule
-    preloadedGrid: ShuttleERTEngiJaniMedium
-
+    gridPath: /Maps/_Harmony/Shuttles/ShuttleEvent/ERTEngiJaniMedium.yml # SV - upstream deprecated preloadedGrid (was ShuttleERTEngiJaniMedium)
 - type: entity
   id: ERTEngiSmall
   parent: BaseUnknownShuttleRule
@@ -64,4 +57,4 @@
     startAnnouncement: station-event-ert-engi-shuttle-incoming #!!
     weight: 0 #  Admin only.
   - type: LoadMapRule
-    preloadedGrid: ShuttleERTEngiSmall
+    gridPath: /Maps/_Harmony/Shuttles/ShuttleEvent/ERTEngiSmall.yml # SV - upstream deprecated preloadedGrid (was ShuttleERTEngiSmall)

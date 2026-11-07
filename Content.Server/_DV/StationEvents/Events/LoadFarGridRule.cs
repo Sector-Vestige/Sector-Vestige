@@ -8,6 +8,7 @@ using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
+using Content.Shared.GameTicking; // RuleLoadedGridsEvent moved to Shared
 
 namespace Content.Server.StationEvents.Events;
 
@@ -19,12 +20,18 @@ public sealed partial class LoadFarGridRule : StationEventSystem<LoadFarGridRule
     {
         base.Added(uid, comp, rule, args);
 
-        if (!TryGetRandomStation(out var station) || !TryComp<StationDataComponent>(station, out var data))
+        // Upstream removed GameRuleSystem.TryGetRandomStation; StationSystem now provides it.
+        // SV - Only pick stations that actually have grids; no station is a normal outcome (e.g. in tests), not an error.
+        if (!Station.TryGetRandomStation<StationEventEligibleComponent>(out var stationEnt,
+                s => CompOrNull<StationDataComponent>(s)?.Grids.Count > 0))
         {
-            Log.Error($"{ToPrettyString(uid):rule} failed to find a station!");
+            Log.Warning($"{ToPrettyString(uid):rule} failed to find a station with grids!");
             ForceEndSelf(uid, rule);
             return;
         }
+
+        var station = stationEnt.Value.Owner;
+        var data = stationEnt.Value.Comp1;
 
         if (data.Grids.Count < 1)
         {

@@ -36,7 +36,10 @@ namespace Content.Shared.Voting
             DisplayVotes = buffer.ReadBoolean();
             TargetEntity = buffer.ReadVariableInt32();
 
-            Options = new (ushort votes, string name, string icon)[buffer.ReadByte()]; // SV - option icons
+            var length = buffer.ReadByte();
+            // SV - option icons: each option also carries an icon string.
+            buffer.AssertAtLeastSize(length * (sizeof(short) + 2 * NetMessageExt.MinSizeOfString));
+            Options = new (ushort votes, string name, string icon)[length]; // SV - option icons
             for (var i = 0; i < Options.Length; i++)
             {
                 Options[i] = (buffer.ReadUInt16(), buffer.ReadString(), buffer.ReadString()); // SV - option icons

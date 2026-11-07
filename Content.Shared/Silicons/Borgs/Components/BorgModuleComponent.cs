@@ -1,5 +1,4 @@
-﻿using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared.Silicons.Borgs.Components;
 
