@@ -1,7 +1,0 @@
-- type: latheRecipe
-  id: Binoculars
-  result: Binoculars
-  completetime: 2
-  materials:
-    Steel: 200
-    Glass: 200

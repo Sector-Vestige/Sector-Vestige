@@ -31,6 +31,7 @@ using Content.Shared.StationRecords.Systems;
 using Content.Shared.StationRecords.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._SV.CharacterDocuments.Consoles;
 
@@ -38,7 +39,6 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
 {
 
     [Dependency] private UserInterfaceSystem _userInterfaceSystem = default!;
-    [Dependency] private SharedStationSystem _sharedStationSystem = default!;
     [Dependency] private CharacterDocumentSystem _characterDocumentSystem = default!;
     [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
     [Dependency] private AudioSystem _audio = default!;
@@ -719,7 +719,7 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
     private bool TryGetConsoleStation(EntityUid consoleUid, out CharacterDocumentStationComponent? stationComp)
     {
         stationComp = null;
-        var station = _sharedStationSystem.GetOwningStation(consoleUid);
+        var station = _stationSystem.GetOwningStation(consoleUid);
         // Cross-map consoles may not have an owning station entity at all if their map isn't
         // registered as a station, so we still let them through.
         if (station == null && !HasComp<CrossMapDocumentAccessComponent>(consoleUid))

@@ -75,50 +75,9 @@
     - revving
     - revved
 
-- type: emote
-  id: Caw
-  name: Caw
-  category: Vocal
-  icon: Interface/Actions/scream.png
-  available: false
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: ["caws."]
-  chatTriggers:
-    - caws
-    - caw
-    - cawing
-    - cawed
-
+# Caw emote is now provided by upstream (Resources/Prototypes/Voice/speech_emotes.yml)
 # Felinid
-- type: emote
-  id: Hiss
-  category: Vocal
-  name: Hiss
-  icon: Interface/Actions/scream.png
-  available: false
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: [hisses.]
-  chatTriggers:
-    - hiss
-    - hisses
-    - hiss.
-    - hisses.
-    - hisses!
-    - hissing
-    - hissed
-    - hissing.
-    - hissed.
-
+# Hiss emote is now provided by upstream (Resources/Prototypes/Voice/speech_emotes.yml)
 - type: emote
   id: Meow
   category: Vocal

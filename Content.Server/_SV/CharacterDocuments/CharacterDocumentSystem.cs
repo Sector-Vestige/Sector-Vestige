@@ -23,6 +23,7 @@ using Content.Shared._SV.CCVar;
 using Content.Shared.StationRecords.Components;
 using Content.Shared.StationRecords.Systems;
 using Robust.Shared.Configuration;
+using Content.Shared.GameTicking.Events;
 
 namespace Content.Server._SV.CharacterDocuments;
 

@@ -22,18 +22,18 @@ public sealed partial class RCDMenuBoundUserInterface : BoundUserInterface
 
     private const string TopLevelActionCategory = "Main";
 
-    private static readonly Dictionary<string, (string Tooltip, SpriteSpecifier Sprite)> PrototypesGroupingInfo
+    private static readonly Dictionary<string, (string Tooltip, int Order, SpriteSpecifier Sprite)> PrototypesGroupingInfo
         = new()
         {
-            ["WallsAndFlooring"] = ("rcd-component-walls-and-flooring", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/walls_and_flooring.png"))),
-            ["WindowsAndGrilles"] = ("rcd-component-windows-and-grilles", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/windows_and_grilles.png"))),
-            ["Airlocks"] = ("rcd-component-airlocks", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/airlocks.png"))),
-            ["Electrical"] = ("rcd-component-electrical", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/multicoil.png"))),
-            ["Lighting"] = ("rcd-component-lighting", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/lighting.png"))),
-            ["Piping"] = ("rcd-component-piping", new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/piping.png"))), //Sector Vestige: Added RPD
-            ["Utility"] = ("rcd-component-utility", new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/utility.png"))), //Sector Vestige: Added RPD
-            ["Vents"] = ("rcd-component-vents", new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/ventMultiple.png"))), //Sector Vestige: Added RPD
-            ["Pumps"] = ("rcd-component-pumps", new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/pumps_and_valves.png"))), //Sector Vestige: Added RPD
+            ["WallsAndFlooring"] = ("rcd-component-walls-and-flooring", 0, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/walls_and_flooring.png"))),
+            ["WindowsAndGrilles"] = ("rcd-component-windows-and-grilles", 1, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/windows_and_grilles.png"))),
+            ["Airlocks"] = ("rcd-component-airlocks", 2, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/airlocks.png"))),
+            ["Electrical"] = ("rcd-component-electrical", 3, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/multicoil.png"))),
+            ["Lighting"] = ("rcd-component-lighting", 4, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/lighting.png"))),
+            ["Piping"] = ("rcd-component-piping", 5, new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/piping.png"))), //Sector Vestige: Added RPD
+            ["Utility"] = ("rcd-component-utility", 6, new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/utility.png"))), //Sector Vestige: Added RPD
+            ["Vents"] = ("rcd-component-vents", 7, new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/ventMultiple.png"))), //Sector Vestige: Added RPD
+            ["Pumps"] = ("rcd-component-pumps", 8, new SpriteSpecifier.Texture(new  ResPath("/Textures/_SV/Interface/Radial/RPD/pumps_and_valves.png"))), //Sector Vestige: Added RPD
         };
 
     private SimpleRadialMenu? _menu;
@@ -69,7 +69,8 @@ public sealed partial class RCDMenuBoundUserInterface : BoundUserInterface
                 var topLevelActionOption = new RadialMenuActionOption<RCDPrototype>(HandleMenuOptionClick, prototype)
                 {
                     IconSpecifier = RadialMenuIconSpecifier.With(prototype.Sprite),
-                    ToolTip = GetTooltip(prototype)
+                    ToolTip = GetTooltip(prototype),
+                    Order = prototype.MenuOrder,
                 };
                 topLevelActions.Add(topLevelActionOption);
                 continue;
@@ -87,7 +88,8 @@ public sealed partial class RCDMenuBoundUserInterface : BoundUserInterface
             var actionOption = new RadialMenuActionOption<RCDPrototype>(HandleMenuOptionClick, prototype)
             {
                 IconSpecifier = RadialMenuIconSpecifier.With(prototype.Sprite),
-                ToolTip = GetTooltip(prototype)
+                ToolTip = GetTooltip(prototype),
+                Order = prototype.MenuOrder,
             };
             list.Add(actionOption);
         }
@@ -100,7 +102,8 @@ public sealed partial class RCDMenuBoundUserInterface : BoundUserInterface
             models[i] = new RadialMenuNestedLayerOption(list)
             {
                 IconSpecifier = RadialMenuIconSpecifier.With(groupInfo.Sprite),
-                ToolTip = Loc.GetString(groupInfo.Tooltip)
+                ToolTip = Loc.GetString(groupInfo.Tooltip),
+                Order = groupInfo.Order,
             };
             i++;
         }
