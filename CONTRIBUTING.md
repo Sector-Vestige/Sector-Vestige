@@ -165,7 +165,7 @@ Example:
 - fix: Fixed crew manifest showing dead people.
 
 Only entries after :cl: are read by Weh Bot.
-Sector Vestige does not maintain a separate Admin changelog.
+Sector Vestige does not maintain a separate Admin changelog..
 
 ---
 
