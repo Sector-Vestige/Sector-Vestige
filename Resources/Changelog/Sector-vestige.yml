@@ -2143,3 +2143,9 @@ Entries:
         business card.
   id: 302
   time: '2026-11-08T13:32:48.0000000+00:00'
+- author: Scrambledking
+  changes:
+    - type: Fix
+      message: Fixed Dynamoxine Injector visuals
+  id: 303
+  time: '2026-11-08T16:32:04.0000000+00:00'
