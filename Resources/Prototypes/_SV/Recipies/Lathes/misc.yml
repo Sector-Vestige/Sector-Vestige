@@ -28,49 +28,49 @@
   result: BoxFolderRedEmpty
   completetime: 1
   materials:
-    Paper: 50
+    Paper: 100
 
 - type: latheRecipe
   id: BoxFolderBlueEmpty
   result: BoxFolderBlueEmpty
   completetime: 1
   materials:
-    Paper: 50
+    Paper: 100
 
 - type: latheRecipe
   id: BoxFolderYellowEmpty
   result: BoxFolderYellowEmpty
   completetime: 1
   materials:
-    Paper: 50
+    Paper: 100
 
 - type: latheRecipe
   id: BoxFolderGreyEmpty
   result: BoxFolderGreyEmpty
   completetime: 1
   materials:
-    Paper: 50
+    Paper: 100
 
 - type: latheRecipe
   id: BoxFolderBlackEmpty
   result: BoxFolderBlackEmpty
   completetime: 1
   materials:
-    Paper: 50
+    Paper: 100
 
 - type: latheRecipe
   id: BoxFolderGreenEmpty
   result: BoxFolderGreenEmpty
   completetime: 1
   materials:
-    Paper: 50
+    Paper: 100
 
 - type: latheRecipe
   id: BoxFolderWhiteEmpty
   result: BoxFolderWhiteEmpty
   completetime: 1
   materials:
-    Paper: 50
+    Paper: 100
 
 # Secure Folders
 - type: latheRecipe
@@ -78,48 +78,48 @@
   result: BoxFolderSecureRedEmpty
   completetime: 1
   materials:
-    Paper: 50
-    Steel: 20
+    Paper: 100
+    Steel: 40
 
 - type: latheRecipe
   id: BoxFolderSecureBlueEmpty
   result: BoxFolderSecureBlueEmpty
   completetime: 1
   materials:
-    Paper: 50
-    Steel: 20
+    Paper: 100
+    Steel: 40
 
 - type: latheRecipe
   id: BoxFolderSecureYellowEmpty
   result: BoxFolderSecureYellowEmpty
   completetime: 1
   materials:
-    Paper: 50
-    Steel: 20
+    Paper: 100
+    Steel: 40
 
 - type: latheRecipe
   id: BoxFolderSecureGreyEmpty
   result: BoxFolderSecureGreyEmpty
   completetime: 1
   materials:
-    Paper: 50
-    Steel: 20
+    Paper: 100
+    Steel: 40
 
 - type: latheRecipe
   id: BoxFolderSecureBlackEmpty
   result: BoxFolderSecureBlackEmpty
   completetime: 1
   materials:
-    Paper: 50
-    Steel: 20
+    Paper: 100
+    Steel: 40
 
 - type: latheRecipe
   id: BoxFolderSecureGreenEmpty
   result: BoxFolderSecureGreenEmpty
   completetime: 1
   materials:
-    Paper: 50
-    Steel: 20
+    Paper: 100
+    Steel: 40
 
 # Business Card
 - type: latheRecipe
