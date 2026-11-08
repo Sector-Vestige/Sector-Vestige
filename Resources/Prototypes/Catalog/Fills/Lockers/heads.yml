@@ -7,6 +7,7 @@
     - id: BoxQMCircuitboards
     - id: BoxQMStamps
     - id: BookSOPCargo #Sector Vestige: Add SOP Book to QM's locker
+    - id: CommandBusinessCard # Sector Vestige: Add buisness card.
     - id: CigPackGreen
       prob: 0.50
     - id: ClothingHeadsetAltCargo
@@ -46,6 +47,7 @@
       prob: 0.1
     - id: RubberStampCaptain
     - id: BookSOPGeneral #Sector Vestige: Add SOP Book to Captain's locker
+    - id: CommandBusinessCard # Sector Vestige: Add buisness card.
     - id: SpaceCash1000
     - id: WeaponDisabler
     - id: ClothingEyesGlassesCommand
@@ -125,6 +127,7 @@
     - id: BoxID
     - id: BoxPDA
     - id: BookSOPService #Sector Vestige: Add SOP Book to HoP's locker
+    - id: CommandBusinessCard # Sector Vestige: Add buisness card.
     - id: CigarGoldCase
       prob: 0.25
       # Fuck the HoP they don't deserve fucking cigars.
@@ -166,6 +169,7 @@
     - id: DoorRemoteEngineering
     - id: BoxCECircuitboards
     - id: BookSOPEngineering #Sector Vestige: Add SOP Book to CE's locker
+    - id: CommandBusinessCard # Sector Vestige: Add buisness card.
     - id: RCD
     - id: RPD #Sector Vestige: Add RPD to CE's locker
     - id: RCDAmmo
@@ -225,6 +229,7 @@
     - id: MedTekCartridge
     - id: ClothingEyesSunglassesMedical # Vestige: Add medical sunglasses to the CMO's locker
     - id: BookSOPMedical #Sector Vestige: Add SOP Book to CMO's locker
+    - id: CommandBusinessCard # Sector Vestige: Add buisness card.
     # Standard command gear
     - id: RubberStampCMO
     - id: ClothingHeadsetAltMedical
@@ -280,7 +285,8 @@
     - id: ClothingBeltUtilityFilled
     - id: ClothingHeadsetAltScience
     - id: DoorRemoteResearch
-    - id: BookSOPScience #Sector Vestige: Add SOP Book to RM's locker
+    - id: BookSOPScience #Sector Vestige: Add SOP Book to RD's locker
+    - id: CommandBusinessCard # Sector Vestige: Add buisness card.
     - id: HandTeleporter
     - id: RubberStampRd
     - id: PlushieLizardJobResearchdirector
@@ -339,6 +345,7 @@
     - id: FlashlightSeclite
     - id: DoorRemoteSecurity
     - id: BookSOPSecurity #Sector Vestige: Add SOP Book to HoS' locker
+    - id: CommandBusinessCard # Sector Vestige: Add buisness card.
     - id: HoloprojectorSecurity
     - id: RubberStampHos
     - id: BoxHoSCircuitboards
