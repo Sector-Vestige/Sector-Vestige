@@ -24,7 +24,7 @@
   - DeviceQuantumSpinInverter
   - DeviceDesynchronizer
   - ClothingBackpackHarmpack
-  - TeleporterChipBlank
+#  - TeleporterChipBlank #SV: change
 
 - type: latheRecipePack
   id: ScienceClothing
@@ -84,8 +84,8 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
-  - StationTeleportersControlCircuitboard
-  - StationTeleporterMachineCircuitboard
+#  - StationTeleportersControlCircuitboard #SV change
+#  - StationTeleporterMachineCircuitboard
 
 - type: latheRecipePack
   id: CameraBoards

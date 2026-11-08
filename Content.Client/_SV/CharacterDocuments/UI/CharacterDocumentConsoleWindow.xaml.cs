@@ -317,13 +317,20 @@ public sealed partial class CharacterDocumentConsoleWindow : DefaultWindow
             DocSecurityReasonLabelValue.Text = state.SecurityReason ?? Loc.GetString("sv-document-console-security-na");
             // Null when this crew member has no station record, or their record never captured a print.
             DocFingerprintLabelValue.Text = state.SelectedPlayerFingerprint ?? Loc.GetString("sv-document-console-security-na");
+            DocDnaLabelValue.Text = state.SelectedPlayerDna ?? Loc.GetString("sv-document-console-security-na");
         }
         else
         {
             DocSecurityStatusLabelValue.Text = Loc.GetString("sv-document-console-security-none");
             DocSecurityReasonLabelValue.Text = Loc.GetString("sv-document-console-security-na");
             DocFingerprintLabelValue.Text = Loc.GetString("sv-document-console-security-na");
+            DocDnaLabelValue.Text = Loc.GetString("sv-document-console-security-na");
         }
+
+        // Full value on hover, in case a long reason or print still clips.
+        DocSecurityReasonLabelValue.ToolTip = DocSecurityReasonLabelValue.Text;
+        DocFingerprintLabelValue.ToolTip = DocFingerprintLabelValue.Text;
+        DocDnaLabelValue.ToolTip = DocDnaLabelValue.Text;
 
         foreach (var (uid, name) in state.PlayerList.OrderBy(x => x.Value))
         {

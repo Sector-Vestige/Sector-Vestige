@@ -221,6 +221,11 @@ public static partial class GameDataScrounger
                 var entryMapping = (YamlMappingNode)entry;
 
                 var id = entryMapping[IdNode];
+
+                // TODO: Add handling for prototype variants
+                if (id is YamlMappingNode)
+                    continue;
+
                 var type = entryMapping[TypeNode];
                 var @abstract = ignored;
                 if (entryMapping.TryGetNode("abstract", out YamlScalarNode? abstractNode))
@@ -320,7 +325,11 @@ public static partial class GameDataScrounger
 
         foreach (var parent in entity.Parents)
         {
-            var parentMeta = _entitiesMetaIndex![parent];
+            // SV - Parents can be prototype variants (id: !type:CreateVariants), which aren't indexed yet (see TODO above).
+            // Skip them instead of crashing the whole index, e.g. GasVentPumpSupermatter -> GasVentPump.
+            if (!_entitiesMetaIndex!.TryGetValue(parent, out var parentMeta))
+                continue;
+
             VisitEntity(parentMeta, visitedEntities);
 
             entity.Components.UnionWith(parentMeta.Components);

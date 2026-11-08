@@ -25,7 +25,6 @@ using System.Linq;
 using System.Numerics; //Sector Vestige: RPD Logic
 using Content.Shared._SV.RPD; //Sector Vestige: RPD Logic
 using Content.Shared.Atmos.Components; //Sector Vestige: RPD Logic
-using Content.Shared.Atmos.EntitySystems; //Sector Vestige: RPD Logic
 using Content.Shared._SV.EyeTracker; //Sector Vestige: RPD Logic
 
 namespace Content.Shared.RCD.Systems;
@@ -48,7 +47,6 @@ public sealed partial class RCDSystem : EntitySystem
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TagSystem _tags = default!;
-    [Dependency] private SharedAtmosPipeLayersSystem _layer = default!; //Sector Vestige: RPD Logic
     [Dependency] private IEntityManager _entityManager = default!; //Sector Vestige: RPD Logic
     [Dependency] private IEntityNetworkManager _entityNetworkManager = default!; //Sector Vestige: RPD Logic
 
@@ -689,16 +687,15 @@ public sealed partial class RCDSystem : EntitySystem
                     }
                 }
 
-                string ent;
+                // Upstream (#44507) replaced AtmosPipeLayers.AlternativePrototypes with prototype variant collections,
+                // where the variant index matches the AtmosPipeLayer value.
+                string ent = prototype.Prototype;
                 if (ProtoMan.TryIndex<EntityPrototype>(prototype.Prototype, out var entProto) &&
-                    entProto.TryGetComponent<AtmosPipeLayersComponent>(out var pipeLayer, _entityManager.ComponentFactory) &&
-                    _layer.TryGetAlternativePrototype(pipeLayer, _currentLayer, out var actualPipe))
+                    entProto.HasComp<AtmosPipeLayersComponent>(_entityManager.ComponentFactory) &&
+                    ProtoMan.TryGetVariantCollection<EntityPrototype>(entProto.ID, out var layerVariants) &&
+                    (int) _currentLayer < layerVariants.Count)
                 {
-                    ent = actualPipe;
-                }
-                else
-                {
-                    ent = prototype.Prototype;
+                    ent = layerVariants[(int) _currentLayer];
                 }
 
                 //Use the flipped prototype if it is called for, and if there is a flipped prototype provided

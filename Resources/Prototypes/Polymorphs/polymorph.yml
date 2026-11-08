@@ -238,3 +238,12 @@
     duration: 120
     effectProto: EffectDesynchronizer
     revertEffectProto: EffectDesynchronizer
+
+# Changeling Meteor
+- type: polymorph
+  id: ChangelingMeteor
+  configuration:
+    entity: ChangelingMeteor
+    forced: true
+    polymorphPopup: null
+    exitPolymorphPopup: null

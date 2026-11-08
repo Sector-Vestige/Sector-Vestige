@@ -92,7 +92,7 @@ public sealed partial class JobSlotsConsoleMenu : FancyWindow
 
         _departmentLabels[department.ID] = label;
         departmentBox.AddChild(label);
-        departmentBox.AddChild(new HSeparator { Margin = new Thickness(5, 3, 5, 5) });
+        departmentBox.AddChild(new Separator { StyleClasses = { "LowDivider" }, Margin = new Thickness(5, 3, 5, 5) });
 
         // Add job rows
         var jobRows = new List<JobRow>();

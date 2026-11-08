@@ -114,7 +114,7 @@
                 </ScrollContainer>
             </PanelContainer>
 
-            <customControls:VSeparator Margin="3 0" />
+            <controls:Separator StyleClasses="LowDivider" Margin="3 0" Orientation="Vertical" MinHeight="5" />
 
             <!-- Right panel: Current chat -->
             <PanelContainer StyleClasses="AngleRect"

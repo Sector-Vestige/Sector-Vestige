@@ -21,7 +21,7 @@ public sealed partial class ALPrototypeSystem : EntitySystem
     {
         foreach (var entity in _prototype.EnumeratePrototypes<EntityPrototype>())
         {
-            if (entity.HasComponent<T>(_compFactory))
+            if (entity.HasComp<T>(_compFactory))
                 yield return entity;
         }
     }

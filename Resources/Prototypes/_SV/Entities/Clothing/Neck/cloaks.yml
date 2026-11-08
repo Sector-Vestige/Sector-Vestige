@@ -8,7 +8,8 @@
   - type: Sprite
     sprite: _SV/Clothing/Neck/Cloaks/andalusian.rsi
   - type: StealTarget
-    stealGroup: HeadCloak # leaving this here because CC one counts too.
+    stealGroup: # leaving this here because CC one counts too.
+    - HeadCloak
 
 #Damaged Centcom Formal Cloak
 - type: entity

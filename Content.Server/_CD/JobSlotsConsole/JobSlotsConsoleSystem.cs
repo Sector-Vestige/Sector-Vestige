@@ -8,6 +8,8 @@ using Content.Shared.GameTicking;
 using Content.Shared.Roles;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
+using Content.Shared.Station.Components;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._CD.JobSlotsConsole;
 
@@ -15,7 +17,7 @@ public sealed partial class JobSlotsConsoleSystem : EntitySystem
 {
     [Dependency] private AccessReaderSystem _access = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private StationJobsSystem _jobs = default!;
+    [Dependency] private ServerStationJobsSystem _jobs = default!;
     [Dependency] private StationSystem _station = default!;
     [Dependency] private UserInterfaceSystem _ui = default!;
 

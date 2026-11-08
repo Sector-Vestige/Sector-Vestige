@@ -4,12 +4,13 @@ using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Station;
 using Robust.Shared.Prototypes;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._SV.CharacterDocuments;
 
 public sealed partial class CharacterDocumentStationSystem : EntitySystem
 {
-    [Dependency] private SharedStationSystem _sharedStationSystem = default!;
+    [Dependency] private StationSystem _sharedStationSystem = default!;
     [Dependency] private NpcFactionSystem _faction = default!;
     [Dependency] private CharacterDocumentConsoleSystem _documentConsole = default!;
 
