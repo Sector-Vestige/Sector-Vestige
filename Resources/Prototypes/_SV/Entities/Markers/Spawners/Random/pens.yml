@@ -1,0 +1,21 @@
+- type: entity
+  name: Random Syndicate Pen Spawner
+  id: SyndicatePenSpawner
+  parent: MarkerBase
+  placement:
+    mode: PlaceFree
+  components:
+  - type: Transform
+    anchored: false
+  - type: Sprite
+    sprite: _SV/Objects/Misc/pens.rsi
+    state: pen_cybersun
+  - type: EntityTableSpawner
+    offset: 0
+    table: !type:GroupSelector
+      children:
+      - id: PenCybersun
+      - id: PenInterdyne
+      - id: CrayonGorlex
+      - id: PenCartSilica
+      - id: PenPommersky

@@ -1,0 +1,58 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Folder sprites made by HexReject (github) based on sprites taken from tgstation at https://github.com/tgstation/tgstation/commit/e1142f20f5e4661cb6845cfcf2dd69f864d67432, inhands by TiniestShark (github)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "folder-base"
+        },
+        {
+            "name": "folder-overlay-paper"
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "securefolder-colormap"
+        },
+        {
+            "name": "securefolder-zip"
+        },
+        {
+            "name": "locked"
+        },
+        {
+            "name": "unlocked"
+        },
+        {
+            "name": "folder-r&d"
+        },
+        {
+            "name": "folder-syndicate"
+        },
+        {
+            "name": "folder-cybersun"
+        },
+        {
+            "name": "folder-interdyne"
+        },
+        {
+            "name": "folder-gorlex"
+        },
+        {
+            "name": "folder-cartsilica"
+        },
+        {
+            "name": "folder-pommersky"
+        }
+    ]
+}
