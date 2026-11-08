@@ -2125,3 +2125,21 @@ Entries:
       message: DNA is back in the security computer.
   id: 301
   time: '2026-10-16T16:01:18.0000000+00:00'
+- author: HexReject
+  changes:
+    - type: Add
+      message: Added a new disposable camera.
+    - type: Add
+      message: Added new business cards for various factions.
+    - type: Add
+      message: Added a new faction pens.
+    - type: Add
+      message: Added a new lockable and faction folders.
+    - type: Add
+      message: Added a new metal and lockable briefcases
+    - type: Tweak
+      message: >-
+        Tweaked autolathe to be able to print folders, briefcases and default
+        business card.
+  id: 302
+  time: '2026-11-08T13:32:48.0000000+00:00'
