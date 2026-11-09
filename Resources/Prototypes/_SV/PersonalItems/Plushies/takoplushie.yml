@@ -12,7 +12,6 @@
   - type: Item
     sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie.rsi
   - type: Clothing
-    quickEquip: false
     sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie_64.rsi
   - type: Appearance
   - type: Foldable
