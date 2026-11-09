@@ -2149,3 +2149,9 @@ Entries:
       message: Fixed Dynamoxine Injector visuals
   id: 303
   time: '2026-11-08T16:32:04.0000000+00:00'
+- author: Scrambledking
+  changes:
+    - type: Add
+      message: Pronouns to Crew Manifest
+  id: 304
+  time: '2026-11-09T14:36:16.0000000+00:00'
