@@ -8,11 +8,18 @@
   components:
   - type: Sprite
     state: plushie_tako
-    sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie.rsi
+    sprite: _SV/PersonalItems/Plushies/takoplushie.rsi
   - type: Item
-    sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie.rsi
+    sprite: _SV/PersonalItems/Plushies/takoplushie.rsi
   - type: Clothing
-    sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie_64.rsi
+    quickEquip: false
+    sprite: _SV/PersonalItems/Plushies/takoplushie_64.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.03"
   - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true
