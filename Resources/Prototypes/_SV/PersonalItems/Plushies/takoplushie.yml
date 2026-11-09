@@ -14,12 +14,6 @@
   - type: Clothing
     quickEquip: false
     sprite: _SV/PersonalItems/Plushies/takoplushie_64.rsi
-    slots:
-    - HEAD
-    clothingVisuals:
-      head:
-      - state: equipped-HELMET
-        offset: "0, 0.03"
   - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true
