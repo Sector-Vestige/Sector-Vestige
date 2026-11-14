@@ -2155,3 +2155,9 @@ Entries:
       message: Pronouns to Crew Manifest
   id: 304
   time: '2026-11-09T14:36:16.0000000+00:00'
+- author: Scrambledking
+  changes:
+    - type: Fix
+      message: Tram Drivers can now take trinkets
+  id: 305
+  time: '2026-11-14T10:59:33.0000000+00:00'
