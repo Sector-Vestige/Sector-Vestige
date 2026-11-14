@@ -1,0 +1,38 @@
+<BoxContainer xmlns="https://spacestation14.io"
+    HorizontalExpand="True">
+    <PanelContainer HorizontalExpand="True">
+        <!-- Btn position hardcoded (args.Button.Parent?.Parent type) in CargoConsoleBUI 71 line -->
+        <Button Name="MainButton"
+                ToolTip=""
+                Access="Public"
+                VerticalExpand="False"
+                StyleClasses="OpenBoth" />
+
+        <!-- Icon & Name -->
+        <BoxContainer Orientation="Horizontal"
+                      HorizontalExpand="True"
+                      Margin="4 0">
+
+            <TextureRect Name="Icon"
+                         Access="Public"
+                         MinSize="32 32"
+                         RectClipContent="True" />
+
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          Margin="4 2">
+
+                <Label Name="LicenceName"
+                       Access="Public"
+                       HorizontalExpand="True"
+                       ClipText="True" />
+
+                <Label Name="LicenceDescription"
+                       Access="Public"
+                       HorizontalExpand="True"
+                       ClipText="True"
+                       StyleClasses="LabelSubText" />
+            </BoxContainer>
+        </BoxContainer>
+    </PanelContainer>
+</BoxContainer>

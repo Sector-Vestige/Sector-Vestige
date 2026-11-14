@@ -1,3 +1,4 @@
+using Content.Shared._SV.Licences;
 using Content.Shared.Radio;
 using Robust.Shared.Prototypes;
 
@@ -42,4 +43,10 @@ public sealed partial class CargoAccountPrototype : IPrototype
     /// </summary>
     [DataField]
     public EntProtoId AcquisitionSlip;
+
+    /// <summary>
+    /// SV - Licences unlocked by the crew for usage
+    /// </summary>
+    [DataField]
+    public ProtoId<LicencePrototype>[] Licences;
 }

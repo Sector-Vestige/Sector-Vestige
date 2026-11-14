@@ -115,6 +115,12 @@ namespace Content.Shared.Cargo.Prototypes
         /// </summary>
         [DataField]
         public ProtoId<CargoMarketPrototype> Group { get; private set; } = "market";
+
+        /// <summary>
+        ///     SV - Makes the cargoproduct visible or not
+        /// </summary>
+        [DataField]
+        public bool Visible = true;
     }
 
     /// <see cref="CargoProductPrototype.Container"/>
