@@ -1,0 +1,390 @@
+- type: entity
+  parent: BoxFolderBaseEmpty
+  id: BoxFolderR&DEmpty
+  categories: [ DoNotMap ]
+  name: R&D folder
+  description: R&D's miserable little pile of secrets!
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/folders.rsi
+    layers:
+    - state: folder-r&d
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#c2bd7c"
+      right:
+      - state: inhand-right
+        color: "#c2bd7c"
+
+- type: entity
+  parent: BoxFolderBaseEmpty
+  id: BoxFolderSyndicateEmpty
+  categories: [ DoNotMap ]
+  name: Syndicate folder
+  description: The syndicate's miserable little pile of secrets!
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/folders.rsi
+    layers:
+    - state: folder-syndicate
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#3d3d3d"
+      right:
+      - state: inhand-right
+        color: "#3d3d3d"
+
+- type: entity
+  parent: BoxFolderBaseEmpty
+  id: BoxFolderCybersunEmpty
+  categories: [ DoNotMap ]
+  name: Cybersun folder
+  description: Cybersun's miserable little pile of secrets!
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/folders.rsi
+    layers:
+    - state: folder-cybersun
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#115e4b"
+      right:
+      - state: inhand-right
+        color: "#115e4b"
+
+- type: entity
+  parent: BoxFolderBaseEmpty
+  id: BoxFolderInterdyneEmpty
+  categories: [ DoNotMap ]
+  name: Interdyne folder
+  description: Interdyne's miserable little pile of secrets!
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/folders.rsi
+    layers:
+    - state: folder-interdyne
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#99daeb"
+      right:
+      - state: inhand-right
+        color: "#99daeb"
+
+- type: entity
+  parent: BoxFolderBaseEmpty
+  id: BoxFolderGorlexEmpty
+  categories: [ DoNotMap ]
+  name: Gorlex folder
+  description: Gorlex's miserable little pile of secrets!
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/folders.rsi
+    layers:
+    - state: folder-gorlex
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#a01e1e"
+      right:
+      - state: inhand-right
+        color: "#a01e1e"
+
+- type: entity
+  parent: BoxFolderBaseEmpty
+  id: BoxFolderCartSilicaEmpty
+  categories: [ DoNotMap ]
+  name: Cart Silica folder
+  description: Cart Silica's miserable little pile of secrets!
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/folders.rsi
+    layers:
+    - state: folder-cartsilica
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#383838"
+      right:
+      - state: inhand-right
+        color: "#383838"
+
+- type: entity
+  parent: BoxFolderBaseEmpty
+  id: BoxFolderPommerskyEmpty
+  categories: [ DoNotMap ]
+  name: Pommersky folder
+  description: Pommersky's miserable little pile of secrets!
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/folders.rsi
+    layers:
+    - state: folder-pommersky
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#9c875a"
+      right:
+      - state: inhand-right
+        color: "#9c875a"
+
+# Secure Folders
+- type: entity
+  parent: BoxBase
+  id: BoxFolderSecureEmpty
+  name: secure folder
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/folders.rsi
+    layers:
+    - state: securefolder-colormap
+    - state: securefolder-zip
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+    - state: folder-base
+  - type: Item
+    sprite: _SV/Objects/Misc/folders.rsi
+    size: Small
+    shape: null
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Appearance
+  - type: AccessReader
+  - type: Lock
+  - type: LockedStorage
+  - type: LockVisuals
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,4,3
+    whitelist:
+      tags:
+      - Document
+  - type: PhysicalComposition
+    materialComposition:
+      Paper: 50
+      Steel: 20
+  - type: StaticPrice
+    price: 15
+  - type: Tag
+    tags:
+    - Folder
+
+- type: entity
+  parent: BoxFolderSecureEmpty
+  id: BoxFolderSecureRedEmpty
+  suffix: Red
+  components:
+  - type: Sprite
+    layers:
+    - state: securefolder-colormap
+      color: "#cc2323"
+    - state: securefolder-zip
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#cc2323"
+      right:
+      - state: inhand-right
+        color: "#cc2323"
+
+- type: entity
+  parent: [BoxFolderSecureRedEmpty, BoxFolderFill]
+  id: BoxFolderSecureRed
+  suffix: Red, Filled
+
+- type: entity
+  parent: [BoxFolderSecureRedEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderSecureRedThreePapers
+  suffix: Red, 3 papers
+
+- type: entity
+  parent: BoxFolderSecureEmpty
+  id: BoxFolderSecureBlueEmpty
+  suffix: Blue
+  components:
+  - type: Sprite
+    layers:
+    - state: securefolder-colormap
+      color: "#355d99"
+    - state: securefolder-zip
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#355d99"
+      right:
+      - state: inhand-right
+        color: "#355d99"
+
+- type: entity
+  parent: [BoxFolderSecureBlueEmpty, BoxFolderFill]
+  id: BoxFolderSecureBlue
+  suffix: Blue, Filled
+
+- type: entity
+  parent: [BoxFolderSecureBlueEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderSecureBlueThreePapers
+  suffix: Blue, 3 papers
+
+- type: entity
+  parent: BoxFolderSecureEmpty
+  id: BoxFolderSecureYellowEmpty
+  suffix: Yellow
+  components:
+  - type: Sprite
+    layers:
+    - state: securefolder-colormap
+      color: "#b38e3c"
+    - state: securefolder-zip
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#b38e3c"
+      right:
+      - state: inhand-right
+        color: "#b38e3c"
+
+- type: entity
+  parent: [BoxFolderSecureYellowEmpty, BoxFolderFill]
+  id: BoxFolderSecureYellow
+  suffix: Yellow, Filled
+
+- type: entity
+  parent: [BoxFolderSecureYellowEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderSecureYellowThreePapers
+  suffix: Yellow, 3 papers
+
+- type: entity
+  parent: BoxFolderSecureEmpty
+  id: BoxFolderSecureGreyEmpty
+  suffix: Grey
+  components:
+  - type: Sprite
+    layers:
+    - state: securefolder-colormap
+      color: "#999999"
+    - state: securefolder-zip
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#999999"
+      right:
+      - state: inhand-right
+        color: "#999999"
+
+- type: entity
+  parent: [BoxFolderSecureGreyEmpty, BoxFolderFill]
+  id: BoxFolderSecureGrey
+  suffix: Grey, Filled
+
+- type: entity
+  parent: [BoxFolderSecureGreyEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderSecureGreyThreePapers
+  suffix: Grey, 3 papers
+
+- type: entity
+  parent: BoxFolderSecureEmpty
+  id: BoxFolderSecureBlackEmpty
+  suffix: Black
+  components:
+  - type: Sprite
+    layers:
+    - state: securefolder-colormap
+      color: "#3f3f3f"
+    - state: securefolder-zip
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#3f3f3f"
+      right:
+      - state: inhand-right
+        color: "#3f3f3f"
+
+- type: entity
+  parent: [BoxFolderSecureBlackEmpty, BoxFolderFill]
+  id: BoxFolderSecureBlack
+  suffix: Black, Filled
+
+- type: entity
+  parent: [BoxFolderSecureBlackEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderSecureBlackThreePapers
+  suffix: Black, 3 papers
+
+- type: entity
+  parent: BoxFolderSecureEmpty
+  id: BoxFolderSecureGreenEmpty
+  suffix: Green
+  components:
+  - type: Sprite
+    layers:
+    - state: securefolder-colormap
+      color: "#43bc38"
+    - state: securefolder-zip
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#43bc38"
+      right:
+      - state: inhand-right
+        color: "#43bc38"
+
+- type: entity
+  parent: [BoxFolderSecureGreenEmpty, BoxFolderFill]
+  id: BoxFolderSecureGreen
+  suffix: Green, Filled
+
+- type: entity
+  parent: [BoxFolderSecureGreenEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderSecureGreenThreePapers
+  suffix: Green, 3 papers

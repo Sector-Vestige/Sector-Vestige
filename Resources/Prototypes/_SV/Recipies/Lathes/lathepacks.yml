@@ -3,3 +3,26 @@
   recipes:
   # Medical Restraints
   - Straitjacket
+
+## Autolathe Static
+- type: latheRecipePack
+  id: SVAutolatheStatic
+  recipes:
+  - DisposableCamera # Cameras
+  - BriefcaseBrown # Briefcases
+  - BriefcaseMetal
+  - BriefcaseSecure
+  - BoxFolderRedEmpty # Normal Folders
+  - BoxFolderBlueEmpty
+  - BoxFolderYellowEmpty
+  - BoxFolderGreyEmpty
+  - BoxFolderBlackEmpty
+  - BoxFolderGreenEmpty
+  - BoxFolderWhiteEmpty
+  - BoxFolderSecureRedEmpty # Secure Folders
+  - BoxFolderSecureBlueEmpty
+  - BoxFolderSecureYellowEmpty
+  - BoxFolderSecureGreyEmpty
+  - BoxFolderSecureBlackEmpty
+  - BoxFolderSecureGreenEmpty
+  - BusinessCard # Business Card
