@@ -8,12 +8,11 @@
   components:
   - type: Sprite
     state: plushie_tako
-    sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie.rsi
+    sprite: _SV/PersonalItems/Plushies/takoplushie.rsi
   - type: Item
-    sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie.rsi
+    sprite: _SV/PersonalItems/Plushies/takoplushie.rsi
   - type: Clothing
-    quickEquip: false
-    sprite: /Textures/_SV/PersonalItems/Plushies/takoplushie_64.rsi
+    sprite: _SV/PersonalItems/Plushies/takoplushie.rsi
   - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true
