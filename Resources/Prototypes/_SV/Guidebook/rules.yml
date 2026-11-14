@@ -1,0 +1,69 @@
+# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
+#
+# SPDX-License-Identifier: MIT
+
+# Sector Vestige ruleset guide entries.
+# This is a shallow copy of the upstream ruleset: we own the index, the section pages we change,
+# and any rule page we change. Everything else links to the upstream rule pages in rules.yml,
+# so upstream fixes to those rules still reach us on merges.
+
+- type: guideEntry
+  id: VestigeRuleset
+  name: guide-entry-rules-vestige
+  ruleEntry: true
+  priority: 10
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/VestigeRules.xml"
+
+- type: guideEntry
+  id: VestigeRoleplayRules
+  name: guide-entry-rules-vestige-roleplay
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/RoleplayRules.xml"
+
+- type: guideEntry
+  id: VestigeRuleR4
+  name: guide-entry-rules-r4
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/RoleplayRules/RuleR4Metashield.xml"
+
+- type: guideEntry
+  id: VestigeGuidelines
+  name: guide-entry-rules-vestige-guidelines
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/Guidelines/GuidelineG0.xml"
+  children:
+  - GuidelineG1
+  - GuidelineG2
+  - GuidelineG3
+  - GuidelineG4
+  - GuidelineG5
+
+- type: guideEntry
+  id: GuidelineG1
+  name: guide-entry-rules-g1
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/Guidelines/GuidelineG1Immersion.xml"
+
+- type: guideEntry
+  id: GuidelineG2
+  name: guide-entry-rules-g2
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/Guidelines/GuidelineG2Character.xml"
+
+- type: guideEntry
+  id: GuidelineG3
+  name: guide-entry-rules-g3
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/Guidelines/GuidelineG3Conflict.xml"
+
+- type: guideEntry
+  id: GuidelineG4
+  name: guide-entry-rules-g4
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/Guidelines/GuidelineG4Scene.xml"
+
+- type: guideEntry
+  id: GuidelineG5
+  name: guide-entry-rules-g5
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/Guidelines/GuidelineG5Memory.xml"
