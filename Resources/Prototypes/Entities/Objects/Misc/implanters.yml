@@ -52,6 +52,7 @@
       types:
         Cellular: 50
         Heat: 10
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: Sprite
     sprite: Objects/Specific/Medical/implanter.rsi
     state: implanter0

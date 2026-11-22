@@ -32,9 +32,11 @@
       damage:
         types:
           Asphyxiation: 0
+        ignoreResistances: 1.0 #SV - Armor piercing rework
       damageRecovery:
         types:
           Asphyxiation: -1.0
+        ignoreResistances: 1.0 #SV - Armor piercing rework
     - type: Gun #Mobs currently cannot bolt a gun, so we have to simulate them firing it
       fireRate: 2
       soundGunshot: /Audio/Weapons/Guns/Gunshots/pistol.ogg

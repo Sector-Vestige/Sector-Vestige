@@ -1203,10 +1203,11 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        ignoreResistances: false
+#        ignoreResistances: false #SV: Armor piercing rework
         damage:
           types:
             Holy: 0.5
+          ignoreResistances: 0.0 #SV: Armor piercing rework
   plantMetabolism:
   - !type:PlantAdjustWater
     amount: 1

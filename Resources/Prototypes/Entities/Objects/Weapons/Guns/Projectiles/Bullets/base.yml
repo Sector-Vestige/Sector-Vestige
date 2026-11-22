@@ -118,7 +118,7 @@
     damage:
       types:
         Piercing: 11 # 20% decrease
-    ignoreResistances: true
+      ignoreResistances: 1.0 #SV: Armor piercing rework
 
 - type: entity
   parent: BaseBullet

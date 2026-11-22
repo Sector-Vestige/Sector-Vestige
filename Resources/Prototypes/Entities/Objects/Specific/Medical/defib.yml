@@ -34,6 +34,7 @@
       zapHeal:
         types:
           Asphyxiation: -40
+        ignoreResistances: 1.0 #SV - Armor piercing rework
     - type: DoAfter
     - type: UseDelay
     - type: StaticPrice
@@ -92,6 +93,7 @@
     zapHeal:
       types:
         Asphyxiation: -40
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     doAfterDuration: 6
   - type: DoAfter
   - type: UseDelay

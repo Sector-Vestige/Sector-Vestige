@@ -15,7 +15,7 @@
       types:
         Piercing: 30
         Structural: 210 # good for basic walls and reinforced windows, struggles with rest
-    ignoreResistances: true
+      ignoreResistances: 1.0
     penetrationThreshold: 360
     penetrationDamageTypeRequirement:
     - Structural

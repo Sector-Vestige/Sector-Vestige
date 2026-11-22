@@ -165,6 +165,7 @@
       types:
         Heat: 0.1 # bones don't burn easily.
         Blunt: 0.5 #oof ouch oof my bones are micro-fracturing!!!
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
   - type: FlashImmunity
     showInExamine: false
   - type: Instrument

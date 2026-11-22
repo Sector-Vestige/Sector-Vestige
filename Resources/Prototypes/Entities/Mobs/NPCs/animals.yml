@@ -770,9 +770,11 @@
     damage:
       types:
         Asphyxiation: 0.5
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -0.5
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: CombatMode
   - type: Solution
     solution:
@@ -2264,6 +2266,7 @@
     damage:
       types:
         Asphyxiation: 0.25
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -0.25
@@ -2271,6 +2274,7 @@
     damage:
       types:
         Blunt: 0.1
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: Vocal
     emoteSounds: Mouse
     wilhelmProbability: 0.001
@@ -2758,9 +2762,11 @@
     coldDamage:
       types:
         Cold : 0.05 #per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
     heatDamage:
       types:
         Heat : 0.2 #per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
 
 # TODO: Make grenade penguin voice activated like the rest of the stealth items.
 - type: entity
@@ -3472,9 +3478,11 @@
     coldDamage:
       types:
         Cold : 1 #per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
     heatDamage:
       types:
         Heat : 1 #per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
 
 - type: entity
   name: corgi puppy
@@ -3963,13 +3971,16 @@
     damage:
       types:
         Asphyxiation: 0.25
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -0.25
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: Barotrauma
     damage:
       types:
         Blunt: 0.1
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: CombatMode
   - type: MeleeWeapon
     soundHit:

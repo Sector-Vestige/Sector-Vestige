@@ -79,3 +79,4 @@
     damage:
       types:
         Cold: 1 # Per second, fire cannot exist without air
+      ignoreResistances: 1.0

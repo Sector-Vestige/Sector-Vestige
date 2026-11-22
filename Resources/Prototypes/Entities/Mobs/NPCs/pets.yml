@@ -860,6 +860,7 @@
       types:
         Bloodloss:
           -0.8
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: Temperature
   - type: TemperatureDamage
     heatDamageThreshold: 800

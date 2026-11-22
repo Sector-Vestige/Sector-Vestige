@@ -1,0 +1,163 @@
+# 100% AP bullet + gun
+- type: entity
+  id: BulletDebug100AP
+  name: bang, hurt bullet
+  parent: BaseBullet
+  categories: [ Debug, HideSpawnMenu ]
+  suffix: DEBUG, 100% AP
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 10
+      ignoreResistances: 1.0
+
+- type: entity
+  id: CartridgeDebug100AP
+  name: bang, ded cartridge 100%AP
+  parent: BaseCartridgePistol
+  suffix: DEBUG
+  components:
+  - type: Tag
+    tags:
+    - CartridgeDebug
+  - type: CartridgeAmmo
+    proto: BulletDebug100AP
+
+- type: entity
+  id: MagazinePistolDebug100AP
+  name: bang, ded mag 100%AP
+  parent: BaseMagazinePistol
+  suffix: DEBUG
+  components:
+  - type: Tag
+    tags:
+    - MagazineDebug
+  - type: BallisticAmmoProvider
+    proto: CartridgeDebug100AP
+    capacity: 1000
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi
+
+# 75% AP bullet + gun
+- type: entity
+  id: BulletDebug75AP
+  name: bang, hurt bullet
+  parent: BaseBullet
+  categories: [ Debug, HideSpawnMenu ]
+  suffix: DEBUG, 75% AP
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 10
+      ignoreResistances: 0.75
+
+- type: entity
+  id: CartridgeDebug75AP
+  name: bang, ded cartridge 75%AP
+  parent: BaseCartridgePistol
+  suffix: DEBUG, 75% AP
+  components:
+  - type: Tag
+    tags:
+    - CartridgeDebug
+  - type: CartridgeAmmo
+    proto: BulletDebug75AP
+- type: entity
+  id: MagazinePistolDebug75AP
+  name: bang, ded mag 75%AP
+  parent: BaseMagazinePistol
+  suffix: DEBUG
+  components:
+  - type: Tag
+    tags:
+    - MagazineDebug
+  - type: BallisticAmmoProvider
+    proto: CartridgeDebug75AP
+    capacity: 1000
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi
+
+# 50% AP bullet + gun
+- type: entity
+  id: BulletDebug50AP
+  name: bang, hurt bullet
+  parent: BaseBullet
+  categories: [ Debug ]
+  suffix: DEBUG, 50% AP
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 10
+      ignoreResistances: 0.50
+
+- type: entity
+  id: CartridgeDebug50AP
+  name: bang, ded cartridge 50%AP
+  parent: BaseCartridgePistol
+  suffix: DEBUG, 50% AP
+  components:
+  - type: Tag
+    tags:
+    - CartridgeDebug
+  - type: CartridgeAmmo
+    proto: BulletDebug50AP
+
+- type: entity
+  id: MagazinePistolDebug50AP
+  name: bang, ded mag 50%AP
+  parent: BaseMagazinePistol
+  suffix: DEBUG
+  components:
+  - type: Tag
+    tags:
+    - MagazineDebug
+  - type: BallisticAmmoProvider
+    proto: CartridgeDebug50AP
+    capacity: 1000
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi
+
+# 10% AP bullet + gun
+- type: entity
+  id: BulletDebug10AP
+  name: bang, hurt bullet
+  parent: BaseBullet
+  categories: [ Debug, HideSpawnMenu ]
+  suffix: DEBUG, 10% AP
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 10
+      ignoreResistances: 0.1
+
+- type: entity
+  id: CartridgeDebug10AP
+  name: bang, ded cartridge 10%AP
+  parent: BaseCartridgePistol
+  suffix: DEBUG, 10% AP
+  components:
+  - type: Tag
+    tags:
+    - CartridgeDebug
+  - type: CartridgeAmmo
+    proto: BulletDebug10AP
+
+- type: entity
+  id: MagazinePistolDebug10AP
+  name: bang, ded mag 10%AP
+  parent: BaseMagazinePistol
+  suffix: DEBUG
+  components:
+  - type: Tag
+    tags:
+    - MagazineDebug
+  - type: BallisticAmmoProvider
+    proto: CartridgeDebug10AP
+    capacity: 1000
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi
+# var appliedDamageSpecifier = new DamageSpecifier

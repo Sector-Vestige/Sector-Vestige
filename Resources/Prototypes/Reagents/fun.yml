@@ -186,10 +186,11 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        ignoreResistances: false
+#         ignoreResistances: 0.0 #SV: Armor piercing rework
         damage:
           types:
             Slash: 0.25
+          ignoreResistances: 0.0 #SV: Armor piercing rework
       - !type:Emote
         emote: Scream
         probability: 0.7
@@ -235,10 +236,11 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        ignoreResistances: false
+#        ignoreResistances: false #SV: Armor piercing rework
         damage:
           types:
             Cold: 0.05
+          ignoreResistances: 0.0 #SV: Armor piercing rework
       - !type:AdjustTemperature
         conditions:
         - !type:TemperatureCondition

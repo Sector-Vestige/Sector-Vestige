@@ -52,6 +52,7 @@
       heatDamage:
         types:
           Heat: 5
+        ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
       coldDamage: {}
       heatDamageThreshold: 273.15
       coldDamageThreshold: 0

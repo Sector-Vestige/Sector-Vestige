@@ -219,13 +219,16 @@
     coldDamage:
       types:
         Cold: 1 #per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
     heatDamage:
       types:
         Heat: 1.5 #per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
   - type: Barotrauma
     damage:
       types:
         Blunt: 0.15 #per second, scales with pressure and other constants.
+      ignoreResistances: 1.0 #SV: Armor piercing rework
 
 # Used for mobs that can be set on fire
 - type: entity
@@ -254,9 +257,11 @@
     damage:
       types:
         Asphyxiation: 2
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -1.0
+      ignoreResistances: 1.0 #SV - Armor piercing rework
 
 # Used for mobs that have a bloodstream
 - type: entity
@@ -271,9 +276,11 @@
     bloodlossDamage:
       types:
         Bloodloss: 0.5
+      ignoreResistances: 1.0 #SV: Armor piercing rework
     bloodlossHealDamage:
       types:
         Bloodloss: -1
+      ignoreResistances: 1.0 #SV: Armor piercing rework
 
 # Used for mobs that should slightly see in the dark
 - type: entity

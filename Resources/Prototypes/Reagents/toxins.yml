@@ -142,10 +142,11 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        ignoreResistances: false
+#        ignoreResistances: false #SV: Armor piercing rework
         damage:
           types:
             Caustic: 0.5
+          ignoreResistances: 0.0 #SV: Armor piercing rework
       - !type:Emote
         emote: Scream
         probability: 0.3
@@ -181,7 +182,7 @@
         satiationType: Thirst
         factor: -1.5
       - !type:HealthChange
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         damage:
           types:
             Heat: 2.5
@@ -203,10 +204,11 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        ignoreResistances: false
+#        ignoreResistances: false #SV: Armor piercing rework
         damage:
           types:
             Caustic: 0.3
+          ignoreResistances: 0.0 #SV: Armor piercing rework
       - !type:Emote
         emote: Scream
         probability: 0.2
@@ -252,10 +254,11 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        ignoreResistances: false
+#        ignoreResistances: false #SV: Armor piercing rework
         damage:
           types:
             Caustic: 0.1
+          ignoreResistances: 0.0 #SV: Armor piercing rework
       - !type:Emote
         emote: Scream
         probability: 0.1
@@ -833,10 +836,11 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        ignoreResistances: false
+#        ignoreResistances: false #SV: Armor piercing rework
         damage:
           types:
             Caustic: 0.1
+          ignoreResistances: 0.0 #SV: Armor piercing rework
       - !type:Emote
         emote: Scream
         probability: 0.1

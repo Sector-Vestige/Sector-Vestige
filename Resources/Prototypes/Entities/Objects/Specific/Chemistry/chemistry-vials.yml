@@ -20,10 +20,11 @@
     - Trash
     - CentrifugeCompatible # unique feature of vials
   - type: DamageOnLand
-    ignoreResistances: true
+#    ignoreResistances: true #SV: Armor piercing rework
     damage:
       types:
         Blunt: 3 # can be thrown once without breaking
+      ignoreResistances: 1.0 #SV: Armor piercing rework
 
 - type: entity
   abstract: true

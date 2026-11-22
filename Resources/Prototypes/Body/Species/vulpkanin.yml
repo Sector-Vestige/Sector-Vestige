@@ -179,9 +179,11 @@
     coldDamage:
       types:
         Cold: 0.05 # Per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
     heatDamage:
       types:
         Heat: 2.5 # Per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
   - type: Wagging
     action: ActionToggleWaggingVulpkanin
   - type: JumpAbility

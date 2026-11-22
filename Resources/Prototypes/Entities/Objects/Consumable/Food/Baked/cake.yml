@@ -31,6 +31,7 @@
     damageEatenItemInside:
       types:
         Slash: 7.5
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: ToolOpenable
     openToolQualityNeeded: Slicing
     closeToolQualityNeeded: Slicing

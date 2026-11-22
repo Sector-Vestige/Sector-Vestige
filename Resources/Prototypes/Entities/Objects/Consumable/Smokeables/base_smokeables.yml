@@ -70,6 +70,7 @@
     damage:
       types:
         Heat: 2
+      ignoreResistances: 1.0
   - type: RefillableSolution
     solution: smokable
   - type: ExaminableSolution

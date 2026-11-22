@@ -24,10 +24,11 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: DamageOnLand
-    ignoreResistances: true
+#    ignoreResistances: true #SV: Armor piercing rework
     damage:
       types:
         Blunt: 5 # so fragile it smashes when thrown
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: DamageOtherOnHit
     damage:
       types:
@@ -61,10 +62,11 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: DamageOnLand
-    ignoreResistances: true
+#    ignoreResistances: true #SV: Armor piercing rework
     damage:
       types:
         Blunt: 5 # so fragile it smashes when thrown
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: DamageOtherOnHit
     damage:
       types:
@@ -92,10 +94,11 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: DamageOnLand
-    ignoreResistances: true
+#    ignoreResistances: true #SV: Armor piercing rework
     damage:
       types:
         Blunt: 1
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: DamageOtherOnHit
     damage:
       types:
@@ -156,10 +159,11 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: DamageOnLand
-    ignoreResistances: true
+#    ignoreResistances: true #SV: Armor piercing rework
     damage:
       types:
         Blunt: 1
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: DamageOtherOnHit
     damage:
       types:
@@ -190,10 +194,11 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: DamageOnLand
-    ignoreResistances: true
+#    ignoreResistances: true #SV: Armor piercing rework
     damage:
       types:
         Blunt: 1
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: DamageOtherOnHit
     damage:
       types:
@@ -254,10 +259,11 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: DamageOnLand
-    ignoreResistances: true
+#    ignoreResistances: true #SV: Armor piercing rework
     damage:
       types:
         Blunt: 5 # Don't drop your fancy golden cup!
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: DamageOtherOnHit
     damage:
       types:

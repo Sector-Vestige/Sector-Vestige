@@ -78,13 +78,16 @@
     damage:
       types:
         Asphyxiation: 0.25
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -0.25
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: Barotrauma
     damage:
       types:
         Blunt: 0.1
+      ignoreResistances: 1.0 #SV: Armor piercing rework:
   - type: MovementSpeedModifier # Slightly faster than regular mobs
     baseWalkSpeed: 3
     baseSprintSpeed: 5

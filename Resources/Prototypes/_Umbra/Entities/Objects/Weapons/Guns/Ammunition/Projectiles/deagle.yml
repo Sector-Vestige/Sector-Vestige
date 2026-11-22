@@ -37,4 +37,4 @@
     damage:
       types:
         Piercing: 45.5 # 30% decrease
-    ignoreResistances: true
+      ignoreResistances: 1.0 #SV: Armor piercing rework

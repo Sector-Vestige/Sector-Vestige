@@ -25,10 +25,12 @@
       types:
         Bloodloss:
           0.5
+      ignoreResistances: 1.0 #SV: Armor piercing rework
     bloodlossHealDamage:
       types:
         Bloodloss:
           -1
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: Insulated
   - type: CombatMode
   - type: MeleeWeapon

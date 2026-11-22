@@ -14,4 +14,4 @@
     damage:
       types:
         Piercing: 10
-    ignoreResistances: true
+      ignoreResistances: 1.0

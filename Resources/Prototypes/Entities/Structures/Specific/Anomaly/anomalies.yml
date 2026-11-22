@@ -58,6 +58,7 @@
     damage:
       types:
         Radiation: 10
+      ignoreResistances: 1.0 # SV: Armor piercing rework
 
 - type: entity
   id: AnomalyPyroclastic
@@ -117,6 +118,7 @@
     damage:
       types:
         Heat: 10
+      ignoreResistances: 1.0 # SV: Armor piercing rework
 
 - type: entity
   id: AnomalyGravity
@@ -377,6 +379,7 @@
     damage:
       types:
         Cold: 10
+      ignoreResistances: 1.0 # SV: Armor piercing rework
 
 - type: entity
   id: AnomalyRockBase
@@ -1003,6 +1006,7 @@
     damage:
       types:
         Cold: 10
+      ignoreResistances: 1.0 # SV: Armor piercing rework
 
 - type: entity
   id: AnomalyTech

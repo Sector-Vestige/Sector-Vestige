@@ -42,7 +42,7 @@
     damage:
       types:
         Piercing: 26 # 20% decrease
-    ignoreResistances: true
+      ignoreResistances: 1.0 #SV: Armor piercing rework
 
 - type: entity
   parent: BaseBulletUranium

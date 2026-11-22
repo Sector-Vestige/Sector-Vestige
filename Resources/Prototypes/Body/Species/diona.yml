@@ -76,9 +76,11 @@
     damage:
       types:
         Asphyxiation: 0.5
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -1.0
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: Satiation
     satiations:
       Hunger:

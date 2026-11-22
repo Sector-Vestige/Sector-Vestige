@@ -78,9 +78,11 @@
     damage:
       types:
         Asphyxiation: 1.5 # This makes space and crit more lethal to arachnids.
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -0.5
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: Sericulture
     productionLength: 2
     entityProduced: MaterialWebSilk1
