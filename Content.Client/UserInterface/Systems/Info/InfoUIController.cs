@@ -1,3 +1,4 @@
+using Content.Client.Administration.Managers; // SV: admin-only fuckrules
 using Content.Client.Gameplay;
 using Content.Client.Info;
 using Content.Shared.Guidebook;
@@ -15,6 +16,7 @@ public sealed partial class InfoUIController : UIController, IOnStateExited<Game
     [Dependency] private IClientConsoleHost _consoleHost = default!;
     [Dependency] private INetManager _netManager = default!;
     [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IClientAdminManager _adminManager = default!; // SV: admin-only fuckrules
 
     private RulesPopup? _rulesPopup;
     private RulesAndInfoWindow? _infoWindow;
@@ -35,8 +37,17 @@ public sealed partial class InfoUIController : UIController, IOnStateExited<Game
         _consoleHost.RegisterCommand("fuckrules",
             "",
             "",
-            (_, _, _) =>
+            (shell, _, _) => // SV: admin-only fuckrules, was (_, _, _)
         {
+            // SV: admin-only fuckrules - Start
+            // Only admins (including de-adminned ones) may skip the rules.
+            if (!_adminManager.IsAdmin(includeDeAdmin: true))
+            {
+                shell.WriteError(Loc.GetString("sv-fuckrules-admin-only"));
+                return;
+            }
+            // SV: admin-only fuckrules - End
+
             OnAcceptPressed(true);
         });
     }

@@ -27,6 +27,18 @@
   text: "/ServerInfo/_SV/Guidebook/ServerRules/RoleplayRules/RuleR4Metashield.xml"
 
 - type: guideEntry
+  id: VestigeRuleR6
+  name: guide-entry-rules-r6
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/RoleplayRules/RuleR6Antagonists.xml"
+
+- type: guideEntry
+  id: VestigeSiliconRules
+  name: guide-entry-rules-silicon
+  ruleEntry: true
+  text: "/ServerInfo/_SV/Guidebook/ServerRules/SiliconRules.xml"
+
+- type: guideEntry
   id: VestigeGuidelines
   name: guide-entry-rules-vestige-guidelines
   ruleEntry: true
