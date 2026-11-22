@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Sector Vestige contributors
 #
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Sector Vestige ruleset and Vestige Guidelines guide-entry names.
 # Kept in the _SV namespace so the upstream guides.ftl stays conflict-free on merges.
