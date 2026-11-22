@@ -1,5 +1,6 @@
 using System.Net;
 using Content.Server.Administration.Logs;
+using Content.Server.Administration.Managers; // SV: admin-only fuckrules
 using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -17,6 +18,7 @@ public sealed partial class RulesManager
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IAdminManager _admin = default!; // SV: admin-only fuckrules
 
     private static DateTime LastValidReadTime => DateTime.UtcNow - TimeSpan.FromDays(60);
 
@@ -46,6 +48,16 @@ public sealed partial class RulesManager
 
     private async void OnRulesAccepted(RulesAcceptedMessage message)
     {
+        // SV: admin-only fuckrules - Start
+        if (message.FuckRules
+            && (!_player.TryGetSessionById(message.MsgChannel.UserId, out var sender)
+                || !_admin.IsAdmin(sender, includeDeAdmin: true)))
+        {
+            _adminLog.Add(LogType.Connection, LogImpact.Extreme, $"Non-admin {message.MsgChannel.UserName} tried to use the fuckrules command.");
+            return;
+        }
+        // SV: admin-only fuckrules - End
+
         var date = DateTime.UtcNow;
         await _dbManager.SetLastReadRules(message.MsgChannel.UserId, date);
         if (message.FuckRules && _player.TryGetSessionById(message.MsgChannel.UserId, out var session))
