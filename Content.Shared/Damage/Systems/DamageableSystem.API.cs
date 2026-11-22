@@ -68,7 +68,7 @@ public sealed partial class DamageableSystem
     public bool TryChangeDamage(
         Entity<DamageableComponent?> ent,
         DamageSpecifier damage,
-        bool ignoreResistances = false,
+        //bool ignoreResistances = false, //SV: Armor Piercing rework
         bool interruptsDoAfters = true,
         EntityUid? origin = null,
         bool ignoreGlobalModifiers = false
@@ -76,7 +76,7 @@ public sealed partial class DamageableSystem
     {
         //! Empty just checks if the DamageSpecifier is _literally_ empty, as in, is internal dictionary of damage types is empty.
         // If you deal 0.0 of some damage type, Empty will be false!
-        return TryChangeDamage(ent, damage, out _, ignoreResistances, interruptsDoAfters, origin, ignoreGlobalModifiers);
+        return TryChangeDamage(ent, damage, out _, interruptsDoAfters, origin, ignoreGlobalModifiers); //SV: Armor Piercing rework
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public sealed partial class DamageableSystem
         Entity<DamageableComponent?> ent,
         DamageSpecifier damage,
         out DamageSpecifier newDamage,
-        bool ignoreResistances = false,
+        //bool ignoreResistances = false, //SV: Armor Piercing rework
         bool interruptsDoAfters = true,
         EntityUid? origin = null,
         bool ignoreGlobalModifiers = false
@@ -102,7 +102,7 @@ public sealed partial class DamageableSystem
     {
         //! Empty just checks if the DamageSpecifier is _literally_ empty, as in, is internal dictionary of damage types is empty.
         // If you deal 0.0 of some damage type, Empty will be false!
-        newDamage = ChangeDamage(ent, damage, ignoreResistances, interruptsDoAfters, origin, ignoreGlobalModifiers);
+        newDamage = ChangeDamage(ent, damage, interruptsDoAfters, origin, ignoreGlobalModifiers); //SV: Armor Piercing rework
         return !newDamage.Empty;
     }
 
@@ -120,7 +120,7 @@ public sealed partial class DamageableSystem
     public DamageSpecifier ChangeDamage(
         Entity<DamageableComponent?> ent,
         DamageSpecifier damage,
-        bool ignoreResistances = false,
+        //bool ignoreResistances = false, //SV: Armor Piercing rework
         bool interruptsDoAfters = true,
         EntityUid? origin = null,
         bool ignoreGlobalModifiers = false
@@ -140,8 +140,9 @@ public sealed partial class DamageableSystem
         if (before.Cancelled)
             return damageDone;
 
+        //SV: Armor piercing now works as a float
         // Apply resistances
-        if (!ignoreResistances)
+        if (damage.IgnoreResists < 1.0f) //SV: Armor Piercing rework
         {
             if (GetDamageModifierSet(ent) is { } modifierSet)
                 damage = DamageSpecifier.ApplyModifierSet(damage, modifierSet);
@@ -172,22 +173,27 @@ public sealed partial class DamageableSystem
     /// </summary>
     /// <param name="ent">entity to be healed</param>
     /// <param name="amount">how much to heal. value has to be negative to heal</param>
+    /// <param name="ignoreResistances">How much this item should go through armor</param>
     /// <param name="group">from which group to heal. if null, heal from all groups</param>
     /// <param name="origin">who did the healing</param>
     public DamageSpecifier HealEvenly(
         Entity<DamageableComponent?> ent,
         FixedPoint2 amount,
+        FixedPoint2 ignoreResistances, //SV: Armor Piercing rework
         ProtoId<DamageGroupPrototype>? group = null,
         EntityUid? origin = null)
     {
-        var damageChange = new DamageSpecifier();
+        var damageChange = new DamageSpecifier //SV: Armor Piercing rework
+        {
+            IgnoreResists = ignoreResistances,
+        };
 
         if (!_damageableQuery.Resolve(ent, ref ent.Comp, false) || amount >= 0)
             return damageChange;
 
         // Get our total damage, or heal if we're below a certain amount.
         if (!TryGetDamageGreaterThan((ent, ent.Comp), -amount, out var damage, group))
-            return ChangeDamage(ent, -damage, true, false, origin);
+            return ChangeDamage(ent, -damage, true, origin); //SV: Armor Piercing rework
 
         // make sure damageChange has the same damage types as damage
         damageChange.DamageDict.EnsureCapacity(damage.DamageDict.Count);
@@ -233,7 +239,7 @@ public sealed partial class DamageableSystem
             }
         }
 
-        return ChangeDamage(ent, damageChange, true, false, origin);
+        return ChangeDamage(ent, damageChange, true, origin); //SV: Armor Piercing rework
     }
 
     /// <summary>
@@ -258,7 +264,7 @@ public sealed partial class DamageableSystem
 
         // Get our total damage, or heal if we're below a certain amount.
         if (!TryGetDamageGreaterThan((ent, ent.Comp), -amount, out var damage, group))
-            return ChangeDamage(ent, -damage, true, false, origin);
+            return ChangeDamage(ent, -damage, false, origin); //SV: Armor piercing rework
 
         // make sure damageChange has the same damage types as damageEntity
         damageChange.DamageDict.EnsureCapacity(damage.DamageDict.Count);
@@ -270,7 +276,7 @@ public sealed partial class DamageableSystem
             damageChange.DamageDict.Add(type, value / total * amount);
         }
 
-        return ChangeDamage(ent, damageChange, true, false, origin);
+        return ChangeDamage(ent, damageChange, false, origin); //SV: Armor piercing rework
     }
 
     /// <summary>
