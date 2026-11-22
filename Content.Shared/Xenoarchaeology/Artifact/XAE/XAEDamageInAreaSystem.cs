@@ -35,7 +35,7 @@ public sealed partial class XAEDamageInAreaSystem : BaseXAESystem<XAEDamageInAre
             if (!random.Prob(damageInAreaComponent.DamageChance))
                 continue;
 
-            _damageable.TryChangeDamage(entityInRange, damageInAreaComponent.Damage, damageInAreaComponent.IgnoreResistances);
+            _damageable.TryChangeDamage(entityInRange, damageInAreaComponent.Damage); //SV - Armor piercing rework
         }
     }
 }

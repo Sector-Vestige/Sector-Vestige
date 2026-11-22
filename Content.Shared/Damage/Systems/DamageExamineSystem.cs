@@ -78,6 +78,12 @@ public sealed partial class DamageExamineSystem : EntitySystem
             }
         }
 
+        if (damageSpecifier.IgnoreResists > 0) //SV: Armor Piercing rework - Begin
+        {
+            msg.PushNewline();
+            msg.AddMarkupOrThrow(Loc.GetString("armor-resist", ("amount", damageSpecifier.IgnoreResists * 10)));
+        } //SV: Armor Piercing rework - End
+
         return msg;
     }
 }

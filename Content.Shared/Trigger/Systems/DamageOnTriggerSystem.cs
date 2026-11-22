@@ -13,7 +13,7 @@ public sealed partial class DamageOnTriggerSystem : XOnTriggerSystem<DamageOnTri
         var ev = new BeforeDamageOnTriggerEvent(damage, target);
         RaiseLocalEvent(ent.Owner, ref ev);
 
-        args.Handled |= _damageableSystem.TryChangeDamage(target, ev.Damage, ent.Comp.IgnoreResistances, origin: ent.Owner);
+        args.Handled |= _damageableSystem.TryChangeDamage(target, ev.Damage, origin: ent.Owner); //SV: Armor Piercing rework
     }
 }
 

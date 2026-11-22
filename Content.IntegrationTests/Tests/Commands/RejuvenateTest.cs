@@ -67,9 +67,12 @@ namespace Content.IntegrationTests.Tests.Commands
                 });
 
                 // Kill the entity
-                DamageSpecifier damage = new(prototypeManager.Index(TestDamageGroup), FixedPoint2.New(10000000));
+                DamageSpecifier damage = new(prototypeManager.Index(TestDamageGroup), FixedPoint2.New(10000000)) //SV: Armor Piercing rework - begin
+                {
+                    IgnoreResists = 1.0,
+                }; //SV: Armor Piercing rework - End
 
-                damSystem.TryChangeDamage(human, damage, true);
+                damSystem.TryChangeDamage(human, damage); //SV: Armor Piercing rework
 
                 // Check that it is dead
                 Assert.Multiple(() =>

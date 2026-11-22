@@ -69,6 +69,7 @@ public sealed partial class KitchenSpikeComponent : Component
         {
             { "Piercing", 10 },
         },
+        IgnoreResists = 1.0, //SV - Armor piercing rework
     };
 
     /// <summary>
@@ -81,6 +82,7 @@ public sealed partial class KitchenSpikeComponent : Component
         {
             { "Slash", 20 },
         },
+        IgnoreResists = 1.0, //SV - Armor piercing rework
     };
 
     /// <summary>
@@ -93,6 +95,7 @@ public sealed partial class KitchenSpikeComponent : Component
         {
             { "Blunt", 1 }, // Mobs are only gibbed from blunt (at least for now).
         },
+        IgnoreResists = 1.0, //SV - Armor piercing rework
     };
 
     /// <summary>

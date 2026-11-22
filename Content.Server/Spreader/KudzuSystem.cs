@@ -125,7 +125,7 @@ public sealed partial class KudzuSystem : EntitySystem
                     if (kudzu.DamageRecovery != null)
                     {
                         // This kudzu features healing, so Gradually heal
-                        _damageable.TryChangeDamage(uid, kudzu.DamageRecovery, true);
+                        _damageable.TryChangeDamage(uid, kudzu.DamageRecovery); //SV: Armor Piercing rework
                     }
                     if (totalDamage >= kudzu.GrowthBlock)
                     {

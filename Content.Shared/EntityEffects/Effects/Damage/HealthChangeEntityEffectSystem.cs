@@ -26,7 +26,7 @@ public sealed partial class HealthChangeEntityEffectSystem : EntityEffectSystem<
         _damageable.TryChangeDamage(
                 entity.AsNullable(),
                 damageSpec,
-                args.Effect.IgnoreResistances,
+                // args.Effect.IgnoreResistances, //SV - Armor Piercing Rework
                 interruptsDoAfters: false);
     }
 }
@@ -38,13 +38,18 @@ public sealed partial class HealthChange : EntityEffectBase<HealthChange>
     /// Damage to apply every cycle. Damage Ignores resistances.
     /// </summary>
     [DataField(required: true)]
-    public DamageSpecifier Damage = default!;
+    public DamageSpecifier Damage = new()
+    {
+        IgnoreResists = 1, // SV - Armor piercing rework
+    };
 
-    /// <summary>
-    /// Should this effect ignore damage resistances?
-    /// </summary>
-    [DataField]
-    public bool IgnoreResistances = true;
+    // SV - Armor Piercing Rework - Begin
+    // /// <summary>
+    // /// Should this effect ignore damage resistances?
+    // /// </summary>
+    // [DataField]
+    // public bool IgnoreResistances = true;
+    // SV - Armor Piercing Rework - End
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         {

@@ -97,7 +97,8 @@ public sealed partial class ZombieComponent : Component
             { "Piercing", -0.2 },
             { "Heat", -0.02 },
             { "Shock", -0.02 }
-        }
+        },
+        IgnoreResists = 1.0f, //SV - Armor piercing rework
     };
 
     /// <summary>
@@ -117,7 +118,8 @@ public sealed partial class ZombieComponent : Component
             { "Blunt", -2 },
             { "Slash", -2 },
             { "Piercing", -2 }
-        }
+        },
+        IgnoreResists = 1.0f, //SV - Armor piercing rework
     };
 
     /// <summary>

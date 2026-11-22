@@ -14,9 +14,14 @@ public sealed partial class HealingComponent : Component
 {
     /// <remarks>
     /// The amount of damage to heal per use.
+    /// SV change to for armor piercing
     /// </remarks>
     [DataField(required: true), AutoNetworkedField]
-    public DamageSpecifier Damage = default!;
+    public DamageSpecifier Damage = new()
+    {
+        IgnoreResists = 1,
+    };
+
 
     /// <remarks>
     /// This should generally be negative,

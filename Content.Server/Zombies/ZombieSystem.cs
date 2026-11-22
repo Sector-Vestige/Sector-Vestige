@@ -139,7 +139,7 @@ namespace Content.Server.Zombies
                     ? comp.CritDamageMultiplier
                     : 1f;
 
-                _damageable.ChangeDamage((uid, damage), comp.Damage * multiplier, true, false);
+                _damageable.ChangeDamage((uid, damage), comp.Damage * multiplier, false); //SV: Armor Piercing rework
             }
 
             // Heal the zombified
@@ -160,7 +160,7 @@ namespace Content.Server.Zombies
                     : 1f;
 
                 // Gradual healing for living zombies.
-                _damageable.ChangeDamage((uid, damage), comp.PassiveHealing * multiplier, true, false);
+                _damageable.ChangeDamage((uid, damage), comp.PassiveHealing * multiplier, false); //SV: Armor Piercing rework
             }
         }
 
@@ -261,7 +261,7 @@ namespace Content.Server.Zombies
 
                 if (_mobState.IsAlive(uid, mobState))
                 {
-                    _damageable.TryChangeDamage(args.User, entity.Comp.HealingOnBite, true, false);
+                    _damageable.TryChangeDamage(args.User, entity.Comp.HealingOnBite, false); //SV: Armor Piercing rework
 
                     // If we cannot infect the living target, the zed will just heal itself.
                     if (HasComp<ZombieImmuneComponent>(uid) || cannotSpread || !_random.Prob(GetZombieInfectionChance(uid, entity.Comp)))

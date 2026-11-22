@@ -104,7 +104,7 @@ public sealed partial class SharedKitchenSpikeSystem : EntitySystem
             return;
 
         EnsureComp<KitchenSpikeHookedComponent>(args.Entity);
-        _damageableSystem.TryChangeDamage(args.Entity, ent.Comp.SpikeDamage, true);
+        _damageableSystem.TryChangeDamage(args.Entity, ent.Comp.SpikeDamage); //SV: Armor Piercing rework
 
         ent.Comp.NextDamage = _gameTiming.CurTime + ent.Comp.DamageInterval;
         Dirty(ent);
@@ -119,7 +119,7 @@ public sealed partial class SharedKitchenSpikeSystem : EntitySystem
             return;
 
         RemComp<KitchenSpikeHookedComponent>(args.Entity);
-        _damageableSystem.TryChangeDamage(args.Entity, ent.Comp.SpikeDamage, true);
+        _damageableSystem.TryChangeDamage(args.Entity, ent.Comp.SpikeDamage); //SV: Armor Piercing rework
 
         _appearanceSystem.SetData(ent.Owner, KitchenSpikeVisuals.Status, KitchenSpikeStatus.Empty);
     }
@@ -339,7 +339,7 @@ public sealed partial class SharedKitchenSpikeSystem : EntitySystem
         {
             EnsureComp<KitchenSpikeVictimComponent>(args.Target.Value);
 
-            _damageableSystem.ChangeDamage(args.Target.Value, ent.Comp.ButcherDamage, true);
+            _damageableSystem.ChangeDamage(args.Target.Value, ent.Comp.ButcherDamage); //SV: Armor Piercing rework
 
             // Log severity for damaging other entities is normally medium.
             _logger.Add(LogType.Action,
@@ -430,7 +430,7 @@ public sealed partial class SharedKitchenSpikeSystem : EntitySystem
             kitchenSpike.NextDamage += kitchenSpike.DamageInterval;
             Dirty(uid, kitchenSpike);
 
-            _damageableSystem.ChangeDamage(contained.Value, kitchenSpike.TimeDamage, true);
+            _damageableSystem.ChangeDamage(contained.Value, kitchenSpike.TimeDamage); //SV: Armor Piercing rework
         }
     }
 

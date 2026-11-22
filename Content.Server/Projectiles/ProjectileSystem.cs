@@ -59,7 +59,7 @@ public sealed partial class ProjectileSystem : SharedProjectileSystem
             damageRequired = FixedPoint2.Max(damageRequired, FixedPoint2.Zero);
         }
 
-        if (_damageableSystem.TryChangeDamage((target, damageableComponent), ev.Damage, out var damage, component.IgnoreResistances, origin: component.Shooter)
+        if (_damageableSystem.TryChangeDamage((target, damageableComponent), ev.Damage, out var damage, origin: component.Shooter) // SV - Armor piercing rework
             && Exists(component.Shooter))
         {
             if (!Deleted(target))
@@ -69,7 +69,7 @@ public sealed partial class ProjectileSystem : SharedProjectileSystem
 
             _adminLogger.Add(LogType.BulletHit,
                 LogImpact.Medium,
-                $"Projectile {ToPrettyString(uid):projectile} shot by {ToPrettyString(component.Shooter!.Value):user} hit {otherName:target} and dealt {damage:damage} damage");
+                $"Projectile {ToPrettyString(uid):projectile} shot by {ToPrettyString(component.Shooter!.Value):user} hit {otherName:target} and dealt {damage:damage} damage ignoring {ev.Damage.IgnoreResists:percent} of armor");
 
             component.ProjectileSpent = !TryPenetrate((uid, component), damage, damageRequired);
         }

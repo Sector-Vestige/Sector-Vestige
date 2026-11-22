@@ -318,7 +318,7 @@ public sealed partial class GuardianSystem : EntitySystem
             ent.Comp.Host.Value,
             args.Damage * ent.Comp.DamageShare,
             origin: args.Origin,
-            ignoreResistances: true,
+            // ignoreResistances: true,
             interruptsDoAfters: false);
         _popup.PopupEntity(Loc.GetString(ent.Comp.GuardianDamagePopup), ent.Comp.Host.Value, ent.Comp.Host.Value);
     }

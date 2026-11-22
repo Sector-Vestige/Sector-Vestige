@@ -41,7 +41,7 @@ public abstract partial class SharedSuicideSystem : EntitySystem
             appliedDamageSpecifier.DamageDict[key] = Math.Ceiling((double) (value * lethalAmountOfDamage / totalDamage));
         }
 
-        _damageableSystem.ChangeDamage(target.AsNullable(), appliedDamageSpecifier, true, origin: target);
+        _damageableSystem.ChangeDamage(target.AsNullable(), appliedDamageSpecifier, origin: target); //SV: Armor Piercing rework
     }
 
     /// <summary>
@@ -64,7 +64,10 @@ public abstract partial class SharedSuicideSystem : EntitySystem
             damagePrototype = ProtoMan.Index(FallbackDamageType);
         }
 
-        var damage = new DamageSpecifier(damagePrototype, lethalAmountOfDamage);
-        _damageableSystem.ChangeDamage(target.AsNullable(), damage, true, origin: target);
+        var damage = new DamageSpecifier(damagePrototype, lethalAmountOfDamage) //SV: Armor Piercing rework:Begin
+        {
+            IgnoreResists = 1.0f,
+        };
+        _damageableSystem.ChangeDamage(target.AsNullable(), damage, origin: target); //SV: Armor Piercing rework: End
     }
 }

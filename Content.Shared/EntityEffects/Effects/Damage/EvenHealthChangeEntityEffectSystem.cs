@@ -1,4 +1,5 @@
-﻿using Content.Shared.Damage.Components;
+﻿using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
@@ -20,7 +21,7 @@ public sealed partial class EvenHealthChangeEntityEffectSystem : EntityEffectSys
     {
         foreach (var (group, amount) in args.Effect.Damage)
         {
-            _damageable.HealEvenly(entity.AsNullable(), amount * args.Scale, group);
+            _damageable.HealEvenly(entity.AsNullable(), amount * args.Scale,args.Effect.IgnoreResistances ,group);
         }
     }
 }
@@ -34,11 +35,13 @@ public sealed partial class EvenHealthChange : EntityEffectBase<EvenHealthChange
     [DataField(required: true)]
     public Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2> Damage = new();
 
+    //SV: Armor Piercing Rework - Begin
     /// <summary>
-    /// Should this effect ignore damage modifiers?
+    /// How much should this go through armor values?
     /// </summary>
     [DataField]
-    public bool IgnoreResistances = true;
+    public FixedPoint2 IgnoreResistances = 1.0;
+    //SV: Armor Piercing Rework - End
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {

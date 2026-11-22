@@ -128,7 +128,7 @@ public sealed partial class ImmovableRodSystem : EntitySystem
                 if (component.Damage is null)
                     return;
 
-                _damageable.TryChangeDamage(ent, component.Damage, ignoreResistances: true);
+                _damageable.TryChangeDamage(ent, component.Damage); //SV: Armor Piercing rework
                 return;
             }
 

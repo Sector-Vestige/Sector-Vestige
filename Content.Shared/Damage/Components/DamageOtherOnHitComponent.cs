@@ -9,11 +9,11 @@ namespace Content.Shared.Damage.Components;
 [Access(typeof(SharedDamageOtherOnHitSystem))]
 public sealed partial class DamageOtherOnHitComponent : Component
 {
-    /// <summary>
-    /// Whether to ignore damage modifiers.
-    /// </summary>
-    [DataField]
-    public bool IgnoreResistances = false;
+    // /// <summary> // SV - Armor piercing rework: Begin
+    // /// Whether to ignore damage modifiers.
+    // /// </summary>
+    // [DataField]
+    // public bool IgnoreResistances = false; // SV - Armor piercing rework: Begin
 
     /// <summary>
     /// The damage amount to deal on hit.

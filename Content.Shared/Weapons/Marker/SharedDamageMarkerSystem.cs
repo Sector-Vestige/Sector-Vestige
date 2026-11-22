@@ -36,7 +36,7 @@ public abstract partial class SharedDamageMarkerSystem : EntitySystem
 
         if (TryComp<LeechOnMarkerComponent>(args.Used, out var leech))
         {
-            _damageable.TryChangeDamage(args.User, leech.Leech, true, false, origin: args.Used);
+            _damageable.TryChangeDamage(args.User, leech.Leech, false, origin: args.Used); //SV: Armor Piercing rework
         }
     }
 

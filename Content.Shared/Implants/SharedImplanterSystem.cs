@@ -444,7 +444,7 @@ public abstract partial class SharedImplanterSystem : EntitySystem
     /// </summary>
     private void DrawCatastrophicFailure(Entity<ImplanterComponent> ent, EntityUid user)
     {
-        _damageable.TryChangeDamage(user, ent.Comp.DeimplantFailureDamage, ignoreResistances: true, origin: ent.Owner);
+        _damageable.TryChangeDamage(user, ent.Comp.DeimplantFailureDamage, origin: ent.Owner); //SV: Armor Piercing rework
         var userName = Identity.Entity(user, EntityManager);
         var failedCatastrophicallyMessage = Loc.GetString("implanter-draw-failed-catastrophically", ("user", userName));
         _popup.PopupEntity(failedCatastrophicallyMessage, user, user, PopupType.MediumCaution);

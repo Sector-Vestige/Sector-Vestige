@@ -111,7 +111,7 @@ public sealed partial class ChangelingDevourSystem : EntitySystem
         if (args.Target is not { } target)
             return;
 
-        _damageable.ChangeDamage(target, ent.Comp.WindupDamage, true, true, ent.Owner);
+        _damageable.ChangeDamage(target, ent.Comp.WindupDamage, true, ent.Owner); //SV: Armor Piercing rework
 
         var selfMessage = Loc.GetString("changeling-devour-begin-consume-self", ("user", Identity.Entity(ent.Owner, EntityManager)));
         var othersMessage = Loc.GetString("changeling-devour-begin-consume-others", ("user", Identity.Entity(ent.Owner, EntityManager)));
@@ -155,7 +155,7 @@ public sealed partial class ChangelingDevourSystem : EntitySystem
             return;
 
         // Damage first before the CanDevour check to make sure they don't gib in-between and to kill them again in case they somehow revived.
-        _damageable.ChangeDamage(target, ent.Comp.DevourDamage, true, true, ent.Owner);
+        _damageable.ChangeDamage(target, ent.Comp.DevourDamage, true, ent.Owner); //SV: Armor Piercing rework
 
         if (!CanDevour(ent.AsNullable(), target)) // Check again if the conditions are still met.
             return;

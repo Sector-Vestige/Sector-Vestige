@@ -10,11 +10,11 @@ namespace Content.Shared.Trigger.Components.Effects;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class DamageOnTriggerComponent : BaseXOnTriggerComponent
 {
-    /// <summary>
-    /// Should the damage ignore resistances?
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool IgnoreResistances;
+    // /// <summary> //SV: Armor piercing rework: Begin
+    // /// Should the damage ignore resistances?
+    // /// </summary>
+    // [DataField, AutoNetworkedField]
+    // public bool IgnoreResistances; //SV: Armor piercing rework: End
 
     /// <summary>
     /// The base damage amount that is dealt.

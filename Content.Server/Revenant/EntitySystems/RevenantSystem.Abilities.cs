@@ -227,9 +227,12 @@ public sealed partial class RevenantSystem
 
         if (!_mobThresholdSystem.TryGetThresholdForState(args.Args.Target.Value, MobState.Dead, out var damage))
             return;
-        DamageSpecifier dspec = new();
+        DamageSpecifier dspec = new() //SV - Armor piercing rework: Begin
+        {
+            IgnoreResists = 1.0,
+        }; //SV - Armor piercing rework: End
         dspec.DamageDict.Add("Cold", damage.Value);
-        _damage.ChangeDamage(args.Args.Target.Value, dspec, true, origin: uid);
+        _damage.ChangeDamage(args.Args.Target.Value, dspec, origin: uid); //SV: Armor Piercing rework
 
         args.Handled = true;
     }

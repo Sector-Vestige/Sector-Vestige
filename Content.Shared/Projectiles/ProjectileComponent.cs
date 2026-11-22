@@ -63,11 +63,11 @@ public sealed partial class ProjectileComponent : Component
     [DataField]
     public bool DeleteOnCollide = true;
 
-    /// <summary>
-    ///     Ignore all damage resistances the target has.
-    /// </summary>
-    [DataField]
-    public bool IgnoreResistances = false;
+    // /// <summary> // SV - Armor piercing rework: Begin
+    // ///     Ignore all damage resistances the target has.
+    // /// </summary>
+    // [DataField]
+    // public bool IgnoreResistances = false; // SV - Armor piercing rework: End
 
     /// <summary>
     ///     Get that juicy FPS hit sound.

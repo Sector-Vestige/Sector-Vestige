@@ -98,7 +98,7 @@ public sealed partial class BibleSystem : EntitySystem
             _popup.PopupEntity(Loc.GetString(ent.Comp.SizzleText, ("user", userEnt), ("target", targetEnt), ("bible", ent)), args.User, args.User);
 
             _audio.PlayPredicted(ent.Comp.SizzleSound, ent, args.User);
-            _damageable.TryChangeDamage(args.User, ent.Comp.DamageOnUntrainedUse, true, origin: ent);
+            _damageable.TryChangeDamage(args.User, ent.Comp.DamageOnUntrainedUse, origin: ent); //SV: Armor Piercing rework
             _delay.TryResetDelay((ent, useDelay));
 
             return;
@@ -117,7 +117,7 @@ public sealed partial class BibleSystem : EntitySystem
                 _popup.PopupEntity(selfFailMessage, args.User, args.User, PopupType.MediumCaution);
 
                 _audio.PlayPredicted(ent.Comp.BibleHitSound, ent, args.User);
-                _damageable.TryChangeDamage(args.Target.Value, ent.Comp.DamageOnFail, true, origin: ent);
+                _damageable.TryChangeDamage(args.Target.Value, ent.Comp.DamageOnFail, origin: ent); //SV: Armor Piercing rework
                 _delay.TryResetDelay((ent, useDelay));
 
                 return;
@@ -127,7 +127,7 @@ public sealed partial class BibleSystem : EntitySystem
         string othersMessage;
         string selfMessage;
 
-        if (_damageable.TryChangeDamage(args.Target.Value, ent.Comp.Damage, true, origin: ent))
+        if (_damageable.TryChangeDamage(args.Target.Value, ent.Comp.Damage, origin: ent)) //SV: Armor Piercing rework
         {
             othersMessage = Loc.GetString(ent.Comp.HealSuccessOthersText, ("user", userEnt), ("target", targetEnt), ("bible", ent));
             selfMessage = Loc.GetString(ent.Comp.HealSuccessSelfText, ("user", userEnt), ("target", targetEnt), ("bible", ent));

@@ -201,7 +201,7 @@ public abstract partial class SharedDefibrillatorSystem : EntitySystem
         {
             TryComp<MobStateComponent>(target, out var targetMobState);
 
-            _damageable.TryChangeDamage(target, ent.Comp.ZapHeal, true, origin: user);
+            _damageable.TryChangeDamage(target, ent.Comp.ZapHeal, origin: user); //SV: Armor Piercing rework
 
             if (_mobState.IsDead(target, targetMobState) && // is the target currently dead
                 TryComp<MobThresholdsComponent>(target, out var targetThresholds) && //do they have a threshold

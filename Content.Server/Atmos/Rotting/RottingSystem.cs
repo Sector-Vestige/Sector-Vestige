@@ -111,7 +111,7 @@ public sealed partial class RottingSystem : SharedRottingSystem
             if (rotting.DealDamage)
             {
                 var damage = rotting.Damage * rotting.RotUpdateRate.TotalSeconds;
-                _damageable.TryChangeDamage(uid, damage, true, false);
+                _damageable.TryChangeDamage(uid, damage, false); //SV: Armor piercing rework
             }
 
             if (TryComp<RotIntoComponent>(uid, out var rotInto))

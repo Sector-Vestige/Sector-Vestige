@@ -39,7 +39,7 @@ public sealed partial class DistributedHealthChange : EntityEffectBase<Distribut
     /// Should this effect ignore damage modifiers?
     /// </summary>
     [DataField]
-    public bool IgnoreResistances = true;
+    public float IgnoreResistances = 1.0f;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {

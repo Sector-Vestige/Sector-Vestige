@@ -41,7 +41,7 @@ public sealed partial class DamageOnAttackedSystem : EntitySystem
 
         var totalDamage = entity.Comp.Damage;
 
-        if (!entity.Comp.IgnoreResistances)
+        if (entity.Comp.IgnoreResistances < 1.0f) //SV: Armor piercing rework
         {
             // try to get the damage on attacked protection component from something the entity has in their inventory
             _inventorySystem.TryGetInventoryEntity<DamageOnAttackedProtectionComponent>(args.User, out var protectiveEntity);
@@ -73,7 +73,7 @@ public sealed partial class DamageOnAttackedSystem : EntitySystem
             }
         }
 
-        totalDamage = _damageableSystem.ChangeDamage(args.User, totalDamage, entity.Comp.IgnoreResistances, origin: entity);
+        totalDamage = _damageableSystem.ChangeDamage(args.User, totalDamage, origin: entity); //SV: Armor Piercing rework
 
         if (totalDamage.AnyPositive())
         {

@@ -45,12 +45,15 @@ public sealed class DestructibleOverkillTest : GameTest
         await Server.WaitAssertion(() =>
         {
             var bruteDamageGroup = SProtoMan.Index<DamageGroupPrototype>(TestBruteDamageGroupId);
-            var bruteDamage = new DamageSpecifier(bruteDamageGroup, 200);
+            var bruteDamage = new DamageSpecifier(bruteDamageGroup, 200) //SV: Armor Piercing rework - begin
+            {
+                IgnoreResists = 1.0,
+            }; //SV: Armor Piercing rework - End
 
             // Hit the destructible with enough damage to overkill
             Assert.DoesNotThrow(() =>
             {
-                _sDamageableSystem.TryChangeDamage(sDestructibleEntity, bruteDamage, true);
+                _sDamageableSystem.TryChangeDamage(sDestructibleEntity, bruteDamage); //SV: Armor Piercing rework
             });
 
             // We now verify that our component has the properties we expect

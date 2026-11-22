@@ -674,9 +674,12 @@ namespace Content.Server.Ghost
                                       _damageable.GetTotalDamage((playerEntity.Value, damageable));
                     }
 
-                    DamageSpecifier damage = new(ProtoMan.Index(AsphyxiationDamageType), dealtDamage);
+                    DamageSpecifier damage = new(ProtoMan.Index(AsphyxiationDamageType), dealtDamage) //SV: Armor Piercing rework - begin
+                    {
+                        IgnoreResists = 1.0,
+                    }; //SV: Armor Piercing rework - End
 
-                    _damageable.ChangeDamage(playerEntity.Value, damage, true);
+                    _damageable.ChangeDamage(playerEntity.Value, damage); //SV: Armor Piercing rework
                 }
             }
 

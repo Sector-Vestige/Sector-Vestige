@@ -66,7 +66,7 @@ public sealed partial class SecretStashSystem : EntitySystem
         // TODO: When newmed is finished should do damage to teeth (Or something like that!)
         var damage = entity.Comp.DamageEatenItemInside;
         if (HasItemInside(entity) && damage != null)
-            _damageableSystem.TryChangeDamage(args.User, damage, true);
+            _damageableSystem.TryChangeDamage(args.User, damage); //SV: Armor Piercing rework
     }
 
     private void OnInteractUsing(Entity<SecretStashComponent> entity, ref InteractUsingEvent args)

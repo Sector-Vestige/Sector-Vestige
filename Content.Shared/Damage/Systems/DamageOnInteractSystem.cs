@@ -57,7 +57,7 @@ public sealed partial class DamageOnInteractSystem : EntitySystem
 
         var totalDamage = entity.Comp.Damage;
 
-        if (!entity.Comp.IgnoreResistances)
+        if (entity.Comp.Damage.IgnoreResists < 1.0f)
         {
             // try to get damage on interact protection from either the inventory slots of the entity
             _inventorySystem.TryGetInventoryEntity<DamageOnInteractProtectionComponent>(args.User, out var protectiveEntity);

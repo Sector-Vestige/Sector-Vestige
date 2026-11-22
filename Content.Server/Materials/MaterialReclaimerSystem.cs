@@ -163,7 +163,7 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
         {
             var didBloody = false;
 
-            if (component.DamageOnEmag is not null && _damage.TryChangeDamage(item, component.DamageOnEmag, false)) // It shouldn't ignore resistance
+            if (component.DamageOnEmag is not null && _damage.TryChangeDamage(item, component.DamageOnEmag)) // It shouldn't ignore resistance //SV: Armor Piercing rework
                 didBloody = true;
 
             if (_destructible.CanDestroy(item) && component.GibOnEmag)

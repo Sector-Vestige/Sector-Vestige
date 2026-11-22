@@ -108,7 +108,7 @@ public sealed partial class TemperatureSystem
 
             var diff = Math.Abs(temperature.Temperature - heatDamageThreshold);
             var tempDamage = c / (1 + a * Math.Pow(Math.E, -heatK * diff)) - y;
-            _damageable.TryChangeDamage(entity.Owner, entity.Comp.HeatDamage * tempDamage * deltaTime.TotalSeconds, ignoreResistances: true, interruptsDoAfters: false);
+            _damageable.TryChangeDamage(entity.Owner, entity.Comp.HeatDamage * tempDamage * deltaTime.TotalSeconds, interruptsDoAfters: false); //SV: Armor Piercing rework
         }
         else if (temperature.Temperature <= coldDamageThreshold)
         {
@@ -121,7 +121,7 @@ public sealed partial class TemperatureSystem
             var diff = Math.Abs(temperature.Temperature - coldDamageThreshold);
             var tempDamage =
                 Math.Sqrt(diff * (Math.Pow(entity.Comp.DamageCap.Double(), 2) / coldDamageThreshold));
-            _damageable.TryChangeDamage(entity.Owner, entity.Comp.ColdDamage * tempDamage * deltaTime.TotalSeconds, ignoreResistances: true, interruptsDoAfters: false);
+            _damageable.TryChangeDamage(entity.Owner, entity.Comp.ColdDamage * tempDamage * deltaTime.TotalSeconds, interruptsDoAfters: false); //SV: Armor Piercing rework
         }
         else if (entity.Comp.TakingDamage)
         {

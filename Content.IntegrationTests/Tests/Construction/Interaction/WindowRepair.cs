@@ -20,9 +20,12 @@ public sealed class WindowRepair : InteractionTest
         // Damage the entity.
         var sys = SEntMan.System<DamageableSystem>();
         var damageType = Server.ProtoMan.Index(BluntDamageType);
-        var damage = new DamageSpecifier(damageType, FixedPoint2.New(10));
+        var damage = new DamageSpecifier(damageType, FixedPoint2.New(10)) //SV - Armor piercing rework: begin
+        {
+            IgnoreResists = 1.0f,
+        }; // SV - Armor piercing rework: End
         Assert.That(sys.GetTotalDamage(STarget.Value), Is.EqualTo(FixedPoint2.Zero));
-        await Server.WaitPost(() => sys.TryChangeDamage(SEntMan.GetEntity(Target).Value, damage, ignoreResistances: true));
+        await Server.WaitPost(() => sys.TryChangeDamage(SEntMan.GetEntity(Target).Value, damage)); //SV: Armor Piercing rework
         await RunTicks(5);
         Assert.That(sys.GetTotalDamage(STarget.Value), Is.GreaterThan(FixedPoint2.Zero));
 

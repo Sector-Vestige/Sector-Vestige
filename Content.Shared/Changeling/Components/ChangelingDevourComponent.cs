@@ -95,6 +95,7 @@ public sealed partial class ChangelingDevourComponent : Component
             { "Piercing", 10 },
             { "Blunt", 5 },
         },
+        IgnoreResists = 1.0, // SV: Armor piercing rework - WHY IS THIS BEING SPECIFIED HERE????????????????
     };
 
     /// <summary>
@@ -109,6 +110,7 @@ public sealed partial class ChangelingDevourComponent : Component
             { "Piercing", 20 },
             { "Blunt", 10 },
         },
+        IgnoreResists = 1.0, // SV: Armor piercing rework - WHY IS THIS BEING SPECIFIED HERE????????????????
     };
 
     /// <summary>

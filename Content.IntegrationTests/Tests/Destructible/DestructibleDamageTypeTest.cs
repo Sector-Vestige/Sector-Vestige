@@ -55,23 +55,29 @@ namespace Content.IntegrationTests.Tests.Destructible
                 var bluntDamageType = protoManager.Index<DamageTypePrototype>(TestBluntDamageTypeId);
                 var slashDamageType = protoManager.Index<DamageTypePrototype>(TestSlashDamageTypeId);
 
-                var bluntDamage = new DamageSpecifier(bluntDamageType, 5);
-                var slashDamage = new DamageSpecifier(slashDamageType, 5);
+                var bluntDamage = new DamageSpecifier(bluntDamageType, 5) //SV: Armor Piercing rework - begin
+                {
+                    IgnoreResists = 1.0,
+                };
+                var slashDamage = new DamageSpecifier(slashDamageType, 5)
+                {
+                    IgnoreResists = 1.0,
+                }; //SV: Armor Piercing rework - End
 
                 // Raise blunt damage to 5
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage); //SV: Armor Piercing rework
 
                 // No thresholds reached yet, the earliest one is at 10 damage
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Raise blunt damage to 10
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage); //SV: Armor Piercing rework
 
                 // No threshold reached, slash needs to be 10 as well
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Raise slash damage to 10
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * 2, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * 2); //SV: Armor Piercing rework
 
                 // One threshold reached, blunt 10 + slash 10
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Has.Count.EqualTo(1));
@@ -100,25 +106,25 @@ namespace Content.IntegrationTests.Tests.Destructible
                 sTestThresholdListenerSystem.ThresholdsReached.Clear();
 
                 // Raise blunt damage to 20
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 2, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 2); //SV: Armor Piercing rework
 
                 // No new thresholds reached
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Raise slash damage to 20
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * 2, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * 2); //SV: Armor Piercing rework
 
                 // No new thresholds reached
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Lower blunt damage to 0
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -4, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -4); //SV: Armor Piercing rework
 
                 // No new thresholds reached, healing should not trigger it
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Raise blunt damage back up to 10
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 2, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 2); //SV: Armor Piercing rework
 
                 // 10 blunt + 10 slash threshold reached, blunt was healed and brought back to its threshold amount and slash stayed the same
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Has.Count.EqualTo(1));
@@ -126,20 +132,20 @@ namespace Content.IntegrationTests.Tests.Destructible
                 sTestThresholdListenerSystem.ThresholdsReached.Clear();
 
                 // Heal both types of damage to 0
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -2, true);
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * -4, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -2); //SV: Armor Piercing rework
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * -4); //SV: Armor Piercing rework
 
                 // No new thresholds reached, healing should not trigger it
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Raise blunt damage to 10
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 2, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 2); //SV: Armor Piercing rework
 
                 // No new thresholds reached
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Raise slash damage to 10
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * 2, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * 2); //SV: Armor Piercing rework
 
                 // Both types of damage were healed and then raised again, the threshold should have been reached as triggers once is default false
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Has.Count.EqualTo(1));
@@ -171,20 +177,20 @@ namespace Content.IntegrationTests.Tests.Destructible
                 threshold.TriggersOnce = true;
 
                 // Heal blunt and slash back to 0
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -2, true);
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * -2, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -2); //SV: Armor Piercing rework
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * -2); //SV: Armor Piercing rework
 
                 // No new thresholds reached from healing
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Raise blunt damage to 10
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 2, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 2); //SV: Armor Piercing rework
 
                 // No new thresholds reached
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Raise slash damage to 10
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * 2, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, slashDamage * 2); //SV: Armor Piercing rework
 
                 // No new thresholds reached as triggers once is set to true and it already triggered before
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
