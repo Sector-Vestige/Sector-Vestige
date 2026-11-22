@@ -129,7 +129,7 @@ public sealed partial class SharedExecutionSystem : EntitySystem
 
         var bonus = melee.Damage * entity.Comp.DamageMultiplier - melee.Damage;
         args.Damage += bonus;
-        args.ResistanceBypass = true;
+        //args.ResistanceBypass = true; // SV - Armor piercing rework
     }
 
     private void OnSuicideByEnvironment(Entity<ExecutionComponent> entity, ref SuicideByEnvironmentEvent args)

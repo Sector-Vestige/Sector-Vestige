@@ -42,7 +42,7 @@ namespace Content.Server.Damage.Commands
             if (args.Length == 3)
             {
                 // if type.Name is good enough for cvars, <bool> doesn't need localizing.
-                return CompletionResult.FromHint("<bool>");
+                return CompletionResult.FromHint("<float>"); //SV: Armor Piercing rework
             }
 
             if (args.Length == 4)
@@ -53,7 +53,7 @@ namespace Content.Server.Damage.Commands
             return CompletionResult.Empty;
         }
 
-        private delegate void Damage(EntityUid entity, bool ignoreResistances);
+        private delegate void Damage(EntityUid entity, float ignoreResistances); //SV: Armor Piercing rework
 
         private bool TryParseDamageArgs(
             IConsoleShell shell,
@@ -73,7 +73,8 @@ namespace Content.Server.Damage.Commands
                 func = (entity, ignoreResistances) =>
                 {
                     var damage = new DamageSpecifier(damageGroup, amount);
-                    _entManager.System<DamageableSystem>().TryChangeDamage(entity, damage, ignoreResistances);
+                    damage.IgnoreResists = ignoreResistances; //SV: Armor Piercing rework
+                    _entManager.System<DamageableSystem>().TryChangeDamage(entity, damage); //SV: Armor Piercing rework
                 };
 
                 return true;
@@ -85,7 +86,8 @@ namespace Content.Server.Damage.Commands
                 func = (entity, ignoreResistances) =>
                 {
                     var damage = new DamageSpecifier(damageType, amount);
-                    _entManager.System<DamageableSystem>().TryChangeDamage(entity, damage, ignoreResistances);
+                    damage.IgnoreResists = ignoreResistances; //SV: Armor Piercing rework
+                    _entManager.System<DamageableSystem>().TryChangeDamage(entity, damage); //SV: Armor Piercing rework
                 };
                 return true;
 
@@ -127,18 +129,18 @@ namespace Content.Server.Damage.Commands
             if (!TryParseDamageArgs(shell, target.Value, args, out var damageFunc))
                 return;
 
-            bool ignoreResistances;
+            float ignoreResistances; //SV: Armor Piercing rework
             if (args.Length == 3)
             {
-                if (!bool.TryParse(args[2], out ignoreResistances))
+                if (!float.TryParse(args[2], out ignoreResistances)) //SV: Armor Piercing rework
                 {
-                    shell.WriteLine(Loc.GetString("damage-command-error-bool", ("arg", args[2])));
+                    shell.WriteLine(Loc.GetString("damage-command-error-float", ("arg", args[2]))); //SV: Armor Piercing rework
                     return;
                 }
             }
             else
             {
-                ignoreResistances = false;
+                ignoreResistances = 0.0f; //SV: Armor Piercing rework
             }
 
             damageFunc(target.Value, ignoreResistances);

@@ -142,7 +142,7 @@ namespace Content.Server.Nutrition.EntitySystems
             }
 
             //Smoking kills(your lungs, but there is no organ damage yet)
-            _damageableSystem.TryChangeDamage(args.Args.Target.Value, entity.Comp.Damage, true);
+            _damageableSystem.TryChangeDamage(args.Args.Target.Value, entity.Comp.Damage); //SV: Armor Piercing rework
 
             var merger = new GasMixture(1) { Temperature = args.Solution.Temperature };
             merger.SetMoles(entity.Comp.GasType, args.Solution.Volume.Value / entity.Comp.ReductionFactor);

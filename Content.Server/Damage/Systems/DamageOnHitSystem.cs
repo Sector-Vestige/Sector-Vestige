@@ -18,7 +18,7 @@ public sealed partial class DamageOnHitSystem : EntitySystem
     private void DamageItem(EntityUid uid, DamageOnHitComponent component, MeleeHitEvent args)
     {
         if (args.HitEntities.Any()) {
-            _damageableSystem.TryChangeDamage(uid, component.Damage, component.IgnoreResistances);
+            _damageableSystem.TryChangeDamage(uid, component.Damage); //SV: Armor Piercing rework
         }
     }
 }

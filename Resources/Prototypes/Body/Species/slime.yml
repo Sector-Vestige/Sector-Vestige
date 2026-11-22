@@ -140,6 +140,7 @@
       types:
         Blunt: 0.50 #per second, scales with pressure and other constants.
         Heat: 0.2 # 0.1 more than humans, i feel like low pressure would make slime boil more than blunt stretch them so i decided on this instead.
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -169,9 +170,11 @@
     damage:
       types:
         Asphyxiation: 0.2
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -1.0
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     maxSaturation: 15
 
 - type: entity

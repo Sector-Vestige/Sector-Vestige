@@ -68,7 +68,7 @@ public sealed partial class RepairableSystem : EntitySystem
     /// <param name="user">who is doing the repair</param>
     private void RepairSomeDamage(Entity<DamageableComponent?> ent, float damageAmount, EntityUid user)
     {
-        var damageChanged = _damageableSystem.HealEvenly(ent.Owner, damageAmount, origin: user);
+        var damageChanged = _damageableSystem.HealEvenly(ent.Owner, damageAmount, 0.0,  origin: user);
         _adminLogger.Add(LogType.Healed, $"{ToPrettyString(user):user} repaired {ToPrettyString(ent.Owner):target} by {damageChanged.GetTotal()}");
     }
 
@@ -80,7 +80,7 @@ public sealed partial class RepairableSystem : EntitySystem
     /// <param name="user">who is doing the repair</param>
     private void RepairSomeDamage(Entity<DamageableComponent?> ent, Damage.DamageSpecifier damageAmount, EntityUid user)
     {
-        var damageChanged = _damageableSystem.ChangeDamage(ent.Owner, damageAmount, true, false, origin: user);
+        var damageChanged = _damageableSystem.ChangeDamage(ent.Owner, damageAmount, false, origin: user); //SV: Armor Piercing rework
         _adminLogger.Add(LogType.Healed, $"{ToPrettyString(user):user} repaired {ToPrettyString(ent.Owner):target} by {damageChanged.GetTotal()}");
     }
 

@@ -46,7 +46,8 @@ public sealed partial class RottingComponent : Component
         DamageDict = new()
         {
             { "Blunt", 0.06 },
-            { "Cellular", 0.06 }
-        }
+            { "Cellular", 0.06 }, //SV - Armor piercing rework: Begin
+        },
+        IgnoreResists = 1.0f, //SV - Armor piercing rework: End
     };
 }

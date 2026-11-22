@@ -54,9 +54,12 @@ public sealed class DamageAllPrototypesTest : GameTest
 
                         await Server.WaitAssertion(() =>
                         {
-                            var damage = new DamageSpecifier(type, FixedPoint2.Epsilon);
+                            var damage = new DamageSpecifier(type, FixedPoint2.Epsilon) //SV: Armor Piercing rework - begin
+                            {
+                                IgnoreResists = 1.0,
+                            }; //SV: Armor Piercing rework - End
                             var previousDamage = _damageableSystem.GetTotalDamage(entity);
-                            _damageableSystem.ChangeDamage(entity, damage, ignoreResistances: true);
+                            _damageableSystem.ChangeDamage(entity, damage); //SV: Armor Piercing rework
                             Assert.That(
                                 _damageableSystem.GetTotalDamage(entity),
                                 Is.EqualTo(FixedPoint2.Epsilon + previousDamage),

@@ -457,13 +457,14 @@
     Respiration:
       effects:
       - !type:HealthChange
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Slime ]
         damage:
           types:
             Heat: 3
+          ignoreResistances: 1.0 #SV: Armor piercing rework
 
 - type: reagent
   id: Ice

@@ -270,8 +270,9 @@ public sealed partial class AtmosphereSystem
         var maxPressure = Math.Max(pressure - ent.Comp.MinPressure, deltaPressure - ent.Comp.MinPressureDelta);
         var maxPressureCapped = Math.Min(maxPressure, ent.Comp.MaxEffectivePressure);
         var appliedDamage = ScaleDamage(ent, ent.Comp.BaseDamage, maxPressureCapped);
+        appliedDamage.IgnoreResists = 1;//SV: Armor piercing rework
 
-        _damage.ChangeDamage(ent.Owner, appliedDamage, ignoreResistances: true, interruptsDoAfters: false);
+        _damage.ChangeDamage(ent.Owner, appliedDamage, interruptsDoAfters: false); //SV: Armor piercing rework
         SetIsTakingDamageState(ent, true);
     }
 

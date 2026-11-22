@@ -30,7 +30,7 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Vox ]
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework - This is set to true by default so go go gadget I'm not writing this shit
         damage:
           types:
             Poison: 1.5
@@ -61,7 +61,7 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Vox ]
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         damage:
           types:
             Poison: 0.7
@@ -100,7 +100,7 @@
     Respiration:
       effects:
       - !type:HealthChange
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         damage:
           types:
             Poison:
@@ -145,7 +145,7 @@
     Respiration:
       effects:
       - !type:HealthChange
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         damage:
           types:
             Radiation:
@@ -176,7 +176,7 @@
         - !type:MetabolizerTypeCondition
           type: [ Plant, Vox ]
           inverted: true
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         damage:
           types:
             Poison:
@@ -201,7 +201,7 @@
           inverted: true
         # Don't want people to get toxin damage from the gas they just
         # exhaled, right?
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         damage:
           types:
             Poison:
@@ -321,7 +321,7 @@
         - !type:MetabolizerTypeCondition
           type: [ Slime ]
           inverted: true
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         scaling: true
         damage:
           types:
@@ -344,7 +344,7 @@
     Bloodstream:
       effects:
       - !type:HealthChange
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         damage:
           types:
             Cellular: 0.5
@@ -370,7 +370,7 @@
       effects:
       - !type:HealthChange
         minScale: 0.5
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework
         damage:
           types:
             Cellular: 0.05

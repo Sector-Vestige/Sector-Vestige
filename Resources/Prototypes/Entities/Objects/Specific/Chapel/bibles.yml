@@ -15,15 +15,18 @@
         Heat: -5
         Cold: -5
         Shock: -5
+      ignoreResistances: 1.0 #SV: Armor piercing rework
     damageOnFail:
       types:
         Blunt: 5
         Piercing: 5
         Slash: 5
         Asphyxiation: 15
+      ignoreResistances: 1.0 #SV: Armor piercing rework
     damageOnUntrainedUse: ## What a non-chaplain takes when attempting to heal someone
       types:
         Heat: 10
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: MeleeWeapon
     soundHit:
       collection: Punch
@@ -78,9 +81,11 @@
         Piercing: 5
         Slash: 5
         Asphyxiation: 25
+      ignoreResistances: 1.0 #SV: Armor piercing rework
     damageOnUntrainedUse:
       types:
         Caustic: 50
+      ignoreResistances: 1.0 #SV: Armor piercing rework
     failChance: 0
     healFailOthersText: necro-heal-fail-others
     healFailSelfText: necro-heal-fail-self

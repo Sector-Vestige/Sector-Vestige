@@ -114,9 +114,11 @@
     damage:
       types:
         Asphyxiation: 0.25
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -0.25
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: Barotrauma
     damage:
       types:

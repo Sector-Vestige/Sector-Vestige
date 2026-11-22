@@ -19,12 +19,14 @@ public sealed partial class DamageOnInteractComponent : Component
     [DataField(required: true), AutoNetworkedField]
     public DamageSpecifier Damage = default!;
 
-    /// <summary>
-    /// Whether the damage should be resisted by a person's armor values
-    /// and the <see cref="DamageOnInteractProtectionComponent"/>
-    /// </summary>
-    [DataField]
-    public bool IgnoreResistances;
+    //SV: Armor Piercing rework - Begin
+    // /// <summary>
+    // /// Whether the damage should be resisted by a person's armor values
+    // /// and the <see cref="DamageOnInteractProtectionComponent"/>
+    // /// </summary>
+    // [DataField]
+    // public bool IgnoreResistances;
+    //SV: Armor Piercing rework - End
 
     /// <summary>
     /// What kind of localized text should pop up when they interact with the entity

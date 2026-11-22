@@ -14,6 +14,7 @@
     damageTypes:
       types:
         Blunt: 1
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: TimedDespawn
     lifetime: 120
   - type: Clickable

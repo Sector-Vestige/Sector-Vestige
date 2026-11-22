@@ -44,9 +44,11 @@
     damage:
       types:
         Asphyxiation: 0.2
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -1.0
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     maxSaturation: 15
   - type: Damageable
     damageModifierSet: Slime
@@ -59,14 +61,17 @@
       types:
         Bloodloss:
           0.5
+      ignoreResistances: 1.0 #SV: Armor piercing rework
     bloodlossHealDamage:
       types:
         Bloodloss:
           -0.25
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: Barotrauma
     damage:
       types:
         Blunt: 0.45
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: Reactive
     groups:
       Flammable: [ Touch ]

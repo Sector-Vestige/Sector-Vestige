@@ -202,8 +202,11 @@ public sealed class VendingInteractionTest : InteractionTest
 
         // Damage the vending machine to the point that it breaks
         var damageType = ProtoMan.Index(TestDamageType);
-        var damage = new DamageSpecifier(damageType, FixedPoint2.New(100));
-        await Server.WaitPost(() => damageableSys.TryChangeDamage(SEntMan.GetEntity(Target).Value, damage, ignoreResistances: true));
+        var damage = new DamageSpecifier(damageType, FixedPoint2.New(100)) //SV - Armor piercing rework
+        {
+            IgnoreResists = 1.0f,
+        };
+        await Server.WaitPost(() => damageableSys.TryChangeDamage(SEntMan.GetEntity(Target).Value, damage)); //SV: Armor piercing rework
         await RunTicks(5);
         Assert.That(damageableSys.GetAllDamage(STarget!.Value).GetTotal(), Is.GreaterThan(FixedPoint2.Zero), $"{VendingMachineProtoId} did not take damage.");
     }

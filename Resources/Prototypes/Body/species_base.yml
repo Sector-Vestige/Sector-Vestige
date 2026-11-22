@@ -182,6 +182,7 @@
       types:
         Blunt: 0.50
         Heat: 0.1
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: PassiveDamage
     intervalHaltOnDamageTaken: 5s
     allowedStates:
@@ -201,9 +202,11 @@
     coldDamage:
       types:
         Cold: 0.1 #per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
     heatDamage:
       types:
         Heat: 1.5 #per second, scales with temperature & other constants
+      ignoreResistances: 1.0 #SV: Armor piercing rework - this scales, but it gets clamped so who cares!
   - type: TemperatureSpeed
     thresholds:
       293: 0.9
@@ -226,9 +229,11 @@
     damage:
       types:
         Asphyxiation: 1.0
+      ignoreResistances: 1.0 #SV - Armor piercing rework
     damageRecovery:
       types:
         Asphyxiation: -1.0
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: FireVisuals
     alternateState: Standing
   - type: SetExamine # Umbra Change, all species can set additional examine text.

@@ -41,12 +41,15 @@ namespace Content.IntegrationTests.Tests.Destructible
             {
                 var coordinates = sEntityManager.GetComponent<TransformComponent>(sDestructibleEntity).Coordinates;
                 var bruteDamageGroup = sPrototypeManager.Index<DamageGroupPrototype>(TestBruteDamageGroupId);
-                DamageSpecifier bruteDamage = new(bruteDamageGroup, 50);
+                DamageSpecifier bruteDamage = new(bruteDamageGroup, 50) //SV: Armor Piercing rework - begin
+                {
+                    IgnoreResists = 1.0,
+                }; //SV: Armor Piercing rework - End
 
 #pragma warning disable NUnit2045 // Interdependent assertions.
                 Assert.DoesNotThrow(() =>
                 {
-                    sEntityManager.System<DamageableSystem>().TryChangeDamage(sDestructibleEntity, bruteDamage, true);
+                    sEntityManager.System<DamageableSystem>().TryChangeDamage(sDestructibleEntity, bruteDamage); //SV: Armor Piercing rework
                 });
 
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Has.Count.EqualTo(1));

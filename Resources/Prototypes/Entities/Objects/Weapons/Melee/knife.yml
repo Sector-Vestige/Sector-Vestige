@@ -379,11 +379,12 @@
     removalTime: 1.5
   - type: LandAtCursor
   - type: DamageOtherOnHit
-    ignoreResistances: true
+#    ignoreResistances: true ##SV: Armor piercing rework
     damage:
       types:
         Slash: 10
         Piercing: 15
+      ignoreResistances: 1.0 #SV: Armor piercing rework
   - type: Item
     sprite: Objects/Weapons/Melee/throwing_knife.rsi
   - type: ThrowingAngle

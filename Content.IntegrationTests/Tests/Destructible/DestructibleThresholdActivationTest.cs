@@ -64,14 +64,17 @@ namespace Content.IntegrationTests.Tests.Destructible
 
             await server.WaitAssertion(() =>
             {
-                var bluntDamage = new DamageSpecifier(sPrototypeManager.Index<DamageTypePrototype>(TestBluntDamageTypeId), 10);
+                var bluntDamage = new DamageSpecifier(sPrototypeManager.Index<DamageTypePrototype>(TestBluntDamageTypeId), 10) //SV: Armor Piercing rework - begin
+                {
+                    IgnoreResists = 1.0,
+                }; //SV: Armor Piercing rework - End
 
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage); //SV: Armor Piercing rework
 
                 // No thresholds reached yet, the earliest one is at 20 damage
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage); //SV: Armor Piercing rework
 
                 // Only one threshold reached, 20
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Has.Count.EqualTo(1));
@@ -90,7 +93,7 @@ namespace Content.IntegrationTests.Tests.Destructible
 
                 sTestThresholdListenerSystem.ThresholdsReached.Clear();
 
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 3, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 3); //SV: Armor Piercing rework
 
                 // One threshold reached, 50, since 20 already triggered before and it has not been healed below that amount
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Has.Count.EqualTo(1));
@@ -121,7 +124,7 @@ namespace Content.IntegrationTests.Tests.Destructible
                 sTestThresholdListenerSystem.ThresholdsReached.Clear();
 
                 // Damage for 50 again, up to 100 now
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 5, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 5); //SV: Armor Piercing rework
 
                 // No thresholds reached as they weren't healed below the trigger amount
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
@@ -130,7 +133,7 @@ namespace Content.IntegrationTests.Tests.Destructible
                 sDamageableSystem.ClearAllDamage((sDestructibleEntity, sDamageableComponent));
 
                 // Damage for 100, up to 100
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 10, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 10); //SV: Armor Piercing rework
 
                 // Two thresholds reached as damage increased past the previous, 20 and 50
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Has.Count.EqualTo(2));
@@ -138,25 +141,25 @@ namespace Content.IntegrationTests.Tests.Destructible
                 sTestThresholdListenerSystem.ThresholdsReached.Clear();
 
                 // Heal the entity for 40 damage, down to 60
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -4, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -4); //SV: Armor Piercing rework
 
                 // ThresholdsLookup don't work backwards
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Damage for 10, up to 70
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage); //SV: Armor Piercing rework
 
                 // Not enough healing to de-trigger a threshold
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Heal by 30, down to 40
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -3, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * -3); //SV: Armor Piercing rework
 
                 // ThresholdsLookup don't work backwards
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Damage up to 50 again
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage); //SV: Armor Piercing rework
 
                 // The 50 threshold should have triggered again, after being healed
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Has.Count.EqualTo(1));
@@ -191,7 +194,7 @@ namespace Content.IntegrationTests.Tests.Destructible
                 sDamageableSystem.ClearAllDamage((sDestructibleEntity, sDamageableComponent));
 
                 // Damage up to 50
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 5, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 5); //SV: Armor Piercing rework
 
                 Assert.Multiple(() =>
                 {
@@ -263,7 +266,7 @@ namespace Content.IntegrationTests.Tests.Destructible
                 }
 
                 // Damage the entity up to 50 damage again
-                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 5, true);
+                sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 5); //SV: Armor Piercing rework
 
                 Assert.Multiple(() =>
                 {

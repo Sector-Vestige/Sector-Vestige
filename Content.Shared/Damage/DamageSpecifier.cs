@@ -26,6 +26,14 @@ namespace Content.Shared.Damage
         [DataField("types")]
         public Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2> DamageDict { get; set; } = new();
 
+        //SV: Armor Piercing rework - Begin
+        /// <summary>
+        ///     How much of the armor that the damage type should pierce through
+        /// </summary>
+        [DataField("ignoreResistances")]
+        public FixedPoint2 IgnoreResists;
+        //SV: Armor Piercing rework - End
+
         /// <summary>
         ///     Returns a sum of the damage values.
         /// </summary>
@@ -87,6 +95,7 @@ namespace Content.Shared.Damage
         public DamageSpecifier(DamageSpecifier damageSpec)
         {
             DamageDict = new(damageSpec.DamageDict);
+            IgnoreResists =  damageSpec.IgnoreResists; // SV: Armor piercing Rework
         }
 
         /// <summary>
@@ -130,6 +139,8 @@ namespace Content.Shared.Damage
             // more cause they're just bloody stumps.
             DamageSpecifier newDamage = new();
             newDamage.DamageDict.EnsureCapacity(damageSpec.DamageDict.Count);
+            modifierSet = ApplyResistanceModifier(modifierSet, damageSpec); //SV - Armor piercing rework: Modify the modifier set so that it pierces the amount of armor that it is given
+            newDamage.IgnoreResists = damageSpec.IgnoreResists;
 
             foreach (var (key, value) in damageSpec.DamageDict)
             {
@@ -338,6 +349,36 @@ namespace Content.Shared.Damage
             }
         }
 
+        /// <summary>
+        /// SV helper function
+        /// Takes a DamageModifierSet and a float, then takes every elememnt of the set, multiplying it by 1 - the float, then returns either that, or an empty set.
+        /// </summary>
+        /// <param name="unmodifiedModifierSet">The input DamageModifierSet that will be reduced by the ignoreResistace float</param>
+        /// <param name="specifier">The DamageSpecifier that we get the IgnoreResists from</param>
+        /// <returns></returns>
+        public static DamageModifierSet ApplyResistanceModifier(DamageModifierSet? unmodifiedModifierSet, DamageSpecifier specifier)
+        {
+            if (unmodifiedModifierSet == null)
+                return new DamageModifierSet();
+            var modifiedModifierSet = new DamageModifierSet();
+
+            if (specifier.IgnoreResists == 0) // No need to do all the math if the modifier set does nothing
+                return unmodifiedModifierSet;
+
+            foreach (var modifier in unmodifiedModifierSet.Coefficients)
+            {
+                var modifiedValue = modifier.Value + ((1 - modifier.Value) * specifier.IgnoreResists);
+                modifiedModifierSet.Coefficients.Add(modifier.Key, modifiedValue.Float());
+            }
+
+            foreach (var modifier in unmodifiedModifierSet.FlatReductions)
+            {
+                var modifiedValue = modifier.Value * specifier.IgnoreResists;
+                modifiedModifierSet.FlatReductions.Add(modifier.Key, modifiedValue.Float());
+            }
+            return modifiedModifierSet;
+        } //SV: Armor Piercing rework - End
+
         #region Operators
         public static DamageSpecifier operator *(DamageSpecifier damageSpec, FixedPoint2 factor)
         {
@@ -346,6 +387,7 @@ namespace Content.Shared.Damage
             {
                 newDamage.DamageDict.Add(entry.Key, entry.Value * factor);
             }
+            newDamage.IgnoreResists = damageSpec.IgnoreResists; //SV: Armor piercing rework
             return newDamage;
         }
 
@@ -356,6 +398,7 @@ namespace Content.Shared.Damage
             {
                 newDamage.DamageDict.Add(entry.Key, entry.Value * factor);
             }
+            newDamage.IgnoreResists = damageSpec.IgnoreResists; //SV: Armor piercing rework
             return newDamage;
         }
 
@@ -366,6 +409,7 @@ namespace Content.Shared.Damage
             {
                 newDamage.DamageDict.Add(entry.Key, entry.Value / factor);
             }
+            newDamage.IgnoreResists = damageSpec.IgnoreResists; //SV: Armor piercing rework
             return newDamage;
         }
 
@@ -377,6 +421,7 @@ namespace Content.Shared.Damage
             {
                 newDamage.DamageDict.Add(entry.Key, entry.Value / factor);
             }
+            newDamage.IgnoreResists = damageSpec.IgnoreResists; //SV: Armor piercing rework
             return newDamage;
         }
 
@@ -394,6 +439,7 @@ namespace Content.Shared.Damage
                     newDamage.DamageDict[entry.Key] += entry.Value;
                 }
             }
+            newDamage.IgnoreResists = damageSpecA.IgnoreResists + damageSpecB.IgnoreResists; //SV: Armor piercing rework
             return newDamage;
         }
 
@@ -410,6 +456,7 @@ namespace Content.Shared.Damage
                     newDamage.DamageDict[entry.Key] -= entry.Value;
                 }
             }
+            newDamage.IgnoreResists = damageSpecA.IgnoreResists - damageSpecB.IgnoreResists; //SV: Armor piercing rework
             return newDamage;
         }
 

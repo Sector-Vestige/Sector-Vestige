@@ -14,7 +14,7 @@ public sealed partial class ClimbSystem
             return;
 
         if (table.Comp.BonkDamage != null)
-            _damageableSystem.ChangeDamage(victim, table.Comp.BonkDamage, true);
+            _damageableSystem.ChangeDamage(victim, table.Comp.BonkDamage); //SV: Armor Piercing rework
 
         _stunSystem.TryUpdateParalyzeDuration(victim, table.Comp.BonkTime);
         _audio.PlayPredicted(table.Comp.BonkSound, table, victim);

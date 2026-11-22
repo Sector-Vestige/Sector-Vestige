@@ -18,7 +18,8 @@ public sealed partial class PendingZombieComponent : Component
         DamageDict = new ()
         {
             { "Poison", 0.3 },
-        }
+        },
+        IgnoreResists = 1.0f, //SV - Armor piercing rework
     };
 
     /// <summary>

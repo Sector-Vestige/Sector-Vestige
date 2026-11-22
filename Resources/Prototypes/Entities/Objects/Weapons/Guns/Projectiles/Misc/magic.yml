@@ -256,7 +256,7 @@
         Radiation: -200
         Shock: -200
         Slash: -200
-    ignoreResistances: true
+      ignoreResistances: 1.0 #SV: Armor piercing rework
 
 - type: entity
   parent: BaseBullet
@@ -269,7 +269,7 @@
     damage:
       types:
         Piercing: 300
-    ignoreResistances: true
+      ignoreResistances: 1.0 #SV: Armor piercing rework
 
 - type: entity
   parent: ProjectilePolyboltBase

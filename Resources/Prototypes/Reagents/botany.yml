@@ -246,7 +246,7 @@
         - !type:ReagentCondition
           reagent: Ammonia
           min: 1
-        ignoreResistances: true
+#        ignoreResistances: true #SV: Armor piercing rework - The default value was true... why are we setting true to true other than....
         scaling: true
         damage:
           types:
@@ -276,7 +276,7 @@
         - !type:ReagentCondition
           reagent: Ammonia
           min: 1
-        ignoreResistances: true
+        ignoreResistances: 1.0 #SV: Armor piercing rework
         damage:
           Brute: -2.5
           Burn: -2.5

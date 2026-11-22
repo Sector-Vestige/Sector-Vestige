@@ -61,7 +61,7 @@ public sealed partial class MeteorSystem : EntitySystem
         var trueDamage = FixedPoint2.Min(maxMeteorDamage, threshold);
 
         var damage = component.DamageTypes * trueDamage;
-        _damageable.TryChangeDamage(args.OtherEntity, damage, true, origin: uid);
+        _damageable.TryChangeDamage(args.OtherEntity, damage, origin: uid); //SV: Armor Piercing rework
         _damageable.TryChangeDamage(uid, damage);
 
         if (!TerminatingOrDeleted(args.OtherEntity))

@@ -131,6 +131,7 @@
         Blunt: -2
         Slash: -2
         Piercing: -2
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: Gun
     soundGunshot: /Audio/Weapons/plasma_cutter.ogg
     fireRate: 1
@@ -242,6 +243,7 @@
         Blunt: -5
         Piercing: -5
         Slash: -5
+      ignoreResistances: 1.0 #SV - Armor piercing rework
   - type: Tag
     tags:
       - Pickaxe

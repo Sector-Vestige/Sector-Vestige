@@ -65,11 +65,13 @@ public sealed partial class MeleeWeaponComponent : Component
     [DataField, AutoNetworkedField]
     public bool AutoAttack;
 
-    /// <summary>
-    /// If true, attacks will bypass armor resistances.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool ResistanceBypass = false;
+    // SV: AP refactor
+    // /// <summary>
+    // /// If true, attacks will bypass armor resistances.
+    // /// </summary>
+    // [DataField, AutoNetworkedField]
+    // public bool ResistanceBypass = false;
+    // SV: AP refactor
 
     /// <summary>
     /// Base damage for this weapon. Can be modified via heavy damage or other means.

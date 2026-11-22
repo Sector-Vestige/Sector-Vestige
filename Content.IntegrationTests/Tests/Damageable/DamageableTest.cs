@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Content.IntegrationTests.Fixtures;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -153,9 +154,12 @@ namespace Content.IntegrationTests.Tests.Damageable
                 // Check that damage is evenly distributed over a group if its a nice multiple
                 var types = group3.DamageTypes;
                 var damageToDeal = FixedPoint2.New(types.Count * 5);
-                DamageSpecifier damage = new(group3, damageToDeal);
+                DamageSpecifier damage = new(group3, damageToDeal)
+                {
+                    IgnoreResists = 1.0,
+                };
 
-                sDamageableSystem.ChangeDamage(uid, damage, true);
+                sDamageableSystem.ChangeDamage(uid, damage); //SV: Armor Piercing rework
 
                 Assert.Multiple(() =>
                 {
@@ -187,8 +191,11 @@ namespace Content.IntegrationTests.Tests.Damageable
 
                 Assert.That(types, Has.Count.EqualTo(3));
 
-                damage = new DamageSpecifier(group3, 14);
-                sDamageableSystem.ChangeDamage(uid, damage, true);
+                damage = new DamageSpecifier(group3, 14)
+                {
+                    IgnoreResists = 1.0,
+                };
+                sDamageableSystem.ChangeDamage(uid, damage); //SV: Armor Piercing rework
 
                 Assert.Multiple(() =>
                 {
@@ -215,8 +222,11 @@ namespace Content.IntegrationTests.Tests.Damageable
                     // Test that unsupported groups return false when setting/getting damage (and don't change damage)
                     Assert.That(sDamageableSystem.GetTotalDamage(ent), Is.EqualTo(FixedPoint2.Zero));
                 });
-                damage = new DamageSpecifier(group1, FixedPoint2.New(10)) + new DamageSpecifier(type2b, FixedPoint2.New(10));
-                sDamageableSystem.ChangeDamage(uid, damage, true);
+                damage = new DamageSpecifier(group1, FixedPoint2.New(10)) + new DamageSpecifier(type2b, FixedPoint2.New(10))
+                {
+                    IgnoreResists = 1.0,
+                };
+                sDamageableSystem.ChangeDamage(uid, damage); //SV: Armor Piercing rework
 
                 Assert.Multiple(() =>
                 {

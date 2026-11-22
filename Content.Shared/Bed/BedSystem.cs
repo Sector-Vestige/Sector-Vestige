@@ -156,7 +156,7 @@ public sealed partial class BedSystem : EntitySystem
                 if (_sleepingQuery.HasComp(healedEntity))
                     damage *= bedComponent.SleepMultiplier;
 
-                _damageableSystem.TryChangeDamage(healedEntity, damage, true, origin: uid);
+                _damageableSystem.TryChangeDamage(healedEntity, damage, origin: uid); //SV: Armor Piercing rework
             }
         }
     }

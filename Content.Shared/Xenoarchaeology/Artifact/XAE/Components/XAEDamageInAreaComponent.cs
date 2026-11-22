@@ -34,9 +34,9 @@ public sealed partial class XAEDamageInAreaComponent : Component
     [DataField, AutoNetworkedField]
     public float DamageChance = 1f;
 
-    /// <summary>
-    /// Whether or not this should ignore resistances for the damage
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool IgnoreResistances;
+    // /// <summary> // SV - Armor piercing rework: Begin
+    // /// Whether or not this should ignore resistances for the damage
+    // /// </summary>
+    // [DataField, AutoNetworkedField]
+    // public bool IgnoreResistances; // SV - Armor piercing rework: End
 }

@@ -24,7 +24,7 @@ public sealed partial class DamageOnAttackedComponent : Component
     /// and the <see cref="DamageOnAttackedProtectionComponent"/>
     /// </summary>
     [DataField]
-    public bool IgnoreResistances = false;
+    public float IgnoreResistances; //SV: Armor piercing rework
 
     /// <summary>
     /// What kind of localized text should pop up when they interact with the entity
