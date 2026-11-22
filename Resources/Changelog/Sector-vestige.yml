@@ -2161,3 +2161,9 @@ Entries:
       message: Tram Drivers can now take trinkets
   id: 305
   time: '2026-11-14T10:59:33.0000000+00:00'
+- author: BaguetteYeast
+  changes:
+    - type: Tweak
+      message: Changed metabolism rate of  Diphenylmethylamine from 0.5 to 0.08
+  id: 306
+  time: '2026-11-22T14:59:12.0000000+00:00'
