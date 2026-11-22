@@ -1086,7 +1086,7 @@
   color: "#b0abaa"
   metabolisms:
     Bloodstream:
-      metabolismRate: 0.08
+      metabolismRate: 0.08 #sv: previous value was 0.5, changed to 0.08 so that it gives 20ish minutes of narco protection for 15units
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
