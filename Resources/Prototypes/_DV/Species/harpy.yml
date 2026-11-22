@@ -6,3 +6,10 @@
   dollPrototype: AppearanceHarpy
   skinColoration: HumanToned
   defaultHeight: 0.9 # SV Height system
+  defaultSoundsBySex: # Sector Vestige: voice comes from the species prototype now
+  - SoundsHarpyMale
+  - SoundsHarpyFemale
+  - SoundsHarpyMale
+  voices:
+  - SoundsHarpyMale
+  - SoundsHarpyFemale

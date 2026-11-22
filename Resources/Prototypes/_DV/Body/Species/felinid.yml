@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Delta-V contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: markingsGroup
   parent: Undergarments
   id: Felinid
@@ -98,8 +91,6 @@
   id: MobFelinid
   name: Urist McFelinid
   components:
-  - type: Hunger
-  - type: Thirst
   - type: Icon
     sprite: Mobs/Species/Human/parts.rsi
     state: full
@@ -134,10 +125,7 @@
   - type: TypingIndicator
     proto: felinid
   - type: Vocal
-    sounds:
-      Male: SoundsFelinidMale
-      Female: SoundsFelinidFemale
-      Unsexed: SoundsFelinidMale
+    emoteSounds: SoundsFelinidMale # Sector Vestige: used when spawned without a profile; players get their voice from the species prototype
   - type: Reactive
     groups:
       Flammable: [ Touch ]

@@ -1,0 +1,18 @@
+- type: entity
+  parent: BaseActionPolymorph
+  id: ActionPolymorphMyoJaunt
+  name: Vent escape
+  description: Melt into the vents for a quick getaway!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 30
+  - type: Sprite
+    sprite: _SV/Mobs/Demons/myoqueen.rsi
+    layers:
+    - state: jaunt
+  - type: InstantAction
+    event: !type:PolymorphActionEvent
+      protoId: JauntXeno
+
+

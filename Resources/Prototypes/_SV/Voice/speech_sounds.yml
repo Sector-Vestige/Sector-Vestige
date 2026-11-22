@@ -1,0 +1,8 @@
+- type: speechSounds
+  id: Myo
+  saySound:
+    collection: MyoPassive
+  askSound:
+    collection: MyoPassive
+  exclaimSound:
+    collection: MyoPassive

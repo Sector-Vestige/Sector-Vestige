@@ -13,3 +13,9 @@
   sexes:
   - Unsexed
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex:
+  - UnisexDiona
+  - UnisexDiona
+  - UnisexDiona
+  voices:
+  - UnisexDiona

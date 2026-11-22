@@ -10,9 +10,11 @@ using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Remotes.Components;
 using Content.Shared.Tag;
+using Content.Shared.Verbs; // SV changes: Door remote alt verb
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility; // SV changes: Door remote alt verb
 
 namespace Content.Shared.Remotes.EntitySystems;
 
@@ -33,13 +35,44 @@ public abstract partial class SharedDoorRemoteSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<DoorRemoteComponent, DoorRemoteModeChangeMessage>(OnDoorRemoteModeChange);
+        SubscribeLocalEvent<DoorRemoteComponent, GetVerbsEvent<AlternativeVerb>>(OnAddSwitchModeVerb); // SV changes: Door remote alt verb
         SubscribeLocalEvent<DoorRemoteComponent, BeforeRangedInteractEvent>(OnBeforeInteract);
     }
+    // Begin SV changes: Door remote alt verb, based on other examples such as t-ray (mainly) and eshotgun (secondary)
+    private void OnAddSwitchModeVerb(Entity<DoorRemoteComponent> remote, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || !args.Using.HasValue)
+            return;
 
+        var user = args.User;
+        AlternativeVerb verb = new() // alt verb definition based on t-ray scanner implementation
+        {
+            Text = Loc.GetString("door-remote-switch-mode"),
+            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/settings.svg.192dpi.png")),
+            Act = () => SwitchMode(remote, user),
+            Impact = LogImpact.Low
+        };
+        args.Verbs.Add(verb);
+    } // end SV Changes: Door remote alt verb
     private void OnDoorRemoteModeChange(Entity<DoorRemoteComponent> ent, ref DoorRemoteModeChangeMessage args)
     {
         ent.Comp.Mode = args.Mode;
         Dirty(ent);
+    }
+
+    private void SwitchMode(Entity<DoorRemoteComponent> remote, EntityUid? userUid)
+    {
+        if (!userUid.HasValue)
+            return;
+        // Could add a delay/hold-off here to avoid a ton of network events if someone changes quickly
+        remote.Comp.Mode = remote.Comp.Mode switch // Clockwise rotation on the menu
+        {
+            OperatingMode.ToggleEmergencyAccess => OperatingMode.ToggleBolts,
+            OperatingMode.ToggleBolts => OperatingMode.OpenClose,
+            OperatingMode.OpenClose => OperatingMode.ToggleEmergencyAccess,
+            _ => OperatingMode.OpenClose
+        };
+        Dirty(remote);
     }
 
     private void OnBeforeInteract(Entity<DoorRemoteComponent> entity, ref BeforeRangedInteractEvent args)
@@ -67,7 +100,7 @@ public abstract partial class SharedDoorRemoteSystem : EntitySystem
 
         if (!_powerReceiver.IsPowered(args.Target.Value))
         {
-            _popup.PopupClient(Loc.GetString("door-remote-no-power"), args.User, args.User);
+            _popup.PopupEntity(Loc.GetString("door-remote-no-power"), args.User, args.User);
             return;
         }
 
@@ -88,7 +121,7 @@ public abstract partial class SharedDoorRemoteSystem : EntitySystem
                 if (isAirlock)
                     _doorSystem.Deny(args.Target.Value, doorComp, user: args.User, predicted: true);
 
-                _popup.PopupClient(Loc.GetString("door-remote-denied"), args.User, args.User);
+                _popup.PopupEntity(Loc.GetString("door-remote-denied"), args.User, args.User);
                 return;
             }
         }

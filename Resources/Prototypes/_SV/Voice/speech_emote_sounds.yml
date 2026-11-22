@@ -1,0 +1,7 @@
+- type: emoteSounds
+  id: MyoBodyEmotes
+  sounds:
+    Roar:
+      collection: MyoRoar
+    Growl:
+      collection: MyoPassive

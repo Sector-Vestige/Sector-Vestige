@@ -1,22 +1,22 @@
-# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-#
-# SPDX-License-Identifier: MIT
-
 # Foxfolk Tail Wagging
 - type: entity
+  parent: BaseToggleAction # Sector Vestige: needed for the Appearance/GenericVisualizer that drives the toggled icon
   id: ActionToggleFoxfolkakinWagging
   name: action-name-toggle-wagging
   description: action-description-toggle-wagging
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: { sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi, state: tail-wag-icon }
-      iconOn: { sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi, state: tail-wag-icon }
       itemIconStyle: NoItem
       useDelay: 1 # Prevents Emote Spam
+    - type: Sprite
+      sprite: _CD/Mobs/Customization/Foxfolk/tail_markings.rsi
+      layers:
+      - state: tail-wag-icon
+        map: ["enum.ActionVisuals.Icon"]
+      - state: tail-wag-icon
+        map: ["enum.ActionVisuals.IconToggled"]
+        visible: false
     - type: InstantAction
       event: !type:ToggleActionEvent
 
@@ -30,6 +30,8 @@
   - type: Action
     itemIconStyle: BigAction
     priority: -10
-    icon: _CD/Interface/Actions/mouthStorageOpen.png
+  - type: Sprite
+    layers:
+    - texture: _CD/Interface/Actions/mouthStorageOpen.png
   - type: InstantAction
     event: !type:OpenStorageImplantEvent

@@ -11,3 +11,10 @@
   lastNames: NamesRodentiaLast
   naming: LastFirst
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex: # Sector Vestige: voice comes from the species prototype now
+  - MaleRodentia
+  - FemaleRodentia
+  - MaleRodentia
+  voices:
+  - MaleRodentia
+  - FemaleRodentia

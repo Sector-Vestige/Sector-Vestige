@@ -1,5 +1,5 @@
-using Content.Server.Speech.EntitySystems;
 using Content.Shared.Administration;
+using Content.Shared.Speech.EntitySystems;
 using Robust.Shared.Console;
 
 namespace Content.Server.Administration.Commands;

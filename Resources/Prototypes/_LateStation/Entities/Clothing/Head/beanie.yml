@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2026 LateStation14 contributors
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Rellu225 <1blackrilfe1@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatBlackBeanie
@@ -15,9 +9,8 @@
   - type: Clothing
     sprite: _LateStation/Clothing/Head/blackbeanie.rsi
   - type: TemperatureProtection
-    heatingCoefficient: 1.025
+    coefficient: 0.7
     # The beanie is not a good insulator, but it does help a bit.
-    coolingCoefficient: 0.7
 
 - type: entity
   parent: ClothingHeadBase
@@ -30,9 +23,8 @@
   - type: Clothing
     sprite: _LateStation/Clothing/Head/bluebeanie.rsi
   - type: TemperatureProtection
-    heatingCoefficient: 1.025
+    coefficient: 0.7
     # The beanie is not a good insulator, but it does help a bit.
-    coolingCoefficient: 0.7
 
 - type: entity
   parent: ClothingHeadBase
@@ -45,9 +37,8 @@
   - type: Clothing
     sprite: _LateStation/Clothing/Head/greenbeanie.rsi
   - type: TemperatureProtection
-    heatingCoefficient: 1.025
+    coefficient: 0.7
     # The beanie is not a good insulator, but it does help a bit.
-    coolingCoefficient: 0.7
 
 - type: entity
   parent: ClothingHeadBase
@@ -60,9 +51,8 @@
   - type: Clothing
     sprite: _LateStation/Clothing/Head/greybeanie.rsi
   - type: TemperatureProtection
-    heatingCoefficient: 1.025
+    coefficient: 0.7
     # The beanie is not a good insulator, but it does help a bit.
-    coolingCoefficient: 0.7
 
 - type: entity
   parent: ClothingHeadBase
@@ -75,9 +65,8 @@
   - type: Clothing
     sprite: _LateStation/Clothing/Head/purplebeanie.rsi
   - type: TemperatureProtection
-    heatingCoefficient: 1.025
+    coefficient: 0.7
     # The beanie is not a good insulator, but it does help a bit.
-    coolingCoefficient: 0.7
 
 - type: entity
   parent: ClothingHeadBase
@@ -90,9 +79,8 @@
   - type: Clothing
     sprite: _LateStation/Clothing/Head/redbeanie.rsi
   - type: TemperatureProtection
-    heatingCoefficient: 1.025
+    coefficient: 0.7
     # The beanie is not a good insulator, but it does help a bit.
-    coolingCoefficient: 0.7
 
 - type: entity
   parent: ClothingHeadBase
@@ -105,6 +93,5 @@
   - type: Clothing
     sprite: _LateStation/Clothing/Head/yellowbeanie.rsi
   - type: TemperatureProtection
-    heatingCoefficient: 1.025
+    coefficient: 0.7
     # The beanie is not a good insulator, but it does help a bit.
-    coolingCoefficient: 0.7

@@ -1,13 +1,7 @@
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Numerics;
+using Content.Client.Anomaly.UI;
 using Content.Client.Gravity;
+using Content.Client.Items;
 using Content.Shared.Anomaly;
 using Content.Shared.Anomaly.Components;
 using Robust.Client.GameObjects;
@@ -31,6 +25,8 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
         SubscribeLocalEvent<AnomalyComponent, AnimationCompletedEvent>(OnAnimationComplete);
 
         SubscribeLocalEvent<AnomalySupercriticalComponent, ComponentShutdown>(OnShutdown);
+
+        Subs.ItemStatus<CorePoweredThrowerComponent>(entity => new AnomalyStatusControl(entity));
     }
 
     private void OnStartup(EntityUid uid, AnomalyComponent component, ComponentStartup args)
@@ -50,10 +46,10 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
         if (args.Sprite is not { } sprite)
             return;
 
-        if (!Appearance.TryGetData<bool>(uid, AnomalyVisuals.IsPulsing, out var pulsing, args.Component))
+        if (!args.TryGetData<bool>(AnomalyVisuals.IsPulsing, out var pulsing))
             pulsing = false;
 
-        if (Appearance.TryGetData<bool>(uid, AnomalyVisuals.Supercritical, out var super, args.Component) && super)
+        if (args.TryGetData<bool>(AnomalyVisuals.Supercritical, out var super) && super)
             pulsing = super;
 
         if (HasComp<AnomalySupercriticalComponent>(uid))

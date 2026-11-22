@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Harmony contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 FluffMe <dex.stb@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 # Button frames
 - type: entity
   id: ButtonFrameGreyBuildable
@@ -13,7 +6,7 @@
   components:
     - type: Sprite
       drawdepth: SmallObjects
-      sprite: Structures/Wallmounts/switch_frame.rsi
+      sprite: Structures/Wallmounts/switch-frame.rsi
       state: grey
     - type: Construction
       graph: ButtonFrameGraph
@@ -26,7 +19,7 @@
   components:
     - type: Sprite
       drawdepth: SmallObjects
-      sprite: Structures/Wallmounts/switch_frame.rsi
+      sprite: Structures/Wallmounts/switch-frame.rsi
       state: caution
     - type: Construction
       graph: ButtonFrameGraph
@@ -39,8 +32,8 @@
   components:
     - type: Sprite
       drawdepth: SmallObjects
-      sprite: Structures/Wallmounts/switch_frame.rsi
-      state: caution_security
+      sprite: Structures/Wallmounts/switch-frame.rsi
+      state: caution-security
     - type: Construction
       graph: ButtonFrameGraph
       node: ButtonFrameCautionSecurityNode
@@ -52,8 +45,8 @@
   components:
     - type: Sprite
       drawdepth: SmallObjects
-      sprite: Structures/Wallmounts/switch_frame.rsi
-      state: exit
+      sprite: Structures/Wallmounts/switch-frame.rsi
+      state: white
     - type: Construction
       graph: ButtonFrameGraph
       node: ButtonFrameExitNode
@@ -65,7 +58,7 @@
   components:
     - type: Sprite
       drawdepth: SmallObjects
-      sprite: Structures/Wallmounts/switch_frame.rsi
+      sprite: Structures/Wallmounts/switch-frame.rsi
       state: janitor
     - type: Construction
       graph: ButtonFrameGraph
@@ -80,8 +73,12 @@
     - type: Clickable
     - type: InteractionOutline
     - type: Sprite
-      sprite: Structures/Wallmounts/locked_switch.rsi
-      state: unlocked
+      sprite: Structures/Wallmounts/switch-lockable.rsi
+      # upstream split this rsi into layers; base + button + lock reproduces the old 'unlocked' image
+      layers:
+      - state: base
+      - state: button
+      - state: lock-unlocked
     - type: Construction
       graph: LockableButtonGraph
       node: assembly

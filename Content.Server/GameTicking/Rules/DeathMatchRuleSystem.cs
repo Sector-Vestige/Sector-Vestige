@@ -1,28 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr.@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Kyle Tyo <36606155+VerinSenpai@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
-using System.Linq;
 using Content.Server.Clothing.Systems;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.KillTracking;
@@ -30,11 +5,12 @@ using Content.Server.Mind;
 using Content.Server.Points;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Systems;
+using Content.Shared.EntityTable;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Points;
-using Content.Shared.Storage;
-using Robust.Server.GameObjects;
+using Content.Shared.Station.Systems;
 using Robust.Server.Player;
 using Robust.Shared.Utility;
 
@@ -52,7 +28,7 @@ public sealed partial class DeathMatchRuleSystem : GameRuleSystem<DeathMatchRule
     [Dependency] private RespawnRuleSystem _respawn = default!;
     [Dependency] private RoundEndSystem _roundEnd = default!;
     [Dependency] private StationSpawningSystem _stationSpawning = default!;
-    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private EntityTableSystem _entityTable = default!;
 
     public override void Initialize()
     {
@@ -69,7 +45,7 @@ public sealed partial class DeathMatchRuleSystem : GameRuleSystem<DeathMatchRule
         var query = EntityQueryEnumerator<DeathMatchRuleComponent, RespawnTrackerComponent, PointManagerComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out var dm, out var tracker, out var point, out var rule))
         {
-            if (!GameTicker.IsGameRuleActive(uid, rule))
+            if (!GameTicker.IsGameRuleActive((uid, rule)))
                 continue;
 
             var newMind = _mind.CreateMind(ev.Player.UserId, ev.Profile.Name);
@@ -97,8 +73,9 @@ public sealed partial class DeathMatchRuleSystem : GameRuleSystem<DeathMatchRule
         var query = EntityQueryEnumerator<DeathMatchRuleComponent, RespawnTrackerComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out _, out var tracker, out var rule))
         {
-            if (!GameTicker.IsGameRuleActive(uid, rule))
+            if (!GameTicker.IsGameRuleActive((uid, rule)))
                 continue;
+
             _respawn.AddToTracker((ev.Mob, null), (uid, tracker));
         }
     }
@@ -108,7 +85,7 @@ public sealed partial class DeathMatchRuleSystem : GameRuleSystem<DeathMatchRule
         var query = EntityQueryEnumerator<DeathMatchRuleComponent, PointManagerComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out var dm, out var point, out var rule))
         {
-            if (!GameTicker.IsGameRuleActive(uid, rule))
+            if (!GameTicker.IsGameRuleActive((uid, rule)))
                 continue;
 
             // YOU SUICIDED OR GOT THROWN INTO LAVA!
@@ -124,8 +101,10 @@ public sealed partial class DeathMatchRuleSystem : GameRuleSystem<DeathMatchRule
             if (ev.Assist is KillPlayerSource assist && dm.Victor == null)
                 _point.AdjustPointValue(assist.PlayerId, 1, uid, point);
 
-            var spawns = EntitySpawnCollection.GetSpawns(dm.RewardSpawns).Cast<string?>().ToList();
-            EntityManager.SpawnEntities(_transform.GetMapCoordinates(ev.Entity), spawns);
+            foreach (var spawn in _entityTable.GetSpawns(dm.RewardSpawns))
+            {
+                SpawnNextToOrDrop(spawn, ev.Entity);
+            }
         }
     }
 
@@ -141,18 +120,18 @@ public sealed partial class DeathMatchRuleSystem : GameRuleSystem<DeathMatchRule
         _roundEnd.EndRound(component.RestartDelay);
     }
 
-    protected override void AppendRoundEndText(EntityUid uid, DeathMatchRuleComponent component, GameRuleComponent gameRule, ref RoundEndTextAppendEvent args)
-    {
-        if (!TryComp<PointManagerComponent>(uid, out var point))
-            return;
+    // protected override void AppendRoundEndText(EntityUid uid, DeathMatchRuleComponent component, GameRuleComponent gameRule, ref RoundEndTextAppendEvent args)
+    // {
+    //     if (!TryComp<PointManagerComponent>(uid, out var point))
+    //         return;
 
-        if (component.Victor != null && _player.TryGetPlayerData(component.Victor.Value, out var data))
-        {
-            args.AddLine(Loc.GetString("point-scoreboard-winner", ("player", data.UserName)));
-            args.AddLine("");
-        }
-        args.AddLine(Loc.GetString("point-scoreboard-header"));
-        args.AddLine(new FormattedMessage(point.Scoreboard).ToMarkup());
-        args.AddLine("");
-    }
+    //     if (component.Victor != null && _player.TryGetPlayerData(component.Victor.Value, out var data))
+    //     {
+    //         args.AddLine(Loc.GetString("point-scoreboard-winner", ("player", data.UserName)));
+    //         args.AddLine("");
+    //     }
+    //     args.AddLine(Loc.GetString("point-scoreboard-header"));
+    //     args.AddLine(new FormattedMessage(point.Scoreboard).ToMarkup());
+    //     args.AddLine("");
+    // }
 }

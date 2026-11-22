@@ -1,0 +1,12 @@
+- type: entity
+  id: WeaponArcTailMyo
+  parent: WeaponArcStatic
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: WeaponArcVisuals
+    animation: Slash
+  - type: Sprite
+    sprite: _SV/Effects/arcs.rsi
+    state: tail
+  - type: ScaleVisuals
+    scale: 1.2,1.2

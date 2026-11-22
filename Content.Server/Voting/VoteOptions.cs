@@ -40,6 +40,12 @@ namespace Content.Server.Voting
         public List<(string text, object data)> Options { get; set; } = new();
 
         /// <summary>
+        ///     SV - Optional texture path shown on the button of each option, aligned by index with <see cref="Options"/>.
+        ///     A missing or null entry means the option has no icon.
+        /// </summary>
+        public List<string?> OptionIcons { get; set; } = new();
+
+        /// <summary>
         ///     Which sessions may send a vote. Used when only a subset of players should be able to vote. Defaults to all.
         /// </summary>
         public VoteManager.VoterEligibility VoterEligibility = VoteManager.VoterEligibility.All;

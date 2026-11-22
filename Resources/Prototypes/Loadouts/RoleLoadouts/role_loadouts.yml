@@ -1,44 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Wizards Den contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2024 BuildTools <unconfigured@null.spigotmc.org>
-# SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 DieselMohawk <gavin.drinka@gmail.com>
-# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ghagliiarghii <68826635+Ghagliiarghii@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 PoorMansDreams <150595537+PoorMansDreams@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 SpeltIncorrectyl <66873282+SpeltIncorrectyl@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 cool dolphin <36332236+Afrokada@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 pigeonpeas <147350443+pigeonpeas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 DieselMohawk <173439801+DieselMohawk@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Hitlinemoss <209321380+Hitlinemoss@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Nox <nebulousnox38@gmail.com>
-# SPDX-FileCopyrightText: 2025 PAFFhassoocks <asukalangleydanielle@gmail.com>
-# SPDX-FileCopyrightText: 2025 Phooooooooooooooooooooooooooooooosphate <184853112+Phooooooooooooooooooooooooooooooosphate@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2025 Sender <84488598+SignalSender@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Trosling <111116669+RHSvenson@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
-# SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 lunarcomets <lunarcomets2@gmail.com>
-# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
-# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 āda <ss.adasts@gmail.com>
-#
-# SPDX-License-Identifier: MIT
-
 # Command
 - type: roleLoadout
   id: JobCaptain
@@ -49,6 +8,7 @@
   - CaptainBackpack
   - CaptainOuterClothing
   - FormalShoes # CD Change
+  - AssistiveItems
   - Survival
   - Trinkets
   #- CaptainJobTrinkets
@@ -66,6 +26,7 @@
   - HoPOuterClothing
   - FormalShoes # CD Change
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- HoPJobTrinkets
@@ -105,6 +66,7 @@
   - PassengerShoes
   - PassengerTitles #CD titles
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- PassengerJobTrinkets
@@ -121,6 +83,7 @@
   - BartenderOuterClothing
   - FormalShoes # CD Change
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   - BartenderJobTrinkets
@@ -135,6 +98,7 @@
   - CommonBackpack
   - FormalShoes # CD Change
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ServiceWorkerJobTrinkets
@@ -151,6 +115,7 @@
   - CommonBackpack
   - ChefOuterClothing
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ChefJobTrinkets
@@ -165,6 +130,7 @@
   - CommonBackpack
   - FormalShoes # CD Change
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- LibrarianJobTrinkets
@@ -180,6 +146,7 @@
   - CommonBackpack
   - FormalShoes # CD Change
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- LawyerJobTrinkets
@@ -197,8 +164,10 @@
   - ChaplainJumpsuit
   - CommonBackpack
   - ChaplainOuterClothing
+  - ChaplainShoes
   - ChaplainBible
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ChaplainJobTrinkets
@@ -215,6 +184,7 @@
   - CommonBackpack
   - JanitorOuterClothing
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   - JanitorJobTrinkets
@@ -230,6 +200,7 @@
   - BotanistBackpack
   - BotanistOuterClothing
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- BotanistJobTrinkets
@@ -247,6 +218,7 @@
   - ClownOuterClothing
   - ClownShoes
   - Glasses
+  - AssistiveItems
   - SurvivalClown
   - Trinkets
   - PersonalItemsJobAgnostic #SV Change
@@ -264,7 +236,8 @@
   - MimeOuterClothing
   - MimeBelt
   - Glasses
-  - SurvivalMime
+  - AssistiveItems
+  - Survival
   - Trinkets
   - PersonalItemsJobAgnostic #SV Change
   #- MimeJobTrinkets
@@ -278,11 +251,12 @@
   - CommonBackpack
   - MusicianOuterClothing
   - FormalShoes # CD Change
+  - Instruments
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- MusicianJobTrinkets
-  - Instruments
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic #SV Change
 
@@ -298,6 +272,7 @@
   - QuartermasterOuterClothing
   - QuartermasterShoes
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- QuartermasterJobTrinkets
@@ -315,6 +290,7 @@
   - CargoTechnicianShoes
   - CargoTechnicianID
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- CargoTechnicianJobTrinkets
@@ -330,6 +306,7 @@
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- SalvageSpecialistJobTrinkets
@@ -348,6 +325,7 @@
   - ChiefEngineerNeck
   - ChiefEngineerOuterClothing
   - ChiefEngineerShoes
+  - AssistiveItems
   - SurvivalExtended
   - Trinkets
   #- ChiefEngineerJobTrinkets
@@ -361,6 +339,7 @@
   - TechnicalAssistantJumpsuit
   - EngineeringEyewear # CD - SV added
   - StationEngineerBackpack
+  - AssistiveItems
   - SurvivalExtended
   - Trinkets
   #- TechnicalAssistantJobTrinkets
@@ -378,6 +357,7 @@
   - StationEngineerOuterClothing
   - StationEngineerShoes
   - StationEngineerID
+  - AssistiveItems
   - SurvivalExtended
   - Trinkets
   #- StationEngineerJobTrinkets
@@ -392,6 +372,7 @@
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianOuterClothing
   - AtmosphericTechnicianShoes
+  - AssistiveItems
   - SurvivalExtended
   - Trinkets
   #- AtmosphericTechnicianJobTrinkets
@@ -411,6 +392,7 @@
   - ScientistGloves
   - ResearchDirectorShoes
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ResearchDirectorJobTrinkets
@@ -430,6 +412,7 @@
   - ScientistShoes
   - ScientistPDA
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ScientistJobTrinkets
@@ -443,6 +426,7 @@
   - ResearchAssistantJumpsuit
   - ScientistBackpack
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ResearchAssistantJobTrinkets
@@ -461,6 +445,7 @@
   - HeadofSecurityOuterClothing
   - SecurityShoes
   - SecurityGlassesOrHud # CD Addition
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   - HeadofSecurityJobTrinkets
@@ -476,6 +461,7 @@
   - SecurityBelt
   - WardenOuterClothing
   - SecurityShoes
+  - AssistiveItems
   - SecurityGlassesOrHud # CD Addition
   - SurvivalSecurity
   - Trinkets
@@ -494,6 +480,7 @@
   - SecurityPDA
   - SecurityBelt
   - SecurityGlassesOrHud # CD Addition
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   - SecurityJobTrinkets
@@ -510,6 +497,7 @@
   - DetectiveOuterClothing
   - SecurityShoes
   - SecurityGlassesOrHud # CD Addition
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   - DetectiveJobTrinkets
@@ -522,6 +510,7 @@
   - SecurityCadetJumpsuit
   - SecurityBackpack
   - SecurityGlassesOrHud # CD Addition
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   #- SecurityCadetJobTrinkets
@@ -538,6 +527,7 @@
   - ReporterOuterClothing
   - CommonBackpack
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ReporterJobTrinkets
@@ -552,11 +542,28 @@
   - MedicalBackpack
   - FormalShoes # CD Change
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- PsychologistJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic #SV Change
+
+- type: roleLoadout
+  id: JobTramDriver
+  groups:
+  - GroupTankHarness
+  - CommonBackpack
+  - TramDriverJumpsuit
+  - TramDriverOuterClothing #Vest and such
+  - TramDriverHat
+  - TramDriverGloves
+  - Glasses
+  - AssistiveItems
+  - Survival
+  - Trinkets
+  #- TramDriverJobTrinkets
+  - GroupSpeciesBreathTool
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs
 # They will be used without player configuration, thus they will only ever apply what is forced by MinLimit
@@ -593,6 +600,13 @@
   id: RoleSurvivalExtended
   groups:
   - SurvivalExtended
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: RoleSurvivalExtendedAntag # Used by antagonists that spawn off-station (e.g wizards)
+  groups:
+  - SurvivalExtendedAntag
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
@@ -634,6 +648,12 @@
   groups:
   - GroupEVATank
   - SurvivalExtended
+
+- type: roleLoadout
+  id: RoleSurvivalEVAAntag # Used by antagonists that spawn off-station AND in space (e.g ninjas)
+  groups:
+  - GroupEVATank
+  - SurvivalExtendedAntag
 
 - type: roleLoadout
   id: RoleSurvivalSpaceNinja

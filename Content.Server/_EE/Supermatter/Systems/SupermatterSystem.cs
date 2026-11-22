@@ -1,17 +1,3 @@
-// SPDX-FileCopyrightText: 2026 EinsteinEngines contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2025 AftrLite <61218133+AftrLite@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Dark <darkwindleaf@hotmail.co.uk>
-// SPDX-FileCopyrightText: 2025 Lachryphage (GitHub)
-// SPDX-FileCopyrightText: 2025 V <97265903+formlessnameless@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 beck <163376292+widgetbeck@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 hivehum <ketchupfaced@gmail.com>
-// SPDX-FileCopyrightText: 2025 mqole <113324899+mqole@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.AlertLevel;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
@@ -39,8 +25,10 @@ using Content.Shared.Audio;
 using Content.Shared.Damage.Components;
 using Content.Shared.Database;
 using Content.Shared.DeviceLinking;
+using Content.Shared.DeviceLinking.Components;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs.Components;
@@ -59,6 +47,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.GameTicking;
+using Content.Shared.DeviceLinking.Systems;
 
 namespace Content.Server._EE.Supermatter.Systems;
 
@@ -84,7 +74,7 @@ public sealed partial class SupermatterSystem : EntitySystem
     [Dependency] private SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedContainerSystem _container = default!;
-    [Dependency] private SharedDeviceLinkSystem _link = default!;
+    [Dependency] private DeviceLinkSystem _link = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IChatManager _chatManager = default!;

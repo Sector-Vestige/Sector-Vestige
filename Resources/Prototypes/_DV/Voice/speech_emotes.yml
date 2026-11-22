@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Delta-V contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 # Harpy
 - type: emote
   id: Ring
@@ -83,50 +75,9 @@
     - revving
     - revved
 
-- type: emote
-  id: Caw
-  name: Caw
-  category: Vocal
-  icon: Interface/Actions/scream.png
-  available: false
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: ["caws."]
-  chatTriggers:
-    - caws
-    - caw
-    - cawing
-    - cawed
-
+# Caw emote is now provided by upstream (Resources/Prototypes/Voice/speech_emotes.yml)
 # Felinid
-- type: emote
-  id: Hiss
-  category: Vocal
-  name: Hiss
-  icon: Interface/Actions/scream.png
-  available: false
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: [hisses.]
-  chatTriggers:
-    - hiss
-    - hisses
-    - hiss.
-    - hisses.
-    - hisses!
-    - hissing
-    - hissed
-    - hissing.
-    - hissed.
-
+# Hiss emote is now provided by upstream (Resources/Prototypes/Voice/speech_emotes.yml)
 - type: emote
   id: Meow
   category: Vocal

@@ -1,20 +1,8 @@
-// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.Gameplay;
 using Content.Client.Hands.Systems;
 using Content.Client.Construction;
 using Content.Shared._SV.EyeTracker;
 using Content.Shared.Atmos.Components;
-using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Interaction;
 using Content.Shared.RCD.Components;
@@ -39,7 +27,6 @@ public sealed partial class AlignRPDPipeLayers : SnapgridCenter
 {
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IPrototypeManager _protoManager = default!;
-    [Dependency] private IMapManager _mapManager = default!;
     [Dependency] private IEyeManager _eyeManager = default!;
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IStateManager _stateManager = default!;
@@ -48,7 +35,6 @@ public sealed partial class AlignRPDPipeLayers : SnapgridCenter
 
     private readonly SharedMapSystem _mapSystem;
     private readonly SharedTransformSystem _transformSystem;
-    private readonly SharedAtmosPipeLayersSystem _pipeLayersSystem;
     private readonly SpriteSystem _spriteSystem;
     private readonly HandsSystem _handsSystem;
     private readonly RCDSystem _rcdSystem;
@@ -68,7 +54,6 @@ public sealed partial class AlignRPDPipeLayers : SnapgridCenter
 
         _mapSystem = _entityManager.System<SharedMapSystem>();
         _transformSystem = _entityManager.System<SharedTransformSystem>();
-        _pipeLayersSystem = _entityManager.System<SharedAtmosPipeLayersSystem>();
         _spriteSystem = _entityManager.System<SpriteSystem>();
         _handsSystem = _entityManager.System<HandsSystem>();
         _rcdSystem = _entityManager.System<RCDSystem>();
@@ -117,7 +102,7 @@ public sealed partial class AlignRPDPipeLayers : SnapgridCenter
         if (pManager.PlacementType != PlacementTypes.None)
             return;
 
-        MouseCoords = _unalignedMouseCoords.AlignWithClosestGridTile(SearchBoxSize, _entityManager, _mapManager);
+        MouseCoords = _unalignedMouseCoords.AlignWithClosestGridTile(SearchBoxSize, _entityManager);
 
         var gridId = _transformSystem.GetGrid(MouseCoords);
 
@@ -219,63 +204,79 @@ public sealed partial class AlignRPDPipeLayers : SnapgridCenter
 
     private void UpdateHijackedPlacer(AtmosPipeLayer layer, ScreenCoordinates mouseScreen)
     {
-        // Try to get alternative prototypes from the construction prototype
-        var constructionSystem = (pManager.Hijack as ConstructionPlacementHijack)?.CurrentConstructionSystem;
-        var altPrototypes = (pManager.Hijack as ConstructionPlacementHijack)?.CurrentPrototype?.AlternativePrototypes;
-
-        if (constructionSystem == null || altPrototypes == null || (int)layer >= altPrototypes.Length)
+        // Sector Vestige: ConstructionPlacementHijack no longer exposes CurrentConstructionSystem, resolve it directly.
+        if (pManager.Hijack is not ConstructionPlacementHijack hijack)
             return;
 
+        var constructionSystem = _entityManager.System<ConstructionSystem>();
+
+        // Upstream (#44507): ConstructionPrototype.AlternativePrototypes was replaced by entity prototype variant collections.
+        // Determine the current entity prototype to be constructed
+        if (string.IsNullOrEmpty(hijack.CurrentPrototype?.ID)
+            || !_protoManager.Resolve(hijack.CurrentPrototype.ID, out var currentPrototype))
+            return;
+
+        // The prototype must be part of a variant collection
+        if (!_protoManager.TryGetVariantCollection<EntityPrototype>(currentPrototype, out var altPrototypes))
+            return;
+
+        // The target layer must be a valid index in the variant collection
+        if ((int)layer >= altPrototypes.Count)
+            return;
+
+        // Get the entity prototype ID for the target layer
         var newProtoId = altPrototypes[(int)layer];
 
-        if (!_protoManager.Resolve(newProtoId, out var newProto))
+        // Find a construction prototype with a matching name
+        if (!_protoManager.Resolve<ConstructionPrototype>(newProtoId.Id, out var newConstructionPrototype))
             return;
 
-        if (newProto.Type != ConstructionType.Structure)
-        {
-            pManager.Clear();
-            return;
-        }
-
-        if (newProto.ID == (pManager.Hijack as ConstructionPlacementHijack)?.CurrentPrototype?.ID)
+        // The new construction prototype must differ from the last
+        if (newConstructionPrototype.Equals(hijack.CurrentPrototype))
             return;
 
         // Start placing
         pManager.BeginPlacing(new PlacementInformation()
         {
             IsTile = false,
-            PlacementOption = newProto.PlacementMode,
-        }, new ConstructionPlacementHijack(constructionSystem, newProto));
+            PlacementOption = newConstructionPrototype.PlacementMode,
+        }, new ConstructionPlacementHijack(newConstructionPrototype));
 
         if (pManager.CurrentMode is AlignRPDPipeLayers { } newMode)
             newMode.RefreshGrid(mouseScreen);
 
         // Update construction guide
-        constructionSystem.GetGuide(newProto);
+        constructionSystem.GetGuide(newConstructionPrototype);
     }
 
     private void UpdatePlacer(AtmosPipeLayer layer)
     {
-        // Try to get alternative prototypes from the entity atmos pipe layer component
         if (pManager.CurrentPermission?.EntityType == null)
             return;
 
-        if (!_protoManager.TryIndex<EntityPrototype>(pManager.CurrentPermission.EntityType, out var currentProto))
+        // Upstream (#44507): AtmosPipeLayersComponent.AlternativePrototypes was replaced by entity prototype variant collections.
+        // Determine the current entity prototype to be placed
+        if (!_protoManager.Resolve<EntityPrototype>(pManager.CurrentPermission.EntityType, out var currentPrototype))
             return;
 
-        if (!currentProto.TryGetComponent<AtmosPipeLayersComponent>(out var atmosPipeLayers, _entityManager.ComponentFactory))
+        // The prototype must be part of a variant collection
+        if (!_protoManager.TryGetVariantCollection<EntityPrototype>(currentPrototype, out var altPrototypes))
             return;
 
-        if (!_pipeLayersSystem.TryGetAlternativePrototype(atmosPipeLayers, layer, out var newProtoId))
+        // The target layer must be a valid index in the variant collection
+        if ((int)layer >= altPrototypes.Count)
             return;
 
-        if (_protoManager.TryIndex<EntityPrototype>(newProtoId, out var newProto))
+        // Get the entity prototype ID for the target layer
+        var newProtoId = altPrototypes[(int)layer];
+
+        if (_protoManager.Resolve(newProtoId, out var newProto))
         {
             // Update the placed prototype
             pManager.CurrentPermission.EntityType = newProtoId;
 
             // Update the appearance of the ghost sprite
-            if (newProto.TryGetComponent<SpriteComponent>(out var sprite, _entityManager.ComponentFactory))
+            if (newProto.TryComp<SpriteComponent>(out var sprite, _entityManager.ComponentFactory))
             {
                 var textures = new List<IDirectionalTextureProvider>();
 

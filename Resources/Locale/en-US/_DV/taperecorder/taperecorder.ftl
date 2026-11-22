@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Wizards Den contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
-# SPDX-FileCopyrightText: 2025 NakataRin <45946146+NakataRin@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 cassette-repair-start = You start winding the tape back into {THE($item)}.
 cassette-repair-finish = You manage to wind the tape back into {THE($item)}.
 tape-cassette-position = The cassette is about [color=green]{$position}%[/color] the way through.
@@ -33,3 +25,6 @@ tape-recorder-menu-no-cassette-label = Cassette tape is not inserted
 tape-recorder-print-start-text = [bold]Start of recorded transcript[/bold]
 tape-recorder-print-message-text = [bold][{$time}] {$source}: [/bold] {$message}
 tape-recorder-print-end-text = [bold]End of recorded transcript[/bold]
+
+# Sector Vestige: label for the pre-recorded interview cassette (LabelComponent.LocalizedLabel; CurrentLabel must not be set in prototypes)
+tape-cassette-label-interview = Interview with Garry Smosh

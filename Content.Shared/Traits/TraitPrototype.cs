@@ -1,3 +1,5 @@
+using Content.Shared.Chat.Prototypes;
+using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
@@ -69,4 +71,19 @@ public sealed partial class TraitPrototype : IPrototype
     /// </summary>
     [DataField]
     public ProtoId<TraitCategoryPrototype>? Category;
+
+    // Sector Vestige: restored Harmony change, "raised by" traits need it to override Speech and TypingIndicator.
+    /// <summary>
+    /// Allows you to replace existing components. Harmony change.
+    /// </summary>
+    [DataField]
+    public bool ReplaceComponents = false;
+
+    // Sector Vestige: Vocal no longer holds per-sex sounds, so traits set the humanoid's voice here instead.
+    /// <summary>
+    /// Emote sound bank given to the humanoid when they pick this trait, keyed by sex.
+    /// Falls back to the Unsexed entry when the humanoid's sex has no entry.
+    /// </summary>
+    [DataField]
+    public Dictionary<Sex, ProtoId<EmoteSoundsPrototype>>? Voices;
 }

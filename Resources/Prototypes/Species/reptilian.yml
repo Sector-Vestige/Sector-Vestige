@@ -10,3 +10,10 @@
   femaleFirstNames: NamesReptilianFemale
   naming: FirstDashFirst
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex:
+  - MaleReptilian
+  - FemaleReptilian
+  - MaleReptilian
+  voices:
+  - MaleReptilian
+  - FemaleReptilian

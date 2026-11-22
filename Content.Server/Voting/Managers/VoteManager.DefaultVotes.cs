@@ -1,49 +1,15 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2021 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2021 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2022 Pancake <Pangogie@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Putnam3145 <putnam3145@gmail.com>
-// SPDX-FileCopyrightText: 2022 Radosvik <65792927+Radosvik@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 corentt <36075110+corentt@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 alexkar598 <25136265+alexkar598@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SpaceManiac <tad@platymuus.com>
-// SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using Content.Server.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.Discord.WebhookMessages;
 using Content.Server.GameTicking;
-using Content.Server.GameTicking.Presets;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Prototypes;
 using Content.Shared.Maps;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
@@ -64,7 +30,7 @@ namespace Content.Server.Voting.Managers
 
         private VotingSystem? _votingSystem;
         private RoleSystem? _roleSystem;
-        private GameTicker? _gameTicker;
+        private ServerGameTicker? _gameTicker;
 
         private static readonly Dictionary<StandardVoteType, CVarDef<bool>> VoteTypesToEnableCVars = new()
         {
@@ -83,7 +49,7 @@ namespace Content.Server.Voting.Managers
             else
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Initiated a {voteType.ToString()} vote");
 
-            _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+            _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
 
             bool timeoutVote = true;
 
@@ -172,7 +138,7 @@ namespace Content.Server.Voting.Managers
         private void StartVote(ICommonSession? initiator)
         {
              // Moffstation - Start - block restart votes while the lobby is paused
-             _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+             _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
              if (_gameTicker.Paused && _cfg.GetCVar(CCVars.BlockRestartWhenPaused))
              {
                  if (initiator != null)
@@ -300,7 +266,7 @@ namespace Content.Server.Voting.Managers
                         Loc.GetString("ui-vote-gamemode-win", ("winner", Loc.GetString(presets[picked]))));
                 }
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Preset vote finished: {picked}");
-                var ticker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+                var ticker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
                 ticker.SetGamePreset(picked);
             };
         }
@@ -347,7 +313,7 @@ namespace Content.Server.Voting.Managers
                 }
 
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Map vote finished: {picked.MapName}");
-                var ticker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+                var ticker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
                 if (ticker.CanUpdateMap())
                 {
                     if (_gameMapManager.CheckMapExists(picked.ID))
@@ -388,7 +354,7 @@ namespace Content.Server.Voting.Managers
                 _votingSystem = _entityManager.SystemOrNull<VotingSystem>();
 
             // Check that the initiator is actually allowed to do a votekick.
-            if (_votingSystem != null && !await _votingSystem.CheckVotekickInitEligibility(initiator))
+            if (_votingSystem != null && !_votingSystem.CheckVotekickInitEligibility(initiator))
             {
                 _logManager.GetSawmill("admin.votekick").Warning($"User {initiator} attempted a votekick, despite not being eligible to!");
                 _adminLogger.Add(LogType.Vote, LogImpact.Extreme, $"Votekick attempted by {initiator}, but they are not eligible to votekick!");

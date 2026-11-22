@@ -1,0 +1,6 @@
+- type: speechVerb
+  id: Myo
+  name: chat-speech-verb-name-myo
+  speechVerbStrings:
+  - chat-speech-verb-myo-1
+  - chat-speech-verb-myo-2

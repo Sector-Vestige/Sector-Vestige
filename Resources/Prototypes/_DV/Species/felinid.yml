@@ -6,3 +6,10 @@
   dollPrototype: AppearanceFelinid
   skinColoration: HumanToned
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex: # Sector Vestige: voice comes from the species prototype now
+  - SoundsFelinidMale
+  - SoundsFelinidFemale
+  - SoundsFelinidMale
+  voices:
+  - SoundsFelinidMale
+  - SoundsFelinidFemale

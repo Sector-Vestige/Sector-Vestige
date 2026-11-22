@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Delta-V contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: markingsGroup
   parent: Undergarments
   id: Harpy
@@ -155,17 +147,17 @@
     program: 52
   - type: SwappableInstrument
     instrumentList:
-      "Voice": {52: 0}
-      "Trumpet": {56: 0}
-      "Electric": {27: 0}
-      "Bass": {33: 0}
-      "Rock": {29: 0}
-      "Acoustic": {24: 0}
-      "Flute": {73: 0}
-      "Sax": {66: 0}
-      "Piano": {1: 0}
-      "Church Organ": {19: 0}
-      "Harp": {46: 0}
+      harpy-instrument-style-voice: {52: 0}
+      harpy-instrument-style-trumpet: {56: 0}
+      harpy-instrument-style-electric: {27: 0}
+      harpy-instrument-style-bass: {33: 0}
+      harpy-instrument-style-rock: {29: 0}
+      harpy-instrument-style-acoustic: {24: 0}
+      harpy-instrument-style-flute: {73: 0}
+      harpy-instrument-style-sax: {66: 0}
+      harpy-instrument-style-piano: {1: 0}
+      harpy-instrument-style-church-organ: {19: 0}
+      harpy-instrument-style-harp: {46: 0}
     onlySetBySelf: true
   - type: UserInterface
     interfaces:
@@ -228,10 +220,7 @@
     - Whine
     - Coo # FloofStation
   - type: Vocal
-    sounds:
-      Male: SoundsHarpyMale
-      Female: SoundsHarpyFemale
-      Unsexed: SoundsHarpyMale
+    emoteSounds: SoundsHarpyMale # Sector Vestige: used when spawned without a profile; players get their voice from the species prototype
   - type: GenericVisualizer
     visuals:
       enum.HarpyVisualLayers.Singing:
@@ -451,8 +440,10 @@
   description: Open your vocal MIDI interface.
   components:
   - type: Action
-    icon: Interface/Actions/pai-midi.png
     itemIconStyle: NoItem
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/pai-midi.png
   - type: InstantAction
     event: !type:OpenUiActionEvent
       key: enum.InstrumentUiKey.Key

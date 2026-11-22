@@ -11,7 +11,7 @@ using Content.Server.Maps;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Voting;
 using Robust.Server.Player;
@@ -206,7 +206,11 @@ namespace Content.Server.Voting.Managers
         {
             var id = _nextVoteId++;
 
-            var entries = options.Options.Select(o => new VoteEntry(o.data, o.text)).ToArray();
+            // SV - option icons - Start
+            var entries = options.Options
+                .Select((o, i) => new VoteEntry(o.data, o.text, i < options.OptionIcons.Count ? options.OptionIcons[i] : null))
+                .ToArray();
+            // SV - option icons - END
 
             var start = _timing.RealTime;
             var end = start + options.Duration;
@@ -286,12 +290,14 @@ namespace Content.Server.Voting.Managers
                 msg.DisplayVotes = true;
             }
 
-            msg.Options = new (ushort votes, string name)[v.Entries.Length];
+            // SV - option icons - START
+            msg.Options = new (ushort votes, string name, string icon)[v.Entries.Length];
             for (var i = 0; i < msg.Options.Length; i++)
             {
                 ref var entry = ref v.Entries[i];
-                msg.Options[i] = (msg.DisplayVotes ? (ushort) entry.Votes : (ushort) 0, entry.Text);
+                msg.Options[i] = (msg.DisplayVotes ? (ushort) entry.Votes : (ushort) 0, entry.Text, entry.Icon ?? string.Empty);
             }
+            // SV - option icons - END
 
             player.Channel.SendMessage(msg);
         }
@@ -363,7 +369,7 @@ namespace Content.Server.Voting.Managers
             if (voteType == StandardVoteType.Preset)
             {
                 var presets = GetGamePresets();
-                if (presets.Count == 1 && presets.Select(x => x.Key).Single() == _entityManager.System<GameTicker>().Preset?.ID)
+                if (presets.Count == 1 && presets.Select(x => x.Key).Single() == _entityManager.System<ServerGameTicker>().Preset?.ID)
                     return false;
             }
 
@@ -535,12 +541,14 @@ namespace Content.Server.Voting.Managers
         {
             public object Data;
             public string Text;
+            public string? Icon; // SV - option icons
             public int Votes;
 
-            public VoteEntry(object data, string text)
+            public VoteEntry(object data, string text, string? icon = null) // SV - option icons
             {
                 Data = data;
                 Text = text;
+                Icon = icon; // SV - option icons
                 Votes = 0;
             }
         }

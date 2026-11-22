@@ -10,3 +10,10 @@
   femaleFirstNames: names_avali_unisex
   naming: First
   defaultHeight: 0.8 # SV Height system
+  defaultSoundsBySex: # Sector Vestige: voice comes from the species prototype now
+  - MaleAvali
+  - FemaleAvali
+  - MaleAvali
+  voices:
+  - MaleAvali
+  - FemaleAvali

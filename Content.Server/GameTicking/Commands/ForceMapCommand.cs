@@ -11,7 +11,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.GameTicking.Commands
 {
     [AdminCommand(AdminFlags.Round)]
-    public sealed partial class ForceMapCommand : LocalizedCommands
+    public abstract partial class ForceMapCommand : LocalizedCommands // SV - Change to abstract so that we can override it with ForceMapSVCommand.cs
     {
         [Dependency] private IConfigurationManager _configurationManager = default!;
         [Dependency] private IGameMapManager _gameMapManager = default!;

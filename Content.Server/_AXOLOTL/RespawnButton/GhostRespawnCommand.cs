@@ -1,15 +1,9 @@
-// SPDX-FileCopyrightText: 2026 AXOLOTL contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Shared._AXOLOTL;
 using Content.Shared.Administration;
 using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
@@ -76,7 +70,7 @@ public sealed partial class GhostRespawnCommand : IConsoleCommand
             return;
         }
 
-        var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+        var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
 
         gameTicker.Respawn(shell.Player);
     }

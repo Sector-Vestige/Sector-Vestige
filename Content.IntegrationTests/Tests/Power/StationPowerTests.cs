@@ -33,12 +33,15 @@ public sealed class StationPowerTests : GameTest
             // "Oasis", // Vestige: Derotated Map
             "Plasma",
             "Elkridge",
-            "Snowball",
+            // "Snowball", // Vestige: Derotated Map
             // "Relic", // Vestige: Derotated Map
             // "Exo", // Vestige: Derotated Map
+            // "Sushi", // Vestige: Pending implementation
+            // "Tram2", // Vestige: Pending implementation
             // "Vanquish", // LateStation Map by Lachri
             "Cluster", // Sector Vestige, remade by Rebound
             "Packed_SM", // Sector Vestige, edits by Lambda.Tiger
+            "Amber", // Sector Vestige, edits by Lambda.Tiger
     ];
 
     public override PoolSettings PoolSettings => new ()
@@ -55,7 +58,7 @@ public sealed class StationPowerTests : GameTest
 
         var entMan = server.EntMan;
         var protoMan = server.ProtoMan;
-        var ticker = entMan.System<GameTicker>();
+        var ticker = entMan.System<ServerGameTicker>();
         var batterySys = entMan.System<BatterySystem>();
 
         // Load the map
@@ -113,7 +116,7 @@ public sealed class StationPowerTests : GameTest
 
         var entMan = server.EntMan;
         var protoMan = server.ProtoMan;
-        var ticker = entMan.System<GameTicker>();
+        var ticker = entMan.System<ServerGameTicker>();
         var xform = entMan.System<TransformSystem>();
 
         // Load the map

@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server._EE.Supermatter.Systems;
 using Content.Server._SV.StationEvents.Components;
 using Content.Server.Administration.Logs;
@@ -19,6 +12,8 @@ using Content.Shared.Station.Components;
 using Content.Shared._SV.Utility;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.GameTicking.Rules;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._SV.StationEvents.Events;
 
@@ -33,6 +28,7 @@ public sealed partial class SMOffGasRule : GameRuleSystem<SMOffGasComponent>
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private StationSystem _station = default!;
 
     private const float LeakCooldown = .25f;
 
@@ -41,9 +37,20 @@ public sealed partial class SMOffGasRule : GameRuleSystem<SMOffGasComponent>
     {
         base.Added(uid, component, gameRule, args);
         Log.Level = LogLevel.Debug;
+    }
 
-        if (!TryGetRandomStation(out var chosenStation))
-            return;
+    /// <summary>
+    /// SV - Picks the target supermatter. Moved out of Added: ending a rule while it's being added makes
+    /// GameTicker.StartGameRule fail, so like upstream rules we only end ourselves once started.
+    /// </summary>
+    /// <returns>False if the rule ended itself.</returns>
+    private bool TrySetup(EntityUid uid, SMOffGasComponent component, GameRuleComponent gameRule)
+    {
+        // Upstream removed GameRuleSystem.TryGetRandomStation; StationSystem now provides it.
+        if (!_station.TryGetRandomStation<StationEventEligibleComponent>(out var chosenStationEnt))
+            return false;
+
+        var chosenStation = chosenStationEnt.Value.Owner;
 
         //Find a list of all ACTIVE supermatters. Do not select supermatters that are not currently in a nominal status as it could cause some !FUN! problems.
         var possibleTargets = new List<Entity<SupermatterComponent>>();
@@ -61,27 +68,30 @@ public sealed partial class SMOffGasRule : GameRuleSystem<SMOffGasComponent>
             Log.Debug($"Terminating event {uid} as no valid supermatter found");
             _adminLogger.Add(LogType.EventStopped, LogImpact.Low, $"Terminating event {uid} as no valid supermatter was found");
             ForceEndSelf(uid, gameRule);
-            return;
+            return false;
         }
 
         component.Supermatter = RobustRandom.Pick(possibleTargets);
 
         component.TargetTile = _transform.GetGridOrMapTilePosition(component.Supermatter);
-        component.StationUid = chosenStation.Value;
+        component.StationUid = chosenStation;
         component.TargetGrid = _transform.GetGrid(component.Supermatter);
 
         SelectGas(component);
         CheckForValidity(uid, component, gameRule);
 
-        if (!_entityManager.TryGetComponent<SupermatterComponent>(component.Supermatter, out var supermatter))
-            return;
-        if (gameRule.Running)
-            _superMatter.SendSupermatterAnnouncement(component.Supermatter, supermatter, Loc.GetString("sv-supermatter-event-added"));
+        // SV - The old "sv-supermatter-event-added" announcement only ran when the rule was already running during
+        // Added, which never happened in practice. Now that this runs from Started it would always fire next to the
+        // regular start announcement, so it's left out to keep the old behaviour.
+        return _entityManager.HasComponent<SupermatterComponent>(component.Supermatter);
     }
 
     protected override void Started(EntityUid uid, SMOffGasComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
+
+        if (!TrySetup(uid, component, gameRule))
+            return;
 
         BuildAnouncement(component);
 
@@ -111,14 +121,14 @@ public sealed partial class SMOffGasRule : GameRuleSystem<SMOffGasComponent>
         environment?.AdjustMoles(component.SelectedGas, LeakCooldown * component.GasRate);
     }
 
-    protected override void Ended(EntityUid uid, SMOffGasComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
+    protected override void Ended(Entity<SMOffGasComponent> rule, ref GameRuleEndedEvent args)
     {
-        base.Ended(uid, component, gameRule, args);
+        base.Ended(rule, ref args);
 
-        if (!_entityManager.TryGetComponent<SupermatterComponent>(component.Supermatter, out var supermatter))
+        if (!_entityManager.TryGetComponent<SupermatterComponent>(rule.Comp.Supermatter, out var supermatter))
             return;
 
-        _superMatter.SendSupermatterAnnouncement(component.Supermatter, supermatter, Loc.GetString("sv-supermatter-event-ended"));
+        _superMatter.SendSupermatterAnnouncement(rule.Comp.Supermatter, supermatter, Loc.GetString("sv-supermatter-event-ended"));
     }
 
     private void SelectGas(SMOffGasComponent component)

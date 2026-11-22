@@ -1,0 +1,5 @@
+- type: lobbyBackground
+  id: Lockbox
+  background: /Textures/_SV/LobbyScreens/lockbox.png
+  title: sv-lobby-state-background-lockbox-title
+  artist: sv-lobby-state-background-lockbox-artist

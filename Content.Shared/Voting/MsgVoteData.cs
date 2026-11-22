@@ -14,7 +14,7 @@ namespace Content.Shared.Voting
         public string VoteInitiator = string.Empty;
         public TimeSpan StartTime; // Server RealTime.
         public TimeSpan EndTime; // Server RealTime.
-        public (ushort votes, string name)[] Options = default!;
+        public (ushort votes, string name, string icon)[] Options = default!; // SV - icon is a texture path, empty for none
         public bool IsYourVoteDirty;
         public byte? YourVote;
         public bool DisplayVotes;
@@ -36,10 +36,13 @@ namespace Content.Shared.Voting
             DisplayVotes = buffer.ReadBoolean();
             TargetEntity = buffer.ReadVariableInt32();
 
-            Options = new (ushort votes, string name)[buffer.ReadByte()];
+            var length = buffer.ReadByte();
+            // SV - option icons: each option also carries an icon string.
+            buffer.AssertAtLeastSize(length * (sizeof(short) + 2 * NetMessageExt.MinSizeOfString));
+            Options = new (ushort votes, string name, string icon)[length]; // SV - option icons
             for (var i = 0; i < Options.Length; i++)
             {
-                Options[i] = (buffer.ReadUInt16(), buffer.ReadString());
+                Options[i] = (buffer.ReadUInt16(), buffer.ReadString(), buffer.ReadString()); // SV - option icons
             }
 
             IsYourVoteDirty = buffer.ReadBoolean();
@@ -66,10 +69,11 @@ namespace Content.Shared.Voting
             buffer.WriteVariableInt32(TargetEntity);
 
             buffer.Write((byte) Options.Length);
-            foreach (var (votes, name) in Options)
+            foreach (var (votes, name, icon) in Options) // SV - option icons
             {
                 buffer.Write(votes);
                 buffer.Write(name);
+                buffer.Write(icon); // SV - option icons
             }
 
             buffer.Write(IsYourVoteDirty);

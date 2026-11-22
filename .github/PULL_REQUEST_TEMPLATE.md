@@ -16,6 +16,13 @@ Why was this change made?
 - Performance improvements? Describe the impact.
 -->
 
+## Technical details
+<!--
+Explain any significant code-level details or logic.
+Mention refactors, edge cases, or anything maintainers should be aware of.
+If this is a simple change, you can keep this brief or omit it.
+-->
+
 ## Test plan
 <!--
 Describe how you tested the pull request, and how someone reviewing this PR can test it themselves.
@@ -27,14 +34,7 @@ Include screenshots or videos if this PR adds or changes anything visual.
 If this PR is purely backend code or doesn't require visual demonstration, you can leave this section empty.
 -->
 
-## Technical Details
-<!--
-Explain any significant code-level details or logic.
-Mention refactors, edge cases, or anything maintainers should be aware of.
-If this is a simple change, you can keep this brief or omit it.
--->
-
-## Breaking Changes
+## Breaking changes
 <!--
 List any breaking changes to code structure or content.
 This includes prototype name changes, class renames, or field changes that could affect downstream forks.
@@ -50,17 +50,16 @@ If there are none, write: "None"
 <!-- PRs that do not meet these requirements may be delayed or closed. -->
 
 ## Changelog
+<!-- Add a Changelog entry to make players aware of new features or changes that could affect gameplay.
+Make sure to read the guidelines and take this Changelog template out of the comment block in order for it to show up.
+Changelog must have a :cl: symbol, so the bot recognizes the changes and adds them to the game's changelog.
+Maps, admin and rule changes should include a category header below the :cl: as per the guidelines.-->
 <!--
-List player-facing changes below using this exact format.
-Only entries after the ':cl:' tag will be picked up by Weh Bot.
-
-Valid types: add, remove, tweak, fix
-Use lowercase only (e.g., 'add', not 'Add').
-
-Example:
 :cl:
-- add: Added new medical scanner UI.
-- fix: Fixed lockers not opening.
+- add: Crowbars now randomly spawn in maintenance lockers.
+- remove: Crowbars no longer spawn in maintenance crates.
+- tweak: Crowbar spawn rates have been increased for tool lockers.
+- fix: Crowbars no longer accidentally spawn in microwaves.
 -->
 
 :cl:

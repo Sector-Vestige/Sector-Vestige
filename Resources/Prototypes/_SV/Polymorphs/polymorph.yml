@@ -1,0 +1,16 @@
+# Some fucked up jaunt
+- type: polymorph
+  id: JauntXeno
+  configuration:
+    entity: DesynchronizedPocketMyo
+    revertConfirmationPopup: false
+    forced: false
+    transferName: true
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: true
+    effectProto: EffectMyoLiquifying
+    revertEffectProto: EffectMyoSolidifying
+    revertDelay: 1.6
+    polymorphSound: /Audio/_SV/Effects/Misc/myoqueen_melt.ogg
+    exitPolymorphSound: /Audio/_SV/Effects/Misc/myoqueen_melt.ogg

@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: SimpleSpaceMobBase
   id: MobFrozenAbomination
@@ -72,3 +66,22 @@
       types:
         Slash: 5
         Cold: 2
+
+- type: entity
+  parent: MobFrozenAbomination
+  id: RCTVoxAbomination
+  name: frozen abomination
+  description: A frozen husk of flesh and feather. It's hardsuit looks brittle.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _SV/Mobs/Demons/voxabomination.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: voxabomination
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: voxabomination
+      Dead:
+        Base: dead

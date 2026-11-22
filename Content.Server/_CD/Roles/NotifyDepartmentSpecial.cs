@@ -1,18 +1,11 @@
-// SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Radio;
 using Content.Shared.Roles;
 using Content.Shared.Station.Components;
+using Content.Shared.Station.Systems;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server._CD.Roles;
 
@@ -21,8 +14,8 @@ public sealed partial class NotifyDepartmentSpecial : JobSpecial
     [DataField("notify_text", required: true)]
     public string NotifyTextKey { get; private set; } = string.Empty;
 
-    [DataField("radio_channel", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<RadioChannelPrototype>))]
-    public string RadioChannelKey { get; private set; } = string.Empty;
+    [DataField("radio_channel", required: true)]
+    public ProtoId<RadioChannelPrototype> RadioChannelKey { get; private set; }
 
     public override void AfterEquip(EntityUid mob)
     {

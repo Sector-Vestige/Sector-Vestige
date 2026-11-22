@@ -1,17 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2025 PJB3005 <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Vasilis The Pikachu <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2025 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 lunarcomets <lunarcomets2@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared._CD.Silicons.Borgs;
 using Content.Shared.Actions;
 using Content.Shared.Interaction;
@@ -33,7 +19,6 @@ public abstract partial class SharedBorgSwitchableTypeSystem : EntitySystem
 
     [Dependency] private SharedActionsSystem _actionsSystem = default!;
     [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
-    [Dependency] protected IPrototypeManager Prototypes = default!;
     [Dependency] private InteractionPopupSystem _interactionPopup = default!;
 
     public static readonly EntProtoId ActionId = "ActionSelectBorgType";
@@ -88,7 +73,7 @@ public abstract partial class SharedBorgSwitchableTypeSystem : EntitySystem
         if (ent.Comp.SelectedBorgType != null)
             return;
 
-        if (!Prototypes.HasIndex(args.Prototype))
+        if (!ProtoMan.HasIndex(args.Prototype))
             return;
 
         SelectBorgModule(ent, args.Prototype);
@@ -119,7 +104,7 @@ public abstract partial class SharedBorgSwitchableTypeSystem : EntitySystem
 
     protected void UpdateEntityAppearance(Entity<BorgSwitchableTypeComponent> entity)
     {
-        if (!Prototypes.Resolve(entity.Comp.SelectedBorgType, out var proto))
+        if (!ProtoMan.Resolve(entity.Comp.SelectedBorgType, out var proto))
             return;
 
         UpdateEntityAppearance(entity, proto);

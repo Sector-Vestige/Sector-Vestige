@@ -1,0 +1,11 @@
+- type: gameMapPool
+  id: SVmapPool
+  selectable: true
+  maps:
+  - Amber
+  - Bagel
+  - Elkridge
+  - Marathon
+  - Packed_SM
+  - Plasma
+  - Cluster

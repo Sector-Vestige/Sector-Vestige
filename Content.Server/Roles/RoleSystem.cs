@@ -1,34 +1,17 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Milon <milonpl.git@proton.me>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Server.Chat.Managers;
+using Content.Shared.Administration.Logs;
 using Content.Shared.Chat;
+using Content.Shared.Database;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
-using Robust.Shared.Prototypes;
+using Robust.Shared.Network;
 
 namespace Content.Server.Roles;
 
 public sealed partial class RoleSystem : SharedRoleSystem
 {
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private IChatManager _chat = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
 
     public string? MindGetBriefing(EntityUid? mindId)
     {
@@ -68,7 +51,7 @@ public sealed partial class RoleSystem : SharedRoleSystem
         if (!Player.TryGetSessionById(mind.UserId, out var session))
             return;
 
-        if (!_proto.Resolve(mind.RoleType, out var proto))
+        if (!ProtoMan.Resolve(mind.RoleType, out var proto))
             return;
 
         var roleText = Loc.GetString(proto.Name);
@@ -86,43 +69,19 @@ public sealed partial class RoleSystem : SharedRoleSystem
             false,
             session.Channel);
     }
-}
 
-/// <summary>
-/// Event raised on the mind to get its briefing.
-/// Handlers can either replace or append to the briefing, whichever is more appropriate.
-/// </summary>
-[ByRefEvent]
-public sealed class GetBriefingEvent
-{
-    /// <summary>
-    /// The text that will be shown on the Character Screen
-    /// </summary>
-    public string? Briefing;
-
-    /// <summary>
-    /// The Mind to whose Mind Role Entities the briefing is sent to
-    /// </summary>
-    public Entity<MindComponent> Mind;
-
-    public GetBriefingEvent(string? briefing = null)
+    protected override void UpdateCharacterWindow(NetUserId? user, MindStringRepresentation mindString)
     {
-        Briefing = briefing;
-    }
-
-    /// <summary>
-    /// If there is no briefing, sets it to the string.
-    /// If there is a briefing, adds a new line to separate it from the appended string.
-    /// </summary>
-    public void Append(string text)
-    {
-        if (Briefing == null)
+        if (Player.TryGetSessionById(user, out var session))
         {
-            Briefing = text;
+            RaiseNetworkEvent(new MindRoleTypeChangedEvent(), session.Channel);
         }
         else
         {
-            Briefing += "\n" + text;
+            _adminLogger.Add(
+                LogType.Mind,
+                LogImpact.Medium,
+                $"The Character Window of {mindString} potentially did not update immediately : session error");
         }
     }
 }

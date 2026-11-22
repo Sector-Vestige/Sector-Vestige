@@ -1,0 +1,17 @@
+- type: entity
+  parent: [Incorporeal, BaseMob, MobNightVision]
+  id: DesynchronizedPocketMyo
+  name: a puddle
+  description: You're not sure what you're looking at.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Spectral
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 6
+    baseWalkSpeed: 4
+  - type: ContentEye
+    maxZoom: 1.44,1.44
+  - type: Eye
+    drawFov: false
+  - type: Visibility
+    layer: 2

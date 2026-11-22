@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
 using Content.Server.GameTicking;
 using Content.Shared.GameTicking;
@@ -19,7 +11,7 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
 {
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     public override void Initialize()
     {
@@ -83,9 +75,8 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
         _transform.SetCoordinates(args.Mob, xform.Coordinates);
 
         // Unpause the map if it's paused. We don't want people spawning on paused maps.
-        if(_mapManager.IsMapPaused(xform.MapID))
-            _mapManager.SetMapPaused(xform.MapID, false);
-
+        if (_map.IsPaused(xform.MapID))
+            _map.SetPaused(xform.MapID, false);
         return;
     }
 }

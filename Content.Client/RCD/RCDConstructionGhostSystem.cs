@@ -1,18 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Kyle Tyo <36606155+VerinSenpai@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Client._SV.RPD; //Sector Vestige: Used for displaying RPD pipe layers
 using Content.Shared.Input; //Sector Vestige: Used for displaying RPD pipe layers
 using Content.Client.Hands.Systems;
@@ -38,7 +23,6 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
 
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IPlacementManager _placementManager = default!;
-    [Dependency] private IPrototypeManager _protoManager = default!;
     [Dependency] private HandsSystem _hands = default!;
 
     private Direction _placementDirection = default;
@@ -71,10 +55,10 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
             var placerEntity = _placementManager.CurrentPermission?.MobUid;
 
             if (!TryComp<RCDComponent>(placerEntity, out var rcd) ||
-                string.IsNullOrEmpty(_protoManager.Index(rcd.ProtoId).FlippedPrototype))
+                string.IsNullOrEmpty(ProtoMan.Index(rcd.ProtoId).FlippedPrototype))
                 return false;
 
-            var prototype = _protoManager.Index(rcd.ProtoId);
+            var prototype = ProtoMan.Index(rcd.ProtoId);
 
             var useProto = rcd.UseFlippedPrototype && !string.IsNullOrEmpty(prototype.FlippedPrototype)
                 ? prototype.FlippedPrototype
@@ -119,7 +103,7 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
 
             return;
         }
-        var prototype = _protoManager.Index(rcd.ProtoId);
+        var prototype = ProtoMan.Index(rcd.ProtoId);
 
         // Update the direction the RCD prototype based on the placer direction
         if (_placementDirection != _placementManager.Direction)
@@ -148,7 +132,7 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
     {
     //If the entity that is being spawned is a pipe, use the AlignAtmosPipeLayers placement system
         PlacementInformation? newObjInfo = null;
-        switch (_protoManager.Index(rcd.ProtoId).Rotation)
+        switch (ProtoMan.Index(rcd.ProtoId).Rotation)
         {
             // Create a new placer
             case RcdRotation.Camera:
@@ -160,7 +144,7 @@ public sealed partial class RCDConstructionGhostSystem : EntitySystem
                     PlacementOption = PlacementMode,
                     EntityType = prototype,
                     Range = (int)Math.Ceiling(SharedInteractionSystem.InteractionRange),
-                    IsTile = (_protoManager.Index(rcd.ProtoId).Mode == RcdMode.ConstructTile),
+                    IsTile = (ProtoMan.Index(rcd.ProtoId).Mode == RcdMode.ConstructTile),
                     UseEditorContext = false,
                 };
                     break;

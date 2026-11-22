@@ -9,3 +9,10 @@
   dollPrototype: AppearanceSkeletonPerson
   skinColoration: TintedHues
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex:
+  - Skeleton
+  - Skeleton
+  - Skeleton
+  voices:
+  - Skeleton
+  - Skeleton

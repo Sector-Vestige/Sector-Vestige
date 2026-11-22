@@ -12,3 +12,9 @@
   sexes:
   - Unsexed
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex:
+  - UnisexArachnid
+  - UnisexArachnid
+  - UnisexArachnid
+  voices:
+  - UnisexArachnid

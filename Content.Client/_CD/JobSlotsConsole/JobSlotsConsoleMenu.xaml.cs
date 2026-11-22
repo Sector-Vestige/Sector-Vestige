@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Client.Administration.UI.CustomControls;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Roles;
@@ -67,10 +60,10 @@ public sealed partial class JobSlotsConsoleMenu : FancyWindow
         // Sort and add departments
         foreach (var (department, jobs) in jobsByDepartment.OrderBy(x => x.Key, DepartmentUIComparer.Instance))
         {
-            var sortedJobs = jobs
-                .OrderByDescending(x => x.proto.RealDisplayWeight)
-                .ThenBy(x => x.proto.LocalizedName)
-                .ToList();
+            // Sector Vestige: JobPrototype.RealDisplayWeight is gone; ordering now comes from the job-weight profile.
+            var sortedJobs = JobUIComparer.TryCreate(_protoManager, null, out var jobComparer)
+                ? jobs.OrderBy(x => x.proto, jobComparer).ThenBy(x => x.proto.LocalizedName).ToList()
+                : jobs.OrderBy(x => x.proto.LocalizedName).ToList();
 
             AddDepartmentSection(department, sortedJobs);
         }
@@ -99,7 +92,7 @@ public sealed partial class JobSlotsConsoleMenu : FancyWindow
 
         _departmentLabels[department.ID] = label;
         departmentBox.AddChild(label);
-        departmentBox.AddChild(new HSeparator { Margin = new Thickness(5, 3, 5, 5) });
+        departmentBox.AddChild(new Separator { StyleClasses = { "LowDivider" }, Margin = new Thickness(5, 3, 5, 5) });
 
         // Add job rows
         var jobRows = new List<JobRow>();

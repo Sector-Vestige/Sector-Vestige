@@ -1,15 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Physics;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Prototypes;
@@ -33,10 +21,15 @@ public sealed partial class RCDPrototype : IPrototype
     public RcdMode Mode { get; private set; } = RcdMode.Invalid;
 
     /// <summary>
-    /// The name associated with the prototype
+    /// The name associated with the prototype.
+    /// If null, uses the prototype's name, if it exists.
+    /// Defaults to the <c>generic-unknown-title</c> LocId otherwise.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="RCDSystem.GetPrototypeName"/> instead of using this directly.
+    /// </remarks>
     [DataField("name"), ViewVariables(VVAccess.ReadOnly)]
-    public string SetName { get; private set; } = "Unknown";
+    public LocId? SetName { get; private set; }
 
     /// <summary>
     /// The name of the radial container that this prototype will be listed under on the RCD menu
@@ -139,6 +132,14 @@ public sealed partial class RCDPrototype : IPrototype
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
     public RcdRotation Rotation { get; private set; } = RcdRotation.User;
+
+    /// <summary>
+    /// The relative order to use in the rotary menu.
+    /// Lower numbers appear before higher numbers, which appear before null.
+    /// Defaults to null.
+    /// </summary>
+    [DataField]
+    public int? MenuOrder { get; private set; }
 }
 
 public enum RcdMode : byte

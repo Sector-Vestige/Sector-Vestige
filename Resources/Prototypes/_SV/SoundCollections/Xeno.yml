@@ -1,0 +1,18 @@
+- type: soundCollection
+  id: MyoRoar
+  files:
+  - /Audio/_SV/Voice/Misc/myoqueen_roar1.ogg
+  - /Audio/_SV/Voice/Misc/myoqueen_roar2.ogg
+
+- type: soundCollection
+  id: MyoPassive
+  files:
+  - /Audio/_SV/Voice/Misc/myoqueen_passive1.ogg
+  - /Audio/_SV/Voice/Misc/myoqueen_passive2.ogg
+  - /Audio/_SV/Voice/Misc/myoqueen_passive3.ogg
+
+- type: soundCollection
+  id: MyoLeap
+  files:
+  - /Audio/_SV/Effects/Footsteps/myoqueen_leap1.ogg
+  - /Audio/_SV/Effects/Footsteps/myoqueen_leap2.ogg

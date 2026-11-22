@@ -1,0 +1,15 @@
+# A blank canvas objective for GMs to author in-round via the customobjective command.
+- type: entity
+  parent: BaseObjective
+  id: SVCustomObjective
+  name: custom objective
+  description: An objective handed down by the powers that be.
+  components:
+  - type: Objective
+    difficulty: 0
+    issuer: Unknown
+    unique: false
+    icon:
+      sprite: Objects/Misc/bureaucracy.rsi
+      state: paper
+  - type: CodeCondition

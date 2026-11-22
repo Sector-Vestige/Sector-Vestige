@@ -1,14 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Wizards Den contributors
-# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 qwerltaz <69696513+qwerltaz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Fildrance <fildrance@gmail.com>
-# SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-# SPDX-FileCopyrightText: 2025 pa.pecherskij <pa.pecherskij@interfax.ru>
-#
-# SPDX-License-Identifier: MIT
-
 # Operations
 - type: rcd
   id: Invalid   # Hidden prototype - do not add to RCDs
@@ -22,6 +11,7 @@
   mode: Deconstruct
   prototype: EffectRCDDeconstructPreview
   rotation: Camera
+  menuOrder: -1
 
 - type: rcd
   id: DeconstructLattice   # Hidden prototype - do not add to RCDs
@@ -41,7 +31,7 @@
   rotation: Camera
   fx: EffectRCDDeconstruct4
 
-# Flooring
+# region Walls and Flooring
 - type: rcd
   id: Plating
   name: rcd-component-plating
@@ -55,6 +45,7 @@
   rules:
     - CanBuildOnEmptyTile
   fx: EffectRCDConstruct1
+  menuOrder: 0
 
 - type: rcd
   id: FloorSteel
@@ -69,6 +60,7 @@
   rules:
     - CanBuildOnEmptyTile
   fx: EffectRCDConstruct1
+  menuOrder: 1
 
 - type: rcd
   id: Catwalk
@@ -84,8 +76,8 @@
     - IsCatwalk
   rotation: Fixed
   fx: EffectRCDConstruct1
+  menuOrder: 2
 
-# Walls
 - type: rcd
   id: WallSolid
   category: WallsAndFlooring
@@ -97,7 +89,10 @@
   collisionMask: FullTileMask
   rotation: Fixed
   fx: EffectRCDConstruct2
+  menuOrder: 3
+# endregion Walls and Flooring
 
+# region Windows and Grilles
 - type: rcd
   id: Grille
   category: WindowsAndGrilles
@@ -109,8 +104,8 @@
   collisionMask: Impassable
   rotation: Fixed
   fx: EffectRCDConstruct2
+  menuOrder: 0
 
-# Windows
 - type: rcd
   id: Window
   category: WindowsAndGrilles
@@ -124,6 +119,22 @@
     - IsWindow
   rotation: Fixed
   fx: EffectRCDConstruct2
+  menuOrder: 1
+
+- type: rcd
+  id: ReinforcedWindow
+  category: WindowsAndGrilles
+  sprite: /Textures/Interface/Radial/RCD/window_reinforced.png
+  mode: ConstructObject
+  prototype: ReinforcedWindow
+  cost: 4
+  delay: 3
+  collisionMask: Impassable
+  rules:
+    - IsWindow
+  rotation: User
+  fx: EffectRCDConstruct3
+  menuOrder: 2
 
 - type: rcd
   id: WindowDirectional
@@ -140,20 +151,7 @@
   rotation: User
   fx: EffectRCDConstruct1
   allowMultiDirection: true
-
-- type: rcd
-  id: ReinforcedWindow
-  category: WindowsAndGrilles
-  sprite: /Textures/Interface/Radial/RCD/window_reinforced.png
-  mode: ConstructObject
-  prototype: ReinforcedWindow
-  cost: 4
-  delay: 3
-  collisionMask: Impassable
-  rules:
-    - IsWindow
-  rotation: User
-  fx: EffectRCDConstruct3
+  menuOrder: 3
 
 - type: rcd
   id: WindowReinforcedDirectional
@@ -170,8 +168,10 @@
   rotation: User
   fx: EffectRCDConstruct2
   allowMultiDirection: true
+  menuOrder: 4
+# endregion Windows and Grilles
 
-# Airlocks
+# region Airlocks
 - type: rcd
   id: Airlock
   category: Airlocks
@@ -183,6 +183,7 @@
   collisionMask: FullTileMask
   rotation: Camera
   fx: EffectRCDConstruct4
+  menuOrder: 0
 
 - type: rcd
   id: AirlockGlass
@@ -195,6 +196,7 @@
   collisionMask: FullTileMask
   rotation: Camera
   fx: EffectRCDConstruct4
+  menuOrder: 1
 
 - type: rcd
   id: Firelock
@@ -207,8 +209,10 @@
   collisionMask: FullTileMask
   rotation: Camera
   fx: EffectRCDConstruct3
+  menuOrder: 2
+# endregion Airlocks
 
-# Lighting
+# region Lighting
 - type: rcd
   id: TubeLight
   category: Lighting
@@ -222,6 +226,7 @@
   rotation: User
   fx: EffectRCDConstruct1
   allowMultiDirection: true
+  menuOrder: 0
 
 - type: rcd
   id: BulbLight
@@ -236,8 +241,10 @@
   rotation: User
   fx: EffectRCDConstruct1
   allowMultiDirection: true
+  menuOrder: 1
+# endregion Lighting
 
-# Electrical
+# region Electrical
 - type: rcd
   id: LVCable
   category: Electrical
@@ -250,6 +257,7 @@
   - MustBuildOnSubfloor
   rotation: Fixed
   fx: EffectRCDConstruct0
+  menuOrder: 0
 
 - type: rcd
   id: MVCable
@@ -263,6 +271,7 @@
   - MustBuildOnSubfloor
   rotation: Fixed
   fx: EffectRCDConstruct0
+  menuOrder: 1
 
 - type: rcd
   id: HVCable
@@ -276,6 +285,7 @@
   - MustBuildOnSubfloor
   rotation: Fixed
   fx: EffectRCDConstruct0
+  menuOrder: 2
 
 - type: rcd
   id: CableTerminal
@@ -288,3 +298,5 @@
   collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
+  menuOrder: 3
+# endregion Electrical

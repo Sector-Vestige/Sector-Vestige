@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
-# SPDX-FileCopyrightText: 2026 riv <234791249+qu4drivium@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 # Stimulants - Synthetic
 
 - type: reagent
@@ -102,9 +94,11 @@
         component: IgnoreSlowOnDamage
         time: 3 # slightly worse then Epi
       - !type:ResetNarcolepsy
-      - !type:SatiateHunger
+      - !type:Satiate
+        satiationType: Hunger
         factor: 0.75
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 0.75
       - !type:HealthChange
         damage:
@@ -172,7 +166,8 @@
     Bloodstream:
       metabolismRate : 0.04 # Technically a narcotic, it takes a while for the body to process the toxins.
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
       - !type:PopupMessage
         type: Local

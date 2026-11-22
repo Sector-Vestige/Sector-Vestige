@@ -1,12 +1,5 @@
-// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Server.Station.Systems;
-using Content.Server.StationRecords.Systems;
 using Content.Shared._SV.Delivery;
 using Content.Shared.Delivery;
 using Content.Shared.Examine;
@@ -15,9 +8,12 @@ using Content.Shared.Labels.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.StationRecords;
+using Content.Shared.StationRecords.Components;
+using Content.Shared.StationRecords.Systems;
 using Content.Shared.Storage;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._SV.Delivery;
 
@@ -123,9 +119,9 @@ public sealed partial class AddressableDeliverySystem : EntitySystem
         var crew = new Dictionary<uint, string>();
 
         var station = _station.GetOwningStation(ent.Owner);
-        if (TryComp<StationRecordsComponent>(station, out var records))
+        if (HasComp<StationRecordsComponent>(station))
         {
-            foreach (var (id, record) in _records.GetRecordsOfType<GeneralStationRecord>(station.Value, records))
+            foreach (var (id, record) in _records.GetRecordsOfType<GeneralStationRecord>(station.Value))
             {
                 crew[id] = Loc.GetString("addressable-delivery-crew-entry",
                     ("name", record.Name),

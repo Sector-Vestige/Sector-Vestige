@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2022 theashtronaut <112137107+theashtronaut@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 qwerltaz <69696513+qwerltaz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Atmos;
@@ -25,7 +15,7 @@ using Direction = Robust.Shared.Maths.Direction;
 namespace Content.Client.Atmos.UI
 {
     [GenerateTypedNameReferences]
-    public sealed partial class GasAnalyzerWindow : DefaultWindow
+    public sealed partial class GasAnalyzerWindow : FancyWindow
     {
         private readonly SharedAtmosphereSystem _atmosphere;
         private NetEntity _currentEntity = NetEntity.Invalid;
@@ -301,10 +291,12 @@ namespace Content.Client.Atmos.UI
             });
             // This is the gas bar thingy
             var height = 30;
-            var gasBar = new SplitBar
+            var gasBar = new SegmentedBarChart
             {
+                StyleClasses = { SegmentedBarChart.StyleClassClassicSplitBar },
                 MinHeight = height,
-                MinBarSize = new Vector2(12, 0)
+                MinEntryWidth = 12,
+                Gap = 3
             };
             // Separator
             dataContainer.AddChild(new Control
@@ -334,10 +326,12 @@ namespace Content.Client.Atmos.UI
             {
                 var gasEntry = gasMix.Gases[j];
                 var gasProto = _atmosphere.GetGas(gasEntry.Gas);
+                var localizedName = Loc.GetString(gasProto.Name);
+
                 // Add to the table
                 tableKey.AddChild(new Label
                 {
-                    Text = Loc.GetString(gasProto.Name)
+                    Text = localizedName
                 });
                 tableVal.AddChild(new Label
                 {
@@ -352,11 +346,13 @@ namespace Content.Client.Atmos.UI
                     Align = Label.AlignMode.Right
                 });
 
-                // Add to the gas bar //TODO: highlight the currently hover one
-                gasBar.AddEntry(gasEntry.Amount, gasProto.Color, tooltip: Loc.GetString("gas-analyzer-window-molarity-percentage-text",
-                    ("gasName", Loc.GetString(gasProto.Name)),
+                // Add to the gas bar
+                var tooltip = Loc.GetString("gas-analyzer-window-molarity-percentage-text",
+                    ("gasName", localizedName),
                     ("amount", $"{gasEntry.Amount:0.##}"),
-                    ("percentage", $"{(gasEntry.Amount / totalGasAmount * 100):0.#}")));
+                    ("percentage", $"{(gasEntry.Amount / totalGasAmount * 100):0.#}"));
+
+                gasBar.SetEntry(gasProto.Name, gasEntry.Amount, gasProto.Color, text: localizedName, tooltip: tooltip);
             }
 
             dataContainer.AddChild(gasBar);

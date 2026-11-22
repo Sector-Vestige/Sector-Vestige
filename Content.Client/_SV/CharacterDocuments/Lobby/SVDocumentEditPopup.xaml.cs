@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._SV.CharacterDocuments;
@@ -18,8 +12,8 @@ namespace Content.Client._SV.CharacterDocuments.Lobby;
 public sealed partial class SVDocumentEditPopup : FancyWindow
 {
     public const int TitleMaxLen = 64;
-    public const int ContentMaxLen = 8192;
-
+    // 16-06-2025 - 18:26: Noone is gonna hit 16k -VI
+    public const int ContentMaxLen = 16384;
     private bool _isValid;
     private DocumentType _docType;
 

@@ -105,7 +105,8 @@ public sealed partial class AdminCharacterDocumentsEui : BaseEui
     }
 
     private const int TitleMaxLen = 256;
-    private const int ContentMaxLen = 8192;
+    // 16-06-2025 - 18:26: Noone is gonna hit 16k -VI
+    public const int ContentMaxLen = 16384;
 
     private async Task ApplyEditAsync(int profileId, CharacterDocument incoming)
     {

@@ -281,7 +281,7 @@
   description: bounty-description-percussion
   entries:
   - name: bounty-item-percussion
-    amount: 4
+    amount: 5 # Sector Vestige change, was 4: CrateFunInstrumentsRandom can roll 4 percussion for 2000 and cash them in for 2500
     whitelist:
       tags:
       - PercussionInstrument

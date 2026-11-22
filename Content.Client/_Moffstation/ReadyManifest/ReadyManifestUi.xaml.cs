@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Moffstation contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
-// SPDX-FileCopyrightText: 2025 vestige-bot <vestige-bot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
 using Content.Client._Moffstation.ReadyManifest.UI;
 using Content.Shared.Roles;
@@ -58,7 +50,11 @@ public sealed partial class ReadyManifestUi : DefaultWindow
             ReadyManifestListing.AddChild(category);
             var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
                 .Where(job => job.SetPreference)
-                .Order(JobUIComparer.Instance);
+                .ToList();
+
+            // Sector Vestige: JobUIComparer is now driven by a job-weight profile; retain source order without one.
+            if (JobUIComparer.TryCreate(_prototypeManager, null, out var jobComparer))
+                jobs.Sort(jobComparer);
 
             foreach (var job in jobs)
             {

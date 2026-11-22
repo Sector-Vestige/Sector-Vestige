@@ -1,32 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2021 Spartak <artak10t@gmail.com>
-// SPDX-FileCopyrightText: 2022 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 Illiux <newoutlook@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Linus Wacker <70486856+SirDragooon@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DEATHB4DEFEAT <77995199+DEATHB4DEFEAT@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 PrPleGoo <PrPleGoo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Ygg01 <y.laughing.man.y@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Intoxicating-Innocence <188202277+Intoxicating-Innocence@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Brandon Li <48413902+aspiringLich@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Dora <27211909+catdotjs@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 abadaba695 <spacestation13thingy@gmail.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Chemistry;
@@ -40,7 +11,6 @@ using Robust.Shared.Utility;
 using System.Linq;
 using System.Numerics;
 using Content.Shared.FixedPoint;
-using Robust.Client.Graphics;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 using Robust.Client.GameObjects;
 
@@ -275,7 +245,7 @@ namespace Content.Client.Chemistry.UI
             BuildContainerUI(InputContainerInfo, state.InputContainerInfo, true);
             BuildContainerUI(OutputContainerInfo, state.OutputContainerInfo, false);
 
-            BufferInfo.Children.Clear();
+            BufferInfo.ClearDisplay();
 
             // This has to happen here due to people possibly
             // setting sorting before putting any chemicals
@@ -292,7 +262,7 @@ namespace Content.Client.Chemistry.UI
 
             if (!state.BufferReagents.Any())
             {
-                BufferInfo.Children.Add(new Label { Text = Loc.GetString("chem-master-window-buffer-empty-text") });
+                BufferInfo.ShowEmptyMessage();
 
                 return;
             }
@@ -307,7 +277,7 @@ namespace Content.Client.Chemistry.UI
             bufferHBox.AddChild(bufferLabel);
             var bufferVol = new Label
             {
-                Text = $"{state.BufferCurrentVolume}u",
+                Text = $"{state.BufferCurrentVolume}{Loc.GetString("units-u")}",
                 StyleClasses = { StyleClass.LabelWeak }
             };
             bufferHBox.AddChild(bufferVol);
@@ -315,14 +285,13 @@ namespace Content.Client.Chemistry.UI
             // This sets up the needed data for sorting later in a list
             // Its done this way to not repeat having to use same code twice (once for sorting
             // and once for displaying)
-            var reagentList = new List<(ReagentId reagentId, string name, Color color, FixedPoint2 quantity)>();
+            var reagentList = new List<(ReagentId reagentId, string name, FixedPoint2 quantity)>();
             foreach (var (reagent, quantity) in state.BufferReagents)
             {
                 var reagentId = reagent;
                 _prototypeManager.TryIndex(reagentId.Prototype, out ReagentPrototype? proto);
                 var name = proto?.LocalizedName ?? Loc.GetString("chem-master-window-unknown-reagent-text");
-                var reagentColor = proto?.SubstanceColor ?? default(Color);
-                reagentList.Add(new (reagentId, name, reagentColor, quantity));
+                reagentList.Add(new (reagentId, name, quantity));
             }
 
             // We sort here since we need sorted list to be filled first.
@@ -346,24 +315,20 @@ namespace Content.Client.Chemistry.UI
                     break;
             }
 
-            // initialises rowCount to allow for striped rows
-            var rowCount = 0;
             foreach (var reagent in reagentList)
             {
-                BufferInfo.Children.Add(BuildReagentRow(reagent.color, rowCount++, reagent.name, reagent.reagentId, reagent.quantity, true, true));
+                BufferInfo.AddReagent(reagent.reagentId, reagent.quantity,
+                    CreateReagentTransferButtons(reagent.reagentId, true, true));
             }
         }
 
-        private void BuildContainerUI(Control control, ContainerInfo? info, bool addReagentButtons)
+        private void BuildContainerUI(ReagentDisplayControl control, ContainerInfo? info, bool addReagentButtons)
         {
-            control.Children.Clear();
+            control.ClearDisplay();
 
             if (info is null)
             {
-                control.Children.Add(new Label
-                {
-                    Text = Loc.GetString("chem-master-window-no-container-loaded-text")
-                });
+                control.ShowEmptyMessage();
                 return;
             }
 
@@ -381,15 +346,12 @@ namespace Content.Client.Chemistry.UI
                     }
                 }
             });
-            // Initialises rowCount to allow for striped rows
-            var rowCount = 0;
-
             // Handle entities if they are not null
             if (info.Entities != null)
             {
                 foreach (var (id, quantity) in info.Entities.Select(x => (x.Id, x.Quantity)))
                 {
-                    control.Children.Add(BuildReagentRow(default(Color), rowCount++, id, default(ReagentId), quantity, false, addReagentButtons));
+                    control.AddEntity(id, quantity);
                 }
             }
 
@@ -398,71 +360,10 @@ namespace Content.Client.Chemistry.UI
             {
                 foreach (var reagent in info.Reagents)
                 {
-                    _prototypeManager.TryIndex(reagent.Reagent.Prototype, out ReagentPrototype? proto);
-                    var name = proto?.LocalizedName ?? Loc.GetString("chem-master-window-unknown-reagent-text");
-                    var reagentColor = proto?.SubstanceColor ?? default(Color);
-
-                    control.Children.Add(BuildReagentRow(reagentColor, rowCount++, name, reagent.Reagent, reagent.Quantity, false, addReagentButtons));
+                    control.AddReagent(reagent.Reagent, reagent.Quantity,
+                        CreateReagentTransferButtons(reagent.Reagent, false, addReagentButtons));
                 }
             }
-        }
-        /// <summary>
-        /// Take reagent/entity data and present rows, labels, and buttons appropriately. todo sprites?
-        /// </summary>
-        private Control BuildReagentRow(Color reagentColor, int rowCount, string name, ReagentId reagent, FixedPoint2 quantity, bool isBuffer, bool addReagentButtons)
-        {
-            //Colors rows and sets fallback for reagentcolor to the same as background, this will hide colorPanel for entities hopefully
-            var rowColor1 = Color.FromHex("#1B1B1E");
-            var rowColor2 = Color.FromHex("#202025");
-            var currentRowColor = (rowCount % 2 == 1) ? rowColor1 : rowColor2;
-            if ((reagentColor == default(Color))|(!addReagentButtons))
-            {
-                reagentColor = currentRowColor;
-            }
-            //this calls the separated button builder, and stores the return to render after labels
-            var reagentButtonConstructors = CreateReagentTransferButtons(reagent, isBuffer, addReagentButtons);
-
-            // Create the row layout with the color panel
-            var rowContainer = new BoxContainer
-            {
-                Orientation = LayoutOrientation.Horizontal,
-                Children =
-                {
-                    new Label { Text = $"{name}: " },
-                    new Label
-                    {
-                        Text = $"{quantity}u",
-                        StyleClasses = { StyleClass.LabelWeak }
-                    },
-
-                    // Padding
-                    new Control { HorizontalExpand = true },
-                    // Colored panels for reagents
-                    new PanelContainer
-                    {
-                        Name = "colorPanel",
-                        VerticalExpand = true,
-                        MinWidth = 4,
-                        PanelOverride = new StyleBoxFlat
-                        {
-                            BackgroundColor = reagentColor
-                        },
-                        Margin = new Thickness(0, 1)
-                    }
-                }
-            };
-
-            // Add the reagent buttons after the color panel
-            foreach (var reagentTransferButton in reagentButtonConstructors)
-            {
-                rowContainer.AddChild(reagentTransferButton);
-            }
-            //Apply panencontainer to allow for striped rows
-            return new PanelContainer
-            {
-                PanelOverride = new StyleBoxFlat(currentRowColor),
-                Children = { rowContainer }
-            };
         }
 
         public string LabelLine

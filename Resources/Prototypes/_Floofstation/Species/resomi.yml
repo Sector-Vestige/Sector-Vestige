@@ -12,3 +12,10 @@
   - Male
   - Female
   defaultHeight: 0.8 # SV Height system
+  defaultSoundsBySex: # Sector Vestige: voice comes from the species prototype now
+  - MaleAvaliEmote
+  - FemaleAvaliEmote
+  - MaleAvaliEmote
+  voices:
+  - MaleAvaliEmote
+  - FemaleAvaliEmote

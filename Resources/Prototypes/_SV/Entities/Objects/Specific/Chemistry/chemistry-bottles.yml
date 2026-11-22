@@ -1,16 +1,10 @@
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 Afrokada <pchcraft@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   id: ChemistryBottleStubantazine
   suffix: stubantazine
   parent: BaseChemistryBottleFilled
   components:
   - type: Label
-    currentLabel: stubantazine
+    localizedLabel: reagent-name-stubantazine
   - type: Solution
     solution:
       maxVol: 30
@@ -24,7 +18,7 @@
   parent: BaseChemistryBottleFilled
   components:
   - type: Label
-    currentLabel: soretizone
+    localizedLabel: reagent-name-soretizone
   - type: Solution
     solution:
       maxVol: 30

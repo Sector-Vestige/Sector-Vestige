@@ -27,7 +27,6 @@ namespace Content.Server.Polymorph.Systems;
 public sealed partial class PolymorphSystem : EntitySystem
 {
     [Dependency] private SharedMapSystem _map = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
     [Dependency] private ActionsSystem _actions = default!;
     [Dependency] private AudioSystem _audio = default!;
@@ -44,7 +43,8 @@ public sealed partial class PolymorphSystem : EntitySystem
     [Dependency] private SharedMindSystem _mindSystem = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
 
-    private const string RevertPolymorphId = "ActionRevertPolymorph";
+    private static readonly EntProtoId RevertPolymorphId = "ActionRevertPolymorph";
+    private static readonly EntProtoId RevertPolymorphConfirmId = "ActionRevertPolymorphConfirm";
 
     public override void Initialize()
     {
@@ -76,6 +76,17 @@ public sealed partial class PolymorphSystem : EntitySystem
                 continue;
             }
 
+            // SV - Begin: Polymorph exit effect refactor
+            // Checks to see if the timestamp that is set in TryRevertAfterTimerAndPlayEffect has passed, and only revert after that event.
+            // Does not fire if the default value, TimeSpan.Zero is set. Even a time of now should have a timestamp to when the event should follow, AKA CurTime
+            if (_gameTiming.CurTime >= comp.Configuration.TimeTillRevert &&
+                comp.Configuration.TimeTillRevert != TimeSpan.Zero)
+            {
+                Revert((uid, comp));
+                continue;
+            }
+            // SV - End: Polymorph exit effect refactor
+
             if (!TryComp<MobStateComponent>(uid, out var mob))
                 continue;
 
@@ -104,16 +115,22 @@ public sealed partial class PolymorphSystem : EntitySystem
         if (component.Configuration.Forced)
             return;
 
-        if (_actions.AddAction(uid, ref component.Action, out var action, RevertPolymorphId))
+        if (!_actions.AddAction(
+            uid,
+            ref component.Action,
+            out var action,
+            component.Configuration.RevertConfirmationPopup ? RevertPolymorphConfirmId : RevertPolymorphId))
         {
-            _actions.SetEntityIcon((component.Action.Value, action), component.Parent);
-            _actions.SetUseDelay(component.Action.Value, TimeSpan.FromSeconds(component.Configuration.Delay));
+            return;
         }
+
+        _actions.SetEntityIcon((component.Action.Value, action), component.Parent);
+        _actions.SetUseDelay(component.Action.Value, TimeSpan.FromSeconds(component.Configuration.Delay));
     }
 
     private void OnPolymorphActionEvent(Entity<PolymorphableComponent> ent, ref PolymorphActionEvent args)
     {
-        if (!_proto.Resolve(args.ProtoId, out var prototype) || args.Handled)
+        if (!ProtoMan.Resolve(args.ProtoId, out var prototype) || args.Handled)
             return;
 
         PolymorphEntity(ent, prototype.Configuration);
@@ -124,7 +141,7 @@ public sealed partial class PolymorphSystem : EntitySystem
     private void OnRevertPolymorphActionEvent(Entity<PolymorphedEntityComponent> ent,
         ref RevertPolymorphActionEvent args)
     {
-        Revert((ent, ent));
+        TryRevertAfterTimerAndPlayEffect((ent, ent)); //SV: Polymorph effect refactor
     }
 
     private void OnBeforeToolRefined(Entity<PolymorphedEntityComponent> ent, ref BeforeToolRefinedEvent args)
@@ -133,7 +150,7 @@ public sealed partial class PolymorphSystem : EntitySystem
             return;
 
         args.Cancelled = true;
-        Revert((ent, ent));
+        TryRevertAfterTimerAndPlayEffect((ent, ent)); //SV: Polymorph effect refactor
     }
 
     /// <summary>
@@ -168,7 +185,7 @@ public sealed partial class PolymorphSystem : EntitySystem
     /// <param name="protoId">The id of the polymorph prototype</param>
     public EntityUid? PolymorphEntity(EntityUid uid, ProtoId<PolymorphPrototype> protoId)
     {
-        var config = _proto.Index(protoId).Configuration;
+        var config = ProtoMan.Index(protoId).Configuration;
         return PolymorphEntity(uid, config);
     }
 
@@ -311,8 +328,9 @@ public sealed partial class PolymorphSystem : EntitySystem
         if (TerminatingOrDeleted(uidXform.ParentUid))
             return null;
 
-        if (component.Configuration.ExitPolymorphSound != null)
-            _audio.PlayPvs(component.Configuration.ExitPolymorphSound, uidXform.Coordinates);
+        // SV - Disabled as is handled in TryRevertAfterTimerAndPlayEffect
+        // if (component.Configuration.ExitPolymorphSound != null)
+        //     _audio.PlayPvs(component.Configuration.ExitPolymorphSound, uidXform.Coordinates);
 
         _transform.SetParent(parent, parentXform, uidXform.ParentUid);
         _transform.SetCoordinates(parent, parentXform, uidXform.Coordinates, uidXform.LocalRotation);
@@ -365,9 +383,16 @@ public sealed partial class PolymorphSystem : EntitySystem
         var ev = new PolymorphedEvent(uid, parent, true);
         RaiseLocalEvent(uid, ref ev);
 
+        //SV: Begin - Makes it so that we can use a different effect as an effect exit, and that it has an exit time animation
         // visual effect spawn
-        if (component.Configuration.EffectProto != null)
-            SpawnAttachedTo(component.Configuration.EffectProto, parent.ToCoordinates());
+        // Handled in TryRevertAfterTimerAndPlayEffect
+        // if (component.Configuration.EffectProto != null)
+        //     SpawnAttachedTo(component.Configuration.EffectProto, parent.ToCoordinates());
+
+        //Reset the timespan to zero so that we can re-use this
+        //I hate this but *shrugs*
+        component.Configuration.TimeTillRevert = TimeSpan.Zero;
+        //SV: End
 
         if (component.Configuration.ExitPolymorphPopup != null)
             _popup.PopupEntity(Loc.GetString(component.Configuration.ExitPolymorphPopup,
@@ -390,14 +415,20 @@ public sealed partial class PolymorphSystem : EntitySystem
         if (target.Comp.PolymorphActions.ContainsKey(id))
             return;
 
-        if (!_proto.Resolve(id, out var polyProto))
+        if (!ProtoMan.Resolve(id, out var polyProto))
             return;
 
-        var entProto = _proto.Index(polyProto.Configuration.Entity);
+        var entProto = ProtoMan.Index(polyProto.Configuration.Entity);
 
         EntityUid? actionId = default!;
-        if (!_actions.AddAction(target, ref actionId, RevertPolymorphId, target))
+        if (!_actions.AddAction(
+            target,
+            ref actionId,
+            polyProto.Configuration.RevertConfirmationPopup ? RevertPolymorphConfirmId : RevertPolymorphId,
+            target))
+        {
             return;
+        }
 
         target.Comp.PolymorphActions.Add(id, actionId.Value);
 
@@ -405,7 +436,7 @@ public sealed partial class PolymorphSystem : EntitySystem
         _metaData.SetEntityName(actionId.Value, Loc.GetString("polymorph-self-action-name", ("target", entProto.Name)), metaDataCache);
         _metaData.SetEntityDescription(actionId.Value, Loc.GetString("polymorph-self-action-description", ("target", entProto.Name)), metaDataCache);
 
-        if (_actions.GetAction(actionId) is not {} action)
+        if (_actions.GetAction(actionId) is not { } action)
             return;
 
         _actions.SetIcon((action, action.Comp), new SpriteSpecifier.EntityPrototype(polyProto.Configuration.Entity));
@@ -414,10 +445,75 @@ public sealed partial class PolymorphSystem : EntitySystem
 
     public void RemovePolymorphAction(ProtoId<PolymorphPrototype> id, Entity<PolymorphableComponent> target)
     {
-        if (target.Comp.PolymorphActions is not {} actions)
+        if (target.Comp.PolymorphActions is not { } actions)
             return;
 
         if (actions.TryGetValue(id, out var action))
             _actions.RemoveAction(target.Owner, action);
+    }
+
+    /// <summary>
+    /// Attempts to add provided value to duration of polymorph.
+    /// Returns false if entity is not polymorphed or has no duration limit, true otherwise.
+    /// </summary>
+    public bool TryAddDuration(Entity<PolymorphedEntityComponent?> ent, int duration)
+    {
+        if (duration == 0)
+            return true;
+
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        if (ent.Comp.Configuration.Duration == null)
+            return false;
+
+        ent.Comp.Configuration.Duration += duration;
+        return true;
+    }
+
+    /// <summary>
+    /// SV Helper function
+    /// Set a timer to revert after a time specified in the polymorph configuration component
+    /// Also where we move the Effects to play
+    /// I wonder what other functions I'll cram into here
+    /// </summary>
+    /// <param name="uid">The entityuid of the entity being reverted</param>
+    public void TryRevertAfterTimerAndPlayEffect(Entity<PolymorphedEntityComponent?> ent)
+    {
+        var (uid, component) = ent;
+        if (!Resolve(ent, ref component))
+            return;
+
+        if (Deleted(uid))
+            return;
+
+        if (component.Parent is not { } parent)
+            return;
+
+        if (Deleted(parent))
+            return;
+
+        EntityUid? spawnedEnt = null;
+
+        //Configure how long the delay should be before reverting the player. Should be now for 99% of times
+        component.Configuration.TimeTillRevert = _gameTiming.CurTime + TimeSpan.FromSeconds(component.Configuration.RevertDelay);
+
+        if (!_transform.TryGetMapOrGridCoordinates(uid, out var coordinates))
+            return;
+
+        //Spawn effect now, so that we can wait to see if we should wait before reverting the player
+        if (component.Configuration.RevertEffectProto != null)
+            spawnedEnt = PredictedSpawnAtPosition(component.Configuration.RevertEffectProto, coordinates.Value);
+
+        // Attach the effect to the player. We can't attach the player to the entity else when the entity deletes it deletes the player
+        // looks mildly jank, buuuut it works.
+        // Only attach to the player if there is a delay, else it attaches to the polymorph and gets deleted.
+        // It's that, or we attach the effect to the parent (AKA the player) instead of the UID (the polymorph) but this fucks with things when you are in polymorph and have a polymorph delay as it spawns on the parent which is in fuckoff nowhereville
+        if (spawnedEnt != null &&  component.Configuration.RevertDelay > 0)
+            _transform.SetParent(spawnedEnt.Value, uid);
+
+        //play that funky music white boy
+        if (component.Configuration.ExitPolymorphSound != null)
+             _audio.PlayPvs(component.Configuration.ExitPolymorphSound, coordinates.Value);
     }
 }

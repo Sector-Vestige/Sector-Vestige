@@ -1,21 +1,13 @@
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 purpleskittleo <thenewredgd@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - files: [
-          "LOCKBOX_dreamseq_4m0s.ogg",
           "AYANIAN_shuttleintro_5m30s.ogg",
-          "STATION_singuloose_2m7s.ogg",
-          "CARNE_transform_3m37s.ogg",
+          "LOCKBOX_dreamseq_4m0s.ogg",
           "MYO_1_afterhours_38s.ogg",
           "MYO_1_diner_2m28s.ogg",
           "MYO_1_disfigure_3m37s.ogg",
-          "MYO_2_infection.ogg"
+          "MYO_2_infection.ogg",
+          "SITE_escape_2m10s.ogg",
+          "STATION_singuloose_2m7s.ogg",
           ]
   license: "CC-BY-4.0"
   copyright: "Created by purpleskittleo"
-  source: "https://www.youtube.com/@purpleskittleo"
+  source: "https://open.spotify.com/artist/0rvC5u6wW6SMrWQXezSHhb"

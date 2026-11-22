@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -24,9 +23,8 @@ using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
+using Content.Server._SV.Sponsors; // SV changes - Sponsor/patron entitlement manager
 using Content.Shared.CCVar;
-using Content.Shared.FeedbackSystem;
-using Content.Shared.Kitchen;
 using Content.Shared.Localizations;
 using Robust.Server;
 using Robust.Server.ServerStatus;
@@ -75,12 +73,12 @@ namespace Content.Server.Entry
         [Dependency] private MultiServerKickManager _multiServerKick = default!;
         [Dependency] private PlayTimeTrackingManager _playTimeTracking = default!;
         [Dependency] private PlayerRateLimitManager _rateLimit = default!;
-        [Dependency] private RecipeManager _recipe = default!;
         [Dependency] private RulesManager _rules = default!;
         [Dependency] private ServerApi _serverApi = default!;
         [Dependency] private ServerInfoManager _serverInfo = default!;
         [Dependency] private ServerUpdateManager _updateManager = default!;
         [Dependency] private ServerFeedbackManager _feedbackManager = null!;
+        [Dependency] private SponsorManager _sponsors = default!; // SV changes - Sponsor/patron entitlement manager
 
         public override void PreInit()
         {
@@ -135,6 +133,7 @@ namespace Content.Server.Entry
             _updateManager.Initialize();
             _playTimeTracking.Initialize();
             _watchlistWebhookManager.Initialize();
+            _sponsors.Initialize(); // SV changes - Sponsor/patron entitlement manager
             _job.Initialize();
             _rateLimit.Initialize();
         }
@@ -159,7 +158,6 @@ namespace Content.Server.Entry
                 return;
             }
 
-            _recipe.Initialize();
             _admin.Initialize();
             _afk.Initialize();
             _rules.Initialize();
@@ -167,7 +165,7 @@ namespace Content.Server.Entry
             _discordChatLink.Initialize();
             _euiManager.Initialize();
             _gameMap.Initialize();
-            _entSys.GetEntitySystem<GameTicker>().PostInitialize();
+            _entSys.GetEntitySystem<ServerGameTicker>().PostInitialize();
             _ban.Initialize();
             _connection.PostInit();
             _multiServerKick.Initialize();
@@ -192,6 +190,7 @@ namespace Content.Server.Entry
                     _updateManager.Update();
                     _playTimeTracking.Update();
                     _watchlistWebhookManager.Update();
+                    _sponsors.Update(); // SV changes - Sponsor/patron entitlement manager
                     _connection.Update();
                     break;
             }

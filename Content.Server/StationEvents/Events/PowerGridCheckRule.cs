@@ -1,18 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Threading;
 using Content.Server._Umbra.Power.Components; //Umbra-APCs explode when toggled on during power outages
 using Content.Server.Power.Components;
@@ -21,97 +6,168 @@ using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
 using JetBrains.Annotations;
-using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using Timer = Robust.Shared.Timing.Timer;
-using Robust.Shared.Random;
 
-namespace Content.Server.StationEvents.Events
+namespace Content.Server.StationEvents.Events;
+
+/// <summary>
+/// Handler for events that force a number of APCs off on a station for a period of time.
+/// </summary>
+/// <seealso cref="PowerGridCheckRuleComponent"/>
+[UsedImplicitly]
+public sealed partial class PowerGridCheckRule : StationEventSystem<PowerGridCheckRuleComponent>
 {
-    [UsedImplicitly]
-    public sealed partial class PowerGridCheckRule : StationEventSystem<PowerGridCheckRuleComponent>
+    [Dependency] private ApcSystem _apc = default!;
+
+    protected override void Started(Entity<PowerGridCheckRuleComponent, GameRuleComponent> ent, ref GameRuleStartedEvent args)
     {
-        [Dependency] private ApcSystem _apcSystem = default!;
+        base.Started(ent, ref args);
 
-        protected override void Started(EntityUid uid, PowerGridCheckRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
+        var apcs = Station.GetEntitiesWithComponentOnStation<ApcComponent>(true, out var chosenStation);
+        if (chosenStation is null)
+            return;
+
+        var powerGridCheck = ent.Comp1;
+
+        powerGridCheck.AffectedStation = chosenStation.Value;
+        var largestGrid = Station.GetLargestGrid(chosenStation.Value.AsNullable());
+        if (largestGrid is null)
+            return;
+
+        foreach (var apcUid in apcs)
         {
-            base.Started(uid, component, gameRule, args);
+            if (!apcUid.Comp.MainBreakerEnabled)
+                continue;
 
-            if (!TryGetRandomStation(out var chosenStation))
-                return;
+            var apcTransform = Transform(apcUid);
+            if (apcTransform.GridUid != largestGrid)
+                continue;
 
-            component.AffectedStation = chosenStation.Value;
-
-            var query = AllEntityQuery<ApcComponent, TransformComponent>();
-            while (query.MoveNext(out var apcUid ,out var apc, out var transform))
-            {
-                if (apc.MainBreakerEnabled && CompOrNull<StationMemberComponent>(transform.GridUid)?.Station == chosenStation)
-                    component.Powered.Add(apcUid);
-            }
-
-            RobustRandom.Shuffle(component.Powered);
-
-            component.NumberPerSecond = Math.Max(1, (int)(component.Powered.Count / component.SecondsUntilOff)); // Number of APCs to turn off every second. At least one.
+            powerGridCheck.Powered.Add(apcUid);
         }
 
-        protected override void Ended(EntityUid uid, PowerGridCheckRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
+        RobustRandom.Shuffle(powerGridCheck.Powered);
+
+        powerGridCheck.NumberPerSecond = Math.Max(1, (int)(powerGridCheck.Powered.Count / powerGridCheck.SecondsUntilOff)); // Number of APCs to turn off every second. At least one.
+    }
+
+    /// <summary>
+    /// Check if the entity should be affected by an existing
+    /// PowerGridCheckRuleComponent and if so, turns off the APC.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnApcStartup(EntityUid apcUid, PowerGridCheckNotifyComponent comp, ComponentStartup args)
+    {
+        if (!TryComp<ApcComponent>(apcUid, out var apcComp))
+            return;
+
+        var rule = GetRuleAffectingEntity(apcUid);
+        if (rule == null || !apcComp.MainBreakerEnabled)
+            return;
+
+        _apc.ApcToggleBreaker(apcUid, apcComp);
+        rule.Unpowered.Add(apcUid);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnApcToggleMainBreaker(EntityUid uid, PowerGridCheckNotifyComponent component, ref ApcToggleMainBreakerAttemptEvent args)
+    {
+        args.Cancelled |= GetRuleAffectingEntity(uid) != null;
+    }
+
+    /// <summary>
+    /// Returns the PowerGridCheckRuleComponent affecting the uid, or null if none
+    /// </summary>
+    private PowerGridCheckRuleComponent? GetRuleAffectingEntity(EntityUid uid)
+    {
+        if (!TryComp(uid, out TransformComponent? xform))
+            return null;
+
+        if (!TryComp<StationMemberComponent>(xform.GridUid, out var stationMemberComp))
+            return null;
+
+        var activeRules = AllEntityQuery<PowerGridCheckRuleComponent, ActiveGameRuleComponent>();
+        while (activeRules.MoveNext(out _, out var powerGridRule, out _))
         {
-            base.Ended(uid, component, gameRule, args);
+            if (stationMemberComp.Station != powerGridRule.AffectedStation)
+                continue;
 
-            foreach (var entity in component.Unpowered)
-            {
-                if (Deleted(entity))
-                    continue;
+            var largestGrid = Station.GetLargestGrid(powerGridRule.AffectedStation);
 
-                if (TryComp(entity, out ApcComponent? apcComponent))
-                {
-                    if(!apcComponent.MainBreakerEnabled)
-                        _apcSystem.ApcToggleBreaker(entity, apcComponent);
-                }
-                RemComp<ElectricalOverloadComponent>(entity); //Umbra-APCs explode when toggled on during power outages
-            }
+            if (largestGrid == null)
+                continue;
 
-            // Can't use the default EndAudio
-            component.AnnounceCancelToken?.Cancel();
-            component.AnnounceCancelToken = new CancellationTokenSource();
-            Timer.Spawn(3000, () =>
-            {
-                Audio.PlayGlobal(component.PowerOnSound, Filter.Broadcast(), true);
-            }, component.AnnounceCancelToken.Token);
-            component.Unpowered.Clear();
+            if (xform.GridUid != largestGrid.Value)
+                continue;
+
+            return powerGridRule;
         }
 
-        protected override void ActiveTick(EntityUid uid, PowerGridCheckRuleComponent component, GameRuleComponent gameRule, float frameTime)
+        return null;
+    }
+
+    protected override void Ended(Entity<PowerGridCheckRuleComponent> rule, ref GameRuleEndedEvent args)
+    {
+        base.Ended(rule, ref args);
+
+        foreach (var entity in rule.Comp.Unpowered)
         {
-            base.ActiveTick(uid, component, gameRule, frameTime);
+            if (Deleted(entity))
+                continue;
 
-            var updates = 0;
-            component.FrameTimeAccumulator += frameTime;
-            if (component.FrameTimeAccumulator > component.UpdateRate)
+            if (!TryComp<ApcComponent>(entity, out var apcComponent))
+                continue;
+
+            if (!apcComponent.MainBreakerEnabled)
+                _apc.ApcToggleBreaker(entity, apcComponent);
+            RemComp<ElectricalOverloadComponent>(entity); //Umbra-APCs explode when toggled on during power outages
+        }
+
+        // Can't use the default EndAudio
+        rule.Comp.AnnounceCancelToken?.Cancel();
+        rule.Comp.AnnounceCancelToken = new CancellationTokenSource();
+        Timer.Spawn(3000,
+            () =>
+        {
+            Audio.PlayGlobal(rule.Comp.PowerOnSound, Filter.Broadcast(), true);
+        },
+            rule.Comp.AnnounceCancelToken.Token);
+        rule.Comp.Unpowered.Clear();
+    }
+
+    protected override void ActiveTick(EntityUid uid, PowerGridCheckRuleComponent component, GameRuleComponent gameRule, float frameTime)
+    {
+        base.ActiveTick(uid, component, gameRule, frameTime);
+
+        var updates = 0;
+        component.FrameTimeAccumulator += frameTime;
+        if (component.FrameTimeAccumulator > component.UpdateRate)
+        {
+            updates = (int)(component.FrameTimeAccumulator / component.UpdateRate);
+            component.FrameTimeAccumulator -= component.UpdateRate * updates;
+        }
+
+        for (var i = 0; i < updates; i++)
+        {
+            if (component.Powered.Count == 0)
+                break;
+
+            var selected = component.Powered.Pop();
+            if (Deleted(selected))
+                continue;
+
+            if (TryComp<ApcComponent>(selected, out var apcComponent))
             {
-                updates = (int) (component.FrameTimeAccumulator / component.UpdateRate);
-                component.FrameTimeAccumulator -= component.UpdateRate * updates;
-            }
-
-            for (var i = 0; i < updates; i++)
-            {
-                if (component.Powered.Count == 0)
-                    break;
-
-                var selected = component.Powered.Pop();
-                if (Deleted(selected))
-                    continue;
-                if (TryComp<ApcComponent>(selected, out var apcComponent))
+                if (apcComponent.MainBreakerEnabled)
                 {
-                    if (apcComponent.MainBreakerEnabled)
-                    {
-                        _apcSystem.ApcToggleBreaker(selected, apcComponent);
-                        AddComp<ElectricalOverloadComponent>(selected); //Umbra-APCs explode when toggled on during power outages
-                    }
+                    _apc.ApcToggleBreaker(selected, apcComponent);
+                    AddComp<ElectricalOverloadComponent>(selected); //Umbra-APCs explode when toggled on during power outages
                 }
-                component.Unpowered.Add(selected);
             }
+
+            component.Unpowered.Add(selected);
         }
     }
 }

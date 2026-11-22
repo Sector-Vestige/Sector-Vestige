@@ -1,28 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Wizards Den contributors
-# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2022 Cheackraze <71046427+Cheackraze@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Peptide90 <78795277+Peptide90@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Checkraze <71046427+Cheackraze@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-# SPDX-FileCopyrightText: 2023 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2023 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Pissachu <161140558+Pissachu@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Damn Feds <20566341+K-Dynamic@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-#
-# SPDX-License-Identifier: MIT
-
 - type: gameMap
   id: Saltern
   mapName: 'Saltern'
@@ -40,8 +15,9 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationJobs
-          availableJobs: # 45 jobs total w/o latejoins & interns, 62 jobs total w/ latejoins & interns
-            #command (7)
+          availableJobs:
+            # TOTAL: 60 job slots
+            # Command (7)
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
             HeadOfSecurity: [ 1, 1 ]
@@ -49,32 +25,32 @@
             ChiefEngineer: [ 1, 1 ]
             ResearchDirector: [ 1, 1 ]
             Quartermaster: [ 1, 1 ]
-            #service (8 - 9)
-            Bartender: [ 1, 1 ]
-            Botanist: [ 1, 2 ]
-            Chef: [ 1, 1 ]
-            Janitor: [ 1, 1 ]
-            Chaplain: [ 1, 1 ]
-            Librarian: [ 1, 1 ]
-            ServiceWorker: [ 2, 2 ]
-            #engineering (6)
-            AtmosphericTechnician: [ 2, 2 ]
-            StationEngineer: [ 4, 4 ]
-            TechnicalAssistant: [ 4, 4 ] #intern, not counted
-            #medical (6)
-            Chemist: [ 2, 2 ]
-            MedicalDoctor: [ 3, 3 ]
-            MedicalIntern: [ 4, 4 ] #intern, not counted
-            Paramedic: [ 1, 1 ]
-            #science (4)
-            Scientist: [ 4, 4 ]
-            ResearchAssistant: [ 2, 2 ] #intern, not counted
-            #security (6)
+            # Service (8 - 9)
+            Bartender: [ 0, 1 ]
+            Botanist: [ 0, 2 ]
+            Chef: [ 0, 1 ]
+            Janitor: [ 0, 1 ]
+            Chaplain: [ 0, 1 ]
+            Librarian: [ 0, 1 ]
+            ServiceWorker: [ 0, 2 ]
+            # Engineering (8)
+            AtmosphericTechnician: [ 1, 2 ]
+            StationEngineer: [ 2, 4 ]
+            TechnicalAssistant: [ 0, 4 ]
+            # Medical (10)
+            Chemist: [ 1, 2 ]
+            MedicalDoctor: [ 2, 3 ]
+            MedicalIntern: [ 0, 4 ]
+            Paramedic: [ 0, 1 ]
+            # Science (6)
+            Scientist: [ 2, 4 ]
+            ResearchAssistant: [ 0, 2 ]
+            # Security (10)
             Warden: [ 1, 1 ]
             Detective: [ 1, 1 ]
-            SecurityOfficer: [ 4, 4 ]
-            SecurityCadet: [ 4, 4 ] #intern, not counted
-            #supply (3 - 5)
+            SecurityOfficer: [ 2, 4 ]
+            SecurityCadet: [ 0, 4 ]
+            # Supply (3-5)
             SalvageSpecialist: [ 1, 3 ]
             CargoTechnician: [ 2, 2 ]
             #civilian (3+)

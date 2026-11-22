@@ -1,20 +1,8 @@
-# SPDX-FileCopyrightText: 2023 c4llv07e <38111072+c4llv07e@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Magnus Larsen <i.am.larsenml@gmail.com>
-# SPDX-FileCopyrightText: 2024 degradka <69397649+degradka@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Ermucat <NCramey09@gmail.com>
-# SPDX-FileCopyrightText: 2025 Mangohydra <156087924+Mangohydra@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2025 RedBookcase <crazykid1590@gmail.com>
-# SPDX-FileCopyrightText: 2025 vestige-bot <vestige-bot@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 - type: entity
   parent: BaseItem
-  id: SprayPainter
+  id: SprayPainterRecharging
   name: spray painter
+  suffix: Admeme
   description: A spray painter for painting airlocks, pipes, and other items.
   components:
   - type: Sprite
@@ -29,7 +17,7 @@
       enum.SprayPainterUiKey.Key:
         type: SprayPainterBoundUserInterface
   - type: SprayPainter
-    colorPalette:
+    colorPalette: # Atmos pipes preset colors
       red: '#FF1212FF'
       orange: '#D67C34' # SV addition
       yellow: '#B3A234FF'
@@ -49,20 +37,18 @@
       mix: '#947507'
   - type: StaticPrice
     price: 40
-  - type: LimitedCharges
-    maxCharges: 30 # SV change, used to be 15
-    lastCharges: 30 # SV change, used to be 15
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
 
 - type: entity
-  parent: SprayPainter
-  id: SprayPainterRecharging
-  suffix: Admeme
+  parent: SprayPainterRecharging
+  id: SprayPainter
+  suffix: ""
   components:
-  - type: AutoRecharge
-    rechargeDuration: 1
+  - type: LimitedCharges
+    maxCharges: 30 # SV change, used to be 15
+    lastCharges: 30 # SV change, used to be 15
 
 - type: entity
   parent: SprayPainter
@@ -81,6 +67,8 @@
   components:
   - type: LimitedCharges
     lastCharges: -1
+
+# Ammo
 
 - type: entity
   parent: BaseItem

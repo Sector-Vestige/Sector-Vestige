@@ -10,3 +10,10 @@
   femaleFirstNames: NamesFoxfolkFemale
   lastNames: NamesFoxfolkLast
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex: # Sector Vestige: voice comes from the species prototype now
+  - MaleFoxfolk
+  - FemaleFoxfolk
+  - MaleFoxfolk
+  voices:
+  - MaleFoxfolk
+  - FemaleFoxfolk

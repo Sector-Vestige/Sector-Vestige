@@ -1,15 +1,7 @@
-// SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
-using Content.Server.Kitchen.Components;
+using Content.Shared.Kitchen.Components;
 using Content.Server.NameIdentifier;
 using Content.Shared.Database;
 using Content.Shared._CD.CartridgeLoader.Cartridges;
@@ -132,7 +124,7 @@ public sealed partial class NanoChatSystem : SharedNanoChatSystem
             return;
 
         // Assign a random number
-        _name.GenerateUniqueName(ent, _nameIdentifierGroup, out var number);
+        _name.GenerateUniqueNameModifier(_nameIdentifierGroup, out var number);
         ent.Comp.Number = (uint)number;
         Dirty(ent);
     }

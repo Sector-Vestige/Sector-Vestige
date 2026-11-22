@@ -5,7 +5,11 @@ door-remote-toggle-bolt-text = Toggles Bolts
 door-remote-emergency-access-text = Toggles Emergency Access
 door-remote-invalid-text = Invalid
 door-remote-mode-label = Mode: [color=white]{$modeString}[/color]
-
+# Begin SV changes
+door-remote-switch-mode = Switch mode
+door-remote-item-status-label = Mode: {$mode}
+    Switch: {$keybinding}
+# End SV changes
 ## Entity
 
 door-remote-switch-state-open-close = You switch the remote to open and close doors

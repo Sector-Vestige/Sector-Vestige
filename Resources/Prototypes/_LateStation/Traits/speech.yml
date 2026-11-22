@@ -1,12 +1,8 @@
-# SPDX-FileCopyrightText: 2026 LateStation14 contributors
-# SPDX-FileCopyrightText: 2025 Late <latemare@gmail.com>
-# SPDX-FileCopyrightText: 2025 MoonlightHollow <muszynskinicholas8@gmail.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 # 1 cost - using the same point rules as vanilla.
+
+# Sector Vestige: the "raised by" traits need `replaceComponents: true` (Harmony change on TraitPrototype),
+# otherwise their Speech and TypingIndicator are ignored because the humanoid already has both.
+# Vocal no longer holds per-sex sounds, so the emote sound bank is set through `voices` instead.
 
 - type: trait
   id: ValleyGirl
@@ -34,18 +30,18 @@
   description: trait-raisedbyarachnids-desc
   cost: 1
   category: SpeechTraits
+  replaceComponents: true
   components:
-    - type: Speech
-      speechVerb: Arachnid
-      speechSounds: Arachnid
-      allowedEmotes: ['Click', 'Chitter']
-    - type: Vocal
-      sounds:
-        Male: UnisexArachnid
-        Female: UnisexArachnid
-        Unsexed: UnisexArachnid
-    - type: TypingIndicator
-      proto: spider
+  - type: Speech
+    speechVerb: Arachnid
+    speechSounds: Arachnid
+    allowedEmotes: ['Click', 'Chitter']
+  - type: TypingIndicator
+    proto: spider
+  voices:
+    Male: UnisexArachnid
+    Female: UnisexArachnid
+    Unsexed: UnisexArachnid
 
 - type: trait
   id: RaisedByDiona
@@ -53,17 +49,17 @@
   description: trait-raisedbydiona-desc
   cost: 1
   category: SpeechTraits
+  replaceComponents: true
   components:
-    - type: Speech
-      speechSounds: Alto
-      speechVerb: Plant
-    - type: Vocal
-      sounds:
-        Male: UnisexDiona
-        Female: UnisexDiona
-        Unsexed: UnisexDiona
-    - type: TypingIndicator
-      proto: diona
+  - type: Speech
+    speechSounds: Alto
+    speechVerb: Plant
+  - type: TypingIndicator
+    proto: diona
+  voices:
+    Male: UnisexDiona
+    Female: UnisexDiona
+    Unsexed: UnisexDiona
 
 - type: trait
   id: RaisedByDwarfs
@@ -71,20 +67,19 @@
   description: trait-raisedbydwarfs-desc
   cost: 1
   category: SpeechTraits
+  replaceComponents: true
   components:
-    - type: Speech
-      speechSounds: Bass
-      speechVerb: Default
-    - type: ReplacementAccent
-      accent: scottish
-    - type: Vocal
-      sounds:
-        Male: UnisexDwarf
-        Female: FemaleDwarf
-        Unsexed: UnisexDwarf
-    - type: TypingIndicator
-      proto: default
-
+  - type: ReplacementAccent
+    accent: scottish
+  - type: Speech
+    speechSounds: Bass
+    speechVerb: Default
+  - type: TypingIndicator
+    proto: default
+  voices:
+    Male: UnisexDwarf
+    Female: FemaleDwarf
+    Unsexed: UnisexDwarf
 
 - type: trait
   id: RaisedByHumans
@@ -92,17 +87,17 @@
   description: trait-raisedbyhumans-desc
   cost: 1
   category: SpeechTraits
+  replaceComponents: true
   components:
-    - type: Speech
-      speechSounds: Alto
-      speechVerb: Default
-    - type: Vocal
-      sounds:
-        Male: MaleHuman
-        Female: FemaleHuman
-        Unsexed: MaleHuman
-    - type: TypingIndicator
-      proto: default
+  - type: Speech
+    speechSounds: Alto
+    speechVerb: Default
+  - type: TypingIndicator
+    proto: default
+  voices:
+    Male: MaleHuman
+    Female: FemaleHuman
+    Unsexed: MaleHuman
 
 - type: trait
   id: RaisedByMoths
@@ -110,19 +105,19 @@
   description: trait-raisedbymoths-desc
   cost: 1
   category: SpeechTraits
+  replaceComponents: true
   components:
-    - type: MothAccent
-    - type: Speech
-      speechSounds: Moth
-      speechVerb: Moth
-      allowedEmotes: ['Chitter', 'Squeak']
-    - type: Vocal
-      sounds:
-        Male: UnisexMoth
-        Female: UnisexMoth
-        Unsexed: UnisexMoth
-    - type: TypingIndicator
-      proto: moth
+  - type: MothAccent
+  - type: Speech
+    speechSounds: Moth
+    speechVerb: Moth
+    allowedEmotes: ['Chitter', 'Squeak']
+  - type: TypingIndicator
+    proto: moth
+  voices:
+    Male: UnisexMoth
+    Female: UnisexMoth
+    Unsexed: UnisexMoth
 
 - type: trait
   id: RaisedByReptilians
@@ -130,18 +125,18 @@
   description: trait-raisedbyreptilians-desc
   cost: 1
   category: SpeechTraits
+  replaceComponents: true
   components:
-    - type: LizardAccent
-    - type: Speech
-      speechSounds: Lizard
-      speechVerb: Reptilian
-    - type: Vocal
-      sounds:
-        Male: MaleReptilian
-        Female: FemaleReptilian
-        Unsexed: MaleReptilian
-    - type: TypingIndicator
-      proto: lizard
+  - type: LizardAccent
+  - type: Speech
+    speechSounds: Lizard
+    speechVerb: Reptilian
+  - type: TypingIndicator
+    proto: lizard
+  voices:
+    Male: MaleReptilian
+    Female: FemaleReptilian
+    Unsexed: MaleReptilian
 
 - type: trait
   id: RaisedBySlimes
@@ -149,18 +144,18 @@
   description: trait-raisedbyslimes-desc
   cost: 1
   category: SpeechTraits
+  replaceComponents: true
   components:
-    - type: Speech
-      speechVerb: Slime
-      speechSounds: Slime
-      allowedEmotes: ['Squish']
-    - type: Vocal
-      sounds:
-        Male: MaleSlime
-        Female: FemaleSlime
-        Unsexed: MaleSlime
-    - type: TypingIndicator
-      proto: slime
+  - type: Speech
+    speechVerb: Slime
+    speechSounds: Slime
+    allowedEmotes: ['Squish']
+  - type: TypingIndicator
+    proto: slime
+  voices:
+    Male: MaleSlime
+    Female: FemaleSlime
+    Unsexed: MaleSlime
 
 - type: trait
   id: RaisedByVox
@@ -168,14 +163,14 @@
   description: trait-raisedbyvox-desc
   cost: 1
   category: SpeechTraits
+  replaceComponents: true
   components:
-    - type: Speech
-      speechVerb: Vox
-      speechSounds: Vox
-    - type: Vocal
-      sounds:
-        Male: UnisexVox
-        Female: UnisexVox
-        Unsexed: UnisexVox
-    - type: TypingIndicator
-      proto: vox
+  - type: Speech
+    speechVerb: Vox
+    speechSounds: Vox
+  - type: TypingIndicator
+    proto: vox
+  voices:
+    Male: UnisexVox
+    Female: UnisexVox
+    Unsexed: UnisexVox

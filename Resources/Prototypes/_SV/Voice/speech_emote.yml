@@ -1,0 +1,16 @@
+ - type: emote
+   id: Roar
+   category: Vocal
+   name: Roar
+   icon: Interface/Actions/scream.png
+   available: false
+   whitelist:
+     components:
+     - Vocal
+   blacklist:
+     components:
+     - BorgChassis
+   chatMessages: [roars!]
+   chatTriggers:
+   - roar
+   - roars

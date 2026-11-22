@@ -154,7 +154,7 @@ namespace Content.Client.Voting
                 var vote = new ActiveVote(voteId)
                 {
                     Entries = message.Options
-                        .Select(c => new VoteEntry(c.name))
+                        .Select(c => new VoteEntry(c.name, c.icon)) // SV - option icons
                         .ToArray()
                 };
 
@@ -258,11 +258,13 @@ namespace Content.Client.Voting
         public sealed class VoteEntry
         {
             public string Text { get; }
+            public string? Icon { get; } // SV - texture path of the option icon, null for none
             public int Votes { get; set; }
 
-            public VoteEntry(string text)
+            public VoteEntry(string text, string? icon = null) // SV - option icons
             {
                 Text = text;
+                Icon = string.IsNullOrEmpty(icon) ? null : icon; // SV - option icons
             }
         }
     }

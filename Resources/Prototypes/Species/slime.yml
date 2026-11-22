@@ -7,3 +7,10 @@
   dollPrototype: AppearanceSlimePerson
   skinColoration: Hues
   defaultHeight: 1.0 # SV Height system
+  defaultSoundsBySex:
+  - MaleSlime
+  - FemaleSlime
+  - MaleSlime
+  voices:
+  - MaleSlime
+  - FemaleSlime

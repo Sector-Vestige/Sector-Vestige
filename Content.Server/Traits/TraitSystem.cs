@@ -1,18 +1,18 @@
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Content.Shared.Whitelist;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Traits;
 
 public sealed partial class TraitSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private SharedHandsSystem _sharedHandsSystem = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private HumanoidProfileSystem _humanoidProfile = default!; // Sector Vestige
 
     public override void Initialize()
     {
@@ -26,7 +26,7 @@ public sealed partial class TraitSystem : EntitySystem
     {
         // Check if player's job allows to apply traits
         if (args.JobId == null ||
-            !_prototypeManager.Resolve<JobPrototype>(args.JobId, out var protoJob) ||
+            !ProtoMan.Resolve<JobPrototype>(args.JobId, out var protoJob) ||
             !protoJob.ApplyTraits)
         {
             return;
@@ -34,7 +34,7 @@ public sealed partial class TraitSystem : EntitySystem
 
         foreach (var traitId in args.Profile.TraitPreferences)
         {
-            if (!_prototypeManager.TryIndex<TraitPrototype>(traitId, out var traitPrototype))
+            if (!ProtoMan.TryIndex<TraitPrototype>(traitId, out var traitPrototype))
             {
                 Log.Error($"No trait found with ID {traitId}!");
                 return;
@@ -45,13 +45,21 @@ public sealed partial class TraitSystem : EntitySystem
                 continue;
 
             // Add all components required by the prototype
+#pragma warning disable CS0618 // Enabling compatibility behaviour for TraitPrototype.Components
             if (traitPrototype.Components.Count > 0)
-                EntityManager.AddComponents(args.Mob, traitPrototype.Components, false);
+                EntityManager.AddComponents(args.Mob, traitPrototype.Components, traitPrototype.ReplaceComponents); // Harmony change. See TraitPrototype.cs
 
             // Add all JobSpecials required by the prototype
             foreach (var special in traitPrototype.Specials)
             {
                 special.AfterEquip(args.Mob);
+            }
+
+            // Sector Vestige: swap the emote sound bank for the humanoid's sex
+            if (traitPrototype.Voices is { } voices && TryComp<HumanoidProfileComponent>(args.Mob, out var humanoid))
+            {
+                if (voices.TryGetValue(humanoid.Sex, out var voice) || voices.TryGetValue(Sex.Unsexed, out voice))
+                    _humanoidProfile.SetVoice((args.Mob, humanoid), voice);
             }
 
             // Add item required by the trait

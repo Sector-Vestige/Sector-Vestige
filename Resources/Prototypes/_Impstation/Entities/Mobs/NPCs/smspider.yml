@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Impstation contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2025 beck <163376292+widgetbeck@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: BaseMob
   id: MobSupermatterSpider
@@ -45,6 +37,7 @@
         - MobLayer
   - type: AshOnMeleeHit
     popup: ash-on-melee-smspider
+  - type: Damageable # Sector Vestige: Injurable needs its Damageable sister component or the mob takes no damage at all.
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible
@@ -97,11 +90,7 @@
     speechVerb: Arachnid
   - type: TypingIndicator
     proto: robot
-  - type: Vocal
-    sounds:
-      Male: UnisexArachnid
-      Female: UnisexArachnid
-      Unsexed: UnisexArachnid
+  - type: Vocal # Sector Vestige: per-sex `sounds` dict removed upstream; voice now comes from humanoid Voice
   - type: AnimatedEmotes
   - type: Buckle
   - type: Climbing

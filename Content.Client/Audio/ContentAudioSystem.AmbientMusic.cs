@@ -1,18 +1,9 @@
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
 using Content.Client.Gameplay;
 using Content.Shared.Audio;
 using Content.Shared.CCVar;
+using Content.Shared.EntityConditions;
 using Content.Shared.GameTicking;
-using Content.Shared.Random.Rules;
 using Robust.Client.Player;
 using Robust.Client.State;
 using Robust.Shared.Audio;
@@ -31,16 +22,14 @@ public sealed partial class ContentAudioSystem
 {
     [Dependency] private IConfigurationManager _configManager = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private ILogManager _logManager = default!;
     [Dependency] private IPlayerManager _player = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IStateManager _state = default!;
-    [Dependency] private RulesSystem _rules = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedEntityConditionsSystem _conditions = default!;
 
-    private readonly TimeSpan _minAmbienceTime = TimeSpan.FromSeconds(30);
-    private readonly TimeSpan _maxAmbienceTime = TimeSpan.FromSeconds(60);
+    private readonly TimeSpan _minAmbienceTime = TimeSpan.FromSeconds(60);
+    private readonly TimeSpan _maxAmbienceTime = TimeSpan.FromSeconds(120);
 
     private const float AmbientMusicFadeTime = 10f;
     private static float _volumeSlider;
@@ -50,6 +39,7 @@ public sealed partial class ContentAudioSystem
 
     private EntityUid? _ambientMusicStream;
     private AmbientMusicPrototype? _musicProto;
+    private AmbientMusicPrototype? _lastMusicProto;
 
     /// <summary>
     /// If we find a better ambient music proto can we interrupt this one.
@@ -68,7 +58,7 @@ public sealed partial class ContentAudioSystem
     private void InitializeAmbientMusic()
     {
         Subs.CVar(_configManager, CCVars.AmbientMusicVolume, AmbienceCVarChanged, true);
-        _sawmill = _logManager.GetSawmill("audio.ambience");
+        _sawmill = LogManager.GetSawmill("audio.ambience");
 
         // Reset audio
         _nextAudio = TimeSpan.MaxValue;
@@ -98,7 +88,7 @@ public sealed partial class ContentAudioSystem
 
     private void OnProtoReload(PrototypesReloadedEventArgs obj)
     {
-        if (obj.WasModified<AmbientMusicPrototype>() || obj.WasModified<RulesPrototype>())
+        if (obj.WasModified<AmbientMusicPrototype>())
             SetupAmbientSounds();
     }
 
@@ -114,7 +104,7 @@ public sealed partial class ContentAudioSystem
     private void SetupAmbientSounds()
     {
         _ambientSounds.Clear();
-        foreach (var ambience in _proto.EnumeratePrototypes<AmbientMusicPrototype>())
+        foreach (var ambience in ProtoMan.EnumeratePrototypes<AmbientMusicPrototype>())
         {
             var tracks = _ambientSounds.GetOrNew(ambience.ID);
             RefreshTracks(ambience.Sound, tracks, null);
@@ -139,7 +129,7 @@ public sealed partial class ContentAudioSystem
                 if (collection.Collection == null)
                     break;
 
-                var slothCud = _proto.Index<SoundCollectionPrototype>(collection.Collection);
+                var slothCud = ProtoMan.Index<SoundCollectionPrototype>(collection.Collection);
                 tracks.AddRange(slothCud.PickFiles);
                 break;
             case SoundPathSpecifier path:
@@ -175,7 +165,7 @@ public sealed partial class ContentAudioSystem
         {
             var player = _player.LocalSession?.AttachedEntity;
 
-            if (player == null || _musicProto == null || !_rules.IsTrue(player.Value, _proto.Index<RulesPrototype>(_musicProto.Rules)))
+            if (player == null || _musicProto == null || !_conditions.TryConditions(player.Value, _musicProto.Conditions))
             {
                 FadeOut(_ambientMusicStream, duration: AmbientMusicFadeTime);
                 _musicProto = null;
@@ -202,9 +192,10 @@ public sealed partial class ContentAudioSystem
 
         _musicProto = GetAmbience();
 
-        if (_musicProto == null)
+        if (_musicProto == null || _musicProto == _lastMusicProto && !_musicProto.AllowRepeat)
         {
             _interruptable = false;
+            _nextAudio = _timing.CurTime + _random.Next(_minAmbienceTime, _maxAmbienceTime);
             return;
         }
 
@@ -218,7 +209,7 @@ public sealed partial class ContentAudioSystem
             track.ToString(),
             Filter.Local(),
             false,
-            AudioParams.Default.WithVolume(_musicProto.Sound.Params.Volume + _volumeSlider));
+            AudioParams.Default.AddVolume(_musicProto.Sound.Params.Volume + _volumeSlider));
 
         _ambientMusicStream = strim?.Entity;
 
@@ -232,13 +223,13 @@ public sealed partial class ContentAudioSystem
         {
             RefreshTracks(_musicProto.Sound, tracks, track);
         }
+
+        _lastMusicProto = _musicProto;
     }
 
     private AmbientMusicPrototype? GetAmbience()
     {
-        var player = _player.LocalEntity;
-
-        if (player == null)
+        if (_player.LocalEntity is not { } player)
             return null;
 
         var ev = new PlayAmbientMusicEvent();
@@ -247,13 +238,15 @@ public sealed partial class ContentAudioSystem
         if (ev.Cancelled)
             return null;
 
-        var ambiences = _proto.EnumeratePrototypes<AmbientMusicPrototype>().ToList();
+        var ambiences = ProtoMan.EnumeratePrototypes<AmbientMusicPrototype>().ToList();
         ambiences.Sort((x, y) => y.Priority.CompareTo(x.Priority));
 
         foreach (var amb in ambiences)
         {
-            if (!_rules.IsTrue(player.Value, _proto.Index<RulesPrototype>(amb.Rules)))
+            if (!_conditions.TryConditions(player, amb.Conditions))
+            {
                 continue;
+            }
 
             return amb;
         }
