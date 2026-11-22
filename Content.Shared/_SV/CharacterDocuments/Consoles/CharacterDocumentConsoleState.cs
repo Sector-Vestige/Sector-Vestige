@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared._SV.CharacterDocuments.Components;
 using Content.Shared.Security;
 using Robust.Shared.Serialization;
@@ -35,6 +29,11 @@ public sealed class CharacterDocumentConsoleState : BoundUserInterfaceState
     /// </summary>
     public string? SelectedPlayerFingerprint;
     /// <summary>
+    /// Selected player's DNA, read from their station record. Null under the same conditions as
+    /// <see cref="SelectedPlayerFingerprint"/>. Security consoles only.
+    /// </summary>
+    public string? SelectedPlayerDna;
+    /// <summary>
     /// Selected player's General flavour block (allergies, height, etc). Null if no player selected.
     /// Console UIs render relevant fields based on the active tab (or primary type for single-type consoles).
     /// </summary>
@@ -54,7 +53,8 @@ public sealed class CharacterDocumentConsoleState : BoundUserInterfaceState
         SecurityStatus securityStatus = SecurityStatus.None, string? securityReason = null,
         List<DocumentType>? additionalDocumentTypes = null,
         CharacterDocumentGeneral? selectedPlayerGeneral = null,
-        string? selectedPlayerFingerprint = null)
+        string? selectedPlayerFingerprint = null,
+        string? selectedPlayerDna = null)
     {
         PlayerList = playerlist;
         SelectedPlayer = selectedplayer;
@@ -67,5 +67,6 @@ public sealed class CharacterDocumentConsoleState : BoundUserInterfaceState
         AdditionalDocumentTypes = additionalDocumentTypes ?? new List<DocumentType>();
         SelectedPlayerGeneral = selectedPlayerGeneral;
         SelectedPlayerFingerprint = selectedPlayerFingerprint;
+        SelectedPlayerDna = selectedPlayerDna;
     }
 }

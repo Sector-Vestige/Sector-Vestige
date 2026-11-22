@@ -67,14 +67,18 @@
                                             <BoxContainer HorizontalAlignment="Left" Orientation="Vertical" Margin="0 0 8 0">
                                                 <Label Text="{Loc 'sv-document-console-security-status-label'}"/>
                                                 <Label Text="{Loc 'sv-document-console-security-reason-label'}"/>
-                                                <Label Text="{Loc 'sv-document-console-fingerprint-label'}"/>
                                             </BoxContainer>
                                             <BoxContainer HorizontalExpand="True" Orientation="Vertical">
                                                 <Label Name="DocSecurityStatusLabelValue" Text="-" ClipText="True"/>
                                                 <Label Name="DocSecurityReasonLabelValue" Text="-" ClipText="True"/>
-                                                <Label Name="DocFingerprintLabelValue" Text="-" ClipText="True"/>
                                             </BoxContainer>
                                         </BoxContainer>
+                                        <!-- Prints and DNA each get a full-width line under their label; a 32-char
+                                             fingerprint doesn't fit beside the label column. Tooltip holds the full value. -->
+                                        <Label Text="{Loc 'sv-document-console-fingerprint-label'}" Margin="0 4 0 0"/>
+                                        <Label Name="DocFingerprintLabelValue" Text="-" ClipText="True" Margin="8 0 0 0"/>
+                                        <Label Text="{Loc 'sv-document-console-dna-label'}"/>
+                                        <Label Name="DocDnaLabelValue" Text="-" ClipText="True" Margin="8 0 0 0"/>
                                     </BoxContainer>
                                 </PanelContainer>
                             </BoxContainer>

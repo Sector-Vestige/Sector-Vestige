@@ -1,89 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Wizards Den contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2020 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 Exp <theexp111@gmail.com>
-# SPDX-FileCopyrightText: 2020 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2020 Ygg01 <daniel.fath7@gmail.com>
-# SPDX-FileCopyrightText: 2020 py01 <pyronetics01@gmail.com>
-# SPDX-FileCopyrightText: 2021 Galactic Chimp <GalacticChimpanzee@gmail.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2021 Tarlan2 <76408146+Tarlan2@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-# SPDX-FileCopyrightText: 2022 Cheackraze <71046427+Cheackraze@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 FunkySphere <89979928+FunkySphere@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2022 Peptide90 <78795277+Peptide90@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Ripmorld <60119809+UKNOWH@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 TaralGit <76408146+TaralGit@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 ZeroDayDaemon <60460608+ZeroDayDaemon@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 and_a <and_a@DESKTOP-RJENGIR>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 CrigCrag <137215465+CrigCrag@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Stanislav4ix <124695665+Stanislav4ix@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 crazybrain23 <44417085+crazybrain23@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 BuildTools <unconfigured@null.spigotmc.org>
-# SPDX-FileCopyrightText: 2024 Dae <60460608+ZeroDayDaemon@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
-# SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2024 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 SonicHDC <100022571+SonicHDC@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Zadeon <loldude9000@gmail.com>
-# SPDX-FileCopyrightText: 2024 degradka <69397649+degradka@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 vanx <61917534+Vaaankas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Andrew Malcolm O'Neill <105134723+maland1@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 August Sun <45527070+august-sun@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 BramvanZijp <56019239+BramvanZijp@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Ermucat <NCramey09@gmail.com>
-# SPDX-FileCopyrightText: 2025 GaussiArson <193122004+GaussiArson@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Ignaz "Ian" Kraft <ignaz.k@live.de>
-# SPDX-FileCopyrightText: 2025 JackRyd3r <80720525+JackRyd3r@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 JacobThayil <jtha821@aucklanduni.ac.nz>
-# SPDX-FileCopyrightText: 2025 K-Dynamic <20566341+K-Dynamic@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Kirus59 <145689588+Kirus59@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Nox <nebulousnox38@gmail.com>
-# SPDX-FileCopyrightText: 2025 PJB3005 <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Princess-Cheeseballs@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2025 Samuka-C <47865393+Samuka-C@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SnappingOpossum <snappingopossum@outlook.com>
-# SPDX-FileCopyrightText: 2025 Spanky <180730777+spanky-spanky@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SyaoranFox <99053675+SyaoranFox@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ToastEnjoyer <masondoesgamingyes@gmail.com>
-# SPDX-FileCopyrightText: 2025 Vasilis The Pikachu <vasilis@pikachu.systems>
-# SPDX-FileCopyrightText: 2025 august-sun <45527070+august.sun@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 keronshb <54602815+keronshb@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 Zamshi8 <235235723+Zamshi8@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
-#
-# SPDX-License-Identifier: MIT
-
 - type: entity
   abstract: true
   parent: BaseItem
@@ -204,9 +118,9 @@
       cell_slot: !type:ContainerSlot
 
 - type: entity
-  id: BaseWeaponBatterySmall
-  parent: BaseWeaponBattery
   abstract: true
+  parent: BaseWeaponBatteryNoAmmoCounter
+  id: BaseWeaponBatterySmallNoAmmoCounter
   components:
   - type: Item
     size: Small
@@ -222,6 +136,13 @@
     slots:
     - Belt
     - suitStorage
+
+- type: entity
+  abstract: true
+  parent: BaseWeaponBatterySmallNoAmmoCounter
+  id: BaseWeaponBatterySmall
+  components:
+  - type: AmmoCounter
 
 - type: entity
   id: BaseWeaponPowerCellSmall
@@ -298,21 +219,38 @@
     - LaserWeapon
 
 - type: entity
+  abstract: true
+  parent: BaseMinorContraband
+  id: WeaponMakeshiftLaserConstructionBase
+  components:
+  - type: Construction
+    graph: MakeshiftLaserGraph
+    containers:
+    - cell_slot
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    storedOffset: 0,-4
+
+- type: entity
+  parent: [WeaponMakeshiftLaserConstructionBase, BaseWeaponPowerCell]
+  id: WeaponMakeshiftLaserNoCell
+  categories: [ HideSpawnMenu ]
   name: makeshift laser pistol
-  parent: [BaseWeaponBatterySmall, BaseMinorContraband]
-  id: WeaponMakeshiftLaser
+  suffix: No Cell
   description: Better pray it won't burn your hands off.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: Item
-    storedOffset: 0,-4
   - type: MagazineVisuals
     magState: mag
     steps: 5
@@ -320,16 +258,47 @@
   - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
   - type: BatteryAmmoProvider
-    proto: RedLaser
+    proto: RedLaserMakeshift
     fireCost: 62.5
-  - type: Battery
-    maxCharge: 500
-    startingCharge: 500
+  - type: PowerCellSlot
+    fitsInCharger: false
   - type: Tag
     tags:
     - Sidearm
     - LaserWeapon
+  - type: Construction
+    node: mslaser
+
+- type: entity # for salv loot & co
+  parent: WeaponMakeshiftLaserNoCell
+  id: WeaponMakeshiftLaser
+  suffix: Medium Cell
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        startingItem: PowerCellMedium
+        locked: true
+        whitelist:
+          tags:
+          - PowerCell
+
+- type: entity
+  parent: [BaseItem, WeaponMakeshiftLaserConstructionBase]
+  id: WeaponMakeshiftLaserFrame
+  name: makeshift laser pistol frame
+  description: Only needs a bit more screwing and a doctorate in practical bluespace technology.
+  components:
+  - type: Sprite
+    state: frame
+  - type: Construction
+    node: mslaserframe
+    defaultTarget: mslaser
 
 - type: entity
   name: tesla gun
@@ -385,9 +354,9 @@
 
 - type: entity
   name: pulse pistol
-  parent: [BaseWeaponBatterySmall, BaseCentcommContraband]
+  parent: [BaseWeaponBatterySmall, BaseDeathSquadContraband]
   id: WeaponPulsePistol
-  description: A state of the art energy pistol favoured as a sidearm by the NT operatives.
+  description: A state-of-the-art energy pistol favoured as a sidearm by elite Nanotrasen operatives.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_pistol.rsi
@@ -425,9 +394,9 @@
 
 - type: entity
   name: pulse carbine
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband]
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseDeathSquadContraband]
   id: WeaponPulseCarbine
-  description: A high tech energy carbine favoured by the NT-ERT operatives.
+  description: A high-tech energy carbine favoured by elite Nanotrasen operatives.
   components:
   - type: Item
     size: Large
@@ -463,9 +432,9 @@
 
 - type: entity
   name: pulse rifle
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband]
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseDeathSquadContraband]
   id: WeaponPulseRifle
-  description: A weapon that is almost as infamous as its users.
+  description: A weapon almost as infamous as its users.
   components:
   - type: Item
     size: Huge
@@ -631,9 +600,12 @@
     projectileSpeed: 35 # any higher and this causes issues in lag
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
+  - type: Battery
+    maxCharge: 800
+    startingCharge: 800 # Charges in a 20W recharger at 40 seconds
   - type: BatteryAmmoProvider
     proto: BulletDisablerPractice
-    fireCost: 62.5
+    fireCost: 25 # 32 shots, 2 stamcrits, +3 miss buffer per stamcrit (256 stam damage total)
   - type: Tag
     tags:
     - Taser
@@ -662,7 +634,6 @@
       - Belt
   - type: BatteryAmmoProvider
     proto: BulletDisabler
-    fireCost: 62.5
   - type: GuideHelp
     guides:
     - Security
@@ -699,8 +670,8 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: BatteryAmmoProvider
-    proto: BulletDisablerSmg
-    fireCost: 25
+    proto: BulletDisablerSmgSlowing
+    fireCost: 15.6 # 64 shots, 2 stamcrits, +7 miss buffer per stamcrit (256 stam damage total)
   - type: MagazineVisuals
     magState: mag
     steps: 5
@@ -751,7 +722,7 @@
 
 - type: entity
   name: elite taser
-  parent: [ BaseCentcommContraband, WeaponTaser ]
+  parent: [ BaseTaskForceContraband, WeaponTaser ]
   id: WeaponTaserSuper
   suffix: ADMEME
   description: A low-capacity, energy-based stun gun used by elite security teams to disable even the toughest of targets.
@@ -804,7 +775,8 @@
   - type: StaticPrice
     price: 750
   - type: StealTarget
-    stealGroup: WeaponAntiqueLaser
+    stealGroup:
+    - WeaponAntiqueLaser
   - type: SentienceTarget # I hope this is only the captain's gun
     flavorKind: station-event-random-sentience-flavor-inanimate
     weight: 0.0002 # 5,000 times less likely than 1 regular animal
@@ -1018,7 +990,8 @@
     - HighRiskItem
     - Sidearm
   - type: StealTarget
-    stealGroup: WeaponEnergyMagnum
+    stealGroup:
+    - WeaponEnergyMagnum
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
@@ -1083,7 +1056,7 @@
     price: 100
 
 - type: entity
-  parent: [WeaponAdvancedLaser, BaseXenoborgContraband]
+  parent: [BaseXenoborgContraband, WeaponAdvancedLaser]
   id: WeaponLaserGunXenoborg
   name: xenoborg laser gun
   components:
@@ -1098,7 +1071,7 @@
       map: [ "enum.GunVisualLayers.MagUnshaded" ]
 
 - type: entity
-  parent: [WeaponLaserCannon, BaseXenoborgContraband]
+  parent: [BaseXenoborgContraband, WeaponLaserCannon]
   id: WeaponLaserCannonXenoborg
   name: xenoborg laser cannon
   components:
@@ -1124,7 +1097,7 @@
     maxAngle: 2
 
 - type: entity
-  parent: [WeaponAdvancedLaser, BaseXenoborgContraband]
+  parent: [BaseXenoborgContraband, WeaponAdvancedLaser]
   id: WeaponBurstFireLaserXenoborg
   name: xenoborg burst fire laser
   description: An alien weapon, channelling a burst-fire laser through a prism, causing targets to burst into fire.
@@ -1159,7 +1132,7 @@
   id: WeaponRangeFinderXenoborg
   name: xenoborg range finder
   components:
-  - type: Sprite 
+  - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/xenoborg_range_finder.rsi
     layers:
     - state: icon

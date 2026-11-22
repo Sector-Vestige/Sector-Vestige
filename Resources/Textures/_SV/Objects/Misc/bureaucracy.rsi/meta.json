@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by HexReject for Sector Vestige",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "business_card"
+        },
+        {
+            "name": "business_card_words"
+        },
+        {
+            "name": "central_card"
+        },
+        {
+            "name": "command_card"
+        },
+        {
+            "name": "r&d_card"
+        },
+        {
+            "name": "cybersun_card"
+        },
+        {
+            "name": "interdyne_card"
+        },
+        {
+            "name": "gorlex_card"
+        },
+        {
+            "name": "cartsilica_card"
+        },
+        {
+            "name": "pommersky_card"
+        }
+    ]
+}

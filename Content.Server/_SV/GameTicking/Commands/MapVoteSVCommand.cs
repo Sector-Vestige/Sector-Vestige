@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -45,7 +39,7 @@ public sealed partial class MapVoteSVCommand : LocalizedEntityCommands
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IVoteManager _voteManager = default!;
-    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private ServerGameTicker _gameTicker = default!;
     [Dependency] private ILocalizationManager _localizationManager = default!;
 
     public override string Command => "mapvotesv";

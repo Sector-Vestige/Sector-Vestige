@@ -1,0 +1,113 @@
+- type: entity
+  name: R&D pen
+  parent: Pen
+  id: PenR&D
+  description: A thin ballpoint pen disigned for R&D personel.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/pens.rsi
+    state: pen_r&d
+  - type: Item
+    sprite: _SV/Objects/Misc/pens.rsi
+    heldPrefix: pen_r&d
+
+- type: entity
+  name: Cybersun pen
+  parent: PenEmbeddable
+  id: PenCybersun
+  description: A luxurious fountain pen designed for Cybersun officals.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/pens.rsi
+    state: pen_cybersun
+  - type: Item
+    sprite: _SV/Objects/Misc/pens.rsi
+    heldPrefix: pen_cybersun
+
+- type: entity
+  name: Interdyne pen
+  parent: Pen
+  id: PenInterdyne
+  description: A thin ballpoint pen disigned for Interdyne personel.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/pens.rsi
+    state: pen_interdyne
+  - type: Item
+    sprite: _SV/Objects/Misc/pens.rsi
+    heldPrefix: pen_interdyne
+
+- type: entity
+  name: Cart Silica pen
+  parent: Pen
+  id: PenCartSilica
+  description: A thin ballpoint pen disigned for Cart Silica personel.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/pens.rsi
+    state: pen_cartsilica
+  - type: Item
+    sprite: _SV/Objects/Misc/pens.rsi
+    heldPrefix: pen_cartsilica
+
+- type: entity
+  name: Pommersky pen
+  parent: Pen
+  id: PenPommersky
+  description: A luxurious fountain pen designed for Pommersky officals.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/pens.rsi
+    state: pen_pommersky
+  - type: Item
+    sprite: _SV/Objects/Misc/pens.rsi
+    heldPrefix: pen_pommersky
+
+- type: entity
+  name: vox fountain pen
+  parent: Pen
+  id: PenVoxPirate
+  description: A scrappy fountain pen made from a feather plucked from a vox.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/pens.rsi
+    state: pen_vox
+  - type: Item
+    sprite: _SV/Objects/Misc/pens.rsi
+    heldPrefix: pen_vox
+
+- type: entity
+  parent: CrayonInedible
+  id: CrayonDS
+  name: Death Squad Marker
+  description: A wide and imposing black marker. Despite being a marker, it fills you with dread.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/pens.rsi
+    state: marker_ds
+  - type: Item
+    sprite: _SV/Objects/Misc/pens.rsi
+    heldPrefix: marker_ds
+  - type: Crayon
+    deleteEmpty: false
+    color: Black
+  - type: AutoRecharge
+    rechargeDuration: 5
+
+- type: entity
+  parent: CrayonInedible
+  id: CrayonGorlex
+  name: Gorlex Marker
+  description: A neon green marker that makes your eyes hurt. The ink smells like limes.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/pens.rsi
+    state: marker_gorlex
+  - type: Item
+    sprite: _SV/Objects/Misc/pens.rsi
+    heldPrefix: marker_gorlex
+  - type: Crayon
+    deleteEmpty: false
+    color: "#80ff80"
+  - type: AutoRecharge
+    rechargeDuration: 5

@@ -21,7 +21,8 @@
     tags:
     - HighRiskItem
   - type: StealTarget
-    stealGroup: NukeDisk
+    stealGroup:
+    - NukeDisk
 #Goob - Begin: pickup and drop sounds
   - type: EmitSoundOnPickup
     sound:

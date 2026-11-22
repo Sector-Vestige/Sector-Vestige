@@ -1,32 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
-// SPDX-FileCopyrightText: 2025 JesterX666 <32009105+JesterX666@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Administration.Logs;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Construction;
@@ -54,7 +25,6 @@ using System.Linq;
 using System.Numerics; //Sector Vestige: RPD Logic
 using Content.Shared._SV.RPD; //Sector Vestige: RPD Logic
 using Content.Shared.Atmos.Components; //Sector Vestige: RPD Logic
-using Content.Shared.Atmos.EntitySystems; //Sector Vestige: RPD Logic
 using Content.Shared._SV.EyeTracker; //Sector Vestige: RPD Logic
 
 namespace Content.Shared.RCD.Systems;
@@ -77,7 +47,6 @@ public sealed partial class RCDSystem : EntitySystem
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TagSystem _tags = default!;
-    [Dependency] private SharedAtmosPipeLayersSystem _layer = default!; //Sector Vestige: RPD Logic
     [Dependency] private IEntityManager _entityManager = default!; //Sector Vestige: RPD Logic
     [Dependency] private IEntityNetworkManager _entityNetworkManager = default!; //Sector Vestige: RPD Logic
 
@@ -718,16 +687,15 @@ public sealed partial class RCDSystem : EntitySystem
                     }
                 }
 
-                string ent;
+                // Upstream (#44507) replaced AtmosPipeLayers.AlternativePrototypes with prototype variant collections,
+                // where the variant index matches the AtmosPipeLayer value.
+                string ent = prototype.Prototype;
                 if (ProtoMan.TryIndex<EntityPrototype>(prototype.Prototype, out var entProto) &&
-                    entProto.TryGetComponent<AtmosPipeLayersComponent>(out var pipeLayer, _entityManager.ComponentFactory) &&
-                    _layer.TryGetAlternativePrototype(pipeLayer, _currentLayer, out var actualPipe))
+                    entProto.HasComp<AtmosPipeLayersComponent>(_entityManager.ComponentFactory) &&
+                    ProtoMan.TryGetVariantCollection<EntityPrototype>(entProto.ID, out var layerVariants) &&
+                    (int) _currentLayer < layerVariants.Count)
                 {
-                    ent = actualPipe;
-                }
-                else
-                {
-                    ent = prototype.Prototype;
+                    ent = layerVariants[(int) _currentLayer];
                 }
 
                 //Use the flipped prototype if it is called for, and if there is a flipped prototype provided

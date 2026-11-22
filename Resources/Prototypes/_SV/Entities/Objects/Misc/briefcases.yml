@@ -1,0 +1,33 @@
+- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseMetal
+  name: metal briefcase
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Storage/Briefcases/briefcase_metal.rsi
+    state: icon
+  - type: Item
+    sprite: _SV/Objects/Storage/Briefcases/briefcase_metal.rsi
+
+- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseSecure
+  name: secure briefcase
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Storage/Briefcases/briefcase_secure.rsi
+    layers:
+    - state: icon
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+  - type: Item
+    sprite: _SV/Objects/Storage/Briefcases/briefcase_secure.rsi
+  - type: Storage
+    grid:
+    - 0,0,5,3
+  - type: Appearance
+  - type: AccessReader
+  - type: Lock
+  - type: LockedStorage
+  - type: LockVisuals

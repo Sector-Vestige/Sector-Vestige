@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors
-#
-# SPDX-License-Identifier: MIT
-
 - type: alertLevel
   id: Silver
   name: sv-alert-level-silver

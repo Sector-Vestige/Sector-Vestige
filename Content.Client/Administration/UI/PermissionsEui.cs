@@ -1,21 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Aaron Mell <aaronamell@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Brandon Li <48413902+aspiringLich@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 (GitHub)
-//
-// SPDX-License-Identifier: MIT
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -229,16 +211,7 @@ namespace Content.Client.Administration.UI
                 var al = _menu.AdminsList;
                 var name = admin.UserName ?? admin.UserId.ToString();
 
-                al.AddChild(new Label { Text = name });
-
-                var titleControl = new Label { Text = admin.Title ?? Loc.GetString("permissions-eui-edit-admin-title-control-text").ToLowerInvariant() };
-                if (admin.Title == null) // none
-                {
-                    titleControl.StyleClasses.Add(StyleClass.Italic);
-                }
-
-                al.AddChild(titleControl);
-
+                // Compute rank and combined flags first so we can create the edit button before other columns.
                 bool italic;
                 string rank;
                 var combinedFlags = admin.PosFlags;
@@ -255,6 +228,25 @@ namespace Content.Client.Administration.UI
                     rank = Loc.GetString("permissions-eui-edit-no-rank-text").ToLowerInvariant();
                 }
 
+                var editButton = new Button { Text = Loc.GetString("permissions-eui-edit-title-button") };
+                editButton.OnPressed += _ => OnEditPressed(admin);
+
+                // Add the edit button as the first column
+                al.AddChild(editButton);
+
+                // Name (C-key)
+                al.AddChild(new Label { Text = name });
+
+                // Prefix / Title
+                var titleControl = new Label { Text = admin.Title ?? Loc.GetString("permissions-eui-edit-admin-title-control-text").ToLowerInvariant() };
+                if (admin.Title == null) // none
+                {
+                    titleControl.StyleClasses.Add(StyleClass.Italic);
+                }
+
+                al.AddChild(titleControl);
+
+                // Rank
                 var rankControl = new Label { Text = rank };
                 if (italic)
                 {
@@ -263,6 +255,7 @@ namespace Content.Client.Administration.UI
 
                 al.AddChild(rankControl);
 
+                // Flags / Additional rights
                 var flagsText = AdminFlagsHelper.PosNegFlagsText(admin.PosFlags, admin.NegFlags);
 
                 al.AddChild(new Label
@@ -271,10 +264,6 @@ namespace Content.Client.Administration.UI
                     HorizontalExpand = true,
                     HorizontalAlignment = Control.HAlignment.Center,
                 });
-
-                var editButton = new Button { Text = Loc.GetString("permissions-eui-edit-title-button") };
-                editButton.OnPressed += _ => OnEditPressed(admin);
-                al.AddChild(editButton);
 
                 if (!_adminManager.HasFlag(combinedFlags))
                 {

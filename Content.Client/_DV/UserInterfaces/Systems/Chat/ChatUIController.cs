@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Delta-V contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 Nico64 <74880554+NicoSGF64@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.CharacterInfo;
 using Content.Shared.Chat;
 using Content.Shared.Chat.TypingIndicator;

@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 # RC-codes for RCT operatives. Rendered as "Operative RC-{code}". RC-01 .. RC-99.
 rct-operative-code-1 = 01
 rct-operative-code-2 = 02

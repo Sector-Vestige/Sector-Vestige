@@ -1,82 +1,14 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2019 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2019 Silver <Silvertorch5@gmail.com>
-// SPDX-FileCopyrightText: 2019 ZelteHonor <gabrieldionbouchard@gmail.com>
-// SPDX-FileCopyrightText: 2019 moneyl <8206401+Moneyl@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 Bright0 <55061890+Bright0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 Clement-O <topy72.mine@gmail.com>
-// SPDX-FileCopyrightText: 2020 DTanxxx <55208219+DTanxxx@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 Exp <theexp111@gmail.com>
-// SPDX-FileCopyrightText: 2020 RemberBL <timmermanrembrandt@gmail.com>
-// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 chairbender <kwhipke1@gmail.com>
-// SPDX-FileCopyrightText: 2020 zumorica <zddm@outlook.es>
-// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 E F R <602406+Efruit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Leo <lzimann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Paul <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <zddm@outlook.es>
-// SPDX-FileCopyrightText: 2021 mirrorcult <notzombiedude@gmail.com>
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 Chris V <HoofedEar@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Clyybber <darkmine956@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Michael Phillips <1194692+MeltedPixel@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Morbo <exstrominer@gmail.com>
-// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 ike709 <ike709@github.com>
-// SPDX-FileCopyrightText: 2022 ike709 <ike709@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aexxie <codyfox.077@gmail.com>
-// SPDX-FileCopyrightText: 2024 BuildTools <unconfigured@null.spigotmc.org>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 B_Kirill <153602297+B-Kirill@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 David <david.owen.dev@gmail.com>
-// SPDX-FileCopyrightText: 2025 Milon <milonpl.git@proton.me>
-// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Princess-Cheeseballs@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Pronana@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Content.Server._SV.Sponsors; // SV - Patreon
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.Discord.DiscordLink;
-using Content.Server.Ghost;
 using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
+using Content.Shared._SV.CCVar; // SV - Patreon
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
@@ -84,7 +16,6 @@ using Content.Shared.Database;
 using Content.Shared.Mind;
 using Content.Shared.Players.RateLimiting;
 using Robust.Shared.Configuration;
-using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Replays;
@@ -110,6 +41,7 @@ internal sealed partial class ChatManager : IChatManager
     [Dependency] private IAdminManager _adminManager = default!;
     [Dependency] private IAdminLogManager _adminLogger = default!;
     [Dependency] private IServerPreferencesManager _preferencesManager = default!;
+    [Dependency] private SponsorManager _sponsors = default!; // SV - Patreon
     [Dependency] private IConfigurationManager _configurationManager = default!;
     [Dependency] private INetConfigurationManager _netConfigManager = default!;
     [Dependency] private IEntityManager _entityManager = default!;
@@ -118,8 +50,9 @@ internal sealed partial class ChatManager : IChatManager
     [Dependency] private DiscordChatLink _discordLink = default!;
     [Dependency] private ILogManager _logManager = default!;
     [Dependency] private ILocalizationManager _localizationManager = default!;
+    private SharedChatSystem _chatSystem = default!;
 
-    private ISawmill? _sawmill = default!;
+private ISawmill? _sawmill = default!;
 
     /// <summary>
     /// The maximum length a player-sent message can be sent
@@ -141,6 +74,8 @@ internal sealed partial class ChatManager : IChatManager
 
         _sawmill = _logManager.GetSawmill("SERVER");
 
+        _chatSystem = _entityManager.System<SharedChatSystem>();
+
         RegisterRateLimits();
     }
 
@@ -160,10 +95,10 @@ internal sealed partial class ChatManager : IChatManager
         DispatchServerAnnouncement(Loc.GetString(val ? "chat-manager-admin-ooc-chat-enabled-message" : "chat-manager-admin-ooc-chat-disabled-message"));
     }
 
-        public void DeleteMessagesBy(NetUserId uid)
-        {
-            if (!_players.TryGetValue(uid, out var user))
-                return;
+    public void DeleteMessagesBy(NetUserId uid)
+    {
+        if (!_players.TryGetValue(uid, out var user))
+            return;
 
         var msg = new MsgDeleteChatMessagesBy { Key = user.Key, Entities = user.Entities };
         _netManager.ServerSendToAll(msg);
@@ -184,7 +119,7 @@ internal sealed partial class ChatManager : IChatManager
 
     #region Server Announcements
 
-    public void DispatchServerAnnouncement(string message, Color? colorOverride = null)
+    public void DispatchServerAnnouncement(string message, Color? colorOverride = null, ICommonSession? sender = null)
     {
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", FormattedMessage.EscapeText(message)));
         ChatMessageToAll(ChatChannel.Server, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride);
@@ -193,7 +128,12 @@ internal sealed partial class ChatManager : IChatManager
         // during server setup when some cvars are changed
         _sawmill?.Info(message);
 
-        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Server announcement: {message}");
+        if (sender is null) //just so that log search works...
+            _adminLogger.Add(LogType.Chat, LogImpact.Low,
+                $"Server announcement from SYSTEM: {message}");
+        else
+            _adminLogger.Add(LogType.Chat, LogImpact.Low,
+                $"Server announcement from {sender:Player}: {message}");
     }
 
     public void DispatchServerMessage(ICommonSession player, string message, bool suppressLog = false)
@@ -371,11 +311,14 @@ internal sealed partial class ChatManager : IChatManager
         {
             wrappedMessage = Loc.GetString("sv-chat-manager-send-ooc-admin-inactive-wrap-message", ("adminColor", prefs.AdminOOCColor), ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
         }
-
-        if (_netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) && player.Channel.UserData.PatronTier is { } patron && PatronOocColors.TryGetValue(patron, out var patronColor))
+        // SV changes - Sponsor/patron entitlement manager - Start
+        // Admin colors take precedence over patron colors, so this must stay part of the else-if chain.
+        else if (_netConfigManager.GetClientCVar(player.Channel, SVCCVars.ShowSVOocPatreonColor)
+            && _sponsors.TryGetOocColor(player.UserId, out var patronColor))
         {
             wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", patronColor), ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
         }
+        // SV changes - Sponsor/patron entitlement manager - End
         // SV OOC color End
 
         //TODO: player.Name color, this will need to change the structure of the MsgChatMessage
@@ -421,35 +364,12 @@ internal sealed partial class ChatManager : IChatManager
 
     #region Utility
 
-    private bool IsValidWarpDestination(EntityUid source)
-    {
-        if (!source.Valid)
-            return false;
-
-        if (!_entityManager.TryGetComponent(source, out TransformComponent? transform))
-            return false;
-
-        return transform.MapID != MapId.Nullspace;
-    }
-
-    public string PrependFollowButtonIfAppropriate(string wrappedMessage, EntityUid source, INetChannel recipient)
-    {
-        if (IsValidWarpDestination(source) && ShouldShowFollowButton(recipient))
-        {
-            var btnText = _localizationManager.GetString("chat-manager-follow-button");
-            return $"[cmdlink=\"{btnText}\" command=\"{GhostFollowEntityCommand.CommandName} {_entityManager.GetNetEntity(source)}\" /] " + wrappedMessage;
-        }
-
-        return wrappedMessage;
-    }
-
     public void ChatMessageToOne(ChatChannel channel, string message, string wrappedMessage, EntityUid source, bool hideChat, INetChannel client, Color? colorOverride = null, bool recordReplay = false, string? audioPath = null, float audioVolume = 0, NetUserId? author = null)
     {
         var user = author == null ? null : EnsurePlayer(author);
         var netSource = _entityManager.GetNetEntity(source);
         user?.AddEntity(netSource);
 
-        wrappedMessage = PrependFollowButtonIfAppropriate(wrappedMessage, source, client);
         var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume);
         _netManager.ServerSendMessage(new MsgChatMessage() { Message = msg }, client);
 
@@ -472,12 +392,8 @@ internal sealed partial class ChatManager : IChatManager
         var netSource = _entityManager.GetNetEntity(source);
         user?.AddEntity(netSource);
 
-        foreach (var client in clients)
-        {
-            var customWrapMessage = PrependFollowButtonIfAppropriate(wrappedMessage, source, client);
-            var msg = new ChatMessage(channel, message, customWrapMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume);
-            _netManager.ServerSendMessage(new MsgChatMessage { Message = msg }, client);
-        }
+        var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume);
+        _netManager.ServerSendToMany(new MsgChatMessage() { Message = msg }, clients);
 
         if (!recordReplay)
             return;
@@ -485,7 +401,6 @@ internal sealed partial class ChatManager : IChatManager
         if ((channel & ChatChannel.AdminRelated) == 0 ||
             _configurationManager.GetCVar(CCVars.ReplayRecordAdminChat))
         {
-            var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume);
             _replay.RecordServerMessage(msg);
         }
     }
@@ -546,22 +461,6 @@ internal sealed partial class ChatManager : IChatManager
     }
 
     #endregion
-
-    private bool ShouldShowFollowButton(INetChannel recipient)
-    {
-        if (!_player.TryGetSessionByChannel(recipient, out var session))
-            return false;
-
-        if (_entityManager.TrySystem(out GhostSystem? ghost))
-        {
-            if (!ghost.CanGhostWarp(session, out _))
-            {
-                return false;
-            }
-        }
-
-        return _netConfigManager.GetClientCVar(recipient, CCVars.InterfaceChatFollowButton);
-    }
 }
 
 public enum OOCChatType : byte

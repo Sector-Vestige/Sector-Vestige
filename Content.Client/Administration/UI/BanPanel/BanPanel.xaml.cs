@@ -1,27 +1,9 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Riggle <27156122+RigglePrime@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tornado Tech <54727692+Tornado-Technology@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 PJB3005 <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Pok <113675512+Pok27@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 Vasilis The Pikachu <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 beck-thompson <beck314159@hotmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Numerics;
-using Content.Client.Administration.UI.CustomControls;
+using Content.Client.Stylesheets;
+using Content.Client.UserInterface.Controls;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -237,7 +219,7 @@ public sealed partial class BanPanel : DefaultWindow
             }
         });
         RolesContainer.AddChild(outerContainer);
-        RolesContainer.AddChild(new HSeparator());
+        RolesContainer.AddChild(new Separator { StyleClasses = { StyleClass.LowDivider } });
     }
 
     private Button CreateRoleGroupHeader(string groupName, BoxContainer header, Color color, GridContainer innerContainer)

@@ -1,11 +1,28 @@
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: latheRecipePack
   id: SVMedfabStatic
   recipes:
   # Medical Restraints
   - Straitjacket
+
+## Autolathe Static
+- type: latheRecipePack
+  id: SVAutolatheStatic
+  recipes:
+  - DisposableCamera # Cameras
+  - BriefcaseBrown # Briefcases
+  - BriefcaseMetal
+  - BriefcaseSecure
+  - BoxFolderRedEmpty # Normal Folders
+  - BoxFolderBlueEmpty
+  - BoxFolderYellowEmpty
+  - BoxFolderGreyEmpty
+  - BoxFolderBlackEmpty
+  - BoxFolderGreenEmpty
+  - BoxFolderWhiteEmpty
+  - BoxFolderSecureRedEmpty # Secure Folders
+  - BoxFolderSecureBlueEmpty
+  - BoxFolderSecureYellowEmpty
+  - BoxFolderSecureGreyEmpty
+  - BoxFolderSecureBlackEmpty
+  - BoxFolderSecureGreenEmpty
+  - BusinessCard # Business Card

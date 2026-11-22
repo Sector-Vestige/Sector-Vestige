@@ -1,18 +1,3 @@
-// SPDX-FileCopyrightText: 2026 EinsteinEngines contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2025 AftrLite <61218133+AftrLite@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Dark <darkwindleaf@hotmail.co.uk>
-// SPDX-FileCopyrightText: 2025 Lachryphage <lachri.lachryphage@gmail.com>
-// SPDX-FileCopyrightText: 2025 V <97265903+formlessnameless@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 beck <163376292+widgetbeck@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 hivehum <ketchupfaced@gmail.com>
-// SPDX-FileCopyrightText: 2025 mqole <113324899+mqole@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 mqole <anactualpanacea@gmail.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -26,6 +11,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Audio;
 using Content.Shared.Chat;
 using Content.Shared.DeviceLinking;
+using Content.Shared.DeviceLinking.Components;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Light.Components;
 using Content.Shared.Mobs;
@@ -715,8 +701,7 @@ public sealed partial class SupermatterSystem
         }
 
         // Add post-delamination event scheduler
-        var gamerule = _gameTicker.AddGameRule(sm.DelamGamerulePrototype);
-        _gameTicker.StartGameRule(gamerule);
+        _gameTicker.StartGameRule(sm.DelamGamerulePrototype); // adds and starts the rule
 
         var effects = _proto.Index(sm.DelamEffectsPrototype).Components;
 

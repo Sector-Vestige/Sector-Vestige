@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Administration.Logs;
 using Content.Shared.Database;
@@ -37,6 +31,7 @@ using Content.Shared.StationRecords.Systems;
 using Content.Shared.StationRecords.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._SV.CharacterDocuments.Consoles;
 
@@ -44,7 +39,6 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
 {
 
     [Dependency] private UserInterfaceSystem _userInterfaceSystem = default!;
-    [Dependency] private SharedStationSystem _sharedStationSystem = default!;
     [Dependency] private CharacterDocumentSystem _characterDocumentSystem = default!;
     [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
     [Dependency] private AudioSystem _audio = default!;
@@ -164,11 +158,11 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
                     : null;
             }
 
-            var (secStatus, secReason, secFingerprint) = comp.DocumentType == DocumentType.Security
+            var (secStatus, secReason, secFingerprint, secDna) = comp.DocumentType == DocumentType.Security
                 ? GetSecurityInfo(uid, record)
-                : (SecurityStatus.None, null, null);
+                : (SecurityStatus.None, null, null, null);
 
-            var state = new CharacterDocumentConsoleState(netPlayerEntities, comp.SelectedPlayer, filteredDocs, comp.SelectedDocument, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint);
+            var state = new CharacterDocumentConsoleState(netPlayerEntities, comp.SelectedPlayer, filteredDocs, comp.SelectedDocument, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint, selectedPlayerDna: secDna);
             PushState(uid, state);
         }
         else
@@ -210,11 +204,11 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
         comp.SelectedPlayer = args.ProfileId;
         bool paperinserted = comp.PaperSlot.ContainerSlot?.ContainedEntity != null;
 
-        var (secStatus, secReason, secFingerprint) = comp.DocumentType == DocumentType.Security
+        var (secStatus, secReason, secFingerprint, secDna) = comp.DocumentType == DocumentType.Security
             ? GetSecurityInfo(uid, record)
-            : (SecurityStatus.None, null, null);
+            : (SecurityStatus.None, null, null, null);
 
-        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, null, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint);
+        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, null, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint, selectedPlayerDna: secDna);
         PushState(uid, characterDocumentConsoleState);
     }
 
@@ -238,11 +232,11 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
 
         bool paperinserted = comp.PaperSlot.ContainerSlot?.ContainedEntity != null;
 
-        var (secStatus, secReason, secFingerprint) = comp.DocumentType == DocumentType.Security
+        var (secStatus, secReason, secFingerprint, secDna) = comp.DocumentType == DocumentType.Security
             ? GetSecurityInfo(uid, record)
-            : (SecurityStatus.None, null, null);
+            : (SecurityStatus.None, null, null, null);
 
-        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, selecteddoc, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint);
+        var characterDocumentConsoleState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, selecteddoc, paperinserted, comp.DocumentType, secStatus, secReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: secFingerprint, selectedPlayerDna: secDna);
         PushState(uid, characterDocumentConsoleState);
     }
 
@@ -580,9 +574,9 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
 
         var filteredDocs = BuildVisibleDocs(uid, comp, record);
 
-        var (newStatus, newReason, newFingerprint) = GetSecurityInfo(uid, record);
+        var (newStatus, newReason, newFingerprint, newDna) = GetSecurityInfo(uid, record);
         bool paperInserted = comp.PaperSlot.ContainerSlot?.ContainedEntity != null;
-        var refreshState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, comp.SelectedDocument, paperInserted, comp.DocumentType, newStatus, newReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: newFingerprint);
+        var refreshState = new CharacterDocumentConsoleState(netPlayerEntities, args.ProfileId, filteredDocs, comp.SelectedDocument, paperInserted, comp.DocumentType, newStatus, newReason, additionalDocumentTypes: comp.AdditionalDocumentTypes, selectedPlayerGeneral: record.General, selectedPlayerFingerprint: newFingerprint, selectedPlayerDna: newDna);
         PushState(uid, refreshState);
     }
 
@@ -604,26 +598,30 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
         return true;
     }
 
-    private (SecurityStatus status, string? reason, string? fingerprint) GetSecurityInfo(EntityUid consoleUid, CharacterDocumentRecord record)
+    private (SecurityStatus status, string? reason, string? fingerprint, string? dna) GetSecurityInfo(EntityUid consoleUid, CharacterDocumentRecord record)
     {
         var station = _stationSystem.GetOwningStation(consoleUid);
         if (station == null)
-            return (SecurityStatus.None, null, null);
+            return (SecurityStatus.None, null, null, null);
 
         if (!TryComp<StationRecordsComponent>(station, out var stationRecords))
-            return (SecurityStatus.None, null, null);
+            return (SecurityStatus.None, null, null, null);
 
         if (!TryGetRecordKeyByName((station.Value, stationRecords), record.Name, out var key))
-            return (SecurityStatus.None, null, null);
+            return (SecurityStatus.None, null, null, null);
 
-        var fingerprint = _stationRecords.TryGetRecord<GeneralStationRecord>(key, out var generalRecord, stationRecords)
-            ? generalRecord.Fingerprint
-            : null;
+        string? fingerprint = null;
+        string? dna = null;
+        if (_stationRecords.TryGetRecord<GeneralStationRecord>(key, out var generalRecord, stationRecords))
+        {
+            fingerprint = generalRecord.Fingerprint;
+            dna = generalRecord.DNA;
+        }
 
         if (!_stationRecords.TryGetRecord<CriminalRecord>(key, out var criminalRecord, stationRecords))
-            return (SecurityStatus.None, null, fingerprint);
+            return (SecurityStatus.None, null, fingerprint, dna);
 
-        return (criminalRecord.Status, criminalRecord.Reason, fingerprint);
+        return (criminalRecord.Status, criminalRecord.Reason, fingerprint, dna);
     }
 
     /// <summary>
@@ -721,7 +719,7 @@ public sealed partial class CharacterDocumentConsoleSystem : EntitySystem
     private bool TryGetConsoleStation(EntityUid consoleUid, out CharacterDocumentStationComponent? stationComp)
     {
         stationComp = null;
-        var station = _sharedStationSystem.GetOwningStation(consoleUid);
+        var station = _stationSystem.GetOwningStation(consoleUid);
         // Cross-map consoles may not have an owning station entity at all if their map isn't
         // registered as a station, so we still let them through.
         if (station == null && !HasComp<CrossMapDocumentAccessComponent>(consoleUid))

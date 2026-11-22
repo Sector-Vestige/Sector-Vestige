@@ -1,13 +1,3 @@
-# SPDX-FileCopyrightText: 2026 EinsteinEngines contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2025 V <97265903+formlessnameless@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 hivehum <ketchupfaced@gmail.com>
-# SPDX-FileCopyrightText: 2025 mqole <113324899+mqole@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: [ BaseComputerAiAccess, BaseEngineeringContraband ]
   id: ComputerSupermatter
@@ -18,21 +8,27 @@
     board: SupermatterComputerCircuitboard
   - type: Sprite
     layers:
-    - map: ["computerLayerBody"]
+    - map: [ "enum.ComputerVisualLayers.Frame" ]
       state: computer
       sprite: _Impstation/Structures/Machines/computers.rsi
-    - map: ["computerLayerKeyboard"]
+    - map: [ "enum.ComputerVisualLayers.Keyboard" ]
       state: generic_keyboard
       sprite: _Impstation/Structures/Machines/computers.rsi
-    - map: ["computerLayerScreen"]
+    - map: [ "enum.ComputerVisualLayers.Screen" ]
       state: supermatter-0
       sprite: _Impstation/Structures/Machines/computers.rsi
-    - map: ["computerLayerKeys"]
+    - map: [ "enum.ComputerVisualLayers.Keys" ]
       state: supermatter_keys
       sprite: _Impstation/Structures/Machines/computers.rsi
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
       sprite: _Impstation/Structures/Machines/computers.rsi
+  - type: ComputerVisuals # SV - upstream ComputerVisuals now sets the layer states
+    stateFrame: computer
+    stateKeyboard: generic_keyboard
+    stateScreen: supermatter-0
+    stateKeys: supermatter_keys
+    statePanel: generic_panel_open
   - type: PointLight
     radius: 2.4
     energy: 1.6
@@ -40,14 +36,14 @@
   - type: GenericVisualizer
     visuals:
       enum.ComputerVisuals.Powered:
-        computerLayerScreen:
+        enum.ComputerVisualLayers.Screen:
           True: { visible: true, shader: unshaded }
           False: { visible: false }
-        computerLayerKeys:
+        enum.ComputerVisualLayers.Keys:
           True: { visible: true, shader: unshaded }
           False: { visible: true, shader: shaded }
       enum.SupermatterConsoleVisuals.ComputerLayerScreen:
-        computerLayerScreen:
+        enum.ComputerVisualLayers.Screen:
           0: { state: supermatter-0 }
           1: { state: supermatter-1 }
           2: { state: supermatter-2 }

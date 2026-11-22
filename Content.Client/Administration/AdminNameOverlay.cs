@@ -1,31 +1,8 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 E F R <602406+Efruit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Paul <ritter.paul1+git@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 Schrödinger <132720404+Schrodinger71@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Collections.Frozen;
 using System.Linq;
 using System.Numerics;
 using Content.Client.Administration.Systems;
-using Content.Client.Stylesheets;
+using Content.Client.Stylesheets.Fonts;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Ghost.Components;
@@ -87,8 +64,9 @@ internal sealed class AdminNameOverlay : Overlay
         _prototypeManager = prototypeManager;
         ZIndex = 200;
         // Setting these to a specific ttf would break the antag symbols
-        _font = resourceCache.NotoStack();
-        _fontBold = resourceCache.NotoStack(variation: "Bold");
+        var fontStack = new NotoFontFamilyStack(resourceCache);
+        _font = fontStack.GetFont(10);
+        _fontBold = fontStack.GetFont(10, FontKind.Bold);
 
         config.OnValueChanged(CCVars.AdminOverlayAntagFormat, (show) => { _overlayFormat = UpdateOverlayFormat(show); }, true);
         config.OnValueChanged(CCVars.AdminOverlaySymbolStyle, (show) => { _overlaySymbolStyle = UpdateOverlaySymbolStyle(show); }, true);
@@ -210,16 +188,18 @@ internal sealed class AdminNameOverlay : Overlay
                 }
             }
 
+            var outline = TextOutline.Default with { Color = TextOutline.Default.Color.WithAlpha(alpha) };
+
             // Character name
             var color = Color.Aquamarine;
             color.A = alpha;
-            args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.CharacterName, uiScale, playerInfo.Connected ? color : colorDisconnected);
+            args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.CharacterName, uiScale, playerInfo.Connected ? color : colorDisconnected, outline);
             currentOffset += lineoffset;
 
             // Username
             color = Color.Yellow;
             color.A = alpha;
-            args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.Username, uiScale, playerInfo.Connected ? color : colorDisconnected);
+            args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.Username, uiScale, playerInfo.Connected ? color : colorDisconnected, outline);
             currentOffset += lineoffset;
 
             // Playtime
@@ -227,7 +207,7 @@ internal sealed class AdminNameOverlay : Overlay
             {
                 color = Color.Orange;
                 color.A = alpha;
-                args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.PlaytimeString, uiScale, playerInfo.Connected ? color : colorDisconnected);
+                args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.PlaytimeString, uiScale, playerInfo.Connected ? color : colorDisconnected, outline);
                 currentOffset += lineoffset;
             }
 
@@ -236,7 +216,7 @@ internal sealed class AdminNameOverlay : Overlay
             {
                 color = Color.GreenYellow;
                 color.A = alpha;
-                args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.StartingJob, uiScale, playerInfo.Connected ? color : colorDisconnected);
+                args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.StartingJob, uiScale, playerInfo.Connected ? color : colorDisconnected, outline);
                 currentOffset += lineoffset;
             }
 
@@ -287,7 +267,7 @@ internal sealed class AdminNameOverlay : Overlay
             var label = !string.IsNullOrEmpty(symbol)
                 ? Loc.GetString("player-tab-character-name-antag-symbol", ("symbol", symbol), ("name", text))
                 : text;
-            args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset, label, uiScale, color);
+            args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset, label, uiScale, color, outline);
             currentOffset += lineoffset;
 
             //Save the coordinates and size of the text block, for stack merge check

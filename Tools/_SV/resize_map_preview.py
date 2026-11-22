@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 """
 Resize Content.MapRenderer output into lobby map-pool preview images.
 

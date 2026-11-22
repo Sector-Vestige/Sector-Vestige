@@ -73,3 +73,259 @@
   components:
   - type: PaperVisuals
     headerImagePath: "/Textures/_SV/Interface/Paper/syndicate_1.png"
+
+- type: entity
+  id: BusinessCard
+  name: business card
+  parent: Paper
+  description: A eggshell card with usually contains personal information.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: business_card
+    - state: business_card_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
+  - type: Item
+    sprite: Objects/Misc/bureaucracy.rsi
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        color: "#f0ead6"
+      right:
+      - state: paper-inhand-right
+        color: "#f0ead6"
+  - type: Paper
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    contentImagePath: "/Textures/Interface/Paper/paper_content_lined.svg.96dpi.png"
+    backgroundModulate: "#f0ead6"
+    contentImageModulate: "#f0ead6"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 4.0, 4.0, 4.0, 4.0
+    maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: CCBusinessCard
+  name: CentCom business card
+  parent: Paper
+  description: A green and gold card with contains personal information of someone important.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: central_card
+  - type: Item
+    sprite: Objects/Misc/bureaucracy.rsi
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        color: "#29722e"
+      right:
+      - state: paper-inhand-right
+        color: "#29722e"
+  - type: Paper
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    backgroundModulate: "#29722e"
+    contentImageModulate: "#29722e"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 4.0, 4.0, 4.0, 4.0
+    maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: CommandBusinessCard
+  name: command business card
+  parent: Paper
+  description: A NT blue and gold card with contains personal information of someone vaugely important.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: command_card
+  - type: Item
+    sprite: Objects/Misc/bureaucracy.rsi
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        color: "#006086"
+      right:
+      - state: paper-inhand-right
+        color: "#006086"
+  - type: Paper
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    backgroundModulate: "#006086"
+    contentImageModulate: "#006086"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 4.0, 4.0, 4.0, 4.0
+    maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: R&DBusinessCard
+  name: R&D business card
+  parent: Paper
+  description: An off white card with purple and blue accents. It makes you feel like you're in a lecture hall.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: r&d_card
+  - type: Item
+    sprite: Objects/Misc/bureaucracy.rsi
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        color: "#e5e0cf"
+      right:
+      - state: paper-inhand-right
+        color: "#e5e0cf"
+  - type: Paper
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    backgroundModulate: "#e5e0cf"
+    contentImageModulate: "#e5e0cf"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 4.0, 4.0, 4.0, 4.0
+    maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: CybersunBusinessCard
+  name: Cybersun business card
+  parent: Paper
+  description: A gray card with the image of a setting sun. The card is light in the hand.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: cybersun_card
+  - type: Item
+    sprite: Objects/Misc/bureaucracy.rsi
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        color: "#c2c2c2"
+      right:
+      - state: paper-inhand-right
+        color: "#c2c2c2"
+  - type: Paper
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    backgroundModulate: "#c2c2c2"
+    contentImageModulate: "#c2c2c2"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 4.0, 4.0, 4.0, 4.0
+    maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: InterdyneBusinessCard
+  name: Interdyne business card
+  parent: Paper
+  description: A lightblue card with the image of a double helix that glimmers in the light.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: interdyne_card
+  - type: Item
+    sprite: Objects/Misc/bureaucracy.rsi
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        color: "#99daeb"
+      right:
+      - state: paper-inhand-right
+        color: "#99daeb"
+  - type: Paper
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    backgroundModulate: "#99daeb"
+    contentImageModulate: "#99daeb"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 4.0, 4.0, 4.0, 4.0
+    maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: GorlexBusinessCard
+  name: Gorlex business card
+  parent: Paper
+  description: A stark red card with an holographic image of a sword and bullwark.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: gorlex_card
+  - type: Item
+    sprite: Objects/Misc/bureaucracy.rsi
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        color: "#a01e1e"
+      right:
+      - state: paper-inhand-right
+        color: "#a01e1e"
+  - type: Paper
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    backgroundModulate: "#a01e1e"
+    contentImageModulate: "#a01e1e"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 4.0, 4.0, 4.0, 4.0
+    maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: CartSilicaBusinessCard
+  name: Cart Silica business card
+  parent: Paper
+  description: A slightly glossy black card with a bold corperate logo.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: cartsilica_card
+  - type: Item
+    sprite: Objects/Misc/bureaucracy.rsi
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        color: "#3d3d3d"
+      right:
+      - state: paper-inhand-right
+        color: "#3d3d3d"
+  - type: Paper
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    backgroundModulate: "#3d3d3d"
+    contentImageModulate: "#3d3d3d"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 4.0, 4.0, 4.0, 4.0
+    maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: PommerskyBusinessCard
+  name: Pommersky business card
+  parent: Paper
+  description: A tan and gold accented card imaged with a dark swooping eagle. The card is vaugely stained with some kind of oil.
+  components:
+  - type: Sprite
+    sprite: _SV/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: pommersky_card
+  - type: Item
+    sprite: Objects/Misc/bureaucracy.rsi
+    inhandVisuals:
+      left:
+      - state: paper-inhand-left
+        color: "#9c875a"
+      right:
+      - state: paper-inhand-right
+        color: "#9c875a"
+  - type: Paper
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    backgroundModulate: "#9c875a"
+    contentImageModulate: "#9c875a"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 4.0, 4.0, 4.0, 4.0
+    maxWritableArea: 400.0, 256.0

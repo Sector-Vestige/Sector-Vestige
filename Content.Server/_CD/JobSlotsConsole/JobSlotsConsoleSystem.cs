@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Server.Station.Systems;
 using Content.Shared._CD.JobSlotsConsole;
 using Robust.Server.GameObjects;
@@ -15,6 +8,8 @@ using Content.Shared.GameTicking;
 using Content.Shared.Roles;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
+using Content.Shared.Station.Components;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._CD.JobSlotsConsole;
 
@@ -22,7 +17,7 @@ public sealed partial class JobSlotsConsoleSystem : EntitySystem
 {
     [Dependency] private AccessReaderSystem _access = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private StationJobsSystem _jobs = default!;
+    [Dependency] private ServerStationJobsSystem _jobs = default!;
     [Dependency] private StationSystem _station = default!;
     [Dependency] private UserInterfaceSystem _ui = default!;
 

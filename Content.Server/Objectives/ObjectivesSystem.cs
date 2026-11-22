@@ -1,25 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Crotalus <Crotalus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hreno <hrenor@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
-using Content.Server.GameTicking;
 using Content.Server.Shuttles.Systems;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.GameTicking.Components;
@@ -34,7 +12,7 @@ using System.Linq;
 using System.Text;
 using Content.Server.Objectives.Commands;
 using Content.Shared.CCVar;
-using Content.Shared.Prototypes;
+using Content.Shared.GameTicking;
 using Content.Shared.Roles.Jobs;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -76,7 +54,8 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
     /// <summary>
     /// Adds objective text for each game rule's players on round end.
     /// </summary>
-    private void OnRoundEndText(RoundEndTextAppendEvent ev)
+    [SubscribeLocalEvent]
+    private void OnRoundEndText(ref RoundEndTextAppendEvent ev)
     {
         // go through each gamerule getting data for the roundend summary.
         var summaries = new Dictionary<string, Dictionary<string, List<(EntityUid, string)>>>();
@@ -236,7 +215,7 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
                 }
             }
 
-            var successRate = totalObjectives > 0 ? (float) completedObjectives / totalObjectives : 0f;
+            var successRate = totalObjectives > 0 ? (float)completedObjectives / totalObjectives : 0f;
             agentSummaries.Add((agentSummary.ToString(), successRate, completedObjectives));
         }
 
@@ -346,7 +325,7 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
     private void CreateCompletions()
     {
         _objectives = ProtoMan.EnumeratePrototypes<EntityPrototype>()
-            .Where(p => p.HasComponent<ObjectiveComponent>())
+            .Where(p => p.HasComp<ObjectiveComponent>(EntityManager.ComponentFactory))
             .Select(p => p.ID)
             .Order();
     }

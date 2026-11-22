@@ -1,4 +1,4 @@
-﻿## Damage command loc.
+## Damage command loc.
 
 damage-command-description = Add or remove damage to an entity.
 damage-command-help = Usage: {$command} <type/group> <amount> [ignoreResistances] [uid]
@@ -13,4 +13,4 @@ damage-command-error-quantity = {$arg} is not a valid quantity.
 ##SV: Armor Piercing rework
 damage-command-error-float = {$arg} is not a valid float.
 damage-command-error-player = No entity attached to session. You must specify a target uid
-damage-command-error-args = Invalid number of arguments
+damage-command-error-args = Invalid number of arguments 

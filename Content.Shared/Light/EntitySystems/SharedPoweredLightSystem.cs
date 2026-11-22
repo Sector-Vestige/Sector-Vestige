@@ -1,21 +1,10 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2025 Perry Fraser <perryprog@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 Zamshi8 <235235723+Zamshi8@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Audio;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
-using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
-using Content.Shared.DeviceNetwork;
+using Content.Shared.DeviceLinking.Systems;
 using Content.Shared.DeviceNetwork.Events;
+using Content.Shared.DeviceNetwork.Payloads;
 using Content.Shared.DoAfter;
 using Content.Shared.Emp;
 using Content.Shared.Hands.EntitySystems;
@@ -48,7 +37,7 @@ public abstract partial class SharedPoweredLightSystem : EntitySystem
     [Dependency] private SharedPowerReceiverSystem _receiver = default!;
     [Dependency] private SharedPointLightSystem _pointLight = default!;
     [Dependency] private SharedStorageSystem _storage = default!;
-    [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
+    [Dependency] private DeviceLinkSystem _deviceLink = default!;
 
     private static readonly TimeSpan ThunkDelay = TimeSpan.FromSeconds(2);
     public const string LightBulbContainer = "light_bulb";
@@ -62,7 +51,6 @@ public abstract partial class SharedPoweredLightSystem : EntitySystem
         SubscribeLocalEvent<PoweredLightComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<PoweredLightComponent, InteractHandEvent>(OnInteractHand);
         SubscribeLocalEvent<PoweredLightComponent, SignalReceivedEvent>(OnSignalReceived);
-        SubscribeLocalEvent<PoweredLightComponent, DeviceNetworkPacketEvent>(OnPacketReceived);
         SubscribeLocalEvent<PoweredLightComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<PoweredLightComponent, PoweredLightDoAfterEvent>(OnDoAfter);
         SubscribeLocalEvent<PoweredLightComponent, DamageChangedEvent>(HandleLightDamaged);
@@ -141,15 +129,12 @@ public abstract partial class SharedPoweredLightSystem : EntitySystem
     }
 
     /// <summary>
-    /// Turns the light on or of when receiving a <see cref="DeviceNetworkConstants.CmdSetState"/> command.
-    /// The light is turned on or of according to the <see cref="DeviceNetworkConstants.StateEnabled"/> value
+    /// Turns the light on or of when receiving a <see cref="ApcNetTogglePayload"/>.
     /// </summary>
-    private void OnPacketReceived(EntityUid uid, PoweredLightComponent component, DeviceNetworkPacketEvent args)
+    [SubscribeLocalEvent]
+    private void OnPacketReceived(Entity<PoweredLightComponent> ent, ref DeviceNetworkPacketEvent<ApcNetTogglePayload> args)
     {
-        if (!args.Data.TryGetValue(DeviceNetworkConstants.Command, out string? command) || command != DeviceNetworkConstants.CmdSetState) return;
-        if (!args.Data.TryGetValue(DeviceNetworkConstants.StateEnabled, out bool enabled)) return;
-
-        SetState(uid, enabled, component);
+        SetState(ent, args.Data.Enabled, ent.Comp);
     }
 
     /// <summary>
@@ -312,7 +297,7 @@ public abstract partial class SharedPoweredLightSystem : EntitySystem
                     {
                         light.LastThunk = time;
                         Dirty(uid, light);
-                        _audio.PlayPredicted(light.TurnOnSound, uid, user: user, light.TurnOnSound.Params.AddVolume(-10f));
+                        _audio.PlayPredicted(light.TurnOnSound, uid, user: user, light.TurnOnSound.Params.AddVolume(-6f));
                     }
                 }
                 else

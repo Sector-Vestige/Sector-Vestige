@@ -1,49 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Wizards Den contributors
-# SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2020 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-# SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-# SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-# SPDX-FileCopyrightText: 2021 collinlunn <60152240+collinlunn@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2021 mirrorcult <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2021 moonheart08 <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 py01 <60152240+collinlunn@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 py01 <pyronetics01@gmail.com>
-# SPDX-FileCopyrightText: 2022 Jack Fox <35575261+DubiousDoggo@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 TekuNut <13456422+TekuNut@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 theashtronaut <112137107+theashtronaut@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Kevin Zheng <kevinz5000@gmail.com>
-# SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-# SPDX-FileCopyrightText: 2024 BuildTools <unconfigured@null.spigotmc.org>
-# SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 OnyxTheBrave <vinjeerik@gmail.com>
-# SPDX-FileCopyrightText: 2025 PicklOH <62030853+PicklOH@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2025 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
-# SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 - type: entity
   abstract: true
   parent: BaseItem
@@ -124,6 +78,7 @@
         Primary: Structures/Piping/Atmospherics/pipe.rsi
         Secondary: Structures/Piping/Atmospherics/pipe_alt1.rsi
         Tertiary: Structures/Piping/Atmospherics/pipe_alt2.rsi
+  - type: SandboxCopyable
 
 - type: entity
   abstract: true
@@ -134,8 +89,11 @@
 
 - type: entity
   parent: GasPipeBase
-  id: GasPipeHalf
+  id: !type:CreateVariants
+    values: [ GasPipeHalf, GasPipeHalfAlt1, GasPipeHalfAlt2 ]
   suffix: Half
+  categories: !type:CreateVariants
+    sequences: [ [ ], [ HideSpawnMenu ], [ HideSpawnMenu ] ]
   placement:
     mode: AlignAtmosPipeLayers
   components:
@@ -148,16 +106,17 @@
         volume: 100
   - type: Sprite
     layers:
-    - state: pipeHalf
+    - sprite: !type:CreateVariants
+        values: [ Structures/Piping/Atmospherics/pipe.rsi, Structures/Piping/Atmospherics/pipe_alt1.rsi, Structures/Piping/Atmospherics/pipe_alt2.rsi ]
+      state: pipeHalf
       map: [ "enum.PipeVisualLayers.Pipe" ]
-  - type: AtmosPipeLayers
-    alternativePrototypes:
-      Primary: GasPipeHalf
-      Secondary: GasPipeHalfAlt1
-      Tertiary: GasPipeHalfAlt2
   - type: Construction
-    graph: GasPipe
+    graph: !type:CreateVariants
+      values: [ GasPipe, GasPipeAlt1, GasPipeAlt2 ]
     node: half
+  - type: AtmosPipeLayers
+    pipeLayer: !type:CreateVariants
+      values: [ 0, 1, 2 ]
   - type: Item
     size: Small
     storedSprite:
@@ -170,8 +129,11 @@
 
 - type: entity
   parent: GasPipeBase
-  id: GasPipeStraight
+  id: !type:CreateVariants
+    values: [ GasPipeStraight, GasPipeStraightAlt1, GasPipeStraightAlt2 ]
   suffix: Straight
+  categories: !type:CreateVariants
+    sequences: [ [ ], [ HideSpawnMenu ], [ HideSpawnMenu ] ]
   placement:
     mode: AlignAtmosPipeLayers
   components:
@@ -183,15 +145,16 @@
         pipeDirection: Longitudinal
   - type: Sprite
     layers:
-    - state: pipeStraight
+    - sprite: !type:CreateVariants
+        values: [ Structures/Piping/Atmospherics/pipe.rsi, Structures/Piping/Atmospherics/pipe_alt1.rsi, Structures/Piping/Atmospherics/pipe_alt2.rsi ]
+      state: pipeStraight
       map: [ "enum.PipeVisualLayers.Pipe" ]
   - type: AtmosPipeLayers
-    alternativePrototypes:
-      Primary: GasPipeStraight
-      Secondary: GasPipeStraightAlt1
-      Tertiary: GasPipeStraightAlt2
+    pipeLayer: !type:CreateVariants
+      values: [ 0, 1, 2 ]
   - type: Construction
-    graph: GasPipe
+    graph: !type:CreateVariants
+      values: [ GasPipe, GasPipeAlt1, GasPipeAlt2 ]
     node: straight
   - type: Item
     storedSprite:
@@ -213,8 +176,11 @@
 
 - type: entity
   parent: GasPipeBase
-  id: GasPipeBend
+  id: !type:CreateVariants
+    values: [ GasPipeBend, GasPipeBendAlt1, GasPipeBendAlt2 ]
   suffix: Bend
+  categories: !type:CreateVariants
+    sequences: [ [ ], [ HideSpawnMenu ], [ HideSpawnMenu ] ]
   placement:
     mode: AlignAtmosPipeLayers
   components:
@@ -226,15 +192,16 @@
         pipeDirection: SWBend
   - type: Sprite
     layers:
-      - state: pipeBend
-        map: [ "enum.PipeVisualLayers.Pipe" ]
+    - sprite: !type:CreateVariants
+        values: [ Structures/Piping/Atmospherics/pipe.rsi, Structures/Piping/Atmospherics/pipe_alt1.rsi, Structures/Piping/Atmospherics/pipe_alt2.rsi ]
+      state: pipeBend
+      map: [ "enum.PipeVisualLayers.Pipe" ]
   - type: AtmosPipeLayers
-    alternativePrototypes:
-      Primary: GasPipeBend
-      Secondary: GasPipeBendAlt1
-      Tertiary: GasPipeBendAlt2
+    pipeLayer: !type:CreateVariants
+      values: [ 0, 1, 2 ]
   - type: Construction
-    graph: GasPipe
+    graph: !type:CreateVariants
+      values: [ GasPipe, GasPipeAlt1, GasPipeAlt2 ]
     node: bend
   - type: Item
     shape:
@@ -263,10 +230,13 @@
 
 - type: entity
   parent: GasPipeBase
-  id: GasPipeTJunction
+  id: !type:CreateVariants
+    values: [ GasPipeTJunction, GasPipeTJunctionAlt1, GasPipeTJunctionAlt2 ]
+  suffix: TJunction
+  categories: !type:CreateVariants
+    sequences: [ [ ], [ HideSpawnMenu ], [ HideSpawnMenu ] ]
   placement:
     mode: AlignAtmosPipeLayers
-  suffix: TJunction
   components:
   - type: NodeContainer
     nodes:
@@ -276,15 +246,16 @@
         pipeDirection: TSouth
   - type: Sprite
     layers:
-      - state: pipeTJunction
-        map: [ "enum.PipeVisualLayers.Pipe" ]
+    - sprite: !type:CreateVariants
+        values: [ Structures/Piping/Atmospherics/pipe.rsi, Structures/Piping/Atmospherics/pipe_alt1.rsi, Structures/Piping/Atmospherics/pipe_alt2.rsi ]
+      state: pipeTJunction
+      map: [ "enum.PipeVisualLayers.Pipe" ]
   - type: AtmosPipeLayers
-    alternativePrototypes:
-      Primary: GasPipeTJunction
-      Secondary: GasPipeTJunctionAlt1
-      Tertiary: GasPipeTJunctionAlt2
+    pipeLayer: !type:CreateVariants
+      values: [ 0, 1, 2 ]
   - type: Construction
-    graph: GasPipe
+    graph: !type:CreateVariants
+      values: [ GasPipe, GasPipeAlt1, GasPipeAlt2 ]
     node: tjunction
   - type: Item
     heldPrefix: TJunction
@@ -306,8 +277,11 @@
 
 - type: entity
   parent: GasPipeBase
-  id: GasPipeFourway
+  id: !type:CreateVariants
+    values: [ GasPipeFourway, GasPipeFourwayAlt1, GasPipeFourwayAlt2 ]
   suffix: Fourway
+  categories: !type:CreateVariants
+    sequences: [ [ ], [ HideSpawnMenu ], [ HideSpawnMenu ] ]
   placement:
     mode: AlignAtmosPipeLayers
   components:
@@ -321,15 +295,16 @@
         pipeDirection: Fourway
   - type: Sprite
     layers:
-      - state: pipeFourway
-        map: [ "enum.PipeVisualLayers.Pipe" ]
+    - sprite: !type:CreateVariants
+        values: [ Structures/Piping/Atmospherics/pipe.rsi, Structures/Piping/Atmospherics/pipe_alt1.rsi, Structures/Piping/Atmospherics/pipe_alt2.rsi ]
+      state: pipeFourway
+      map: [ "enum.PipeVisualLayers.Pipe" ]
   - type: AtmosPipeLayers
-    alternativePrototypes:
-      Primary: GasPipeFourway
-      Secondary: GasPipeFourwayAlt1
-      Tertiary: GasPipeFourwayAlt2
+    pipeLayer: !type:CreateVariants
+      values: [ 0, 1, 2 ]
   - type: Construction
-    graph: GasPipe
+    graph: !type:CreateVariants
+      values: [ GasPipe, GasPipeAlt1, GasPipeAlt2 ]
     node: fourway
   - type: Item
     heldPrefix: Fourway
@@ -356,16 +331,11 @@
   description: It used to hold gas.
   components:
   - type: Sprite
-    sprite: Structures/Piping/Atmospherics/pipe.rsi
-    drawdepth: ThinPipe
-    state: pipeBroken
     layers:
-      - state: pipeBroken
-        map: [ "enum.PipeVisualLayers.Pipe" ]
-  - type: AtmosPipeLayers
-    numberOfPipeLayers: 1
+    - state: pipeBroken
+      map: [ "enum.PipeVisualLayers.Pipe" ]
   - type: Construction
-    graph: GasPipe
+    graph: GasPipeSpecial
     node: broken
   - type: Item
     size: Small
@@ -377,7 +347,7 @@
     - PipeNetworks
 
 - type: entity
-  parent: GasPipeSansLayers
+  parent: GasPipeBase
   id: GasPipeManifold
   name: gas pipe manifold
   description: Allows gas pipes of different configurations to be connected together.
@@ -385,19 +355,19 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: Structures/Piping/Atmospherics/manifold.rsi
     layers:
-    - state: pipeManifold
+    - sprite: Structures/Piping/Atmospherics/manifold.rsi
+      state: pipeManifold
       map: [ "enum.PipeVisualLayers.Pipe" ]
-  - type: AtmosPipeLayers
-    pipeLayersLocked: true
   - type: PipeAppearance
     sprite:
     - { sprite: Structures/Piping/Atmospherics/manifold.rsi, state: pipeConnector }
     - { sprite: Structures/Piping/Atmospherics/manifold.rsi, state: pipeConnector_alt1 }
     - { sprite: Structures/Piping/Atmospherics/manifold.rsi, state: pipeConnector_alt2 }
+  - type: AtmosPipeLayers
+    pipeLayersLocked: true
   - type: Construction
-    graph: GasPipe
+    graph: GasPipeSpecial
     node: manifold
   - type: Item
     size: Small

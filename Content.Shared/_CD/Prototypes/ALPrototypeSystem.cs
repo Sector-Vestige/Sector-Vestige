@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Cosmatic Drift contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2025 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2026 lunarcomets (GitHub)
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Prototypes;
 using Robust.Shared.Prototypes;
 
@@ -28,7 +21,7 @@ public sealed partial class ALPrototypeSystem : EntitySystem
     {
         foreach (var entity in _prototype.EnumeratePrototypes<EntityPrototype>())
         {
-            if (entity.HasComponent<T>(_compFactory))
+            if (entity.HasComp<T>(_compFactory))
                 yield return entity;
         }
     }

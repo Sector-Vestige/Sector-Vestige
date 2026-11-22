@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Wizards Den contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 Falcon <falcon@zigtag.dev>
-// SPDX-FileCopyrightText: 2026 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2026 Whatstone <166147148+whatston3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2026 pathetic meowmeow <uhhadd@gmail.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Prototypes;
@@ -69,6 +59,9 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
 
     private void OnExamined(Entity<HumanoidProfileComponent> ent, ref ExaminedEvent args)
     {
+        if (!ent.Comp.Examinable)
+            return;
+
         var identity = Identity.Entity(ent, EntityManager);
         var species = GetSpeciesRepresentation(ent.Comp.Species).ToLower();
         var age = GetAgeRepresentation(ent.Comp.Species, ent.Comp.Age);

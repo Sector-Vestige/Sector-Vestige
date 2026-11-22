@@ -86,6 +86,7 @@ sv-document-console-security-heading = Security Record
 sv-document-console-security-status-label = Status:
 sv-document-console-security-reason-label = Reason:
 sv-document-console-fingerprint-label = Fingerprint:
+sv-document-console-dna-label = DNA:
 sv-document-console-security-none = None
 sv-document-console-security-na = N/A
 

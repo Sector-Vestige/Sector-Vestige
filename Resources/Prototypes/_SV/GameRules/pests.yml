@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 # Sector Vestige: Custom pest events with reduced hostile fauna spawning
 
 # Custom table for Vestige that includes reduced hostile pests
@@ -75,7 +68,7 @@
     duration: 60
   - type: VentCrittersRule
     entries:
-    - id: MobGiantSpiderAngry
+    - id: MobGiantSpiderTarantulaAngry # SV - upstream split MobGiantSpiderAngry into variants; tarantula is the old base spider
       prob: 0.025 # Sector Vestige: Halved from 0.05 to 0.025
 
 # Note: Spider Clown event is intentionally excluded from Vestige events

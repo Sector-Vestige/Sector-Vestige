@@ -1,14 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Wizards Den contributors
-// SPDX-FileCopyrightText: 2025 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 OnyxTheBrave (GitHub)
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Power.Components;
 using Robust.Client.GameObjects;
 
@@ -22,7 +11,7 @@ public sealed partial class PowerChargerVisualizerSystem : VisualizerSystem<Powe
             return;
 
         // Update base item
-        if (AppearanceSystem.TryGetData<bool>(uid, CellVisual.Occupied, out var occupied, args.Component) && occupied)
+        if (args.TryGetData<bool>(CellVisual.Occupied, out var occupied) && occupied)
         {
             // TODO: don't throw if it doesn't have a full state
             SpriteSystem.LayerSetRsiState((uid, args.Sprite), PowerChargerVisualLayers.Base, comp.OccupiedState);
@@ -33,7 +22,7 @@ public sealed partial class PowerChargerVisualizerSystem : VisualizerSystem<Powe
         }
 
         // Update lighting
-        if (AppearanceSystem.TryGetData<CellChargerStatus>(uid, CellVisual.Light, out var status, args.Component)
+        if (args.TryGetData<CellChargerStatus>(CellVisual.Light, out var status)
             && comp.LightStates.TryGetValue(status, out var lightState))
         {
             SpriteSystem.LayerSetRsiState((uid, args.Sprite), PowerChargerVisualLayers.Light, lightState);

@@ -1,16 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Wizards Den contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2025 Hitlinemoss <209321380+Hitlinemoss@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-# SPDX-FileCopyrightText: 2025 SnappingOpossum <snappingopossum@outlook.com>
-# SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
-# SPDX-FileCopyrightText: 2026 qu4drivium <aaronholiver@outlook.com>
-#
-# SPDX-License-Identifier: MIT
-
 - type: entity
   parent: BaseItem
   id: BoxFolderNuclearCodes
@@ -543,6 +530,10 @@
           - Write
   - type: CargoOrderConsole
     removeLimitAccess: [ "Quartermaster" ]
+  - type: DeviceLinkSource
+    range: 200
+    ports:
+    - OrderSender
   - type: ActivatableUI
     verbText: qm-clipboard-computer-verb-text
     key: enum.CargoConsoleUiKey.Orders
@@ -561,15 +552,5 @@
     - Folder
     - HighRiskItem
   - type: StealTarget
-    stealGroup: BoxFolderQmClipboard
-  # SV - Start - Allow linking of the QM Board
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-    receiveFrequencyId: BasicDevice
-  - type: WirelessNetworkConnection
-    range: 200
-  - type: DeviceLinkSource
-    range: 200
-    ports:
-    - OrderSender
-  # SV - End - Allow linking of the QM Board
+    stealGroup:
+    - BoxFolderQmClipboard

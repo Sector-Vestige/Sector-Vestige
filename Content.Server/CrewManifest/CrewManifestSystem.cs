@@ -20,7 +20,7 @@ namespace Content.Server.CrewManifest;
 
 public sealed partial class CrewManifestSystem : EntitySystem
 {
-    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private ServerStationSystem _stationSystem = default!;
     [Dependency] private StationRecordsSystem _recordsSystem = default!;
     [Dependency] private EuiManager _euiManager = default!;
     [Dependency] private IConfigurationManager _configManager = default!;
@@ -228,7 +228,7 @@ public sealed partial class CrewManifestSystem : EntitySystem
         foreach (var recordObject in iter)
         {
             var record = recordObject.Item2;
-            var entry = new CrewManifestEntry(record.Name, record.JobTitle, record.JobIcon, record.JobPrototype);
+            var entry = new CrewManifestEntry(record.Name, record.Gender.ToString().ToLowerInvariant(), record.JobTitle, record.JobIcon, record.JobPrototype); // Box - adds record.Gender for pronouns
 
             ProtoMan.TryIndex(record.JobPrototype, out JobPrototype? job);
             entriesSort.Add((job, entry));

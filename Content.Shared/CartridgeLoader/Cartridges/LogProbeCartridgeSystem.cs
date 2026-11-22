@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
-// SPDX-FileCopyrightText: 2025 Kyle Tyo <36606155+VerinSenpai@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 qu4drivium <aaronholiver@outlook.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
@@ -114,7 +105,7 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem
 
         ent.Comp.NextPrintAllowed = _timing.CurTime + ent.Comp.PrintCooldown;
 
-        var paper = EntityManager.PredictedSpawn(ent.Comp.PaperPrototype, _transform.GetMapCoordinates(user));
+        var paper = PredictedSpawn(ent.Comp.PaperPrototype, _transform.GetMapCoordinates(user));
         _label.Label(paper, ent.Comp.EntityName); // label it for easy identification
 
         _audio.PlayEntity(ent.Comp.PrintSound, user, paper);

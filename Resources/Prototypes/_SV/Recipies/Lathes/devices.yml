@@ -1,0 +1,8 @@
+- type: latheRecipe
+  id: DisposableCamera
+  result: DisposableCamera
+  completetime: 3
+  materials:
+    Steel: 300
+    Plastic: 100
+    Glass: 100

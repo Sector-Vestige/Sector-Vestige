@@ -31,6 +31,7 @@ using Content.Shared.FeedbackSystem;
 using Content.Shared.IoC;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Players.RateLimiting;
+using Content.Server._SV.Sponsors; // SV changes - Sponsor/patron entitlement manager
 
 namespace Content.Server.IoC;
 
@@ -71,6 +72,7 @@ internal static class ServerContentIoC
         deps.Register<ISharedPlaytimeManager, PlayTimeTrackingManager>();
         deps.Register<ServerApi>();
         deps.Register<JobWhitelistManager>();
+        deps.Register<SponsorManager>(); // SV changes - Sponsor/patron entitlement manager
         deps.Register<PlayerRateLimitManager>();
         deps.Register<SharedPlayerRateLimitManager, PlayerRateLimitManager>();
         deps.Register<MappingManager>();

@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2026 Wizards Den contributors
-# SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 JuneSzalkowska <juneszalkowska@gmail.com>
-#
-# SPDX-License-Identifier: MIT
-
 # Jumpsuit
 - type: loadout
   id: WhiteJumpsuit

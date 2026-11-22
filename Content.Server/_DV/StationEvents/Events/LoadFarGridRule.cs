@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Delta-V contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2024 V <97265903+formlessnameless@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 jajsha <corbinbinouche7@gmail.com>
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ReboundQ3 <ReboundQ3@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.GameTicking.Rules;
 using Content.Shared.Station.Components;
 using Content.Server.StationEvents.Components;
@@ -17,6 +8,7 @@ using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
+using Content.Shared.GameTicking; // RuleLoadedGridsEvent moved to Shared
 
 namespace Content.Server.StationEvents.Events;
 
@@ -28,12 +20,18 @@ public sealed partial class LoadFarGridRule : StationEventSystem<LoadFarGridRule
     {
         base.Added(uid, comp, rule, args);
 
-        if (!TryGetRandomStation(out var station) || !TryComp<StationDataComponent>(station, out var data))
+        // Upstream removed GameRuleSystem.TryGetRandomStation; StationSystem now provides it.
+        // SV - Only pick stations that actually have grids; no station is a normal outcome (e.g. in tests), not an error.
+        if (!Station.TryGetRandomStation<StationEventEligibleComponent>(out var stationEnt,
+                s => CompOrNull<StationDataComponent>(s)?.Grids.Count > 0))
         {
-            Log.Error($"{ToPrettyString(uid):rule} failed to find a station!");
+            Log.Warning($"{ToPrettyString(uid):rule} failed to find a station with grids!");
             ForceEndSelf(uid, rule);
             return;
         }
+
+        var station = stationEnt.Value.Owner;
+        var data = stationEnt.Value.Comp1;
 
         if (data.Grids.Count < 1)
         {

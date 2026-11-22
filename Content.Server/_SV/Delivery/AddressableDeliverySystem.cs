@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Sector-Vestige contributors
-// SPDX-FileCopyrightText: 2026 Sector Vestige contributors (modifications)
-// SPDX-FileCopyrightText: 2026 ReboundQ3 <22770594+ReboundQ3@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Server.Station.Systems;
 using Content.Shared._SV.Delivery;
@@ -19,6 +13,7 @@ using Content.Shared.StationRecords.Systems;
 using Content.Shared.Storage;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._SV.Delivery;
 
