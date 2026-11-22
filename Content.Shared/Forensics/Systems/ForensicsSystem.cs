@@ -279,24 +279,47 @@ public sealed partial class ForensicsSystem : EntitySystem
         Dirty(args.Target.Value, targetComp);
     }
 
-    public string GenerateFingerprint()
+    private static ulong HashName(string name, ulong seed) // SV Persistant Forensics hash function
     {
-        var fingerprint = new byte[16];
-        _random.NextBytes(fingerprint);
-        return Convert.ToHexString(fingerprint);
+        const ulong prime = 1099511628211UL;
+
+        var hash = seed;
+
+        foreach (var c in name.ToLowerInvariant())
+        {
+            hash ^= c;
+            hash *= prime;
+        }
+
+        return hash;
     }
 
-    public string GenerateDNA()
+    public string GenerateFingerprint(string name) // SV Persistant Forensics (based on name)
     {
-        var letters = new[] { "A", "C", "G", "T" };
-        var dna = string.Empty;
+        var hash1 = HashName(name, 14695981039346656037UL);
+        var hash2 = HashName(name, 1099511628211UL);
+
+        return $"{hash1:X16}{hash2:X16}";
+    }
+
+    public string GenerateDNA(string name) // SV Persistant Forensics (based on name)
+    {
+        const string letters = "ACGT";
+
+        var hash1 = HashName(name, 14695981039346656037UL);
+        var hash2 = HashName(name, 1099511628211UL);
+
+        var dna = new System.Text.StringBuilder(16);
 
         for (var i = 0; i < 16; i++)
         {
-            dna += letters[_random.Next(letters.Length)];
+            var hash = i < 8 ? hash1 : hash2;
+            var index = (int)((hash >> ((i % 8) * 8)) & 0xFF) % 4;
+
+            dna.Append(letters[index]);
         }
 
-        return dna;
+        return dna.ToString();
     }
 
     private void ApplyEvidence(EntityUid user, EntityUid target)
@@ -324,7 +347,7 @@ public sealed partial class ForensicsSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp, false))
             return;
 
-        ent.Comp.DNA = GenerateDNA();
+        ent.Comp.DNA = GenerateDNA(MetaData(ent.Owner).EntityName); // SV Persistant Forensics
 
         var ev = new GenerateDnaEvent { Owner = ent.Owner, DNA = ent.Comp.DNA };
         RaiseLocalEvent(ent.Owner, ref ev);
@@ -336,7 +359,7 @@ public sealed partial class ForensicsSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp, false))
             return;
 
-        ent.Comp.Fingerprint = GenerateFingerprint();
+        ent.Comp.Fingerprint = GenerateFingerprint(Name(ent.Owner).ToString()); // SV Persistant Forensics
         Dirty(ent);
     }
 
