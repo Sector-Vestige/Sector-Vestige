@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._SV.Fire;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
@@ -45,6 +46,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private SharedActualFireSystem _fire = default!;
 
     [Dependency] private EntityQuery<StepTriggerComponent> _stepTriggerQuery = default!;
     [Dependency] private EntityQuery<ReactiveComponent> _reactiveQuery = default!;
@@ -127,6 +129,9 @@ public abstract partial class SharedPuddleSystem : EntitySystem
             _deletionQueue.Add(entity);
             return;
         }
+
+        if (args.Solution.Comp.Fire != null) //SV: Fluid Fires
+            _fire.UpdateData(args.Solution.Comp.Fire.Value); //SV: Fluid Fires
 
         _deletionQueue.Remove(entity);
         UpdateSlip((entity, entity.Comp), args.Solution.Comp.Solution);
