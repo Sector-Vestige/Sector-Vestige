@@ -1086,6 +1086,7 @@
   color: "#b0abaa"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.08
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
